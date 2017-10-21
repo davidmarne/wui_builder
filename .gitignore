@@ -1,0 +1,7 @@
+.packages
+packages
+.pub/
+pubspec.lock
+build/
+benchmark/
+perf.pad
