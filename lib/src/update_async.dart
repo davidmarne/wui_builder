@@ -46,17 +46,13 @@ Future<Deadline> _updateNodeAsync(Deadline deadline, Element parent,
   if (oldVNode == null) {
     parent.append(_createNode(newVNode));
   } else if (newVNode == null) {
-    if (oldVNode is Component)
-      oldVNode.componentWillUnmount(oldVNode._props, oldVNode._state);
-    else
-      (oldVNode as VElement).dispose();
-    parent.childNodes[index]?.remove();
+    // if the new vnode is null dispose of it and remove it from the dom
+    _disposeVNode(oldVNode);
+    parent.children[index]?.remove();
   } else if (newVNode.runtimeType != oldVNode.runtimeType) {
-    if (oldVNode is Component)
-      oldVNode.componentWillUnmount(oldVNode._props, oldVNode._state);
-    else
-      (oldVNode as VElement).dispose();
-    parent.childNodes[index] = _createNode(newVNode);
+    // if the new vnode is a different type, dispose the old and replace it with a new one
+    _disposeVNode(oldVNode);
+    parent.children[index] = _createNode(newVNode);
   } else if (newVNode is VElement) {
     deadline = await _updateElementNodeAsync(
         deadline, parent, newVNode, oldVNode, index);
@@ -77,19 +73,28 @@ Future<Deadline> _updateElementNodeAsync(Deadline deadline, Element parent,
     return deadline;
   }
 
+  // get the html element
   final node = parent.children[index];
-  newVNode._applyAttributesToElement(node);
+
+  // update attributes that have changed
+  newVNode._updateElementAttributes(oldVNode, node);
+
+  // if shouldUpdateSubs is set update subscriptions
   if (newVNode.shouldUpdateSubs)
     newVNode._updateEventListenersToElement(oldVNode, node);
-  final newLength = newVNode._children != null ? newVNode._children.length : 0;
-  final oldLength = oldVNode._children != null ? oldVNode._children.length : 0;
+
+  // update each child element
+  final newLength = newVNode._childrenSet ? newVNode._children.length : 0;
+  final oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0;
   for (var i = 0; i < newLength || i < oldLength; i++) {
     deadline = await _updateNodeAsync(
       deadline,
       node,
       i < newVNode._children.length ? newVNode._children.elementAt(i) : null,
       i < oldVNode._children.length ? oldVNode._children.elementAt(i) : null,
-      i,
+      i > newLength - 1
+          ? newLength
+          : i, // if we are removing elements the index cannot go up
     );
 
     // quit updating children if the deadline was cancelled
@@ -123,13 +128,19 @@ Future<Deadline> _updateComponentNodeAsync(Deadline deadline, Element parent,
   // set the state of the new node to next state
   newVNode._state = nextState;
 
+  // lifecycle - shouldComponentUpdate
   if (!newVNode.shouldComponentUpdate(
       oldVNode._props, newVNode._props, oldVNode._state, newVNode._state))
     return deadline;
+
+  // lifecycle - componentWillUpdate
   newVNode.componentWillUpdate(
       oldVNode._props, newVNode._props, oldVNode._state, newVNode._state);
 
+  // build the new virtual tree
   newVNode._render(newVNode._props, newVNode._state);
+
+    // call update node for the new virtual tree
   deadline = await _updateNodeAsync(
     deadline,
     parent,
@@ -137,6 +148,8 @@ Future<Deadline> _updateComponentNodeAsync(Deadline deadline, Element parent,
     oldVNode._renderResult,
     index,
   );
+
+    // lifecycle - componentDidUpdate
   newVNode.componentDidUpdate(
       oldVNode._props, newVNode._props, oldVNode._state, newVNode._state);
   return deadline;

@@ -1,8 +1,21 @@
 part of wui_builder;
 
-abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {}
+abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {
+  @override
+  void _applyAttributesToElement(T ele) {
+    super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(covariant VHtmlElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+  }
+}
 
 class VAnchorElement extends VHtmlElement<AnchorElement> {
+  @override
+  AnchorElement _elementFactory() => new AnchorElement();
+
   String _download;
   bool _downloadSet = false;
   String get download => _download;
@@ -132,30 +145,55 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   }
 
   @override
-  AnchorElement _elementFactory() => new AnchorElement();
-  @override
   void _applyAttributesToElement(AnchorElement ele) {
     super._applyAttributesToElement(ele);
-    if (_downloadSet) ele.download = download;
-    if (_hreflangSet) ele.hreflang = hreflang;
-    if (_referrerpolicySet) ele.referrerpolicy = referrerpolicy;
-    if (_relSet) ele.rel = rel;
-    if (_targetSet) ele.target = target;
-    if (_typeSet) ele.type = type;
-    if (_hashSet) ele.hash = hash;
-    if (_hostSet) ele.host = host;
-    if (_hostnameSet) ele.hostname = hostname;
-    if (_hrefSet) ele.href = href;
-    if (_passwordSet) ele.password = password;
-    if (_pathnameSet) ele.pathname = pathname;
-    if (_portSet) ele.port = port;
-    if (_protocolSet) ele.protocol = protocol;
-    if (_searchSet) ele.search = search;
-    if (_usernameSet) ele.username = username;
+
+    if (_downloadSet) ele.download = _download;
+    if (_hreflangSet) ele.hreflang = _hreflang;
+    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
+    if (_relSet) ele.rel = _rel;
+    if (_targetSet) ele.target = _target;
+    if (_typeSet) ele.type = _type;
+    if (_hashSet) ele.hash = _hash;
+    if (_hostSet) ele.host = _host;
+    if (_hostnameSet) ele.hostname = _hostname;
+    if (_hrefSet) ele.href = _href;
+    if (_passwordSet) ele.password = _password;
+    if (_pathnameSet) ele.pathname = _pathname;
+    if (_portSet) ele.port = _port;
+    if (_protocolSet) ele.protocol = _protocol;
+    if (_searchSet) ele.search = _search;
+    if (_usernameSet) ele.username = _username;
+  }
+
+  @override
+  void _updateElementAttributes(VAnchorElement prev, AnchorElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_download != prev._download) ele.download = _download;
+    if (_hreflang != prev._hreflang) ele.hreflang = _hreflang;
+    if (_referrerpolicy != prev._referrerpolicy)
+      ele.referrerpolicy = _referrerpolicy;
+    if (_rel != prev._rel) ele.rel = _rel;
+    if (_target != prev._target) ele.target = _target;
+    if (_type != prev._type) ele.type = _type;
+    if (_hash != prev._hash) ele.hash = _hash;
+    if (_host != prev._host) ele.host = _host;
+    if (_hostname != prev._hostname) ele.hostname = _hostname;
+    if (_href != prev._href) ele.href = _href;
+    if (_password != prev._password) ele.password = _password;
+    if (_pathname != prev._pathname) ele.pathname = _pathname;
+    if (_port != prev._port) ele.port = _port;
+    if (_protocol != prev._protocol) ele.protocol = _protocol;
+    if (_search != prev._search) ele.search = _search;
+    if (_username != prev._username) ele.username = _username;
   }
 }
 
 class VAreaElement extends VHtmlElement<AreaElement> {
+  @override
+  AreaElement _elementFactory() => new AreaElement();
+
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
@@ -277,47 +315,83 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   }
 
   @override
-  AreaElement _elementFactory() => new AreaElement();
-  @override
   void _applyAttributesToElement(AreaElement ele) {
     super._applyAttributesToElement(ele);
-    if (_altSet) ele.alt = alt;
-    if (_coordsSet) ele.coords = coords;
-    if (_referrerpolicySet) ele.referrerpolicy = referrerpolicy;
-    if (_shapeSet) ele.shape = shape;
-    if (_targetSet) ele.target = target;
-    if (_hashSet) ele.hash = hash;
-    if (_hostSet) ele.host = host;
-    if (_hostnameSet) ele.hostname = hostname;
-    if (_hrefSet) ele.href = href;
-    if (_passwordSet) ele.password = password;
-    if (_pathnameSet) ele.pathname = pathname;
-    if (_portSet) ele.port = port;
-    if (_protocolSet) ele.protocol = protocol;
-    if (_searchSet) ele.search = search;
-    if (_usernameSet) ele.username = username;
+
+    if (_altSet) ele.alt = _alt;
+    if (_coordsSet) ele.coords = _coords;
+    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
+    if (_shapeSet) ele.shape = _shape;
+    if (_targetSet) ele.target = _target;
+    if (_hashSet) ele.hash = _hash;
+    if (_hostSet) ele.host = _host;
+    if (_hostnameSet) ele.hostname = _hostname;
+    if (_hrefSet) ele.href = _href;
+    if (_passwordSet) ele.password = _password;
+    if (_pathnameSet) ele.pathname = _pathname;
+    if (_portSet) ele.port = _port;
+    if (_protocolSet) ele.protocol = _protocol;
+    if (_searchSet) ele.search = _search;
+    if (_usernameSet) ele.username = _username;
+  }
+
+  @override
+  void _updateElementAttributes(VAreaElement prev, AreaElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_alt != prev._alt) ele.alt = _alt;
+    if (_coords != prev._coords) ele.coords = _coords;
+    if (_referrerpolicy != prev._referrerpolicy)
+      ele.referrerpolicy = _referrerpolicy;
+    if (_shape != prev._shape) ele.shape = _shape;
+    if (_target != prev._target) ele.target = _target;
+    if (_hash != prev._hash) ele.hash = _hash;
+    if (_host != prev._host) ele.host = _host;
+    if (_hostname != prev._hostname) ele.hostname = _hostname;
+    if (_href != prev._href) ele.href = _href;
+    if (_password != prev._password) ele.password = _password;
+    if (_pathname != prev._pathname) ele.pathname = _pathname;
+    if (_port != prev._port) ele.port = _port;
+    if (_protocol != prev._protocol) ele.protocol = _protocol;
+    if (_search != prev._search) ele.search = _search;
+    if (_username != prev._username) ele.username = _username;
   }
 }
 
 class VAudioElement extends VMediaElement<AudioElement> {
   @override
   AudioElement _elementFactory() => new AudioElement();
+
   @override
   void _applyAttributesToElement(AudioElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VAudioElement prev, AudioElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
 class VBRElement extends VHtmlElement<BRElement> {
   @override
   BRElement _elementFactory() => new BRElement();
+
   @override
   void _applyAttributesToElement(BRElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VBRElement prev, BRElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VBaseElement extends VHtmlElement<BaseElement> {
+  @override
+  BaseElement _elementFactory() => new BaseElement();
+
   String _href;
   bool _hrefSet = false;
   String get href => _href;
@@ -335,25 +409,41 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   }
 
   @override
-  BaseElement _elementFactory() => new BaseElement();
-  @override
   void _applyAttributesToElement(BaseElement ele) {
     super._applyAttributesToElement(ele);
-    if (_hrefSet) ele.href = href;
-    if (_targetSet) ele.target = target;
+
+    if (_hrefSet) ele.href = _href;
+    if (_targetSet) ele.target = _target;
+  }
+
+  @override
+  void _updateElementAttributes(VBaseElement prev, BaseElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_href != prev._href) ele.href = _href;
+    if (_target != prev._target) ele.target = _target;
   }
 }
 
 class VBodyElement extends VHtmlElement<BodyElement> {
   @override
   BodyElement _elementFactory() => new BodyElement();
+
   @override
   void _applyAttributesToElement(BodyElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VBodyElement prev, BodyElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VButtonElement extends VHtmlElement<ButtonElement> {
+  @override
+  ButtonElement _elementFactory() => new ButtonElement();
+
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
@@ -435,24 +525,43 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   }
 
   @override
-  ButtonElement _elementFactory() => new ButtonElement();
-  @override
   void _applyAttributesToElement(ButtonElement ele) {
     super._applyAttributesToElement(ele);
-    if (_autofocusSet) ele.autofocus = autofocus;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_formActionSet) ele.formAction = formAction;
-    if (_formEnctypeSet) ele.formEnctype = formEnctype;
-    if (_formMethodSet) ele.formMethod = formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = formNoValidate;
-    if (_formTargetSet) ele.formTarget = formTarget;
-    if (_nameSet) ele.name = name;
-    if (_typeSet) ele.type = type;
-    if (_valueSet) ele.value = value;
+
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_formActionSet) ele.formAction = _formAction;
+    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
+    if (_formMethodSet) ele.formMethod = _formMethod;
+    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
+    if (_formTargetSet) ele.formTarget = _formTarget;
+    if (_nameSet) ele.name = _name;
+    if (_typeSet) ele.type = _type;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VButtonElement prev, ButtonElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_formAction != prev._formAction) ele.formAction = _formAction;
+    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
+    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
+    if (_formNoValidate != prev._formNoValidate)
+      ele.formNoValidate = _formNoValidate;
+    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
+    if (_name != prev._name) ele.name = _name;
+    if (_type != prev._type) ele.type = _type;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VCanvasElement extends VHtmlElement<CanvasElement> {
+  @override
+  CanvasElement _elementFactory() => new CanvasElement();
+
   int _height;
   bool _heightSet = false;
   int get height => _height;
@@ -470,16 +579,26 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   }
 
   @override
-  CanvasElement _elementFactory() => new CanvasElement();
-  @override
   void _applyAttributesToElement(CanvasElement ele) {
     super._applyAttributesToElement(ele);
-    if (_heightSet) ele.height = height;
-    if (_widthSet) ele.width = width;
+
+    if (_heightSet) ele.height = _height;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(VCanvasElement prev, CanvasElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_height != prev._height) ele.height = _height;
+    if (_width != prev._width) ele.width = _width;
   }
 }
 
 class VContentElement extends VHtmlElement<ContentElement> {
+  @override
+  ContentElement _elementFactory() => new ContentElement();
+
   String _select;
   bool _selectSet = false;
   String get select => _select;
@@ -489,33 +608,54 @@ class VContentElement extends VHtmlElement<ContentElement> {
   }
 
   @override
-  ContentElement _elementFactory() => new ContentElement();
-  @override
   void _applyAttributesToElement(ContentElement ele) {
     super._applyAttributesToElement(ele);
-    if (_selectSet) ele.select = select;
+
+    if (_selectSet) ele.select = _select;
+  }
+
+  @override
+  void _updateElementAttributes(VContentElement prev, ContentElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_select != prev._select) ele.select = _select;
   }
 }
 
 class VDListElement extends VHtmlElement<DListElement> {
   @override
   DListElement _elementFactory() => new DListElement();
+
   @override
   void _applyAttributesToElement(DListElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VDListElement prev, DListElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
 class VDataListElement extends VHtmlElement<DataListElement> {
   @override
   DataListElement _elementFactory() => new DataListElement();
+
   @override
   void _applyAttributesToElement(DataListElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VDataListElement prev, DataListElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VDetailsElement extends VHtmlElement<DetailsElement> {
+  @override
+  DetailsElement _elementFactory() => new DetailsElement();
+
   bool _open;
   bool _openSet = false;
   bool get open => _open;
@@ -525,11 +665,17 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
   }
 
   @override
-  DetailsElement _elementFactory() => new DetailsElement();
-  @override
   void _applyAttributesToElement(DetailsElement ele) {
     super._applyAttributesToElement(ele);
-    if (_openSet) ele.open = open;
+
+    if (_openSet) ele.open = _open;
+  }
+
+  @override
+  void _updateElementAttributes(VDetailsElement prev, DetailsElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_open != prev._open) ele.open = _open;
   }
 }
 
@@ -553,30 +699,50 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_openSet) ele.open = open;
-    if (_returnValueSet) ele.returnValue = returnValue;
+
+    if (_openSet) ele.open = _open;
+    if (_returnValueSet) ele.returnValue = _returnValue;
+  }
+
+  @override
+  void _updateElementAttributes(covariant VDialogElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_open != prev._open) ele.open = _open;
+    if (_returnValue != prev._returnValue) ele.returnValue = _returnValue;
   }
 }
 
 class VDivElement extends VHtmlElement<DivElement> {
   @override
   DivElement _elementFactory() => new DivElement();
+
   @override
   void _applyAttributesToElement(DivElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VDivElement prev, DivElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 abstract class VElement<E extends Element> extends VNode {
-  Map<String, StreamSubscription> _subs = new Map<String, StreamSubscription>();
+  E _elementFactory();
+
   bool shouldUpdateSubs = false;
-  Iterable<VNode> _children;
-  Iterable<VNode> get children => _children;
-  void set children(Iterable<VNode> c) {
-    _children = c.toList();
-  }
 
   StyleBuilder styleBuilder;
+
+  List<VNode> _children;
+  bool _childrenSet = false;
+  List<VNode> get children => _children;
+  void set children(Iterable<VNode> c) {
+    print('tolist');
+    _children = c.toList();
+    _childrenSet = true;
+  }
 
   String _text;
   bool _textSet = false;
@@ -588,7 +754,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _contentEditable;
   bool _contentEditableSet = false;
-
   String get contentEditable => _contentEditable;
   void set contentEditable(String v) {
     _contentEditable = v;
@@ -597,7 +762,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   MenuElement _contextMenu;
   bool _contextMenuSet = false;
-
   MenuElement get contextMenu => _contextMenu;
   void set contextMenu(MenuElement v) {
     _contextMenu = v;
@@ -606,7 +770,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _dir;
   bool _dirSet = false;
-
   String get dir => _dir;
   void set dir(String v) {
     _dir = v;
@@ -615,7 +778,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   bool _draggable;
   bool _draggableSet = false;
-
   bool get draggable => _draggable;
   void set draggable(bool v) {
     _draggable = v;
@@ -624,7 +786,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   bool _hidden;
   bool _hiddenSet = false;
-
   bool get hidden => _hidden;
   void set hidden(bool v) {
     _hidden = v;
@@ -633,7 +794,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _lang;
   bool _langSet = false;
-
   String get lang => _lang;
   void set lang(String v) {
     _lang = v;
@@ -642,7 +802,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   bool _spellcheck;
   bool _spellcheckSet = false;
-
   bool get spellcheck => _spellcheck;
   void set spellcheck(bool v) {
     _spellcheck = v;
@@ -651,7 +810,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   int _tabIndex;
   bool _tabIndexSet = false;
-
   int get tabIndex => _tabIndex;
   void set tabIndex(int v) {
     _tabIndex = v;
@@ -660,7 +818,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _title;
   bool _titleSet = false;
-
   String get title => _title;
   void set title(String v) {
     _title = v;
@@ -669,7 +826,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   bool _translate;
   bool _translateSet = false;
-
   bool get translate => _translate;
   void set translate(bool v) {
     _translate = v;
@@ -678,7 +834,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _dropzone;
   bool _dropzoneSet = false;
-
   String get dropzone => _dropzone;
   void set dropzone(String v) {
     _dropzone = v;
@@ -687,7 +842,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _className;
   bool _classNameSet = false;
-
   String get className => _className;
   void set className(String v) {
     _className = v;
@@ -696,7 +850,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _id;
   bool _idSet = false;
-
   String get id => _id;
   void set id(String v) {
     _id = v;
@@ -705,7 +858,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _slot;
   bool _slotSet = false;
-
   String get slot => _slot;
   void set slot(String v) {
     _slot = v;
@@ -714,7 +866,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   Map<String, String> _attributes;
   bool _attributesSet = false;
-
   Map<String, String> get attributes => _attributes;
   void set attributes(Map<String, String> v) {
     _attributes = v;
@@ -723,7 +874,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   Iterable<String> _classes;
   bool _classesSet = false;
-
   Iterable<String> get classes => _classes;
   void set classes(Iterable<String> v) {
     _classes = v;
@@ -732,7 +882,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   Map<String, String> _dataset;
   bool _datasetSet = false;
-
   Map<String, String> get dataset => _dataset;
   void set dataset(Map<String, String> v) {
     _dataset = v;
@@ -741,7 +890,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   Element _xtag;
   bool _xtagSet = false;
-
   Element get xtag => _xtag;
   void set xtag(Element v) {
     _xtag = v;
@@ -750,7 +898,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   String _innerHtml;
   bool _innerHtmlSet = false;
-
   String get innerHtml => _innerHtml;
   void set innerHtml(String v) {
     _innerHtml = v;
@@ -759,7 +906,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   int _scrollLeft;
   bool _scrollLeftSet = false;
-
   int get scrollLeft => _scrollLeft;
   void set scrollLeft(int v) {
     _scrollLeft = v;
@@ -768,7 +914,6 @@ abstract class VElement<E extends Element> extends VNode {
 
   int _scrollTop;
   bool _scrollTopSet = false;
-
   int get scrollTop => _scrollTop;
   void set scrollTop(int v) {
     _scrollTop = v;
@@ -1396,15 +1541,6 @@ abstract class VElement<E extends Element> extends VNode {
     _onFullscreenErrorSet = true;
   }
 
-  void dispose() {
-    // TODO: fix
-    for (var sub in _subs.values) {
-      sub.cancel();
-    }
-  }
-
-  E _elementFactory();
-
   void _applyAttributesToElement(E ele) {
     if (_textSet) {
       final first = ele.firstChild;
@@ -1417,1071 +1553,1065 @@ abstract class VElement<E extends Element> extends VNode {
       }
     }
     if (styleBuilder != null) styleBuilder(ele.style);
-    if (_contentEditableSet) ele.contentEditable = contentEditable;
-    if (_contextMenuSet) ele.contextMenu = contextMenu;
-    if (_dirSet) ele.dir = dir;
-    if (_draggableSet) ele.draggable = draggable;
-    if (_hiddenSet) ele.hidden = hidden;
-    if (_langSet) ele.lang = lang;
-    if (_spellcheckSet) ele.spellcheck = spellcheck;
-    if (_tabIndexSet) ele.tabIndex = tabIndex;
-    if (_titleSet) ele.title = title;
-    if (_translateSet) ele.translate = translate;
-    if (_dropzoneSet) ele.dropzone = dropzone;
-    if (_classNameSet) ele.className = className;
-    if (_idSet) ele.id = id;
-    if (_slotSet) ele.slot = slot;
-    if (_attributesSet) ele.attributes = attributes;
-    if (_classesSet) ele.classes = classes;
-    if (_datasetSet) ele.dataset = dataset;
-    if (_xtagSet) ele.xtag = xtag;
-    if (_innerHtmlSet) ele.innerHtml = innerHtml;
-    if (_scrollLeftSet) ele.scrollLeft = scrollLeft;
-    if (_scrollTopSet) ele.scrollTop = scrollTop;
+
+    if (_contentEditableSet) ele.contentEditable = _contentEditable;
+    if (_contextMenuSet) ele.contextMenu = _contextMenu;
+    if (_dirSet) ele.dir = _dir;
+    if (_draggableSet) ele.draggable = _draggable;
+    if (_hiddenSet) ele.hidden = _hidden;
+    if (_langSet) ele.lang = _lang;
+    if (_spellcheckSet) ele.spellcheck = _spellcheck;
+    if (_tabIndexSet) ele.tabIndex = _tabIndex;
+    if (_titleSet) ele.title = _title;
+    if (_translateSet) ele.translate = _translate;
+    if (_dropzoneSet) ele.dropzone = _dropzone;
+    if (_classNameSet) ele.className = _className;
+    if (_idSet) ele.id = _id;
+    if (_slotSet) ele.slot = _slot;
+    if (_attributesSet) ele.attributes = _attributes;
+    if (_classesSet) ele.classes = _classes;
+    if (_datasetSet) ele.dataset = _dataset;
+    if (_xtagSet) ele.xtag = _xtag;
+    if (_innerHtmlSet) ele.innerHtml = _innerHtml;
+    if (_scrollLeftSet) ele.scrollLeft = _scrollLeft;
+    if (_scrollTopSet) ele.scrollTop = _scrollTop;
+  }
+
+  void _updateElementAttributes(covariant VElement<E> prev, E ele) {
+    if (_text != prev._text) {
+      final first = ele.firstChild;
+      if (first != null &&
+          first == ele.lastChild &&
+          first.nodeType == Node.TEXT_NODE) {
+        first.text = text;
+      } else {
+        ele.text = text;
+      }
+    }
+    if (styleBuilder != null) styleBuilder(ele.style);
+
+    if (_contentEditable != prev._contentEditable)
+      ele.contentEditable = _contentEditable;
+    if (_contextMenu != prev._contextMenu) ele.contextMenu = _contextMenu;
+    if (_dir != prev._dir) ele.dir = _dir;
+    if (_draggable != prev._draggable) ele.draggable = _draggable;
+    if (_hidden != prev._hidden) ele.hidden = _hidden;
+    if (_lang != prev._lang) ele.lang = _lang;
+    if (_spellcheck != prev._spellcheck) ele.spellcheck = _spellcheck;
+    if (_tabIndex != prev._tabIndex) ele.tabIndex = _tabIndex;
+    if (_title != prev._title) ele.title = _title;
+    if (_translate != prev._translate) ele.translate = _translate;
+    if (_dropzone != prev._dropzone) ele.dropzone = _dropzone;
+    if (_className != prev._className) ele.className = _className;
+    if (_id != prev._id) ele.id = _id;
+    if (_slot != prev._slot) ele.slot = _slot;
+    if (_attributes != prev._attributes) ele.attributes = _attributes;
+    if (_classes != prev._classes) ele.classes = _classes;
+    if (_dataset != prev._dataset) ele.dataset = _dataset;
+    if (_xtag != prev._xtag) ele.xtag = _xtag;
+    if (_innerHtml != prev._innerHtml) ele.innerHtml = _innerHtml;
+    if (_scrollLeft != prev._scrollLeft) ele.scrollLeft = _scrollLeft;
+    if (_scrollTop != prev._scrollTop) ele.scrollTop = _scrollTop;
   }
 
   void _applyEventListenersToElement(Element ele) {
-    if (_onAbortSet) {
-      _onAbortSub = ele.onAbort.listen(onAbort);
-    }
-    if (_onBeforeCopySet) {
+    if (_onAbortSet) _onAbortSub = ele.onAbort.listen(onAbort);
+    if (_onBeforeCopySet)
       _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
-    }
-    if (_onBeforeCutSet) {
-      _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
-    }
-    if (_onBeforePasteSet) {
+    if (_onBeforeCutSet) _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
+    if (_onBeforePasteSet)
       _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
-    }
-    if (_onBlurSet) {
-      _onBlurSub = ele.onBlur.listen(onBlur);
-    }
-    if (_onCanPlaySet) {
-      _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
-    }
-    if (_onCanPlayThroughSet) {
+    if (_onBlurSet) _onBlurSub = ele.onBlur.listen(onBlur);
+    if (_onCanPlaySet) _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
+    if (_onCanPlayThroughSet)
       _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
-    }
-    if (_onChangeSet) {
-      _onChangeSub = ele.onChange.listen(onChange);
-    }
-    if (_onClickSet) {
-      _onClickSub = ele.onClick.listen(onClick);
-    }
-    if (_onContextMenuSet) {
+    if (_onChangeSet) _onChangeSub = ele.onChange.listen(onChange);
+    if (_onClickSet) _onClickSub = ele.onClick.listen(onClick);
+    if (_onContextMenuSet)
       _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
-    }
-    if (_onCopySet) {
-      _onCopySub = ele.onCopy.listen(onCopy);
-    }
-    if (_onCutSet) {
-      _onCutSub = ele.onCut.listen(onCut);
-    }
-    if (_onDoubleClickSet) {
+    if (_onCopySet) _onCopySub = ele.onCopy.listen(onCopy);
+    if (_onCutSet) _onCutSub = ele.onCut.listen(onCut);
+    if (_onDoubleClickSet)
       _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
-    }
-    if (_onDragSet) {
-      _onDragSub = ele.onDrag.listen(onDrag);
-    }
-    if (_onDragEndSet) {
-      _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
-    }
-    if (_onDragEnterSet) {
-      _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
-    }
-    if (_onDragLeaveSet) {
-      _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
-    }
-    if (_onDragOverSet) {
-      _onDragOverSub = ele.onDragOver.listen(onDragOver);
-    }
-    if (_onDragStartSet) {
-      _onDragStartSub = ele.onDragStart.listen(onDragStart);
-    }
-    if (_onDropSet) {
-      _onDropSub = ele.onDrop.listen(onDrop);
-    }
-    if (_onDurationChangeSet) {
+    if (_onDragSet) _onDragSub = ele.onDrag.listen(onDrag);
+    if (_onDragEndSet) _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
+    if (_onDragEnterSet) _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
+    if (_onDragLeaveSet) _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
+    if (_onDragOverSet) _onDragOverSub = ele.onDragOver.listen(onDragOver);
+    if (_onDragStartSet) _onDragStartSub = ele.onDragStart.listen(onDragStart);
+    if (_onDropSet) _onDropSub = ele.onDrop.listen(onDrop);
+    if (_onDurationChangeSet)
       _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
-    }
-    if (_onEmptiedSet) {
-      _onEmptiedSub = ele.onEmptied.listen(onEmptied);
-    }
-    if (_onEndedSet) {
-      _onEndedSub = ele.onEnded.listen(onEnded);
-    }
-    if (_onErrorSet) {
-      _onErrorSub = ele.onError.listen(onError);
-    }
-    if (_onFocusSet) {
-      _onFocusSub = ele.onFocus.listen(onFocus);
-    }
-    if (_onInputSet) {
-      _onInputSub = ele.onInput.listen(onInput);
-    }
-    if (_onInvalidSet) {
-      _onInvalidSub = ele.onInvalid.listen(onInvalid);
-    }
-    if (_onKeyDownSet) {
-      _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
-    }
-    if (_onKeyPressSet) {
-      _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
-    }
-    if (_onKeyUpSet) {
-      _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
-    }
-    if (_onLoadSet) {
-      _onLoadSub = ele.onLoad.listen(onLoad);
-    }
-    if (_onLoadedDataSet) {
+    if (_onEmptiedSet) _onEmptiedSub = ele.onEmptied.listen(onEmptied);
+    if (_onEndedSet) _onEndedSub = ele.onEnded.listen(onEnded);
+    if (_onErrorSet) _onErrorSub = ele.onError.listen(onError);
+    if (_onFocusSet) _onFocusSub = ele.onFocus.listen(onFocus);
+    if (_onInputSet) _onInputSub = ele.onInput.listen(onInput);
+    if (_onInvalidSet) _onInvalidSub = ele.onInvalid.listen(onInvalid);
+    if (_onKeyDownSet) _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
+    if (_onKeyPressSet) _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
+    if (_onKeyUpSet) _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
+    if (_onLoadSet) _onLoadSub = ele.onLoad.listen(onLoad);
+    if (_onLoadedDataSet)
       _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
-    }
-    if (_onLoadedMetadataSet) {
+    if (_onLoadedMetadataSet)
       _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
-    }
-    if (_onMouseDownSet) {
-      _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
-    }
-    if (_onMouseEnterSet) {
+    if (_onMouseDownSet) _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
+    if (_onMouseEnterSet)
       _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
-    }
-    if (_onMouseLeaveSet) {
+    if (_onMouseLeaveSet)
       _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
-    }
-    if (_onMouseMoveSet) {
-      _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
-    }
-    if (_onMouseOutSet) {
-      _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
-    }
-    if (_onMouseOverSet) {
-      _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
-    }
-    if (_onMouseUpSet) {
-      _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
-    }
-    if (_onMouseWheelSet) {
+    if (_onMouseMoveSet) _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
+    if (_onMouseOutSet) _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
+    if (_onMouseOverSet) _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
+    if (_onMouseUpSet) _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
+    if (_onMouseWheelSet)
       _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
-    }
-    if (_onPasteSet) {
-      _onPasteSub = ele.onPaste.listen(onPaste);
-    }
-    if (_onPauseSet) {
-      _onPauseSub = ele.onPause.listen(onPause);
-    }
-    if (_onPlaySet) {
-      _onPlaySub = ele.onPlay.listen(onPlay);
-    }
-    if (_onPlayingSet) {
-      _onPlayingSub = ele.onPlaying.listen(onPlaying);
-    }
-    if (_onRateChangeSet) {
+    if (_onPasteSet) _onPasteSub = ele.onPaste.listen(onPaste);
+    if (_onPauseSet) _onPauseSub = ele.onPause.listen(onPause);
+    if (_onPlaySet) _onPlaySub = ele.onPlay.listen(onPlay);
+    if (_onPlayingSet) _onPlayingSub = ele.onPlaying.listen(onPlaying);
+    if (_onRateChangeSet)
       _onRateChangeSub = ele.onRateChange.listen(onRateChange);
-    }
-    if (_onResetSet) {
-      _onResetSub = ele.onReset.listen(onReset);
-    }
-    if (_onResizeSet) {
-      _onResizeSub = ele.onResize.listen(onResize);
-    }
-    if (_onScrollSet) {
-      _onScrollSub = ele.onScroll.listen(onScroll);
-    }
-    if (_onSearchSet) {
-      _onSearchSub = ele.onSearch.listen(onSearch);
-    }
-    if (_onSeekedSet) {
-      _onSeekedSub = ele.onSeeked.listen(onSeeked);
-    }
-    if (_onSeekingSet) {
-      _onSeekingSub = ele.onSeeking.listen(onSeeking);
-    }
-    if (_onSelectSet) {
-      _onSelectSub = ele.onSelect.listen(onSelect);
-    }
-    if (_onSelectStartSet) {
+    if (_onResetSet) _onResetSub = ele.onReset.listen(onReset);
+    if (_onResizeSet) _onResizeSub = ele.onResize.listen(onResize);
+    if (_onScrollSet) _onScrollSub = ele.onScroll.listen(onScroll);
+    if (_onSearchSet) _onSearchSub = ele.onSearch.listen(onSearch);
+    if (_onSeekedSet) _onSeekedSub = ele.onSeeked.listen(onSeeked);
+    if (_onSeekingSet) _onSeekingSub = ele.onSeeking.listen(onSeeking);
+    if (_onSelectSet) _onSelectSub = ele.onSelect.listen(onSelect);
+    if (_onSelectStartSet)
       _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
-    }
-    if (_onStalledSet) {
-      _onStalledSub = ele.onStalled.listen(onStalled);
-    }
-    if (_onSubmitSet) {
-      _onSubmitSub = ele.onSubmit.listen(onSubmit);
-    }
-    if (_onSuspendSet) {
-      _onSuspendSub = ele.onSuspend.listen(onSuspend);
-    }
-    if (_onTimeUpdateSet) {
+    if (_onStalledSet) _onStalledSub = ele.onStalled.listen(onStalled);
+    if (_onSubmitSet) _onSubmitSub = ele.onSubmit.listen(onSubmit);
+    if (_onSuspendSet) _onSuspendSub = ele.onSuspend.listen(onSuspend);
+    if (_onTimeUpdateSet)
       _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
-    }
-    if (_onTouchCancelSet) {
+    if (_onTouchCancelSet)
       _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
-    }
-    if (_onTouchEndSet) {
-      _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
-    }
-    if (_onTouchEnterSet) {
+    if (_onTouchEndSet) _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
+    if (_onTouchEnterSet)
       _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
-    }
-    if (_onTouchLeaveSet) {
+    if (_onTouchLeaveSet)
       _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
-    }
-    if (_onTouchMoveSet) {
-      _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
-    }
-    if (_onTouchStartSet) {
+    if (_onTouchMoveSet) _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
+    if (_onTouchStartSet)
       _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
-    }
-    if (_onTransitionEndSet) {
+    if (_onTransitionEndSet)
       _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
-    }
-    if (_onVolumeChangeSet) {
+    if (_onVolumeChangeSet)
       _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
-    }
-    if (_onWaitingSet) {
-      _onWaitingSub = ele.onWaiting.listen(onWaiting);
-    }
-    if (_onFullscreenChangeSet) {
+    if (_onWaitingSet) _onWaitingSub = ele.onWaiting.listen(onWaiting);
+    if (_onFullscreenChangeSet)
       _onFullscreenChangeSub =
           ele.onFullscreenChange.listen(onFullscreenChange);
+    if (_onFullscreenErrorSet)
+      _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
+  }
+
+  void _updateEventListenersToElement(VElement prev, Element ele) {
+    if (_onAbortSet) {
+      if (!prev._onAbortSet) {
+        _onAbortSub = ele.onAbort.listen(onAbort);
+      } else if (prev.onAbort != onAbort) {
+        prev._onAbortSub.cancel();
+        _onAbortSub = ele.onAbort.listen(onAbort);
+      } else {
+        _onAbortSub = prev._onAbortSub;
+      }
+    } else if (prev._onAbortSet) {
+      prev._onAbortSub.cancel();
+    }
+    if (_onBeforeCopySet) {
+      if (!prev._onBeforeCopySet) {
+        _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
+      } else if (prev.onBeforeCopy != onBeforeCopy) {
+        prev._onBeforeCopySub.cancel();
+        _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
+      } else {
+        _onBeforeCopySub = prev._onBeforeCopySub;
+      }
+    } else if (prev._onBeforeCopySet) {
+      prev._onBeforeCopySub.cancel();
+    }
+    if (_onBeforeCutSet) {
+      if (!prev._onBeforeCutSet) {
+        _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
+      } else if (prev.onBeforeCut != onBeforeCut) {
+        prev._onBeforeCutSub.cancel();
+        _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
+      } else {
+        _onBeforeCutSub = prev._onBeforeCutSub;
+      }
+    } else if (prev._onBeforeCutSet) {
+      prev._onBeforeCutSub.cancel();
+    }
+    if (_onBeforePasteSet) {
+      if (!prev._onBeforePasteSet) {
+        _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
+      } else if (prev.onBeforePaste != onBeforePaste) {
+        prev._onBeforePasteSub.cancel();
+        _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
+      } else {
+        _onBeforePasteSub = prev._onBeforePasteSub;
+      }
+    } else if (prev._onBeforePasteSet) {
+      prev._onBeforePasteSub.cancel();
+    }
+    if (_onBlurSet) {
+      if (!prev._onBlurSet) {
+        _onBlurSub = ele.onBlur.listen(onBlur);
+      } else if (prev.onBlur != onBlur) {
+        prev._onBlurSub.cancel();
+        _onBlurSub = ele.onBlur.listen(onBlur);
+      } else {
+        _onBlurSub = prev._onBlurSub;
+      }
+    } else if (prev._onBlurSet) {
+      prev._onBlurSub.cancel();
+    }
+    if (_onCanPlaySet) {
+      if (!prev._onCanPlaySet) {
+        _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
+      } else if (prev.onCanPlay != onCanPlay) {
+        prev._onCanPlaySub.cancel();
+        _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
+      } else {
+        _onCanPlaySub = prev._onCanPlaySub;
+      }
+    } else if (prev._onCanPlaySet) {
+      prev._onCanPlaySub.cancel();
+    }
+    if (_onCanPlayThroughSet) {
+      if (!prev._onCanPlayThroughSet) {
+        _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
+      } else if (prev.onCanPlayThrough != onCanPlayThrough) {
+        prev._onCanPlayThroughSub.cancel();
+        _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
+      } else {
+        _onCanPlayThroughSub = prev._onCanPlayThroughSub;
+      }
+    } else if (prev._onCanPlayThroughSet) {
+      prev._onCanPlayThroughSub.cancel();
+    }
+    if (_onChangeSet) {
+      if (!prev._onChangeSet) {
+        _onChangeSub = ele.onChange.listen(onChange);
+      } else if (prev.onChange != onChange) {
+        prev._onChangeSub.cancel();
+        _onChangeSub = ele.onChange.listen(onChange);
+      } else {
+        _onChangeSub = prev._onChangeSub;
+      }
+    } else if (prev._onChangeSet) {
+      prev._onChangeSub.cancel();
+    }
+    if (_onClickSet) {
+      if (!prev._onClickSet) {
+        _onClickSub = ele.onClick.listen(onClick);
+      } else if (prev.onClick != onClick) {
+        prev._onClickSub.cancel();
+        _onClickSub = ele.onClick.listen(onClick);
+      } else {
+        _onClickSub = prev._onClickSub;
+      }
+    } else if (prev._onClickSet) {
+      prev._onClickSub.cancel();
+    }
+    if (_onContextMenuSet) {
+      if (!prev._onContextMenuSet) {
+        _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
+      } else if (prev.onContextMenu != onContextMenu) {
+        prev._onContextMenuSub.cancel();
+        _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
+      } else {
+        _onContextMenuSub = prev._onContextMenuSub;
+      }
+    } else if (prev._onContextMenuSet) {
+      prev._onContextMenuSub.cancel();
+    }
+    if (_onCopySet) {
+      if (!prev._onCopySet) {
+        _onCopySub = ele.onCopy.listen(onCopy);
+      } else if (prev.onCopy != onCopy) {
+        prev._onCopySub.cancel();
+        _onCopySub = ele.onCopy.listen(onCopy);
+      } else {
+        _onCopySub = prev._onCopySub;
+      }
+    } else if (prev._onCopySet) {
+      prev._onCopySub.cancel();
+    }
+    if (_onCutSet) {
+      if (!prev._onCutSet) {
+        _onCutSub = ele.onCut.listen(onCut);
+      } else if (prev.onCut != onCut) {
+        prev._onCutSub.cancel();
+        _onCutSub = ele.onCut.listen(onCut);
+      } else {
+        _onCutSub = prev._onCutSub;
+      }
+    } else if (prev._onCutSet) {
+      prev._onCutSub.cancel();
+    }
+    if (_onDoubleClickSet) {
+      if (!prev._onDoubleClickSet) {
+        _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
+      } else if (prev.onDoubleClick != onDoubleClick) {
+        prev._onDoubleClickSub.cancel();
+        _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
+      } else {
+        _onDoubleClickSub = prev._onDoubleClickSub;
+      }
+    } else if (prev._onDoubleClickSet) {
+      prev._onDoubleClickSub.cancel();
+    }
+    if (_onDragSet) {
+      if (!prev._onDragSet) {
+        _onDragSub = ele.onDrag.listen(onDrag);
+      } else if (prev.onDrag != onDrag) {
+        prev._onDragSub.cancel();
+        _onDragSub = ele.onDrag.listen(onDrag);
+      } else {
+        _onDragSub = prev._onDragSub;
+      }
+    } else if (prev._onDragSet) {
+      prev._onDragSub.cancel();
+    }
+    if (_onDragEndSet) {
+      if (!prev._onDragEndSet) {
+        _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
+      } else if (prev.onDragEnd != onDragEnd) {
+        prev._onDragEndSub.cancel();
+        _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
+      } else {
+        _onDragEndSub = prev._onDragEndSub;
+      }
+    } else if (prev._onDragEndSet) {
+      prev._onDragEndSub.cancel();
+    }
+    if (_onDragEnterSet) {
+      if (!prev._onDragEnterSet) {
+        _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
+      } else if (prev.onDragEnter != onDragEnter) {
+        prev._onDragEnterSub.cancel();
+        _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
+      } else {
+        _onDragEnterSub = prev._onDragEnterSub;
+      }
+    } else if (prev._onDragEnterSet) {
+      prev._onDragEnterSub.cancel();
+    }
+    if (_onDragLeaveSet) {
+      if (!prev._onDragLeaveSet) {
+        _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
+      } else if (prev.onDragLeave != onDragLeave) {
+        prev._onDragLeaveSub.cancel();
+        _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
+      } else {
+        _onDragLeaveSub = prev._onDragLeaveSub;
+      }
+    } else if (prev._onDragLeaveSet) {
+      prev._onDragLeaveSub.cancel();
+    }
+    if (_onDragOverSet) {
+      if (!prev._onDragOverSet) {
+        _onDragOverSub = ele.onDragOver.listen(onDragOver);
+      } else if (prev.onDragOver != onDragOver) {
+        prev._onDragOverSub.cancel();
+        _onDragOverSub = ele.onDragOver.listen(onDragOver);
+      } else {
+        _onDragOverSub = prev._onDragOverSub;
+      }
+    } else if (prev._onDragOverSet) {
+      prev._onDragOverSub.cancel();
+    }
+    if (_onDragStartSet) {
+      if (!prev._onDragStartSet) {
+        _onDragStartSub = ele.onDragStart.listen(onDragStart);
+      } else if (prev.onDragStart != onDragStart) {
+        prev._onDragStartSub.cancel();
+        _onDragStartSub = ele.onDragStart.listen(onDragStart);
+      } else {
+        _onDragStartSub = prev._onDragStartSub;
+      }
+    } else if (prev._onDragStartSet) {
+      prev._onDragStartSub.cancel();
+    }
+    if (_onDropSet) {
+      if (!prev._onDropSet) {
+        _onDropSub = ele.onDrop.listen(onDrop);
+      } else if (prev.onDrop != onDrop) {
+        prev._onDropSub.cancel();
+        _onDropSub = ele.onDrop.listen(onDrop);
+      } else {
+        _onDropSub = prev._onDropSub;
+      }
+    } else if (prev._onDropSet) {
+      prev._onDropSub.cancel();
+    }
+    if (_onDurationChangeSet) {
+      if (!prev._onDurationChangeSet) {
+        _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
+      } else if (prev.onDurationChange != onDurationChange) {
+        prev._onDurationChangeSub.cancel();
+        _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
+      } else {
+        _onDurationChangeSub = prev._onDurationChangeSub;
+      }
+    } else if (prev._onDurationChangeSet) {
+      prev._onDurationChangeSub.cancel();
+    }
+    if (_onEmptiedSet) {
+      if (!prev._onEmptiedSet) {
+        _onEmptiedSub = ele.onEmptied.listen(onEmptied);
+      } else if (prev.onEmptied != onEmptied) {
+        prev._onEmptiedSub.cancel();
+        _onEmptiedSub = ele.onEmptied.listen(onEmptied);
+      } else {
+        _onEmptiedSub = prev._onEmptiedSub;
+      }
+    } else if (prev._onEmptiedSet) {
+      prev._onEmptiedSub.cancel();
+    }
+    if (_onEndedSet) {
+      if (!prev._onEndedSet) {
+        _onEndedSub = ele.onEnded.listen(onEnded);
+      } else if (prev.onEnded != onEnded) {
+        prev._onEndedSub.cancel();
+        _onEndedSub = ele.onEnded.listen(onEnded);
+      } else {
+        _onEndedSub = prev._onEndedSub;
+      }
+    } else if (prev._onEndedSet) {
+      prev._onEndedSub.cancel();
+    }
+    if (_onErrorSet) {
+      if (!prev._onErrorSet) {
+        _onErrorSub = ele.onError.listen(onError);
+      } else if (prev.onError != onError) {
+        prev._onErrorSub.cancel();
+        _onErrorSub = ele.onError.listen(onError);
+      } else {
+        _onErrorSub = prev._onErrorSub;
+      }
+    } else if (prev._onErrorSet) {
+      prev._onErrorSub.cancel();
+    }
+    if (_onFocusSet) {
+      if (!prev._onFocusSet) {
+        _onFocusSub = ele.onFocus.listen(onFocus);
+      } else if (prev.onFocus != onFocus) {
+        prev._onFocusSub.cancel();
+        _onFocusSub = ele.onFocus.listen(onFocus);
+      } else {
+        _onFocusSub = prev._onFocusSub;
+      }
+    } else if (prev._onFocusSet) {
+      prev._onFocusSub.cancel();
+    }
+    if (_onInputSet) {
+      if (!prev._onInputSet) {
+        _onInputSub = ele.onInput.listen(onInput);
+      } else if (prev.onInput != onInput) {
+        prev._onInputSub.cancel();
+        _onInputSub = ele.onInput.listen(onInput);
+      } else {
+        _onInputSub = prev._onInputSub;
+      }
+    } else if (prev._onInputSet) {
+      prev._onInputSub.cancel();
+    }
+    if (_onInvalidSet) {
+      if (!prev._onInvalidSet) {
+        _onInvalidSub = ele.onInvalid.listen(onInvalid);
+      } else if (prev.onInvalid != onInvalid) {
+        prev._onInvalidSub.cancel();
+        _onInvalidSub = ele.onInvalid.listen(onInvalid);
+      } else {
+        _onInvalidSub = prev._onInvalidSub;
+      }
+    } else if (prev._onInvalidSet) {
+      prev._onInvalidSub.cancel();
+    }
+    if (_onKeyDownSet) {
+      if (!prev._onKeyDownSet) {
+        _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
+      } else if (prev.onKeyDown != onKeyDown) {
+        prev._onKeyDownSub.cancel();
+        _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
+      } else {
+        _onKeyDownSub = prev._onKeyDownSub;
+      }
+    } else if (prev._onKeyDownSet) {
+      prev._onKeyDownSub.cancel();
+    }
+    if (_onKeyPressSet) {
+      if (!prev._onKeyPressSet) {
+        _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
+      } else if (prev.onKeyPress != onKeyPress) {
+        prev._onKeyPressSub.cancel();
+        _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
+      } else {
+        _onKeyPressSub = prev._onKeyPressSub;
+      }
+    } else if (prev._onKeyPressSet) {
+      prev._onKeyPressSub.cancel();
+    }
+    if (_onKeyUpSet) {
+      if (!prev._onKeyUpSet) {
+        _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
+      } else if (prev.onKeyUp != onKeyUp) {
+        prev._onKeyUpSub.cancel();
+        _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
+      } else {
+        _onKeyUpSub = prev._onKeyUpSub;
+      }
+    } else if (prev._onKeyUpSet) {
+      prev._onKeyUpSub.cancel();
+    }
+    if (_onLoadSet) {
+      if (!prev._onLoadSet) {
+        _onLoadSub = ele.onLoad.listen(onLoad);
+      } else if (prev.onLoad != onLoad) {
+        prev._onLoadSub.cancel();
+        _onLoadSub = ele.onLoad.listen(onLoad);
+      } else {
+        _onLoadSub = prev._onLoadSub;
+      }
+    } else if (prev._onLoadSet) {
+      prev._onLoadSub.cancel();
+    }
+    if (_onLoadedDataSet) {
+      if (!prev._onLoadedDataSet) {
+        _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
+      } else if (prev.onLoadedData != onLoadedData) {
+        prev._onLoadedDataSub.cancel();
+        _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
+      } else {
+        _onLoadedDataSub = prev._onLoadedDataSub;
+      }
+    } else if (prev._onLoadedDataSet) {
+      prev._onLoadedDataSub.cancel();
+    }
+    if (_onLoadedMetadataSet) {
+      if (!prev._onLoadedMetadataSet) {
+        _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
+      } else if (prev.onLoadedMetadata != onLoadedMetadata) {
+        prev._onLoadedMetadataSub.cancel();
+        _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
+      } else {
+        _onLoadedMetadataSub = prev._onLoadedMetadataSub;
+      }
+    } else if (prev._onLoadedMetadataSet) {
+      prev._onLoadedMetadataSub.cancel();
+    }
+    if (_onMouseDownSet) {
+      if (!prev._onMouseDownSet) {
+        _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
+      } else if (prev.onMouseDown != onMouseDown) {
+        prev._onMouseDownSub.cancel();
+        _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
+      } else {
+        _onMouseDownSub = prev._onMouseDownSub;
+      }
+    } else if (prev._onMouseDownSet) {
+      prev._onMouseDownSub.cancel();
+    }
+    if (_onMouseEnterSet) {
+      if (!prev._onMouseEnterSet) {
+        _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
+      } else if (prev.onMouseEnter != onMouseEnter) {
+        prev._onMouseEnterSub.cancel();
+        _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
+      } else {
+        _onMouseEnterSub = prev._onMouseEnterSub;
+      }
+    } else if (prev._onMouseEnterSet) {
+      prev._onMouseEnterSub.cancel();
+    }
+    if (_onMouseLeaveSet) {
+      if (!prev._onMouseLeaveSet) {
+        _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
+      } else if (prev.onMouseLeave != onMouseLeave) {
+        prev._onMouseLeaveSub.cancel();
+        _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
+      } else {
+        _onMouseLeaveSub = prev._onMouseLeaveSub;
+      }
+    } else if (prev._onMouseLeaveSet) {
+      prev._onMouseLeaveSub.cancel();
+    }
+    if (_onMouseMoveSet) {
+      if (!prev._onMouseMoveSet) {
+        _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
+      } else if (prev.onMouseMove != onMouseMove) {
+        prev._onMouseMoveSub.cancel();
+        _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
+      } else {
+        _onMouseMoveSub = prev._onMouseMoveSub;
+      }
+    } else if (prev._onMouseMoveSet) {
+      prev._onMouseMoveSub.cancel();
+    }
+    if (_onMouseOutSet) {
+      if (!prev._onMouseOutSet) {
+        _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
+      } else if (prev.onMouseOut != onMouseOut) {
+        prev._onMouseOutSub.cancel();
+        _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
+      } else {
+        _onMouseOutSub = prev._onMouseOutSub;
+      }
+    } else if (prev._onMouseOutSet) {
+      prev._onMouseOutSub.cancel();
+    }
+    if (_onMouseOverSet) {
+      if (!prev._onMouseOverSet) {
+        _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
+      } else if (prev.onMouseOver != onMouseOver) {
+        prev._onMouseOverSub.cancel();
+        _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
+      } else {
+        _onMouseOverSub = prev._onMouseOverSub;
+      }
+    } else if (prev._onMouseOverSet) {
+      prev._onMouseOverSub.cancel();
+    }
+    if (_onMouseUpSet) {
+      if (!prev._onMouseUpSet) {
+        _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
+      } else if (prev.onMouseUp != onMouseUp) {
+        prev._onMouseUpSub.cancel();
+        _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
+      } else {
+        _onMouseUpSub = prev._onMouseUpSub;
+      }
+    } else if (prev._onMouseUpSet) {
+      prev._onMouseUpSub.cancel();
+    }
+    if (_onMouseWheelSet) {
+      if (!prev._onMouseWheelSet) {
+        _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
+      } else if (prev.onMouseWheel != onMouseWheel) {
+        prev._onMouseWheelSub.cancel();
+        _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
+      } else {
+        _onMouseWheelSub = prev._onMouseWheelSub;
+      }
+    } else if (prev._onMouseWheelSet) {
+      prev._onMouseWheelSub.cancel();
+    }
+    if (_onPasteSet) {
+      if (!prev._onPasteSet) {
+        _onPasteSub = ele.onPaste.listen(onPaste);
+      } else if (prev.onPaste != onPaste) {
+        prev._onPasteSub.cancel();
+        _onPasteSub = ele.onPaste.listen(onPaste);
+      } else {
+        _onPasteSub = prev._onPasteSub;
+      }
+    } else if (prev._onPasteSet) {
+      prev._onPasteSub.cancel();
+    }
+    if (_onPauseSet) {
+      if (!prev._onPauseSet) {
+        _onPauseSub = ele.onPause.listen(onPause);
+      } else if (prev.onPause != onPause) {
+        prev._onPauseSub.cancel();
+        _onPauseSub = ele.onPause.listen(onPause);
+      } else {
+        _onPauseSub = prev._onPauseSub;
+      }
+    } else if (prev._onPauseSet) {
+      prev._onPauseSub.cancel();
+    }
+    if (_onPlaySet) {
+      if (!prev._onPlaySet) {
+        _onPlaySub = ele.onPlay.listen(onPlay);
+      } else if (prev.onPlay != onPlay) {
+        prev._onPlaySub.cancel();
+        _onPlaySub = ele.onPlay.listen(onPlay);
+      } else {
+        _onPlaySub = prev._onPlaySub;
+      }
+    } else if (prev._onPlaySet) {
+      prev._onPlaySub.cancel();
+    }
+    if (_onPlayingSet) {
+      if (!prev._onPlayingSet) {
+        _onPlayingSub = ele.onPlaying.listen(onPlaying);
+      } else if (prev.onPlaying != onPlaying) {
+        prev._onPlayingSub.cancel();
+        _onPlayingSub = ele.onPlaying.listen(onPlaying);
+      } else {
+        _onPlayingSub = prev._onPlayingSub;
+      }
+    } else if (prev._onPlayingSet) {
+      prev._onPlayingSub.cancel();
+    }
+    if (_onRateChangeSet) {
+      if (!prev._onRateChangeSet) {
+        _onRateChangeSub = ele.onRateChange.listen(onRateChange);
+      } else if (prev.onRateChange != onRateChange) {
+        prev._onRateChangeSub.cancel();
+        _onRateChangeSub = ele.onRateChange.listen(onRateChange);
+      } else {
+        _onRateChangeSub = prev._onRateChangeSub;
+      }
+    } else if (prev._onRateChangeSet) {
+      prev._onRateChangeSub.cancel();
+    }
+    if (_onResetSet) {
+      if (!prev._onResetSet) {
+        _onResetSub = ele.onReset.listen(onReset);
+      } else if (prev.onReset != onReset) {
+        prev._onResetSub.cancel();
+        _onResetSub = ele.onReset.listen(onReset);
+      } else {
+        _onResetSub = prev._onResetSub;
+      }
+    } else if (prev._onResetSet) {
+      prev._onResetSub.cancel();
+    }
+    if (_onResizeSet) {
+      if (!prev._onResizeSet) {
+        _onResizeSub = ele.onResize.listen(onResize);
+      } else if (prev.onResize != onResize) {
+        prev._onResizeSub.cancel();
+        _onResizeSub = ele.onResize.listen(onResize);
+      } else {
+        _onResizeSub = prev._onResizeSub;
+      }
+    } else if (prev._onResizeSet) {
+      prev._onResizeSub.cancel();
+    }
+    if (_onScrollSet) {
+      if (!prev._onScrollSet) {
+        _onScrollSub = ele.onScroll.listen(onScroll);
+      } else if (prev.onScroll != onScroll) {
+        prev._onScrollSub.cancel();
+        _onScrollSub = ele.onScroll.listen(onScroll);
+      } else {
+        _onScrollSub = prev._onScrollSub;
+      }
+    } else if (prev._onScrollSet) {
+      prev._onScrollSub.cancel();
+    }
+    if (_onSearchSet) {
+      if (!prev._onSearchSet) {
+        _onSearchSub = ele.onSearch.listen(onSearch);
+      } else if (prev.onSearch != onSearch) {
+        prev._onSearchSub.cancel();
+        _onSearchSub = ele.onSearch.listen(onSearch);
+      } else {
+        _onSearchSub = prev._onSearchSub;
+      }
+    } else if (prev._onSearchSet) {
+      prev._onSearchSub.cancel();
+    }
+    if (_onSeekedSet) {
+      if (!prev._onSeekedSet) {
+        _onSeekedSub = ele.onSeeked.listen(onSeeked);
+      } else if (prev.onSeeked != onSeeked) {
+        prev._onSeekedSub.cancel();
+        _onSeekedSub = ele.onSeeked.listen(onSeeked);
+      } else {
+        _onSeekedSub = prev._onSeekedSub;
+      }
+    } else if (prev._onSeekedSet) {
+      prev._onSeekedSub.cancel();
+    }
+    if (_onSeekingSet) {
+      if (!prev._onSeekingSet) {
+        _onSeekingSub = ele.onSeeking.listen(onSeeking);
+      } else if (prev.onSeeking != onSeeking) {
+        prev._onSeekingSub.cancel();
+        _onSeekingSub = ele.onSeeking.listen(onSeeking);
+      } else {
+        _onSeekingSub = prev._onSeekingSub;
+      }
+    } else if (prev._onSeekingSet) {
+      prev._onSeekingSub.cancel();
+    }
+    if (_onSelectSet) {
+      if (!prev._onSelectSet) {
+        _onSelectSub = ele.onSelect.listen(onSelect);
+      } else if (prev.onSelect != onSelect) {
+        prev._onSelectSub.cancel();
+        _onSelectSub = ele.onSelect.listen(onSelect);
+      } else {
+        _onSelectSub = prev._onSelectSub;
+      }
+    } else if (prev._onSelectSet) {
+      prev._onSelectSub.cancel();
+    }
+    if (_onSelectStartSet) {
+      if (!prev._onSelectStartSet) {
+        _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
+      } else if (prev.onSelectStart != onSelectStart) {
+        prev._onSelectStartSub.cancel();
+        _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
+      } else {
+        _onSelectStartSub = prev._onSelectStartSub;
+      }
+    } else if (prev._onSelectStartSet) {
+      prev._onSelectStartSub.cancel();
+    }
+    if (_onStalledSet) {
+      if (!prev._onStalledSet) {
+        _onStalledSub = ele.onStalled.listen(onStalled);
+      } else if (prev.onStalled != onStalled) {
+        prev._onStalledSub.cancel();
+        _onStalledSub = ele.onStalled.listen(onStalled);
+      } else {
+        _onStalledSub = prev._onStalledSub;
+      }
+    } else if (prev._onStalledSet) {
+      prev._onStalledSub.cancel();
+    }
+    if (_onSubmitSet) {
+      if (!prev._onSubmitSet) {
+        _onSubmitSub = ele.onSubmit.listen(onSubmit);
+      } else if (prev.onSubmit != onSubmit) {
+        prev._onSubmitSub.cancel();
+        _onSubmitSub = ele.onSubmit.listen(onSubmit);
+      } else {
+        _onSubmitSub = prev._onSubmitSub;
+      }
+    } else if (prev._onSubmitSet) {
+      prev._onSubmitSub.cancel();
+    }
+    if (_onSuspendSet) {
+      if (!prev._onSuspendSet) {
+        _onSuspendSub = ele.onSuspend.listen(onSuspend);
+      } else if (prev.onSuspend != onSuspend) {
+        prev._onSuspendSub.cancel();
+        _onSuspendSub = ele.onSuspend.listen(onSuspend);
+      } else {
+        _onSuspendSub = prev._onSuspendSub;
+      }
+    } else if (prev._onSuspendSet) {
+      prev._onSuspendSub.cancel();
+    }
+    if (_onTimeUpdateSet) {
+      if (!prev._onTimeUpdateSet) {
+        _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
+      } else if (prev.onTimeUpdate != onTimeUpdate) {
+        prev._onTimeUpdateSub.cancel();
+        _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
+      } else {
+        _onTimeUpdateSub = prev._onTimeUpdateSub;
+      }
+    } else if (prev._onTimeUpdateSet) {
+      prev._onTimeUpdateSub.cancel();
+    }
+    if (_onTouchCancelSet) {
+      if (!prev._onTouchCancelSet) {
+        _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
+      } else if (prev.onTouchCancel != onTouchCancel) {
+        prev._onTouchCancelSub.cancel();
+        _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
+      } else {
+        _onTouchCancelSub = prev._onTouchCancelSub;
+      }
+    } else if (prev._onTouchCancelSet) {
+      prev._onTouchCancelSub.cancel();
+    }
+    if (_onTouchEndSet) {
+      if (!prev._onTouchEndSet) {
+        _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
+      } else if (prev.onTouchEnd != onTouchEnd) {
+        prev._onTouchEndSub.cancel();
+        _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
+      } else {
+        _onTouchEndSub = prev._onTouchEndSub;
+      }
+    } else if (prev._onTouchEndSet) {
+      prev._onTouchEndSub.cancel();
+    }
+    if (_onTouchEnterSet) {
+      if (!prev._onTouchEnterSet) {
+        _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
+      } else if (prev.onTouchEnter != onTouchEnter) {
+        prev._onTouchEnterSub.cancel();
+        _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
+      } else {
+        _onTouchEnterSub = prev._onTouchEnterSub;
+      }
+    } else if (prev._onTouchEnterSet) {
+      prev._onTouchEnterSub.cancel();
+    }
+    if (_onTouchLeaveSet) {
+      if (!prev._onTouchLeaveSet) {
+        _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
+      } else if (prev.onTouchLeave != onTouchLeave) {
+        prev._onTouchLeaveSub.cancel();
+        _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
+      } else {
+        _onTouchLeaveSub = prev._onTouchLeaveSub;
+      }
+    } else if (prev._onTouchLeaveSet) {
+      prev._onTouchLeaveSub.cancel();
+    }
+    if (_onTouchMoveSet) {
+      if (!prev._onTouchMoveSet) {
+        _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
+      } else if (prev.onTouchMove != onTouchMove) {
+        prev._onTouchMoveSub.cancel();
+        _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
+      } else {
+        _onTouchMoveSub = prev._onTouchMoveSub;
+      }
+    } else if (prev._onTouchMoveSet) {
+      prev._onTouchMoveSub.cancel();
+    }
+    if (_onTouchStartSet) {
+      if (!prev._onTouchStartSet) {
+        _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
+      } else if (prev.onTouchStart != onTouchStart) {
+        prev._onTouchStartSub.cancel();
+        _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
+      } else {
+        _onTouchStartSub = prev._onTouchStartSub;
+      }
+    } else if (prev._onTouchStartSet) {
+      prev._onTouchStartSub.cancel();
+    }
+    if (_onTransitionEndSet) {
+      if (!prev._onTransitionEndSet) {
+        _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
+      } else if (prev.onTransitionEnd != onTransitionEnd) {
+        prev._onTransitionEndSub.cancel();
+        _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
+      } else {
+        _onTransitionEndSub = prev._onTransitionEndSub;
+      }
+    } else if (prev._onTransitionEndSet) {
+      prev._onTransitionEndSub.cancel();
+    }
+    if (_onVolumeChangeSet) {
+      if (!prev._onVolumeChangeSet) {
+        _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
+      } else if (prev.onVolumeChange != onVolumeChange) {
+        prev._onVolumeChangeSub.cancel();
+        _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
+      } else {
+        _onVolumeChangeSub = prev._onVolumeChangeSub;
+      }
+    } else if (prev._onVolumeChangeSet) {
+      prev._onVolumeChangeSub.cancel();
+    }
+    if (_onWaitingSet) {
+      if (!prev._onWaitingSet) {
+        _onWaitingSub = ele.onWaiting.listen(onWaiting);
+      } else if (prev.onWaiting != onWaiting) {
+        prev._onWaitingSub.cancel();
+        _onWaitingSub = ele.onWaiting.listen(onWaiting);
+      } else {
+        _onWaitingSub = prev._onWaitingSub;
+      }
+    } else if (prev._onWaitingSet) {
+      prev._onWaitingSub.cancel();
+    }
+    if (_onFullscreenChangeSet) {
+      if (!prev._onFullscreenChangeSet) {
+        _onFullscreenChangeSub =
+            ele.onFullscreenChange.listen(onFullscreenChange);
+      } else if (prev.onFullscreenChange != onFullscreenChange) {
+        prev._onFullscreenChangeSub.cancel();
+        _onFullscreenChangeSub =
+            ele.onFullscreenChange.listen(onFullscreenChange);
+      } else {
+        _onFullscreenChangeSub = prev._onFullscreenChangeSub;
+      }
+    } else if (prev._onFullscreenChangeSet) {
+      prev._onFullscreenChangeSub.cancel();
     }
     if (_onFullscreenErrorSet) {
-      _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
+      if (!prev._onFullscreenErrorSet) {
+        _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
+      } else if (prev.onFullscreenError != onFullscreenError) {
+        prev._onFullscreenErrorSub.cancel();
+        _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
+      } else {
+        _onFullscreenErrorSub = prev._onFullscreenErrorSub;
+      }
+    } else if (prev._onFullscreenErrorSet) {
+      prev._onFullscreenErrorSub.cancel();
     }
   }
 
-  void _updateEventListenersToElement(VElement oldVElement, Element ele) {
-    if (_onAbortSet) {
-      if (!oldVElement._onAbortSet) {
-        _onAbortSub = ele.onAbort.listen(onAbort);
-      } else if (oldVElement.onAbort != onAbort) {
-        oldVElement._onAbortSub.cancel();
-        _onAbortSub = ele.onAbort.listen(onAbort);
-      } else {
-        _onAbortSub = oldVElement._onAbortSub;
-      }
-    } else if (oldVElement._onAbortSet) {
-      oldVElement._onAbortSub.cancel();
-    }
-    if (_onBeforeCopySet) {
-      if (!oldVElement._onBeforeCopySet) {
-        _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
-      } else if (oldVElement.onBeforeCopy != onBeforeCopy) {
-        oldVElement._onBeforeCopySub.cancel();
-        _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
-      } else {
-        _onBeforeCopySub = oldVElement._onBeforeCopySub;
-      }
-    } else if (oldVElement._onBeforeCopySet) {
-      oldVElement._onBeforeCopySub.cancel();
-    }
-    if (_onBeforeCutSet) {
-      if (!oldVElement._onBeforeCutSet) {
-        _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
-      } else if (oldVElement.onBeforeCut != onBeforeCut) {
-        oldVElement._onBeforeCutSub.cancel();
-        _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
-      } else {
-        _onBeforeCutSub = oldVElement._onBeforeCutSub;
-      }
-    } else if (oldVElement._onBeforeCutSet) {
-      oldVElement._onBeforeCutSub.cancel();
-    }
-    if (_onBeforePasteSet) {
-      if (!oldVElement._onBeforePasteSet) {
-        _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
-      } else if (oldVElement.onBeforePaste != onBeforePaste) {
-        oldVElement._onBeforePasteSub.cancel();
-        _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
-      } else {
-        _onBeforePasteSub = oldVElement._onBeforePasteSub;
-      }
-    } else if (oldVElement._onBeforePasteSet) {
-      oldVElement._onBeforePasteSub.cancel();
-    }
-    if (_onBlurSet) {
-      if (!oldVElement._onBlurSet) {
-        _onBlurSub = ele.onBlur.listen(onBlur);
-      } else if (oldVElement.onBlur != onBlur) {
-        oldVElement._onBlurSub.cancel();
-        _onBlurSub = ele.onBlur.listen(onBlur);
-      } else {
-        _onBlurSub = oldVElement._onBlurSub;
-      }
-    } else if (oldVElement._onBlurSet) {
-      oldVElement._onBlurSub.cancel();
-    }
-    if (_onCanPlaySet) {
-      if (!oldVElement._onCanPlaySet) {
-        _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
-      } else if (oldVElement.onCanPlay != onCanPlay) {
-        oldVElement._onCanPlaySub.cancel();
-        _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
-      } else {
-        _onCanPlaySub = oldVElement._onCanPlaySub;
-      }
-    } else if (oldVElement._onCanPlaySet) {
-      oldVElement._onCanPlaySub.cancel();
-    }
-    if (_onCanPlayThroughSet) {
-      if (!oldVElement._onCanPlayThroughSet) {
-        _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
-      } else if (oldVElement.onCanPlayThrough != onCanPlayThrough) {
-        oldVElement._onCanPlayThroughSub.cancel();
-        _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
-      } else {
-        _onCanPlayThroughSub = oldVElement._onCanPlayThroughSub;
-      }
-    } else if (oldVElement._onCanPlayThroughSet) {
-      oldVElement._onCanPlayThroughSub.cancel();
-    }
-    if (_onChangeSet) {
-      if (!oldVElement._onChangeSet) {
-        _onChangeSub = ele.onChange.listen(onChange);
-      } else if (oldVElement.onChange != onChange) {
-        oldVElement._onChangeSub.cancel();
-        _onChangeSub = ele.onChange.listen(onChange);
-      } else {
-        _onChangeSub = oldVElement._onChangeSub;
-      }
-    } else if (oldVElement._onChangeSet) {
-      oldVElement._onChangeSub.cancel();
-    }
-    if (_onClickSet) {
-      if (!oldVElement._onClickSet) {
-        _onClickSub = ele.onClick.listen(onClick);
-      } else if (oldVElement.onClick != onClick) {
-        oldVElement._onClickSub.cancel();
-        _onClickSub = ele.onClick.listen(onClick);
-      } else {
-        _onClickSub = oldVElement._onClickSub;
-      }
-    } else if (oldVElement._onClickSet) {
-      oldVElement._onClickSub.cancel();
-    }
-    if (_onContextMenuSet) {
-      if (!oldVElement._onContextMenuSet) {
-        _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
-      } else if (oldVElement.onContextMenu != onContextMenu) {
-        oldVElement._onContextMenuSub.cancel();
-        _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
-      } else {
-        _onContextMenuSub = oldVElement._onContextMenuSub;
-      }
-    } else if (oldVElement._onContextMenuSet) {
-      oldVElement._onContextMenuSub.cancel();
-    }
-    if (_onCopySet) {
-      if (!oldVElement._onCopySet) {
-        _onCopySub = ele.onCopy.listen(onCopy);
-      } else if (oldVElement.onCopy != onCopy) {
-        oldVElement._onCopySub.cancel();
-        _onCopySub = ele.onCopy.listen(onCopy);
-      } else {
-        _onCopySub = oldVElement._onCopySub;
-      }
-    } else if (oldVElement._onCopySet) {
-      oldVElement._onCopySub.cancel();
-    }
-    if (_onCutSet) {
-      if (!oldVElement._onCutSet) {
-        _onCutSub = ele.onCut.listen(onCut);
-      } else if (oldVElement.onCut != onCut) {
-        oldVElement._onCutSub.cancel();
-        _onCutSub = ele.onCut.listen(onCut);
-      } else {
-        _onCutSub = oldVElement._onCutSub;
-      }
-    } else if (oldVElement._onCutSet) {
-      oldVElement._onCutSub.cancel();
-    }
-    if (_onDoubleClickSet) {
-      if (!oldVElement._onDoubleClickSet) {
-        _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
-      } else if (oldVElement.onDoubleClick != onDoubleClick) {
-        oldVElement._onDoubleClickSub.cancel();
-        _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
-      } else {
-        _onDoubleClickSub = oldVElement._onDoubleClickSub;
-      }
-    } else if (oldVElement._onDoubleClickSet) {
-      oldVElement._onDoubleClickSub.cancel();
-    }
-    if (_onDragSet) {
-      if (!oldVElement._onDragSet) {
-        _onDragSub = ele.onDrag.listen(onDrag);
-      } else if (oldVElement.onDrag != onDrag) {
-        oldVElement._onDragSub.cancel();
-        _onDragSub = ele.onDrag.listen(onDrag);
-      } else {
-        _onDragSub = oldVElement._onDragSub;
-      }
-    } else if (oldVElement._onDragSet) {
-      oldVElement._onDragSub.cancel();
-    }
-    if (_onDragEndSet) {
-      if (!oldVElement._onDragEndSet) {
-        _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
-      } else if (oldVElement.onDragEnd != onDragEnd) {
-        oldVElement._onDragEndSub.cancel();
-        _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
-      } else {
-        _onDragEndSub = oldVElement._onDragEndSub;
-      }
-    } else if (oldVElement._onDragEndSet) {
-      oldVElement._onDragEndSub.cancel();
-    }
-    if (_onDragEnterSet) {
-      if (!oldVElement._onDragEnterSet) {
-        _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
-      } else if (oldVElement.onDragEnter != onDragEnter) {
-        oldVElement._onDragEnterSub.cancel();
-        _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
-      } else {
-        _onDragEnterSub = oldVElement._onDragEnterSub;
-      }
-    } else if (oldVElement._onDragEnterSet) {
-      oldVElement._onDragEnterSub.cancel();
-    }
-    if (_onDragLeaveSet) {
-      if (!oldVElement._onDragLeaveSet) {
-        _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
-      } else if (oldVElement.onDragLeave != onDragLeave) {
-        oldVElement._onDragLeaveSub.cancel();
-        _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
-      } else {
-        _onDragLeaveSub = oldVElement._onDragLeaveSub;
-      }
-    } else if (oldVElement._onDragLeaveSet) {
-      oldVElement._onDragLeaveSub.cancel();
-    }
-    if (_onDragOverSet) {
-      if (!oldVElement._onDragOverSet) {
-        _onDragOverSub = ele.onDragOver.listen(onDragOver);
-      } else if (oldVElement.onDragOver != onDragOver) {
-        oldVElement._onDragOverSub.cancel();
-        _onDragOverSub = ele.onDragOver.listen(onDragOver);
-      } else {
-        _onDragOverSub = oldVElement._onDragOverSub;
-      }
-    } else if (oldVElement._onDragOverSet) {
-      oldVElement._onDragOverSub.cancel();
-    }
-    if (_onDragStartSet) {
-      if (!oldVElement._onDragStartSet) {
-        _onDragStartSub = ele.onDragStart.listen(onDragStart);
-      } else if (oldVElement.onDragStart != onDragStart) {
-        oldVElement._onDragStartSub.cancel();
-        _onDragStartSub = ele.onDragStart.listen(onDragStart);
-      } else {
-        _onDragStartSub = oldVElement._onDragStartSub;
-      }
-    } else if (oldVElement._onDragStartSet) {
-      oldVElement._onDragStartSub.cancel();
-    }
-    if (_onDropSet) {
-      if (!oldVElement._onDropSet) {
-        _onDropSub = ele.onDrop.listen(onDrop);
-      } else if (oldVElement.onDrop != onDrop) {
-        oldVElement._onDropSub.cancel();
-        _onDropSub = ele.onDrop.listen(onDrop);
-      } else {
-        _onDropSub = oldVElement._onDropSub;
-      }
-    } else if (oldVElement._onDropSet) {
-      oldVElement._onDropSub.cancel();
-    }
-    if (_onDurationChangeSet) {
-      if (!oldVElement._onDurationChangeSet) {
-        _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
-      } else if (oldVElement.onDurationChange != onDurationChange) {
-        oldVElement._onDurationChangeSub.cancel();
-        _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
-      } else {
-        _onDurationChangeSub = oldVElement._onDurationChangeSub;
-      }
-    } else if (oldVElement._onDurationChangeSet) {
-      oldVElement._onDurationChangeSub.cancel();
-    }
-    if (_onEmptiedSet) {
-      if (!oldVElement._onEmptiedSet) {
-        _onEmptiedSub = ele.onEmptied.listen(onEmptied);
-      } else if (oldVElement.onEmptied != onEmptied) {
-        oldVElement._onEmptiedSub.cancel();
-        _onEmptiedSub = ele.onEmptied.listen(onEmptied);
-      } else {
-        _onEmptiedSub = oldVElement._onEmptiedSub;
-      }
-    } else if (oldVElement._onEmptiedSet) {
-      oldVElement._onEmptiedSub.cancel();
-    }
-    if (_onEndedSet) {
-      if (!oldVElement._onEndedSet) {
-        _onEndedSub = ele.onEnded.listen(onEnded);
-      } else if (oldVElement.onEnded != onEnded) {
-        oldVElement._onEndedSub.cancel();
-        _onEndedSub = ele.onEnded.listen(onEnded);
-      } else {
-        _onEndedSub = oldVElement._onEndedSub;
-      }
-    } else if (oldVElement._onEndedSet) {
-      oldVElement._onEndedSub.cancel();
-    }
-    if (_onErrorSet) {
-      if (!oldVElement._onErrorSet) {
-        _onErrorSub = ele.onError.listen(onError);
-      } else if (oldVElement.onError != onError) {
-        oldVElement._onErrorSub.cancel();
-        _onErrorSub = ele.onError.listen(onError);
-      } else {
-        _onErrorSub = oldVElement._onErrorSub;
-      }
-    } else if (oldVElement._onErrorSet) {
-      oldVElement._onErrorSub.cancel();
-    }
-    if (_onFocusSet) {
-      if (!oldVElement._onFocusSet) {
-        _onFocusSub = ele.onFocus.listen(onFocus);
-      } else if (oldVElement.onFocus != onFocus) {
-        oldVElement._onFocusSub.cancel();
-        _onFocusSub = ele.onFocus.listen(onFocus);
-      } else {
-        _onFocusSub = oldVElement._onFocusSub;
-      }
-    } else if (oldVElement._onFocusSet) {
-      oldVElement._onFocusSub.cancel();
-    }
-    if (_onInputSet) {
-      if (!oldVElement._onInputSet) {
-        _onInputSub = ele.onInput.listen(onInput);
-      } else if (oldVElement.onInput != onInput) {
-        oldVElement._onInputSub.cancel();
-        _onInputSub = ele.onInput.listen(onInput);
-      } else {
-        _onInputSub = oldVElement._onInputSub;
-      }
-    } else if (oldVElement._onInputSet) {
-      oldVElement._onInputSub.cancel();
-    }
-    if (_onInvalidSet) {
-      if (!oldVElement._onInvalidSet) {
-        _onInvalidSub = ele.onInvalid.listen(onInvalid);
-      } else if (oldVElement.onInvalid != onInvalid) {
-        oldVElement._onInvalidSub.cancel();
-        _onInvalidSub = ele.onInvalid.listen(onInvalid);
-      } else {
-        _onInvalidSub = oldVElement._onInvalidSub;
-      }
-    } else if (oldVElement._onInvalidSet) {
-      oldVElement._onInvalidSub.cancel();
-    }
-    if (_onKeyDownSet) {
-      if (!oldVElement._onKeyDownSet) {
-        _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
-      } else if (oldVElement.onKeyDown != onKeyDown) {
-        oldVElement._onKeyDownSub.cancel();
-        _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
-      } else {
-        _onKeyDownSub = oldVElement._onKeyDownSub;
-      }
-    } else if (oldVElement._onKeyDownSet) {
-      oldVElement._onKeyDownSub.cancel();
-    }
-    if (_onKeyPressSet) {
-      if (!oldVElement._onKeyPressSet) {
-        _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
-      } else if (oldVElement.onKeyPress != onKeyPress) {
-        oldVElement._onKeyPressSub.cancel();
-        _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
-      } else {
-        _onKeyPressSub = oldVElement._onKeyPressSub;
-      }
-    } else if (oldVElement._onKeyPressSet) {
-      oldVElement._onKeyPressSub.cancel();
-    }
-    if (_onKeyUpSet) {
-      if (!oldVElement._onKeyUpSet) {
-        _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
-      } else if (oldVElement.onKeyUp != onKeyUp) {
-        oldVElement._onKeyUpSub.cancel();
-        _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
-      } else {
-        _onKeyUpSub = oldVElement._onKeyUpSub;
-      }
-    } else if (oldVElement._onKeyUpSet) {
-      oldVElement._onKeyUpSub.cancel();
-    }
-    if (_onLoadSet) {
-      if (!oldVElement._onLoadSet) {
-        _onLoadSub = ele.onLoad.listen(onLoad);
-      } else if (oldVElement.onLoad != onLoad) {
-        oldVElement._onLoadSub.cancel();
-        _onLoadSub = ele.onLoad.listen(onLoad);
-      } else {
-        _onLoadSub = oldVElement._onLoadSub;
-      }
-    } else if (oldVElement._onLoadSet) {
-      oldVElement._onLoadSub.cancel();
-    }
-    if (_onLoadedDataSet) {
-      if (!oldVElement._onLoadedDataSet) {
-        _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
-      } else if (oldVElement.onLoadedData != onLoadedData) {
-        oldVElement._onLoadedDataSub.cancel();
-        _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
-      } else {
-        _onLoadedDataSub = oldVElement._onLoadedDataSub;
-      }
-    } else if (oldVElement._onLoadedDataSet) {
-      oldVElement._onLoadedDataSub.cancel();
-    }
-    if (_onLoadedMetadataSet) {
-      if (!oldVElement._onLoadedMetadataSet) {
-        _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
-      } else if (oldVElement.onLoadedMetadata != onLoadedMetadata) {
-        oldVElement._onLoadedMetadataSub.cancel();
-        _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
-      } else {
-        _onLoadedMetadataSub = oldVElement._onLoadedMetadataSub;
-      }
-    } else if (oldVElement._onLoadedMetadataSet) {
-      oldVElement._onLoadedMetadataSub.cancel();
-    }
-    if (_onMouseDownSet) {
-      if (!oldVElement._onMouseDownSet) {
-        _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
-      } else if (oldVElement.onMouseDown != onMouseDown) {
-        oldVElement._onMouseDownSub.cancel();
-        _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
-      } else {
-        _onMouseDownSub = oldVElement._onMouseDownSub;
-      }
-    } else if (oldVElement._onMouseDownSet) {
-      oldVElement._onMouseDownSub.cancel();
-    }
-    if (_onMouseEnterSet) {
-      if (!oldVElement._onMouseEnterSet) {
-        _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
-      } else if (oldVElement.onMouseEnter != onMouseEnter) {
-        oldVElement._onMouseEnterSub.cancel();
-        _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
-      } else {
-        _onMouseEnterSub = oldVElement._onMouseEnterSub;
-      }
-    } else if (oldVElement._onMouseEnterSet) {
-      oldVElement._onMouseEnterSub.cancel();
-    }
-    if (_onMouseLeaveSet) {
-      if (!oldVElement._onMouseLeaveSet) {
-        _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
-      } else if (oldVElement.onMouseLeave != onMouseLeave) {
-        oldVElement._onMouseLeaveSub.cancel();
-        _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
-      } else {
-        _onMouseLeaveSub = oldVElement._onMouseLeaveSub;
-      }
-    } else if (oldVElement._onMouseLeaveSet) {
-      oldVElement._onMouseLeaveSub.cancel();
-    }
-    if (_onMouseMoveSet) {
-      if (!oldVElement._onMouseMoveSet) {
-        _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
-      } else if (oldVElement.onMouseMove != onMouseMove) {
-        oldVElement._onMouseMoveSub.cancel();
-        _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
-      } else {
-        _onMouseMoveSub = oldVElement._onMouseMoveSub;
-      }
-    } else if (oldVElement._onMouseMoveSet) {
-      oldVElement._onMouseMoveSub.cancel();
-    }
-    if (_onMouseOutSet) {
-      if (!oldVElement._onMouseOutSet) {
-        _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
-      } else if (oldVElement.onMouseOut != onMouseOut) {
-        oldVElement._onMouseOutSub.cancel();
-        _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
-      } else {
-        _onMouseOutSub = oldVElement._onMouseOutSub;
-      }
-    } else if (oldVElement._onMouseOutSet) {
-      oldVElement._onMouseOutSub.cancel();
-    }
-    if (_onMouseOverSet) {
-      if (!oldVElement._onMouseOverSet) {
-        _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
-      } else if (oldVElement.onMouseOver != onMouseOver) {
-        oldVElement._onMouseOverSub.cancel();
-        _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
-      } else {
-        _onMouseOverSub = oldVElement._onMouseOverSub;
-      }
-    } else if (oldVElement._onMouseOverSet) {
-      oldVElement._onMouseOverSub.cancel();
-    }
-    if (_onMouseUpSet) {
-      if (!oldVElement._onMouseUpSet) {
-        _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
-      } else if (oldVElement.onMouseUp != onMouseUp) {
-        oldVElement._onMouseUpSub.cancel();
-        _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
-      } else {
-        _onMouseUpSub = oldVElement._onMouseUpSub;
-      }
-    } else if (oldVElement._onMouseUpSet) {
-      oldVElement._onMouseUpSub.cancel();
-    }
-    if (_onMouseWheelSet) {
-      if (!oldVElement._onMouseWheelSet) {
-        _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
-      } else if (oldVElement.onMouseWheel != onMouseWheel) {
-        oldVElement._onMouseWheelSub.cancel();
-        _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
-      } else {
-        _onMouseWheelSub = oldVElement._onMouseWheelSub;
-      }
-    } else if (oldVElement._onMouseWheelSet) {
-      oldVElement._onMouseWheelSub.cancel();
-    }
-    if (_onPasteSet) {
-      if (!oldVElement._onPasteSet) {
-        _onPasteSub = ele.onPaste.listen(onPaste);
-      } else if (oldVElement.onPaste != onPaste) {
-        oldVElement._onPasteSub.cancel();
-        _onPasteSub = ele.onPaste.listen(onPaste);
-      } else {
-        _onPasteSub = oldVElement._onPasteSub;
-      }
-    } else if (oldVElement._onPasteSet) {
-      oldVElement._onPasteSub.cancel();
-    }
-    if (_onPauseSet) {
-      if (!oldVElement._onPauseSet) {
-        _onPauseSub = ele.onPause.listen(onPause);
-      } else if (oldVElement.onPause != onPause) {
-        oldVElement._onPauseSub.cancel();
-        _onPauseSub = ele.onPause.listen(onPause);
-      } else {
-        _onPauseSub = oldVElement._onPauseSub;
-      }
-    } else if (oldVElement._onPauseSet) {
-      oldVElement._onPauseSub.cancel();
-    }
-    if (_onPlaySet) {
-      if (!oldVElement._onPlaySet) {
-        _onPlaySub = ele.onPlay.listen(onPlay);
-      } else if (oldVElement.onPlay != onPlay) {
-        oldVElement._onPlaySub.cancel();
-        _onPlaySub = ele.onPlay.listen(onPlay);
-      } else {
-        _onPlaySub = oldVElement._onPlaySub;
-      }
-    } else if (oldVElement._onPlaySet) {
-      oldVElement._onPlaySub.cancel();
-    }
-    if (_onPlayingSet) {
-      if (!oldVElement._onPlayingSet) {
-        _onPlayingSub = ele.onPlaying.listen(onPlaying);
-      } else if (oldVElement.onPlaying != onPlaying) {
-        oldVElement._onPlayingSub.cancel();
-        _onPlayingSub = ele.onPlaying.listen(onPlaying);
-      } else {
-        _onPlayingSub = oldVElement._onPlayingSub;
-      }
-    } else if (oldVElement._onPlayingSet) {
-      oldVElement._onPlayingSub.cancel();
-    }
-    if (_onRateChangeSet) {
-      if (!oldVElement._onRateChangeSet) {
-        _onRateChangeSub = ele.onRateChange.listen(onRateChange);
-      } else if (oldVElement.onRateChange != onRateChange) {
-        oldVElement._onRateChangeSub.cancel();
-        _onRateChangeSub = ele.onRateChange.listen(onRateChange);
-      } else {
-        _onRateChangeSub = oldVElement._onRateChangeSub;
-      }
-    } else if (oldVElement._onRateChangeSet) {
-      oldVElement._onRateChangeSub.cancel();
-    }
-    if (_onResetSet) {
-      if (!oldVElement._onResetSet) {
-        _onResetSub = ele.onReset.listen(onReset);
-      } else if (oldVElement.onReset != onReset) {
-        oldVElement._onResetSub.cancel();
-        _onResetSub = ele.onReset.listen(onReset);
-      } else {
-        _onResetSub = oldVElement._onResetSub;
-      }
-    } else if (oldVElement._onResetSet) {
-      oldVElement._onResetSub.cancel();
-    }
-    if (_onResizeSet) {
-      if (!oldVElement._onResizeSet) {
-        _onResizeSub = ele.onResize.listen(onResize);
-      } else if (oldVElement.onResize != onResize) {
-        oldVElement._onResizeSub.cancel();
-        _onResizeSub = ele.onResize.listen(onResize);
-      } else {
-        _onResizeSub = oldVElement._onResizeSub;
-      }
-    } else if (oldVElement._onResizeSet) {
-      oldVElement._onResizeSub.cancel();
-    }
-    if (_onScrollSet) {
-      if (!oldVElement._onScrollSet) {
-        _onScrollSub = ele.onScroll.listen(onScroll);
-      } else if (oldVElement.onScroll != onScroll) {
-        oldVElement._onScrollSub.cancel();
-        _onScrollSub = ele.onScroll.listen(onScroll);
-      } else {
-        _onScrollSub = oldVElement._onScrollSub;
-      }
-    } else if (oldVElement._onScrollSet) {
-      oldVElement._onScrollSub.cancel();
-    }
-    if (_onSearchSet) {
-      if (!oldVElement._onSearchSet) {
-        _onSearchSub = ele.onSearch.listen(onSearch);
-      } else if (oldVElement.onSearch != onSearch) {
-        oldVElement._onSearchSub.cancel();
-        _onSearchSub = ele.onSearch.listen(onSearch);
-      } else {
-        _onSearchSub = oldVElement._onSearchSub;
-      }
-    } else if (oldVElement._onSearchSet) {
-      oldVElement._onSearchSub.cancel();
-    }
-    if (_onSeekedSet) {
-      if (!oldVElement._onSeekedSet) {
-        _onSeekedSub = ele.onSeeked.listen(onSeeked);
-      } else if (oldVElement.onSeeked != onSeeked) {
-        oldVElement._onSeekedSub.cancel();
-        _onSeekedSub = ele.onSeeked.listen(onSeeked);
-      } else {
-        _onSeekedSub = oldVElement._onSeekedSub;
-      }
-    } else if (oldVElement._onSeekedSet) {
-      oldVElement._onSeekedSub.cancel();
-    }
-    if (_onSeekingSet) {
-      if (!oldVElement._onSeekingSet) {
-        _onSeekingSub = ele.onSeeking.listen(onSeeking);
-      } else if (oldVElement.onSeeking != onSeeking) {
-        oldVElement._onSeekingSub.cancel();
-        _onSeekingSub = ele.onSeeking.listen(onSeeking);
-      } else {
-        _onSeekingSub = oldVElement._onSeekingSub;
-      }
-    } else if (oldVElement._onSeekingSet) {
-      oldVElement._onSeekingSub.cancel();
-    }
-    if (_onSelectSet) {
-      if (!oldVElement._onSelectSet) {
-        _onSelectSub = ele.onSelect.listen(onSelect);
-      } else if (oldVElement.onSelect != onSelect) {
-        oldVElement._onSelectSub.cancel();
-        _onSelectSub = ele.onSelect.listen(onSelect);
-      } else {
-        _onSelectSub = oldVElement._onSelectSub;
-      }
-    } else if (oldVElement._onSelectSet) {
-      oldVElement._onSelectSub.cancel();
-    }
-    if (_onSelectStartSet) {
-      if (!oldVElement._onSelectStartSet) {
-        _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
-      } else if (oldVElement.onSelectStart != onSelectStart) {
-        oldVElement._onSelectStartSub.cancel();
-        _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
-      } else {
-        _onSelectStartSub = oldVElement._onSelectStartSub;
-      }
-    } else if (oldVElement._onSelectStartSet) {
-      oldVElement._onSelectStartSub.cancel();
-    }
-    if (_onStalledSet) {
-      if (!oldVElement._onStalledSet) {
-        _onStalledSub = ele.onStalled.listen(onStalled);
-      } else if (oldVElement.onStalled != onStalled) {
-        oldVElement._onStalledSub.cancel();
-        _onStalledSub = ele.onStalled.listen(onStalled);
-      } else {
-        _onStalledSub = oldVElement._onStalledSub;
-      }
-    } else if (oldVElement._onStalledSet) {
-      oldVElement._onStalledSub.cancel();
-    }
-    if (_onSubmitSet) {
-      if (!oldVElement._onSubmitSet) {
-        _onSubmitSub = ele.onSubmit.listen(onSubmit);
-      } else if (oldVElement.onSubmit != onSubmit) {
-        oldVElement._onSubmitSub.cancel();
-        _onSubmitSub = ele.onSubmit.listen(onSubmit);
-      } else {
-        _onSubmitSub = oldVElement._onSubmitSub;
-      }
-    } else if (oldVElement._onSubmitSet) {
-      oldVElement._onSubmitSub.cancel();
-    }
-    if (_onSuspendSet) {
-      if (!oldVElement._onSuspendSet) {
-        _onSuspendSub = ele.onSuspend.listen(onSuspend);
-      } else if (oldVElement.onSuspend != onSuspend) {
-        oldVElement._onSuspendSub.cancel();
-        _onSuspendSub = ele.onSuspend.listen(onSuspend);
-      } else {
-        _onSuspendSub = oldVElement._onSuspendSub;
-      }
-    } else if (oldVElement._onSuspendSet) {
-      oldVElement._onSuspendSub.cancel();
-    }
-    if (_onTimeUpdateSet) {
-      if (!oldVElement._onTimeUpdateSet) {
-        _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
-      } else if (oldVElement.onTimeUpdate != onTimeUpdate) {
-        oldVElement._onTimeUpdateSub.cancel();
-        _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
-      } else {
-        _onTimeUpdateSub = oldVElement._onTimeUpdateSub;
-      }
-    } else if (oldVElement._onTimeUpdateSet) {
-      oldVElement._onTimeUpdateSub.cancel();
-    }
-    if (_onTouchCancelSet) {
-      if (!oldVElement._onTouchCancelSet) {
-        _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
-      } else if (oldVElement.onTouchCancel != onTouchCancel) {
-        oldVElement._onTouchCancelSub.cancel();
-        _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
-      } else {
-        _onTouchCancelSub = oldVElement._onTouchCancelSub;
-      }
-    } else if (oldVElement._onTouchCancelSet) {
-      oldVElement._onTouchCancelSub.cancel();
-    }
-    if (_onTouchEndSet) {
-      if (!oldVElement._onTouchEndSet) {
-        _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
-      } else if (oldVElement.onTouchEnd != onTouchEnd) {
-        oldVElement._onTouchEndSub.cancel();
-        _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
-      } else {
-        _onTouchEndSub = oldVElement._onTouchEndSub;
-      }
-    } else if (oldVElement._onTouchEndSet) {
-      oldVElement._onTouchEndSub.cancel();
-    }
-    if (_onTouchEnterSet) {
-      if (!oldVElement._onTouchEnterSet) {
-        _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
-      } else if (oldVElement.onTouchEnter != onTouchEnter) {
-        oldVElement._onTouchEnterSub.cancel();
-        _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
-      } else {
-        _onTouchEnterSub = oldVElement._onTouchEnterSub;
-      }
-    } else if (oldVElement._onTouchEnterSet) {
-      oldVElement._onTouchEnterSub.cancel();
-    }
-    if (_onTouchLeaveSet) {
-      if (!oldVElement._onTouchLeaveSet) {
-        _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
-      } else if (oldVElement.onTouchLeave != onTouchLeave) {
-        oldVElement._onTouchLeaveSub.cancel();
-        _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
-      } else {
-        _onTouchLeaveSub = oldVElement._onTouchLeaveSub;
-      }
-    } else if (oldVElement._onTouchLeaveSet) {
-      oldVElement._onTouchLeaveSub.cancel();
-    }
-    if (_onTouchMoveSet) {
-      if (!oldVElement._onTouchMoveSet) {
-        _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
-      } else if (oldVElement.onTouchMove != onTouchMove) {
-        oldVElement._onTouchMoveSub.cancel();
-        _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
-      } else {
-        _onTouchMoveSub = oldVElement._onTouchMoveSub;
-      }
-    } else if (oldVElement._onTouchMoveSet) {
-      oldVElement._onTouchMoveSub.cancel();
-    }
-    if (_onTouchStartSet) {
-      if (!oldVElement._onTouchStartSet) {
-        _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
-      } else if (oldVElement.onTouchStart != onTouchStart) {
-        oldVElement._onTouchStartSub.cancel();
-        _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
-      } else {
-        _onTouchStartSub = oldVElement._onTouchStartSub;
-      }
-    } else if (oldVElement._onTouchStartSet) {
-      oldVElement._onTouchStartSub.cancel();
-    }
-    if (_onTransitionEndSet) {
-      if (!oldVElement._onTransitionEndSet) {
-        _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
-      } else if (oldVElement.onTransitionEnd != onTransitionEnd) {
-        oldVElement._onTransitionEndSub.cancel();
-        _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
-      } else {
-        _onTransitionEndSub = oldVElement._onTransitionEndSub;
-      }
-    } else if (oldVElement._onTransitionEndSet) {
-      oldVElement._onTransitionEndSub.cancel();
-    }
-    if (_onVolumeChangeSet) {
-      if (!oldVElement._onVolumeChangeSet) {
-        _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
-      } else if (oldVElement.onVolumeChange != onVolumeChange) {
-        oldVElement._onVolumeChangeSub.cancel();
-        _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
-      } else {
-        _onVolumeChangeSub = oldVElement._onVolumeChangeSub;
-      }
-    } else if (oldVElement._onVolumeChangeSet) {
-      oldVElement._onVolumeChangeSub.cancel();
-    }
-    if (_onWaitingSet) {
-      if (!oldVElement._onWaitingSet) {
-        _onWaitingSub = ele.onWaiting.listen(onWaiting);
-      } else if (oldVElement.onWaiting != onWaiting) {
-        oldVElement._onWaitingSub.cancel();
-        _onWaitingSub = ele.onWaiting.listen(onWaiting);
-      } else {
-        _onWaitingSub = oldVElement._onWaitingSub;
-      }
-    } else if (oldVElement._onWaitingSet) {
-      oldVElement._onWaitingSub.cancel();
-    }
-    if (_onFullscreenChangeSet) {
-      if (!oldVElement._onFullscreenChangeSet) {
-        _onFullscreenChangeSub =
-            ele.onFullscreenChange.listen(onFullscreenChange);
-      } else if (oldVElement.onFullscreenChange != onFullscreenChange) {
-        oldVElement._onFullscreenChangeSub.cancel();
-        _onFullscreenChangeSub =
-            ele.onFullscreenChange.listen(onFullscreenChange);
-      } else {
-        _onFullscreenChangeSub = oldVElement._onFullscreenChangeSub;
-      }
-    } else if (oldVElement._onFullscreenChangeSet) {
-      oldVElement._onFullscreenChangeSub.cancel();
-    }
-    if (_onFullscreenErrorSet) {
-      if (!oldVElement._onFullscreenErrorSet) {
-        _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
-      } else if (oldVElement.onFullscreenError != onFullscreenError) {
-        oldVElement._onFullscreenErrorSub.cancel();
-        _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
-      } else {
-        _onFullscreenErrorSub = oldVElement._onFullscreenErrorSub;
-      }
-    } else if (oldVElement._onFullscreenErrorSet) {
-      oldVElement._onFullscreenErrorSub.cancel();
-    }
+  void dispose() {
+    _onAbortSub?.cancel();
+    _onBeforeCopySub?.cancel();
+    _onBeforeCutSub?.cancel();
+    _onBeforePasteSub?.cancel();
+    _onBlurSub?.cancel();
+    _onCanPlaySub?.cancel();
+    _onCanPlayThroughSub?.cancel();
+    _onChangeSub?.cancel();
+    _onClickSub?.cancel();
+    _onContextMenuSub?.cancel();
+    _onCopySub?.cancel();
+    _onCutSub?.cancel();
+    _onDoubleClickSub?.cancel();
+    _onDragSub?.cancel();
+    _onDragEndSub?.cancel();
+    _onDragEnterSub?.cancel();
+    _onDragLeaveSub?.cancel();
+    _onDragOverSub?.cancel();
+    _onDragStartSub?.cancel();
+    _onDropSub?.cancel();
+    _onDurationChangeSub?.cancel();
+    _onEmptiedSub?.cancel();
+    _onEndedSub?.cancel();
+    _onErrorSub?.cancel();
+    _onFocusSub?.cancel();
+    _onInputSub?.cancel();
+    _onInvalidSub?.cancel();
+    _onKeyDownSub?.cancel();
+    _onKeyPressSub?.cancel();
+    _onKeyUpSub?.cancel();
+    _onLoadSub?.cancel();
+    _onLoadedDataSub?.cancel();
+    _onLoadedMetadataSub?.cancel();
+    _onMouseDownSub?.cancel();
+    _onMouseEnterSub?.cancel();
+    _onMouseLeaveSub?.cancel();
+    _onMouseMoveSub?.cancel();
+    _onMouseOutSub?.cancel();
+    _onMouseOverSub?.cancel();
+    _onMouseUpSub?.cancel();
+    _onMouseWheelSub?.cancel();
+    _onPasteSub?.cancel();
+    _onPauseSub?.cancel();
+    _onPlaySub?.cancel();
+    _onPlayingSub?.cancel();
+    _onRateChangeSub?.cancel();
+    _onResetSub?.cancel();
+    _onResizeSub?.cancel();
+    _onScrollSub?.cancel();
+    _onSearchSub?.cancel();
+    _onSeekedSub?.cancel();
+    _onSeekingSub?.cancel();
+    _onSelectSub?.cancel();
+    _onSelectStartSub?.cancel();
+    _onStalledSub?.cancel();
+    _onSubmitSub?.cancel();
+    _onSuspendSub?.cancel();
+    _onTimeUpdateSub?.cancel();
+    _onTouchCancelSub?.cancel();
+    _onTouchEndSub?.cancel();
+    _onTouchEnterSub?.cancel();
+    _onTouchLeaveSub?.cancel();
+    _onTouchMoveSub?.cancel();
+    _onTouchStartSub?.cancel();
+    _onTransitionEndSub?.cancel();
+    _onVolumeChangeSub?.cancel();
+    _onWaitingSub?.cancel();
+    _onFullscreenChangeSub?.cancel();
+    _onFullscreenErrorSub?.cancel();
   }
 }
 
@@ -2631,6 +2761,9 @@ class Vvideo extends VElement<Element> {
 }
 
 class VEmbedElement extends VHtmlElement<EmbedElement> {
+  @override
+  EmbedElement _elementFactory() => new EmbedElement();
+
   String _height;
   bool _heightSet = false;
   String get height => _height;
@@ -2672,19 +2805,32 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   }
 
   @override
-  EmbedElement _elementFactory() => new EmbedElement();
-  @override
   void _applyAttributesToElement(EmbedElement ele) {
     super._applyAttributesToElement(ele);
-    if (_heightSet) ele.height = height;
-    if (_nameSet) ele.name = name;
-    if (_srcSet) ele.src = src;
-    if (_typeSet) ele.type = type;
-    if (_widthSet) ele.width = width;
+
+    if (_heightSet) ele.height = _height;
+    if (_nameSet) ele.name = _name;
+    if (_srcSet) ele.src = _src;
+    if (_typeSet) ele.type = _type;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(VEmbedElement prev, EmbedElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_height != prev._height) ele.height = _height;
+    if (_name != prev._name) ele.name = _name;
+    if (_src != prev._src) ele.src = _src;
+    if (_type != prev._type) ele.type = _type;
+    if (_width != prev._width) ele.width = _width;
   }
 }
 
 class VFieldSetElement extends VHtmlElement<FieldSetElement> {
+  @override
+  FieldSetElement _elementFactory() => new FieldSetElement();
+
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
@@ -2702,16 +2848,26 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   }
 
   @override
-  FieldSetElement _elementFactory() => new FieldSetElement();
-  @override
   void _applyAttributesToElement(FieldSetElement ele) {
     super._applyAttributesToElement(ele);
-    if (_disabledSet) ele.disabled = disabled;
-    if (_nameSet) ele.name = name;
+
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_nameSet) ele.name = _name;
+  }
+
+  @override
+  void _updateElementAttributes(VFieldSetElement prev, FieldSetElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_name != prev._name) ele.name = _name;
   }
 }
 
 class VFormElement extends VHtmlElement<FormElement> {
+  @override
+  FormElement _elementFactory() => new FormElement();
+
   String _acceptCharset;
   bool _acceptCharsetSet = false;
   String get acceptCharset => _acceptCharset;
@@ -2785,23 +2941,41 @@ class VFormElement extends VHtmlElement<FormElement> {
   }
 
   @override
-  FormElement _elementFactory() => new FormElement();
-  @override
   void _applyAttributesToElement(FormElement ele) {
     super._applyAttributesToElement(ele);
-    if (_acceptCharsetSet) ele.acceptCharset = acceptCharset;
-    if (_actionSet) ele.action = action;
-    if (_autocompleteSet) ele.autocomplete = autocomplete;
-    if (_encodingSet) ele.encoding = encoding;
-    if (_enctypeSet) ele.enctype = enctype;
-    if (_methodSet) ele.method = method;
-    if (_nameSet) ele.name = name;
-    if (_noValidateSet) ele.noValidate = noValidate;
-    if (_targetSet) ele.target = target;
+
+    if (_acceptCharsetSet) ele.acceptCharset = _acceptCharset;
+    if (_actionSet) ele.action = _action;
+    if (_autocompleteSet) ele.autocomplete = _autocomplete;
+    if (_encodingSet) ele.encoding = _encoding;
+    if (_enctypeSet) ele.enctype = _enctype;
+    if (_methodSet) ele.method = _method;
+    if (_nameSet) ele.name = _name;
+    if (_noValidateSet) ele.noValidate = _noValidate;
+    if (_targetSet) ele.target = _target;
+  }
+
+  @override
+  void _updateElementAttributes(VFormElement prev, FormElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_acceptCharset != prev._acceptCharset)
+      ele.acceptCharset = _acceptCharset;
+    if (_action != prev._action) ele.action = _action;
+    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
+    if (_encoding != prev._encoding) ele.encoding = _encoding;
+    if (_enctype != prev._enctype) ele.enctype = _enctype;
+    if (_method != prev._method) ele.method = _method;
+    if (_name != prev._name) ele.name = _name;
+    if (_noValidate != prev._noValidate) ele.noValidate = _noValidate;
+    if (_target != prev._target) ele.target = _target;
   }
 }
 
 class VHRElement extends VHtmlElement<HRElement> {
+  @override
+  HRElement _elementFactory() => new HRElement();
+
   String _color;
   bool _colorSet = false;
   String get color => _color;
@@ -2811,20 +2985,32 @@ class VHRElement extends VHtmlElement<HRElement> {
   }
 
   @override
-  HRElement _elementFactory() => new HRElement();
-  @override
   void _applyAttributesToElement(HRElement ele) {
     super._applyAttributesToElement(ele);
-    if (_colorSet) ele.color = color;
+
+    if (_colorSet) ele.color = _color;
+  }
+
+  @override
+  void _updateElementAttributes(VHRElement prev, HRElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_color != prev._color) ele.color = _color;
   }
 }
 
 class VHeadElement extends VHtmlElement<HeadElement> {
   @override
   HeadElement _elementFactory() => new HeadElement();
+
   @override
   void _applyAttributesToElement(HeadElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VHeadElement prev, HeadElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -2834,42 +3020,62 @@ abstract class VHeadingElement<T extends HeadingElement>
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(covariant VHeadingElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
-class Vh1 extends VHeadingElement {
+class Vh1 extends VElement<HeadingElement> {
+  @override
   HeadingElement _elementFactory() => new HeadingElement.h1();
 }
 
-class Vh2 extends VHeadingElement {
+class Vh2 extends VElement<HeadingElement> {
+  @override
   HeadingElement _elementFactory() => new HeadingElement.h2();
 }
 
-class Vh3 extends VHeadingElement {
+class Vh3 extends VElement<HeadingElement> {
+  @override
   HeadingElement _elementFactory() => new HeadingElement.h3();
 }
 
-class Vh4 extends VHeadingElement {
+class Vh4 extends VElement<HeadingElement> {
+  @override
   HeadingElement _elementFactory() => new HeadingElement.h4();
 }
 
-class Vh5 extends VHeadingElement {
+class Vh5 extends VElement<HeadingElement> {
+  @override
   HeadingElement _elementFactory() => new HeadingElement.h5();
 }
 
-class Vh6 extends VHeadingElement {
+class Vh6 extends VElement<HeadingElement> {
+  @override
   HeadingElement _elementFactory() => new HeadingElement.h6();
 }
 
 class VHtmlHtmlElement extends VHtmlElement<HtmlHtmlElement> {
   @override
   HtmlHtmlElement _elementFactory() => new HtmlHtmlElement();
+
   @override
   void _applyAttributesToElement(HtmlHtmlElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VHtmlHtmlElement prev, HtmlHtmlElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VIFrameElement extends VHtmlElement<IFrameElement> {
+  @override
+  IFrameElement _elementFactory() => new IFrameElement();
+
   bool _allowFullscreen;
   bool _allowFullscreenSet = false;
   bool get allowFullscreen => _allowFullscreen;
@@ -2927,21 +3133,38 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   }
 
   @override
-  IFrameElement _elementFactory() => new IFrameElement();
-  @override
   void _applyAttributesToElement(IFrameElement ele) {
     super._applyAttributesToElement(ele);
-    if (_allowFullscreenSet) ele.allowFullscreen = allowFullscreen;
-    if (_heightSet) ele.height = height;
-    if (_nameSet) ele.name = name;
-    if (_referrerpolicySet) ele.referrerpolicy = referrerpolicy;
-    if (_srcSet) ele.src = src;
-    if (_srcdocSet) ele.srcdoc = srcdoc;
-    if (_widthSet) ele.width = width;
+
+    if (_allowFullscreenSet) ele.allowFullscreen = _allowFullscreen;
+    if (_heightSet) ele.height = _height;
+    if (_nameSet) ele.name = _name;
+    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
+    if (_srcSet) ele.src = _src;
+    if (_srcdocSet) ele.srcdoc = _srcdoc;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(VIFrameElement prev, IFrameElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_allowFullscreen != prev._allowFullscreen)
+      ele.allowFullscreen = _allowFullscreen;
+    if (_height != prev._height) ele.height = _height;
+    if (_name != prev._name) ele.name = _name;
+    if (_referrerpolicy != prev._referrerpolicy)
+      ele.referrerpolicy = _referrerpolicy;
+    if (_src != prev._src) ele.src = _src;
+    if (_srcdoc != prev._srcdoc) ele.srcdoc = _srcdoc;
+    if (_width != prev._width) ele.width = _width;
   }
 }
 
 class VImageElement extends VHtmlElement<ImageElement> {
+  @override
+  ImageElement _elementFactory() => new ImageElement();
+
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
@@ -3023,20 +3246,490 @@ class VImageElement extends VHtmlElement<ImageElement> {
   }
 
   @override
-  ImageElement _elementFactory() => new ImageElement();
-  @override
   void _applyAttributesToElement(ImageElement ele) {
     super._applyAttributesToElement(ele);
-    if (_altSet) ele.alt = alt;
-    if (_crossOriginSet) ele.crossOrigin = crossOrigin;
-    if (_heightSet) ele.height = height;
-    if (_isMapSet) ele.isMap = isMap;
-    if (_referrerpolicySet) ele.referrerpolicy = referrerpolicy;
-    if (_sizesSet) ele.sizes = sizes;
-    if (_srcSet) ele.src = src;
-    if (_srcsetSet) ele.srcset = srcset;
-    if (_useMapSet) ele.useMap = useMap;
-    if (_widthSet) ele.width = width;
+
+    if (_altSet) ele.alt = _alt;
+    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
+    if (_heightSet) ele.height = _height;
+    if (_isMapSet) ele.isMap = _isMap;
+    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
+    if (_sizesSet) ele.sizes = _sizes;
+    if (_srcSet) ele.src = _src;
+    if (_srcsetSet) ele.srcset = _srcset;
+    if (_useMapSet) ele.useMap = _useMap;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(VImageElement prev, ImageElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_alt != prev._alt) ele.alt = _alt;
+    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
+    if (_height != prev._height) ele.height = _height;
+    if (_isMap != prev._isMap) ele.isMap = _isMap;
+    if (_referrerpolicy != prev._referrerpolicy)
+      ele.referrerpolicy = _referrerpolicy;
+    if (_sizes != prev._sizes) ele.sizes = _sizes;
+    if (_src != prev._src) ele.src = _src;
+    if (_srcset != prev._srcset) ele.srcset = _srcset;
+    if (_useMap != prev._useMap) ele.useMap = _useMap;
+    if (_width != prev._width) ele.width = _width;
+  }
+}
+
+class VInputElement extends VHtmlElement<InputElement> {
+  @override
+  InputElement _elementFactory() => new InputElement();
+
+  String _accept;
+  bool _acceptSet = false;
+  String get accept => _accept;
+  void set accept(String v) {
+    _accept = v;
+    _acceptSet = true;
+  }
+
+  String _alt;
+  bool _altSet = false;
+  String get alt => _alt;
+  void set alt(String v) {
+    _alt = v;
+    _altSet = true;
+  }
+
+  String _autocapitalize;
+  bool _autocapitalizeSet = false;
+  String get autocapitalize => _autocapitalize;
+  void set autocapitalize(String v) {
+    _autocapitalize = v;
+    _autocapitalizeSet = true;
+  }
+
+  String _autocomplete;
+  bool _autocompleteSet = false;
+  String get autocomplete => _autocomplete;
+  void set autocomplete(String v) {
+    _autocomplete = v;
+    _autocompleteSet = true;
+  }
+
+  bool _autofocus;
+  bool _autofocusSet = false;
+  bool get autofocus => _autofocus;
+  void set autofocus(bool v) {
+    _autofocus = v;
+    _autofocusSet = true;
+  }
+
+  bool _capture;
+  bool _captureSet = false;
+  bool get capture => _capture;
+  void set capture(bool v) {
+    _capture = v;
+    _captureSet = true;
+  }
+
+  bool _checked;
+  bool _checkedSet = false;
+  bool get checked => _checked;
+  void set checked(bool v) {
+    _checked = v;
+    _checkedSet = true;
+  }
+
+  bool _defaultChecked;
+  bool _defaultCheckedSet = false;
+  bool get defaultChecked => _defaultChecked;
+  void set defaultChecked(bool v) {
+    _defaultChecked = v;
+    _defaultCheckedSet = true;
+  }
+
+  String _defaultValue;
+  bool _defaultValueSet = false;
+  String get defaultValue => _defaultValue;
+  void set defaultValue(String v) {
+    _defaultValue = v;
+    _defaultValueSet = true;
+  }
+
+  String _dirName;
+  bool _dirNameSet = false;
+  String get dirName => _dirName;
+  void set dirName(String v) {
+    _dirName = v;
+    _dirNameSet = true;
+  }
+
+  bool _disabled;
+  bool _disabledSet = false;
+  bool get disabled => _disabled;
+  void set disabled(bool v) {
+    _disabled = v;
+    _disabledSet = true;
+  }
+
+  List<File> _files;
+  bool _filesSet = false;
+  List<File> get files => _files;
+  void set files(List<File> v) {
+    _files = v;
+    _filesSet = true;
+  }
+
+  String _formAction;
+  bool _formActionSet = false;
+  String get formAction => _formAction;
+  void set formAction(String v) {
+    _formAction = v;
+    _formActionSet = true;
+  }
+
+  String _formEnctype;
+  bool _formEnctypeSet = false;
+  String get formEnctype => _formEnctype;
+  void set formEnctype(String v) {
+    _formEnctype = v;
+    _formEnctypeSet = true;
+  }
+
+  String _formMethod;
+  bool _formMethodSet = false;
+  String get formMethod => _formMethod;
+  void set formMethod(String v) {
+    _formMethod = v;
+    _formMethodSet = true;
+  }
+
+  bool _formNoValidate;
+  bool _formNoValidateSet = false;
+  bool get formNoValidate => _formNoValidate;
+  void set formNoValidate(bool v) {
+    _formNoValidate = v;
+    _formNoValidateSet = true;
+  }
+
+  String _formTarget;
+  bool _formTargetSet = false;
+  String get formTarget => _formTarget;
+  void set formTarget(String v) {
+    _formTarget = v;
+    _formTargetSet = true;
+  }
+
+  int _height;
+  bool _heightSet = false;
+  int get height => _height;
+  void set height(int v) {
+    _height = v;
+    _heightSet = true;
+  }
+
+  bool _incremental;
+  bool _incrementalSet = false;
+  bool get incremental => _incremental;
+  void set incremental(bool v) {
+    _incremental = v;
+    _incrementalSet = true;
+  }
+
+  bool _indeterminate;
+  bool _indeterminateSet = false;
+  bool get indeterminate => _indeterminate;
+  void set indeterminate(bool v) {
+    _indeterminate = v;
+    _indeterminateSet = true;
+  }
+
+  String _inputMode;
+  bool _inputModeSet = false;
+  String get inputMode => _inputMode;
+  void set inputMode(String v) {
+    _inputMode = v;
+    _inputModeSet = true;
+  }
+
+  String _max;
+  bool _maxSet = false;
+  String get max => _max;
+  void set max(String v) {
+    _max = v;
+    _maxSet = true;
+  }
+
+  int _maxLength;
+  bool _maxLengthSet = false;
+  int get maxLength => _maxLength;
+  void set maxLength(int v) {
+    _maxLength = v;
+    _maxLengthSet = true;
+  }
+
+  String _min;
+  bool _minSet = false;
+  String get min => _min;
+  void set min(String v) {
+    _min = v;
+    _minSet = true;
+  }
+
+  int _minLength;
+  bool _minLengthSet = false;
+  int get minLength => _minLength;
+  void set minLength(int v) {
+    _minLength = v;
+    _minLengthSet = true;
+  }
+
+  bool _multiple;
+  bool _multipleSet = false;
+  bool get multiple => _multiple;
+  void set multiple(bool v) {
+    _multiple = v;
+    _multipleSet = true;
+  }
+
+  String _name;
+  bool _nameSet = false;
+  String get name => _name;
+  void set name(String v) {
+    _name = v;
+    _nameSet = true;
+  }
+
+  String _pattern;
+  bool _patternSet = false;
+  String get pattern => _pattern;
+  void set pattern(String v) {
+    _pattern = v;
+    _patternSet = true;
+  }
+
+  String _placeholder;
+  bool _placeholderSet = false;
+  String get placeholder => _placeholder;
+  void set placeholder(String v) {
+    _placeholder = v;
+    _placeholderSet = true;
+  }
+
+  bool _readOnly;
+  bool _readOnlySet = false;
+  bool get readOnly => _readOnly;
+  void set readOnly(bool v) {
+    _readOnly = v;
+    _readOnlySet = true;
+  }
+
+  bool _required;
+  bool _requiredSet = false;
+  bool get required => _required;
+  void set required(bool v) {
+    _required = v;
+    _requiredSet = true;
+  }
+
+  String _selectionDirection;
+  bool _selectionDirectionSet = false;
+  String get selectionDirection => _selectionDirection;
+  void set selectionDirection(String v) {
+    _selectionDirection = v;
+    _selectionDirectionSet = true;
+  }
+
+  int _selectionEnd;
+  bool _selectionEndSet = false;
+  int get selectionEnd => _selectionEnd;
+  void set selectionEnd(int v) {
+    _selectionEnd = v;
+    _selectionEndSet = true;
+  }
+
+  int _selectionStart;
+  bool _selectionStartSet = false;
+  int get selectionStart => _selectionStart;
+  void set selectionStart(int v) {
+    _selectionStart = v;
+    _selectionStartSet = true;
+  }
+
+  int _size;
+  bool _sizeSet = false;
+  int get size => _size;
+  void set size(int v) {
+    _size = v;
+    _sizeSet = true;
+  }
+
+  String _src;
+  bool _srcSet = false;
+  String get src => _src;
+  void set src(String v) {
+    _src = v;
+    _srcSet = true;
+  }
+
+  String _step;
+  bool _stepSet = false;
+  String get step => _step;
+  void set step(String v) {
+    _step = v;
+    _stepSet = true;
+  }
+
+  String _type;
+  bool _typeSet = false;
+  String get type => _type;
+  void set type(String v) {
+    _type = v;
+    _typeSet = true;
+  }
+
+  String _value;
+  bool _valueSet = false;
+  String get value => _value;
+  void set value(String v) {
+    _value = v;
+    _valueSet = true;
+  }
+
+  num _valueAsNumber;
+  bool _valueAsNumberSet = false;
+  num get valueAsNumber => _valueAsNumber;
+  void set valueAsNumber(num v) {
+    _valueAsNumber = v;
+    _valueAsNumberSet = true;
+  }
+
+  bool _directory;
+  bool _directorySet = false;
+  bool get directory => _directory;
+  void set directory(bool v) {
+    _directory = v;
+    _directorySet = true;
+  }
+
+  int _width;
+  bool _widthSet = false;
+  int get width => _width;
+  void set width(int v) {
+    _width = v;
+    _widthSet = true;
+  }
+
+  DateTime _valueAsDate;
+  bool _valueAsDateSet = false;
+  DateTime get valueAsDate => _valueAsDate;
+  void set valueAsDate(DateTime v) {
+    _valueAsDate = v;
+    _valueAsDateSet = true;
+  }
+
+  @override
+  void _applyAttributesToElement(InputElement ele) {
+    super._applyAttributesToElement(ele);
+
+    if (_acceptSet) ele.accept = _accept;
+    if (_altSet) ele.alt = _alt;
+    if (_autocapitalizeSet) ele.autocapitalize = _autocapitalize;
+    if (_autocompleteSet) ele.autocomplete = _autocomplete;
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_captureSet) ele.capture = _capture;
+    if (_checkedSet) ele.checked = _checked;
+    if (_defaultCheckedSet) ele.defaultChecked = _defaultChecked;
+    if (_defaultValueSet) ele.defaultValue = _defaultValue;
+    if (_dirNameSet) ele.dirName = _dirName;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_filesSet) ele.files = _files;
+    if (_formActionSet) ele.formAction = _formAction;
+    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
+    if (_formMethodSet) ele.formMethod = _formMethod;
+    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
+    if (_formTargetSet) ele.formTarget = _formTarget;
+    if (_heightSet) ele.height = _height;
+    if (_incrementalSet) ele.incremental = _incremental;
+    if (_indeterminateSet) ele.indeterminate = _indeterminate;
+    if (_inputModeSet) ele.inputMode = _inputMode;
+    if (_maxSet) ele.max = _max;
+    if (_maxLengthSet) ele.maxLength = _maxLength;
+    if (_minSet) ele.min = _min;
+    if (_minLengthSet) ele.minLength = _minLength;
+    if (_multipleSet) ele.multiple = _multiple;
+    if (_nameSet) ele.name = _name;
+    if (_patternSet) ele.pattern = _pattern;
+    if (_placeholderSet) ele.placeholder = _placeholder;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+    if (_selectionDirectionSet) ele.selectionDirection = _selectionDirection;
+    if (_selectionEndSet) ele.selectionEnd = _selectionEnd;
+    if (_selectionStartSet) ele.selectionStart = _selectionStart;
+    if (_sizeSet) ele.size = _size;
+    if (_srcSet) ele.src = _src;
+    if (_stepSet) ele.step = _step;
+    if (_typeSet) ele.type = _type;
+    if (_valueSet) ele.value = _value;
+    if (_valueAsNumberSet) ele.valueAsNumber = _valueAsNumber;
+    if (_directorySet) ele.directory = _directory;
+    if (_widthSet) ele.width = _width;
+    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
+  }
+
+  @override
+  void _updateElementAttributes(VInputElement prev, InputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_accept != prev._accept) ele.accept = _accept;
+    if (_alt != prev._alt) ele.alt = _alt;
+    if (_autocapitalize != prev._autocapitalize)
+      ele.autocapitalize = _autocapitalize;
+    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_capture != prev._capture) ele.capture = _capture;
+    if (_checked != prev._checked) ele.checked = _checked;
+    if (_defaultChecked != prev._defaultChecked)
+      ele.defaultChecked = _defaultChecked;
+    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
+    if (_dirName != prev._dirName) ele.dirName = _dirName;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_files != prev._files) ele.files = _files;
+    if (_formAction != prev._formAction) ele.formAction = _formAction;
+    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
+    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
+    if (_formNoValidate != prev._formNoValidate)
+      ele.formNoValidate = _formNoValidate;
+    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
+    if (_height != prev._height) ele.height = _height;
+    if (_incremental != prev._incremental) ele.incremental = _incremental;
+    if (_indeterminate != prev._indeterminate)
+      ele.indeterminate = _indeterminate;
+    if (_inputMode != prev._inputMode) ele.inputMode = _inputMode;
+    if (_max != prev._max) ele.max = _max;
+    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
+    if (_min != prev._min) ele.min = _min;
+    if (_minLength != prev._minLength) ele.minLength = _minLength;
+    if (_multiple != prev._multiple) ele.multiple = _multiple;
+    if (_name != prev._name) ele.name = _name;
+    if (_pattern != prev._pattern) ele.pattern = _pattern;
+    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
+    if (_selectionDirection != prev._selectionDirection)
+      ele.selectionDirection = _selectionDirection;
+    if (_selectionEnd != prev._selectionEnd) ele.selectionEnd = _selectionEnd;
+    if (_selectionStart != prev._selectionStart)
+      ele.selectionStart = _selectionStart;
+    if (_size != prev._size) ele.size = _size;
+    if (_src != prev._src) ele.src = _src;
+    if (_step != prev._step) ele.step = _step;
+    if (_type != prev._type) ele.type = _type;
+    if (_value != prev._value) ele.value = _value;
+    if (_valueAsNumber != prev._valueAsNumber)
+      ele.valueAsNumber = _valueAsNumber;
+    if (_directory != prev._directory) ele.directory = _directory;
+    if (_width != prev._width) ele.width = _width;
+    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
   }
 }
 
@@ -3093,21 +3786,42 @@ abstract class VInputElementBase<T extends InputElementBase>
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_autofocusSet) ele.autofocus = autofocus;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_incrementalSet) ele.incremental = incremental;
-    if (_indeterminateSet) ele.indeterminate = indeterminate;
-    if (_nameSet) ele.name = name;
-    if (_valueSet) ele.value = value;
+
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_incrementalSet) ele.incremental = _incremental;
+    if (_indeterminateSet) ele.indeterminate = _indeterminate;
+    if (_nameSet) ele.name = _name;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(covariant VInputElementBase<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_incremental != prev._incremental) ele.incremental = _incremental;
+    if (_indeterminate != prev._indeterminate)
+      ele.indeterminate = _indeterminate;
+    if (_name != prev._name) ele.name = _name;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VHiddenInputElement extends VInputElementBase<HiddenInputElement> {
   @override
   HiddenInputElement _elementFactory() => new HiddenInputElement();
+
   @override
   void _applyAttributesToElement(HiddenInputElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(
+      VHiddenInputElement prev, HiddenInputElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -3196,20 +3910,43 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_autocompleteSet) ele.autocomplete = autocomplete;
-    if (_maxLengthSet) ele.maxLength = maxLength;
-    if (_patternSet) ele.pattern = pattern;
-    if (_placeholderSet) ele.placeholder = placeholder;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
-    if (_sizeSet) ele.size = size;
-    if (_selectionDirectionSet) ele.selectionDirection = selectionDirection;
-    if (_selectionEndSet) ele.selectionEnd = selectionEnd;
-    if (_selectionStartSet) ele.selectionStart = selectionStart;
+
+    if (_autocompleteSet) ele.autocomplete = _autocomplete;
+    if (_maxLengthSet) ele.maxLength = _maxLength;
+    if (_patternSet) ele.pattern = _pattern;
+    if (_placeholderSet) ele.placeholder = _placeholder;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+    if (_sizeSet) ele.size = _size;
+    if (_selectionDirectionSet) ele.selectionDirection = _selectionDirection;
+    if (_selectionEndSet) ele.selectionEnd = _selectionEnd;
+    if (_selectionStartSet) ele.selectionStart = _selectionStart;
+  }
+
+  @override
+  void _updateElementAttributes(
+      covariant VTextInputElementBase<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
+    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
+    if (_pattern != prev._pattern) ele.pattern = _pattern;
+    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
+    if (_size != prev._size) ele.size = _size;
+    if (_selectionDirection != prev._selectionDirection)
+      ele.selectionDirection = _selectionDirection;
+    if (_selectionEnd != prev._selectionEnd) ele.selectionEnd = _selectionEnd;
+    if (_selectionStart != prev._selectionStart)
+      ele.selectionStart = _selectionStart;
   }
 }
 
 class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
+  @override
+  SearchInputElement _elementFactory() => new SearchInputElement();
+
   String _dirName;
   bool _dirNameSet = false;
   String get dirName => _dirName;
@@ -3219,15 +3956,25 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   }
 
   @override
-  SearchInputElement _elementFactory() => new SearchInputElement();
-  @override
   void _applyAttributesToElement(SearchInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_dirNameSet) ele.dirName = dirName;
+
+    if (_dirNameSet) ele.dirName = _dirName;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VSearchInputElement prev, SearchInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_dirName != prev._dirName) ele.dirName = _dirName;
   }
 }
 
 class VTextInputElement extends VTextInputElementBase<TextInputElement> {
+  @override
+  TextInputElement _elementFactory() => new TextInputElement();
+
   String _dirName;
   bool _dirNameSet = false;
   String get dirName => _dirName;
@@ -3237,20 +3984,32 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   }
 
   @override
-  TextInputElement _elementFactory() => new TextInputElement();
-  @override
   void _applyAttributesToElement(TextInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_dirNameSet) ele.dirName = dirName;
+
+    if (_dirNameSet) ele.dirName = _dirName;
+  }
+
+  @override
+  void _updateElementAttributes(VTextInputElement prev, TextInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_dirName != prev._dirName) ele.dirName = _dirName;
   }
 }
 
 class VUrlInputElement extends VTextInputElementBase<UrlInputElement> {
   @override
   UrlInputElement _elementFactory() => new UrlInputElement();
+
   @override
   void _applyAttributesToElement(UrlInputElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VUrlInputElement prev, UrlInputElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -3258,13 +4017,23 @@ class VTelephoneInputElement
     extends VTextInputElementBase<TelephoneInputElement> {
   @override
   TelephoneInputElement _elementFactory() => new TelephoneInputElement();
+
   @override
   void _applyAttributesToElement(TelephoneInputElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(
+      VTelephoneInputElement prev, TelephoneInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
+  @override
+  EmailInputElement _elementFactory() => new EmailInputElement();
+
   String _autocomplete;
   bool _autocompleteSet = false;
   String get autocomplete => _autocomplete;
@@ -3338,19 +4107,34 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   }
 
   @override
-  EmailInputElement _elementFactory() => new EmailInputElement();
-  @override
   void _applyAttributesToElement(EmailInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_autocompleteSet) ele.autocomplete = autocomplete;
-    if (_autofocusSet) ele.autofocus = autofocus;
-    if (_maxLengthSet) ele.maxLength = maxLength;
-    if (_multipleSet) ele.multiple = multiple;
-    if (_patternSet) ele.pattern = pattern;
-    if (_placeholderSet) ele.placeholder = placeholder;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
-    if (_sizeSet) ele.size = size;
+
+    if (_autocompleteSet) ele.autocomplete = _autocomplete;
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_maxLengthSet) ele.maxLength = _maxLength;
+    if (_multipleSet) ele.multiple = _multiple;
+    if (_patternSet) ele.pattern = _pattern;
+    if (_placeholderSet) ele.placeholder = _placeholder;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+    if (_sizeSet) ele.size = _size;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VEmailInputElement prev, EmailInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
+    if (_multiple != prev._multiple) ele.multiple = _multiple;
+    if (_pattern != prev._pattern) ele.pattern = _pattern;
+    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
+    if (_size != prev._size) ele.size = _size;
   }
 }
 
@@ -3358,9 +4142,16 @@ class VPasswordInputElement
     extends VTextInputElementBase<PasswordInputElement> {
   @override
   PasswordInputElement _elementFactory() => new PasswordInputElement();
+
   @override
   void _applyAttributesToElement(PasswordInputElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(
+      VPasswordInputElement prev, PasswordInputElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -3401,14 +4192,30 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_maxSet) ele.max = max;
-    if (_minSet) ele.min = min;
-    if (_stepSet) ele.step = step;
-    if (_valueAsNumberSet) ele.valueAsNumber = valueAsNumber;
+
+    if (_maxSet) ele.max = _max;
+    if (_minSet) ele.min = _min;
+    if (_stepSet) ele.step = _step;
+    if (_valueAsNumberSet) ele.valueAsNumber = _valueAsNumber;
+  }
+
+  @override
+  void _updateElementAttributes(
+      covariant VRangeInputElementBase<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_max != prev._max) ele.max = _max;
+    if (_min != prev._min) ele.min = _min;
+    if (_step != prev._step) ele.step = _step;
+    if (_valueAsNumber != prev._valueAsNumber)
+      ele.valueAsNumber = _valueAsNumber;
   }
 }
 
 class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
+  @override
+  DateInputElement _elementFactory() => new DateInputElement();
+
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
@@ -3434,17 +4241,28 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   }
 
   @override
-  DateInputElement _elementFactory() => new DateInputElement();
-  @override
   void _applyAttributesToElement(DateInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_valueAsDateSet) ele.valueAsDate = valueAsDate;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
+
+    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(VDateInputElement prev, DateInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
+  @override
+  MonthInputElement _elementFactory() => new MonthInputElement();
+
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
@@ -3470,17 +4288,29 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   }
 
   @override
-  MonthInputElement _elementFactory() => new MonthInputElement();
-  @override
   void _applyAttributesToElement(MonthInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_valueAsDateSet) ele.valueAsDate = valueAsDate;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
+
+    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VMonthInputElement prev, MonthInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
+  @override
+  WeekInputElement _elementFactory() => new WeekInputElement();
+
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
@@ -3506,17 +4336,28 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   }
 
   @override
-  WeekInputElement _elementFactory() => new WeekInputElement();
-  @override
   void _applyAttributesToElement(WeekInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_valueAsDateSet) ele.valueAsDate = valueAsDate;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
+
+    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(VWeekInputElement prev, WeekInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
+  @override
+  TimeInputElement _elementFactory() => new TimeInputElement();
+
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
@@ -3542,18 +4383,30 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   }
 
   @override
-  TimeInputElement _elementFactory() => new TimeInputElement();
-  @override
   void _applyAttributesToElement(TimeInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_valueAsDateSet) ele.valueAsDate = valueAsDate;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
+
+    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(VTimeInputElement prev, TimeInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VLocalDateTimeInputElement
     extends VRangeInputElementBase<LocalDateTimeInputElement> {
+  @override
+  LocalDateTimeInputElement _elementFactory() =>
+      new LocalDateTimeInputElement();
+
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
@@ -3571,17 +4424,27 @@ class VLocalDateTimeInputElement
   }
 
   @override
-  LocalDateTimeInputElement _elementFactory() =>
-      new LocalDateTimeInputElement();
-  @override
   void _applyAttributesToElement(LocalDateTimeInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
+
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VLocalDateTimeInputElement prev, LocalDateTimeInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
+  @override
+  NumberInputElement _elementFactory() => new NumberInputElement();
+
   String _placeholder;
   bool _placeholderSet = false;
   String get placeholder => _placeholder;
@@ -3607,26 +4470,45 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   }
 
   @override
-  NumberInputElement _elementFactory() => new NumberInputElement();
-  @override
   void _applyAttributesToElement(NumberInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_placeholderSet) ele.placeholder = placeholder;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
+
+    if (_placeholderSet) ele.placeholder = _placeholder;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VNumberInputElement prev, NumberInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VRangeInputElement extends VRangeInputElementBase<RangeInputElement> {
   @override
   RangeInputElement _elementFactory() => new RangeInputElement();
+
   @override
   void _applyAttributesToElement(RangeInputElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(
+      VRangeInputElement prev, RangeInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
+  @override
+  CheckboxInputElement _elementFactory() => new CheckboxInputElement();
+
   bool _checked;
   bool _checkedSet = false;
   bool get checked => _checked;
@@ -3644,17 +4526,28 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   }
 
   @override
-  CheckboxInputElement _elementFactory() => new CheckboxInputElement();
-  @override
   void _applyAttributesToElement(CheckboxInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_checkedSet) ele.checked = checked;
-    if (_requiredSet) ele.required = required;
+
+    if (_checkedSet) ele.checked = _checked;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VCheckboxInputElement prev, CheckboxInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_checked != prev._checked) ele.checked = _checked;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VRadioButtonInputElement
     extends VInputElementBase<RadioButtonInputElement> {
+  @override
+  RadioButtonInputElement _elementFactory() => new RadioButtonInputElement();
+
   bool _checked;
   bool _checkedSet = false;
   bool get checked => _checked;
@@ -3672,17 +4565,28 @@ class VRadioButtonInputElement
   }
 
   @override
-  RadioButtonInputElement _elementFactory() => new RadioButtonInputElement();
-  @override
   void _applyAttributesToElement(RadioButtonInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_checkedSet) ele.checked = checked;
-    if (_requiredSet) ele.required = required;
+
+    if (_checkedSet) ele.checked = _checked;
+    if (_requiredSet) ele.required = _required;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VRadioButtonInputElement prev, RadioButtonInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_checked != prev._checked) ele.checked = _checked;
+    if (_required != prev._required) ele.required = _required;
   }
 }
 
 class VFileUploadInputElement
     extends VInputElementBase<FileUploadInputElement> {
+  @override
+  FileUploadInputElement _elementFactory() => new FileUploadInputElement();
+
   String _accept;
   bool _acceptSet = false;
   String get accept => _accept;
@@ -3716,19 +4620,32 @@ class VFileUploadInputElement
   }
 
   @override
-  FileUploadInputElement _elementFactory() => new FileUploadInputElement();
-  @override
   void _applyAttributesToElement(FileUploadInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_acceptSet) ele.accept = accept;
-    if (_multipleSet) ele.multiple = multiple;
-    if (_requiredSet) ele.required = required;
-    if (_filesSet) ele.files = files;
+
+    if (_acceptSet) ele.accept = _accept;
+    if (_multipleSet) ele.multiple = _multiple;
+    if (_requiredSet) ele.required = _required;
+    if (_filesSet) ele.files = _files;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VFileUploadInputElement prev, FileUploadInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_accept != prev._accept) ele.accept = _accept;
+    if (_multiple != prev._multiple) ele.multiple = _multiple;
+    if (_required != prev._required) ele.required = _required;
+    if (_files != prev._files) ele.files = _files;
   }
 }
 
 class VSubmitButtonInputElement
     extends VInputElementBase<SubmitButtonInputElement> {
+  @override
+  SubmitButtonInputElement _elementFactory() => new SubmitButtonInputElement();
+
   String _formAction;
   bool _formActionSet = false;
   String get formAction => _formAction;
@@ -3770,20 +4687,35 @@ class VSubmitButtonInputElement
   }
 
   @override
-  SubmitButtonInputElement _elementFactory() => new SubmitButtonInputElement();
-  @override
   void _applyAttributesToElement(SubmitButtonInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_formActionSet) ele.formAction = formAction;
-    if (_formEnctypeSet) ele.formEnctype = formEnctype;
-    if (_formMethodSet) ele.formMethod = formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = formNoValidate;
-    if (_formTargetSet) ele.formTarget = formTarget;
+
+    if (_formActionSet) ele.formAction = _formAction;
+    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
+    if (_formMethodSet) ele.formMethod = _formMethod;
+    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
+    if (_formTargetSet) ele.formTarget = _formTarget;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VSubmitButtonInputElement prev, SubmitButtonInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_formAction != prev._formAction) ele.formAction = _formAction;
+    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
+    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
+    if (_formNoValidate != prev._formNoValidate)
+      ele.formNoValidate = _formNoValidate;
+    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
   }
 }
 
 class VImageButtonInputElement
     extends VInputElementBase<ImageButtonInputElement> {
+  @override
+  ImageButtonInputElement _elementFactory() => new ImageButtonInputElement();
+
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
@@ -3857,19 +4789,35 @@ class VImageButtonInputElement
   }
 
   @override
-  ImageButtonInputElement _elementFactory() => new ImageButtonInputElement();
-  @override
   void _applyAttributesToElement(ImageButtonInputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_altSet) ele.alt = alt;
-    if (_formActionSet) ele.formAction = formAction;
-    if (_formEnctypeSet) ele.formEnctype = formEnctype;
-    if (_formMethodSet) ele.formMethod = formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = formNoValidate;
-    if (_formTargetSet) ele.formTarget = formTarget;
-    if (_heightSet) ele.height = height;
-    if (_srcSet) ele.src = src;
-    if (_widthSet) ele.width = width;
+
+    if (_altSet) ele.alt = _alt;
+    if (_formActionSet) ele.formAction = _formAction;
+    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
+    if (_formMethodSet) ele.formMethod = _formMethod;
+    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
+    if (_formTargetSet) ele.formTarget = _formTarget;
+    if (_heightSet) ele.height = _height;
+    if (_srcSet) ele.src = _src;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(
+      VImageButtonInputElement prev, ImageButtonInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_alt != prev._alt) ele.alt = _alt;
+    if (_formAction != prev._formAction) ele.formAction = _formAction;
+    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
+    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
+    if (_formNoValidate != prev._formNoValidate)
+      ele.formNoValidate = _formNoValidate;
+    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
+    if (_height != prev._height) ele.height = _height;
+    if (_src != prev._src) ele.src = _src;
+    if (_width != prev._width) ele.width = _width;
   }
 }
 
@@ -3877,22 +4825,39 @@ class VResetButtonInputElement
     extends VInputElementBase<ResetButtonInputElement> {
   @override
   ResetButtonInputElement _elementFactory() => new ResetButtonInputElement();
+
   @override
   void _applyAttributesToElement(ResetButtonInputElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(
+      VResetButtonInputElement prev, ResetButtonInputElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
 class VButtonInputElement extends VInputElementBase<ButtonInputElement> {
   @override
   ButtonInputElement _elementFactory() => new ButtonInputElement();
+
   @override
   void _applyAttributesToElement(ButtonInputElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(
+      VButtonInputElement prev, ButtonInputElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VKeygenElement extends VHtmlElement<KeygenElement> {
+  @override
+  KeygenElement _elementFactory() => new KeygenElement();
+
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
@@ -3934,19 +4899,32 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   }
 
   @override
-  KeygenElement _elementFactory() => new KeygenElement();
-  @override
   void _applyAttributesToElement(KeygenElement ele) {
     super._applyAttributesToElement(ele);
-    if (_autofocusSet) ele.autofocus = autofocus;
-    if (_challengeSet) ele.challenge = challenge;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_keytypeSet) ele.keytype = keytype;
-    if (_nameSet) ele.name = name;
+
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_challengeSet) ele.challenge = _challenge;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_keytypeSet) ele.keytype = _keytype;
+    if (_nameSet) ele.name = _name;
+  }
+
+  @override
+  void _updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_challenge != prev._challenge) ele.challenge = _challenge;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_keytype != prev._keytype) ele.keytype = _keytype;
+    if (_name != prev._name) ele.name = _name;
   }
 }
 
 class VLIElement extends VHtmlElement<LIElement> {
+  @override
+  LIElement _elementFactory() => new LIElement();
+
   int _value;
   bool _valueSet = false;
   int get value => _value;
@@ -3956,15 +4934,24 @@ class VLIElement extends VHtmlElement<LIElement> {
   }
 
   @override
-  LIElement _elementFactory() => new LIElement();
-  @override
   void _applyAttributesToElement(LIElement ele) {
     super._applyAttributesToElement(ele);
-    if (_valueSet) ele.value = value;
+
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VLIElement prev, LIElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VLabelElement extends VHtmlElement<LabelElement> {
+  @override
+  LabelElement _elementFactory() => new LabelElement();
+
   String _htmlFor;
   bool _htmlForSet = false;
   String get htmlFor => _htmlFor;
@@ -3974,24 +4961,39 @@ class VLabelElement extends VHtmlElement<LabelElement> {
   }
 
   @override
-  LabelElement _elementFactory() => new LabelElement();
-  @override
   void _applyAttributesToElement(LabelElement ele) {
     super._applyAttributesToElement(ele);
-    if (_htmlForSet) ele.htmlFor = htmlFor;
+
+    if (_htmlForSet) ele.htmlFor = _htmlFor;
+  }
+
+  @override
+  void _updateElementAttributes(VLabelElement prev, LabelElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_htmlFor != prev._htmlFor) ele.htmlFor = _htmlFor;
   }
 }
 
 class VLegendElement extends VHtmlElement<LegendElement> {
   @override
   LegendElement _elementFactory() => new LegendElement();
+
   @override
   void _applyAttributesToElement(LegendElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VLegendElement prev, LegendElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VLinkElement extends VHtmlElement<LinkElement> {
+  @override
+  LinkElement _elementFactory() => new LinkElement();
+
   String _as;
   bool _asSet = false;
   String get as => _as;
@@ -4065,23 +5067,40 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   }
 
   @override
-  LinkElement _elementFactory() => new LinkElement();
-  @override
   void _applyAttributesToElement(LinkElement ele) {
     super._applyAttributesToElement(ele);
-    if (_asSet) ele.as = as;
-    if (_crossOriginSet) ele.crossOrigin = crossOrigin;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_hrefSet) ele.href = href;
-    if (_hreflangSet) ele.hreflang = hreflang;
-    if (_integritySet) ele.integrity = integrity;
-    if (_mediaSet) ele.media = media;
-    if (_relSet) ele.rel = rel;
-    if (_typeSet) ele.type = type;
+
+    if (_asSet) ele.as = _as;
+    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_hrefSet) ele.href = _href;
+    if (_hreflangSet) ele.hreflang = _hreflang;
+    if (_integritySet) ele.integrity = _integrity;
+    if (_mediaSet) ele.media = _media;
+    if (_relSet) ele.rel = _rel;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(VLinkElement prev, LinkElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_as != prev._as) ele.as = _as;
+    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_href != prev._href) ele.href = _href;
+    if (_hreflang != prev._hreflang) ele.hreflang = _hreflang;
+    if (_integrity != prev._integrity) ele.integrity = _integrity;
+    if (_media != prev._media) ele.media = _media;
+    if (_rel != prev._rel) ele.rel = _rel;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
 class VMapElement extends VHtmlElement<MapElement> {
+  @override
+  MapElement _elementFactory() => new MapElement();
+
   String _name;
   bool _nameSet = false;
   String get name => _name;
@@ -4091,11 +5110,17 @@ class VMapElement extends VHtmlElement<MapElement> {
   }
 
   @override
-  MapElement _elementFactory() => new MapElement();
-  @override
   void _applyAttributesToElement(MapElement ele) {
     super._applyAttributesToElement(ele);
-    if (_nameSet) ele.name = name;
+
+    if (_nameSet) ele.name = _name;
+  }
+
+  @override
+  void _updateElementAttributes(VMapElement prev, MapElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_name != prev._name) ele.name = _name;
   }
 }
 
@@ -4215,25 +5240,51 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_autoplaySet) ele.autoplay = autoplay;
-    if (_controlsSet) ele.controls = controls;
-    if (_crossOriginSet) ele.crossOrigin = crossOrigin;
-    if (_currentTimeSet) ele.currentTime = currentTime;
-    if (_defaultMutedSet) ele.defaultMuted = defaultMuted;
-    if (_defaultPlaybackRateSet) ele.defaultPlaybackRate = defaultPlaybackRate;
+
+    if (_autoplaySet) ele.autoplay = _autoplay;
+    if (_controlsSet) ele.controls = _controls;
+    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
+    if (_currentTimeSet) ele.currentTime = _currentTime;
+    if (_defaultMutedSet) ele.defaultMuted = _defaultMuted;
+    if (_defaultPlaybackRateSet) ele.defaultPlaybackRate = _defaultPlaybackRate;
     if (_disableRemotePlaybackSet)
-      ele.disableRemotePlayback = disableRemotePlayback;
-    if (_loopSet) ele.loop = loop;
-    if (_mutedSet) ele.muted = muted;
-    if (_playbackRateSet) ele.playbackRate = playbackRate;
-    if (_preloadSet) ele.preload = preload;
-    if (_sessionSet) ele.session = session;
-    if (_srcSet) ele.src = src;
-    if (_volumeSet) ele.volume = volume;
+      ele.disableRemotePlayback = _disableRemotePlayback;
+    if (_loopSet) ele.loop = _loop;
+    if (_mutedSet) ele.muted = _muted;
+    if (_playbackRateSet) ele.playbackRate = _playbackRate;
+    if (_preloadSet) ele.preload = _preload;
+    if (_sessionSet) ele.session = _session;
+    if (_srcSet) ele.src = _src;
+    if (_volumeSet) ele.volume = _volume;
+  }
+
+  @override
+  void _updateElementAttributes(covariant VMediaElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autoplay != prev._autoplay) ele.autoplay = _autoplay;
+    if (_controls != prev._controls) ele.controls = _controls;
+    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
+    if (_currentTime != prev._currentTime) ele.currentTime = _currentTime;
+    if (_defaultMuted != prev._defaultMuted) ele.defaultMuted = _defaultMuted;
+    if (_defaultPlaybackRate != prev._defaultPlaybackRate)
+      ele.defaultPlaybackRate = _defaultPlaybackRate;
+    if (_disableRemotePlayback != prev._disableRemotePlayback)
+      ele.disableRemotePlayback = _disableRemotePlayback;
+    if (_loop != prev._loop) ele.loop = _loop;
+    if (_muted != prev._muted) ele.muted = _muted;
+    if (_playbackRate != prev._playbackRate) ele.playbackRate = _playbackRate;
+    if (_preload != prev._preload) ele.preload = _preload;
+    if (_session != prev._session) ele.session = _session;
+    if (_src != prev._src) ele.src = _src;
+    if (_volume != prev._volume) ele.volume = _volume;
   }
 }
 
 class VMenuElement extends VHtmlElement<MenuElement> {
+  @override
+  MenuElement _elementFactory() => new MenuElement();
+
   String _label;
   bool _labelSet = false;
   String get label => _label;
@@ -4251,12 +5302,19 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   }
 
   @override
-  MenuElement _elementFactory() => new MenuElement();
-  @override
   void _applyAttributesToElement(MenuElement ele) {
     super._applyAttributesToElement(ele);
-    if (_labelSet) ele.label = label;
-    if (_typeSet) ele.type = type;
+
+    if (_labelSet) ele.label = _label;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(VMenuElement prev, MenuElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_label != prev._label) ele.label = _label;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
@@ -4321,17 +5379,34 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_checkedSet) ele.checked = checked;
-    if (_defaultValueSet) ele.defaultValue = defaultValue;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_iconSet) ele.icon = icon;
-    if (_labelSet) ele.label = label;
-    if (_radiogroupSet) ele.radiogroup = radiogroup;
-    if (_typeSet) ele.type = type;
+
+    if (_checkedSet) ele.checked = _checked;
+    if (_defaultValueSet) ele.defaultValue = _defaultValue;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_iconSet) ele.icon = _icon;
+    if (_labelSet) ele.label = _label;
+    if (_radiogroupSet) ele.radiogroup = _radiogroup;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_checked != prev._checked) ele.checked = _checked;
+    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_icon != prev._icon) ele.icon = _icon;
+    if (_label != prev._label) ele.label = _label;
+    if (_radiogroup != prev._radiogroup) ele.radiogroup = _radiogroup;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
 class VMetaElement extends VHtmlElement<MetaElement> {
+  @override
+  MetaElement _elementFactory() => new MetaElement();
+
   String _content;
   bool _contentSet = false;
   String get content => _content;
@@ -4357,17 +5432,28 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   }
 
   @override
-  MetaElement _elementFactory() => new MetaElement();
-  @override
   void _applyAttributesToElement(MetaElement ele) {
     super._applyAttributesToElement(ele);
-    if (_contentSet) ele.content = content;
-    if (_httpEquivSet) ele.httpEquiv = httpEquiv;
-    if (_nameSet) ele.name = name;
+
+    if (_contentSet) ele.content = _content;
+    if (_httpEquivSet) ele.httpEquiv = _httpEquiv;
+    if (_nameSet) ele.name = _name;
+  }
+
+  @override
+  void _updateElementAttributes(VMetaElement prev, MetaElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_content != prev._content) ele.content = _content;
+    if (_httpEquiv != prev._httpEquiv) ele.httpEquiv = _httpEquiv;
+    if (_name != prev._name) ele.name = _name;
   }
 }
 
 class VMeterElement extends VHtmlElement<MeterElement> {
+  @override
+  MeterElement _elementFactory() => new MeterElement();
+
   num _high;
   bool _highSet = false;
   num get high => _high;
@@ -4417,16 +5503,27 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   }
 
   @override
-  MeterElement _elementFactory() => new MeterElement();
-  @override
   void _applyAttributesToElement(MeterElement ele) {
     super._applyAttributesToElement(ele);
-    if (_highSet) ele.high = high;
-    if (_lowSet) ele.low = low;
-    if (_maxSet) ele.max = max;
-    if (_minSet) ele.min = min;
-    if (_optimumSet) ele.optimum = optimum;
-    if (_valueSet) ele.value = value;
+
+    if (_highSet) ele.high = _high;
+    if (_lowSet) ele.low = _low;
+    if (_maxSet) ele.max = _max;
+    if (_minSet) ele.min = _min;
+    if (_optimumSet) ele.optimum = _optimum;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VMeterElement prev, MeterElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_high != prev._high) ele.high = _high;
+    if (_low != prev._low) ele.low = _low;
+    if (_max != prev._max) ele.max = _max;
+    if (_min != prev._min) ele.min = _min;
+    if (_optimum != prev._optimum) ele.optimum = _optimum;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
@@ -4450,12 +5547,24 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_citeSet) ele.cite = cite;
-    if (_dateTimeSet) ele.dateTime = dateTime;
+
+    if (_citeSet) ele.cite = _cite;
+    if (_dateTimeSet) ele.dateTime = _dateTime;
+  }
+
+  @override
+  void _updateElementAttributes(covariant VModElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_cite != prev._cite) ele.cite = _cite;
+    if (_dateTime != prev._dateTime) ele.dateTime = _dateTime;
   }
 }
 
 class VOListElement extends VHtmlElement<OListElement> {
+  @override
+  OListElement _elementFactory() => new OListElement();
+
   bool _reversed;
   bool _reversedSet = false;
   bool get reversed => _reversed;
@@ -4481,17 +5590,28 @@ class VOListElement extends VHtmlElement<OListElement> {
   }
 
   @override
-  OListElement _elementFactory() => new OListElement();
-  @override
   void _applyAttributesToElement(OListElement ele) {
     super._applyAttributesToElement(ele);
-    if (_reversedSet) ele.reversed = reversed;
-    if (_startSet) ele.start = start;
-    if (_typeSet) ele.type = type;
+
+    if (_reversedSet) ele.reversed = _reversed;
+    if (_startSet) ele.start = _start;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(VOListElement prev, OListElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_reversed != prev._reversed) ele.reversed = _reversed;
+    if (_start != prev._start) ele.start = _start;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
 class VObjectElement extends VHtmlElement<ObjectElement> {
+  @override
+  ObjectElement _elementFactory() => new ObjectElement();
+
   String _data;
   bool _dataSet = false;
   String get data => _data;
@@ -4541,20 +5661,34 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   }
 
   @override
-  ObjectElement _elementFactory() => new ObjectElement();
-  @override
   void _applyAttributesToElement(ObjectElement ele) {
     super._applyAttributesToElement(ele);
-    if (_dataSet) ele.data = data;
-    if (_heightSet) ele.height = height;
-    if (_nameSet) ele.name = name;
-    if (_typeSet) ele.type = type;
-    if (_useMapSet) ele.useMap = useMap;
-    if (_widthSet) ele.width = width;
+
+    if (_dataSet) ele.data = _data;
+    if (_heightSet) ele.height = _height;
+    if (_nameSet) ele.name = _name;
+    if (_typeSet) ele.type = _type;
+    if (_useMapSet) ele.useMap = _useMap;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(VObjectElement prev, ObjectElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_data != prev._data) ele.data = _data;
+    if (_height != prev._height) ele.height = _height;
+    if (_name != prev._name) ele.name = _name;
+    if (_type != prev._type) ele.type = _type;
+    if (_useMap != prev._useMap) ele.useMap = _useMap;
+    if (_width != prev._width) ele.width = _width;
   }
 }
 
 class VOptGroupElement extends VHtmlElement<OptGroupElement> {
+  @override
+  OptGroupElement _elementFactory() => new OptGroupElement();
+
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
@@ -4572,16 +5706,26 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   }
 
   @override
-  OptGroupElement _elementFactory() => new OptGroupElement();
-  @override
   void _applyAttributesToElement(OptGroupElement ele) {
     super._applyAttributesToElement(ele);
-    if (_disabledSet) ele.disabled = disabled;
-    if (_labelSet) ele.label = label;
+
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_labelSet) ele.label = _label;
+  }
+
+  @override
+  void _updateElementAttributes(VOptGroupElement prev, OptGroupElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_label != prev._label) ele.label = _label;
   }
 }
 
 class VOptionElement extends VHtmlElement<OptionElement> {
+  @override
+  OptionElement _elementFactory() => new OptionElement();
+
   bool _defaultSelected;
   bool _defaultSelectedSet = false;
   bool get defaultSelected => _defaultSelected;
@@ -4623,19 +5767,33 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   }
 
   @override
-  OptionElement _elementFactory() => new OptionElement();
-  @override
   void _applyAttributesToElement(OptionElement ele) {
     super._applyAttributesToElement(ele);
-    if (_defaultSelectedSet) ele.defaultSelected = defaultSelected;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_labelSet) ele.label = label;
-    if (_selectedSet) ele.selected = selected;
-    if (_valueSet) ele.value = value;
+
+    if (_defaultSelectedSet) ele.defaultSelected = _defaultSelected;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_labelSet) ele.label = _label;
+    if (_selectedSet) ele.selected = _selected;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VOptionElement prev, OptionElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_defaultSelected != prev._defaultSelected)
+      ele.defaultSelected = _defaultSelected;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_label != prev._label) ele.label = _label;
+    if (_selected != prev._selected) ele.selected = _selected;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VOutputElement extends VHtmlElement<OutputElement> {
+  @override
+  OutputElement _elementFactory() => new OutputElement();
+
   String _defaultValue;
   bool _defaultValueSet = false;
   String get defaultValue => _defaultValue;
@@ -4661,26 +5819,43 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   }
 
   @override
-  OutputElement _elementFactory() => new OutputElement();
-  @override
   void _applyAttributesToElement(OutputElement ele) {
     super._applyAttributesToElement(ele);
-    if (_defaultValueSet) ele.defaultValue = defaultValue;
-    if (_nameSet) ele.name = name;
-    if (_valueSet) ele.value = value;
+
+    if (_defaultValueSet) ele.defaultValue = _defaultValue;
+    if (_nameSet) ele.name = _name;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VOutputElement prev, OutputElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
+    if (_name != prev._name) ele.name = _name;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VParagraphElement extends VHtmlElement<ParagraphElement> {
   @override
   ParagraphElement _elementFactory() => new ParagraphElement();
+
   @override
   void _applyAttributesToElement(ParagraphElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VParagraphElement prev, ParagraphElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VParamElement extends VHtmlElement<ParamElement> {
+  @override
+  ParamElement _elementFactory() => new ParamElement();
+
   String _name;
   bool _nameSet = false;
   String get name => _name;
@@ -4698,12 +5873,19 @@ class VParamElement extends VHtmlElement<ParamElement> {
   }
 
   @override
-  ParamElement _elementFactory() => new ParamElement();
-  @override
   void _applyAttributesToElement(ParamElement ele) {
     super._applyAttributesToElement(ele);
-    if (_nameSet) ele.name = name;
-    if (_valueSet) ele.value = value;
+
+    if (_nameSet) ele.name = _name;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VParamElement prev, ParamElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_name != prev._name) ele.name = _name;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
@@ -4713,18 +5895,32 @@ abstract class VPictureElement<T extends PictureElement>
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(covariant VPictureElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VPreElement extends VHtmlElement<PreElement> {
   @override
   PreElement _elementFactory() => new PreElement();
+
   @override
   void _applyAttributesToElement(PreElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VPreElement prev, PreElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VProgressElement extends VHtmlElement<ProgressElement> {
+  @override
+  ProgressElement _elementFactory() => new ProgressElement();
+
   num _max;
   bool _maxSet = false;
   num get max => _max;
@@ -4742,16 +5938,26 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   }
 
   @override
-  ProgressElement _elementFactory() => new ProgressElement();
-  @override
   void _applyAttributesToElement(ProgressElement ele) {
     super._applyAttributesToElement(ele);
-    if (_maxSet) ele.max = max;
-    if (_valueSet) ele.value = value;
+
+    if (_maxSet) ele.max = _max;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VProgressElement prev, ProgressElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_max != prev._max) ele.max = _max;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VQuoteElement extends VHtmlElement<QuoteElement> {
+  @override
+  QuoteElement _elementFactory() => new QuoteElement();
+
   String _cite;
   bool _citeSet = false;
   String get cite => _cite;
@@ -4761,15 +5967,24 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
   }
 
   @override
-  QuoteElement _elementFactory() => new QuoteElement();
-  @override
   void _applyAttributesToElement(QuoteElement ele) {
     super._applyAttributesToElement(ele);
-    if (_citeSet) ele.cite = cite;
+
+    if (_citeSet) ele.cite = _cite;
+  }
+
+  @override
+  void _updateElementAttributes(VQuoteElement prev, QuoteElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_cite != prev._cite) ele.cite = _cite;
   }
 }
 
 class VScriptElement extends VHtmlElement<ScriptElement> {
+  @override
+  ScriptElement _elementFactory() => new ScriptElement();
+
   bool _async;
   bool _asyncSet = false;
   bool get async => _async;
@@ -4835,22 +6050,38 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   }
 
   @override
-  ScriptElement _elementFactory() => new ScriptElement();
-  @override
   void _applyAttributesToElement(ScriptElement ele) {
     super._applyAttributesToElement(ele);
-    if (_asyncSet) ele.async = async;
-    if (_charsetSet) ele.charset = charset;
-    if (_crossOriginSet) ele.crossOrigin = crossOrigin;
-    if (_deferSet) ele.defer = defer;
-    if (_integritySet) ele.integrity = integrity;
-    if (_nonceSet) ele.nonce = nonce;
-    if (_srcSet) ele.src = src;
-    if (_typeSet) ele.type = type;
+
+    if (_asyncSet) ele.async = _async;
+    if (_charsetSet) ele.charset = _charset;
+    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
+    if (_deferSet) ele.defer = _defer;
+    if (_integritySet) ele.integrity = _integrity;
+    if (_nonceSet) ele.nonce = _nonce;
+    if (_srcSet) ele.src = _src;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(VScriptElement prev, ScriptElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_async != prev._async) ele.async = _async;
+    if (_charset != prev._charset) ele.charset = _charset;
+    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
+    if (_defer != prev._defer) ele.defer = _defer;
+    if (_integrity != prev._integrity) ele.integrity = _integrity;
+    if (_nonce != prev._nonce) ele.nonce = _nonce;
+    if (_src != prev._src) ele.src = _src;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
 class VSelectElement extends VHtmlElement<SelectElement> {
+  @override
+  SelectElement _elementFactory() => new SelectElement();
+
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
@@ -4924,28 +6155,49 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   }
 
   @override
-  SelectElement _elementFactory() => new SelectElement();
-  @override
   void _applyAttributesToElement(SelectElement ele) {
     super._applyAttributesToElement(ele);
-    if (_autofocusSet) ele.autofocus = autofocus;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_lengthSet) ele.length = length;
-    if (_multipleSet) ele.multiple = multiple;
-    if (_nameSet) ele.name = name;
-    if (_requiredSet) ele.required = required;
-    if (_selectedIndexSet) ele.selectedIndex = selectedIndex;
-    if (_sizeSet) ele.size = size;
-    if (_valueSet) ele.value = value;
+
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_lengthSet) ele.length = _length;
+    if (_multipleSet) ele.multiple = _multiple;
+    if (_nameSet) ele.name = _name;
+    if (_requiredSet) ele.required = _required;
+    if (_selectedIndexSet) ele.selectedIndex = _selectedIndex;
+    if (_sizeSet) ele.size = _size;
+    if (_valueSet) ele.value = _value;
+  }
+
+  @override
+  void _updateElementAttributes(VSelectElement prev, SelectElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_length != prev._length) ele.length = _length;
+    if (_multiple != prev._multiple) ele.multiple = _multiple;
+    if (_name != prev._name) ele.name = _name;
+    if (_required != prev._required) ele.required = _required;
+    if (_selectedIndex != prev._selectedIndex)
+      ele.selectedIndex = _selectedIndex;
+    if (_size != prev._size) ele.size = _size;
+    if (_value != prev._value) ele.value = _value;
   }
 }
 
 class VShadowElement extends VHtmlElement<ShadowElement> {
   @override
   ShadowElement _elementFactory() => new ShadowElement();
+
   @override
   void _applyAttributesToElement(ShadowElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VShadowElement prev, ShadowElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -4961,11 +6213,22 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
   @override
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
-    if (_nameSet) ele.name = name;
+
+    if (_nameSet) ele.name = _name;
+  }
+
+  @override
+  void _updateElementAttributes(covariant VSlotElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_name != prev._name) ele.name = _name;
   }
 }
 
 class VSourceElement extends VHtmlElement<SourceElement> {
+  @override
+  SourceElement _elementFactory() => new SourceElement();
+
   String _media;
   bool _mediaSet = false;
   String get media => _media;
@@ -5007,28 +6270,47 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   }
 
   @override
-  SourceElement _elementFactory() => new SourceElement();
-  @override
   void _applyAttributesToElement(SourceElement ele) {
     super._applyAttributesToElement(ele);
-    if (_mediaSet) ele.media = media;
-    if (_sizesSet) ele.sizes = sizes;
-    if (_srcSet) ele.src = src;
-    if (_srcsetSet) ele.srcset = srcset;
-    if (_typeSet) ele.type = type;
+
+    if (_mediaSet) ele.media = _media;
+    if (_sizesSet) ele.sizes = _sizes;
+    if (_srcSet) ele.src = _src;
+    if (_srcsetSet) ele.srcset = _srcset;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(VSourceElement prev, SourceElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_media != prev._media) ele.media = _media;
+    if (_sizes != prev._sizes) ele.sizes = _sizes;
+    if (_src != prev._src) ele.src = _src;
+    if (_srcset != prev._srcset) ele.srcset = _srcset;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
 class VSpanElement extends VHtmlElement<SpanElement> {
   @override
   SpanElement _elementFactory() => new SpanElement();
+
   @override
   void _applyAttributesToElement(SpanElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VSpanElement prev, SpanElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VStyleElement extends VHtmlElement<StyleElement> {
+  @override
+  StyleElement _elementFactory() => new StyleElement();
+
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
@@ -5054,26 +6336,44 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   }
 
   @override
-  StyleElement _elementFactory() => new StyleElement();
-  @override
   void _applyAttributesToElement(StyleElement ele) {
     super._applyAttributesToElement(ele);
-    if (_disabledSet) ele.disabled = disabled;
-    if (_mediaSet) ele.media = media;
-    if (_typeSet) ele.type = type;
+
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_mediaSet) ele.media = _media;
+    if (_typeSet) ele.type = _type;
+  }
+
+  @override
+  void _updateElementAttributes(VStyleElement prev, StyleElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_media != prev._media) ele.media = _media;
+    if (_type != prev._type) ele.type = _type;
   }
 }
 
 class VTableCaptionElement extends VHtmlElement<TableCaptionElement> {
   @override
   TableCaptionElement _elementFactory() => new TableCaptionElement();
+
   @override
   void _applyAttributesToElement(TableCaptionElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(
+      VTableCaptionElement prev, TableCaptionElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VTableCellElement extends VHtmlElement<TableCellElement> {
+  @override
+  TableCellElement _elementFactory() => new TableCellElement();
+
   int _colSpan;
   bool _colSpanSet = false;
   int get colSpan => _colSpan;
@@ -5099,17 +6399,28 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   }
 
   @override
-  TableCellElement _elementFactory() => new TableCellElement();
-  @override
   void _applyAttributesToElement(TableCellElement ele) {
     super._applyAttributesToElement(ele);
-    if (_colSpanSet) ele.colSpan = colSpan;
-    if (_headersSet) ele.headers = headers;
-    if (_rowSpanSet) ele.rowSpan = rowSpan;
+
+    if (_colSpanSet) ele.colSpan = _colSpan;
+    if (_headersSet) ele.headers = _headers;
+    if (_rowSpanSet) ele.rowSpan = _rowSpan;
+  }
+
+  @override
+  void _updateElementAttributes(VTableCellElement prev, TableCellElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_colSpan != prev._colSpan) ele.colSpan = _colSpan;
+    if (_headers != prev._headers) ele.headers = _headers;
+    if (_rowSpan != prev._rowSpan) ele.rowSpan = _rowSpan;
   }
 }
 
 class VTableColElement extends VHtmlElement<TableColElement> {
+  @override
+  TableColElement _elementFactory() => new TableColElement();
+
   int _span;
   bool _spanSet = false;
   int get span => _span;
@@ -5119,15 +6430,24 @@ class VTableColElement extends VHtmlElement<TableColElement> {
   }
 
   @override
-  TableColElement _elementFactory() => new TableColElement();
-  @override
   void _applyAttributesToElement(TableColElement ele) {
     super._applyAttributesToElement(ele);
-    if (_spanSet) ele.span = span;
+
+    if (_spanSet) ele.span = _span;
+  }
+
+  @override
+  void _updateElementAttributes(VTableColElement prev, TableColElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_span != prev._span) ele.span = _span;
   }
 }
 
 class VTableElement extends VHtmlElement<TableElement> {
+  @override
+  TableElement _elementFactory() => new TableElement();
+
   TableCaptionElement _caption;
   bool _captionSet = false;
   TableCaptionElement get caption => _caption;
@@ -5153,22 +6473,36 @@ class VTableElement extends VHtmlElement<TableElement> {
   }
 
   @override
-  TableElement _elementFactory() => new TableElement();
-  @override
   void _applyAttributesToElement(TableElement ele) {
     super._applyAttributesToElement(ele);
-    if (_captionSet) ele.caption = caption;
-    if (_tFootSet) ele.tFoot = tFoot;
-    if (_tHeadSet) ele.tHead = tHead;
+
+    if (_captionSet) ele.caption = _caption;
+    if (_tFootSet) ele.tFoot = _tFoot;
+    if (_tHeadSet) ele.tHead = _tHead;
+  }
+
+  @override
+  void _updateElementAttributes(VTableElement prev, TableElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_caption != prev._caption) ele.caption = _caption;
+    if (_tFoot != prev._tFoot) ele.tFoot = _tFoot;
+    if (_tHead != prev._tHead) ele.tHead = _tHead;
   }
 }
 
 class VTableRowElement extends VHtmlElement<TableRowElement> {
   @override
   TableRowElement _elementFactory() => new TableRowElement();
+
   @override
   void _applyAttributesToElement(TableRowElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VTableRowElement prev, TableRowElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -5178,18 +6512,32 @@ abstract class VTableSectionElement<T extends TableSectionElement>
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(covariant VTableSectionElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VTemplateElement extends VHtmlElement<TemplateElement> {
   @override
   TemplateElement _elementFactory() => new TemplateElement();
+
   @override
   void _applyAttributesToElement(TemplateElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VTemplateElement prev, TemplateElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VTextAreaElement extends VHtmlElement<TextAreaElement> {
+  @override
+  TextAreaElement _elementFactory() => new TextAreaElement();
+
   String _autocapitalize;
   bool _autocapitalizeSet = false;
   String get autocapitalize => _autocapitalize;
@@ -5343,42 +6691,78 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   }
 
   @override
-  TextAreaElement _elementFactory() => new TextAreaElement();
-  @override
   void _applyAttributesToElement(TextAreaElement ele) {
     super._applyAttributesToElement(ele);
-    if (_autocapitalizeSet) ele.autocapitalize = autocapitalize;
-    if (_autofocusSet) ele.autofocus = autofocus;
-    if (_colsSet) ele.cols = cols;
-    if (_defaultValueSet) ele.defaultValue = defaultValue;
-    if (_dirNameSet) ele.dirName = dirName;
-    if (_disabledSet) ele.disabled = disabled;
-    if (_inputModeSet) ele.inputMode = inputMode;
-    if (_maxLengthSet) ele.maxLength = maxLength;
-    if (_minLengthSet) ele.minLength = minLength;
-    if (_nameSet) ele.name = name;
-    if (_placeholderSet) ele.placeholder = placeholder;
-    if (_readOnlySet) ele.readOnly = readOnly;
-    if (_requiredSet) ele.required = required;
-    if (_rowsSet) ele.rows = rows;
-    if (_selectionDirectionSet) ele.selectionDirection = selectionDirection;
-    if (_selectionEndSet) ele.selectionEnd = selectionEnd;
-    if (_selectionStartSet) ele.selectionStart = selectionStart;
-    if (_valueSet) ele.value = value;
-    if (_wrapSet) ele.wrap = wrap;
+
+    if (_autocapitalizeSet) ele.autocapitalize = _autocapitalize;
+    if (_autofocusSet) ele.autofocus = _autofocus;
+    if (_colsSet) ele.cols = _cols;
+    if (_defaultValueSet) ele.defaultValue = _defaultValue;
+    if (_dirNameSet) ele.dirName = _dirName;
+    if (_disabledSet) ele.disabled = _disabled;
+    if (_inputModeSet) ele.inputMode = _inputMode;
+    if (_maxLengthSet) ele.maxLength = _maxLength;
+    if (_minLengthSet) ele.minLength = _minLength;
+    if (_nameSet) ele.name = _name;
+    if (_placeholderSet) ele.placeholder = _placeholder;
+    if (_readOnlySet) ele.readOnly = _readOnly;
+    if (_requiredSet) ele.required = _required;
+    if (_rowsSet) ele.rows = _rows;
+    if (_selectionDirectionSet) ele.selectionDirection = _selectionDirection;
+    if (_selectionEndSet) ele.selectionEnd = _selectionEnd;
+    if (_selectionStartSet) ele.selectionStart = _selectionStart;
+    if (_valueSet) ele.value = _value;
+    if (_wrapSet) ele.wrap = _wrap;
+  }
+
+  @override
+  void _updateElementAttributes(VTextAreaElement prev, TextAreaElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_autocapitalize != prev._autocapitalize)
+      ele.autocapitalize = _autocapitalize;
+    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
+    if (_cols != prev._cols) ele.cols = _cols;
+    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
+    if (_dirName != prev._dirName) ele.dirName = _dirName;
+    if (_disabled != prev._disabled) ele.disabled = _disabled;
+    if (_inputMode != prev._inputMode) ele.inputMode = _inputMode;
+    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
+    if (_minLength != prev._minLength) ele.minLength = _minLength;
+    if (_name != prev._name) ele.name = _name;
+    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
+    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
+    if (_required != prev._required) ele.required = _required;
+    if (_rows != prev._rows) ele.rows = _rows;
+    if (_selectionDirection != prev._selectionDirection)
+      ele.selectionDirection = _selectionDirection;
+    if (_selectionEnd != prev._selectionEnd) ele.selectionEnd = _selectionEnd;
+    if (_selectionStart != prev._selectionStart)
+      ele.selectionStart = _selectionStart;
+    if (_value != prev._value) ele.value = _value;
+    if (_wrap != prev._wrap) ele.wrap = _wrap;
   }
 }
 
 class VTitleElement extends VHtmlElement<TitleElement> {
   @override
   TitleElement _elementFactory() => new TitleElement();
+
   @override
   void _applyAttributesToElement(TitleElement ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(VTitleElement prev, TitleElement ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VTrackElement extends VHtmlElement<TrackElement> {
+  @override
+  TrackElement _elementFactory() => new TrackElement();
+
   bool _defaultValue;
   bool _defaultValueSet = false;
   bool get defaultValue => _defaultValue;
@@ -5420,24 +6804,40 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   }
 
   @override
-  TrackElement _elementFactory() => new TrackElement();
-  @override
   void _applyAttributesToElement(TrackElement ele) {
     super._applyAttributesToElement(ele);
-    if (_defaultValueSet) ele.defaultValue = defaultValue;
-    if (_kindSet) ele.kind = kind;
-    if (_labelSet) ele.label = label;
-    if (_srcSet) ele.src = src;
-    if (_srclangSet) ele.srclang = srclang;
+
+    if (_defaultValueSet) ele.defaultValue = _defaultValue;
+    if (_kindSet) ele.kind = _kind;
+    if (_labelSet) ele.label = _label;
+    if (_srcSet) ele.src = _src;
+    if (_srclangSet) ele.srclang = _srclang;
+  }
+
+  @override
+  void _updateElementAttributes(VTrackElement prev, TrackElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
+    if (_kind != prev._kind) ele.kind = _kind;
+    if (_label != prev._label) ele.label = _label;
+    if (_src != prev._src) ele.src = _src;
+    if (_srclang != prev._srclang) ele.srclang = _srclang;
   }
 }
 
 class VUListElement extends VHtmlElement<UListElement> {
   @override
   UListElement _elementFactory() => new UListElement();
+
   @override
   void _applyAttributesToElement(UListElement ele) {
     super._applyAttributesToElement(ele);
+  }
+
+  @override
+  void _updateElementAttributes(VUListElement prev, UListElement ele) {
+    super._updateElementAttributes(prev, ele);
   }
 }
 
@@ -5447,9 +6847,17 @@ abstract class VUnknownElement<T extends UnknownElement>
   void _applyAttributesToElement(T ele) {
     super._applyAttributesToElement(ele);
   }
+
+  @override
+  void _updateElementAttributes(covariant VUnknownElement<T> prev, T ele) {
+    super._updateElementAttributes(prev, ele);
+  }
 }
 
 class VVideoElement extends VMediaElement<VideoElement> {
+  @override
+  VideoElement _elementFactory() => new VideoElement();
+
   int _height;
   bool _heightSet = false;
   int get height => _height;
@@ -5475,12 +6883,20 @@ class VVideoElement extends VMediaElement<VideoElement> {
   }
 
   @override
-  VideoElement _elementFactory() => new VideoElement();
-  @override
   void _applyAttributesToElement(VideoElement ele) {
     super._applyAttributesToElement(ele);
-    if (_heightSet) ele.height = height;
-    if (_posterSet) ele.poster = poster;
-    if (_widthSet) ele.width = width;
+
+    if (_heightSet) ele.height = _height;
+    if (_posterSet) ele.poster = _poster;
+    if (_widthSet) ele.width = _width;
+  }
+
+  @override
+  void _updateElementAttributes(VVideoElement prev, VideoElement ele) {
+    super._updateElementAttributes(prev, ele);
+
+    if (_height != prev._height) ele.height = _height;
+    if (_poster != prev._poster) ele.poster = _poster;
+    if (_width != prev._width) ele.width = _width;
   }
 }

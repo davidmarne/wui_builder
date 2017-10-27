@@ -17,8 +17,38 @@ abstract class Component<P, S> extends VNode {
   P get props => _props;
   S get state => _state;
 
+  VNode render(P props, S state);
+
+  S getInitialState(props) => null;
+
+  void componentWillMount(P props, S state) {}
+  void componentDidMount(P props, S state) {}
+  void componentWillUnmount(P props, S state) {}
+  bool shouldComponentUpdate(
+          P prevProps, P nextProps, S prevState, S nextState) =>
+      true;
+  void componentWillUpdate(
+      P prevProps, P nextProps, S prevState, S nextState) {}
+  void componentDidUpdate(P prevProps, P nextProps, S prevState, S nextState) {}
+
   @mustCallSuper
-  void updateAsync({StateSetter<P, S> stateSetter}) {
+  void update({StateSetter<P, S> stateSetter}) {
+    final prevState = _state;
+    _state = stateSetter == null ? prevState : stateSetter(_props, prevState);
+    final newResult = render(_props, _state);
+    componentWillUpdate(_props, _props, prevState, _state);
+    _updateNode(
+      ref.parent,
+      newResult,
+      _renderResult,
+      ref.parent.children.indexOf(ref),
+    );
+    componentDidUpdate(_props, _props, prevState, _state);
+    _renderResult = newResult;
+  }
+
+  @mustCallSuper
+  void updateOnIdle({StateSetter<P, S> stateSetter}) {
     if (_pendingDeadline != null) {
       // update the state to what it would have been if the update did process
       if (_pendingStateSetter != null)
@@ -38,6 +68,7 @@ abstract class Component<P, S> extends VNode {
     int pendingWorkId;
     pendingWorkId = window.requestIdleCallback(
       (idleDeadline) async {
+
         // update the idleDeadline
         _pendingDeadline.refresh(idleDeadline);
 
@@ -70,37 +101,7 @@ abstract class Component<P, S> extends VNode {
     _pendingDeadline = new Deadline(pendingWorkId);
   }
 
-  @mustCallSuper
-  void update({StateSetter<P, S> stateSetter}) {
-    final prevState = _state;
-    _state = stateSetter == null ? prevState : stateSetter(_props, prevState);
-    final newResult = render(_props, _state);
-    componentWillUpdate(_props, _props, prevState, _state);
-    _updateNode(
-      ref.parent,
-      newResult,
-      _renderResult,
-      ref.parent.children.indexOf(ref),
-    );
-    componentDidUpdate(_props, _props, prevState, _state);
-    _renderResult = newResult;
-  }
-
   void _render(P props, S state) {
     _renderResult = render(props, state);
   }
-
-  VNode render(P props, S state);
-
-  S getInitialState(props) => null;
-
-  void componentWillMount(P props, S state) {}
-  void componentDidMount(P props, S state) {}
-  void componentWillUnmount(P props, S state) {}
-  bool shouldComponentUpdate(
-          P prevProps, P nextProps, S prevState, S nextState) =>
-      true;
-  void componentWillUpdate(
-      P prevProps, P nextProps, S prevState, S nextState) {}
-  void componentDidUpdate(P prevProps, P nextProps, S prevState, S nextState) {}
 }
