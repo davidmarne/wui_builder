@@ -1,29 +1,26 @@
 part of wui_builder;
 
-void _updateNode(Element parent, VNode newVNode, VNode oldVNode, int index) {
+void _updateNode(Element parent, Element node, VNode newVNode, VNode oldVNode) {
   if (oldVNode == null) {
     // if the old vnode is null create a new element and append it to the dom
     parent.append(_createNode(newVNode));
   } else if (newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
     _disposeVNode(oldVNode);
-    parent.children[index].remove();
+    node.remove();
   } else if (newVNode.runtimeType != oldVNode.runtimeType) {
     // if the new vnode is a different type, dispose the old and replace it with a new one
     _disposeVNode(oldVNode);
-    parent.children[index] = _createNode(newVNode);
+    node = _createNode(newVNode);
   } else if (newVNode is VElement) {
-    _updateElementNode(parent, newVNode, oldVNode, index);
+    _updateElementNode(parent, node, newVNode, oldVNode);
   } else if (newVNode is Component) {
-    _updateComponentNode(parent, newVNode, oldVNode, index);
+    _updateComponentNode(parent, node, newVNode, oldVNode);
   }
 }
 
 void _updateElementNode(
-    Element parent, VElement newVNode, VElement oldVNode, int index) {
-  // get the html element
-  final node = parent.children[index];
-
+    Element parent, Element node, VElement newVNode, VElement oldVNode) {
   // update attributes that have changed
   newVNode._updateElementAttributes(oldVNode, node);
 
@@ -34,20 +31,20 @@ void _updateElementNode(
   // update each child element
   final newLength = newVNode._childrenSet ? newVNode._children.length : 0;
   final oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0;
+  var child = node.children.isEmpty ? null : node.children.first;
   for (var i = 0; i < newLength || i < oldLength; i++) {
     _updateNode(
       node,
-      i < newVNode._children.length ? newVNode._children[i] : null,
-      i < oldVNode._children.length ? oldVNode._children[i] : null,
-      i > newLength - 1
-          ? newLength
-          : i, // if we are removing elements the index cannot go up
+      child,
+      i < newLength ? newVNode._children.elementAt(i) : null,
+      i < oldLength ? oldVNode._children.elementAt(i) : null,
     );
+    child = child != null ? child.nextNode : null;
   }
 }
 
 void _updateComponentNode(
-    Element parent, Component newVNode, Component oldVNode, int index) {
+    Element parent, Element node, Component newVNode, Component oldVNode) {
   // copy the state of the last node to the newly created node
   newVNode._state = oldVNode._state;
 
@@ -64,7 +61,7 @@ void _updateComponentNode(
   newVNode._render(newVNode._props, newVNode._state);
 
   // call update node for the new virtual tree
-  _updateNode(parent, newVNode._renderResult, oldVNode._renderResult, index);
+  _updateNode(parent, node, newVNode._renderResult, oldVNode._renderResult);
 
   // lifecycle - componentDidUpdate
   newVNode.componentDidUpdate(

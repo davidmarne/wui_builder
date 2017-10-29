@@ -33,30 +33,51 @@ abstract class Component<P, S> extends VNode {
 
   @mustCallSuper
   void update({StateSetter<P, S> stateSetter}) {
-    final prevState = _state;
-    _state = stateSetter == null ? prevState : stateSetter(_props, prevState);
-    final newResult = render(_props, _state);
-    componentWillUpdate(_props, _props, prevState, _state);
-    _updateNode(
-      ref.parent,
-      newResult,
-      _renderResult,
-      ref.parent.children.indexOf(ref),
-    );
-    componentDidUpdate(_props, _props, prevState, _state);
-    _renderResult = newResult;
-  }
+    var prevState = _state;
 
-  @mustCallSuper
-  void updateOnIdle({StateSetter<P, S> stateSetter}) {
+    // an update has been called since this render cycle was invoked
     if (_pendingDeadline != null) {
       // update the state to what it would have been if the update did process
-      if (_pendingStateSetter != null)
+      if (_pendingStateSetter != null) {
         _state = _pendingStateSetter(_props, _state);
+        prevState = _state;
+        _pendingStateSetter = null;
+      }
 
       // cancel the pending update to the component now, since we are updating
       // it during this update cycle
       _pendingDeadline.cancel();
+
+      // if the pending deadline hasn't started doing work null it out
+      // otherwise let it finish its call stack and null itself out
+      if (_pendingDeadline.hasNotStarted) _pendingDeadline = null;
+    }
+
+    _state = stateSetter == null ? prevState : stateSetter(_props, prevState);
+    final newResult = render(_props, _state);
+    componentWillUpdate(_props, _props, prevState, _state);
+    _updateNode(ref.parent, ref, newResult, _renderResult);
+    componentDidUpdate(_props, _props, prevState, _state);
+    _renderResult = newResult;
+  }
+
+  @experimental
+  @mustCallSuper
+  void updateOnIdle({StateSetter<P, S> stateSetter}) {
+    if (_pendingDeadline != null) {
+      // update the state to what it would have been if the update did process
+      if (_pendingStateSetter != null) {
+        _state = _pendingStateSetter(_props, _state);
+        _pendingStateSetter = null;
+      }
+
+      // cancel the pending update to the component now, since we are updating
+      // it during this update cycle
+      _pendingDeadline.cancel();
+
+      // if the pending deadline hasn't started doing work null it out
+      // otherwise let it finish its call stack and null itself out
+      if (_pendingDeadline.hasNotStarted) _pendingDeadline = null;
     }
 
     // save off the pending stateSetter so any previously invoked async updaters
@@ -68,7 +89,6 @@ abstract class Component<P, S> extends VNode {
     int pendingWorkId;
     pendingWorkId = window.requestIdleCallback(
       (idleDeadline) async {
-
         // update the idleDeadline
         _pendingDeadline.refresh(idleDeadline);
 
@@ -85,9 +105,9 @@ abstract class Component<P, S> extends VNode {
         await _updateNodeAsync(
           _pendingDeadline,
           ref.parent,
+          ref,
           _renderResult,
           prevRenderResult,
-          ref.parent.children.indexOf(ref),
         );
         componentDidUpdate(_props, _props, prevState, _state);
 

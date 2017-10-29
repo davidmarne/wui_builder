@@ -28,7 +28,7 @@ class Deadline {
 }
 
 Future<Deadline> _updateNodeAsync(Deadline deadline, Element parent,
-    VNode newVNode, VNode oldVNode, int index) async {
+    Element node, VNode newVNode, VNode oldVNode) async {
   // if the deadline has been cancelled bail
   if (deadline.isCancelled) return deadline;
 
@@ -48,33 +48,30 @@ Future<Deadline> _updateNodeAsync(Deadline deadline, Element parent,
   } else if (newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
     _disposeVNode(oldVNode);
-    parent.children[index]?.remove();
+    node.remove();
   } else if (newVNode.runtimeType != oldVNode.runtimeType) {
     // if the new vnode is a different type, dispose the old and replace it with a new one
     _disposeVNode(oldVNode);
-    parent.children[index] = _createNode(newVNode);
+    node = _createNode(newVNode);
   } else if (newVNode is VElement) {
     deadline = await _updateElementNodeAsync(
-        deadline, parent, newVNode, oldVNode, index);
+        deadline, parent, node, newVNode, oldVNode);
   } else if (newVNode is Component) {
     deadline = await _updateComponentNodeAsync(
-        deadline, parent, newVNode, oldVNode, index);
+        deadline, parent, node, newVNode, oldVNode);
   }
 
   return deadline;
 }
 
 Future<Deadline> _updateElementNodeAsync(Deadline deadline, Element parent,
-    VElement newVNode, VElement oldVNode, int index) async {
+    Element node, VElement newVNode, VElement oldVNode) async {
   // if an async update was cancelled causing a virtual dom to not
   // fully be rendered, we create the node now.
-  if (parent.children.length <= index) {
+  if (node == null) {
     parent.append(_createNode(newVNode));
     return deadline;
   }
-
-  // get the html element
-  final node = parent.children[index];
 
   // update attributes that have changed
   newVNode._updateElementAttributes(oldVNode, node);
@@ -86,25 +83,25 @@ Future<Deadline> _updateElementNodeAsync(Deadline deadline, Element parent,
   // update each child element
   final newLength = newVNode._childrenSet ? newVNode._children.length : 0;
   final oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0;
+  var child = node.children.isEmpty ? null : node.children.first;
   for (var i = 0; i < newLength || i < oldLength; i++) {
     deadline = await _updateNodeAsync(
       deadline,
       node,
-      i < newVNode._children.length ? newVNode._children.elementAt(i) : null,
-      i < oldVNode._children.length ? oldVNode._children.elementAt(i) : null,
-      i > newLength - 1
-          ? newLength
-          : i, // if we are removing elements the index cannot go up
+      child,
+      i < newLength ? newVNode._children.elementAt(i) : null,
+      i < oldLength ? oldVNode._children.elementAt(i) : null,
     );
 
     // quit updating children if the deadline was cancelled
     if (deadline.isCancelled) return deadline;
+    child = child != null ? child.nextNode : null;
   }
   return deadline;
 }
 
 Future<Deadline> _updateComponentNodeAsync(Deadline deadline, Element parent,
-    Component newVNode, Component oldVNode, int index) async {
+    Element node, Component newVNode, Component oldVNode) async {
   var nextState = oldVNode._state;
 
   // an update has been called since this render cycle was invoked
@@ -140,16 +137,16 @@ Future<Deadline> _updateComponentNodeAsync(Deadline deadline, Element parent,
   // build the new virtual tree
   newVNode._render(newVNode._props, newVNode._state);
 
-    // call update node for the new virtual tree
+  // call update node for the new virtual tree
   deadline = await _updateNodeAsync(
     deadline,
     parent,
+    node,
     newVNode._renderResult,
     oldVNode._renderResult,
-    index,
   );
 
-    // lifecycle - componentDidUpdate
+  // lifecycle - componentDidUpdate
   newVNode.componentDidUpdate(
       oldVNode._props, newVNode._props, oldVNode._state, newVNode._state);
   return deadline;

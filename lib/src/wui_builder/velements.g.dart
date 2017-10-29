@@ -735,11 +735,10 @@ abstract class VElement<E extends Element> extends VNode {
 
   StyleBuilder styleBuilder;
 
-  List<VNode> _children;
+  Iterable<VNode> _children;
   bool _childrenSet = false;
-  List<VNode> get children => _children;
+  Iterable<VNode> get children => _children;
   void set children(Iterable<VNode> c) {
-    print('tolist');
     _children = c.toList();
     _childrenSet = true;
   }

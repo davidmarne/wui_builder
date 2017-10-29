@@ -95,7 +95,7 @@ void main(List<String> args) {
 
   final formatter = new DartFormatter();
   final formatted = formatter.format(result.toString());
-  new File('lib/src/velements.g.dart').writeAsStringSync(formatted);
+  new File('lib/src/wui_builder/velements.g.dart').writeAsStringSync(formatted);
 }
 
 // resolves the ast structure
