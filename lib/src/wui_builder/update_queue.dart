@@ -8,12 +8,12 @@ void _runIdle() {
   _pendingIdleId = window.requestIdleCallback((deadline) {
     // run the update cycle for each update in the queue
     while (!_activeFibers.isEmpty) {
-      // break out of the loop if the timeout is hit
-      if (deadline.timeRemaining() < 1) break;
-
       // remove the update at the head of the queue and resume it
       final update = _activeFibers.removeAt(0);
       _resumeUpdate(deadline, update);
+
+      // break out of the loop if the timeout is hit
+      if (deadline.timeRemaining() < 1) break;
     }
 
     // nullify _pendingIdleId to indicate no idle callback is being waited for
@@ -55,8 +55,8 @@ void _resumeUpdate(IdleDeadline deadline, _UpdateTracker tracker) {
 
 void _doPendingWork(_UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
-  while (!tracker.pendingWork.isEmpty) {
-    if (tracker.pendingWork.last is _ChildrenUpdate)
+  while (!tracker.pendingCursors.isEmpty) {
+    if (tracker.pendingCursors.last.cursorType == _PendingCursors.Iterable)
       _updateElementChildren(tracker);
     else
       _finishComponentUpdate(tracker);

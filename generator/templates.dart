@@ -4,14 +4,14 @@ String vElement(Iterable setters, Iterable events) => '''
   abstract class VElement<E extends Element> extends VNode {
     E _elementFactory();
     
-    bool shouldUpdateSubs = false;
+    bool _shouldUpdateSubs = false;
 
     StyleBuilder styleBuilder;
 
-    Iterable<VNode> _children;
+    List<VNode> _children = new List<VNode>();
     bool _childrenSet = false;
-    Iterable<VNode> get children => _children;
-    void set children(Iterable<VNode> c) {
+    List<VNode> get children => _children;
+    void set children(List<VNode> c) {
       _children = c.toList();
       _childrenSet = true;
     }
@@ -167,6 +167,7 @@ String eventDeclarationTemplate(VEvent event) => '''
     void set ${event.name}(${event.type} v) {
         _${event.name} = v;
         _${event.name}Set = true;
+        _shouldUpdateSubs = true;
     }''';
 
 String eventSetTemplate(VEvent event) =>

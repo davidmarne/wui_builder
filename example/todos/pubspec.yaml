@@ -6,6 +6,8 @@ dependencies:
   wui_builder:
     path: ../../
 
+  meta: '^1.0.0'
+  
 transformers:
   - $dart2js
 

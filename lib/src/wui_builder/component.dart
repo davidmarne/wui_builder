@@ -2,6 +2,8 @@ part of wui_builder;
 
 typedef S StateSetter<P, S>(P props, S prevState);
 
+// abstract class Component<P, S> extends VNode {}
+
 abstract class Component<P, S> extends VNode {
   P _props;
   S _state;
@@ -34,10 +36,14 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void update({StateSetter<P, S> stateSetter}) {
     _pendingUpdateTracker?.cancel();
-    if (_pendingStateSetter != null)
-      _state = _pendingStateSetter(props, _state);
-    _pendingStateSetter = stateSetter;
-    _pendingUpdateTracker = new _UpdateTracker.sync(ref, this, this);
+
+    // if there is already a _pendingStateSetter combine it with stateSetter
+    if (_pendingStateSetter != null && stateSetter != null) {
+      final prevStateSetter = _pendingStateSetter;
+      _pendingStateSetter = (P p, S s) => stateSetter(p, prevStateSetter(p, s));
+    } else if (stateSetter != null) _pendingStateSetter = stateSetter;
+
+    _pendingUpdateTracker = new _UpdateTracker.sync(ref, this, _state);
     _update(_pendingUpdateTracker);
   }
 
@@ -45,10 +51,13 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void updateOnIdle({StateSetter<P, S> stateSetter}) {
     _pendingUpdateTracker?.cancel();
-    if (_pendingStateSetter != null)
-      _state = _pendingStateSetter(props, _state);
-    _pendingStateSetter = stateSetter;
-    _pendingUpdateTracker = new _UpdateTracker.async(ref, this, this);
+    // if there is already a _pendingStateSetter combine it with stateSetter
+    if (_pendingStateSetter != null && stateSetter != null) {
+      final prevStateSetter = _pendingStateSetter;
+      _pendingStateSetter = (P p, S s) => stateSetter(p, prevStateSetter(p, s));
+    } else if (stateSetter != null) _pendingStateSetter = stateSetter;
+
+    _pendingUpdateTracker = new _UpdateTracker.async(ref, this, _state);
     _queueNewUpdate(_pendingUpdateTracker);
   }
 

@@ -731,14 +731,14 @@ class VDivElement extends VHtmlElement<DivElement> {
 abstract class VElement<E extends Element> extends VNode {
   E _elementFactory();
 
-  bool shouldUpdateSubs = false;
+  bool _shouldUpdateSubs = false;
 
   StyleBuilder styleBuilder;
 
-  Iterable<VNode> _children;
+  List<VNode> _children = new List<VNode>();
   bool _childrenSet = false;
-  Iterable<VNode> get children => _children;
-  void set children(Iterable<VNode> c) {
+  List<VNode> get children => _children;
+  void set children(List<VNode> c) {
     _children = c.toList();
     _childrenSet = true;
   }
@@ -926,6 +926,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onAbort(EventHandler<Event> v) {
     _onAbort = v;
     _onAbortSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBeforeCopySub;
@@ -935,6 +936,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBeforeCopy(EventHandler<Event> v) {
     _onBeforeCopy = v;
     _onBeforeCopySet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBeforeCutSub;
@@ -944,6 +946,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBeforeCut(EventHandler<Event> v) {
     _onBeforeCut = v;
     _onBeforeCutSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBeforePasteSub;
@@ -953,6 +956,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBeforePaste(EventHandler<Event> v) {
     _onBeforePaste = v;
     _onBeforePasteSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBlurSub;
@@ -962,6 +966,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBlur(EventHandler<Event> v) {
     _onBlur = v;
     _onBlurSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCanPlaySub;
@@ -971,6 +976,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCanPlay(EventHandler<Event> v) {
     _onCanPlay = v;
     _onCanPlaySet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCanPlayThroughSub;
@@ -980,6 +986,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCanPlayThrough(EventHandler<Event> v) {
     _onCanPlayThrough = v;
     _onCanPlayThroughSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onChangeSub;
@@ -989,6 +996,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onChange(EventHandler<Event> v) {
     _onChange = v;
     _onChangeSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onClickSub;
@@ -998,6 +1006,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onClick(EventHandler<MouseEvent> v) {
     _onClick = v;
     _onClickSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onContextMenuSub;
@@ -1007,6 +1016,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onContextMenu(EventHandler<MouseEvent> v) {
     _onContextMenu = v;
     _onContextMenuSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCopySub;
@@ -1016,6 +1026,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCopy(EventHandler<ClipboardEvent> v) {
     _onCopy = v;
     _onCopySet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCutSub;
@@ -1025,6 +1036,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCut(EventHandler<ClipboardEvent> v) {
     _onCut = v;
     _onCutSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDoubleClickSub;
@@ -1034,6 +1046,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDoubleClick(EventHandler<Event> v) {
     _onDoubleClick = v;
     _onDoubleClickSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragSub;
@@ -1043,6 +1056,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDrag(EventHandler<MouseEvent> v) {
     _onDrag = v;
     _onDragSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragEndSub;
@@ -1052,6 +1066,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragEnd(EventHandler<MouseEvent> v) {
     _onDragEnd = v;
     _onDragEndSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragEnterSub;
@@ -1061,6 +1076,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragEnter(EventHandler<MouseEvent> v) {
     _onDragEnter = v;
     _onDragEnterSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragLeaveSub;
@@ -1070,6 +1086,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragLeave(EventHandler<MouseEvent> v) {
     _onDragLeave = v;
     _onDragLeaveSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragOverSub;
@@ -1079,6 +1096,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragOver(EventHandler<MouseEvent> v) {
     _onDragOver = v;
     _onDragOverSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragStartSub;
@@ -1088,6 +1106,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragStart(EventHandler<MouseEvent> v) {
     _onDragStart = v;
     _onDragStartSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDropSub;
@@ -1097,6 +1116,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDrop(EventHandler<MouseEvent> v) {
     _onDrop = v;
     _onDropSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDurationChangeSub;
@@ -1106,6 +1126,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDurationChange(EventHandler<Event> v) {
     _onDurationChange = v;
     _onDurationChangeSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onEmptiedSub;
@@ -1115,6 +1136,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onEmptied(EventHandler<Event> v) {
     _onEmptied = v;
     _onEmptiedSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onEndedSub;
@@ -1124,6 +1146,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onEnded(EventHandler<Event> v) {
     _onEnded = v;
     _onEndedSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onErrorSub;
@@ -1133,6 +1156,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onError(EventHandler<Event> v) {
     _onError = v;
     _onErrorSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onFocusSub;
@@ -1142,6 +1166,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onFocus(EventHandler<Event> v) {
     _onFocus = v;
     _onFocusSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onInputSub;
@@ -1151,6 +1176,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onInput(EventHandler<Event> v) {
     _onInput = v;
     _onInputSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onInvalidSub;
@@ -1160,6 +1186,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onInvalid(EventHandler<Event> v) {
     _onInvalid = v;
     _onInvalidSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onKeyDownSub;
@@ -1169,6 +1196,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onKeyDown(EventHandler<KeyboardEvent> v) {
     _onKeyDown = v;
     _onKeyDownSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onKeyPressSub;
@@ -1178,6 +1206,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onKeyPress(EventHandler<KeyboardEvent> v) {
     _onKeyPress = v;
     _onKeyPressSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onKeyUpSub;
@@ -1187,6 +1216,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onKeyUp(EventHandler<KeyboardEvent> v) {
     _onKeyUp = v;
     _onKeyUpSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onLoadSub;
@@ -1196,6 +1226,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onLoad(EventHandler<Event> v) {
     _onLoad = v;
     _onLoadSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onLoadedDataSub;
@@ -1205,6 +1236,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onLoadedData(EventHandler<Event> v) {
     _onLoadedData = v;
     _onLoadedDataSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onLoadedMetadataSub;
@@ -1214,6 +1246,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onLoadedMetadata(EventHandler<Event> v) {
     _onLoadedMetadata = v;
     _onLoadedMetadataSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseDownSub;
@@ -1223,6 +1256,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseDown(EventHandler<MouseEvent> v) {
     _onMouseDown = v;
     _onMouseDownSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseEnterSub;
@@ -1232,6 +1266,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseEnter(EventHandler<MouseEvent> v) {
     _onMouseEnter = v;
     _onMouseEnterSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseLeaveSub;
@@ -1241,6 +1276,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseLeave(EventHandler<MouseEvent> v) {
     _onMouseLeave = v;
     _onMouseLeaveSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseMoveSub;
@@ -1250,6 +1286,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseMove(EventHandler<MouseEvent> v) {
     _onMouseMove = v;
     _onMouseMoveSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseOutSub;
@@ -1259,6 +1296,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseOut(EventHandler<MouseEvent> v) {
     _onMouseOut = v;
     _onMouseOutSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseOverSub;
@@ -1268,6 +1306,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseOver(EventHandler<MouseEvent> v) {
     _onMouseOver = v;
     _onMouseOverSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseUpSub;
@@ -1277,6 +1316,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseUp(EventHandler<MouseEvent> v) {
     _onMouseUp = v;
     _onMouseUpSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseWheelSub;
@@ -1286,6 +1326,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseWheel(EventHandler<WheelEvent> v) {
     _onMouseWheel = v;
     _onMouseWheelSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPasteSub;
@@ -1295,6 +1336,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPaste(EventHandler<ClipboardEvent> v) {
     _onPaste = v;
     _onPasteSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPauseSub;
@@ -1304,6 +1346,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPause(EventHandler<Event> v) {
     _onPause = v;
     _onPauseSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPlaySub;
@@ -1313,6 +1356,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPlay(EventHandler<Event> v) {
     _onPlay = v;
     _onPlaySet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPlayingSub;
@@ -1322,6 +1366,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPlaying(EventHandler<Event> v) {
     _onPlaying = v;
     _onPlayingSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onRateChangeSub;
@@ -1331,6 +1376,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onRateChange(EventHandler<Event> v) {
     _onRateChange = v;
     _onRateChangeSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onResetSub;
@@ -1340,6 +1386,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onReset(EventHandler<Event> v) {
     _onReset = v;
     _onResetSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onResizeSub;
@@ -1349,6 +1396,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onResize(EventHandler<Event> v) {
     _onResize = v;
     _onResizeSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onScrollSub;
@@ -1358,6 +1406,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onScroll(EventHandler<Event> v) {
     _onScroll = v;
     _onScrollSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSearchSub;
@@ -1367,6 +1416,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSearch(EventHandler<Event> v) {
     _onSearch = v;
     _onSearchSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSeekedSub;
@@ -1376,6 +1426,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSeeked(EventHandler<Event> v) {
     _onSeeked = v;
     _onSeekedSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSeekingSub;
@@ -1385,6 +1436,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSeeking(EventHandler<Event> v) {
     _onSeeking = v;
     _onSeekingSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSelectSub;
@@ -1394,6 +1446,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSelect(EventHandler<Event> v) {
     _onSelect = v;
     _onSelectSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSelectStartSub;
@@ -1403,6 +1456,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSelectStart(EventHandler<Event> v) {
     _onSelectStart = v;
     _onSelectStartSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onStalledSub;
@@ -1412,6 +1466,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onStalled(EventHandler<Event> v) {
     _onStalled = v;
     _onStalledSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSubmitSub;
@@ -1421,6 +1476,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSubmit(EventHandler<Event> v) {
     _onSubmit = v;
     _onSubmitSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSuspendSub;
@@ -1430,6 +1486,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSuspend(EventHandler<Event> v) {
     _onSuspend = v;
     _onSuspendSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTimeUpdateSub;
@@ -1439,6 +1496,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTimeUpdate(EventHandler<Event> v) {
     _onTimeUpdate = v;
     _onTimeUpdateSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchCancelSub;
@@ -1448,6 +1506,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchCancel(EventHandler<TouchEvent> v) {
     _onTouchCancel = v;
     _onTouchCancelSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchEndSub;
@@ -1457,6 +1516,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchEnd(EventHandler<TouchEvent> v) {
     _onTouchEnd = v;
     _onTouchEndSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchEnterSub;
@@ -1466,6 +1526,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchEnter(EventHandler<TouchEvent> v) {
     _onTouchEnter = v;
     _onTouchEnterSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchLeaveSub;
@@ -1475,6 +1536,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchLeave(EventHandler<TouchEvent> v) {
     _onTouchLeave = v;
     _onTouchLeaveSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchMoveSub;
@@ -1484,6 +1546,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchMove(EventHandler<TouchEvent> v) {
     _onTouchMove = v;
     _onTouchMoveSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchStartSub;
@@ -1493,6 +1556,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchStart(EventHandler<TouchEvent> v) {
     _onTouchStart = v;
     _onTouchStartSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTransitionEndSub;
@@ -1502,6 +1566,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTransitionEnd(EventHandler<TransitionEvent> v) {
     _onTransitionEnd = v;
     _onTransitionEndSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onVolumeChangeSub;
@@ -1511,6 +1576,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onVolumeChange(EventHandler<Event> v) {
     _onVolumeChange = v;
     _onVolumeChangeSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onWaitingSub;
@@ -1520,6 +1586,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onWaiting(EventHandler<Event> v) {
     _onWaiting = v;
     _onWaitingSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onFullscreenChangeSub;
@@ -1529,6 +1596,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onFullscreenChange(EventHandler<Event> v) {
     _onFullscreenChange = v;
     _onFullscreenChangeSet = true;
+    _shouldUpdateSubs = true;
   }
 
   StreamSubscription _onFullscreenErrorSub;
@@ -1538,6 +1606,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onFullscreenError(EventHandler<Event> v) {
     _onFullscreenError = v;
     _onFullscreenErrorSet = true;
+    _shouldUpdateSubs = true;
   }
 
   void _applyAttributesToElement(E ele) {
