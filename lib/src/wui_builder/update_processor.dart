@@ -184,11 +184,13 @@ void _finishComponentUpdate(_UpdateTracker tracker) {
     oldVNode._pendingStateSetter = null;
     newVNode._pendingUpdateTracker = null;
     final parent = oldVNode.parent;
-    if (parent.vNodeType == VNodeTypes.Component) {
-      (parent as Component)._renderResult = newVNode;
-    } else {
-      final enode = (parent as VElement);
-      enode.children[enode.children.indexOf(oldVNode)] = newVNode;
+    if (parent != null) {
+      if (parent.vNodeType == VNodeTypes.Component) {
+        (parent as Component)._renderResult = newVNode;
+      } else {
+        final enode = parent as VElement;
+        enode.children[enode.children.indexOf(oldVNode)] = newVNode;
+      }
     }
   }
 
