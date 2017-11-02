@@ -740,7 +740,7 @@ abstract class VElement<E extends Element> extends VNode {
   List<VNode> _children = new List<VNode>();
   bool _childrenSet = false;
   List<VNode> get children => _children;
-  void set children(List<VNode> c) {
+  void set children(Iterable<VNode> c) {
     _children = c.toList();
     _childrenSet = true;
   }
