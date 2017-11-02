@@ -1,8 +1,11 @@
 name: wui_builder
-version: 0.0.0
+version: 0.0.1
 homepage: https://github.com/davidmarne/wui_builder
 author: David Marne <davemarne@gmail.com>
 description: A ui framework for dart web apps that leverages a virtual dom.
+
+dependencies:
+  meta: '^1.0.0'
 
 dev_dependencies:
   analyzer: '>=0.29.0 <0.31.0'
@@ -10,7 +13,6 @@ dev_dependencies:
   dart_style: '>=0.2.4 <2.0.0'
   coverage: ^0.7.3
   test: "^0.12.0"
-  meta: '^1.0.0'
 
 transformers:
   - $dart2js
