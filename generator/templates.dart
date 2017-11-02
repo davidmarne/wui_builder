@@ -2,6 +2,8 @@ import 'parsing.dart';
 
 String vElement(Iterable setters, Iterable events) => '''
   abstract class VElement<E extends Element> extends VNode {
+    final vNodeType = VNodeTypes.Element;
+
     E _elementFactory();
     
     bool _shouldUpdateSubs = false;

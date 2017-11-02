@@ -5,6 +5,8 @@ typedef S StateSetter<P, S>(P props, S prevState);
 // abstract class Component<P, S> extends VNode {}
 
 abstract class Component<P, S> extends VNode {
+  final vNodeType = VNodeTypes.Component;
+
   P _props;
   S _state;
 

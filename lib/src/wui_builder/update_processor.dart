@@ -10,14 +10,14 @@ void _update(_UpdateTracker tracker) {
     // if the new vnode is null dispose of it and remove it from the dom
     _disposeVNode(tracker.cursor.oldVNode);
     tracker.cursor.node.remove();
-  } else if (tracker.cursor.newVNode.runtimeType !=
-      tracker.cursor.oldVNode.runtimeType) {
-    // if the new vnode is a different type, dispose the old and replace it with a new one
+  } else if (tracker.cursor.newVNode.vNodeType !=
+      tracker.cursor.oldVNode.vNodeType) {
+    // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     _disposeVNode(tracker.cursor.oldVNode);
     tracker.cursor.node = _createNode(tracker.cursor.newVNode);
-  } else if (tracker.cursor.newVNode is VElement) {
+  } else if (tracker.cursor.newVNode.vNodeType == VNodeTypes.Element) {
     _updateElement(tracker);
-  } else if (tracker.cursor.newVNode is Component) {
+  } else {
     _updateComponent(tracker);
   }
 }
@@ -173,7 +173,6 @@ void _finishComponentUpdate(_UpdateTracker tracker) {
   final newVNode = cursor.newVNode as Component;
   final oldVNode = cursor.oldVNode as Component;
 
-
   // lifecycle - componentDidUpdate
   newVNode.componentDidUpdate(
       cursor.prevProps, cursor.nextProps, cursor.prevState, cursor.nextState);
@@ -185,10 +184,12 @@ void _finishComponentUpdate(_UpdateTracker tracker) {
     oldVNode._pendingStateSetter = null;
     newVNode._pendingUpdateTracker = null;
     final parent = oldVNode.parent;
-    if (parent is Component)
-      parent._renderResult = newVNode;
-    else if (parent is VElement)
-      parent.children[parent.children.indexOf(oldVNode)] = newVNode;
+    if (parent.vNodeType == VNodeTypes.Component) {
+      (parent as Component)._renderResult = newVNode;
+    } else {
+      final enode = (parent as VElement);
+      enode.children[enode.children.indexOf(oldVNode)] = newVNode;
+    }
   }
 
   // we done homie
@@ -197,8 +198,10 @@ void _finishComponentUpdate(_UpdateTracker tracker) {
 
 // calls the necessary methods to clean up a vnode
 void _disposeVNode(VNode node) {
-  if (node is Component)
-    node.componentWillUnmount(node._props, node._state);
-  else
+  if (node.vNodeType == VNodeTypes.Component) {
+    final cnode = (node as Component);
+    cnode.componentWillUnmount(cnode._props, cnode._state);
+  } else {
     (node as VElement).dispose();
+  }
 }
