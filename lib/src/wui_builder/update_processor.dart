@@ -83,7 +83,6 @@ bool _updateElementChildren(_UpdateTracker tracker) {
   final oldVNode = cursor.oldVNode as VElement;
   final newVNode = cursor.newVNode as VElement;
   while (cursor.index < cursor.newLength || cursor.index < cursor.oldLength) {
-
     final newChildVNode = cursor.index < cursor.newLength
         ? newVNode._children.elementAt(cursor.index)
         : null;

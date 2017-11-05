@@ -30,9 +30,9 @@ Element _createComponentNode(Component vnode) {
   vnode._state = vnode.getInitialState();
   vnode.componentWillMount();
   vnode._render();
+  vnode._renderResult.parent = vnode;
   final domNode = _createNode(vnode._renderResult);
   vnode.ref = domNode;
   vnode.componentDidMount();
-  vnode._renderResult.parent = vnode;
   return domNode;
 }

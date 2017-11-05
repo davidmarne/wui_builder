@@ -1,8 +1,6 @@
 import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';
 
-String expectedText(int p, int s) => '$p $s';
-
 typedef void TestComponentWillMount(int props, int state);
 typedef void TestComponentDidMount(int props, int state);
 typedef bool TestShouldComponentUpdate(
@@ -20,15 +18,19 @@ class TestComponentProps {
   TestComponentWillUpdate componentWillUpdate;
   TestComponentDidUpdate componentDidUpdate;
   TestComponentWillUnmount componentWillUnmount;
+  int context;
   int baseProps;
+  ChildFactory child;
 }
 
-class TestComponent
-    extends Component<TestComponentProps, TestComponentProps> {
+class TestComponent extends Component<TestComponentProps, TestComponentProps> {
   TestComponent(TestComponentProps props) : super(props);
 
   @override
   TestComponentProps getInitialState() => props;
+
+  @override
+  Map<String, dynamic> getChildContext() => <String, dynamic>{testContextKey: props.context};
 
   void updateState(TestComponentProps p) {
     update(stateSetter: (_1, _2) => p);
@@ -79,8 +81,7 @@ class TestComponent
 
   @override
   VNode render() {
-    return new VDivElement()
-      ..text = expectedText(props.baseProps, state.baseProps);
+    return props.child(props.baseProps, state.baseProps);
   }
 }
 
@@ -152,3 +153,28 @@ void failOnComponentWillUpdate(dynamic acutalPrevProps, dynamic actualNextProps,
 void failOnComponentDidUpdate(dynamic acutalPrevProps, dynamic actualNextProps,
         dynamic actualPrevState, dynamic actualNextState) =>
     fail('failOnComponentDidUpdate');
+
+typedef VNode ChildFactory(int p, int s);
+String expectedText(int p, int s) => '$p $s';
+VNode propStateText(int p, int s) =>
+    new VDivElement()..text = expectedText(p, s);
+
+final testContextKey = 'testContextKey';
+String expectedTextContext(int p, int s, int c) => '$p $s $c';
+VNode propStateContextText(int p, int s) => new TestContextComponent(
+      new TestContextComponentProps()
+        ..p = p
+        ..s = s,
+    );
+
+class TestContextComponentProps {
+  int p;
+  int s;
+}
+
+class TestContextComponent extends Component<TestContextComponentProps, Null> {
+  TestContextComponent(TestContextComponentProps props) : super(props);
+  render() => new VDivElement()
+    ..text =
+        expectedTextContext(props.p, props.s, context[testContextKey] as int);
+}

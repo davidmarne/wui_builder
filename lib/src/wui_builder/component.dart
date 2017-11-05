@@ -20,11 +20,12 @@ abstract class Component<P, S> extends VNode {
 
   P get props => _props;
   S get state => _state;
-  Map<String, dynamic> get context => _context ??= _findContext();
+  Map<String, dynamic> get context => _context ??= getChildContext()..addAll(_findContext());
 
   VNode render();
 
   S getInitialState() => null;
+  Map<String, dynamic> getChildContext() => <String, dynamic>{};
 
   void componentWillMount() {}
   void componentDidMount() {}
@@ -66,9 +67,9 @@ abstract class Component<P, S> extends VNode {
     VNode current = parent;
     while (current != null) {
       if (current.vNodeType == VNodeTypes.Component)
-        return (current as Component<dynamic, dynamic>)._context;
+        return (current as Component<dynamic, dynamic>).context;
       current = current.parent;
     }
-    return null;
+    return <String, dynamic>{};
   }
 }
