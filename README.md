@@ -36,11 +36,11 @@ render(component, querySelector('#container'));
 ## Custom components
 
 ```dart
-class HelloWorld extends Component<Null, Null> {
+class HelloWorld extends PropComponent<Null> {
     HelloWorld(props) : super(props);
 
     @override
-    VNode render(props, state) => new VDivElement()
+    VNode render() => new VDivElement()
         ..text = 'Hello world';
 }
 
@@ -59,11 +59,11 @@ class HelloWorldProps {
     String text;
 }
 
-class HelloWorld extends Component<HelloWorldProps, Null> {
+class HelloWorld extends PropComponent<HelloWorldProps> {
     HelloWorld(props) : super(props);
 
     @override
-    VNode render(props, state) => new VDivElement()
+    VNode render() => new VDivElement()
         ..text = props.text;
 }
 
@@ -88,12 +88,12 @@ class HelloWorld extends Component<Null, HelloWorldState> {
     HelloWorld(props) : super(props);
 
     @override
-    VNode render(props, state) => new VDivElement()
+    VNode render() => new VDivElement()
         ..text = state.text
         ..onClick = _onClick;
 
     @override
-    HelloWorldState getInitialState(_) => new HelloWorldState()
+    HelloWorldState getInitialState() => new HelloWorldState()
         ..text = 'Hello world';
 
     void _onClick(_) {
