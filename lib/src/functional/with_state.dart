@@ -26,11 +26,11 @@ class WithStateProps<InnerP, S, OutterP>
 }
 
 class WithState<InnerP, S, OutterP>
-    extends Component<WithStateProps<InnerP, S, OutterP>, S> {
+    extends Component<WithStateProps<InnerP, S, OutterP>, S, Null> {
   WithState(WithStateProps<InnerP, S, OutterP> props) : super(props);
 
   @override
-  getInitialState(props) => props.defaultState;
+  S getInitialState() => props.defaultState;
 
   void _setState(StateSetter<InnerP, S> s) {
     update(
@@ -38,6 +38,6 @@ class WithState<InnerP, S, OutterP>
             s(props.baseProps, state));
   }
 
-  render(props, state) =>
+  render() =>
       props.baseComponent(props.mapper(props.baseProps, state, _setState));
 }

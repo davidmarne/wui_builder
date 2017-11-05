@@ -44,8 +44,9 @@ ContainerProps stateMapper(
         });
       });
 
-var container = withState<Null, Iterable<Todo>, ContainerProps>(
-    [], stateMapper)(_container);
+FunctionalComponent<Null> container =
+    withState<Null, Iterable<Todo>, ContainerProps>([], stateMapper)(
+        _container);
 
 VNode _container(ContainerProps props) => new VDivElement()
   ..children = [

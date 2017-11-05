@@ -22,7 +22,7 @@ void _update(_UpdateTracker tracker) {
   }
 }
 
-_updateElement(_UpdateTracker tracker) {
+void _updateElement(_UpdateTracker tracker) {
   final oldVNode = tracker.cursor.oldVNode as VElement;
   final newVNode = tracker.cursor.newVNode as VElement;
   // if an async tracker was cancelled causing a virtual dom to not
@@ -70,13 +70,13 @@ _updateElement(_UpdateTracker tracker) {
   tracker.pushPendingCursor(new _IterableCursor(
     tracker.cursor.parent,
     tracker.cursor.node,
-    tracker.cursor.newVNode,
-    tracker.cursor.oldVNode,
+    newVNode,
+    oldVNode,
   ));
   _updateElementChildren(tracker);
 }
 
-_updateElementChildren(_UpdateTracker tracker) {
+void _updateElementChildren(_UpdateTracker tracker) {
   final cursor = tracker.pendingCursors.last as _IterableCursor;
   final oldVNode = cursor.oldVNode as VElement;
   final newVNode = cursor.newVNode as VElement;
@@ -107,16 +107,16 @@ _updateElementChildren(_UpdateTracker tracker) {
   tracker.popPendingCursor();
 }
 
-_updateComponent(_UpdateTracker tracker) {
+void _updateComponent(_UpdateTracker tracker) {
   final oldVNode = tracker.cursor.oldVNode as Component;
   final newVNode = tracker.cursor.newVNode as Component;
   final oldResult = oldVNode._renderResult;
-  final prevProps = oldVNode._props;
-  final nextProps = newVNode.props;
-  final prevState = oldVNode._state;
+  final dynamic prevProps = oldVNode._props;
+  final dynamic nextProps = newVNode.props;
+  final dynamic prevState = oldVNode._state;
 
   // update the state to what it would have been if the pending update did process
-  final nextState = oldVNode._pendingStateSetter != null
+  final dynamic nextState = oldVNode._pendingStateSetter != null
       ? oldVNode._pendingStateSetter(nextProps, prevState)
       : prevState;
 
@@ -128,20 +128,19 @@ _updateComponent(_UpdateTracker tracker) {
     oldVNode._pendingUpdateTracker.cancel();
 
   // lifecycle - shouldComponentUpdate
-  if (!newVNode.shouldComponentUpdate(
-      prevProps, nextProps, prevState, nextState)) return;
+  if (!newVNode.shouldComponentUpdate(nextProps, nextState)) return;
 
   // lifecycle - componentWillUpdate
-  newVNode.componentWillUpdate(prevProps, nextProps, prevState, nextState);
-
-  // build the new virtual tree
-  newVNode._render(nextProps, nextState);
-
-  // update parent child relationship
-  newVNode._renderResult.parent = newVNode;
+  newVNode.componentWillUpdate(nextProps, nextState);
 
   // set the state of the new node to next state
   newVNode._state = nextState;
+
+  // build the new virtual tree
+  newVNode._render();
+
+  // update parent child relationship
+  newVNode._renderResult.parent = newVNode;
 
   // move the update position to the next node
   tracker.moveCursor(
@@ -175,7 +174,7 @@ void _finishComponentUpdate(_UpdateTracker tracker) {
 
   // lifecycle - componentDidUpdate
   newVNode.componentDidUpdate(
-      cursor.prevProps, cursor.nextProps, cursor.prevState, cursor.nextState);
+      cursor.prevProps, cursor.prevState);
 
   // if this was the pending update null it out
   // remove the pending state setter
@@ -202,7 +201,7 @@ void _finishComponentUpdate(_UpdateTracker tracker) {
 void _disposeVNode(VNode node) {
   if (node.vNodeType == VNodeTypes.Component) {
     final cnode = (node as Component);
-    cnode.componentWillUnmount(cnode._props, cnode._state);
+    cnode.componentWillUnmount();
   } else {
     (node as VElement).dispose();
   }

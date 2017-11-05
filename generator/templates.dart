@@ -1,6 +1,6 @@
 import 'parsing.dart';
 
-String vElement(Iterable setters, Iterable events) => '''
+String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
   abstract class VElement<E extends Element> extends VNode {
     final vNodeType = VNodeTypes.Element;
 
