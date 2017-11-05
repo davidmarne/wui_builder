@@ -6,10 +6,11 @@ void _update(_UpdateTracker tracker) {
 
   if (tracker.cursor.oldVNode == null) {
     tracker.cursor.parent.append(_createNode(tracker.cursor.newVNode));
+    print('sf ${tracker.cursor.parent.children.length}');
   } else if (tracker.cursor.newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
     _disposeVNode(tracker.cursor.oldVNode);
-    tracker.cursor.node.remove();
+    tracker.cursor.node?.remove();
   } else if (tracker.cursor.newVNode.vNodeType !=
       tracker.cursor.oldVNode.vNodeType) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
@@ -80,8 +81,10 @@ void _updateElementChildren(_UpdateTracker tracker) {
   final cursor = tracker.pendingCursors.last as _IterableCursor;
   final oldVNode = cursor.oldVNode as VElement;
   final newVNode = cursor.newVNode as VElement;
-
   while (cursor.index < cursor.newLength || cursor.index < cursor.oldLength) {
+    if (cursor.newLength > 3)
+      print(
+          'index ${cursor.index} new len ${cursor.newLength} old len ${cursor.oldLength}');
     final newChildVNode = cursor.index < cursor.newLength
         ? newVNode._children.elementAt(cursor.index)
         : null;
@@ -114,11 +117,7 @@ void _updateComponent(_UpdateTracker tracker) {
   final dynamic prevProps = oldVNode._props;
   final dynamic nextProps = newVNode.props;
   final dynamic prevState = oldVNode._state;
-
-  // update the state to what it would have been if the pending update did process
-  final dynamic nextState = oldVNode._pendingStateSetter != null
-      ? oldVNode._pendingStateSetter(nextProps, prevState)
-      : prevState;
+  newVNode._state = oldVNode._state;
 
   // an update has been called since this render cycle was invoked
   //
@@ -126,6 +125,11 @@ void _updateComponent(_UpdateTracker tracker) {
   if (oldVNode._pendingUpdateTracker != null &&
       oldVNode._pendingUpdateTracker != tracker)
     oldVNode._pendingUpdateTracker.cancel();
+
+  // update the state to what it would have been if the pending update did process
+  final dynamic nextState = oldVNode._pendingStateSetter != null
+      ? oldVNode._pendingStateSetter(nextProps, prevState)
+      : prevState;
 
   // lifecycle - shouldComponentUpdate
   if (!newVNode.shouldComponentUpdate(nextProps, nextState)) return;
@@ -143,26 +147,21 @@ void _updateComponent(_UpdateTracker tracker) {
   newVNode._renderResult.parent = newVNode;
 
   // move the update position to the next node
-  tracker.moveCursor(
-    tracker.cursor.parent,
-    tracker.cursor.node,
-    newVNode._renderResult,
-    oldResult,
-  );
+  tracker.moveCursor(tracker.cursor.parent, tracker.cursor.node,
+      newVNode._renderResult, oldResult);
 
   _update(tracker);
 
   // push an update to run lifecycle events and null the _pendingUpdateTracker
   tracker.pushPendingCursor(new _ComponentUpdateCursor(
-    tracker.cursor.parent,
-    tracker.cursor.node,
-    oldVNode,
-    newVNode,
-    prevProps,
-    nextProps,
-    prevState,
-    nextState,
-  ));
+      tracker.cursor.parent,
+      tracker.cursor.node,
+      oldVNode,
+      newVNode,
+      prevProps,
+      nextProps,
+      prevState,
+      nextState));
 
   if (!tracker.isPaused) _finishComponentUpdate(tracker);
 }
@@ -170,27 +169,15 @@ void _updateComponent(_UpdateTracker tracker) {
 void _finishComponentUpdate(_UpdateTracker tracker) {
   final cursor = tracker.pendingCursors.last as _ComponentUpdateCursor;
   final newVNode = cursor.newVNode as Component;
-  final oldVNode = cursor.oldVNode as Component;
 
   // lifecycle - componentDidUpdate
-  newVNode.componentDidUpdate(
-      cursor.prevProps, cursor.prevState);
+  newVNode.componentDidUpdate(cursor.prevProps, cursor.prevState);
 
   // if this was the pending update null it out
   // remove the pending state setter
-  // and update the parent ref
   if (newVNode._pendingUpdateTracker == tracker) {
-    oldVNode._pendingStateSetter = null;
+    newVNode._pendingStateSetter = null;
     newVNode._pendingUpdateTracker = null;
-    final parent = oldVNode.parent;
-    if (parent != null) {
-      if (parent.vNodeType == VNodeTypes.Component) {
-        (parent as Component)._renderResult = newVNode;
-      } else {
-        final enode = parent as VElement;
-        enode.children[enode.children.indexOf(oldVNode)] = newVNode;
-      }
-    }
   }
 
   // we done homie

@@ -33,6 +33,7 @@ void _queueNewUpdate(_UpdateTracker tracker) {
 }
 
 void _queueProcessingUpdate(_UpdateTracker tracker) {
+  print('_queueProcessingUpdate');
   // add the tracker to the queue
   _activeFibers.insert(0, tracker);
 
@@ -41,6 +42,7 @@ void _queueProcessingUpdate(_UpdateTracker tracker) {
 }
 
 void _resumeUpdate(IdleDeadline deadline, _UpdateTracker tracker) {
+  print('_resumeUpdate');
   // if the deadline has been cancelled bail
   if (tracker.isCancelled) return;
 

@@ -45,11 +45,8 @@ abstract class Component<P, S, C> extends VNode {
   void componentWillMount() {}
   void componentDidMount() {}
   void componentWillUnmount() {}
-  bool shouldComponentUpdate(
-           P nextProps, S nextState) =>
-      true;
-  void componentWillUpdate(
-      P nextProps, S nextState) {}
+  bool shouldComponentUpdate(P nextProps, S nextState) => true;
+  void componentWillUpdate(P nextProps, S nextState) {}
   void componentDidUpdate(P prevProps, S prevState) {}
 
   @mustCallSuper
@@ -72,7 +69,10 @@ abstract class Component<P, S, C> extends VNode {
     // if there is already a _pendingStateSetter combine it with stateSetter
     if (_pendingStateSetter != null && stateSetter != null) {
       final prevStateSetter = _pendingStateSetter;
-      _pendingStateSetter = (P p, S s) => stateSetter(p, prevStateSetter(p, s));
+      _pendingStateSetter = (P p, S s) {
+        print('s update $s');
+        return stateSetter(p, prevStateSetter(p, s));
+      };
     } else if (stateSetter != null) _pendingStateSetter = stateSetter;
   }
 
