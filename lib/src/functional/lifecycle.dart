@@ -37,7 +37,7 @@ ComponentEnhancer<P, P> lifecycle<P>({
   ComponentWillUnmount<P> componentWillUnmount,
 }) =>
     (FunctionalComponent<P> baseComponent) =>
-        (P props) => new LifeCycle(new LifeCycleProps()
+        (P props) => new LifeCycle<P>(new LifeCycleProps()
           ..componentWillMount = componentWillMount
           ..componentDidMount = componentDidMount
           ..componentWillReceiveProps = componentWillReceiveProps
@@ -60,45 +60,45 @@ class LifeCycleProps<P> {
   P baseProps;
 }
 
-class LifeCycle<P> extends Component<LifeCycleProps<P>, Null> {
+class LifeCycle<P> extends PropComponent<LifeCycleProps<P>> {
   LifeCycle(LifeCycleProps<P> props) : super(props);
 
   @override
-  void componentWillMount(props, _) {
+  void componentWillMount() {
     if (props.componentWillMount != null)
       props.componentWillMount(props.baseProps);
   }
 
   @override
-  void componentDidMount(props, _) {
+  void componentDidMount() {
     if (props.componentDidMount != null)
       props.componentDidMount(props.baseProps);
   }
 
   @override
-  bool shouldComponentUpdate(props, nextProps, state, nextState) {
+  bool shouldComponentUpdate(nextProps, nextState) {
     if (props.shouldComponentUpdate != null)
       return props.shouldComponentUpdate(props.baseProps, nextProps.baseProps);
-    return super.shouldComponentUpdate(props, nextProps, state, nextState);
+    return super.shouldComponentUpdate(nextProps, nextState);
   }
 
   @override
-  void componentWillUpdate(props, nextProps, state, nextState) {
+  void componentWillUpdate(nextProps, nextState) {
     if (props.componentWillUpdate != null)
       props.componentWillUpdate(props.baseProps, nextProps.baseProps);
   }
 
   @override
-  void componentDidUpdate(props, nextProps, state, nextState) {
+  void componentDidUpdate(prevProps, prevState) {
     if (props.componentDidUpdate != null)
-      props.componentDidUpdate(props.baseProps, nextProps.baseProps);
+      props.componentDidUpdate(prevProps.baseProps, props.baseProps);
   }
 
   @override
-  void componentWillUnmount(props, _) {
+  void componentWillUnmount() {
     if (props.componentWillUnmount != null)
       props.componentWillUnmount(props.baseProps);
   }
 
-  render(props, _) => props.baseComponent(props.baseProps);
+  render() => props.baseComponent(props.baseProps);
 }

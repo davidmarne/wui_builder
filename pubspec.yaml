@@ -16,7 +16,9 @@ dev_dependencies:
 
 transformers:
   - $dart2js
-
+  - test/pub_serve:
+      $include: test/**_test{.*,}.dart
+      
 environment:
   sdk: ">=1.23.0 <2.0.0"
 

@@ -23,9 +23,9 @@ class WithRefProps<InnerP, E extends Element,
 }
 
 class WithRef<InnerP, E extends Element, OutterP>
-    extends Component<WithRefProps<InnerP, E, OutterP>, Null> {
+    extends PropComponent<WithRefProps<InnerP, E, OutterP>> {
   WithRef(WithRefProps<InnerP, E, OutterP> props) : super(props);
 
-  render(props, state) =>
-      props.baseComponent(props.mapper(props.baseProps, ref));
+  VNode render() =>
+      props.baseComponent(props.mapper(props.baseProps, ref as E));
 }

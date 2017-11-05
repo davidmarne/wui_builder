@@ -15,7 +15,7 @@ enum _PendingCursors {
 
 abstract class _PendingCursor extends _Cursor {
   _PendingCursors get cursorType;
-  _PendingCursor(parent, currentChild, newVNode, oldVNode)
+  _PendingCursor(Element parent, Element currentChild, VNode newVNode, VNode oldVNode)
       : super(parent, currentChild, newVNode, oldVNode);
 }
 
@@ -26,7 +26,7 @@ class _IterableCursor extends _PendingCursor {
   Element currentChild;
   int index = 0;
 
-  _IterableCursor(parent, node, newVNode, oldVNode)
+  _IterableCursor(Element parent, Element node, VElement newVNode, VElement oldVNode)
       : currentChild = node.children.length > 0 ? node.children.first : null,
         newLength = newVNode._childrenSet ? newVNode._children.length : 0,
         oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0,
@@ -45,10 +45,10 @@ class _ComponentUpdateCursor extends _PendingCursor {
   dynamic prevState;
   dynamic nextState;
   _ComponentUpdateCursor(
-    parent,
-    currentChild,
-    newVNode,
-    oldVNode,
+    Element parent,
+    Element currentChild,
+    Component newVNode,
+    Component oldVNode,
     this.prevProps,
     this.nextProps,
     this.prevState,

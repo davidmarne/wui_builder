@@ -32,7 +32,7 @@ VNode addTodo(AddTodoProps props) => new VDivElement()
       ],
   ];
 
-_onKeyUp(KeyboardEvent e, AddTodo addTodo) {
+void _onKeyUp(KeyboardEvent e, AddTodo addTodo) {
   if (e.keyCode == KeyCode.ENTER) {
     addTodo(new Todo()
       ..id = new DateTime.now().millisecondsSinceEpoch

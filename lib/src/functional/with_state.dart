@@ -7,18 +7,16 @@ typedef OutterP StateMapper<InnerP, S, OutterP>(
     InnerP props, S state, SetState<InnerP, S> setState);
 
 /// withState will pass your component a [state] object and [setState] function
-ComponentEnhancer<InnerP, OutterP>
-    withState<InnerP, S, OutterP>(
-            S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
-        (FunctionalComponent<OutterP> baseComponent) => (InnerP props) =>
-            new WithState<InnerP, S, OutterP>(new WithStateProps()
-              ..defaultState = defaultState
-              ..mapper = mapper
-              ..baseProps = props
-              ..baseComponent = baseComponent);
+ComponentEnhancer<InnerP, OutterP> withState<InnerP, S, OutterP>(
+        S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
+    (FunctionalComponent<OutterP> baseComponent) =>
+        (InnerP props) => new WithState<InnerP, S, OutterP>(new WithStateProps()
+          ..defaultState = defaultState
+          ..mapper = mapper
+          ..baseProps = props
+          ..baseComponent = baseComponent);
 
-class WithStateProps<InnerP, S, OutterP>
- {
+class WithStateProps<InnerP, S, OutterP> {
   S defaultState;
   StateMapper<InnerP, S, OutterP> mapper;
   InnerP baseProps;
@@ -30,7 +28,7 @@ class WithState<InnerP, S, OutterP>
   WithState(WithStateProps<InnerP, S, OutterP> props) : super(props);
 
   @override
-  getInitialState(props) => props.defaultState;
+  S getInitialState() => props.defaultState;
 
   void _setState(StateSetter<InnerP, S> s) {
     update(
@@ -38,6 +36,6 @@ class WithState<InnerP, S, OutterP>
             s(props.baseProps, state));
   }
 
-  render(props, state) =>
+  render() =>
       props.baseComponent(props.mapper(props.baseProps, state, _setState));
 }

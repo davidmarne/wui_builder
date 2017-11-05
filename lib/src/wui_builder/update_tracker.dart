@@ -12,7 +12,7 @@ class _UpdateTracker {
   bool isCancelled = false;
   List<_PendingCursor> pendingCursors = new List<_PendingCursor>();
   IdleDeadline deadline;
-  
+
   // used to reset state if update is cancelled
   final dynamic prevState;
   final Component updatingComponent;
@@ -42,11 +42,7 @@ class _UpdateTracker {
   // update changes the current location of the update
   // to avoid accesive garbage, mutate the current cursor
   void moveCursor(
-    Element parent,
-    Element node,
-    VNode newVNode,
-    VNode oldVNode
-  ) {
+      Element parent, Element node, VNode newVNode, VNode oldVNode) {
     cursor.parent = parent;
     cursor.node = node;
     cursor.newVNode = newVNode;
