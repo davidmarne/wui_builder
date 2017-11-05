@@ -33,7 +33,6 @@ void _queueNewUpdate(_UpdateTracker tracker) {
 }
 
 void _queueProcessingUpdate(_UpdateTracker tracker) {
-  print('_queueProcessingUpdate');
   // add the tracker to the queue
   _activeFibers.insert(0, tracker);
 
@@ -42,26 +41,28 @@ void _queueProcessingUpdate(_UpdateTracker tracker) {
 }
 
 void _resumeUpdate(IdleDeadline deadline, _UpdateTracker tracker) {
-  print('_resumeUpdate');
   // if the deadline has been cancelled bail
   if (tracker.isCancelled) return;
 
   // update the deadline on the tracker and update it
   tracker.refresh(deadline);
-  _update(tracker);
+  final finished = _update(tracker);
 
   // if the current update stack was completed
   // resume its parents updates
-  if (!tracker.isPaused) _doPendingWork(tracker);
+  if (finished) _doPendingWork(tracker);
 }
 
 void _doPendingWork(_UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
+  var finished = true;
   while (!tracker.pendingCursors.isEmpty) {
-    if (tracker.pendingCursors.last.cursorType == _PendingCursors.Iterable)
-      _updateElementChildren(tracker);
-    else
+    if (tracker.pendingCursors.last.cursorType == _PendingCursors.Iterable) {
+      finished = _updateElementChildren(tracker);
+    } else {
       _finishComponentUpdate(tracker);
-    if (tracker.isPaused) return;
+      finished = true;
+    }
+    if (!finished) return;
   }
 }

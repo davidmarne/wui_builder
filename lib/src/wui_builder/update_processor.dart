@@ -1,12 +1,12 @@
 part of wui_builder;
 
-void _update(_UpdateTracker tracker) {
+// returns true if the update was complete
+bool _update(_UpdateTracker tracker) {
   // if the tracker.deadline is hit request another idle period
-  if (tracker.isPaused) return;
+  if (tracker.isPaused) return false;
 
   if (tracker.cursor.oldVNode == null) {
     tracker.cursor.parent.append(_createNode(tracker.cursor.newVNode));
-    print('sf ${tracker.cursor.parent.children.length}');
   } else if (tracker.cursor.newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
     _disposeVNode(tracker.cursor.oldVNode);
@@ -17,20 +17,22 @@ void _update(_UpdateTracker tracker) {
     _disposeVNode(tracker.cursor.oldVNode);
     tracker.cursor.node = _createNode(tracker.cursor.newVNode);
   } else if (tracker.cursor.newVNode.vNodeType == VNodeTypes.Element) {
-    _updateElement(tracker);
+    return _updateElement(tracker);
   } else {
-    _updateComponent(tracker);
+    return _updateComponent(tracker);
   }
+
+  return true;
 }
 
-void _updateElement(_UpdateTracker tracker) {
+bool _updateElement(_UpdateTracker tracker) {
   final oldVNode = tracker.cursor.oldVNode as VElement;
   final newVNode = tracker.cursor.newVNode as VElement;
   // if an async tracker was cancelled causing a virtual dom to not
   // fully be rendered, we create the node now.
   if (tracker.cursor.node == null) {
     tracker.cursor.parent.append(_createNode(tracker.cursor.newVNode));
-    return;
+    return true;
   }
 
   // update attributes that have changed
@@ -45,7 +47,7 @@ void _updateElement(_UpdateTracker tracker) {
   final oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0;
 
   // no cursor
-  if (oldLength == 0 && newLength == 0) return;
+  if (oldLength == 0 && newLength == 0) return true;
 
   // no resumable cursor
   if (oldLength < 2 && newLength < 2) {
@@ -64,8 +66,7 @@ void _updateElement(_UpdateTracker tracker) {
     // update parent/child relationship
     newChildVNode?.parent = tracker.cursor.newVNode;
 
-    _update(tracker);
-    return;
+    return _update(tracker);
   }
 
   tracker.pushPendingCursor(new _IterableCursor(
@@ -74,20 +75,19 @@ void _updateElement(_UpdateTracker tracker) {
     newVNode,
     oldVNode,
   ));
-  _updateElementChildren(tracker);
+  return _updateElementChildren(tracker);
 }
 
-void _updateElementChildren(_UpdateTracker tracker) {
+bool _updateElementChildren(_UpdateTracker tracker) {
   final cursor = tracker.pendingCursors.last as _IterableCursor;
   final oldVNode = cursor.oldVNode as VElement;
   final newVNode = cursor.newVNode as VElement;
   while (cursor.index < cursor.newLength || cursor.index < cursor.oldLength) {
-    if (cursor.newLength > 3)
-      print(
-          'index ${cursor.index} new len ${cursor.newLength} old len ${cursor.oldLength}');
+
     final newChildVNode = cursor.index < cursor.newLength
         ? newVNode._children.elementAt(cursor.index)
         : null;
+
     tracker.moveCursor(
       cursor.node,
       cursor.currentChild,
@@ -102,15 +102,16 @@ void _updateElementChildren(_UpdateTracker tracker) {
     // update parent/child relationship
     newChildVNode?.parent = cursor.newVNode;
 
-    _update(tracker);
+    final finshed = _update(tracker);
 
-    if (tracker.isPaused) return;
+    if (!finshed) return false;
   }
 
   tracker.popPendingCursor();
+  return true;
 }
 
-void _updateComponent(_UpdateTracker tracker) {
+bool _updateComponent(_UpdateTracker tracker) {
   final oldVNode = tracker.cursor.oldVNode as Component;
   final newVNode = tracker.cursor.newVNode as Component;
   final oldResult = oldVNode._renderResult;
@@ -132,7 +133,7 @@ void _updateComponent(_UpdateTracker tracker) {
       : prevState;
 
   // lifecycle - shouldComponentUpdate
-  if (!newVNode.shouldComponentUpdate(nextProps, nextState)) return;
+  if (!newVNode.shouldComponentUpdate(nextProps, nextState)) return true;
 
   // lifecycle - componentWillUpdate
   newVNode.componentWillUpdate(nextProps, nextState);
@@ -150,7 +151,7 @@ void _updateComponent(_UpdateTracker tracker) {
   tracker.moveCursor(tracker.cursor.parent, tracker.cursor.node,
       newVNode._renderResult, oldResult);
 
-  _update(tracker);
+  final finished = _update(tracker);
 
   // push an update to run lifecycle events and null the _pendingUpdateTracker
   tracker.pushPendingCursor(new _ComponentUpdateCursor(
@@ -163,7 +164,8 @@ void _updateComponent(_UpdateTracker tracker) {
       prevState,
       nextState));
 
-  if (!tracker.isPaused) _finishComponentUpdate(tracker);
+  if (finished) _finishComponentUpdate(tracker);
+  return finished;
 }
 
 void _finishComponentUpdate(_UpdateTracker tracker) {

@@ -27,6 +27,7 @@ Element _createElementNode(VElement vnode) {
 }
 
 Element _createComponentNode(Component vnode) {
+  vnode._state = vnode.getInitialState();
   vnode.componentWillMount();
   vnode._render();
   final domNode = _createNode(vnode._renderResult);

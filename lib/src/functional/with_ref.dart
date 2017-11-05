@@ -23,7 +23,7 @@ class WithRefProps<InnerP, E extends Element,
 }
 
 class WithRef<InnerP, E extends Element, OutterP>
-    extends Component<WithRefProps<InnerP, E, OutterP>, Null, Null> {
+    extends PropComponent<WithRefProps<InnerP, E, OutterP>> {
   WithRef(WithRefProps<InnerP, E, OutterP> props) : super(props);
 
   VNode render() =>

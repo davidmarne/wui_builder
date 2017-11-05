@@ -24,7 +24,7 @@ class TestComponentProps {
 }
 
 class TestComponent
-    extends Component<TestComponentProps, TestComponentProps, Null> {
+    extends Component<TestComponentProps, TestComponentProps> {
   TestComponent(TestComponentProps props) : super(props);
 
   @override
