@@ -4,18 +4,16 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
   abstract class VElement<E extends Element> extends VNode {
     final vNodeType = VNodeTypes.Element;
 
-    E _elementFactory();
+    E elementFactory();
     
-    bool _shouldUpdateSubs = false;
+    bool shouldUpdateSubs = false;
 
     StyleBuilder styleBuilder;
 
     List<VNode> _children = new List<VNode>();
-    bool _childrenSet = false;
     List<VNode> get children => _children;
     void set children(Iterable<VNode> c) {
       _children = c.toList();
-      _childrenSet = true;
     }
 
     ${attributeDeclarationTemplate(new Setter('text', 'String', ''))}
@@ -24,7 +22,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
     ${eventsDeclarationTemplate(events)}
 
-    void _applyAttributesToElement(E ele) {
+    void applyAttributesToElement(E ele) {
       if (_textSet) {
         ${vElementTextUpdate()}
       }
@@ -32,7 +30,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       ${attributesSetTemplate(setters)}
     }
 
-    void _updateElementAttributes(covariant VElement<E> prev, E ele) {
+    void updateElementAttributes(covariant VElement<E> prev, E ele) {
       if (_text != prev._text) {
         ${vElementTextUpdate()}
       }
@@ -40,11 +38,11 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       ${attributesUpdateTemplate(setters)}
     }
 
-    void _applyEventListenersToElement(Element ele) {
+    void applyEventListenersToElement(Element ele) {
       ${eventsSetTemplate(events)}
     }
 
-    void _updateEventListenersToElement(VElement prev, Element ele) {
+    void updateEventListenersToElement(VElement prev, Element ele) {
       ${eventsUpdateTemplate(events)}
     }
 
@@ -72,34 +70,36 @@ String vElementStyleBuilder() =>
 
 // Workaround: elements that have multple factories can use this
 // to create a custom velements for extra constructors
-String customFactoryElement(String constructorName, String classElementName) =>
+String customFactoryElement(
+        String constructorName, String classElementName, String lib) =>
     '''
   class V$constructorName extends VElement<$classElementName> {
     @override
-    $classElementName _elementFactory() => new $classElementName.$constructorName();
+    $classElementName elementFactory() => new $classElementName.$constructorName();
   }''';
 
 String vElementSubclass(
   String classElementName,
   String superclass,
   Iterable<Setter> setters,
+  String lib,
 ) =>
     '''
   class V$classElementName extends V$superclass<$classElementName> {
     @override
-    $classElementName _elementFactory() => new $classElementName();
+    $classElementName elementFactory() => new $classElementName();
 
     ${attributesDeclarationTemplate(setters)}
 
     @override
-    void _applyAttributesToElement($classElementName ele) {
-      super._applyAttributesToElement(ele);
+    void applyAttributesToElement($classElementName ele) {
+      super.applyAttributesToElement(ele);
       ${attributesSetTemplate(setters)}
     }
 
     @override
-    void _updateElementAttributes(V${classElementName} prev, $classElementName ele) {
-      super._updateElementAttributes(prev, ele);
+    void updateElementAttributes(V$classElementName prev, $classElementName ele) {
+      super.updateElementAttributes(prev, ele);
       ${attributesUpdateTemplate(setters)}
     }
   }
@@ -109,20 +109,21 @@ String vElementAbstractSubclass(
   String classElementName,
   String superclass,
   Iterable<Setter> setters,
+  String lib,
 ) =>
     '''
-  abstract class V$classElementName<T extends $classElementName> extends V$superclass<T> {
+  abstract class V$classElementName<T extends $classElementName> extends  V$superclass<T> {
     ${attributesDeclarationTemplate(setters)}
 
     @override
-    void _applyAttributesToElement(T ele) {
-      super._applyAttributesToElement(ele);
+    void applyAttributesToElement(T ele) {
+      super.applyAttributesToElement(ele);
       ${attributesSetTemplate(setters)}
     }
 
     @override
-    void _updateElementAttributes(covariant V${classElementName}<T> prev, T ele) {
-      super._updateElementAttributes(prev, ele);
+    void updateElementAttributes(covariant V$classElementName<T> prev, T ele) {
+      super.updateElementAttributes(prev, ele);
       ${attributesUpdateTemplate(setters)}
     }
   }
@@ -169,7 +170,7 @@ String eventDeclarationTemplate(VEvent event) => '''
     void set ${event.name}(${event.type} v) {
         _${event.name} = v;
         _${event.name}Set = true;
-        _shouldUpdateSubs = true;
+        shouldUpdateSubs = true;
     }''';
 
 String eventSetTemplate(VEvent event) =>

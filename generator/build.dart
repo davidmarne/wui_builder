@@ -34,9 +34,11 @@ void main(List<String> args) {
   ///..addAll(svgTypes);
   print('${htmlTypes.length} ${svgTypes.length} ${allTypes.length}');
   final result = new StringBuffer();
-  result.write('part of wui_builder;');
+  result.write("import 'dart:html';");
+  result.write("import 'dart:async';");
+  result.write("import 'wui_builder.dart';");
 
-  for (final classElement in allTypes) {
+  for (final classElement in htmlTypes) {
     if (classElement.name == 'Element') {
       final setters = localSetters(classElement).where(
           (setter) => setter.name != 'children' && setter.name != 'nodes');
@@ -56,6 +58,7 @@ void main(List<String> args) {
           result.write(customFactoryElement(
             constructorName,
             classElement.name,
+            'html',
           ));
         }
       }
@@ -72,10 +75,11 @@ void main(List<String> args) {
       final vElementIsAbstract = !hasValidConstructor(classElement);
 
       if (vElementIsAbstract) {
-        result.write(
-            vElementAbstractSubclass(classElement.name, superclass, setters));
+        result.write(vElementAbstractSubclass(
+            classElement.name, superclass, setters, 'html'));
       } else {
-        result.write(vElementSubclass(classElement.name, superclass, setters));
+        result.write(
+            vElementSubclass(classElement.name, superclass, setters, 'html'));
       }
 
       if (classElement.constructors.length > 0) {
@@ -83,10 +87,13 @@ void main(List<String> args) {
           var constructorName = constructor.name;
           if (constructorName == '' ||
               constructorName == '_' ||
-              constructorName == 'created') continue;
+              constructorName == 'created' ||
+              constructorName == 'tag' ||
+              constructorName == 'svg') continue;
           result.write(customFactoryElement(
             constructorName,
             classElement.name,
+            'html',
           ));
         }
       }
@@ -95,7 +102,51 @@ void main(List<String> args) {
 
   final formatter = new DartFormatter();
   final formatted = formatter.format(result.toString());
-  new File('lib/src/wui_builder/velements.g.dart').writeAsStringSync(formatted);
+  new File('lib/vhtml.dart').writeAsStringSync(formatted);
+
+  result.clear();
+
+  result.write("import 'dart:svg';");
+  result.write("import 'vhtml.dart' show VElement;");
+  for (final classElement in svgTypes) {
+    if (isElement(classElement) && classElement.isPublic) {
+      final setters = localSetters(classElement);
+
+      // Workaround: VInputElementBase is an interface not an abstract class so
+      // elements that implement VInputElementBase are treated as subclasses of VInputElementBase
+      var superclass = classElement.supertype.element.name;
+      if (classElement.supertype.element.isPrivate) superclass = 'SvgElement';
+
+      final vElementIsAbstract = !hasValidConstructor(classElement);
+
+      if (vElementIsAbstract) {
+        result.write(vElementAbstractSubclass(
+            classElement.name, superclass, setters, 'svg'));
+      } else {
+        result.write(
+            vElementSubclass(classElement.name, superclass, setters, 'svg'));
+      }
+
+      if (classElement.constructors.length > 0) {
+        for (var constructor in classElement.constructors) {
+          var constructorName = constructor.name;
+          if (constructorName == '' ||
+              constructorName == '_' ||
+              constructorName == 'created' ||
+              constructorName == 'tag' ||
+              constructorName == 'svg') continue;
+          result.write(customFactoryElement(
+            constructorName,
+            classElement.name,
+            'svg',
+          ));
+        }
+      }
+    }
+  }
+
+  final svgFormatted = formatter.format(result.toString());
+  new File('lib/vsvg.dart').writeAsStringSync(svgFormatted);
 }
 
 // resolves the ast structure

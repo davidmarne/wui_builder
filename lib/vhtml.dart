@@ -1,20 +1,22 @@
-part of wui_builder;
+import 'dart:html';
+import 'dart:async';
+import 'wui_builder.dart';
 
 abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(covariant VHtmlElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VHtmlElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VAnchorElement extends VHtmlElement<AnchorElement> {
   @override
-  AnchorElement _elementFactory() => new AnchorElement();
+  AnchorElement elementFactory() => new AnchorElement();
 
   String _download;
   bool _downloadSet = false;
@@ -145,8 +147,8 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   }
 
   @override
-  void _applyAttributesToElement(AnchorElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(AnchorElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_downloadSet) ele.download = _download;
     if (_hreflangSet) ele.hreflang = _hreflang;
@@ -167,8 +169,8 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   }
 
   @override
-  void _updateElementAttributes(VAnchorElement prev, AnchorElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VAnchorElement prev, AnchorElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_download != prev._download) ele.download = _download;
     if (_hreflang != prev._hreflang) ele.hreflang = _hreflang;
@@ -192,7 +194,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
 
 class VAreaElement extends VHtmlElement<AreaElement> {
   @override
-  AreaElement _elementFactory() => new AreaElement();
+  AreaElement elementFactory() => new AreaElement();
 
   String _alt;
   bool _altSet = false;
@@ -315,8 +317,8 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   }
 
   @override
-  void _applyAttributesToElement(AreaElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(AreaElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_altSet) ele.alt = _alt;
     if (_coordsSet) ele.coords = _coords;
@@ -336,8 +338,8 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   }
 
   @override
-  void _updateElementAttributes(VAreaElement prev, AreaElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VAreaElement prev, AreaElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_alt != prev._alt) ele.alt = _alt;
     if (_coords != prev._coords) ele.coords = _coords;
@@ -360,37 +362,37 @@ class VAreaElement extends VHtmlElement<AreaElement> {
 
 class VAudioElement extends VMediaElement<AudioElement> {
   @override
-  AudioElement _elementFactory() => new AudioElement();
+  AudioElement elementFactory() => new AudioElement();
 
   @override
-  void _applyAttributesToElement(AudioElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(AudioElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VAudioElement prev, AudioElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VAudioElement prev, AudioElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VBRElement extends VHtmlElement<BRElement> {
   @override
-  BRElement _elementFactory() => new BRElement();
+  BRElement elementFactory() => new BRElement();
 
   @override
-  void _applyAttributesToElement(BRElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(BRElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VBRElement prev, BRElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VBRElement prev, BRElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VBaseElement extends VHtmlElement<BaseElement> {
   @override
-  BaseElement _elementFactory() => new BaseElement();
+  BaseElement elementFactory() => new BaseElement();
 
   String _href;
   bool _hrefSet = false;
@@ -409,16 +411,16 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   }
 
   @override
-  void _applyAttributesToElement(BaseElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(BaseElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_hrefSet) ele.href = _href;
     if (_targetSet) ele.target = _target;
   }
 
   @override
-  void _updateElementAttributes(VBaseElement prev, BaseElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VBaseElement prev, BaseElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_href != prev._href) ele.href = _href;
     if (_target != prev._target) ele.target = _target;
@@ -427,22 +429,22 @@ class VBaseElement extends VHtmlElement<BaseElement> {
 
 class VBodyElement extends VHtmlElement<BodyElement> {
   @override
-  BodyElement _elementFactory() => new BodyElement();
+  BodyElement elementFactory() => new BodyElement();
 
   @override
-  void _applyAttributesToElement(BodyElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(BodyElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VBodyElement prev, BodyElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VBodyElement prev, BodyElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VButtonElement extends VHtmlElement<ButtonElement> {
   @override
-  ButtonElement _elementFactory() => new ButtonElement();
+  ButtonElement elementFactory() => new ButtonElement();
 
   bool _autofocus;
   bool _autofocusSet = false;
@@ -525,8 +527,8 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   }
 
   @override
-  void _applyAttributesToElement(ButtonElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ButtonElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autofocusSet) ele.autofocus = _autofocus;
     if (_disabledSet) ele.disabled = _disabled;
@@ -541,8 +543,8 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   }
 
   @override
-  void _updateElementAttributes(VButtonElement prev, ButtonElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VButtonElement prev, ButtonElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
     if (_disabled != prev._disabled) ele.disabled = _disabled;
@@ -560,7 +562,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
 
 class VCanvasElement extends VHtmlElement<CanvasElement> {
   @override
-  CanvasElement _elementFactory() => new CanvasElement();
+  CanvasElement elementFactory() => new CanvasElement();
 
   int _height;
   bool _heightSet = false;
@@ -579,16 +581,16 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   }
 
   @override
-  void _applyAttributesToElement(CanvasElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(CanvasElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_heightSet) ele.height = _height;
     if (_widthSet) ele.width = _width;
   }
 
   @override
-  void _updateElementAttributes(VCanvasElement prev, CanvasElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VCanvasElement prev, CanvasElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_height != prev._height) ele.height = _height;
     if (_width != prev._width) ele.width = _width;
@@ -597,7 +599,7 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
 
 class VContentElement extends VHtmlElement<ContentElement> {
   @override
-  ContentElement _elementFactory() => new ContentElement();
+  ContentElement elementFactory() => new ContentElement();
 
   String _select;
   bool _selectSet = false;
@@ -608,15 +610,15 @@ class VContentElement extends VHtmlElement<ContentElement> {
   }
 
   @override
-  void _applyAttributesToElement(ContentElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ContentElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_selectSet) ele.select = _select;
   }
 
   @override
-  void _updateElementAttributes(VContentElement prev, ContentElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VContentElement prev, ContentElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_select != prev._select) ele.select = _select;
   }
@@ -624,37 +626,37 @@ class VContentElement extends VHtmlElement<ContentElement> {
 
 class VDListElement extends VHtmlElement<DListElement> {
   @override
-  DListElement _elementFactory() => new DListElement();
+  DListElement elementFactory() => new DListElement();
 
   @override
-  void _applyAttributesToElement(DListElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(DListElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VDListElement prev, DListElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VDListElement prev, DListElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VDataListElement extends VHtmlElement<DataListElement> {
   @override
-  DataListElement _elementFactory() => new DataListElement();
+  DataListElement elementFactory() => new DataListElement();
 
   @override
-  void _applyAttributesToElement(DataListElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(DataListElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VDataListElement prev, DataListElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VDataListElement prev, DataListElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VDetailsElement extends VHtmlElement<DetailsElement> {
   @override
-  DetailsElement _elementFactory() => new DetailsElement();
+  DetailsElement elementFactory() => new DetailsElement();
 
   bool _open;
   bool _openSet = false;
@@ -665,15 +667,15 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
   }
 
   @override
-  void _applyAttributesToElement(DetailsElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(DetailsElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_openSet) ele.open = _open;
   }
 
   @override
-  void _updateElementAttributes(VDetailsElement prev, DetailsElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VDetailsElement prev, DetailsElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_open != prev._open) ele.open = _open;
   }
@@ -697,16 +699,16 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_openSet) ele.open = _open;
     if (_returnValueSet) ele.returnValue = _returnValue;
   }
 
   @override
-  void _updateElementAttributes(covariant VDialogElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VDialogElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_open != prev._open) ele.open = _open;
     if (_returnValue != prev._returnValue) ele.returnValue = _returnValue;
@@ -715,34 +717,32 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
 
 class VDivElement extends VHtmlElement<DivElement> {
   @override
-  DivElement _elementFactory() => new DivElement();
+  DivElement elementFactory() => new DivElement();
 
   @override
-  void _applyAttributesToElement(DivElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(DivElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VDivElement prev, DivElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VDivElement prev, DivElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 abstract class VElement<E extends Element> extends VNode {
   final vNodeType = VNodeTypes.Element;
 
-  E _elementFactory();
+  E elementFactory();
 
-  bool _shouldUpdateSubs = false;
+  bool shouldUpdateSubs = false;
 
   StyleBuilder styleBuilder;
 
   List<VNode> _children = new List<VNode>();
-  bool _childrenSet = false;
   List<VNode> get children => _children;
   void set children(Iterable<VNode> c) {
     _children = c.toList();
-    _childrenSet = true;
   }
 
   String _text;
@@ -928,7 +928,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onAbort(EventHandler<Event> v) {
     _onAbort = v;
     _onAbortSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBeforeCopySub;
@@ -938,7 +938,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBeforeCopy(EventHandler<Event> v) {
     _onBeforeCopy = v;
     _onBeforeCopySet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBeforeCutSub;
@@ -948,7 +948,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBeforeCut(EventHandler<Event> v) {
     _onBeforeCut = v;
     _onBeforeCutSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBeforePasteSub;
@@ -958,7 +958,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBeforePaste(EventHandler<Event> v) {
     _onBeforePaste = v;
     _onBeforePasteSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onBlurSub;
@@ -968,7 +968,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onBlur(EventHandler<Event> v) {
     _onBlur = v;
     _onBlurSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCanPlaySub;
@@ -978,7 +978,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCanPlay(EventHandler<Event> v) {
     _onCanPlay = v;
     _onCanPlaySet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCanPlayThroughSub;
@@ -988,7 +988,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCanPlayThrough(EventHandler<Event> v) {
     _onCanPlayThrough = v;
     _onCanPlayThroughSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onChangeSub;
@@ -998,7 +998,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onChange(EventHandler<Event> v) {
     _onChange = v;
     _onChangeSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onClickSub;
@@ -1008,7 +1008,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onClick(EventHandler<MouseEvent> v) {
     _onClick = v;
     _onClickSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onContextMenuSub;
@@ -1018,7 +1018,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onContextMenu(EventHandler<MouseEvent> v) {
     _onContextMenu = v;
     _onContextMenuSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCopySub;
@@ -1028,7 +1028,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCopy(EventHandler<ClipboardEvent> v) {
     _onCopy = v;
     _onCopySet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onCutSub;
@@ -1038,7 +1038,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onCut(EventHandler<ClipboardEvent> v) {
     _onCut = v;
     _onCutSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDoubleClickSub;
@@ -1048,7 +1048,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDoubleClick(EventHandler<Event> v) {
     _onDoubleClick = v;
     _onDoubleClickSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragSub;
@@ -1058,7 +1058,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDrag(EventHandler<MouseEvent> v) {
     _onDrag = v;
     _onDragSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragEndSub;
@@ -1068,7 +1068,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragEnd(EventHandler<MouseEvent> v) {
     _onDragEnd = v;
     _onDragEndSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragEnterSub;
@@ -1078,7 +1078,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragEnter(EventHandler<MouseEvent> v) {
     _onDragEnter = v;
     _onDragEnterSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragLeaveSub;
@@ -1088,7 +1088,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragLeave(EventHandler<MouseEvent> v) {
     _onDragLeave = v;
     _onDragLeaveSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragOverSub;
@@ -1098,7 +1098,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragOver(EventHandler<MouseEvent> v) {
     _onDragOver = v;
     _onDragOverSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDragStartSub;
@@ -1108,7 +1108,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDragStart(EventHandler<MouseEvent> v) {
     _onDragStart = v;
     _onDragStartSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDropSub;
@@ -1118,7 +1118,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDrop(EventHandler<MouseEvent> v) {
     _onDrop = v;
     _onDropSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onDurationChangeSub;
@@ -1128,7 +1128,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onDurationChange(EventHandler<Event> v) {
     _onDurationChange = v;
     _onDurationChangeSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onEmptiedSub;
@@ -1138,7 +1138,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onEmptied(EventHandler<Event> v) {
     _onEmptied = v;
     _onEmptiedSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onEndedSub;
@@ -1148,7 +1148,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onEnded(EventHandler<Event> v) {
     _onEnded = v;
     _onEndedSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onErrorSub;
@@ -1158,7 +1158,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onError(EventHandler<Event> v) {
     _onError = v;
     _onErrorSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onFocusSub;
@@ -1168,7 +1168,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onFocus(EventHandler<Event> v) {
     _onFocus = v;
     _onFocusSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onInputSub;
@@ -1178,7 +1178,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onInput(EventHandler<Event> v) {
     _onInput = v;
     _onInputSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onInvalidSub;
@@ -1188,7 +1188,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onInvalid(EventHandler<Event> v) {
     _onInvalid = v;
     _onInvalidSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onKeyDownSub;
@@ -1198,7 +1198,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onKeyDown(EventHandler<KeyboardEvent> v) {
     _onKeyDown = v;
     _onKeyDownSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onKeyPressSub;
@@ -1208,7 +1208,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onKeyPress(EventHandler<KeyboardEvent> v) {
     _onKeyPress = v;
     _onKeyPressSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onKeyUpSub;
@@ -1218,7 +1218,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onKeyUp(EventHandler<KeyboardEvent> v) {
     _onKeyUp = v;
     _onKeyUpSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onLoadSub;
@@ -1228,7 +1228,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onLoad(EventHandler<Event> v) {
     _onLoad = v;
     _onLoadSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onLoadedDataSub;
@@ -1238,7 +1238,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onLoadedData(EventHandler<Event> v) {
     _onLoadedData = v;
     _onLoadedDataSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onLoadedMetadataSub;
@@ -1248,7 +1248,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onLoadedMetadata(EventHandler<Event> v) {
     _onLoadedMetadata = v;
     _onLoadedMetadataSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseDownSub;
@@ -1258,7 +1258,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseDown(EventHandler<MouseEvent> v) {
     _onMouseDown = v;
     _onMouseDownSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseEnterSub;
@@ -1268,7 +1268,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseEnter(EventHandler<MouseEvent> v) {
     _onMouseEnter = v;
     _onMouseEnterSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseLeaveSub;
@@ -1278,7 +1278,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseLeave(EventHandler<MouseEvent> v) {
     _onMouseLeave = v;
     _onMouseLeaveSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseMoveSub;
@@ -1288,7 +1288,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseMove(EventHandler<MouseEvent> v) {
     _onMouseMove = v;
     _onMouseMoveSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseOutSub;
@@ -1298,7 +1298,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseOut(EventHandler<MouseEvent> v) {
     _onMouseOut = v;
     _onMouseOutSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseOverSub;
@@ -1308,7 +1308,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseOver(EventHandler<MouseEvent> v) {
     _onMouseOver = v;
     _onMouseOverSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseUpSub;
@@ -1318,7 +1318,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseUp(EventHandler<MouseEvent> v) {
     _onMouseUp = v;
     _onMouseUpSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onMouseWheelSub;
@@ -1328,7 +1328,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onMouseWheel(EventHandler<WheelEvent> v) {
     _onMouseWheel = v;
     _onMouseWheelSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPasteSub;
@@ -1338,7 +1338,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPaste(EventHandler<ClipboardEvent> v) {
     _onPaste = v;
     _onPasteSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPauseSub;
@@ -1348,7 +1348,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPause(EventHandler<Event> v) {
     _onPause = v;
     _onPauseSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPlaySub;
@@ -1358,7 +1358,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPlay(EventHandler<Event> v) {
     _onPlay = v;
     _onPlaySet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onPlayingSub;
@@ -1368,7 +1368,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onPlaying(EventHandler<Event> v) {
     _onPlaying = v;
     _onPlayingSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onRateChangeSub;
@@ -1378,7 +1378,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onRateChange(EventHandler<Event> v) {
     _onRateChange = v;
     _onRateChangeSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onResetSub;
@@ -1388,7 +1388,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onReset(EventHandler<Event> v) {
     _onReset = v;
     _onResetSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onResizeSub;
@@ -1398,7 +1398,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onResize(EventHandler<Event> v) {
     _onResize = v;
     _onResizeSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onScrollSub;
@@ -1408,7 +1408,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onScroll(EventHandler<Event> v) {
     _onScroll = v;
     _onScrollSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSearchSub;
@@ -1418,7 +1418,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSearch(EventHandler<Event> v) {
     _onSearch = v;
     _onSearchSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSeekedSub;
@@ -1428,7 +1428,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSeeked(EventHandler<Event> v) {
     _onSeeked = v;
     _onSeekedSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSeekingSub;
@@ -1438,7 +1438,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSeeking(EventHandler<Event> v) {
     _onSeeking = v;
     _onSeekingSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSelectSub;
@@ -1448,7 +1448,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSelect(EventHandler<Event> v) {
     _onSelect = v;
     _onSelectSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSelectStartSub;
@@ -1458,7 +1458,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSelectStart(EventHandler<Event> v) {
     _onSelectStart = v;
     _onSelectStartSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onStalledSub;
@@ -1468,7 +1468,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onStalled(EventHandler<Event> v) {
     _onStalled = v;
     _onStalledSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSubmitSub;
@@ -1478,7 +1478,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSubmit(EventHandler<Event> v) {
     _onSubmit = v;
     _onSubmitSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onSuspendSub;
@@ -1488,7 +1488,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onSuspend(EventHandler<Event> v) {
     _onSuspend = v;
     _onSuspendSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTimeUpdateSub;
@@ -1498,7 +1498,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTimeUpdate(EventHandler<Event> v) {
     _onTimeUpdate = v;
     _onTimeUpdateSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchCancelSub;
@@ -1508,7 +1508,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchCancel(EventHandler<TouchEvent> v) {
     _onTouchCancel = v;
     _onTouchCancelSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchEndSub;
@@ -1518,7 +1518,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchEnd(EventHandler<TouchEvent> v) {
     _onTouchEnd = v;
     _onTouchEndSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchEnterSub;
@@ -1528,7 +1528,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchEnter(EventHandler<TouchEvent> v) {
     _onTouchEnter = v;
     _onTouchEnterSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchLeaveSub;
@@ -1538,7 +1538,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchLeave(EventHandler<TouchEvent> v) {
     _onTouchLeave = v;
     _onTouchLeaveSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchMoveSub;
@@ -1548,7 +1548,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchMove(EventHandler<TouchEvent> v) {
     _onTouchMove = v;
     _onTouchMoveSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTouchStartSub;
@@ -1558,7 +1558,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTouchStart(EventHandler<TouchEvent> v) {
     _onTouchStart = v;
     _onTouchStartSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onTransitionEndSub;
@@ -1568,7 +1568,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onTransitionEnd(EventHandler<TransitionEvent> v) {
     _onTransitionEnd = v;
     _onTransitionEndSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onVolumeChangeSub;
@@ -1578,7 +1578,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onVolumeChange(EventHandler<Event> v) {
     _onVolumeChange = v;
     _onVolumeChangeSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onWaitingSub;
@@ -1588,7 +1588,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onWaiting(EventHandler<Event> v) {
     _onWaiting = v;
     _onWaitingSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onFullscreenChangeSub;
@@ -1598,7 +1598,7 @@ abstract class VElement<E extends Element> extends VNode {
   void set onFullscreenChange(EventHandler<Event> v) {
     _onFullscreenChange = v;
     _onFullscreenChangeSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
   StreamSubscription _onFullscreenErrorSub;
@@ -1608,10 +1608,10 @@ abstract class VElement<E extends Element> extends VNode {
   void set onFullscreenError(EventHandler<Event> v) {
     _onFullscreenError = v;
     _onFullscreenErrorSet = true;
-    _shouldUpdateSubs = true;
+    shouldUpdateSubs = true;
   }
 
-  void _applyAttributesToElement(E ele) {
+  void applyAttributesToElement(E ele) {
     if (_textSet) {
       final first = ele.firstChild;
       if (first != null &&
@@ -1647,7 +1647,7 @@ abstract class VElement<E extends Element> extends VNode {
     if (_scrollTopSet) ele.scrollTop = _scrollTop;
   }
 
-  void _updateElementAttributes(covariant VElement<E> prev, E ele) {
+  void updateElementAttributes(covariant VElement<E> prev, E ele) {
     if (_text != prev._text) {
       final first = ele.firstChild;
       if (first != null &&
@@ -1684,7 +1684,7 @@ abstract class VElement<E extends Element> extends VNode {
     if (_scrollTop != prev._scrollTop) ele.scrollTop = _scrollTop;
   }
 
-  void _applyEventListenersToElement(Element ele) {
+  void applyEventListenersToElement(Element ele) {
     if (_onAbortSet) _onAbortSub = ele.onAbort.listen(onAbort);
     if (_onBeforeCopySet)
       _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
@@ -1779,7 +1779,7 @@ abstract class VElement<E extends Element> extends VNode {
       _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
   }
 
-  void _updateEventListenersToElement(VElement prev, Element ele) {
+  void updateEventListenersToElement(VElement prev, Element ele) {
     if (_onAbortSet) {
       if (!prev._onAbortSet) {
         _onAbortSub = ele.onAbort.listen(onAbort);
@@ -2687,152 +2687,152 @@ abstract class VElement<E extends Element> extends VNode {
 
 class Va extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.a();
+  Element elementFactory() => new Element.a();
 }
 
 class Varticle extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.article();
+  Element elementFactory() => new Element.article();
 }
 
 class Vaside extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.aside();
+  Element elementFactory() => new Element.aside();
 }
 
 class Vaudio extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.audio();
+  Element elementFactory() => new Element.audio();
 }
 
 class Vbr extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.br();
+  Element elementFactory() => new Element.br();
 }
 
 class Vcanvas extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.canvas();
+  Element elementFactory() => new Element.canvas();
 }
 
 class Vdiv extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.div();
+  Element elementFactory() => new Element.div();
 }
 
 class Vfooter extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.footer();
+  Element elementFactory() => new Element.footer();
 }
 
 class Vheader extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.header();
+  Element elementFactory() => new Element.header();
 }
 
 class Vhr extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.hr();
+  Element elementFactory() => new Element.hr();
 }
 
 class Viframe extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.iframe();
+  Element elementFactory() => new Element.iframe();
 }
 
 class Vimg extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.img();
+  Element elementFactory() => new Element.img();
 }
 
 class Vli extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.li();
+  Element elementFactory() => new Element.li();
 }
 
 class Vnav extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.nav();
+  Element elementFactory() => new Element.nav();
 }
 
 class Vol extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.ol();
+  Element elementFactory() => new Element.ol();
 }
 
 class Voption extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.option();
+  Element elementFactory() => new Element.option();
 }
 
 class Vp extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.p();
+  Element elementFactory() => new Element.p();
 }
 
 class Vpre extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.pre();
+  Element elementFactory() => new Element.pre();
 }
 
 class Vsection extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.section();
+  Element elementFactory() => new Element.section();
 }
 
 class Vselect extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.select();
+  Element elementFactory() => new Element.select();
 }
 
 class Vspan extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.span();
+  Element elementFactory() => new Element.span();
 }
 
 class Vsvg extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.svg();
+  Element elementFactory() => new Element.svg();
 }
 
 class Vtable extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.table();
+  Element elementFactory() => new Element.table();
 }
 
 class Vtd extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.td();
+  Element elementFactory() => new Element.td();
 }
 
 class Vtextarea extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.textarea();
+  Element elementFactory() => new Element.textarea();
 }
 
 class Vth extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.th();
+  Element elementFactory() => new Element.th();
 }
 
 class Vtr extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.tr();
+  Element elementFactory() => new Element.tr();
 }
 
 class Vul extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.ul();
+  Element elementFactory() => new Element.ul();
 }
 
 class Vvideo extends VElement<Element> {
   @override
-  Element _elementFactory() => new Element.video();
+  Element elementFactory() => new Element.video();
 }
 
 class VEmbedElement extends VHtmlElement<EmbedElement> {
   @override
-  EmbedElement _elementFactory() => new EmbedElement();
+  EmbedElement elementFactory() => new EmbedElement();
 
   String _height;
   bool _heightSet = false;
@@ -2875,8 +2875,8 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   }
 
   @override
-  void _applyAttributesToElement(EmbedElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(EmbedElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_heightSet) ele.height = _height;
     if (_nameSet) ele.name = _name;
@@ -2886,8 +2886,8 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   }
 
   @override
-  void _updateElementAttributes(VEmbedElement prev, EmbedElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VEmbedElement prev, EmbedElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_height != prev._height) ele.height = _height;
     if (_name != prev._name) ele.name = _name;
@@ -2899,7 +2899,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
 
 class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   @override
-  FieldSetElement _elementFactory() => new FieldSetElement();
+  FieldSetElement elementFactory() => new FieldSetElement();
 
   bool _disabled;
   bool _disabledSet = false;
@@ -2918,16 +2918,16 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   }
 
   @override
-  void _applyAttributesToElement(FieldSetElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(FieldSetElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_disabledSet) ele.disabled = _disabled;
     if (_nameSet) ele.name = _name;
   }
 
   @override
-  void _updateElementAttributes(VFieldSetElement prev, FieldSetElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VFieldSetElement prev, FieldSetElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_disabled != prev._disabled) ele.disabled = _disabled;
     if (_name != prev._name) ele.name = _name;
@@ -2936,7 +2936,7 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
 
 class VFormElement extends VHtmlElement<FormElement> {
   @override
-  FormElement _elementFactory() => new FormElement();
+  FormElement elementFactory() => new FormElement();
 
   String _acceptCharset;
   bool _acceptCharsetSet = false;
@@ -3011,8 +3011,8 @@ class VFormElement extends VHtmlElement<FormElement> {
   }
 
   @override
-  void _applyAttributesToElement(FormElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(FormElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_acceptCharsetSet) ele.acceptCharset = _acceptCharset;
     if (_actionSet) ele.action = _action;
@@ -3026,8 +3026,8 @@ class VFormElement extends VHtmlElement<FormElement> {
   }
 
   @override
-  void _updateElementAttributes(VFormElement prev, FormElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VFormElement prev, FormElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_acceptCharset != prev._acceptCharset)
       ele.acceptCharset = _acceptCharset;
@@ -3044,7 +3044,7 @@ class VFormElement extends VHtmlElement<FormElement> {
 
 class VHRElement extends VHtmlElement<HRElement> {
   @override
-  HRElement _elementFactory() => new HRElement();
+  HRElement elementFactory() => new HRElement();
 
   String _color;
   bool _colorSet = false;
@@ -3055,15 +3055,15 @@ class VHRElement extends VHtmlElement<HRElement> {
   }
 
   @override
-  void _applyAttributesToElement(HRElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(HRElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_colorSet) ele.color = _color;
   }
 
   @override
-  void _updateElementAttributes(VHRElement prev, HRElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VHRElement prev, HRElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_color != prev._color) ele.color = _color;
   }
@@ -3071,80 +3071,80 @@ class VHRElement extends VHtmlElement<HRElement> {
 
 class VHeadElement extends VHtmlElement<HeadElement> {
   @override
-  HeadElement _elementFactory() => new HeadElement();
+  HeadElement elementFactory() => new HeadElement();
 
   @override
-  void _applyAttributesToElement(HeadElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(HeadElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VHeadElement prev, HeadElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VHeadElement prev, HeadElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 abstract class VHeadingElement<T extends HeadingElement>
     extends VHtmlElement<T> {
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(covariant VHeadingElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VHeadingElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class Vh1 extends VElement<HeadingElement> {
   @override
-  HeadingElement _elementFactory() => new HeadingElement.h1();
+  HeadingElement elementFactory() => new HeadingElement.h1();
 }
 
 class Vh2 extends VElement<HeadingElement> {
   @override
-  HeadingElement _elementFactory() => new HeadingElement.h2();
+  HeadingElement elementFactory() => new HeadingElement.h2();
 }
 
 class Vh3 extends VElement<HeadingElement> {
   @override
-  HeadingElement _elementFactory() => new HeadingElement.h3();
+  HeadingElement elementFactory() => new HeadingElement.h3();
 }
 
 class Vh4 extends VElement<HeadingElement> {
   @override
-  HeadingElement _elementFactory() => new HeadingElement.h4();
+  HeadingElement elementFactory() => new HeadingElement.h4();
 }
 
 class Vh5 extends VElement<HeadingElement> {
   @override
-  HeadingElement _elementFactory() => new HeadingElement.h5();
+  HeadingElement elementFactory() => new HeadingElement.h5();
 }
 
 class Vh6 extends VElement<HeadingElement> {
   @override
-  HeadingElement _elementFactory() => new HeadingElement.h6();
+  HeadingElement elementFactory() => new HeadingElement.h6();
 }
 
 class VHtmlHtmlElement extends VHtmlElement<HtmlHtmlElement> {
   @override
-  HtmlHtmlElement _elementFactory() => new HtmlHtmlElement();
+  HtmlHtmlElement elementFactory() => new HtmlHtmlElement();
 
   @override
-  void _applyAttributesToElement(HtmlHtmlElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(HtmlHtmlElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VHtmlHtmlElement prev, HtmlHtmlElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VHtmlHtmlElement prev, HtmlHtmlElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VIFrameElement extends VHtmlElement<IFrameElement> {
   @override
-  IFrameElement _elementFactory() => new IFrameElement();
+  IFrameElement elementFactory() => new IFrameElement();
 
   bool _allowFullscreen;
   bool _allowFullscreenSet = false;
@@ -3203,8 +3203,8 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   }
 
   @override
-  void _applyAttributesToElement(IFrameElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(IFrameElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_allowFullscreenSet) ele.allowFullscreen = _allowFullscreen;
     if (_heightSet) ele.height = _height;
@@ -3216,8 +3216,8 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   }
 
   @override
-  void _updateElementAttributes(VIFrameElement prev, IFrameElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VIFrameElement prev, IFrameElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_allowFullscreen != prev._allowFullscreen)
       ele.allowFullscreen = _allowFullscreen;
@@ -3233,7 +3233,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
 
 class VImageElement extends VHtmlElement<ImageElement> {
   @override
-  ImageElement _elementFactory() => new ImageElement();
+  ImageElement elementFactory() => new ImageElement();
 
   String _alt;
   bool _altSet = false;
@@ -3316,8 +3316,8 @@ class VImageElement extends VHtmlElement<ImageElement> {
   }
 
   @override
-  void _applyAttributesToElement(ImageElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ImageElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_altSet) ele.alt = _alt;
     if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
@@ -3332,8 +3332,8 @@ class VImageElement extends VHtmlElement<ImageElement> {
   }
 
   @override
-  void _updateElementAttributes(VImageElement prev, ImageElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VImageElement prev, ImageElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_alt != prev._alt) ele.alt = _alt;
     if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
@@ -3351,7 +3351,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
 
 class VInputElement extends VHtmlElement<InputElement> {
   @override
-  InputElement _elementFactory() => new InputElement();
+  InputElement elementFactory() => new InputElement();
 
   String _accept;
   bool _acceptSet = false;
@@ -3698,8 +3698,8 @@ class VInputElement extends VHtmlElement<InputElement> {
   }
 
   @override
-  void _applyAttributesToElement(InputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(InputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_acceptSet) ele.accept = _accept;
     if (_altSet) ele.alt = _alt;
@@ -3747,8 +3747,8 @@ class VInputElement extends VHtmlElement<InputElement> {
   }
 
   @override
-  void _updateElementAttributes(VInputElement prev, InputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VInputElement prev, InputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_accept != prev._accept) ele.accept = _accept;
     if (_alt != prev._alt) ele.alt = _alt;
@@ -3854,8 +3854,8 @@ abstract class VInputElementBase<T extends InputElementBase>
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autofocusSet) ele.autofocus = _autofocus;
     if (_disabledSet) ele.disabled = _disabled;
@@ -3866,8 +3866,8 @@ abstract class VInputElementBase<T extends InputElementBase>
   }
 
   @override
-  void _updateElementAttributes(covariant VInputElementBase<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VInputElementBase<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
     if (_disabled != prev._disabled) ele.disabled = _disabled;
@@ -3881,17 +3881,17 @@ abstract class VInputElementBase<T extends InputElementBase>
 
 class VHiddenInputElement extends VInputElementBase<HiddenInputElement> {
   @override
-  HiddenInputElement _elementFactory() => new HiddenInputElement();
+  HiddenInputElement elementFactory() => new HiddenInputElement();
 
   @override
-  void _applyAttributesToElement(HiddenInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(HiddenInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VHiddenInputElement prev, HiddenInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
   }
 }
 
@@ -3978,8 +3978,8 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autocompleteSet) ele.autocomplete = _autocomplete;
     if (_maxLengthSet) ele.maxLength = _maxLength;
@@ -3994,9 +3994,8 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   }
 
   @override
-  void _updateElementAttributes(
-      covariant VTextInputElementBase<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VTextInputElementBase<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
     if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
@@ -4015,7 +4014,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
 
 class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   @override
-  SearchInputElement _elementFactory() => new SearchInputElement();
+  SearchInputElement elementFactory() => new SearchInputElement();
 
   String _dirName;
   bool _dirNameSet = false;
@@ -4026,16 +4025,16 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(SearchInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(SearchInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_dirNameSet) ele.dirName = _dirName;
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VSearchInputElement prev, SearchInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_dirName != prev._dirName) ele.dirName = _dirName;
   }
@@ -4043,7 +4042,7 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
 
 class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   @override
-  TextInputElement _elementFactory() => new TextInputElement();
+  TextInputElement elementFactory() => new TextInputElement();
 
   String _dirName;
   bool _dirNameSet = false;
@@ -4054,15 +4053,15 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(TextInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TextInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_dirNameSet) ele.dirName = _dirName;
   }
 
   @override
-  void _updateElementAttributes(VTextInputElement prev, TextInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTextInputElement prev, TextInputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_dirName != prev._dirName) ele.dirName = _dirName;
   }
@@ -4070,39 +4069,39 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
 
 class VUrlInputElement extends VTextInputElementBase<UrlInputElement> {
   @override
-  UrlInputElement _elementFactory() => new UrlInputElement();
+  UrlInputElement elementFactory() => new UrlInputElement();
 
   @override
-  void _applyAttributesToElement(UrlInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(UrlInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VUrlInputElement prev, UrlInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VUrlInputElement prev, UrlInputElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VTelephoneInputElement
     extends VTextInputElementBase<TelephoneInputElement> {
   @override
-  TelephoneInputElement _elementFactory() => new TelephoneInputElement();
+  TelephoneInputElement elementFactory() => new TelephoneInputElement();
 
   @override
-  void _applyAttributesToElement(TelephoneInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TelephoneInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VTelephoneInputElement prev, TelephoneInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   @override
-  EmailInputElement _elementFactory() => new EmailInputElement();
+  EmailInputElement elementFactory() => new EmailInputElement();
 
   String _autocomplete;
   bool _autocompleteSet = false;
@@ -4177,8 +4176,8 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(EmailInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(EmailInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autocompleteSet) ele.autocomplete = _autocomplete;
     if (_autofocusSet) ele.autofocus = _autofocus;
@@ -4192,9 +4191,8 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   }
 
   @override
-  void _updateElementAttributes(
-      VEmailInputElement prev, EmailInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VEmailInputElement prev, EmailInputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
     if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
@@ -4211,17 +4209,17 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
 class VPasswordInputElement
     extends VTextInputElementBase<PasswordInputElement> {
   @override
-  PasswordInputElement _elementFactory() => new PasswordInputElement();
+  PasswordInputElement elementFactory() => new PasswordInputElement();
 
   @override
-  void _applyAttributesToElement(PasswordInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(PasswordInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VPasswordInputElement prev, PasswordInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
   }
 }
 
@@ -4260,8 +4258,8 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_maxSet) ele.max = _max;
     if (_minSet) ele.min = _min;
@@ -4270,9 +4268,9 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       covariant VRangeInputElementBase<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_max != prev._max) ele.max = _max;
     if (_min != prev._min) ele.min = _min;
@@ -4284,7 +4282,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
 
 class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   @override
-  DateInputElement _elementFactory() => new DateInputElement();
+  DateInputElement elementFactory() => new DateInputElement();
 
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
@@ -4311,8 +4309,8 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(DateInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(DateInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
     if (_readOnlySet) ele.readOnly = _readOnly;
@@ -4320,8 +4318,8 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   }
 
   @override
-  void _updateElementAttributes(VDateInputElement prev, DateInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VDateInputElement prev, DateInputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
     if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
@@ -4331,7 +4329,7 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
 
 class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   @override
-  MonthInputElement _elementFactory() => new MonthInputElement();
+  MonthInputElement elementFactory() => new MonthInputElement();
 
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
@@ -4358,8 +4356,8 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(MonthInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(MonthInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
     if (_readOnlySet) ele.readOnly = _readOnly;
@@ -4367,9 +4365,8 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   }
 
   @override
-  void _updateElementAttributes(
-      VMonthInputElement prev, MonthInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VMonthInputElement prev, MonthInputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
     if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
@@ -4379,7 +4376,7 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
 
 class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   @override
-  WeekInputElement _elementFactory() => new WeekInputElement();
+  WeekInputElement elementFactory() => new WeekInputElement();
 
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
@@ -4406,8 +4403,8 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(WeekInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(WeekInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
     if (_readOnlySet) ele.readOnly = _readOnly;
@@ -4415,8 +4412,8 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   }
 
   @override
-  void _updateElementAttributes(VWeekInputElement prev, WeekInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VWeekInputElement prev, WeekInputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
     if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
@@ -4426,7 +4423,7 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
 
 class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   @override
-  TimeInputElement _elementFactory() => new TimeInputElement();
+  TimeInputElement elementFactory() => new TimeInputElement();
 
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
@@ -4453,8 +4450,8 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(TimeInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TimeInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
     if (_readOnlySet) ele.readOnly = _readOnly;
@@ -4462,8 +4459,8 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   }
 
   @override
-  void _updateElementAttributes(VTimeInputElement prev, TimeInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTimeInputElement prev, TimeInputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
     if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
@@ -4474,8 +4471,7 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
 class VLocalDateTimeInputElement
     extends VRangeInputElementBase<LocalDateTimeInputElement> {
   @override
-  LocalDateTimeInputElement _elementFactory() =>
-      new LocalDateTimeInputElement();
+  LocalDateTimeInputElement elementFactory() => new LocalDateTimeInputElement();
 
   bool _readOnly;
   bool _readOnlySet = false;
@@ -4494,17 +4490,17 @@ class VLocalDateTimeInputElement
   }
 
   @override
-  void _applyAttributesToElement(LocalDateTimeInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(LocalDateTimeInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_readOnlySet) ele.readOnly = _readOnly;
     if (_requiredSet) ele.required = _required;
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VLocalDateTimeInputElement prev, LocalDateTimeInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
     if (_required != prev._required) ele.required = _required;
@@ -4513,7 +4509,7 @@ class VLocalDateTimeInputElement
 
 class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   @override
-  NumberInputElement _elementFactory() => new NumberInputElement();
+  NumberInputElement elementFactory() => new NumberInputElement();
 
   String _placeholder;
   bool _placeholderSet = false;
@@ -4540,8 +4536,8 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(NumberInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(NumberInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_placeholderSet) ele.placeholder = _placeholder;
     if (_readOnlySet) ele.readOnly = _readOnly;
@@ -4549,9 +4545,9 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VNumberInputElement prev, NumberInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
     if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
@@ -4561,23 +4557,22 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
 
 class VRangeInputElement extends VRangeInputElementBase<RangeInputElement> {
   @override
-  RangeInputElement _elementFactory() => new RangeInputElement();
+  RangeInputElement elementFactory() => new RangeInputElement();
 
   @override
-  void _applyAttributesToElement(RangeInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(RangeInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
-      VRangeInputElement prev, RangeInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VRangeInputElement prev, RangeInputElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   @override
-  CheckboxInputElement _elementFactory() => new CheckboxInputElement();
+  CheckboxInputElement elementFactory() => new CheckboxInputElement();
 
   bool _checked;
   bool _checkedSet = false;
@@ -4596,17 +4591,17 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   }
 
   @override
-  void _applyAttributesToElement(CheckboxInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(CheckboxInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_checkedSet) ele.checked = _checked;
     if (_requiredSet) ele.required = _required;
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VCheckboxInputElement prev, CheckboxInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_checked != prev._checked) ele.checked = _checked;
     if (_required != prev._required) ele.required = _required;
@@ -4616,7 +4611,7 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
 class VRadioButtonInputElement
     extends VInputElementBase<RadioButtonInputElement> {
   @override
-  RadioButtonInputElement _elementFactory() => new RadioButtonInputElement();
+  RadioButtonInputElement elementFactory() => new RadioButtonInputElement();
 
   bool _checked;
   bool _checkedSet = false;
@@ -4635,17 +4630,17 @@ class VRadioButtonInputElement
   }
 
   @override
-  void _applyAttributesToElement(RadioButtonInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(RadioButtonInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_checkedSet) ele.checked = _checked;
     if (_requiredSet) ele.required = _required;
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VRadioButtonInputElement prev, RadioButtonInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_checked != prev._checked) ele.checked = _checked;
     if (_required != prev._required) ele.required = _required;
@@ -4655,7 +4650,7 @@ class VRadioButtonInputElement
 class VFileUploadInputElement
     extends VInputElementBase<FileUploadInputElement> {
   @override
-  FileUploadInputElement _elementFactory() => new FileUploadInputElement();
+  FileUploadInputElement elementFactory() => new FileUploadInputElement();
 
   String _accept;
   bool _acceptSet = false;
@@ -4690,8 +4685,8 @@ class VFileUploadInputElement
   }
 
   @override
-  void _applyAttributesToElement(FileUploadInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(FileUploadInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_acceptSet) ele.accept = _accept;
     if (_multipleSet) ele.multiple = _multiple;
@@ -4700,9 +4695,9 @@ class VFileUploadInputElement
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VFileUploadInputElement prev, FileUploadInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_accept != prev._accept) ele.accept = _accept;
     if (_multiple != prev._multiple) ele.multiple = _multiple;
@@ -4714,7 +4709,7 @@ class VFileUploadInputElement
 class VSubmitButtonInputElement
     extends VInputElementBase<SubmitButtonInputElement> {
   @override
-  SubmitButtonInputElement _elementFactory() => new SubmitButtonInputElement();
+  SubmitButtonInputElement elementFactory() => new SubmitButtonInputElement();
 
   String _formAction;
   bool _formActionSet = false;
@@ -4757,8 +4752,8 @@ class VSubmitButtonInputElement
   }
 
   @override
-  void _applyAttributesToElement(SubmitButtonInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(SubmitButtonInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_formActionSet) ele.formAction = _formAction;
     if (_formEnctypeSet) ele.formEnctype = _formEnctype;
@@ -4768,9 +4763,9 @@ class VSubmitButtonInputElement
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VSubmitButtonInputElement prev, SubmitButtonInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_formAction != prev._formAction) ele.formAction = _formAction;
     if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
@@ -4784,7 +4779,7 @@ class VSubmitButtonInputElement
 class VImageButtonInputElement
     extends VInputElementBase<ImageButtonInputElement> {
   @override
-  ImageButtonInputElement _elementFactory() => new ImageButtonInputElement();
+  ImageButtonInputElement elementFactory() => new ImageButtonInputElement();
 
   String _alt;
   bool _altSet = false;
@@ -4859,8 +4854,8 @@ class VImageButtonInputElement
   }
 
   @override
-  void _applyAttributesToElement(ImageButtonInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ImageButtonInputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_altSet) ele.alt = _alt;
     if (_formActionSet) ele.formAction = _formAction;
@@ -4874,9 +4869,9 @@ class VImageButtonInputElement
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VImageButtonInputElement prev, ImageButtonInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
 
     if (_alt != prev._alt) ele.alt = _alt;
     if (_formAction != prev._formAction) ele.formAction = _formAction;
@@ -4894,39 +4889,39 @@ class VImageButtonInputElement
 class VResetButtonInputElement
     extends VInputElementBase<ResetButtonInputElement> {
   @override
-  ResetButtonInputElement _elementFactory() => new ResetButtonInputElement();
+  ResetButtonInputElement elementFactory() => new ResetButtonInputElement();
 
   @override
-  void _applyAttributesToElement(ResetButtonInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ResetButtonInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VResetButtonInputElement prev, ResetButtonInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VButtonInputElement extends VInputElementBase<ButtonInputElement> {
   @override
-  ButtonInputElement _elementFactory() => new ButtonInputElement();
+  ButtonInputElement elementFactory() => new ButtonInputElement();
 
   @override
-  void _applyAttributesToElement(ButtonInputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ButtonInputElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VButtonInputElement prev, ButtonInputElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VKeygenElement extends VHtmlElement<KeygenElement> {
   @override
-  KeygenElement _elementFactory() => new KeygenElement();
+  KeygenElement elementFactory() => new KeygenElement();
 
   bool _autofocus;
   bool _autofocusSet = false;
@@ -4969,8 +4964,8 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   }
 
   @override
-  void _applyAttributesToElement(KeygenElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(KeygenElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autofocusSet) ele.autofocus = _autofocus;
     if (_challengeSet) ele.challenge = _challenge;
@@ -4980,8 +4975,8 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   }
 
   @override
-  void _updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
     if (_challenge != prev._challenge) ele.challenge = _challenge;
@@ -4993,7 +4988,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
 
 class VLIElement extends VHtmlElement<LIElement> {
   @override
-  LIElement _elementFactory() => new LIElement();
+  LIElement elementFactory() => new LIElement();
 
   int _value;
   bool _valueSet = false;
@@ -5004,15 +4999,15 @@ class VLIElement extends VHtmlElement<LIElement> {
   }
 
   @override
-  void _applyAttributesToElement(LIElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(LIElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_valueSet) ele.value = _value;
   }
 
   @override
-  void _updateElementAttributes(VLIElement prev, LIElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VLIElement prev, LIElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_value != prev._value) ele.value = _value;
   }
@@ -5020,7 +5015,7 @@ class VLIElement extends VHtmlElement<LIElement> {
 
 class VLabelElement extends VHtmlElement<LabelElement> {
   @override
-  LabelElement _elementFactory() => new LabelElement();
+  LabelElement elementFactory() => new LabelElement();
 
   String _htmlFor;
   bool _htmlForSet = false;
@@ -5031,15 +5026,15 @@ class VLabelElement extends VHtmlElement<LabelElement> {
   }
 
   @override
-  void _applyAttributesToElement(LabelElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(LabelElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_htmlForSet) ele.htmlFor = _htmlFor;
   }
 
   @override
-  void _updateElementAttributes(VLabelElement prev, LabelElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VLabelElement prev, LabelElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_htmlFor != prev._htmlFor) ele.htmlFor = _htmlFor;
   }
@@ -5047,22 +5042,22 @@ class VLabelElement extends VHtmlElement<LabelElement> {
 
 class VLegendElement extends VHtmlElement<LegendElement> {
   @override
-  LegendElement _elementFactory() => new LegendElement();
+  LegendElement elementFactory() => new LegendElement();
 
   @override
-  void _applyAttributesToElement(LegendElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(LegendElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VLegendElement prev, LegendElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VLegendElement prev, LegendElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VLinkElement extends VHtmlElement<LinkElement> {
   @override
-  LinkElement _elementFactory() => new LinkElement();
+  LinkElement elementFactory() => new LinkElement();
 
   String _as;
   bool _asSet = false;
@@ -5137,8 +5132,8 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   }
 
   @override
-  void _applyAttributesToElement(LinkElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(LinkElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_asSet) ele.as = _as;
     if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
@@ -5152,8 +5147,8 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   }
 
   @override
-  void _updateElementAttributes(VLinkElement prev, LinkElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VLinkElement prev, LinkElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_as != prev._as) ele.as = _as;
     if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
@@ -5169,7 +5164,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
 
 class VMapElement extends VHtmlElement<MapElement> {
   @override
-  MapElement _elementFactory() => new MapElement();
+  MapElement elementFactory() => new MapElement();
 
   String _name;
   bool _nameSet = false;
@@ -5180,15 +5175,15 @@ class VMapElement extends VHtmlElement<MapElement> {
   }
 
   @override
-  void _applyAttributesToElement(MapElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(MapElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_nameSet) ele.name = _name;
   }
 
   @override
-  void _updateElementAttributes(VMapElement prev, MapElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VMapElement prev, MapElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_name != prev._name) ele.name = _name;
   }
@@ -5308,8 +5303,8 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autoplaySet) ele.autoplay = _autoplay;
     if (_controlsSet) ele.controls = _controls;
@@ -5329,8 +5324,8 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   }
 
   @override
-  void _updateElementAttributes(covariant VMediaElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VMediaElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autoplay != prev._autoplay) ele.autoplay = _autoplay;
     if (_controls != prev._controls) ele.controls = _controls;
@@ -5353,7 +5348,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
 
 class VMenuElement extends VHtmlElement<MenuElement> {
   @override
-  MenuElement _elementFactory() => new MenuElement();
+  MenuElement elementFactory() => new MenuElement();
 
   String _label;
   bool _labelSet = false;
@@ -5372,16 +5367,16 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   }
 
   @override
-  void _applyAttributesToElement(MenuElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(MenuElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_labelSet) ele.label = _label;
     if (_typeSet) ele.type = _type;
   }
 
   @override
-  void _updateElementAttributes(VMenuElement prev, MenuElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VMenuElement prev, MenuElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_label != prev._label) ele.label = _label;
     if (_type != prev._type) ele.type = _type;
@@ -5447,8 +5442,8 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_checkedSet) ele.checked = _checked;
     if (_defaultValueSet) ele.defaultValue = _defaultValue;
@@ -5460,8 +5455,8 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   }
 
   @override
-  void _updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_checked != prev._checked) ele.checked = _checked;
     if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
@@ -5475,7 +5470,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
 
 class VMetaElement extends VHtmlElement<MetaElement> {
   @override
-  MetaElement _elementFactory() => new MetaElement();
+  MetaElement elementFactory() => new MetaElement();
 
   String _content;
   bool _contentSet = false;
@@ -5502,8 +5497,8 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   }
 
   @override
-  void _applyAttributesToElement(MetaElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(MetaElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_contentSet) ele.content = _content;
     if (_httpEquivSet) ele.httpEquiv = _httpEquiv;
@@ -5511,8 +5506,8 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   }
 
   @override
-  void _updateElementAttributes(VMetaElement prev, MetaElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VMetaElement prev, MetaElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_content != prev._content) ele.content = _content;
     if (_httpEquiv != prev._httpEquiv) ele.httpEquiv = _httpEquiv;
@@ -5522,7 +5517,7 @@ class VMetaElement extends VHtmlElement<MetaElement> {
 
 class VMeterElement extends VHtmlElement<MeterElement> {
   @override
-  MeterElement _elementFactory() => new MeterElement();
+  MeterElement elementFactory() => new MeterElement();
 
   num _high;
   bool _highSet = false;
@@ -5573,8 +5568,8 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   }
 
   @override
-  void _applyAttributesToElement(MeterElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(MeterElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_highSet) ele.high = _high;
     if (_lowSet) ele.low = _low;
@@ -5585,8 +5580,8 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   }
 
   @override
-  void _updateElementAttributes(VMeterElement prev, MeterElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VMeterElement prev, MeterElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_high != prev._high) ele.high = _high;
     if (_low != prev._low) ele.low = _low;
@@ -5615,16 +5610,16 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_citeSet) ele.cite = _cite;
     if (_dateTimeSet) ele.dateTime = _dateTime;
   }
 
   @override
-  void _updateElementAttributes(covariant VModElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VModElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_cite != prev._cite) ele.cite = _cite;
     if (_dateTime != prev._dateTime) ele.dateTime = _dateTime;
@@ -5633,7 +5628,7 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
 
 class VOListElement extends VHtmlElement<OListElement> {
   @override
-  OListElement _elementFactory() => new OListElement();
+  OListElement elementFactory() => new OListElement();
 
   bool _reversed;
   bool _reversedSet = false;
@@ -5660,8 +5655,8 @@ class VOListElement extends VHtmlElement<OListElement> {
   }
 
   @override
-  void _applyAttributesToElement(OListElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(OListElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_reversedSet) ele.reversed = _reversed;
     if (_startSet) ele.start = _start;
@@ -5669,8 +5664,8 @@ class VOListElement extends VHtmlElement<OListElement> {
   }
 
   @override
-  void _updateElementAttributes(VOListElement prev, OListElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VOListElement prev, OListElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_reversed != prev._reversed) ele.reversed = _reversed;
     if (_start != prev._start) ele.start = _start;
@@ -5680,7 +5675,7 @@ class VOListElement extends VHtmlElement<OListElement> {
 
 class VObjectElement extends VHtmlElement<ObjectElement> {
   @override
-  ObjectElement _elementFactory() => new ObjectElement();
+  ObjectElement elementFactory() => new ObjectElement();
 
   String _data;
   bool _dataSet = false;
@@ -5731,8 +5726,8 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   }
 
   @override
-  void _applyAttributesToElement(ObjectElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ObjectElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_dataSet) ele.data = _data;
     if (_heightSet) ele.height = _height;
@@ -5743,8 +5738,8 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   }
 
   @override
-  void _updateElementAttributes(VObjectElement prev, ObjectElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VObjectElement prev, ObjectElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_data != prev._data) ele.data = _data;
     if (_height != prev._height) ele.height = _height;
@@ -5757,7 +5752,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
 
 class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   @override
-  OptGroupElement _elementFactory() => new OptGroupElement();
+  OptGroupElement elementFactory() => new OptGroupElement();
 
   bool _disabled;
   bool _disabledSet = false;
@@ -5776,16 +5771,16 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   }
 
   @override
-  void _applyAttributesToElement(OptGroupElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(OptGroupElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_disabledSet) ele.disabled = _disabled;
     if (_labelSet) ele.label = _label;
   }
 
   @override
-  void _updateElementAttributes(VOptGroupElement prev, OptGroupElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VOptGroupElement prev, OptGroupElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_disabled != prev._disabled) ele.disabled = _disabled;
     if (_label != prev._label) ele.label = _label;
@@ -5794,7 +5789,7 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
 
 class VOptionElement extends VHtmlElement<OptionElement> {
   @override
-  OptionElement _elementFactory() => new OptionElement();
+  OptionElement elementFactory() => new OptionElement();
 
   bool _defaultSelected;
   bool _defaultSelectedSet = false;
@@ -5837,8 +5832,8 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   }
 
   @override
-  void _applyAttributesToElement(OptionElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(OptionElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_defaultSelectedSet) ele.defaultSelected = _defaultSelected;
     if (_disabledSet) ele.disabled = _disabled;
@@ -5848,8 +5843,8 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   }
 
   @override
-  void _updateElementAttributes(VOptionElement prev, OptionElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VOptionElement prev, OptionElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_defaultSelected != prev._defaultSelected)
       ele.defaultSelected = _defaultSelected;
@@ -5862,7 +5857,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
 
 class VOutputElement extends VHtmlElement<OutputElement> {
   @override
-  OutputElement _elementFactory() => new OutputElement();
+  OutputElement elementFactory() => new OutputElement();
 
   String _defaultValue;
   bool _defaultValueSet = false;
@@ -5889,8 +5884,8 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   }
 
   @override
-  void _applyAttributesToElement(OutputElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(OutputElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_defaultValueSet) ele.defaultValue = _defaultValue;
     if (_nameSet) ele.name = _name;
@@ -5898,8 +5893,8 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   }
 
   @override
-  void _updateElementAttributes(VOutputElement prev, OutputElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VOutputElement prev, OutputElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
     if (_name != prev._name) ele.name = _name;
@@ -5909,22 +5904,22 @@ class VOutputElement extends VHtmlElement<OutputElement> {
 
 class VParagraphElement extends VHtmlElement<ParagraphElement> {
   @override
-  ParagraphElement _elementFactory() => new ParagraphElement();
+  ParagraphElement elementFactory() => new ParagraphElement();
 
   @override
-  void _applyAttributesToElement(ParagraphElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ParagraphElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VParagraphElement prev, ParagraphElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VParagraphElement prev, ParagraphElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VParamElement extends VHtmlElement<ParamElement> {
   @override
-  ParamElement _elementFactory() => new ParamElement();
+  ParamElement elementFactory() => new ParamElement();
 
   String _name;
   bool _nameSet = false;
@@ -5943,16 +5938,16 @@ class VParamElement extends VHtmlElement<ParamElement> {
   }
 
   @override
-  void _applyAttributesToElement(ParamElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ParamElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_nameSet) ele.name = _name;
     if (_valueSet) ele.value = _value;
   }
 
   @override
-  void _updateElementAttributes(VParamElement prev, ParamElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VParamElement prev, ParamElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_name != prev._name) ele.name = _name;
     if (_value != prev._value) ele.value = _value;
@@ -5962,34 +5957,34 @@ class VParamElement extends VHtmlElement<ParamElement> {
 abstract class VPictureElement<T extends PictureElement>
     extends VHtmlElement<T> {
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(covariant VPictureElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VPictureElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VPreElement extends VHtmlElement<PreElement> {
   @override
-  PreElement _elementFactory() => new PreElement();
+  PreElement elementFactory() => new PreElement();
 
   @override
-  void _applyAttributesToElement(PreElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(PreElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VPreElement prev, PreElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VPreElement prev, PreElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VProgressElement extends VHtmlElement<ProgressElement> {
   @override
-  ProgressElement _elementFactory() => new ProgressElement();
+  ProgressElement elementFactory() => new ProgressElement();
 
   num _max;
   bool _maxSet = false;
@@ -6008,16 +6003,16 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   }
 
   @override
-  void _applyAttributesToElement(ProgressElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ProgressElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_maxSet) ele.max = _max;
     if (_valueSet) ele.value = _value;
   }
 
   @override
-  void _updateElementAttributes(VProgressElement prev, ProgressElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VProgressElement prev, ProgressElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_max != prev._max) ele.max = _max;
     if (_value != prev._value) ele.value = _value;
@@ -6026,7 +6021,7 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
 
 class VQuoteElement extends VHtmlElement<QuoteElement> {
   @override
-  QuoteElement _elementFactory() => new QuoteElement();
+  QuoteElement elementFactory() => new QuoteElement();
 
   String _cite;
   bool _citeSet = false;
@@ -6037,15 +6032,15 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
   }
 
   @override
-  void _applyAttributesToElement(QuoteElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(QuoteElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_citeSet) ele.cite = _cite;
   }
 
   @override
-  void _updateElementAttributes(VQuoteElement prev, QuoteElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VQuoteElement prev, QuoteElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_cite != prev._cite) ele.cite = _cite;
   }
@@ -6053,7 +6048,7 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
 
 class VScriptElement extends VHtmlElement<ScriptElement> {
   @override
-  ScriptElement _elementFactory() => new ScriptElement();
+  ScriptElement elementFactory() => new ScriptElement();
 
   bool _async;
   bool _asyncSet = false;
@@ -6120,8 +6115,8 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   }
 
   @override
-  void _applyAttributesToElement(ScriptElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ScriptElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_asyncSet) ele.async = _async;
     if (_charsetSet) ele.charset = _charset;
@@ -6134,8 +6129,8 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   }
 
   @override
-  void _updateElementAttributes(VScriptElement prev, ScriptElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VScriptElement prev, ScriptElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_async != prev._async) ele.async = _async;
     if (_charset != prev._charset) ele.charset = _charset;
@@ -6150,7 +6145,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
 
 class VSelectElement extends VHtmlElement<SelectElement> {
   @override
-  SelectElement _elementFactory() => new SelectElement();
+  SelectElement elementFactory() => new SelectElement();
 
   bool _autofocus;
   bool _autofocusSet = false;
@@ -6225,8 +6220,8 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   }
 
   @override
-  void _applyAttributesToElement(SelectElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(SelectElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autofocusSet) ele.autofocus = _autofocus;
     if (_disabledSet) ele.disabled = _disabled;
@@ -6240,8 +6235,8 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   }
 
   @override
-  void _updateElementAttributes(VSelectElement prev, SelectElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VSelectElement prev, SelectElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
     if (_disabled != prev._disabled) ele.disabled = _disabled;
@@ -6258,16 +6253,16 @@ class VSelectElement extends VHtmlElement<SelectElement> {
 
 class VShadowElement extends VHtmlElement<ShadowElement> {
   @override
-  ShadowElement _elementFactory() => new ShadowElement();
+  ShadowElement elementFactory() => new ShadowElement();
 
   @override
-  void _applyAttributesToElement(ShadowElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(ShadowElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VShadowElement prev, ShadowElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VShadowElement prev, ShadowElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
@@ -6281,15 +6276,15 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
   }
 
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
 
     if (_nameSet) ele.name = _name;
   }
 
   @override
-  void _updateElementAttributes(covariant VSlotElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VSlotElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_name != prev._name) ele.name = _name;
   }
@@ -6297,7 +6292,7 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
 
 class VSourceElement extends VHtmlElement<SourceElement> {
   @override
-  SourceElement _elementFactory() => new SourceElement();
+  SourceElement elementFactory() => new SourceElement();
 
   String _media;
   bool _mediaSet = false;
@@ -6340,8 +6335,8 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   }
 
   @override
-  void _applyAttributesToElement(SourceElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(SourceElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_mediaSet) ele.media = _media;
     if (_sizesSet) ele.sizes = _sizes;
@@ -6351,8 +6346,8 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   }
 
   @override
-  void _updateElementAttributes(VSourceElement prev, SourceElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VSourceElement prev, SourceElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_media != prev._media) ele.media = _media;
     if (_sizes != prev._sizes) ele.sizes = _sizes;
@@ -6364,22 +6359,22 @@ class VSourceElement extends VHtmlElement<SourceElement> {
 
 class VSpanElement extends VHtmlElement<SpanElement> {
   @override
-  SpanElement _elementFactory() => new SpanElement();
+  SpanElement elementFactory() => new SpanElement();
 
   @override
-  void _applyAttributesToElement(SpanElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(SpanElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VSpanElement prev, SpanElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VSpanElement prev, SpanElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VStyleElement extends VHtmlElement<StyleElement> {
   @override
-  StyleElement _elementFactory() => new StyleElement();
+  StyleElement elementFactory() => new StyleElement();
 
   bool _disabled;
   bool _disabledSet = false;
@@ -6406,8 +6401,8 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   }
 
   @override
-  void _applyAttributesToElement(StyleElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(StyleElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_disabledSet) ele.disabled = _disabled;
     if (_mediaSet) ele.media = _media;
@@ -6415,8 +6410,8 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   }
 
   @override
-  void _updateElementAttributes(VStyleElement prev, StyleElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VStyleElement prev, StyleElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_disabled != prev._disabled) ele.disabled = _disabled;
     if (_media != prev._media) ele.media = _media;
@@ -6426,23 +6421,23 @@ class VStyleElement extends VHtmlElement<StyleElement> {
 
 class VTableCaptionElement extends VHtmlElement<TableCaptionElement> {
   @override
-  TableCaptionElement _elementFactory() => new TableCaptionElement();
+  TableCaptionElement elementFactory() => new TableCaptionElement();
 
   @override
-  void _applyAttributesToElement(TableCaptionElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TableCaptionElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(
+  void updateElementAttributes(
       VTableCaptionElement prev, TableCaptionElement ele) {
-    super._updateElementAttributes(prev, ele);
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VTableCellElement extends VHtmlElement<TableCellElement> {
   @override
-  TableCellElement _elementFactory() => new TableCellElement();
+  TableCellElement elementFactory() => new TableCellElement();
 
   int _colSpan;
   bool _colSpanSet = false;
@@ -6469,8 +6464,8 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   }
 
   @override
-  void _applyAttributesToElement(TableCellElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TableCellElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_colSpanSet) ele.colSpan = _colSpan;
     if (_headersSet) ele.headers = _headers;
@@ -6478,8 +6473,8 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   }
 
   @override
-  void _updateElementAttributes(VTableCellElement prev, TableCellElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTableCellElement prev, TableCellElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_colSpan != prev._colSpan) ele.colSpan = _colSpan;
     if (_headers != prev._headers) ele.headers = _headers;
@@ -6489,7 +6484,7 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
 
 class VTableColElement extends VHtmlElement<TableColElement> {
   @override
-  TableColElement _elementFactory() => new TableColElement();
+  TableColElement elementFactory() => new TableColElement();
 
   int _span;
   bool _spanSet = false;
@@ -6500,15 +6495,15 @@ class VTableColElement extends VHtmlElement<TableColElement> {
   }
 
   @override
-  void _applyAttributesToElement(TableColElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TableColElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_spanSet) ele.span = _span;
   }
 
   @override
-  void _updateElementAttributes(VTableColElement prev, TableColElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTableColElement prev, TableColElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_span != prev._span) ele.span = _span;
   }
@@ -6516,7 +6511,7 @@ class VTableColElement extends VHtmlElement<TableColElement> {
 
 class VTableElement extends VHtmlElement<TableElement> {
   @override
-  TableElement _elementFactory() => new TableElement();
+  TableElement elementFactory() => new TableElement();
 
   TableCaptionElement _caption;
   bool _captionSet = false;
@@ -6543,8 +6538,8 @@ class VTableElement extends VHtmlElement<TableElement> {
   }
 
   @override
-  void _applyAttributesToElement(TableElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TableElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_captionSet) ele.caption = _caption;
     if (_tFootSet) ele.tFoot = _tFoot;
@@ -6552,8 +6547,8 @@ class VTableElement extends VHtmlElement<TableElement> {
   }
 
   @override
-  void _updateElementAttributes(VTableElement prev, TableElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTableElement prev, TableElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_caption != prev._caption) ele.caption = _caption;
     if (_tFoot != prev._tFoot) ele.tFoot = _tFoot;
@@ -6563,50 +6558,50 @@ class VTableElement extends VHtmlElement<TableElement> {
 
 class VTableRowElement extends VHtmlElement<TableRowElement> {
   @override
-  TableRowElement _elementFactory() => new TableRowElement();
+  TableRowElement elementFactory() => new TableRowElement();
 
   @override
-  void _applyAttributesToElement(TableRowElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TableRowElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VTableRowElement prev, TableRowElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTableRowElement prev, TableRowElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 abstract class VTableSectionElement<T extends TableSectionElement>
     extends VHtmlElement<T> {
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(covariant VTableSectionElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VTableSectionElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VTemplateElement extends VHtmlElement<TemplateElement> {
   @override
-  TemplateElement _elementFactory() => new TemplateElement();
+  TemplateElement elementFactory() => new TemplateElement();
 
   @override
-  void _applyAttributesToElement(TemplateElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TemplateElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VTemplateElement prev, TemplateElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTemplateElement prev, TemplateElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   @override
-  TextAreaElement _elementFactory() => new TextAreaElement();
+  TextAreaElement elementFactory() => new TextAreaElement();
 
   String _autocapitalize;
   bool _autocapitalizeSet = false;
@@ -6761,8 +6756,8 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   }
 
   @override
-  void _applyAttributesToElement(TextAreaElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TextAreaElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_autocapitalizeSet) ele.autocapitalize = _autocapitalize;
     if (_autofocusSet) ele.autofocus = _autofocus;
@@ -6786,8 +6781,8 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   }
 
   @override
-  void _updateElementAttributes(VTextAreaElement prev, TextAreaElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTextAreaElement prev, TextAreaElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_autocapitalize != prev._autocapitalize)
       ele.autocapitalize = _autocapitalize;
@@ -6816,22 +6811,22 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
 
 class VTitleElement extends VHtmlElement<TitleElement> {
   @override
-  TitleElement _elementFactory() => new TitleElement();
+  TitleElement elementFactory() => new TitleElement();
 
   @override
-  void _applyAttributesToElement(TitleElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TitleElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VTitleElement prev, TitleElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTitleElement prev, TitleElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VTrackElement extends VHtmlElement<TrackElement> {
   @override
-  TrackElement _elementFactory() => new TrackElement();
+  TrackElement elementFactory() => new TrackElement();
 
   bool _defaultValue;
   bool _defaultValueSet = false;
@@ -6874,8 +6869,8 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   }
 
   @override
-  void _applyAttributesToElement(TrackElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(TrackElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_defaultValueSet) ele.defaultValue = _defaultValue;
     if (_kindSet) ele.kind = _kind;
@@ -6885,8 +6880,8 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   }
 
   @override
-  void _updateElementAttributes(VTrackElement prev, TrackElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VTrackElement prev, TrackElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
     if (_kind != prev._kind) ele.kind = _kind;
@@ -6898,35 +6893,35 @@ class VTrackElement extends VHtmlElement<TrackElement> {
 
 class VUListElement extends VHtmlElement<UListElement> {
   @override
-  UListElement _elementFactory() => new UListElement();
+  UListElement elementFactory() => new UListElement();
 
   @override
-  void _applyAttributesToElement(UListElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(UListElement ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(VUListElement prev, UListElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VUListElement prev, UListElement ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 abstract class VUnknownElement<T extends UnknownElement>
     extends VHtmlElement<T> {
   @override
-  void _applyAttributesToElement(T ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(T ele) {
+    super.applyAttributesToElement(ele);
   }
 
   @override
-  void _updateElementAttributes(covariant VUnknownElement<T> prev, T ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(covariant VUnknownElement<T> prev, T ele) {
+    super.updateElementAttributes(prev, ele);
   }
 }
 
 class VVideoElement extends VMediaElement<VideoElement> {
   @override
-  VideoElement _elementFactory() => new VideoElement();
+  VideoElement elementFactory() => new VideoElement();
 
   int _height;
   bool _heightSet = false;
@@ -6953,8 +6948,8 @@ class VVideoElement extends VMediaElement<VideoElement> {
   }
 
   @override
-  void _applyAttributesToElement(VideoElement ele) {
-    super._applyAttributesToElement(ele);
+  void applyAttributesToElement(VideoElement ele) {
+    super.applyAttributesToElement(ele);
 
     if (_heightSet) ele.height = _height;
     if (_posterSet) ele.poster = _poster;
@@ -6962,8 +6957,8 @@ class VVideoElement extends VMediaElement<VideoElement> {
   }
 
   @override
-  void _updateElementAttributes(VVideoElement prev, VideoElement ele) {
-    super._updateElementAttributes(prev, ele);
+  void updateElementAttributes(VVideoElement prev, VideoElement ele) {
+    super.updateElementAttributes(prev, ele);
 
     if (_height != prev._height) ele.height = _height;
     if (_poster != prev._poster) ele.poster = _poster;

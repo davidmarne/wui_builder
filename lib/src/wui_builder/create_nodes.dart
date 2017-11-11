@@ -13,10 +13,10 @@ Element _createNode(VNode vnode) {
 }
 
 Element _createElementNode(VElement vnode) {
-  final Element domNode = vnode._elementFactory();
+  final Element domNode = vnode.elementFactory();
   vnode.ref = domNode;
-  vnode._applyAttributesToElement(domNode);
-  if (vnode._shouldUpdateSubs) vnode._applyEventListenersToElement(domNode);
+  vnode.applyAttributesToElement(domNode);
+  if (vnode.shouldUpdateSubs) vnode.applyEventListenersToElement(domNode);
   if (vnode.children != null) {
     for (final c in vnode.children) {
       domNode.append(_createNode(c));

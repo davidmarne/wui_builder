@@ -36,23 +36,22 @@ bool _updateElement(_UpdateTracker tracker) {
   }
 
   // update attributes that have changed
-  newVNode._updateElementAttributes(oldVNode, tracker.cursor.node);
+  newVNode.updateElementAttributes(oldVNode, tracker.cursor.node);
 
   // if shouldUpdateSubs is set update subscriptions
-  if (newVNode._shouldUpdateSubs)
-    newVNode._updateEventListenersToElement(oldVNode, tracker.cursor.node);
+  if (newVNode.shouldUpdateSubs)
+    newVNode.updateEventListenersToElement(oldVNode, tracker.cursor.node);
 
   // only push cursor to queue if children > 1 to avoid unneccesary garbage
-  final newLength = newVNode._childrenSet ? newVNode._children.length : 0;
-  final oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0;
+  final newLength = newVNode.children.length;
+  final oldLength = oldVNode.children.length;
 
   // no cursor
   if (oldLength == 0 && newLength == 0) return true;
 
   // no resumable cursor
   if (oldLength < 2 && newLength < 2) {
-    final newChildVNode =
-        newLength > 0 ? newVNode._children.elementAt(0) : null;
+    final newChildVNode = newLength > 0 ? newVNode.children.elementAt(0) : null;
 
     tracker.moveCursor(
       tracker.cursor.node,
@@ -60,7 +59,7 @@ bool _updateElement(_UpdateTracker tracker) {
           ? tracker.cursor.node.children.first
           : null,
       newChildVNode,
-      oldLength > 0 ? oldVNode._children.elementAt(0) : null,
+      oldLength > 0 ? oldVNode.children.elementAt(0) : null,
     );
 
     // update parent/child relationship
@@ -84,7 +83,7 @@ bool _updateElementChildren(_UpdateTracker tracker) {
   final newVNode = cursor.newVNode as VElement;
   while (cursor.index < cursor.newLength || cursor.index < cursor.oldLength) {
     final newChildVNode = cursor.index < cursor.newLength
-        ? newVNode._children.elementAt(cursor.index)
+        ? newVNode.children.elementAt(cursor.index)
         : null;
 
     tracker.moveCursor(
@@ -92,7 +91,7 @@ bool _updateElementChildren(_UpdateTracker tracker) {
       cursor.currentChild,
       newChildVNode,
       cursor.index < cursor.oldLength
-          ? oldVNode._children.elementAt(cursor.index)
+          ? oldVNode.children.elementAt(cursor.index)
           : null,
     );
 

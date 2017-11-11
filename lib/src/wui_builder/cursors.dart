@@ -28,8 +28,8 @@ class _IterableCursor extends _PendingCursor {
 
   _IterableCursor(Element parent, Element node, VElement newVNode, VElement oldVNode)
       : currentChild = node.children.length > 0 ? node.children.first : null,
-        newLength = newVNode._childrenSet ? newVNode._children.length : 0,
-        oldLength = oldVNode._childrenSet ? oldVNode._children.length : 0,
+        newLength = newVNode.children.length ,
+        oldLength = oldVNode.children.length,
         super(parent, node, newVNode, oldVNode);
 
   void next() {

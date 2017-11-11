@@ -1,15 +1,15 @@
 part of wui_builder;
 
-List<_UpdateTracker> _activeFibers = [];
+List<_UpdateTracker> _activeUpdates = [];
 int _pendingIdleId;
 
 void _runIdle() {
   // request idle time to render
   _pendingIdleId = window.requestIdleCallback((deadline) {
     // run the update cycle for each update in the queue
-    while (!_activeFibers.isEmpty) {
+    while (!_activeUpdates.isEmpty) {
       // remove the update at the head of the queue and resume it
-      final update = _activeFibers.removeAt(0);
+      final update = _activeUpdates.removeAt(0);
       _resumeUpdate(deadline, update);
 
       // break out of the loop if the timeout is hit
@@ -20,13 +20,13 @@ void _runIdle() {
     _pendingIdleId = null;
 
     // if there are still updates in the queue request idle time
-    if (_activeFibers.length > 0) _runIdle();
+    if (_activeUpdates.length > 0) _runIdle();
   });
 }
 
 void _queueNewUpdate(_UpdateTracker tracker) {
   // add the tracker to the queue
-  _activeFibers.add(tracker);
+  _activeUpdates.add(tracker);
 
   // request idle time if necessary
   if (_pendingIdleId == null) _runIdle();
@@ -34,7 +34,7 @@ void _queueNewUpdate(_UpdateTracker tracker) {
 
 void _queueProcessingUpdate(_UpdateTracker tracker) {
   // add the tracker to the queue
-  _activeFibers.insert(0, tracker);
+  _activeUpdates.insert(0, tracker);
 
   // request idle time if necessary
   if (_pendingIdleId == null) _runIdle();
