@@ -1,4 +1,4 @@
-part of wui_builder;
+import 'dart:html';
 
 abstract class VNode {
   Element ref;
@@ -11,7 +11,3 @@ enum VNodeTypes {
   Element,
   Component,
 }
-
-typedef void EventHandler<T>(T event);
-
-typedef void StyleBuilder(CssStyleDeclaration style);

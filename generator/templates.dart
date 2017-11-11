@@ -22,6 +22,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
     ${eventsDeclarationTemplate(events)}
 
+    @protected
     void applyAttributesToElement(E ele) {
       if (_textSet) {
         ${vElementTextUpdate()}
@@ -30,6 +31,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       ${attributesSetTemplate(setters)}
     }
 
+    @protected
     void updateElementAttributes(covariant VElement<E> prev, E ele) {
       if (_text != prev._text) {
         ${vElementTextUpdate()}
@@ -92,12 +94,14 @@ String vElementSubclass(
     ${attributesDeclarationTemplate(setters)}
 
     @override
+    @protected
     void applyAttributesToElement($classElementName ele) {
       super.applyAttributesToElement(ele);
       ${attributesSetTemplate(setters)}
     }
 
     @override
+    @protected
     void updateElementAttributes(V$classElementName prev, $classElementName ele) {
       super.updateElementAttributes(prev, ele);
       ${attributesUpdateTemplate(setters)}
@@ -116,12 +120,14 @@ String vElementAbstractSubclass(
     ${attributesDeclarationTemplate(setters)}
 
     @override
+    @protected
     void applyAttributesToElement(T ele) {
       super.applyAttributesToElement(ele);
       ${attributesSetTemplate(setters)}
     }
 
     @override
+    @protected
     void updateElementAttributes(covariant V$classElementName<T> prev, T ele) {
       super.updateElementAttributes(prev, ele);
       ${attributesUpdateTemplate(setters)}

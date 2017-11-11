@@ -19,6 +19,7 @@ Future<Null> main(List<String> args) async {
 
   config.test
     ..concurrency = 1
+    ..platforms = ['chrome']
     ..unitTests = [
       'test/unit/',
     ];

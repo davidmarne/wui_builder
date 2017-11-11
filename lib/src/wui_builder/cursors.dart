@@ -1,34 +1,40 @@
-part of wui_builder;
+import 'dart:html';
 
-class _Cursor {
+import 'component.dart';
+import 'velement.dart';
+import 'vnode.dart';
+
+class Cursor {
   Element parent;
   Element node;
   VNode newVNode;
   VNode oldVNode;
-  _Cursor(this.parent, this.node, this.newVNode, this.oldVNode);
+  Cursor(this.parent, this.node, this.newVNode, this.oldVNode);
 }
 
-enum _PendingCursors {
+enum PendingCursors {
   Iterable,
   Component,
 }
 
-abstract class _PendingCursor extends _Cursor {
-  _PendingCursors get cursorType;
-  _PendingCursor(Element parent, Element currentChild, VNode newVNode, VNode oldVNode)
+abstract class PendingCursor extends Cursor {
+  PendingCursors get cursorType;
+  PendingCursor(
+      Element parent, Element currentChild, VNode newVNode, VNode oldVNode)
       : super(parent, currentChild, newVNode, oldVNode);
 }
 
-class _IterableCursor extends _PendingCursor {
-  final cursorType = _PendingCursors.Iterable;
+class IterableCursor extends PendingCursor {
+  final cursorType = PendingCursors.Iterable;
   final int newLength;
   final int oldLength;
   Element currentChild;
   int index = 0;
 
-  _IterableCursor(Element parent, Element node, VElement newVNode, VElement oldVNode)
+  IterableCursor(
+      Element parent, Element node, VElement newVNode, VElement oldVNode)
       : currentChild = node.children.length > 0 ? node.children.first : null,
-        newLength = newVNode.children.length ,
+        newLength = newVNode.children.length,
         oldLength = oldVNode.children.length,
         super(parent, node, newVNode, oldVNode);
 
@@ -38,13 +44,13 @@ class _IterableCursor extends _PendingCursor {
   }
 }
 
-class _ComponentUpdateCursor extends _PendingCursor {
-  final cursorType = _PendingCursors.Component;
+class ComponentUpdateCursor extends PendingCursor {
+  final cursorType = PendingCursors.Component;
   dynamic prevProps;
   dynamic nextProps;
   dynamic prevState;
   dynamic nextState;
-  _ComponentUpdateCursor(
+  ComponentUpdateCursor(
     Element parent,
     Element currentChild,
     Component newVNode,

@@ -1,66 +1,72 @@
-part of wui_builder;
+import 'dart:html';
 
-List<_UpdateTracker> _activeUpdates = [];
-int _pendingIdleId;
+import 'component.dart';
+import 'cursors.dart';
+import 'update_processor.dart';
+import 'update_tracker.dart';
+import 'velement.dart';
 
-void _runIdle() {
+List<UpdateTracker> activeUpdates = [];
+int pendingIdleId;
+
+void runIdle() {
   // request idle time to render
-  _pendingIdleId = window.requestIdleCallback((deadline) {
+  pendingIdleId = window.requestIdleCallback((deadline) {
     // run the update cycle for each update in the queue
-    while (!_activeUpdates.isEmpty) {
+    while (!activeUpdates.isEmpty) {
       // remove the update at the head of the queue and resume it
-      final update = _activeUpdates.removeAt(0);
-      _resumeUpdate(deadline, update);
+      final update = activeUpdates.removeAt(0);
+      resumeUpdate(deadline, update);
 
       // break out of the loop if the timeout is hit
       if (deadline.timeRemaining() < 1) break;
     }
 
-    // nullify _pendingIdleId to indicate no idle callback is being waited for
-    _pendingIdleId = null;
+    // nullify pendingIdleId to indicate no idle callback is being waited for
+    pendingIdleId = null;
 
     // if there are still updates in the queue request idle time
-    if (_activeUpdates.length > 0) _runIdle();
+    if (activeUpdates.length > 0) runIdle();
   });
 }
 
-void _queueNewUpdate(_UpdateTracker tracker) {
+void queueNewUpdate(UpdateTracker tracker) {
   // add the tracker to the queue
-  _activeUpdates.add(tracker);
+  activeUpdates.add(tracker);
 
   // request idle time if necessary
-  if (_pendingIdleId == null) _runIdle();
+  if (pendingIdleId == null) runIdle();
 }
 
-void _queueProcessingUpdate(_UpdateTracker tracker) {
+void queueProcessingUpdate(UpdateTracker tracker) {
   // add the tracker to the queue
-  _activeUpdates.insert(0, tracker);
+  activeUpdates.insert(0, tracker);
 
   // request idle time if necessary
-  if (_pendingIdleId == null) _runIdle();
+  if (pendingIdleId == null) runIdle();
 }
 
-void _resumeUpdate(IdleDeadline deadline, _UpdateTracker tracker) {
+void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
   // if the deadline has been cancelled bail
   if (tracker.isCancelled) return;
 
   // update the deadline on the tracker and update it
   tracker.refresh(deadline);
-  final finished = _update(tracker);
+  final finished = updateVNode(tracker);
 
   // if the current update stack was completed
   // resume its parents updates
-  if (finished) _doPendingWork(tracker);
+  if (finished) doPendingWork(tracker);
 }
 
-void _doPendingWork(_UpdateTracker tracker) {
+void doPendingWork(UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
   var finished = true;
   while (!tracker.pendingCursors.isEmpty) {
-    if (tracker.pendingCursors.last.cursorType == _PendingCursors.Iterable) {
-      finished = _updateElementChildren(tracker);
+    if (tracker.pendingCursors.last.cursorType == PendingCursors.Iterable) {
+      finished = updateElementChildren(tracker);
     } else {
-      _finishComponentUpdate(tracker);
+      finishComponentUpdate(tracker);
       finished = true;
     }
     if (!finished) return;

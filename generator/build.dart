@@ -35,16 +35,19 @@ void main(List<String> args) {
   print('${htmlTypes.length} ${svgTypes.length} ${allTypes.length}');
   final result = new StringBuffer();
   result.write("import 'dart:html';");
-  result.write("import 'dart:async';");
-  result.write("import 'wui_builder.dart';");
+  result.write("import 'package:meta/meta.dart';");
+  result.write("import 'wui_builder.dart' show VElement;");
 
   for (final classElement in htmlTypes) {
     if (classElement.name == 'Element') {
+      final vEleResult = new StringBuffer();
+      vEleResult.write("part of velement;");
+
       final setters = localSetters(classElement).where(
           (setter) => setter.name != 'children' && setter.name != 'nodes');
       final events = localEvents(classElement);
 
-      result.write(vElement(setters, events));
+      vEleResult.write(vElement(setters, events));
 
       if (classElement.constructors.length > 0) {
         for (var constructor in classElement.constructors) {
@@ -62,6 +65,11 @@ void main(List<String> args) {
           ));
         }
       }
+
+      final formatter = new DartFormatter();
+      final formatted = formatter.format(vEleResult.toString());
+      new File('lib/src/wui_builder/velement/velement.dart')
+          .writeAsStringSync(formatted);
     } else if ((isElement(classElement) || isInput(classElement)) &&
         classElement.isPublic) {
       final setters = localSetters(classElement);
@@ -107,7 +115,8 @@ void main(List<String> args) {
   result.clear();
 
   result.write("import 'dart:svg';");
-  result.write("import 'vhtml.dart' show VElement;");
+  result.write("import 'package:meta/meta.dart';");
+  result.write("import 'wui_builder.dart' show VElement;");
   for (final classElement in svgTypes) {
     if (isElement(classElement) && classElement.isPublic) {
       final setters = localSetters(classElement);
