@@ -1,0 +1,19 @@
+name: wui_builder_todos
+version: 0.0.0
+author: David Marne <davemarne@gmail.com>
+
+dependencies:
+  wui_builder:
+    path: ../../
+
+  meta: '^1.0.0'
+  
+transformers:
+  - $dart2js
+
+environment:
+  sdk: ">=1.23.0 <2.0.0"
+
+web:
+  compiler:
+    debug: dartdevc

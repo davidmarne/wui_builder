@@ -36,7 +36,7 @@ abstract class Component<P, S> extends VNode {
   void componentDidUpdate(P prevProps, S prevState) {}
 
   @mustCallSuper
-  void update({StateSetter<P, S> stateSetter}) {
+  void update([StateSetter<P, S> stateSetter]) {
     if (stateSetter != null) _updateStateSetter(stateSetter);
     _pendingUpdateTracker = new UpdateTracker.sync(ref, this);
     updateVNode(_pendingUpdateTracker);
@@ -44,7 +44,7 @@ abstract class Component<P, S> extends VNode {
 
   @experimental
   @mustCallSuper
-  void updateOnIdle({StateSetter<P, S> stateSetter}) {
+  void updateOnIdle([StateSetter<P, S> stateSetter]) {
     if (stateSetter != null) _updateStateSetter(stateSetter);
     _pendingUpdateTracker = new UpdateTracker.async(ref, this);
     queueNewUpdate(_pendingUpdateTracker);

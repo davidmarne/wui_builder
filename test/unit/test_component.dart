@@ -35,12 +35,11 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
       <String, dynamic>{testContextKey: props.context};
 
   void updateState(TestComponentProps p) {
-    update(
-        stateSetter: (_1, prevState) => p..baseProps = prevState.baseProps + 1);
+    update((_1, prevState) => p..baseProps = prevState.baseProps + 1);
   }
 
-  void updateStateIdle(TestComponentProps p) => updateOnIdle(
-      stateSetter: (_1, prevState) => p..baseProps = prevState.baseProps + 1);
+  void updateStateIdle(TestComponentProps p) =>
+      updateOnIdle((_1, prevState) => p..baseProps = prevState.baseProps + 1);
 
   @override
   void componentWillMount() {
