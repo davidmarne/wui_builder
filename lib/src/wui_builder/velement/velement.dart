@@ -893,7 +893,9 @@ abstract class VElement<E extends Element> extends VNode {
         ele.text = text;
       }
     }
-    if (styleBuilder != null) styleBuilder(ele.style);
+    if (styleBuilder != null) {
+      styleBuilder(ele.style);
+    }
 
     if (_contentEditableSet) ele.contentEditable = _contentEditable;
     if (_contextMenuSet) ele.contextMenu = _contextMenu;
@@ -929,958 +931,1072 @@ abstract class VElement<E extends Element> extends VNode {
       } else {
         ele.text = text;
       }
+      prev.text = _text;
     }
-    if (styleBuilder != null) styleBuilder(ele.style);
+    if (styleBuilder != null) {
+      ele.setAttribute('style', '');
+      styleBuilder(ele.style);
+      prev.styleBuilder = styleBuilder;
+    } else if (prev.styleBuilder != null) {
+      prev.styleBuilder = null;
+    }
 
-    if (_contentEditable != prev._contentEditable)
+    if (_contentEditable != prev._contentEditable) {
       ele.contentEditable = _contentEditable;
-    if (_contextMenu != prev._contextMenu) ele.contextMenu = _contextMenu;
-    if (_dir != prev._dir) ele.dir = _dir;
-    if (_draggable != prev._draggable) ele.draggable = _draggable;
-    if (_hidden != prev._hidden) ele.hidden = _hidden;
-    if (_lang != prev._lang) ele.lang = _lang;
-    if (_spellcheck != prev._spellcheck) ele.spellcheck = _spellcheck;
-    if (_tabIndex != prev._tabIndex) ele.tabIndex = _tabIndex;
-    if (_title != prev._title) ele.title = _title;
-    if (_translate != prev._translate) ele.translate = _translate;
-    if (_dropzone != prev._dropzone) ele.dropzone = _dropzone;
-    if (_className != prev._className) ele.className = _className;
-    if (_id != prev._id) ele.id = _id;
-    if (_slot != prev._slot) ele.slot = _slot;
-    if (_attributes != prev._attributes) ele.attributes = _attributes;
-    if (_classes != prev._classes) ele.classes = _classes;
-    if (_dataset != prev._dataset) ele.dataset = _dataset;
-    if (_xtag != prev._xtag) ele.xtag = _xtag;
-    if (_innerHtml != prev._innerHtml) ele.innerHtml = _innerHtml;
-    if (_scrollLeft != prev._scrollLeft) ele.scrollLeft = _scrollLeft;
-    if (_scrollTop != prev._scrollTop) ele.scrollTop = _scrollTop;
+      prev.contentEditable = _contentEditable;
+    }
+    if (_contextMenu != prev._contextMenu) {
+      ele.contextMenu = _contextMenu;
+      prev.contextMenu = _contextMenu;
+    }
+    if (_dir != prev._dir) {
+      ele.dir = _dir;
+      prev.dir = _dir;
+    }
+    if (_draggable != prev._draggable) {
+      ele.draggable = _draggable;
+      prev.draggable = _draggable;
+    }
+    if (_hidden != prev._hidden) {
+      ele.hidden = _hidden;
+      prev.hidden = _hidden;
+    }
+    if (_lang != prev._lang) {
+      ele.lang = _lang;
+      prev.lang = _lang;
+    }
+    if (_spellcheck != prev._spellcheck) {
+      ele.spellcheck = _spellcheck;
+      prev.spellcheck = _spellcheck;
+    }
+    if (_tabIndex != prev._tabIndex) {
+      ele.tabIndex = _tabIndex;
+      prev.tabIndex = _tabIndex;
+    }
+    if (_title != prev._title) {
+      ele.title = _title;
+      prev.title = _title;
+    }
+    if (_translate != prev._translate) {
+      ele.translate = _translate;
+      prev.translate = _translate;
+    }
+    if (_dropzone != prev._dropzone) {
+      ele.dropzone = _dropzone;
+      prev.dropzone = _dropzone;
+    }
+    if (_className != prev._className) {
+      ele.className = _className;
+      prev.className = _className;
+    }
+    if (_id != prev._id) {
+      ele.id = _id;
+      prev.id = _id;
+    }
+    if (_slot != prev._slot) {
+      ele.slot = _slot;
+      prev.slot = _slot;
+    }
+    if (_attributes != prev._attributes) {
+      ele.attributes = _attributes;
+      prev.attributes = _attributes;
+    }
+    if (_classes != prev._classes) {
+      ele.classes = _classes;
+      prev.classes = _classes;
+    }
+    if (_dataset != prev._dataset) {
+      ele.dataset = _dataset;
+      prev.dataset = _dataset;
+    }
+    if (_xtag != prev._xtag) {
+      ele.xtag = _xtag;
+      prev.xtag = _xtag;
+    }
+    if (_innerHtml != prev._innerHtml) {
+      ele.innerHtml = _innerHtml;
+      prev.innerHtml = _innerHtml;
+    }
+    if (_scrollLeft != prev._scrollLeft) {
+      ele.scrollLeft = _scrollLeft;
+      prev.scrollLeft = _scrollLeft;
+    }
+    if (_scrollTop != prev._scrollTop) {
+      ele.scrollTop = _scrollTop;
+      prev.scrollTop = _scrollTop;
+    }
   }
 
   void applyEventListenersToElement(Element ele) {
-    if (_onAbortSet) _onAbortSub = ele.onAbort.listen(onAbort);
+    if (_onAbortSet) _onAbortSub = ele.onAbort.listen((e) => onAbort(e));
     if (_onBeforeCopySet)
-      _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
-    if (_onBeforeCutSet) _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
+      _onBeforeCopySub = ele.onBeforeCopy.listen((e) => onBeforeCopy(e));
+    if (_onBeforeCutSet)
+      _onBeforeCutSub = ele.onBeforeCut.listen((e) => onBeforeCut(e));
     if (_onBeforePasteSet)
-      _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
-    if (_onBlurSet) _onBlurSub = ele.onBlur.listen(onBlur);
-    if (_onCanPlaySet) _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
+      _onBeforePasteSub = ele.onBeforePaste.listen((e) => onBeforePaste(e));
+    if (_onBlurSet) _onBlurSub = ele.onBlur.listen((e) => onBlur(e));
+    if (_onCanPlaySet)
+      _onCanPlaySub = ele.onCanPlay.listen((e) => onCanPlay(e));
     if (_onCanPlayThroughSet)
-      _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
-    if (_onChangeSet) _onChangeSub = ele.onChange.listen(onChange);
-    if (_onClickSet) _onClickSub = ele.onClick.listen(onClick);
+      _onCanPlayThroughSub =
+          ele.onCanPlayThrough.listen((e) => onCanPlayThrough(e));
+    if (_onChangeSet) _onChangeSub = ele.onChange.listen((e) => onChange(e));
+    if (_onClickSet)
+      _onClickSub = ele.onClick.listen((e) {
+        print("SDF2 ${this.hashCode} ${_onClick.hashCode}");
+        onClick(e);
+      });
     if (_onContextMenuSet)
-      _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
-    if (_onCopySet) _onCopySub = ele.onCopy.listen(onCopy);
-    if (_onCutSet) _onCutSub = ele.onCut.listen(onCut);
+      _onContextMenuSub = ele.onContextMenu.listen((e) => onContextMenu(e));
+    if (_onCopySet) _onCopySub = ele.onCopy.listen((e) => onCopy(e));
+    if (_onCutSet) _onCutSub = ele.onCut.listen((e) => onCut(e));
     if (_onDoubleClickSet)
-      _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
-    if (_onDragSet) _onDragSub = ele.onDrag.listen(onDrag);
-    if (_onDragEndSet) _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
-    if (_onDragEnterSet) _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
-    if (_onDragLeaveSet) _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
-    if (_onDragOverSet) _onDragOverSub = ele.onDragOver.listen(onDragOver);
-    if (_onDragStartSet) _onDragStartSub = ele.onDragStart.listen(onDragStart);
-    if (_onDropSet) _onDropSub = ele.onDrop.listen(onDrop);
+      _onDoubleClickSub = ele.onDoubleClick.listen((e) => onDoubleClick(e));
+    if (_onDragSet) _onDragSub = ele.onDrag.listen((e) => onDrag(e));
+    if (_onDragEndSet)
+      _onDragEndSub = ele.onDragEnd.listen((e) => onDragEnd(e));
+    if (_onDragEnterSet)
+      _onDragEnterSub = ele.onDragEnter.listen((e) => onDragEnter(e));
+    if (_onDragLeaveSet)
+      _onDragLeaveSub = ele.onDragLeave.listen((e) => onDragLeave(e));
+    if (_onDragOverSet)
+      _onDragOverSub = ele.onDragOver.listen((e) => onDragOver(e));
+    if (_onDragStartSet)
+      _onDragStartSub = ele.onDragStart.listen((e) => onDragStart(e));
+    if (_onDropSet) _onDropSub = ele.onDrop.listen((e) => onDrop(e));
     if (_onDurationChangeSet)
-      _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
-    if (_onEmptiedSet) _onEmptiedSub = ele.onEmptied.listen(onEmptied);
-    if (_onEndedSet) _onEndedSub = ele.onEnded.listen(onEnded);
-    if (_onErrorSet) _onErrorSub = ele.onError.listen(onError);
-    if (_onFocusSet) _onFocusSub = ele.onFocus.listen(onFocus);
-    if (_onInputSet) _onInputSub = ele.onInput.listen(onInput);
-    if (_onInvalidSet) _onInvalidSub = ele.onInvalid.listen(onInvalid);
-    if (_onKeyDownSet) _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
-    if (_onKeyPressSet) _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
-    if (_onKeyUpSet) _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
-    if (_onLoadSet) _onLoadSub = ele.onLoad.listen(onLoad);
+      _onDurationChangeSub =
+          ele.onDurationChange.listen((e) => onDurationChange(e));
+    if (_onEmptiedSet)
+      _onEmptiedSub = ele.onEmptied.listen((e) => onEmptied(e));
+    if (_onEndedSet) _onEndedSub = ele.onEnded.listen((e) => onEnded(e));
+    if (_onErrorSet) _onErrorSub = ele.onError.listen((e) => onError(e));
+    if (_onFocusSet) _onFocusSub = ele.onFocus.listen((e) => onFocus(e));
+    if (_onInputSet) _onInputSub = ele.onInput.listen((e) => onInput(e));
+    if (_onInvalidSet)
+      _onInvalidSub = ele.onInvalid.listen((e) => onInvalid(e));
+    if (_onKeyDownSet)
+      _onKeyDownSub = ele.onKeyDown.listen((e) => onKeyDown(e));
+    if (_onKeyPressSet)
+      _onKeyPressSub = ele.onKeyPress.listen((e) => onKeyPress(e));
+    if (_onKeyUpSet) _onKeyUpSub = ele.onKeyUp.listen((e) => onKeyUp(e));
+    if (_onLoadSet) _onLoadSub = ele.onLoad.listen((e) => onLoad(e));
     if (_onLoadedDataSet)
-      _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
+      _onLoadedDataSub = ele.onLoadedData.listen((e) => onLoadedData(e));
     if (_onLoadedMetadataSet)
-      _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
-    if (_onMouseDownSet) _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
+      _onLoadedMetadataSub =
+          ele.onLoadedMetadata.listen((e) => onLoadedMetadata(e));
+    if (_onMouseDownSet)
+      _onMouseDownSub = ele.onMouseDown.listen((e) => onMouseDown(e));
     if (_onMouseEnterSet)
-      _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
+      _onMouseEnterSub = ele.onMouseEnter.listen((e) => onMouseEnter(e));
     if (_onMouseLeaveSet)
-      _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
-    if (_onMouseMoveSet) _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
-    if (_onMouseOutSet) _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
-    if (_onMouseOverSet) _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
-    if (_onMouseUpSet) _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
+      _onMouseLeaveSub = ele.onMouseLeave.listen((e) => onMouseLeave(e));
+    if (_onMouseMoveSet)
+      _onMouseMoveSub = ele.onMouseMove.listen((e) => onMouseMove(e));
+    if (_onMouseOutSet)
+      _onMouseOutSub = ele.onMouseOut.listen((e) => onMouseOut(e));
+    if (_onMouseOverSet)
+      _onMouseOverSub = ele.onMouseOver.listen((e) => onMouseOver(e));
+    if (_onMouseUpSet)
+      _onMouseUpSub = ele.onMouseUp.listen((e) => onMouseUp(e));
     if (_onMouseWheelSet)
-      _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
-    if (_onPasteSet) _onPasteSub = ele.onPaste.listen(onPaste);
-    if (_onPauseSet) _onPauseSub = ele.onPause.listen(onPause);
-    if (_onPlaySet) _onPlaySub = ele.onPlay.listen(onPlay);
-    if (_onPlayingSet) _onPlayingSub = ele.onPlaying.listen(onPlaying);
+      _onMouseWheelSub = ele.onMouseWheel.listen((e) => onMouseWheel(e));
+    if (_onPasteSet) _onPasteSub = ele.onPaste.listen((e) => onPaste(e));
+    if (_onPauseSet) _onPauseSub = ele.onPause.listen((e) => onPause(e));
+    if (_onPlaySet) _onPlaySub = ele.onPlay.listen((e) => onPlay(e));
+    if (_onPlayingSet)
+      _onPlayingSub = ele.onPlaying.listen((e) => onPlaying(e));
     if (_onRateChangeSet)
-      _onRateChangeSub = ele.onRateChange.listen(onRateChange);
-    if (_onResetSet) _onResetSub = ele.onReset.listen(onReset);
-    if (_onResizeSet) _onResizeSub = ele.onResize.listen(onResize);
-    if (_onScrollSet) _onScrollSub = ele.onScroll.listen(onScroll);
-    if (_onSearchSet) _onSearchSub = ele.onSearch.listen(onSearch);
-    if (_onSeekedSet) _onSeekedSub = ele.onSeeked.listen(onSeeked);
-    if (_onSeekingSet) _onSeekingSub = ele.onSeeking.listen(onSeeking);
-    if (_onSelectSet) _onSelectSub = ele.onSelect.listen(onSelect);
+      _onRateChangeSub = ele.onRateChange.listen((e) => onRateChange(e));
+    if (_onResetSet) _onResetSub = ele.onReset.listen((e) => onReset(e));
+    if (_onResizeSet) _onResizeSub = ele.onResize.listen((e) => onResize(e));
+    if (_onScrollSet) _onScrollSub = ele.onScroll.listen((e) => onScroll(e));
+    if (_onSearchSet) _onSearchSub = ele.onSearch.listen((e) => onSearch(e));
+    if (_onSeekedSet) _onSeekedSub = ele.onSeeked.listen((e) => onSeeked(e));
+    if (_onSeekingSet)
+      _onSeekingSub = ele.onSeeking.listen((e) => onSeeking(e));
+    if (_onSelectSet) _onSelectSub = ele.onSelect.listen((e) => onSelect(e));
     if (_onSelectStartSet)
-      _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
-    if (_onStalledSet) _onStalledSub = ele.onStalled.listen(onStalled);
-    if (_onSubmitSet) _onSubmitSub = ele.onSubmit.listen(onSubmit);
-    if (_onSuspendSet) _onSuspendSub = ele.onSuspend.listen(onSuspend);
+      _onSelectStartSub = ele.onSelectStart.listen((e) => onSelectStart(e));
+    if (_onStalledSet)
+      _onStalledSub = ele.onStalled.listen((e) => onStalled(e));
+    if (_onSubmitSet) _onSubmitSub = ele.onSubmit.listen((e) => onSubmit(e));
+    if (_onSuspendSet)
+      _onSuspendSub = ele.onSuspend.listen((e) => onSuspend(e));
     if (_onTimeUpdateSet)
-      _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
+      _onTimeUpdateSub = ele.onTimeUpdate.listen((e) => onTimeUpdate(e));
     if (_onTouchCancelSet)
-      _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
-    if (_onTouchEndSet) _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
+      _onTouchCancelSub = ele.onTouchCancel.listen((e) => onTouchCancel(e));
+    if (_onTouchEndSet)
+      _onTouchEndSub = ele.onTouchEnd.listen((e) => onTouchEnd(e));
     if (_onTouchEnterSet)
-      _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
+      _onTouchEnterSub = ele.onTouchEnter.listen((e) => onTouchEnter(e));
     if (_onTouchLeaveSet)
-      _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
-    if (_onTouchMoveSet) _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
+      _onTouchLeaveSub = ele.onTouchLeave.listen((e) => onTouchLeave(e));
+    if (_onTouchMoveSet)
+      _onTouchMoveSub = ele.onTouchMove.listen((e) => onTouchMove(e));
     if (_onTouchStartSet)
-      _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
+      _onTouchStartSub = ele.onTouchStart.listen((e) => onTouchStart(e));
     if (_onTransitionEndSet)
-      _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
+      _onTransitionEndSub =
+          ele.onTransitionEnd.listen((e) => onTransitionEnd(e));
     if (_onVolumeChangeSet)
-      _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
-    if (_onWaitingSet) _onWaitingSub = ele.onWaiting.listen(onWaiting);
+      _onVolumeChangeSub = ele.onVolumeChange.listen((e) => onVolumeChange(e));
+    if (_onWaitingSet)
+      _onWaitingSub = ele.onWaiting.listen((e) => onWaiting(e));
     if (_onFullscreenChangeSet)
       _onFullscreenChangeSub =
-          ele.onFullscreenChange.listen(onFullscreenChange);
+          ele.onFullscreenChange.listen((e) => onFullscreenChange(e));
     if (_onFullscreenErrorSet)
-      _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
+      _onFullscreenErrorSub =
+          ele.onFullscreenError.listen((e) => onFullscreenError(e));
   }
 
   void updateEventListenersToElement(VElement prev, Element ele) {
     if (_onAbortSet) {
       if (!prev._onAbortSet) {
-        _onAbortSub = ele.onAbort.listen(onAbort);
+        prev._onAbort = _onAbort;
+        prev._onAbortSub = ele.onAbort.listen((e) => onAbort(e));
       } else if (prev.onAbort != onAbort) {
-        prev._onAbortSub.cancel();
-        _onAbortSub = ele.onAbort.listen(onAbort);
-      } else {
-        _onAbortSub = prev._onAbortSub;
+        prev._onAbort = _onAbort;
       }
     } else if (prev._onAbortSet) {
       prev._onAbortSub.cancel();
+      prev._onAbortSub = null;
+      prev._onAbortSet = false;
     }
     if (_onBeforeCopySet) {
       if (!prev._onBeforeCopySet) {
-        _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
+        prev._onBeforeCopy = _onBeforeCopy;
+        prev._onBeforeCopySub = ele.onBeforeCopy.listen((e) => onBeforeCopy(e));
       } else if (prev.onBeforeCopy != onBeforeCopy) {
-        prev._onBeforeCopySub.cancel();
-        _onBeforeCopySub = ele.onBeforeCopy.listen(onBeforeCopy);
-      } else {
-        _onBeforeCopySub = prev._onBeforeCopySub;
+        prev._onBeforeCopy = _onBeforeCopy;
       }
     } else if (prev._onBeforeCopySet) {
       prev._onBeforeCopySub.cancel();
+      prev._onBeforeCopySub = null;
+      prev._onBeforeCopySet = false;
     }
     if (_onBeforeCutSet) {
       if (!prev._onBeforeCutSet) {
-        _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
+        prev._onBeforeCut = _onBeforeCut;
+        prev._onBeforeCutSub = ele.onBeforeCut.listen((e) => onBeforeCut(e));
       } else if (prev.onBeforeCut != onBeforeCut) {
-        prev._onBeforeCutSub.cancel();
-        _onBeforeCutSub = ele.onBeforeCut.listen(onBeforeCut);
-      } else {
-        _onBeforeCutSub = prev._onBeforeCutSub;
+        prev._onBeforeCut = _onBeforeCut;
       }
     } else if (prev._onBeforeCutSet) {
       prev._onBeforeCutSub.cancel();
+      prev._onBeforeCutSub = null;
+      prev._onBeforeCutSet = false;
     }
     if (_onBeforePasteSet) {
       if (!prev._onBeforePasteSet) {
-        _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
+        prev._onBeforePaste = _onBeforePaste;
+        prev._onBeforePasteSub =
+            ele.onBeforePaste.listen((e) => onBeforePaste(e));
       } else if (prev.onBeforePaste != onBeforePaste) {
-        prev._onBeforePasteSub.cancel();
-        _onBeforePasteSub = ele.onBeforePaste.listen(onBeforePaste);
-      } else {
-        _onBeforePasteSub = prev._onBeforePasteSub;
+        prev._onBeforePaste = _onBeforePaste;
       }
     } else if (prev._onBeforePasteSet) {
       prev._onBeforePasteSub.cancel();
+      prev._onBeforePasteSub = null;
+      prev._onBeforePasteSet = false;
     }
     if (_onBlurSet) {
       if (!prev._onBlurSet) {
-        _onBlurSub = ele.onBlur.listen(onBlur);
+        prev._onBlur = _onBlur;
+        prev._onBlurSub = ele.onBlur.listen((e) => onBlur(e));
       } else if (prev.onBlur != onBlur) {
-        prev._onBlurSub.cancel();
-        _onBlurSub = ele.onBlur.listen(onBlur);
-      } else {
-        _onBlurSub = prev._onBlurSub;
+        prev._onBlur = _onBlur;
       }
     } else if (prev._onBlurSet) {
       prev._onBlurSub.cancel();
+      prev._onBlurSub = null;
+      prev._onBlurSet = false;
     }
     if (_onCanPlaySet) {
       if (!prev._onCanPlaySet) {
-        _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
+        prev._onCanPlay = _onCanPlay;
+        prev._onCanPlaySub = ele.onCanPlay.listen((e) => onCanPlay(e));
       } else if (prev.onCanPlay != onCanPlay) {
-        prev._onCanPlaySub.cancel();
-        _onCanPlaySub = ele.onCanPlay.listen(onCanPlay);
-      } else {
-        _onCanPlaySub = prev._onCanPlaySub;
+        prev._onCanPlay = _onCanPlay;
       }
     } else if (prev._onCanPlaySet) {
       prev._onCanPlaySub.cancel();
+      prev._onCanPlaySub = null;
+      prev._onCanPlaySet = false;
     }
     if (_onCanPlayThroughSet) {
       if (!prev._onCanPlayThroughSet) {
-        _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
+        prev._onCanPlayThrough = _onCanPlayThrough;
+        prev._onCanPlayThroughSub =
+            ele.onCanPlayThrough.listen((e) => onCanPlayThrough(e));
       } else if (prev.onCanPlayThrough != onCanPlayThrough) {
-        prev._onCanPlayThroughSub.cancel();
-        _onCanPlayThroughSub = ele.onCanPlayThrough.listen(onCanPlayThrough);
-      } else {
-        _onCanPlayThroughSub = prev._onCanPlayThroughSub;
+        prev._onCanPlayThrough = _onCanPlayThrough;
       }
     } else if (prev._onCanPlayThroughSet) {
       prev._onCanPlayThroughSub.cancel();
+      prev._onCanPlayThroughSub = null;
+      prev._onCanPlayThroughSet = false;
     }
     if (_onChangeSet) {
       if (!prev._onChangeSet) {
-        _onChangeSub = ele.onChange.listen(onChange);
+        prev._onChange = _onChange;
+        prev._onChangeSub = ele.onChange.listen((e) => onChange(e));
       } else if (prev.onChange != onChange) {
-        prev._onChangeSub.cancel();
-        _onChangeSub = ele.onChange.listen(onChange);
-      } else {
-        _onChangeSub = prev._onChangeSub;
+        prev._onChange = _onChange;
       }
     } else if (prev._onChangeSet) {
       prev._onChangeSub.cancel();
+      prev._onChangeSub = null;
+      prev._onChangeSet = false;
     }
     if (_onClickSet) {
       if (!prev._onClickSet) {
-        _onClickSub = ele.onClick.listen(onClick);
+        prev._onClick = _onClick;
+        prev._onClickSub = ele.onClick.listen((e) => onClick(e));
       } else if (prev.onClick != onClick) {
-        prev._onClickSub.cancel();
-        _onClickSub = ele.onClick.listen(onClick);
-      } else {
-        _onClickSub = prev._onClickSub;
+        print("SDF ${prev.hashCode} ${_onClick.hashCode} ");
+
+        prev._onClick = _onClick;
+        print("SDF3 ${prev.hashCode} ${prev._onClick.hashCode} ");
       }
     } else if (prev._onClickSet) {
       prev._onClickSub.cancel();
+      prev._onClickSub = null;
+      prev._onClickSet = false;
     }
     if (_onContextMenuSet) {
       if (!prev._onContextMenuSet) {
-        _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
+        prev._onContextMenu = _onContextMenu;
+        prev._onContextMenuSub =
+            ele.onContextMenu.listen((e) => onContextMenu(e));
       } else if (prev.onContextMenu != onContextMenu) {
-        prev._onContextMenuSub.cancel();
-        _onContextMenuSub = ele.onContextMenu.listen(onContextMenu);
-      } else {
-        _onContextMenuSub = prev._onContextMenuSub;
+        prev._onContextMenu = _onContextMenu;
       }
     } else if (prev._onContextMenuSet) {
       prev._onContextMenuSub.cancel();
+      prev._onContextMenuSub = null;
+      prev._onContextMenuSet = false;
     }
     if (_onCopySet) {
       if (!prev._onCopySet) {
-        _onCopySub = ele.onCopy.listen(onCopy);
+        prev._onCopy = _onCopy;
+        prev._onCopySub = ele.onCopy.listen((e) => onCopy(e));
       } else if (prev.onCopy != onCopy) {
-        prev._onCopySub.cancel();
-        _onCopySub = ele.onCopy.listen(onCopy);
-      } else {
-        _onCopySub = prev._onCopySub;
+        prev._onCopy = _onCopy;
       }
     } else if (prev._onCopySet) {
       prev._onCopySub.cancel();
+      prev._onCopySub = null;
+      prev._onCopySet = false;
     }
     if (_onCutSet) {
       if (!prev._onCutSet) {
-        _onCutSub = ele.onCut.listen(onCut);
+        prev._onCut = _onCut;
+        prev._onCutSub = ele.onCut.listen((e) => onCut(e));
       } else if (prev.onCut != onCut) {
-        prev._onCutSub.cancel();
-        _onCutSub = ele.onCut.listen(onCut);
-      } else {
-        _onCutSub = prev._onCutSub;
+        prev._onCut = _onCut;
       }
     } else if (prev._onCutSet) {
       prev._onCutSub.cancel();
+      prev._onCutSub = null;
+      prev._onCutSet = false;
     }
     if (_onDoubleClickSet) {
       if (!prev._onDoubleClickSet) {
-        _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
+        prev._onDoubleClick = _onDoubleClick;
+        prev._onDoubleClickSub =
+            ele.onDoubleClick.listen((e) => onDoubleClick(e));
       } else if (prev.onDoubleClick != onDoubleClick) {
-        prev._onDoubleClickSub.cancel();
-        _onDoubleClickSub = ele.onDoubleClick.listen(onDoubleClick);
-      } else {
-        _onDoubleClickSub = prev._onDoubleClickSub;
+        prev._onDoubleClick = _onDoubleClick;
       }
     } else if (prev._onDoubleClickSet) {
       prev._onDoubleClickSub.cancel();
+      prev._onDoubleClickSub = null;
+      prev._onDoubleClickSet = false;
     }
     if (_onDragSet) {
       if (!prev._onDragSet) {
-        _onDragSub = ele.onDrag.listen(onDrag);
+        prev._onDrag = _onDrag;
+        prev._onDragSub = ele.onDrag.listen((e) => onDrag(e));
       } else if (prev.onDrag != onDrag) {
-        prev._onDragSub.cancel();
-        _onDragSub = ele.onDrag.listen(onDrag);
-      } else {
-        _onDragSub = prev._onDragSub;
+        prev._onDrag = _onDrag;
       }
     } else if (prev._onDragSet) {
       prev._onDragSub.cancel();
+      prev._onDragSub = null;
+      prev._onDragSet = false;
     }
     if (_onDragEndSet) {
       if (!prev._onDragEndSet) {
-        _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
+        prev._onDragEnd = _onDragEnd;
+        prev._onDragEndSub = ele.onDragEnd.listen((e) => onDragEnd(e));
       } else if (prev.onDragEnd != onDragEnd) {
-        prev._onDragEndSub.cancel();
-        _onDragEndSub = ele.onDragEnd.listen(onDragEnd);
-      } else {
-        _onDragEndSub = prev._onDragEndSub;
+        prev._onDragEnd = _onDragEnd;
       }
     } else if (prev._onDragEndSet) {
       prev._onDragEndSub.cancel();
+      prev._onDragEndSub = null;
+      prev._onDragEndSet = false;
     }
     if (_onDragEnterSet) {
       if (!prev._onDragEnterSet) {
-        _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
+        prev._onDragEnter = _onDragEnter;
+        prev._onDragEnterSub = ele.onDragEnter.listen((e) => onDragEnter(e));
       } else if (prev.onDragEnter != onDragEnter) {
-        prev._onDragEnterSub.cancel();
-        _onDragEnterSub = ele.onDragEnter.listen(onDragEnter);
-      } else {
-        _onDragEnterSub = prev._onDragEnterSub;
+        prev._onDragEnter = _onDragEnter;
       }
     } else if (prev._onDragEnterSet) {
       prev._onDragEnterSub.cancel();
+      prev._onDragEnterSub = null;
+      prev._onDragEnterSet = false;
     }
     if (_onDragLeaveSet) {
       if (!prev._onDragLeaveSet) {
-        _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
+        prev._onDragLeave = _onDragLeave;
+        prev._onDragLeaveSub = ele.onDragLeave.listen((e) => onDragLeave(e));
       } else if (prev.onDragLeave != onDragLeave) {
-        prev._onDragLeaveSub.cancel();
-        _onDragLeaveSub = ele.onDragLeave.listen(onDragLeave);
-      } else {
-        _onDragLeaveSub = prev._onDragLeaveSub;
+        prev._onDragLeave = _onDragLeave;
       }
     } else if (prev._onDragLeaveSet) {
       prev._onDragLeaveSub.cancel();
+      prev._onDragLeaveSub = null;
+      prev._onDragLeaveSet = false;
     }
     if (_onDragOverSet) {
       if (!prev._onDragOverSet) {
-        _onDragOverSub = ele.onDragOver.listen(onDragOver);
+        prev._onDragOver = _onDragOver;
+        prev._onDragOverSub = ele.onDragOver.listen((e) => onDragOver(e));
       } else if (prev.onDragOver != onDragOver) {
-        prev._onDragOverSub.cancel();
-        _onDragOverSub = ele.onDragOver.listen(onDragOver);
-      } else {
-        _onDragOverSub = prev._onDragOverSub;
+        prev._onDragOver = _onDragOver;
       }
     } else if (prev._onDragOverSet) {
       prev._onDragOverSub.cancel();
+      prev._onDragOverSub = null;
+      prev._onDragOverSet = false;
     }
     if (_onDragStartSet) {
       if (!prev._onDragStartSet) {
-        _onDragStartSub = ele.onDragStart.listen(onDragStart);
+        prev._onDragStart = _onDragStart;
+        prev._onDragStartSub = ele.onDragStart.listen((e) => onDragStart(e));
       } else if (prev.onDragStart != onDragStart) {
-        prev._onDragStartSub.cancel();
-        _onDragStartSub = ele.onDragStart.listen(onDragStart);
-      } else {
-        _onDragStartSub = prev._onDragStartSub;
+        prev._onDragStart = _onDragStart;
       }
     } else if (prev._onDragStartSet) {
       prev._onDragStartSub.cancel();
+      prev._onDragStartSub = null;
+      prev._onDragStartSet = false;
     }
     if (_onDropSet) {
       if (!prev._onDropSet) {
-        _onDropSub = ele.onDrop.listen(onDrop);
+        prev._onDrop = _onDrop;
+        prev._onDropSub = ele.onDrop.listen((e) => onDrop(e));
       } else if (prev.onDrop != onDrop) {
-        prev._onDropSub.cancel();
-        _onDropSub = ele.onDrop.listen(onDrop);
-      } else {
-        _onDropSub = prev._onDropSub;
+        prev._onDrop = _onDrop;
       }
     } else if (prev._onDropSet) {
       prev._onDropSub.cancel();
+      prev._onDropSub = null;
+      prev._onDropSet = false;
     }
     if (_onDurationChangeSet) {
       if (!prev._onDurationChangeSet) {
-        _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
+        prev._onDurationChange = _onDurationChange;
+        prev._onDurationChangeSub =
+            ele.onDurationChange.listen((e) => onDurationChange(e));
       } else if (prev.onDurationChange != onDurationChange) {
-        prev._onDurationChangeSub.cancel();
-        _onDurationChangeSub = ele.onDurationChange.listen(onDurationChange);
-      } else {
-        _onDurationChangeSub = prev._onDurationChangeSub;
+        prev._onDurationChange = _onDurationChange;
       }
     } else if (prev._onDurationChangeSet) {
       prev._onDurationChangeSub.cancel();
+      prev._onDurationChangeSub = null;
+      prev._onDurationChangeSet = false;
     }
     if (_onEmptiedSet) {
       if (!prev._onEmptiedSet) {
-        _onEmptiedSub = ele.onEmptied.listen(onEmptied);
+        prev._onEmptied = _onEmptied;
+        prev._onEmptiedSub = ele.onEmptied.listen((e) => onEmptied(e));
       } else if (prev.onEmptied != onEmptied) {
-        prev._onEmptiedSub.cancel();
-        _onEmptiedSub = ele.onEmptied.listen(onEmptied);
-      } else {
-        _onEmptiedSub = prev._onEmptiedSub;
+        prev._onEmptied = _onEmptied;
       }
     } else if (prev._onEmptiedSet) {
       prev._onEmptiedSub.cancel();
+      prev._onEmptiedSub = null;
+      prev._onEmptiedSet = false;
     }
     if (_onEndedSet) {
       if (!prev._onEndedSet) {
-        _onEndedSub = ele.onEnded.listen(onEnded);
+        prev._onEnded = _onEnded;
+        prev._onEndedSub = ele.onEnded.listen((e) => onEnded(e));
       } else if (prev.onEnded != onEnded) {
-        prev._onEndedSub.cancel();
-        _onEndedSub = ele.onEnded.listen(onEnded);
-      } else {
-        _onEndedSub = prev._onEndedSub;
+        prev._onEnded = _onEnded;
       }
     } else if (prev._onEndedSet) {
       prev._onEndedSub.cancel();
+      prev._onEndedSub = null;
+      prev._onEndedSet = false;
     }
     if (_onErrorSet) {
       if (!prev._onErrorSet) {
-        _onErrorSub = ele.onError.listen(onError);
+        prev._onError = _onError;
+        prev._onErrorSub = ele.onError.listen((e) => onError(e));
       } else if (prev.onError != onError) {
-        prev._onErrorSub.cancel();
-        _onErrorSub = ele.onError.listen(onError);
-      } else {
-        _onErrorSub = prev._onErrorSub;
+        prev._onError = _onError;
       }
     } else if (prev._onErrorSet) {
       prev._onErrorSub.cancel();
+      prev._onErrorSub = null;
+      prev._onErrorSet = false;
     }
     if (_onFocusSet) {
       if (!prev._onFocusSet) {
-        _onFocusSub = ele.onFocus.listen(onFocus);
+        prev._onFocus = _onFocus;
+        prev._onFocusSub = ele.onFocus.listen((e) => onFocus(e));
       } else if (prev.onFocus != onFocus) {
-        prev._onFocusSub.cancel();
-        _onFocusSub = ele.onFocus.listen(onFocus);
-      } else {
-        _onFocusSub = prev._onFocusSub;
+        prev._onFocus = _onFocus;
       }
     } else if (prev._onFocusSet) {
       prev._onFocusSub.cancel();
+      prev._onFocusSub = null;
+      prev._onFocusSet = false;
     }
     if (_onInputSet) {
       if (!prev._onInputSet) {
-        _onInputSub = ele.onInput.listen(onInput);
+        prev._onInput = _onInput;
+        prev._onInputSub = ele.onInput.listen((e) => onInput(e));
       } else if (prev.onInput != onInput) {
-        prev._onInputSub.cancel();
-        _onInputSub = ele.onInput.listen(onInput);
-      } else {
-        _onInputSub = prev._onInputSub;
+        prev._onInput = _onInput;
       }
     } else if (prev._onInputSet) {
       prev._onInputSub.cancel();
+      prev._onInputSub = null;
+      prev._onInputSet = false;
     }
     if (_onInvalidSet) {
       if (!prev._onInvalidSet) {
-        _onInvalidSub = ele.onInvalid.listen(onInvalid);
+        prev._onInvalid = _onInvalid;
+        prev._onInvalidSub = ele.onInvalid.listen((e) => onInvalid(e));
       } else if (prev.onInvalid != onInvalid) {
-        prev._onInvalidSub.cancel();
-        _onInvalidSub = ele.onInvalid.listen(onInvalid);
-      } else {
-        _onInvalidSub = prev._onInvalidSub;
+        prev._onInvalid = _onInvalid;
       }
     } else if (prev._onInvalidSet) {
       prev._onInvalidSub.cancel();
+      prev._onInvalidSub = null;
+      prev._onInvalidSet = false;
     }
     if (_onKeyDownSet) {
       if (!prev._onKeyDownSet) {
-        _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
+        prev._onKeyDown = _onKeyDown;
+        prev._onKeyDownSub = ele.onKeyDown.listen((e) => onKeyDown(e));
       } else if (prev.onKeyDown != onKeyDown) {
-        prev._onKeyDownSub.cancel();
-        _onKeyDownSub = ele.onKeyDown.listen(onKeyDown);
-      } else {
-        _onKeyDownSub = prev._onKeyDownSub;
+        prev._onKeyDown = _onKeyDown;
       }
     } else if (prev._onKeyDownSet) {
       prev._onKeyDownSub.cancel();
+      prev._onKeyDownSub = null;
+      prev._onKeyDownSet = false;
     }
     if (_onKeyPressSet) {
       if (!prev._onKeyPressSet) {
-        _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
+        prev._onKeyPress = _onKeyPress;
+        prev._onKeyPressSub = ele.onKeyPress.listen((e) => onKeyPress(e));
       } else if (prev.onKeyPress != onKeyPress) {
-        prev._onKeyPressSub.cancel();
-        _onKeyPressSub = ele.onKeyPress.listen(onKeyPress);
-      } else {
-        _onKeyPressSub = prev._onKeyPressSub;
+        prev._onKeyPress = _onKeyPress;
       }
     } else if (prev._onKeyPressSet) {
       prev._onKeyPressSub.cancel();
+      prev._onKeyPressSub = null;
+      prev._onKeyPressSet = false;
     }
     if (_onKeyUpSet) {
       if (!prev._onKeyUpSet) {
-        _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
+        prev._onKeyUp = _onKeyUp;
+        prev._onKeyUpSub = ele.onKeyUp.listen((e) => onKeyUp(e));
       } else if (prev.onKeyUp != onKeyUp) {
-        prev._onKeyUpSub.cancel();
-        _onKeyUpSub = ele.onKeyUp.listen(onKeyUp);
-      } else {
-        _onKeyUpSub = prev._onKeyUpSub;
+        prev._onKeyUp = _onKeyUp;
       }
     } else if (prev._onKeyUpSet) {
       prev._onKeyUpSub.cancel();
+      prev._onKeyUpSub = null;
+      prev._onKeyUpSet = false;
     }
     if (_onLoadSet) {
       if (!prev._onLoadSet) {
-        _onLoadSub = ele.onLoad.listen(onLoad);
+        prev._onLoad = _onLoad;
+        prev._onLoadSub = ele.onLoad.listen((e) => onLoad(e));
       } else if (prev.onLoad != onLoad) {
-        prev._onLoadSub.cancel();
-        _onLoadSub = ele.onLoad.listen(onLoad);
-      } else {
-        _onLoadSub = prev._onLoadSub;
+        prev._onLoad = _onLoad;
       }
     } else if (prev._onLoadSet) {
       prev._onLoadSub.cancel();
+      prev._onLoadSub = null;
+      prev._onLoadSet = false;
     }
     if (_onLoadedDataSet) {
       if (!prev._onLoadedDataSet) {
-        _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
+        prev._onLoadedData = _onLoadedData;
+        prev._onLoadedDataSub = ele.onLoadedData.listen((e) => onLoadedData(e));
       } else if (prev.onLoadedData != onLoadedData) {
-        prev._onLoadedDataSub.cancel();
-        _onLoadedDataSub = ele.onLoadedData.listen(onLoadedData);
-      } else {
-        _onLoadedDataSub = prev._onLoadedDataSub;
+        prev._onLoadedData = _onLoadedData;
       }
     } else if (prev._onLoadedDataSet) {
       prev._onLoadedDataSub.cancel();
+      prev._onLoadedDataSub = null;
+      prev._onLoadedDataSet = false;
     }
     if (_onLoadedMetadataSet) {
       if (!prev._onLoadedMetadataSet) {
-        _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
+        prev._onLoadedMetadata = _onLoadedMetadata;
+        prev._onLoadedMetadataSub =
+            ele.onLoadedMetadata.listen((e) => onLoadedMetadata(e));
       } else if (prev.onLoadedMetadata != onLoadedMetadata) {
-        prev._onLoadedMetadataSub.cancel();
-        _onLoadedMetadataSub = ele.onLoadedMetadata.listen(onLoadedMetadata);
-      } else {
-        _onLoadedMetadataSub = prev._onLoadedMetadataSub;
+        prev._onLoadedMetadata = _onLoadedMetadata;
       }
     } else if (prev._onLoadedMetadataSet) {
       prev._onLoadedMetadataSub.cancel();
+      prev._onLoadedMetadataSub = null;
+      prev._onLoadedMetadataSet = false;
     }
     if (_onMouseDownSet) {
       if (!prev._onMouseDownSet) {
-        _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
+        prev._onMouseDown = _onMouseDown;
+        prev._onMouseDownSub = ele.onMouseDown.listen((e) => onMouseDown(e));
       } else if (prev.onMouseDown != onMouseDown) {
-        prev._onMouseDownSub.cancel();
-        _onMouseDownSub = ele.onMouseDown.listen(onMouseDown);
-      } else {
-        _onMouseDownSub = prev._onMouseDownSub;
+        prev._onMouseDown = _onMouseDown;
       }
     } else if (prev._onMouseDownSet) {
       prev._onMouseDownSub.cancel();
+      prev._onMouseDownSub = null;
+      prev._onMouseDownSet = false;
     }
     if (_onMouseEnterSet) {
       if (!prev._onMouseEnterSet) {
-        _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
+        prev._onMouseEnter = _onMouseEnter;
+        prev._onMouseEnterSub = ele.onMouseEnter.listen((e) => onMouseEnter(e));
       } else if (prev.onMouseEnter != onMouseEnter) {
-        prev._onMouseEnterSub.cancel();
-        _onMouseEnterSub = ele.onMouseEnter.listen(onMouseEnter);
-      } else {
-        _onMouseEnterSub = prev._onMouseEnterSub;
+        prev._onMouseEnter = _onMouseEnter;
       }
     } else if (prev._onMouseEnterSet) {
       prev._onMouseEnterSub.cancel();
+      prev._onMouseEnterSub = null;
+      prev._onMouseEnterSet = false;
     }
     if (_onMouseLeaveSet) {
       if (!prev._onMouseLeaveSet) {
-        _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
+        prev._onMouseLeave = _onMouseLeave;
+        prev._onMouseLeaveSub = ele.onMouseLeave.listen((e) => onMouseLeave(e));
       } else if (prev.onMouseLeave != onMouseLeave) {
-        prev._onMouseLeaveSub.cancel();
-        _onMouseLeaveSub = ele.onMouseLeave.listen(onMouseLeave);
-      } else {
-        _onMouseLeaveSub = prev._onMouseLeaveSub;
+        prev._onMouseLeave = _onMouseLeave;
       }
     } else if (prev._onMouseLeaveSet) {
       prev._onMouseLeaveSub.cancel();
+      prev._onMouseLeaveSub = null;
+      prev._onMouseLeaveSet = false;
     }
     if (_onMouseMoveSet) {
       if (!prev._onMouseMoveSet) {
-        _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
+        prev._onMouseMove = _onMouseMove;
+        prev._onMouseMoveSub = ele.onMouseMove.listen((e) => onMouseMove(e));
       } else if (prev.onMouseMove != onMouseMove) {
-        prev._onMouseMoveSub.cancel();
-        _onMouseMoveSub = ele.onMouseMove.listen(onMouseMove);
-      } else {
-        _onMouseMoveSub = prev._onMouseMoveSub;
+        prev._onMouseMove = _onMouseMove;
       }
     } else if (prev._onMouseMoveSet) {
       prev._onMouseMoveSub.cancel();
+      prev._onMouseMoveSub = null;
+      prev._onMouseMoveSet = false;
     }
     if (_onMouseOutSet) {
       if (!prev._onMouseOutSet) {
-        _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
+        prev._onMouseOut = _onMouseOut;
+        prev._onMouseOutSub = ele.onMouseOut.listen((e) => onMouseOut(e));
       } else if (prev.onMouseOut != onMouseOut) {
-        prev._onMouseOutSub.cancel();
-        _onMouseOutSub = ele.onMouseOut.listen(onMouseOut);
-      } else {
-        _onMouseOutSub = prev._onMouseOutSub;
+        prev._onMouseOut = _onMouseOut;
       }
     } else if (prev._onMouseOutSet) {
       prev._onMouseOutSub.cancel();
+      prev._onMouseOutSub = null;
+      prev._onMouseOutSet = false;
     }
     if (_onMouseOverSet) {
       if (!prev._onMouseOverSet) {
-        _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
+        prev._onMouseOver = _onMouseOver;
+        prev._onMouseOverSub = ele.onMouseOver.listen((e) => onMouseOver(e));
       } else if (prev.onMouseOver != onMouseOver) {
-        prev._onMouseOverSub.cancel();
-        _onMouseOverSub = ele.onMouseOver.listen(onMouseOver);
-      } else {
-        _onMouseOverSub = prev._onMouseOverSub;
+        prev._onMouseOver = _onMouseOver;
       }
     } else if (prev._onMouseOverSet) {
       prev._onMouseOverSub.cancel();
+      prev._onMouseOverSub = null;
+      prev._onMouseOverSet = false;
     }
     if (_onMouseUpSet) {
       if (!prev._onMouseUpSet) {
-        _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
+        prev._onMouseUp = _onMouseUp;
+        prev._onMouseUpSub = ele.onMouseUp.listen((e) => onMouseUp(e));
       } else if (prev.onMouseUp != onMouseUp) {
-        prev._onMouseUpSub.cancel();
-        _onMouseUpSub = ele.onMouseUp.listen(onMouseUp);
-      } else {
-        _onMouseUpSub = prev._onMouseUpSub;
+        prev._onMouseUp = _onMouseUp;
       }
     } else if (prev._onMouseUpSet) {
       prev._onMouseUpSub.cancel();
+      prev._onMouseUpSub = null;
+      prev._onMouseUpSet = false;
     }
     if (_onMouseWheelSet) {
       if (!prev._onMouseWheelSet) {
-        _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
+        prev._onMouseWheel = _onMouseWheel;
+        prev._onMouseWheelSub = ele.onMouseWheel.listen((e) => onMouseWheel(e));
       } else if (prev.onMouseWheel != onMouseWheel) {
-        prev._onMouseWheelSub.cancel();
-        _onMouseWheelSub = ele.onMouseWheel.listen(onMouseWheel);
-      } else {
-        _onMouseWheelSub = prev._onMouseWheelSub;
+        prev._onMouseWheel = _onMouseWheel;
       }
     } else if (prev._onMouseWheelSet) {
       prev._onMouseWheelSub.cancel();
+      prev._onMouseWheelSub = null;
+      prev._onMouseWheelSet = false;
     }
     if (_onPasteSet) {
       if (!prev._onPasteSet) {
-        _onPasteSub = ele.onPaste.listen(onPaste);
+        prev._onPaste = _onPaste;
+        prev._onPasteSub = ele.onPaste.listen((e) => onPaste(e));
       } else if (prev.onPaste != onPaste) {
-        prev._onPasteSub.cancel();
-        _onPasteSub = ele.onPaste.listen(onPaste);
-      } else {
-        _onPasteSub = prev._onPasteSub;
+        prev._onPaste = _onPaste;
       }
     } else if (prev._onPasteSet) {
       prev._onPasteSub.cancel();
+      prev._onPasteSub = null;
+      prev._onPasteSet = false;
     }
     if (_onPauseSet) {
       if (!prev._onPauseSet) {
-        _onPauseSub = ele.onPause.listen(onPause);
+        prev._onPause = _onPause;
+        prev._onPauseSub = ele.onPause.listen((e) => onPause(e));
       } else if (prev.onPause != onPause) {
-        prev._onPauseSub.cancel();
-        _onPauseSub = ele.onPause.listen(onPause);
-      } else {
-        _onPauseSub = prev._onPauseSub;
+        prev._onPause = _onPause;
       }
     } else if (prev._onPauseSet) {
       prev._onPauseSub.cancel();
+      prev._onPauseSub = null;
+      prev._onPauseSet = false;
     }
     if (_onPlaySet) {
       if (!prev._onPlaySet) {
-        _onPlaySub = ele.onPlay.listen(onPlay);
+        prev._onPlay = _onPlay;
+        prev._onPlaySub = ele.onPlay.listen((e) => onPlay(e));
       } else if (prev.onPlay != onPlay) {
-        prev._onPlaySub.cancel();
-        _onPlaySub = ele.onPlay.listen(onPlay);
-      } else {
-        _onPlaySub = prev._onPlaySub;
+        prev._onPlay = _onPlay;
       }
     } else if (prev._onPlaySet) {
       prev._onPlaySub.cancel();
+      prev._onPlaySub = null;
+      prev._onPlaySet = false;
     }
     if (_onPlayingSet) {
       if (!prev._onPlayingSet) {
-        _onPlayingSub = ele.onPlaying.listen(onPlaying);
+        prev._onPlaying = _onPlaying;
+        prev._onPlayingSub = ele.onPlaying.listen((e) => onPlaying(e));
       } else if (prev.onPlaying != onPlaying) {
-        prev._onPlayingSub.cancel();
-        _onPlayingSub = ele.onPlaying.listen(onPlaying);
-      } else {
-        _onPlayingSub = prev._onPlayingSub;
+        prev._onPlaying = _onPlaying;
       }
     } else if (prev._onPlayingSet) {
       prev._onPlayingSub.cancel();
+      prev._onPlayingSub = null;
+      prev._onPlayingSet = false;
     }
     if (_onRateChangeSet) {
       if (!prev._onRateChangeSet) {
-        _onRateChangeSub = ele.onRateChange.listen(onRateChange);
+        prev._onRateChange = _onRateChange;
+        prev._onRateChangeSub = ele.onRateChange.listen((e) => onRateChange(e));
       } else if (prev.onRateChange != onRateChange) {
-        prev._onRateChangeSub.cancel();
-        _onRateChangeSub = ele.onRateChange.listen(onRateChange);
-      } else {
-        _onRateChangeSub = prev._onRateChangeSub;
+        prev._onRateChange = _onRateChange;
       }
     } else if (prev._onRateChangeSet) {
       prev._onRateChangeSub.cancel();
+      prev._onRateChangeSub = null;
+      prev._onRateChangeSet = false;
     }
     if (_onResetSet) {
       if (!prev._onResetSet) {
-        _onResetSub = ele.onReset.listen(onReset);
+        prev._onReset = _onReset;
+        prev._onResetSub = ele.onReset.listen((e) => onReset(e));
       } else if (prev.onReset != onReset) {
-        prev._onResetSub.cancel();
-        _onResetSub = ele.onReset.listen(onReset);
-      } else {
-        _onResetSub = prev._onResetSub;
+        prev._onReset = _onReset;
       }
     } else if (prev._onResetSet) {
       prev._onResetSub.cancel();
+      prev._onResetSub = null;
+      prev._onResetSet = false;
     }
     if (_onResizeSet) {
       if (!prev._onResizeSet) {
-        _onResizeSub = ele.onResize.listen(onResize);
+        prev._onResize = _onResize;
+        prev._onResizeSub = ele.onResize.listen((e) => onResize(e));
       } else if (prev.onResize != onResize) {
-        prev._onResizeSub.cancel();
-        _onResizeSub = ele.onResize.listen(onResize);
-      } else {
-        _onResizeSub = prev._onResizeSub;
+        prev._onResize = _onResize;
       }
     } else if (prev._onResizeSet) {
       prev._onResizeSub.cancel();
+      prev._onResizeSub = null;
+      prev._onResizeSet = false;
     }
     if (_onScrollSet) {
       if (!prev._onScrollSet) {
-        _onScrollSub = ele.onScroll.listen(onScroll);
+        prev._onScroll = _onScroll;
+        prev._onScrollSub = ele.onScroll.listen((e) => onScroll(e));
       } else if (prev.onScroll != onScroll) {
-        prev._onScrollSub.cancel();
-        _onScrollSub = ele.onScroll.listen(onScroll);
-      } else {
-        _onScrollSub = prev._onScrollSub;
+        prev._onScroll = _onScroll;
       }
     } else if (prev._onScrollSet) {
       prev._onScrollSub.cancel();
+      prev._onScrollSub = null;
+      prev._onScrollSet = false;
     }
     if (_onSearchSet) {
       if (!prev._onSearchSet) {
-        _onSearchSub = ele.onSearch.listen(onSearch);
+        prev._onSearch = _onSearch;
+        prev._onSearchSub = ele.onSearch.listen((e) => onSearch(e));
       } else if (prev.onSearch != onSearch) {
-        prev._onSearchSub.cancel();
-        _onSearchSub = ele.onSearch.listen(onSearch);
-      } else {
-        _onSearchSub = prev._onSearchSub;
+        prev._onSearch = _onSearch;
       }
     } else if (prev._onSearchSet) {
       prev._onSearchSub.cancel();
+      prev._onSearchSub = null;
+      prev._onSearchSet = false;
     }
     if (_onSeekedSet) {
       if (!prev._onSeekedSet) {
-        _onSeekedSub = ele.onSeeked.listen(onSeeked);
+        prev._onSeeked = _onSeeked;
+        prev._onSeekedSub = ele.onSeeked.listen((e) => onSeeked(e));
       } else if (prev.onSeeked != onSeeked) {
-        prev._onSeekedSub.cancel();
-        _onSeekedSub = ele.onSeeked.listen(onSeeked);
-      } else {
-        _onSeekedSub = prev._onSeekedSub;
+        prev._onSeeked = _onSeeked;
       }
     } else if (prev._onSeekedSet) {
       prev._onSeekedSub.cancel();
+      prev._onSeekedSub = null;
+      prev._onSeekedSet = false;
     }
     if (_onSeekingSet) {
       if (!prev._onSeekingSet) {
-        _onSeekingSub = ele.onSeeking.listen(onSeeking);
+        prev._onSeeking = _onSeeking;
+        prev._onSeekingSub = ele.onSeeking.listen((e) => onSeeking(e));
       } else if (prev.onSeeking != onSeeking) {
-        prev._onSeekingSub.cancel();
-        _onSeekingSub = ele.onSeeking.listen(onSeeking);
-      } else {
-        _onSeekingSub = prev._onSeekingSub;
+        prev._onSeeking = _onSeeking;
       }
     } else if (prev._onSeekingSet) {
       prev._onSeekingSub.cancel();
+      prev._onSeekingSub = null;
+      prev._onSeekingSet = false;
     }
     if (_onSelectSet) {
       if (!prev._onSelectSet) {
-        _onSelectSub = ele.onSelect.listen(onSelect);
+        prev._onSelect = _onSelect;
+        prev._onSelectSub = ele.onSelect.listen((e) => onSelect(e));
       } else if (prev.onSelect != onSelect) {
-        prev._onSelectSub.cancel();
-        _onSelectSub = ele.onSelect.listen(onSelect);
-      } else {
-        _onSelectSub = prev._onSelectSub;
+        prev._onSelect = _onSelect;
       }
     } else if (prev._onSelectSet) {
       prev._onSelectSub.cancel();
+      prev._onSelectSub = null;
+      prev._onSelectSet = false;
     }
     if (_onSelectStartSet) {
       if (!prev._onSelectStartSet) {
-        _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
+        prev._onSelectStart = _onSelectStart;
+        prev._onSelectStartSub =
+            ele.onSelectStart.listen((e) => onSelectStart(e));
       } else if (prev.onSelectStart != onSelectStart) {
-        prev._onSelectStartSub.cancel();
-        _onSelectStartSub = ele.onSelectStart.listen(onSelectStart);
-      } else {
-        _onSelectStartSub = prev._onSelectStartSub;
+        prev._onSelectStart = _onSelectStart;
       }
     } else if (prev._onSelectStartSet) {
       prev._onSelectStartSub.cancel();
+      prev._onSelectStartSub = null;
+      prev._onSelectStartSet = false;
     }
     if (_onStalledSet) {
       if (!prev._onStalledSet) {
-        _onStalledSub = ele.onStalled.listen(onStalled);
+        prev._onStalled = _onStalled;
+        prev._onStalledSub = ele.onStalled.listen((e) => onStalled(e));
       } else if (prev.onStalled != onStalled) {
-        prev._onStalledSub.cancel();
-        _onStalledSub = ele.onStalled.listen(onStalled);
-      } else {
-        _onStalledSub = prev._onStalledSub;
+        prev._onStalled = _onStalled;
       }
     } else if (prev._onStalledSet) {
       prev._onStalledSub.cancel();
+      prev._onStalledSub = null;
+      prev._onStalledSet = false;
     }
     if (_onSubmitSet) {
       if (!prev._onSubmitSet) {
-        _onSubmitSub = ele.onSubmit.listen(onSubmit);
+        prev._onSubmit = _onSubmit;
+        prev._onSubmitSub = ele.onSubmit.listen((e) => onSubmit(e));
       } else if (prev.onSubmit != onSubmit) {
-        prev._onSubmitSub.cancel();
-        _onSubmitSub = ele.onSubmit.listen(onSubmit);
-      } else {
-        _onSubmitSub = prev._onSubmitSub;
+        prev._onSubmit = _onSubmit;
       }
     } else if (prev._onSubmitSet) {
       prev._onSubmitSub.cancel();
+      prev._onSubmitSub = null;
+      prev._onSubmitSet = false;
     }
     if (_onSuspendSet) {
       if (!prev._onSuspendSet) {
-        _onSuspendSub = ele.onSuspend.listen(onSuspend);
+        prev._onSuspend = _onSuspend;
+        prev._onSuspendSub = ele.onSuspend.listen((e) => onSuspend(e));
       } else if (prev.onSuspend != onSuspend) {
-        prev._onSuspendSub.cancel();
-        _onSuspendSub = ele.onSuspend.listen(onSuspend);
-      } else {
-        _onSuspendSub = prev._onSuspendSub;
+        prev._onSuspend = _onSuspend;
       }
     } else if (prev._onSuspendSet) {
       prev._onSuspendSub.cancel();
+      prev._onSuspendSub = null;
+      prev._onSuspendSet = false;
     }
     if (_onTimeUpdateSet) {
       if (!prev._onTimeUpdateSet) {
-        _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
+        prev._onTimeUpdate = _onTimeUpdate;
+        prev._onTimeUpdateSub = ele.onTimeUpdate.listen((e) => onTimeUpdate(e));
       } else if (prev.onTimeUpdate != onTimeUpdate) {
-        prev._onTimeUpdateSub.cancel();
-        _onTimeUpdateSub = ele.onTimeUpdate.listen(onTimeUpdate);
-      } else {
-        _onTimeUpdateSub = prev._onTimeUpdateSub;
+        prev._onTimeUpdate = _onTimeUpdate;
       }
     } else if (prev._onTimeUpdateSet) {
       prev._onTimeUpdateSub.cancel();
+      prev._onTimeUpdateSub = null;
+      prev._onTimeUpdateSet = false;
     }
     if (_onTouchCancelSet) {
       if (!prev._onTouchCancelSet) {
-        _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
+        prev._onTouchCancel = _onTouchCancel;
+        prev._onTouchCancelSub =
+            ele.onTouchCancel.listen((e) => onTouchCancel(e));
       } else if (prev.onTouchCancel != onTouchCancel) {
-        prev._onTouchCancelSub.cancel();
-        _onTouchCancelSub = ele.onTouchCancel.listen(onTouchCancel);
-      } else {
-        _onTouchCancelSub = prev._onTouchCancelSub;
+        prev._onTouchCancel = _onTouchCancel;
       }
     } else if (prev._onTouchCancelSet) {
       prev._onTouchCancelSub.cancel();
+      prev._onTouchCancelSub = null;
+      prev._onTouchCancelSet = false;
     }
     if (_onTouchEndSet) {
       if (!prev._onTouchEndSet) {
-        _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
+        prev._onTouchEnd = _onTouchEnd;
+        prev._onTouchEndSub = ele.onTouchEnd.listen((e) => onTouchEnd(e));
       } else if (prev.onTouchEnd != onTouchEnd) {
-        prev._onTouchEndSub.cancel();
-        _onTouchEndSub = ele.onTouchEnd.listen(onTouchEnd);
-      } else {
-        _onTouchEndSub = prev._onTouchEndSub;
+        prev._onTouchEnd = _onTouchEnd;
       }
     } else if (prev._onTouchEndSet) {
       prev._onTouchEndSub.cancel();
+      prev._onTouchEndSub = null;
+      prev._onTouchEndSet = false;
     }
     if (_onTouchEnterSet) {
       if (!prev._onTouchEnterSet) {
-        _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
+        prev._onTouchEnter = _onTouchEnter;
+        prev._onTouchEnterSub = ele.onTouchEnter.listen((e) => onTouchEnter(e));
       } else if (prev.onTouchEnter != onTouchEnter) {
-        prev._onTouchEnterSub.cancel();
-        _onTouchEnterSub = ele.onTouchEnter.listen(onTouchEnter);
-      } else {
-        _onTouchEnterSub = prev._onTouchEnterSub;
+        prev._onTouchEnter = _onTouchEnter;
       }
     } else if (prev._onTouchEnterSet) {
       prev._onTouchEnterSub.cancel();
+      prev._onTouchEnterSub = null;
+      prev._onTouchEnterSet = false;
     }
     if (_onTouchLeaveSet) {
       if (!prev._onTouchLeaveSet) {
-        _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
+        prev._onTouchLeave = _onTouchLeave;
+        prev._onTouchLeaveSub = ele.onTouchLeave.listen((e) => onTouchLeave(e));
       } else if (prev.onTouchLeave != onTouchLeave) {
-        prev._onTouchLeaveSub.cancel();
-        _onTouchLeaveSub = ele.onTouchLeave.listen(onTouchLeave);
-      } else {
-        _onTouchLeaveSub = prev._onTouchLeaveSub;
+        prev._onTouchLeave = _onTouchLeave;
       }
     } else if (prev._onTouchLeaveSet) {
       prev._onTouchLeaveSub.cancel();
+      prev._onTouchLeaveSub = null;
+      prev._onTouchLeaveSet = false;
     }
     if (_onTouchMoveSet) {
       if (!prev._onTouchMoveSet) {
-        _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
+        prev._onTouchMove = _onTouchMove;
+        prev._onTouchMoveSub = ele.onTouchMove.listen((e) => onTouchMove(e));
       } else if (prev.onTouchMove != onTouchMove) {
-        prev._onTouchMoveSub.cancel();
-        _onTouchMoveSub = ele.onTouchMove.listen(onTouchMove);
-      } else {
-        _onTouchMoveSub = prev._onTouchMoveSub;
+        prev._onTouchMove = _onTouchMove;
       }
     } else if (prev._onTouchMoveSet) {
       prev._onTouchMoveSub.cancel();
+      prev._onTouchMoveSub = null;
+      prev._onTouchMoveSet = false;
     }
     if (_onTouchStartSet) {
       if (!prev._onTouchStartSet) {
-        _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
+        prev._onTouchStart = _onTouchStart;
+        prev._onTouchStartSub = ele.onTouchStart.listen((e) => onTouchStart(e));
       } else if (prev.onTouchStart != onTouchStart) {
-        prev._onTouchStartSub.cancel();
-        _onTouchStartSub = ele.onTouchStart.listen(onTouchStart);
-      } else {
-        _onTouchStartSub = prev._onTouchStartSub;
+        prev._onTouchStart = _onTouchStart;
       }
     } else if (prev._onTouchStartSet) {
       prev._onTouchStartSub.cancel();
+      prev._onTouchStartSub = null;
+      prev._onTouchStartSet = false;
     }
     if (_onTransitionEndSet) {
       if (!prev._onTransitionEndSet) {
-        _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
+        prev._onTransitionEnd = _onTransitionEnd;
+        prev._onTransitionEndSub =
+            ele.onTransitionEnd.listen((e) => onTransitionEnd(e));
       } else if (prev.onTransitionEnd != onTransitionEnd) {
-        prev._onTransitionEndSub.cancel();
-        _onTransitionEndSub = ele.onTransitionEnd.listen(onTransitionEnd);
-      } else {
-        _onTransitionEndSub = prev._onTransitionEndSub;
+        prev._onTransitionEnd = _onTransitionEnd;
       }
     } else if (prev._onTransitionEndSet) {
       prev._onTransitionEndSub.cancel();
+      prev._onTransitionEndSub = null;
+      prev._onTransitionEndSet = false;
     }
     if (_onVolumeChangeSet) {
       if (!prev._onVolumeChangeSet) {
-        _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
+        prev._onVolumeChange = _onVolumeChange;
+        prev._onVolumeChangeSub =
+            ele.onVolumeChange.listen((e) => onVolumeChange(e));
       } else if (prev.onVolumeChange != onVolumeChange) {
-        prev._onVolumeChangeSub.cancel();
-        _onVolumeChangeSub = ele.onVolumeChange.listen(onVolumeChange);
-      } else {
-        _onVolumeChangeSub = prev._onVolumeChangeSub;
+        prev._onVolumeChange = _onVolumeChange;
       }
     } else if (prev._onVolumeChangeSet) {
       prev._onVolumeChangeSub.cancel();
+      prev._onVolumeChangeSub = null;
+      prev._onVolumeChangeSet = false;
     }
     if (_onWaitingSet) {
       if (!prev._onWaitingSet) {
-        _onWaitingSub = ele.onWaiting.listen(onWaiting);
+        prev._onWaiting = _onWaiting;
+        prev._onWaitingSub = ele.onWaiting.listen((e) => onWaiting(e));
       } else if (prev.onWaiting != onWaiting) {
-        prev._onWaitingSub.cancel();
-        _onWaitingSub = ele.onWaiting.listen(onWaiting);
-      } else {
-        _onWaitingSub = prev._onWaitingSub;
+        prev._onWaiting = _onWaiting;
       }
     } else if (prev._onWaitingSet) {
       prev._onWaitingSub.cancel();
+      prev._onWaitingSub = null;
+      prev._onWaitingSet = false;
     }
     if (_onFullscreenChangeSet) {
       if (!prev._onFullscreenChangeSet) {
-        _onFullscreenChangeSub =
-            ele.onFullscreenChange.listen(onFullscreenChange);
+        prev._onFullscreenChange = _onFullscreenChange;
+        prev._onFullscreenChangeSub =
+            ele.onFullscreenChange.listen((e) => onFullscreenChange(e));
       } else if (prev.onFullscreenChange != onFullscreenChange) {
-        prev._onFullscreenChangeSub.cancel();
-        _onFullscreenChangeSub =
-            ele.onFullscreenChange.listen(onFullscreenChange);
-      } else {
-        _onFullscreenChangeSub = prev._onFullscreenChangeSub;
+        prev._onFullscreenChange = _onFullscreenChange;
       }
     } else if (prev._onFullscreenChangeSet) {
       prev._onFullscreenChangeSub.cancel();
+      prev._onFullscreenChangeSub = null;
+      prev._onFullscreenChangeSet = false;
     }
     if (_onFullscreenErrorSet) {
       if (!prev._onFullscreenErrorSet) {
-        _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
+        prev._onFullscreenError = _onFullscreenError;
+        prev._onFullscreenErrorSub =
+            ele.onFullscreenError.listen((e) => onFullscreenError(e));
       } else if (prev.onFullscreenError != onFullscreenError) {
-        prev._onFullscreenErrorSub.cancel();
-        _onFullscreenErrorSub = ele.onFullscreenError.listen(onFullscreenError);
-      } else {
-        _onFullscreenErrorSub = prev._onFullscreenErrorSub;
+        prev._onFullscreenError = _onFullscreenError;
       }
     } else if (prev._onFullscreenErrorSet) {
       prev._onFullscreenErrorSub.cancel();
+      prev._onFullscreenErrorSub = null;
+      prev._onFullscreenErrorSet = false;
     }
   }
 

@@ -27,6 +27,7 @@ bool updateElement(UpdateTracker tracker) {
   // no resumable cursor
   if (oldLength < 2 && newLength < 2) {
     final newChildVNode = newLength > 0 ? newVNode.children.elementAt(0) : null;
+    final oldChildVNode = oldLength > 0 ? oldVNode.children.elementAt(0) : null;
 
     tracker.moveCursor(
       tracker.cursor.node,
@@ -34,11 +35,13 @@ bool updateElement(UpdateTracker tracker) {
           ? tracker.cursor.node.children.first
           : null,
       newChildVNode,
-      oldLength > 0 ? oldVNode.children.elementAt(0) : null,
+      oldChildVNode,
     );
 
     // update parent/child relationship
-    newChildVNode?.parent = tracker.cursor.newVNode;
+    if (oldChildVNode == null) {
+      oldVNode.children.add(newChildVNode);
+    }
 
     return updateVNode(tracker);
   }
@@ -60,20 +63,23 @@ bool updateElementChildren(UpdateTracker tracker) {
     final newChildVNode = cursor.index < cursor.newLength
         ? newVNode.children.elementAt(cursor.index)
         : null;
+    final oldChildVNode = cursor.index < cursor.oldLength
+        ? oldVNode.children.elementAt(cursor.index)
+        : null;
 
     tracker.moveCursor(
       cursor.node,
       cursor.currentChild,
       newChildVNode,
-      cursor.index < cursor.oldLength
-          ? oldVNode.children.elementAt(cursor.index)
-          : null,
+      oldChildVNode,
     );
 
     cursor.next();
 
     // update parent/child relationship
-    newChildVNode?.parent = cursor.newVNode;
+    if (oldChildVNode == null) {
+      oldVNode.children.add(newChildVNode);
+    }
 
     final finshed = updateVNode(tracker);
 

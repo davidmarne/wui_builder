@@ -21,7 +21,6 @@ void main() {
         ..child = propStateText);
 
       render(component, host);
-
       expect(host.children.length, 1);
       expect(host.children.first.text, expectedText(1, 1));
     });
@@ -34,7 +33,6 @@ void main() {
         ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
         ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
         ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 2
         ..child = propStateText);
 
       expect(host.children.length, 1);
@@ -51,11 +49,36 @@ void main() {
         ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
         ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
         ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 2
         ..child = propStateText);
 
       expect(host.children.length, 1);
       expect(host.children.first.text, expectedText(1, 1));
+    });
+
+    test('multiple set states', () {
+      component.updateState(new TestComponentProps()
+        ..componentWillMount = failOnComponentWillMount
+        ..componentDidMount = failOnComponentDidMount
+        ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 2)
+        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+        ..componentWillUnmount = failOnComponentWillUnmount
+        ..child = propStateText);
+
+      expect(host.children.length, 1);
+      expect(host.children.first.text, expectedText(1, 2));
+
+      component.updateState(new TestComponentProps()
+        ..componentWillMount = failOnComponentWillMount
+        ..componentDidMount = failOnComponentDidMount
+        ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 2, 3)
+        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+        ..componentWillUnmount = failOnComponentWillUnmount
+        ..child = propStateText);
+
+      expect(host.children.length, 1);
+      expect(host.children.first.text, expectedText(1, 3));
     });
   });
 }

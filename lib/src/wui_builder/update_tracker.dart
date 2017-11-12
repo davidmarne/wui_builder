@@ -17,29 +17,23 @@ class UpdateTracker {
   List<PendingCursor> pendingCursors = new List<PendingCursor>();
   IdleDeadline deadline;
 
-  // used to reset state if update is cancelled
-  final dynamic prevState;
-  final Component updatingComponent;
-
-  UpdateTracker.sync(Element node, Component newVNode, this.prevState)
+  UpdateTracker.sync(Element node, Component newVNode)
       : cursor = new Cursor(
           node.parent,
           node,
           newVNode,
           newVNode,
         ),
-        isAsync = false,
-        updatingComponent = newVNode;
+        isAsync = false;
 
-  UpdateTracker.async(Element node, Component newVNode, this.prevState)
+  UpdateTracker.async(Element node, Component newVNode)
       : cursor = new Cursor(
           node.parent,
           node,
           newVNode,
           newVNode,
         ),
-        isAsync = true,
-        updatingComponent = newVNode;
+        isAsync = true;
 
   // update changes the current location of the update
   // to avoid accesive garbage, mutate the current cursor
@@ -61,8 +55,6 @@ class UpdateTracker {
   }
 
   void cancel() {
-    // revert the state change.
-    revertState(updatingComponent, prevState);
     isCancelled = true;
   }
 

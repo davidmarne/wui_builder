@@ -38,7 +38,7 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void update({StateSetter<P, S> stateSetter}) {
     if (stateSetter != null) _updateStateSetter(stateSetter);
-    _pendingUpdateTracker = new UpdateTracker.sync(ref, this, _state);
+    _pendingUpdateTracker = new UpdateTracker.sync(ref, this);
     updateVNode(_pendingUpdateTracker);
   }
 
@@ -46,7 +46,7 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void updateOnIdle({StateSetter<P, S> stateSetter}) {
     if (stateSetter != null) _updateStateSetter(stateSetter);
-    _pendingUpdateTracker = new UpdateTracker.async(ref, this, _state);
+    _pendingUpdateTracker = new UpdateTracker.async(ref, this);
     queueNewUpdate(_pendingUpdateTracker);
   }
 
@@ -58,10 +58,6 @@ abstract class Component<P, S> extends VNode {
       _pendingStateSetter = (P p, S s) => stateSetter(p, prevStateSetter(p, s));
     } else
       _pendingStateSetter = stateSetter;
-  }
-
-  void _render() {
-    _renderResult = render();
   }
 
   Map<String, dynamic> _findContext() {

@@ -9,25 +9,27 @@ import 'velement.dart';
 List<UpdateTracker> activeUpdates = [];
 int pendingIdleId;
 
-void runIdle() {
+void requestIdle() {
   // request idle time to render
-  pendingIdleId = window.requestIdleCallback((deadline) {
-    // run the update cycle for each update in the queue
-    while (!activeUpdates.isEmpty) {
-      // remove the update at the head of the queue and resume it
-      final update = activeUpdates.removeAt(0);
-      resumeUpdate(deadline, update);
+  pendingIdleId = window.requestIdleCallback(runIdle);
+}
 
-      // break out of the loop if the timeout is hit
-      if (deadline.timeRemaining() < 1) break;
-    }
+void runIdle(IdleDeadline deadline) {
+  // run the update cycle for each update in the queue
+  while (!activeUpdates.isEmpty) {
+    // remove the update at the head of the queue and resume it
+    final update = activeUpdates.removeAt(0);
+    resumeUpdate(deadline, update);
 
-    // nullify pendingIdleId to indicate no idle callback is being waited for
-    pendingIdleId = null;
+    // break out of the loop if the timeout is hit
+    if (deadline.timeRemaining() < 1) break;
+  }
 
-    // if there are still updates in the queue request idle time
-    if (activeUpdates.length > 0) runIdle();
-  });
+  // nullify pendingIdleId to indicate no idle callback is being waited for
+  pendingIdleId = null;
+
+  // if there are still updates in the queue request idle time
+  if (activeUpdates.length > 0) requestIdle();
 }
 
 void queueNewUpdate(UpdateTracker tracker) {
@@ -35,7 +37,7 @@ void queueNewUpdate(UpdateTracker tracker) {
   activeUpdates.add(tracker);
 
   // request idle time if necessary
-  if (pendingIdleId == null) runIdle();
+  if (pendingIdleId == null) requestIdle();
 }
 
 void queueProcessingUpdate(UpdateTracker tracker) {
@@ -43,7 +45,7 @@ void queueProcessingUpdate(UpdateTracker tracker) {
   activeUpdates.insert(0, tracker);
 
   // request idle time if necessary
-  if (pendingIdleId == null) runIdle();
+  if (pendingIdleId == null) requestIdle();
 }
 
 void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {

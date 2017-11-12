@@ -918,7 +918,10 @@ class VScriptElement extends VSvgElement<ScriptElement> {
   void updateElementAttributes(VScriptElement prev, ScriptElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_type != prev._type) ele.type = _type;
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -999,9 +1002,18 @@ class VStyleElement extends VSvgElement<StyleElement> {
   void updateElementAttributes(VStyleElement prev, StyleElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_media != prev._media) ele.media = _media;
-    if (_type != prev._type) ele.type = _type;
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_media != prev._media) {
+      ele.media = _media;
+      prev.media = _media;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -1027,7 +1039,10 @@ abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
   void updateElementAttributes(covariant VSvgElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_innerHtml != prev._innerHtml) ele.innerHtml = _innerHtml;
+    if (_innerHtml != prev._innerHtml) {
+      ele.innerHtml = _innerHtml;
+      prev.innerHtml = _innerHtml;
+    }
   }
 }
 
@@ -1065,8 +1080,14 @@ class VSvgSvgElement extends VGraphicsElement<SvgSvgElement> {
   void updateElementAttributes(VSvgSvgElement prev, SvgSvgElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_currentScale != prev._currentScale) ele.currentScale = _currentScale;
-    if (_zoomAndPan != prev._zoomAndPan) ele.zoomAndPan = _zoomAndPan;
+    if (_currentScale != prev._currentScale) {
+      ele.currentScale = _currentScale;
+      prev.currentScale = _currentScale;
+    }
+    if (_zoomAndPan != prev._zoomAndPan) {
+      ele.zoomAndPan = _zoomAndPan;
+      prev.zoomAndPan = _zoomAndPan;
+    }
   }
 }
 
@@ -1243,6 +1264,9 @@ class VViewElement extends VSvgElement<ViewElement> {
   void updateElementAttributes(VViewElement prev, ViewElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_zoomAndPan != prev._zoomAndPan) ele.zoomAndPan = _zoomAndPan;
+    if (_zoomAndPan != prev._zoomAndPan) {
+      ele.zoomAndPan = _zoomAndPan;
+      prev.zoomAndPan = _zoomAndPan;
+    }
   }
 }

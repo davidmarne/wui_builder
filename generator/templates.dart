@@ -25,9 +25,9 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
     @protected
     void applyAttributesToElement(E ele) {
       if (_textSet) {
-        ${vElementTextUpdate()}
+        ${vElementTextSet()}
       }
-      ${vElementStyleBuilder()}
+      ${vElementStyleBuilderSet()}
       ${attributesSetTemplate(setters)}
     }
 
@@ -36,7 +36,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       if (_text != prev._text) {
         ${vElementTextUpdate()}
       }
-      ${vElementStyleBuilder()}
+      ${vElementStyleBuilderUpdate()}
       ${attributesUpdateTemplate(setters)}
     }
 
@@ -56,7 +56,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
 // Workaround: perf is better with this than setting
 // the text property directly on the element
-String vElementTextUpdate() => '''
+String vElementTextSet() => '''
   final first = ele.firstChild;
   if (first != null && first == ele.lastChild && first.nodeType == Node.TEXT_NODE) {
     first.text = text;
@@ -67,8 +67,31 @@ String vElementTextUpdate() => '''
 
 // Workaround: style is final on the element, so VElements can provide
 // a fuction to build the style
-String vElementStyleBuilder() =>
-    'if (styleBuilder != null) styleBuilder(ele.style);';
+String vElementStyleBuilderSet() => '''if (styleBuilder != null) {
+      styleBuilder(ele.style);
+    }''';
+
+// Workaround: perf is better with this than setting
+// the text property directly on the element
+String vElementTextUpdate() => '''
+  final first = ele.firstChild;
+  if (first != null && first == ele.lastChild && first.nodeType == Node.TEXT_NODE) {
+    first.text = text;
+  } else {
+    ele.text = text;
+  }
+  prev.text = _text;
+''';
+
+// Workaround: style is final on the element, so VElements can provide
+// a fuction to build the style
+String vElementStyleBuilderUpdate() => '''if (styleBuilder != null) {
+      ele.setAttribute('style', '');
+      styleBuilder(ele.style);
+      prev.styleBuilder = styleBuilder;
+    } else if (prev.styleBuilder != null) {
+      prev.styleBuilder = null;
+    }''';
 
 // Workaround: elements that have multple factories can use this
 // to create a custom velements for extra constructors
@@ -157,7 +180,10 @@ String attributeSetTemplate(Setter setter) =>
     'if (_${setter.name}Set) ele.${setter.name} = _${setter.name};';
 
 String attributeUpdateTemplate(Setter setter) =>
-    'if (_${setter.name} != prev._${setter.name}) ele.${setter.name} = _${setter.name};';
+    '''if (_${setter.name} != prev._${setter.name}) {
+      ele.${setter.name} = _${setter.name};
+      prev.${setter.name} = _${setter.name};
+    }''';
 
 String eventsDeclarationTemplate(Iterable<VEvent> events) => events.fold(
     '', (code, event) => '$code\n${eventDeclarationTemplate(event)}');
@@ -180,20 +206,20 @@ String eventDeclarationTemplate(VEvent event) => '''
     }''';
 
 String eventSetTemplate(VEvent event) =>
-    'if (_${event.name}Set) _${event.name}Sub = ele.${event.name}.listen(${event.name});';
+    'if (_${event.name}Set) _${event.name}Sub = ele.${event.name}.listen((e) => ${event.name}(e));';
 
 String eventUpdateTemplate(VEvent event) => '''
     if (_${event.name}Set) {
       if (!prev._${event.name}Set) {
-        _${event.name}Sub = ele.${event.name}.listen(${event.name});
+        prev._${event.name} = _${event.name};
+        prev._${event.name}Sub = ele.${event.name}.listen((e) => ${event.name}(e));
       } else if (prev.${event.name} != ${event.name}) {
-        prev._${event.name}Sub.cancel();
-        _${event.name}Sub = ele.${event.name}.listen(${event.name});
-      } else {
-        _${event.name}Sub = prev._${event.name}Sub;
+        prev._${event.name} = _${event.name};
       }
     } else if (prev._${event.name}Set) {
       prev._${event.name}Sub.cancel();
+      prev._${event.name}Sub = null;
+      prev._${event.name}Set = false;
     }''';
 
 String disposeBody(Iterable<VEvent> events) =>

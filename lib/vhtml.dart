@@ -176,23 +176,70 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   void updateElementAttributes(VAnchorElement prev, AnchorElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_download != prev._download) ele.download = _download;
-    if (_hreflang != prev._hreflang) ele.hreflang = _hreflang;
-    if (_referrerpolicy != prev._referrerpolicy)
+    if (_download != prev._download) {
+      ele.download = _download;
+      prev.download = _download;
+    }
+    if (_hreflang != prev._hreflang) {
+      ele.hreflang = _hreflang;
+      prev.hreflang = _hreflang;
+    }
+    if (_referrerpolicy != prev._referrerpolicy) {
       ele.referrerpolicy = _referrerpolicy;
-    if (_rel != prev._rel) ele.rel = _rel;
-    if (_target != prev._target) ele.target = _target;
-    if (_type != prev._type) ele.type = _type;
-    if (_hash != prev._hash) ele.hash = _hash;
-    if (_host != prev._host) ele.host = _host;
-    if (_hostname != prev._hostname) ele.hostname = _hostname;
-    if (_href != prev._href) ele.href = _href;
-    if (_password != prev._password) ele.password = _password;
-    if (_pathname != prev._pathname) ele.pathname = _pathname;
-    if (_port != prev._port) ele.port = _port;
-    if (_protocol != prev._protocol) ele.protocol = _protocol;
-    if (_search != prev._search) ele.search = _search;
-    if (_username != prev._username) ele.username = _username;
+      prev.referrerpolicy = _referrerpolicy;
+    }
+    if (_rel != prev._rel) {
+      ele.rel = _rel;
+      prev.rel = _rel;
+    }
+    if (_target != prev._target) {
+      ele.target = _target;
+      prev.target = _target;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
+    if (_hash != prev._hash) {
+      ele.hash = _hash;
+      prev.hash = _hash;
+    }
+    if (_host != prev._host) {
+      ele.host = _host;
+      prev.host = _host;
+    }
+    if (_hostname != prev._hostname) {
+      ele.hostname = _hostname;
+      prev.hostname = _hostname;
+    }
+    if (_href != prev._href) {
+      ele.href = _href;
+      prev.href = _href;
+    }
+    if (_password != prev._password) {
+      ele.password = _password;
+      prev.password = _password;
+    }
+    if (_pathname != prev._pathname) {
+      ele.pathname = _pathname;
+      prev.pathname = _pathname;
+    }
+    if (_port != prev._port) {
+      ele.port = _port;
+      prev.port = _port;
+    }
+    if (_protocol != prev._protocol) {
+      ele.protocol = _protocol;
+      prev.protocol = _protocol;
+    }
+    if (_search != prev._search) {
+      ele.search = _search;
+      prev.search = _search;
+    }
+    if (_username != prev._username) {
+      ele.username = _username;
+      prev.username = _username;
+    }
   }
 }
 
@@ -347,22 +394,66 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   void updateElementAttributes(VAreaElement prev, AreaElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_alt != prev._alt) ele.alt = _alt;
-    if (_coords != prev._coords) ele.coords = _coords;
-    if (_referrerpolicy != prev._referrerpolicy)
+    if (_alt != prev._alt) {
+      ele.alt = _alt;
+      prev.alt = _alt;
+    }
+    if (_coords != prev._coords) {
+      ele.coords = _coords;
+      prev.coords = _coords;
+    }
+    if (_referrerpolicy != prev._referrerpolicy) {
       ele.referrerpolicy = _referrerpolicy;
-    if (_shape != prev._shape) ele.shape = _shape;
-    if (_target != prev._target) ele.target = _target;
-    if (_hash != prev._hash) ele.hash = _hash;
-    if (_host != prev._host) ele.host = _host;
-    if (_hostname != prev._hostname) ele.hostname = _hostname;
-    if (_href != prev._href) ele.href = _href;
-    if (_password != prev._password) ele.password = _password;
-    if (_pathname != prev._pathname) ele.pathname = _pathname;
-    if (_port != prev._port) ele.port = _port;
-    if (_protocol != prev._protocol) ele.protocol = _protocol;
-    if (_search != prev._search) ele.search = _search;
-    if (_username != prev._username) ele.username = _username;
+      prev.referrerpolicy = _referrerpolicy;
+    }
+    if (_shape != prev._shape) {
+      ele.shape = _shape;
+      prev.shape = _shape;
+    }
+    if (_target != prev._target) {
+      ele.target = _target;
+      prev.target = _target;
+    }
+    if (_hash != prev._hash) {
+      ele.hash = _hash;
+      prev.hash = _hash;
+    }
+    if (_host != prev._host) {
+      ele.host = _host;
+      prev.host = _host;
+    }
+    if (_hostname != prev._hostname) {
+      ele.hostname = _hostname;
+      prev.hostname = _hostname;
+    }
+    if (_href != prev._href) {
+      ele.href = _href;
+      prev.href = _href;
+    }
+    if (_password != prev._password) {
+      ele.password = _password;
+      prev.password = _password;
+    }
+    if (_pathname != prev._pathname) {
+      ele.pathname = _pathname;
+      prev.pathname = _pathname;
+    }
+    if (_port != prev._port) {
+      ele.port = _port;
+      prev.port = _port;
+    }
+    if (_protocol != prev._protocol) {
+      ele.protocol = _protocol;
+      prev.protocol = _protocol;
+    }
+    if (_search != prev._search) {
+      ele.search = _search;
+      prev.search = _search;
+    }
+    if (_username != prev._username) {
+      ele.username = _username;
+      prev.username = _username;
+    }
   }
 }
 
@@ -434,8 +525,14 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   void updateElementAttributes(VBaseElement prev, BaseElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_href != prev._href) ele.href = _href;
-    if (_target != prev._target) ele.target = _target;
+    if (_href != prev._href) {
+      ele.href = _href;
+      prev.href = _href;
+    }
+    if (_target != prev._target) {
+      ele.target = _target;
+      prev.target = _target;
+    }
   }
 }
 
@@ -562,17 +659,46 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   void updateElementAttributes(VButtonElement prev, ButtonElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_formAction != prev._formAction) ele.formAction = _formAction;
-    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
-    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
-    if (_formNoValidate != prev._formNoValidate)
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_formAction != prev._formAction) {
+      ele.formAction = _formAction;
+      prev.formAction = _formAction;
+    }
+    if (_formEnctype != prev._formEnctype) {
+      ele.formEnctype = _formEnctype;
+      prev.formEnctype = _formEnctype;
+    }
+    if (_formMethod != prev._formMethod) {
+      ele.formMethod = _formMethod;
+      prev.formMethod = _formMethod;
+    }
+    if (_formNoValidate != prev._formNoValidate) {
       ele.formNoValidate = _formNoValidate;
-    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
-    if (_name != prev._name) ele.name = _name;
-    if (_type != prev._type) ele.type = _type;
-    if (_value != prev._value) ele.value = _value;
+      prev.formNoValidate = _formNoValidate;
+    }
+    if (_formTarget != prev._formTarget) {
+      ele.formTarget = _formTarget;
+      prev.formTarget = _formTarget;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -610,8 +736,14 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   void updateElementAttributes(VCanvasElement prev, CanvasElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_height != prev._height) ele.height = _height;
-    if (_width != prev._width) ele.width = _width;
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }
 
@@ -640,7 +772,10 @@ class VContentElement extends VHtmlElement<ContentElement> {
   void updateElementAttributes(VContentElement prev, ContentElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_select != prev._select) ele.select = _select;
+    if (_select != prev._select) {
+      ele.select = _select;
+      prev.select = _select;
+    }
   }
 }
 
@@ -703,7 +838,10 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
   void updateElementAttributes(VDetailsElement prev, DetailsElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_open != prev._open) ele.open = _open;
+    if (_open != prev._open) {
+      ele.open = _open;
+      prev.open = _open;
+    }
   }
 }
 
@@ -738,8 +876,14 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   void updateElementAttributes(covariant VDialogElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_open != prev._open) ele.open = _open;
-    if (_returnValue != prev._returnValue) ele.returnValue = _returnValue;
+    if (_open != prev._open) {
+      ele.open = _open;
+      prev.open = _open;
+    }
+    if (_returnValue != prev._returnValue) {
+      ele.returnValue = _returnValue;
+      prev.returnValue = _returnValue;
+    }
   }
 }
 
@@ -966,11 +1110,26 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   void updateElementAttributes(VEmbedElement prev, EmbedElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_height != prev._height) ele.height = _height;
-    if (_name != prev._name) ele.name = _name;
-    if (_src != prev._src) ele.src = _src;
-    if (_type != prev._type) ele.type = _type;
-    if (_width != prev._width) ele.width = _width;
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }
 
@@ -1008,8 +1167,14 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   void updateElementAttributes(VFieldSetElement prev, FieldSetElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_name != prev._name) ele.name = _name;
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
   }
 }
 
@@ -1110,16 +1275,42 @@ class VFormElement extends VHtmlElement<FormElement> {
   void updateElementAttributes(VFormElement prev, FormElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_acceptCharset != prev._acceptCharset)
+    if (_acceptCharset != prev._acceptCharset) {
       ele.acceptCharset = _acceptCharset;
-    if (_action != prev._action) ele.action = _action;
-    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
-    if (_encoding != prev._encoding) ele.encoding = _encoding;
-    if (_enctype != prev._enctype) ele.enctype = _enctype;
-    if (_method != prev._method) ele.method = _method;
-    if (_name != prev._name) ele.name = _name;
-    if (_noValidate != prev._noValidate) ele.noValidate = _noValidate;
-    if (_target != prev._target) ele.target = _target;
+      prev.acceptCharset = _acceptCharset;
+    }
+    if (_action != prev._action) {
+      ele.action = _action;
+      prev.action = _action;
+    }
+    if (_autocomplete != prev._autocomplete) {
+      ele.autocomplete = _autocomplete;
+      prev.autocomplete = _autocomplete;
+    }
+    if (_encoding != prev._encoding) {
+      ele.encoding = _encoding;
+      prev.encoding = _encoding;
+    }
+    if (_enctype != prev._enctype) {
+      ele.enctype = _enctype;
+      prev.enctype = _enctype;
+    }
+    if (_method != prev._method) {
+      ele.method = _method;
+      prev.method = _method;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_noValidate != prev._noValidate) {
+      ele.noValidate = _noValidate;
+      prev.noValidate = _noValidate;
+    }
+    if (_target != prev._target) {
+      ele.target = _target;
+      prev.target = _target;
+    }
   }
 }
 
@@ -1148,7 +1339,10 @@ class VHRElement extends VHtmlElement<HRElement> {
   void updateElementAttributes(VHRElement prev, HRElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_color != prev._color) ele.color = _color;
+    if (_color != prev._color) {
+      ele.color = _color;
+      prev.color = _color;
+    }
   }
 }
 
@@ -1310,15 +1504,34 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   void updateElementAttributes(VIFrameElement prev, IFrameElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_allowFullscreen != prev._allowFullscreen)
+    if (_allowFullscreen != prev._allowFullscreen) {
       ele.allowFullscreen = _allowFullscreen;
-    if (_height != prev._height) ele.height = _height;
-    if (_name != prev._name) ele.name = _name;
-    if (_referrerpolicy != prev._referrerpolicy)
+      prev.allowFullscreen = _allowFullscreen;
+    }
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_referrerpolicy != prev._referrerpolicy) {
       ele.referrerpolicy = _referrerpolicy;
-    if (_src != prev._src) ele.src = _src;
-    if (_srcdoc != prev._srcdoc) ele.srcdoc = _srcdoc;
-    if (_width != prev._width) ele.width = _width;
+      prev.referrerpolicy = _referrerpolicy;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_srcdoc != prev._srcdoc) {
+      ele.srcdoc = _srcdoc;
+      prev.srcdoc = _srcdoc;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }
 
@@ -1428,17 +1641,46 @@ class VImageElement extends VHtmlElement<ImageElement> {
   void updateElementAttributes(VImageElement prev, ImageElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_alt != prev._alt) ele.alt = _alt;
-    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
-    if (_height != prev._height) ele.height = _height;
-    if (_isMap != prev._isMap) ele.isMap = _isMap;
-    if (_referrerpolicy != prev._referrerpolicy)
+    if (_alt != prev._alt) {
+      ele.alt = _alt;
+      prev.alt = _alt;
+    }
+    if (_crossOrigin != prev._crossOrigin) {
+      ele.crossOrigin = _crossOrigin;
+      prev.crossOrigin = _crossOrigin;
+    }
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_isMap != prev._isMap) {
+      ele.isMap = _isMap;
+      prev.isMap = _isMap;
+    }
+    if (_referrerpolicy != prev._referrerpolicy) {
       ele.referrerpolicy = _referrerpolicy;
-    if (_sizes != prev._sizes) ele.sizes = _sizes;
-    if (_src != prev._src) ele.src = _src;
-    if (_srcset != prev._srcset) ele.srcset = _srcset;
-    if (_useMap != prev._useMap) ele.useMap = _useMap;
-    if (_width != prev._width) ele.width = _width;
+      prev.referrerpolicy = _referrerpolicy;
+    }
+    if (_sizes != prev._sizes) {
+      ele.sizes = _sizes;
+      prev.sizes = _sizes;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_srcset != prev._srcset) {
+      ele.srcset = _srcset;
+      prev.srcset = _srcset;
+    }
+    if (_useMap != prev._useMap) {
+      ele.useMap = _useMap;
+      prev.useMap = _useMap;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }
 
@@ -1845,56 +2087,178 @@ class VInputElement extends VHtmlElement<InputElement> {
   void updateElementAttributes(VInputElement prev, InputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_accept != prev._accept) ele.accept = _accept;
-    if (_alt != prev._alt) ele.alt = _alt;
-    if (_autocapitalize != prev._autocapitalize)
+    if (_accept != prev._accept) {
+      ele.accept = _accept;
+      prev.accept = _accept;
+    }
+    if (_alt != prev._alt) {
+      ele.alt = _alt;
+      prev.alt = _alt;
+    }
+    if (_autocapitalize != prev._autocapitalize) {
       ele.autocapitalize = _autocapitalize;
-    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_capture != prev._capture) ele.capture = _capture;
-    if (_checked != prev._checked) ele.checked = _checked;
-    if (_defaultChecked != prev._defaultChecked)
+      prev.autocapitalize = _autocapitalize;
+    }
+    if (_autocomplete != prev._autocomplete) {
+      ele.autocomplete = _autocomplete;
+      prev.autocomplete = _autocomplete;
+    }
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_capture != prev._capture) {
+      ele.capture = _capture;
+      prev.capture = _capture;
+    }
+    if (_checked != prev._checked) {
+      ele.checked = _checked;
+      prev.checked = _checked;
+    }
+    if (_defaultChecked != prev._defaultChecked) {
       ele.defaultChecked = _defaultChecked;
-    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
-    if (_dirName != prev._dirName) ele.dirName = _dirName;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_files != prev._files) ele.files = _files;
-    if (_formAction != prev._formAction) ele.formAction = _formAction;
-    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
-    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
-    if (_formNoValidate != prev._formNoValidate)
+      prev.defaultChecked = _defaultChecked;
+    }
+    if (_defaultValue != prev._defaultValue) {
+      ele.defaultValue = _defaultValue;
+      prev.defaultValue = _defaultValue;
+    }
+    if (_dirName != prev._dirName) {
+      ele.dirName = _dirName;
+      prev.dirName = _dirName;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_files != prev._files) {
+      ele.files = _files;
+      prev.files = _files;
+    }
+    if (_formAction != prev._formAction) {
+      ele.formAction = _formAction;
+      prev.formAction = _formAction;
+    }
+    if (_formEnctype != prev._formEnctype) {
+      ele.formEnctype = _formEnctype;
+      prev.formEnctype = _formEnctype;
+    }
+    if (_formMethod != prev._formMethod) {
+      ele.formMethod = _formMethod;
+      prev.formMethod = _formMethod;
+    }
+    if (_formNoValidate != prev._formNoValidate) {
       ele.formNoValidate = _formNoValidate;
-    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
-    if (_height != prev._height) ele.height = _height;
-    if (_incremental != prev._incremental) ele.incremental = _incremental;
-    if (_indeterminate != prev._indeterminate)
+      prev.formNoValidate = _formNoValidate;
+    }
+    if (_formTarget != prev._formTarget) {
+      ele.formTarget = _formTarget;
+      prev.formTarget = _formTarget;
+    }
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_incremental != prev._incremental) {
+      ele.incremental = _incremental;
+      prev.incremental = _incremental;
+    }
+    if (_indeterminate != prev._indeterminate) {
       ele.indeterminate = _indeterminate;
-    if (_inputMode != prev._inputMode) ele.inputMode = _inputMode;
-    if (_max != prev._max) ele.max = _max;
-    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
-    if (_min != prev._min) ele.min = _min;
-    if (_minLength != prev._minLength) ele.minLength = _minLength;
-    if (_multiple != prev._multiple) ele.multiple = _multiple;
-    if (_name != prev._name) ele.name = _name;
-    if (_pattern != prev._pattern) ele.pattern = _pattern;
-    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
-    if (_selectionDirection != prev._selectionDirection)
+      prev.indeterminate = _indeterminate;
+    }
+    if (_inputMode != prev._inputMode) {
+      ele.inputMode = _inputMode;
+      prev.inputMode = _inputMode;
+    }
+    if (_max != prev._max) {
+      ele.max = _max;
+      prev.max = _max;
+    }
+    if (_maxLength != prev._maxLength) {
+      ele.maxLength = _maxLength;
+      prev.maxLength = _maxLength;
+    }
+    if (_min != prev._min) {
+      ele.min = _min;
+      prev.min = _min;
+    }
+    if (_minLength != prev._minLength) {
+      ele.minLength = _minLength;
+      prev.minLength = _minLength;
+    }
+    if (_multiple != prev._multiple) {
+      ele.multiple = _multiple;
+      prev.multiple = _multiple;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_pattern != prev._pattern) {
+      ele.pattern = _pattern;
+      prev.pattern = _pattern;
+    }
+    if (_placeholder != prev._placeholder) {
+      ele.placeholder = _placeholder;
+      prev.placeholder = _placeholder;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
+    if (_selectionDirection != prev._selectionDirection) {
       ele.selectionDirection = _selectionDirection;
-    if (_selectionEnd != prev._selectionEnd) ele.selectionEnd = _selectionEnd;
-    if (_selectionStart != prev._selectionStart)
+      prev.selectionDirection = _selectionDirection;
+    }
+    if (_selectionEnd != prev._selectionEnd) {
+      ele.selectionEnd = _selectionEnd;
+      prev.selectionEnd = _selectionEnd;
+    }
+    if (_selectionStart != prev._selectionStart) {
       ele.selectionStart = _selectionStart;
-    if (_size != prev._size) ele.size = _size;
-    if (_src != prev._src) ele.src = _src;
-    if (_step != prev._step) ele.step = _step;
-    if (_type != prev._type) ele.type = _type;
-    if (_value != prev._value) ele.value = _value;
-    if (_valueAsNumber != prev._valueAsNumber)
+      prev.selectionStart = _selectionStart;
+    }
+    if (_size != prev._size) {
+      ele.size = _size;
+      prev.size = _size;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_step != prev._step) {
+      ele.step = _step;
+      prev.step = _step;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
+    if (_valueAsNumber != prev._valueAsNumber) {
       ele.valueAsNumber = _valueAsNumber;
-    if (_directory != prev._directory) ele.directory = _directory;
-    if (_width != prev._width) ele.width = _width;
-    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
+      prev.valueAsNumber = _valueAsNumber;
+    }
+    if (_directory != prev._directory) {
+      ele.directory = _directory;
+      prev.directory = _directory;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
+    if (_valueAsDate != prev._valueAsDate) {
+      ele.valueAsDate = _valueAsDate;
+      prev.valueAsDate = _valueAsDate;
+    }
   }
 }
 
@@ -1966,13 +2330,30 @@ abstract class VInputElementBase<T extends InputElementBase>
   void updateElementAttributes(covariant VInputElementBase<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_incremental != prev._incremental) ele.incremental = _incremental;
-    if (_indeterminate != prev._indeterminate)
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_incremental != prev._incremental) {
+      ele.incremental = _incremental;
+      prev.incremental = _incremental;
+    }
+    if (_indeterminate != prev._indeterminate) {
       ele.indeterminate = _indeterminate;
-    if (_name != prev._name) ele.name = _name;
-    if (_value != prev._value) ele.value = _value;
+      prev.indeterminate = _indeterminate;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -2098,18 +2479,46 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   void updateElementAttributes(covariant VTextInputElementBase<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
-    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
-    if (_pattern != prev._pattern) ele.pattern = _pattern;
-    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
-    if (_size != prev._size) ele.size = _size;
-    if (_selectionDirection != prev._selectionDirection)
+    if (_autocomplete != prev._autocomplete) {
+      ele.autocomplete = _autocomplete;
+      prev.autocomplete = _autocomplete;
+    }
+    if (_maxLength != prev._maxLength) {
+      ele.maxLength = _maxLength;
+      prev.maxLength = _maxLength;
+    }
+    if (_pattern != prev._pattern) {
+      ele.pattern = _pattern;
+      prev.pattern = _pattern;
+    }
+    if (_placeholder != prev._placeholder) {
+      ele.placeholder = _placeholder;
+      prev.placeholder = _placeholder;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
+    if (_size != prev._size) {
+      ele.size = _size;
+      prev.size = _size;
+    }
+    if (_selectionDirection != prev._selectionDirection) {
       ele.selectionDirection = _selectionDirection;
-    if (_selectionEnd != prev._selectionEnd) ele.selectionEnd = _selectionEnd;
-    if (_selectionStart != prev._selectionStart)
+      prev.selectionDirection = _selectionDirection;
+    }
+    if (_selectionEnd != prev._selectionEnd) {
+      ele.selectionEnd = _selectionEnd;
+      prev.selectionEnd = _selectionEnd;
+    }
+    if (_selectionStart != prev._selectionStart) {
       ele.selectionStart = _selectionStart;
+      prev.selectionStart = _selectionStart;
+    }
   }
 }
 
@@ -2139,7 +2548,10 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
       VSearchInputElement prev, SearchInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_dirName != prev._dirName) ele.dirName = _dirName;
+    if (_dirName != prev._dirName) {
+      ele.dirName = _dirName;
+      prev.dirName = _dirName;
+    }
   }
 }
 
@@ -2168,7 +2580,10 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   void updateElementAttributes(VTextInputElement prev, TextInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_dirName != prev._dirName) ele.dirName = _dirName;
+    if (_dirName != prev._dirName) {
+      ele.dirName = _dirName;
+      prev.dirName = _dirName;
+    }
   }
 }
 
@@ -2305,15 +2720,42 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   void updateElementAttributes(VEmailInputElement prev, EmailInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autocomplete != prev._autocomplete) ele.autocomplete = _autocomplete;
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
-    if (_multiple != prev._multiple) ele.multiple = _multiple;
-    if (_pattern != prev._pattern) ele.pattern = _pattern;
-    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
-    if (_size != prev._size) ele.size = _size;
+    if (_autocomplete != prev._autocomplete) {
+      ele.autocomplete = _autocomplete;
+      prev.autocomplete = _autocomplete;
+    }
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_maxLength != prev._maxLength) {
+      ele.maxLength = _maxLength;
+      prev.maxLength = _maxLength;
+    }
+    if (_multiple != prev._multiple) {
+      ele.multiple = _multiple;
+      prev.multiple = _multiple;
+    }
+    if (_pattern != prev._pattern) {
+      ele.pattern = _pattern;
+      prev.pattern = _pattern;
+    }
+    if (_placeholder != prev._placeholder) {
+      ele.placeholder = _placeholder;
+      prev.placeholder = _placeholder;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
+    if (_size != prev._size) {
+      ele.size = _size;
+      prev.size = _size;
+    }
   }
 }
 
@@ -2387,11 +2829,22 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
       covariant VRangeInputElementBase<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_max != prev._max) ele.max = _max;
-    if (_min != prev._min) ele.min = _min;
-    if (_step != prev._step) ele.step = _step;
-    if (_valueAsNumber != prev._valueAsNumber)
+    if (_max != prev._max) {
+      ele.max = _max;
+      prev.max = _max;
+    }
+    if (_min != prev._min) {
+      ele.min = _min;
+      prev.min = _min;
+    }
+    if (_step != prev._step) {
+      ele.step = _step;
+      prev.step = _step;
+    }
+    if (_valueAsNumber != prev._valueAsNumber) {
       ele.valueAsNumber = _valueAsNumber;
+      prev.valueAsNumber = _valueAsNumber;
+    }
   }
 }
 
@@ -2438,9 +2891,18 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   void updateElementAttributes(VDateInputElement prev, DateInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
+    if (_valueAsDate != prev._valueAsDate) {
+      ele.valueAsDate = _valueAsDate;
+      prev.valueAsDate = _valueAsDate;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2487,9 +2949,18 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   void updateElementAttributes(VMonthInputElement prev, MonthInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
+    if (_valueAsDate != prev._valueAsDate) {
+      ele.valueAsDate = _valueAsDate;
+      prev.valueAsDate = _valueAsDate;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2536,9 +3007,18 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   void updateElementAttributes(VWeekInputElement prev, WeekInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
+    if (_valueAsDate != prev._valueAsDate) {
+      ele.valueAsDate = _valueAsDate;
+      prev.valueAsDate = _valueAsDate;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2585,9 +3065,18 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   void updateElementAttributes(VTimeInputElement prev, TimeInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_valueAsDate != prev._valueAsDate) ele.valueAsDate = _valueAsDate;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
+    if (_valueAsDate != prev._valueAsDate) {
+      ele.valueAsDate = _valueAsDate;
+      prev.valueAsDate = _valueAsDate;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2627,8 +3116,14 @@ class VLocalDateTimeInputElement
       VLocalDateTimeInputElement prev, LocalDateTimeInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2676,9 +3171,18 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
       VNumberInputElement prev, NumberInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
+    if (_placeholder != prev._placeholder) {
+      ele.placeholder = _placeholder;
+      prev.placeholder = _placeholder;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2734,8 +3238,14 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
       VCheckboxInputElement prev, CheckboxInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_checked != prev._checked) ele.checked = _checked;
-    if (_required != prev._required) ele.required = _required;
+    if (_checked != prev._checked) {
+      ele.checked = _checked;
+      prev.checked = _checked;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2775,8 +3285,14 @@ class VRadioButtonInputElement
       VRadioButtonInputElement prev, RadioButtonInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_checked != prev._checked) ele.checked = _checked;
-    if (_required != prev._required) ele.required = _required;
+    if (_checked != prev._checked) {
+      ele.checked = _checked;
+      prev.checked = _checked;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
   }
 }
 
@@ -2834,10 +3350,22 @@ class VFileUploadInputElement
       VFileUploadInputElement prev, FileUploadInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_accept != prev._accept) ele.accept = _accept;
-    if (_multiple != prev._multiple) ele.multiple = _multiple;
-    if (_required != prev._required) ele.required = _required;
-    if (_files != prev._files) ele.files = _files;
+    if (_accept != prev._accept) {
+      ele.accept = _accept;
+      prev.accept = _accept;
+    }
+    if (_multiple != prev._multiple) {
+      ele.multiple = _multiple;
+      prev.multiple = _multiple;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
+    if (_files != prev._files) {
+      ele.files = _files;
+      prev.files = _files;
+    }
   }
 }
 
@@ -2904,12 +3432,26 @@ class VSubmitButtonInputElement
       VSubmitButtonInputElement prev, SubmitButtonInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_formAction != prev._formAction) ele.formAction = _formAction;
-    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
-    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
-    if (_formNoValidate != prev._formNoValidate)
+    if (_formAction != prev._formAction) {
+      ele.formAction = _formAction;
+      prev.formAction = _formAction;
+    }
+    if (_formEnctype != prev._formEnctype) {
+      ele.formEnctype = _formEnctype;
+      prev.formEnctype = _formEnctype;
+    }
+    if (_formMethod != prev._formMethod) {
+      ele.formMethod = _formMethod;
+      prev.formMethod = _formMethod;
+    }
+    if (_formNoValidate != prev._formNoValidate) {
       ele.formNoValidate = _formNoValidate;
-    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
+      prev.formNoValidate = _formNoValidate;
+    }
+    if (_formTarget != prev._formTarget) {
+      ele.formTarget = _formTarget;
+      prev.formTarget = _formTarget;
+    }
   }
 }
 
@@ -3012,16 +3554,42 @@ class VImageButtonInputElement
       VImageButtonInputElement prev, ImageButtonInputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_alt != prev._alt) ele.alt = _alt;
-    if (_formAction != prev._formAction) ele.formAction = _formAction;
-    if (_formEnctype != prev._formEnctype) ele.formEnctype = _formEnctype;
-    if (_formMethod != prev._formMethod) ele.formMethod = _formMethod;
-    if (_formNoValidate != prev._formNoValidate)
+    if (_alt != prev._alt) {
+      ele.alt = _alt;
+      prev.alt = _alt;
+    }
+    if (_formAction != prev._formAction) {
+      ele.formAction = _formAction;
+      prev.formAction = _formAction;
+    }
+    if (_formEnctype != prev._formEnctype) {
+      ele.formEnctype = _formEnctype;
+      prev.formEnctype = _formEnctype;
+    }
+    if (_formMethod != prev._formMethod) {
+      ele.formMethod = _formMethod;
+      prev.formMethod = _formMethod;
+    }
+    if (_formNoValidate != prev._formNoValidate) {
       ele.formNoValidate = _formNoValidate;
-    if (_formTarget != prev._formTarget) ele.formTarget = _formTarget;
-    if (_height != prev._height) ele.height = _height;
-    if (_src != prev._src) ele.src = _src;
-    if (_width != prev._width) ele.width = _width;
+      prev.formNoValidate = _formNoValidate;
+    }
+    if (_formTarget != prev._formTarget) {
+      ele.formTarget = _formTarget;
+      prev.formTarget = _formTarget;
+    }
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }
 
@@ -3123,11 +3691,26 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   void updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_challenge != prev._challenge) ele.challenge = _challenge;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_keytype != prev._keytype) ele.keytype = _keytype;
-    if (_name != prev._name) ele.name = _name;
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_challenge != prev._challenge) {
+      ele.challenge = _challenge;
+      prev.challenge = _challenge;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_keytype != prev._keytype) {
+      ele.keytype = _keytype;
+      prev.keytype = _keytype;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
   }
 }
 
@@ -3156,7 +3739,10 @@ class VLIElement extends VHtmlElement<LIElement> {
   void updateElementAttributes(VLIElement prev, LIElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_value != prev._value) ele.value = _value;
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -3185,7 +3771,10 @@ class VLabelElement extends VHtmlElement<LabelElement> {
   void updateElementAttributes(VLabelElement prev, LabelElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_htmlFor != prev._htmlFor) ele.htmlFor = _htmlFor;
+    if (_htmlFor != prev._htmlFor) {
+      ele.htmlFor = _htmlFor;
+      prev.htmlFor = _htmlFor;
+    }
   }
 }
 
@@ -3303,15 +3892,42 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   void updateElementAttributes(VLinkElement prev, LinkElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_as != prev._as) ele.as = _as;
-    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_href != prev._href) ele.href = _href;
-    if (_hreflang != prev._hreflang) ele.hreflang = _hreflang;
-    if (_integrity != prev._integrity) ele.integrity = _integrity;
-    if (_media != prev._media) ele.media = _media;
-    if (_rel != prev._rel) ele.rel = _rel;
-    if (_type != prev._type) ele.type = _type;
+    if (_as != prev._as) {
+      ele.as = _as;
+      prev.as = _as;
+    }
+    if (_crossOrigin != prev._crossOrigin) {
+      ele.crossOrigin = _crossOrigin;
+      prev.crossOrigin = _crossOrigin;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_href != prev._href) {
+      ele.href = _href;
+      prev.href = _href;
+    }
+    if (_hreflang != prev._hreflang) {
+      ele.hreflang = _hreflang;
+      prev.hreflang = _hreflang;
+    }
+    if (_integrity != prev._integrity) {
+      ele.integrity = _integrity;
+      prev.integrity = _integrity;
+    }
+    if (_media != prev._media) {
+      ele.media = _media;
+      prev.media = _media;
+    }
+    if (_rel != prev._rel) {
+      ele.rel = _rel;
+      prev.rel = _rel;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -3340,7 +3956,10 @@ class VMapElement extends VHtmlElement<MapElement> {
   void updateElementAttributes(VMapElement prev, MapElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_name != prev._name) ele.name = _name;
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
   }
 }
 
@@ -3484,22 +4103,62 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   void updateElementAttributes(covariant VMediaElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autoplay != prev._autoplay) ele.autoplay = _autoplay;
-    if (_controls != prev._controls) ele.controls = _controls;
-    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
-    if (_currentTime != prev._currentTime) ele.currentTime = _currentTime;
-    if (_defaultMuted != prev._defaultMuted) ele.defaultMuted = _defaultMuted;
-    if (_defaultPlaybackRate != prev._defaultPlaybackRate)
+    if (_autoplay != prev._autoplay) {
+      ele.autoplay = _autoplay;
+      prev.autoplay = _autoplay;
+    }
+    if (_controls != prev._controls) {
+      ele.controls = _controls;
+      prev.controls = _controls;
+    }
+    if (_crossOrigin != prev._crossOrigin) {
+      ele.crossOrigin = _crossOrigin;
+      prev.crossOrigin = _crossOrigin;
+    }
+    if (_currentTime != prev._currentTime) {
+      ele.currentTime = _currentTime;
+      prev.currentTime = _currentTime;
+    }
+    if (_defaultMuted != prev._defaultMuted) {
+      ele.defaultMuted = _defaultMuted;
+      prev.defaultMuted = _defaultMuted;
+    }
+    if (_defaultPlaybackRate != prev._defaultPlaybackRate) {
       ele.defaultPlaybackRate = _defaultPlaybackRate;
-    if (_disableRemotePlayback != prev._disableRemotePlayback)
+      prev.defaultPlaybackRate = _defaultPlaybackRate;
+    }
+    if (_disableRemotePlayback != prev._disableRemotePlayback) {
       ele.disableRemotePlayback = _disableRemotePlayback;
-    if (_loop != prev._loop) ele.loop = _loop;
-    if (_muted != prev._muted) ele.muted = _muted;
-    if (_playbackRate != prev._playbackRate) ele.playbackRate = _playbackRate;
-    if (_preload != prev._preload) ele.preload = _preload;
-    if (_session != prev._session) ele.session = _session;
-    if (_src != prev._src) ele.src = _src;
-    if (_volume != prev._volume) ele.volume = _volume;
+      prev.disableRemotePlayback = _disableRemotePlayback;
+    }
+    if (_loop != prev._loop) {
+      ele.loop = _loop;
+      prev.loop = _loop;
+    }
+    if (_muted != prev._muted) {
+      ele.muted = _muted;
+      prev.muted = _muted;
+    }
+    if (_playbackRate != prev._playbackRate) {
+      ele.playbackRate = _playbackRate;
+      prev.playbackRate = _playbackRate;
+    }
+    if (_preload != prev._preload) {
+      ele.preload = _preload;
+      prev.preload = _preload;
+    }
+    if (_session != prev._session) {
+      ele.session = _session;
+      prev.session = _session;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_volume != prev._volume) {
+      ele.volume = _volume;
+      prev.volume = _volume;
+    }
   }
 }
 
@@ -3537,8 +4196,14 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   void updateElementAttributes(VMenuElement prev, MenuElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_label != prev._label) ele.label = _label;
-    if (_type != prev._type) ele.type = _type;
+    if (_label != prev._label) {
+      ele.label = _label;
+      prev.label = _label;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -3619,13 +4284,34 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   void updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_checked != prev._checked) ele.checked = _checked;
-    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_icon != prev._icon) ele.icon = _icon;
-    if (_label != prev._label) ele.label = _label;
-    if (_radiogroup != prev._radiogroup) ele.radiogroup = _radiogroup;
-    if (_type != prev._type) ele.type = _type;
+    if (_checked != prev._checked) {
+      ele.checked = _checked;
+      prev.checked = _checked;
+    }
+    if (_defaultValue != prev._defaultValue) {
+      ele.defaultValue = _defaultValue;
+      prev.defaultValue = _defaultValue;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_icon != prev._icon) {
+      ele.icon = _icon;
+      prev.icon = _icon;
+    }
+    if (_label != prev._label) {
+      ele.label = _label;
+      prev.label = _label;
+    }
+    if (_radiogroup != prev._radiogroup) {
+      ele.radiogroup = _radiogroup;
+      prev.radiogroup = _radiogroup;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -3672,9 +4358,18 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   void updateElementAttributes(VMetaElement prev, MetaElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_content != prev._content) ele.content = _content;
-    if (_httpEquiv != prev._httpEquiv) ele.httpEquiv = _httpEquiv;
-    if (_name != prev._name) ele.name = _name;
+    if (_content != prev._content) {
+      ele.content = _content;
+      prev.content = _content;
+    }
+    if (_httpEquiv != prev._httpEquiv) {
+      ele.httpEquiv = _httpEquiv;
+      prev.httpEquiv = _httpEquiv;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
   }
 }
 
@@ -3748,12 +4443,30 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   void updateElementAttributes(VMeterElement prev, MeterElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_high != prev._high) ele.high = _high;
-    if (_low != prev._low) ele.low = _low;
-    if (_max != prev._max) ele.max = _max;
-    if (_min != prev._min) ele.min = _min;
-    if (_optimum != prev._optimum) ele.optimum = _optimum;
-    if (_value != prev._value) ele.value = _value;
+    if (_high != prev._high) {
+      ele.high = _high;
+      prev.high = _high;
+    }
+    if (_low != prev._low) {
+      ele.low = _low;
+      prev.low = _low;
+    }
+    if (_max != prev._max) {
+      ele.max = _max;
+      prev.max = _max;
+    }
+    if (_min != prev._min) {
+      ele.min = _min;
+      prev.min = _min;
+    }
+    if (_optimum != prev._optimum) {
+      ele.optimum = _optimum;
+      prev.optimum = _optimum;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -3788,8 +4501,14 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   void updateElementAttributes(covariant VModElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_cite != prev._cite) ele.cite = _cite;
-    if (_dateTime != prev._dateTime) ele.dateTime = _dateTime;
+    if (_cite != prev._cite) {
+      ele.cite = _cite;
+      prev.cite = _cite;
+    }
+    if (_dateTime != prev._dateTime) {
+      ele.dateTime = _dateTime;
+      prev.dateTime = _dateTime;
+    }
   }
 }
 
@@ -3836,9 +4555,18 @@ class VOListElement extends VHtmlElement<OListElement> {
   void updateElementAttributes(VOListElement prev, OListElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_reversed != prev._reversed) ele.reversed = _reversed;
-    if (_start != prev._start) ele.start = _start;
-    if (_type != prev._type) ele.type = _type;
+    if (_reversed != prev._reversed) {
+      ele.reversed = _reversed;
+      prev.reversed = _reversed;
+    }
+    if (_start != prev._start) {
+      ele.start = _start;
+      prev.start = _start;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -3912,12 +4640,30 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   void updateElementAttributes(VObjectElement prev, ObjectElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_data != prev._data) ele.data = _data;
-    if (_height != prev._height) ele.height = _height;
-    if (_name != prev._name) ele.name = _name;
-    if (_type != prev._type) ele.type = _type;
-    if (_useMap != prev._useMap) ele.useMap = _useMap;
-    if (_width != prev._width) ele.width = _width;
+    if (_data != prev._data) {
+      ele.data = _data;
+      prev.data = _data;
+    }
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
+    if (_useMap != prev._useMap) {
+      ele.useMap = _useMap;
+      prev.useMap = _useMap;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }
 
@@ -3955,8 +4701,14 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   void updateElementAttributes(VOptGroupElement prev, OptGroupElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_label != prev._label) ele.label = _label;
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_label != prev._label) {
+      ele.label = _label;
+      prev.label = _label;
+    }
   }
 }
 
@@ -4021,12 +4773,26 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   void updateElementAttributes(VOptionElement prev, OptionElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_defaultSelected != prev._defaultSelected)
+    if (_defaultSelected != prev._defaultSelected) {
       ele.defaultSelected = _defaultSelected;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_label != prev._label) ele.label = _label;
-    if (_selected != prev._selected) ele.selected = _selected;
-    if (_value != prev._value) ele.value = _value;
+      prev.defaultSelected = _defaultSelected;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_label != prev._label) {
+      ele.label = _label;
+      prev.label = _label;
+    }
+    if (_selected != prev._selected) {
+      ele.selected = _selected;
+      prev.selected = _selected;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -4073,9 +4839,18 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   void updateElementAttributes(VOutputElement prev, OutputElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
-    if (_name != prev._name) ele.name = _name;
-    if (_value != prev._value) ele.value = _value;
+    if (_defaultValue != prev._defaultValue) {
+      ele.defaultValue = _defaultValue;
+      prev.defaultValue = _defaultValue;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -4130,8 +4905,14 @@ class VParamElement extends VHtmlElement<ParamElement> {
   void updateElementAttributes(VParamElement prev, ParamElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_name != prev._name) ele.name = _name;
-    if (_value != prev._value) ele.value = _value;
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -4201,8 +4982,14 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   void updateElementAttributes(VProgressElement prev, ProgressElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_max != prev._max) ele.max = _max;
-    if (_value != prev._value) ele.value = _value;
+    if (_max != prev._max) {
+      ele.max = _max;
+      prev.max = _max;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -4231,7 +5018,10 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
   void updateElementAttributes(VQuoteElement prev, QuoteElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_cite != prev._cite) ele.cite = _cite;
+    if (_cite != prev._cite) {
+      ele.cite = _cite;
+      prev.cite = _cite;
+    }
   }
 }
 
@@ -4323,14 +5113,38 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   void updateElementAttributes(VScriptElement prev, ScriptElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_async != prev._async) ele.async = _async;
-    if (_charset != prev._charset) ele.charset = _charset;
-    if (_crossOrigin != prev._crossOrigin) ele.crossOrigin = _crossOrigin;
-    if (_defer != prev._defer) ele.defer = _defer;
-    if (_integrity != prev._integrity) ele.integrity = _integrity;
-    if (_nonce != prev._nonce) ele.nonce = _nonce;
-    if (_src != prev._src) ele.src = _src;
-    if (_type != prev._type) ele.type = _type;
+    if (_async != prev._async) {
+      ele.async = _async;
+      prev.async = _async;
+    }
+    if (_charset != prev._charset) {
+      ele.charset = _charset;
+      prev.charset = _charset;
+    }
+    if (_crossOrigin != prev._crossOrigin) {
+      ele.crossOrigin = _crossOrigin;
+      prev.crossOrigin = _crossOrigin;
+    }
+    if (_defer != prev._defer) {
+      ele.defer = _defer;
+      prev.defer = _defer;
+    }
+    if (_integrity != prev._integrity) {
+      ele.integrity = _integrity;
+      prev.integrity = _integrity;
+    }
+    if (_nonce != prev._nonce) {
+      ele.nonce = _nonce;
+      prev.nonce = _nonce;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -4431,16 +5245,42 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   void updateElementAttributes(VSelectElement prev, SelectElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_length != prev._length) ele.length = _length;
-    if (_multiple != prev._multiple) ele.multiple = _multiple;
-    if (_name != prev._name) ele.name = _name;
-    if (_required != prev._required) ele.required = _required;
-    if (_selectedIndex != prev._selectedIndex)
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_length != prev._length) {
+      ele.length = _length;
+      prev.length = _length;
+    }
+    if (_multiple != prev._multiple) {
+      ele.multiple = _multiple;
+      prev.multiple = _multiple;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
+    if (_selectedIndex != prev._selectedIndex) {
       ele.selectedIndex = _selectedIndex;
-    if (_size != prev._size) ele.size = _size;
-    if (_value != prev._value) ele.value = _value;
+      prev.selectedIndex = _selectedIndex;
+    }
+    if (_size != prev._size) {
+      ele.size = _size;
+      prev.size = _size;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
   }
 }
 
@@ -4483,7 +5323,10 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
   void updateElementAttributes(covariant VSlotElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_name != prev._name) ele.name = _name;
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
   }
 }
 
@@ -4548,11 +5391,26 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   void updateElementAttributes(VSourceElement prev, SourceElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_media != prev._media) ele.media = _media;
-    if (_sizes != prev._sizes) ele.sizes = _sizes;
-    if (_src != prev._src) ele.src = _src;
-    if (_srcset != prev._srcset) ele.srcset = _srcset;
-    if (_type != prev._type) ele.type = _type;
+    if (_media != prev._media) {
+      ele.media = _media;
+      prev.media = _media;
+    }
+    if (_sizes != prev._sizes) {
+      ele.sizes = _sizes;
+      prev.sizes = _sizes;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_srcset != prev._srcset) {
+      ele.srcset = _srcset;
+      prev.srcset = _srcset;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -4616,9 +5474,18 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   void updateElementAttributes(VStyleElement prev, StyleElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_media != prev._media) ele.media = _media;
-    if (_type != prev._type) ele.type = _type;
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_media != prev._media) {
+      ele.media = _media;
+      prev.media = _media;
+    }
+    if (_type != prev._type) {
+      ele.type = _type;
+      prev.type = _type;
+    }
   }
 }
 
@@ -4683,9 +5550,18 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   void updateElementAttributes(VTableCellElement prev, TableCellElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_colSpan != prev._colSpan) ele.colSpan = _colSpan;
-    if (_headers != prev._headers) ele.headers = _headers;
-    if (_rowSpan != prev._rowSpan) ele.rowSpan = _rowSpan;
+    if (_colSpan != prev._colSpan) {
+      ele.colSpan = _colSpan;
+      prev.colSpan = _colSpan;
+    }
+    if (_headers != prev._headers) {
+      ele.headers = _headers;
+      prev.headers = _headers;
+    }
+    if (_rowSpan != prev._rowSpan) {
+      ele.rowSpan = _rowSpan;
+      prev.rowSpan = _rowSpan;
+    }
   }
 }
 
@@ -4714,7 +5590,10 @@ class VTableColElement extends VHtmlElement<TableColElement> {
   void updateElementAttributes(VTableColElement prev, TableColElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_span != prev._span) ele.span = _span;
+    if (_span != prev._span) {
+      ele.span = _span;
+      prev.span = _span;
+    }
   }
 }
 
@@ -4761,9 +5640,18 @@ class VTableElement extends VHtmlElement<TableElement> {
   void updateElementAttributes(VTableElement prev, TableElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_caption != prev._caption) ele.caption = _caption;
-    if (_tFoot != prev._tFoot) ele.tFoot = _tFoot;
-    if (_tHead != prev._tHead) ele.tHead = _tHead;
+    if (_caption != prev._caption) {
+      ele.caption = _caption;
+      prev.caption = _caption;
+    }
+    if (_tFoot != prev._tFoot) {
+      ele.tFoot = _tFoot;
+      prev.tFoot = _tFoot;
+    }
+    if (_tHead != prev._tHead) {
+      ele.tHead = _tHead;
+      prev.tHead = _tHead;
+    }
   }
 }
 
@@ -5003,28 +5891,82 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   void updateElementAttributes(VTextAreaElement prev, TextAreaElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_autocapitalize != prev._autocapitalize)
+    if (_autocapitalize != prev._autocapitalize) {
       ele.autocapitalize = _autocapitalize;
-    if (_autofocus != prev._autofocus) ele.autofocus = _autofocus;
-    if (_cols != prev._cols) ele.cols = _cols;
-    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
-    if (_dirName != prev._dirName) ele.dirName = _dirName;
-    if (_disabled != prev._disabled) ele.disabled = _disabled;
-    if (_inputMode != prev._inputMode) ele.inputMode = _inputMode;
-    if (_maxLength != prev._maxLength) ele.maxLength = _maxLength;
-    if (_minLength != prev._minLength) ele.minLength = _minLength;
-    if (_name != prev._name) ele.name = _name;
-    if (_placeholder != prev._placeholder) ele.placeholder = _placeholder;
-    if (_readOnly != prev._readOnly) ele.readOnly = _readOnly;
-    if (_required != prev._required) ele.required = _required;
-    if (_rows != prev._rows) ele.rows = _rows;
-    if (_selectionDirection != prev._selectionDirection)
+      prev.autocapitalize = _autocapitalize;
+    }
+    if (_autofocus != prev._autofocus) {
+      ele.autofocus = _autofocus;
+      prev.autofocus = _autofocus;
+    }
+    if (_cols != prev._cols) {
+      ele.cols = _cols;
+      prev.cols = _cols;
+    }
+    if (_defaultValue != prev._defaultValue) {
+      ele.defaultValue = _defaultValue;
+      prev.defaultValue = _defaultValue;
+    }
+    if (_dirName != prev._dirName) {
+      ele.dirName = _dirName;
+      prev.dirName = _dirName;
+    }
+    if (_disabled != prev._disabled) {
+      ele.disabled = _disabled;
+      prev.disabled = _disabled;
+    }
+    if (_inputMode != prev._inputMode) {
+      ele.inputMode = _inputMode;
+      prev.inputMode = _inputMode;
+    }
+    if (_maxLength != prev._maxLength) {
+      ele.maxLength = _maxLength;
+      prev.maxLength = _maxLength;
+    }
+    if (_minLength != prev._minLength) {
+      ele.minLength = _minLength;
+      prev.minLength = _minLength;
+    }
+    if (_name != prev._name) {
+      ele.name = _name;
+      prev.name = _name;
+    }
+    if (_placeholder != prev._placeholder) {
+      ele.placeholder = _placeholder;
+      prev.placeholder = _placeholder;
+    }
+    if (_readOnly != prev._readOnly) {
+      ele.readOnly = _readOnly;
+      prev.readOnly = _readOnly;
+    }
+    if (_required != prev._required) {
+      ele.required = _required;
+      prev.required = _required;
+    }
+    if (_rows != prev._rows) {
+      ele.rows = _rows;
+      prev.rows = _rows;
+    }
+    if (_selectionDirection != prev._selectionDirection) {
       ele.selectionDirection = _selectionDirection;
-    if (_selectionEnd != prev._selectionEnd) ele.selectionEnd = _selectionEnd;
-    if (_selectionStart != prev._selectionStart)
+      prev.selectionDirection = _selectionDirection;
+    }
+    if (_selectionEnd != prev._selectionEnd) {
+      ele.selectionEnd = _selectionEnd;
+      prev.selectionEnd = _selectionEnd;
+    }
+    if (_selectionStart != prev._selectionStart) {
       ele.selectionStart = _selectionStart;
-    if (_value != prev._value) ele.value = _value;
-    if (_wrap != prev._wrap) ele.wrap = _wrap;
+      prev.selectionStart = _selectionStart;
+    }
+    if (_value != prev._value) {
+      ele.value = _value;
+      prev.value = _value;
+    }
+    if (_wrap != prev._wrap) {
+      ele.wrap = _wrap;
+      prev.wrap = _wrap;
+    }
   }
 }
 
@@ -5106,11 +6048,26 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   void updateElementAttributes(VTrackElement prev, TrackElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_defaultValue != prev._defaultValue) ele.defaultValue = _defaultValue;
-    if (_kind != prev._kind) ele.kind = _kind;
-    if (_label != prev._label) ele.label = _label;
-    if (_src != prev._src) ele.src = _src;
-    if (_srclang != prev._srclang) ele.srclang = _srclang;
+    if (_defaultValue != prev._defaultValue) {
+      ele.defaultValue = _defaultValue;
+      prev.defaultValue = _defaultValue;
+    }
+    if (_kind != prev._kind) {
+      ele.kind = _kind;
+      prev.kind = _kind;
+    }
+    if (_label != prev._label) {
+      ele.label = _label;
+      prev.label = _label;
+    }
+    if (_src != prev._src) {
+      ele.src = _src;
+      prev.src = _src;
+    }
+    if (_srclang != prev._srclang) {
+      ele.srclang = _srclang;
+      prev.srclang = _srclang;
+    }
   }
 }
 
@@ -5189,8 +6146,17 @@ class VVideoElement extends VMediaElement<VideoElement> {
   void updateElementAttributes(VVideoElement prev, VideoElement ele) {
     super.updateElementAttributes(prev, ele);
 
-    if (_height != prev._height) ele.height = _height;
-    if (_poster != prev._poster) ele.poster = _poster;
-    if (_width != prev._width) ele.width = _width;
+    if (_height != prev._height) {
+      ele.height = _height;
+      prev.height = _height;
+    }
+    if (_poster != prev._poster) {
+      ele.poster = _poster;
+      prev.poster = _poster;
+    }
+    if (_width != prev._width) {
+      ele.width = _width;
+      prev.width = _width;
+    }
   }
 }

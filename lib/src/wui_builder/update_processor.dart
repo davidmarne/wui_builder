@@ -19,7 +19,7 @@ bool updateVNode(UpdateTracker tracker) {
       tracker.cursor.oldVNode.vNodeType) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     disposeVNode(tracker.cursor.oldVNode);
-    tracker.cursor.node = createNode(tracker.cursor.newVNode);
+    tracker.cursor.node = createNode(tracker.cursor.oldVNode);
   } else if (tracker.cursor.newVNode.vNodeType == VNodeTypes.Element) {
     return updateElement(tracker);
   } else {
