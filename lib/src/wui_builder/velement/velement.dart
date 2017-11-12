@@ -1042,11 +1042,7 @@ abstract class VElement<E extends Element> extends VNode {
       _onCanPlayThroughSub =
           ele.onCanPlayThrough.listen((e) => onCanPlayThrough(e));
     if (_onChangeSet) _onChangeSub = ele.onChange.listen((e) => onChange(e));
-    if (_onClickSet)
-      _onClickSub = ele.onClick.listen((e) {
-        print("SDF2 ${this.hashCode} ${_onClick.hashCode}");
-        onClick(e);
-      });
+    if (_onClickSet) _onClickSub = ele.onClick.listen((e) => onClick(e));
     if (_onContextMenuSet)
       _onContextMenuSub = ele.onContextMenu.listen((e) => onContextMenu(e));
     if (_onCopySet) _onCopySub = ele.onCopy.listen((e) => onCopy(e));
@@ -1258,10 +1254,7 @@ abstract class VElement<E extends Element> extends VNode {
         prev._onClick = _onClick;
         prev._onClickSub = ele.onClick.listen((e) => onClick(e));
       } else if (prev.onClick != onClick) {
-        print("SDF ${prev.hashCode} ${_onClick.hashCode} ");
-
         prev._onClick = _onClick;
-        print("SDF3 ${prev.hashCode} ${prev._onClick.hashCode} ");
       }
     } else if (prev._onClickSet) {
       prev._onClickSub.cancel();
