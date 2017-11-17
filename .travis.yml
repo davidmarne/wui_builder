@@ -1,14 +1,13 @@
 language: dart
 dart:
-  - 1.24.2
-  
-dart_task:
-  install_dartium: true
+  - stable
+with_content_shell: true
 
 script:
   - dart tool/build.dart
   - pub run dart_dev format --check
   - pub run dart_dev analyze
+  - pub run dart_dev test -p content-shell
   - pub run dart_dev test -p content-shell
   - pub run dart_dev coverage --no-html
   - bash <(curl -s https://codecov.io/bash) -f coverage/coverage.lcov
