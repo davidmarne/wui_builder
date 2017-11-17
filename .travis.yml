@@ -1,6 +1,10 @@
 language: dart
 dart:
   - 1.24.2
+  
+dart_task:
+  install_dartium: true
+
 script:
   - dart tool/build.dart
   - pub run dart_dev format --check
