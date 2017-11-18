@@ -2,7 +2,7 @@
 
 For building declarative, component based web user interfaces in dart.
 
-Provides a rich library of typed virtual elements.
+Provides a rich library of typed virtual elements for svg & standard html.
 
 Supports defining custom components with an interface similar to react. All of the same lifecycle methods are supported.
 
@@ -12,8 +12,8 @@ Built with async rendering in mind from the start.
 
 The [generator](generator/) is what makes wui builder unique.
 The generator generates virtual dom element builder for each Element type definied
-in the dart html package. Each virtual dom element builder as typed setters for each
-setter in the relative html Element. This makes it easy to write resilient componenents.
+in the dart html/svg packages. Each virtual dom element builder as typed setters for each
+setter in the relative html/svg Element. This makes it easy to write resilient componenents.
 
 wui_builder also supports async rendering to avoid blocking the main thread on large updates.
 Async updeates only processes on idle callbacks, which means the rendering job & layout will be split
