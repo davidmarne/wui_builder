@@ -1,5 +1,6 @@
 // import 'package:wui_builder/functional.dart';
 import 'package:wui_builder/wui_builder.dart';
+import 'package:wui_builder/vhtml.dart';
 
 class HeroProps {
   int remaining;

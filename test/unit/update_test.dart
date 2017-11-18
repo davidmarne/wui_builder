@@ -5,12 +5,12 @@ import 'test_component.dart';
 
 void main() {
   group('sync updates', () {
-    test('correct lifecycle is called and text is rendered', () {
-      // queue an update
-      // expect
-      // queue a second update from the same component
-      final host = new DivElement();
-      final component = new TestComponent(new TestComponentProps()
+    DivElement host;
+    TestComponent component;
+
+    setUp(() {
+      host = new DivElement();
+      component = new TestComponent(new TestComponentProps()
         ..componentWillMount = expectComponentWillMount(1, 1)
         ..componentDidMount = expectComponentDidMount(1, 1)
         ..shouldComponentUpdate = failOnShouldComponentUpdate
@@ -21,10 +21,11 @@ void main() {
         ..child = propStateText);
 
       render(component, host);
-
       expect(host.children.length, 1);
       expect(host.children.first.text, expectedText(1, 1));
+    });
 
+    test('correct lifecycle is called and text is rendered', () {
       component.updateState(new TestComponentProps()
         ..componentWillMount = failOnComponentWillMount
         ..componentDidMount = failOnComponentDidMount
@@ -32,7 +33,6 @@ void main() {
         ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
         ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
         ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 2
         ..child = propStateText);
 
       expect(host.children.length, 1);
@@ -41,22 +41,6 @@ void main() {
 
     test('update is short circuited when shouldComponentUpdate returns false',
         () {
-      final host = new DivElement();
-      final component = new TestComponent(new TestComponentProps()
-        ..componentWillMount = expectComponentWillMount(1, 1)
-        ..componentDidMount = expectComponentDidMount(1, 1)
-        ..shouldComponentUpdate = failOnShouldComponentUpdate
-        ..componentWillUpdate = failOnComponentWillUpdate
-        ..componentDidUpdate = failOnComponentDidUpdate
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 1
-        ..child = propStateText);
-
-      render(component, host);
-
-      expect(host.children.length, 1);
-      expect(host.children.first.text, expectedText(1, 1));
-
       component.updateState(new TestComponentProps()
         ..componentWillMount = failOnComponentWillMount
         ..componentDidMount = failOnComponentDidMount
@@ -65,31 +49,13 @@ void main() {
         ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
         ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
         ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 2
         ..child = propStateText);
 
       expect(host.children.length, 1);
       expect(host.children.first.text, expectedText(1, 1));
     });
 
-    test('context', () {
-      final host = new DivElement();
-      final component = new TestComponent(new TestComponentProps()
-        ..componentWillMount = expectComponentWillMount(1, 1)
-        ..componentDidMount = expectComponentDidMount(1, 1)
-        ..shouldComponentUpdate = failOnShouldComponentUpdate
-        ..componentWillUpdate = failOnComponentWillUpdate
-        ..componentDidUpdate = failOnComponentDidUpdate
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 1
-        ..context = 5
-        ..child = propStateContextText);
-
-      render(component, host);
-
-      expect(host.children.length, 1);
-      expect(host.children.first.text, expectedTextContext(1, 1, 5));
-
+    test('multiple set states', () {
       component.updateState(new TestComponentProps()
         ..componentWillMount = failOnComponentWillMount
         ..componentDidMount = failOnComponentDidMount
@@ -97,12 +63,22 @@ void main() {
         ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
         ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
         ..componentWillUnmount = failOnComponentWillUnmount
-        ..baseProps = 2
-        ..context = 5
-        ..child = propStateContextText);
+        ..child = propStateText);
 
       expect(host.children.length, 1);
-      expect(host.children.first.text, expectedTextContext(1, 2, 5));
+      expect(host.children.first.text, expectedText(1, 2));
+
+      component.updateState(new TestComponentProps()
+        ..componentWillMount = failOnComponentWillMount
+        ..componentDidMount = failOnComponentDidMount
+        ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 2, 3)
+        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+        ..componentWillUnmount = failOnComponentWillUnmount
+        ..child = propStateText);
+
+      expect(host.children.length, 1);
+      expect(host.children.first.text, expectedText(1, 3));
     });
   });
 }

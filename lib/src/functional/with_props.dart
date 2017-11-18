@@ -18,8 +18,7 @@ import 'functional.dart';
 ///
 ///   FunctionalComponent<MappedExampleProps> message(MappedExampleProps props) => Dom.h1()(props.message);
 ///   ```
-ComponentEnhancer<InnerP, OutterP>
-    withProps<InnerP, OutterP>(
-            PropMapper<InnerP, OutterP> mapper) =>
-        (FunctionalComponent<OutterP> baseComponent) =>
-            (InnerP props) => baseComponent(mapper(props));
+ComponentEnhancer<InnerP, OutterP> withProps<InnerP, OutterP>(
+        PropMapper<InnerP, OutterP> mapper) =>
+    (FunctionalComponent<OutterP> baseComponent) =>
+        (InnerP props) => baseComponent(mapper(props));

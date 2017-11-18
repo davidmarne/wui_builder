@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';
+import 'package:wui_builder/vhtml.dart';
 
 typedef void TestComponentWillMount(int props, int state);
 typedef void TestComponentDidMount(int props, int state);
@@ -30,14 +31,15 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
   TestComponentProps getInitialState() => props;
 
   @override
-  Map<String, dynamic> getChildContext() => <String, dynamic>{testContextKey: props.context};
+  Map<String, dynamic> getChildContext() =>
+      <String, dynamic>{testContextKey: props.context};
 
   void updateState(TestComponentProps p) {
-    update(stateSetter: (_1, _2) => p);
+    update((_1, prevState) => p..baseProps = prevState.baseProps + 1);
   }
 
   void updateStateIdle(TestComponentProps p) =>
-      updateOnIdle(stateSetter: (_1, _2) => p);
+      updateOnIdle((_1, prevState) => p..baseProps = prevState.baseProps + 1);
 
   @override
   void componentWillMount() {

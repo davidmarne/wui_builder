@@ -2,6 +2,7 @@ import 'package:analyzer/dart/element/element.dart';
 
 bool hasValidConstructor(ClassElement e) =>
     e.name != 'HtmlElement' && // Workaround: generate HtmlElement as abstract
+    e.name != 'AnimationElement' &&
     e.constructors.any((c) => c.name == '' && c.isFactory);
 bool isElement(ClassElement e) =>
     e.allSupertypes.any((s) => s.name == 'Element');
@@ -11,7 +12,10 @@ bool isInput(ClassElement e) =>
 
 Iterable<Setter> localSetters(ClassElement e) => e.accessors
     .where(
-      (accessor) => accessor.isSetter && accessor.isPublic,
+      (accessor) =>
+          accessor.isSetter &&
+          accessor.isPublic &&
+          !accessor.name.contains('children'),
     )
     .map((accessor) => new Setter(
           accessor.name.substring(0, accessor.name.length - 1),
