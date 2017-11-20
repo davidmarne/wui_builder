@@ -14,7 +14,9 @@ abstract class Component<P, S> extends VNode {
   Map<String, dynamic> _context;
   VNode _renderResult;
   StateSetter<P, S> _pendingStateSetter;
-  UpdateTracker _pendingUpdateTracker;
+  List<UpdateTracker> _pendingUpdateTrackers = new List<UpdateTracker>();
+  UpdateTracker get _pendingUpdateTracker =>
+      _pendingUpdateTrackers.length > 0 ? _pendingUpdateTrackers.first : null;
 
   Component(this._props);
 
@@ -36,22 +38,51 @@ abstract class Component<P, S> extends VNode {
   void componentDidUpdate(P prevProps, S prevState) {}
 
   @mustCallSuper
-  void update([StateSetter<P, S> stateSetter]) {
-    if (stateSetter != null) _updateStateSetter(stateSetter);
-    _pendingUpdateTracker = new UpdateTracker.sync(ref, this);
-    updateVNode(_pendingUpdateTracker);
+  void update() {
+    final updateTracker = new UpdateTracker.sync(ref, this);
+    _pendingUpdateTrackers.add(updateTracker);
+    updateVNode(updateTracker);
   }
 
   @experimental
   @mustCallSuper
-  void updateOnIdle([StateSetter<P, S> stateSetter]) {
-    if (stateSetter != null) _updateStateSetter(stateSetter);
-    _pendingUpdateTracker = new UpdateTracker.async(ref, this);
-    queueNewUpdate(_pendingUpdateTracker);
+  void updateOnIdle({bool shouldAbort: false}) {
+    final updateTracker = new UpdateTracker.async(ref, this, shouldAbort);
+
+    // cancel any other pending updates if:
+    // 1. The pending tracker's shouldAbort property is true
+    // 2. The pending update has not even started yet
+    UpdateTracker currentUpdateTracker;
+    for (var i = 0; i < _pendingUpdateTrackers.length;) {
+      currentUpdateTracker = _pendingUpdateTrackers[i];
+      if (currentUpdateTracker.shouldAbort ||
+          !currentUpdateTracker.hasStarted) {
+        currentUpdateTracker.cancel();
+        _pendingUpdateTrackers.removeAt(i);
+        continue;
+      }
+      i++;
+    }
+
+    _pendingUpdateTrackers.add(updateTracker);
+    queueNewUpdate(updateTracker);
+  }
+
+  @mustCallSuper
+  void setState(StateSetter<P, S> stateSetter) {
+    _updateStateSetter(stateSetter);
+    update();
+  }
+
+  @experimental
+  @mustCallSuper
+  void setStateOnIdle(StateSetter<P, S> stateSetter,
+      {bool shouldAbort: false}) {
+    _updateStateSetter(stateSetter);
+    updateOnIdle(shouldAbort: shouldAbort);
   }
 
   void _updateStateSetter(StateSetter<P, S> stateSetter) {
-    _pendingUpdateTracker?.cancel();
     // if there is already a _pendingStateSetter combine it with stateSetter
     if (_pendingStateSetter != null) {
       final prevStateSetter = _pendingStateSetter;

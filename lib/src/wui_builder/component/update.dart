@@ -9,11 +9,22 @@ bool updateComponent(UpdateTracker tracker) {
   final dynamic prevState = oldVNode._state;
   oldVNode._props = newVNode._props;
 
-  // if there is a pending update for the Component cancel it
-  if (oldVNode._pendingUpdateTracker != null &&
-      oldVNode._pendingUpdateTracker != tracker) {
-    oldVNode._pendingUpdateTracker.cancel();
-    oldVNode._pendingUpdateTracker = null;
+  // cancel any other pending updates if:
+  // 1. This tracker is synchronous, in which case the most recent state will be rendered completely
+  // 2. The pending tracker's shouldAbort property is true
+  // 3. The pending update has not even started yet
+  UpdateTracker currentUpdateTracker;
+  for (var i = 0; i < oldVNode._pendingUpdateTrackers.length;) {
+    currentUpdateTracker = oldVNode._pendingUpdateTrackers[i];
+    if (currentUpdateTracker != tracker &&
+        (!tracker.isAsync ||
+            currentUpdateTracker.shouldAbort ||
+            !currentUpdateTracker.hasStarted)) {
+      currentUpdateTracker.cancel();
+      oldVNode._pendingUpdateTrackers.removeAt(i);
+      continue;
+    }
+    i++;
   }
 
   // update the state to what it would have been if the pending update did process
@@ -34,9 +45,6 @@ bool updateComponent(UpdateTracker tracker) {
 
   // build the new virtual tree
   final newResult = oldVNode.render();
-
-  // update parent child relationship
-  // newVNode._renderResult.parent = newVNode;
 
   // move the update position to the next node
   tracker.moveCursor(
@@ -69,7 +77,7 @@ void finishComponentUpdate(UpdateTracker tracker) {
   // if this was the pending update null it out
   // remove the pending state setter
   if (oldVNode._pendingUpdateTracker == tracker) {
-    oldVNode._pendingUpdateTracker = null;
+    oldVNode._pendingUpdateTrackers.remove(tracker);
   }
 
   // we done homie

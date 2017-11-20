@@ -46,8 +46,8 @@ void main() {
         ..componentDidMount = failOnComponentDidMount
         ..shouldComponentUpdate =
             expectShouldComponentUpdate(1, 1, 1, 2, shouldUpdate: false)
-        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
-        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+        ..componentWillUpdate = failOnComponentWillUpdate
+        ..componentDidUpdate = failOnComponentDidUpdate
         ..componentWillUnmount = failOnComponentWillUnmount
         ..child = propStateText);
 

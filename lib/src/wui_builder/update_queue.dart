@@ -49,6 +49,8 @@ void queueProcessingUpdate(UpdateTracker tracker) {
 }
 
 void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
+  tracker.hasStarted = true;
+
   // if the deadline has been cancelled bail
   if (tracker.isCancelled) return;
 

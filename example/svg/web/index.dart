@@ -23,8 +23,8 @@ class Circler extends Component<Null, int> {
 
   @override
   void componentWillMount() {
-    new Timer.periodic(
-        new Duration(milliseconds: 16), (_) => update((_, s) => (s + 6) % 360));
+    new Timer.periodic(new Duration(milliseconds: 16),
+        (_) => setState((_, s) => (s + 6) % 360));
   }
 
   @override

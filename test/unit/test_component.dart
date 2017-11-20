@@ -35,11 +35,12 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
       <String, dynamic>{testContextKey: props.context};
 
   void updateState(TestComponentProps p) {
-    update((_1, prevState) => p..baseProps = prevState.baseProps + 1);
+    setState((_1, prevState) => p..baseProps = prevState.baseProps + 1);
   }
 
-  void updateStateIdle(TestComponentProps p) =>
-      updateOnIdle((_1, prevState) => p..baseProps = prevState.baseProps + 1);
+  void updateStateIdle(TestComponentProps p, {bool shouldAbort: false}) =>
+      setStateOnIdle((_1, prevState) => p..baseProps = prevState.baseProps + 1,
+          shouldAbort: shouldAbort);
 
   @override
   void componentWillMount() {
@@ -89,53 +90,56 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
 
 TestComponentWillMount expectComponentWillMount(
         int expectedProps, int expectedState) =>
-    (acutalProps, actualState) {
+    expectAsync2((acutalProps, actualState) {
       expect(expectedProps, acutalProps);
       expect(expectedState, actualState);
-    };
+    });
 
 TestComponentDidMount expectComponentDidMount(
         int expectedProps, int expectedState) =>
-    (acutalProps, actualState) {
+    expectAsync2((acutalProps, actualState) {
       expect(expectedProps, acutalProps);
       expect(expectedState, actualState);
-    };
+    });
 
 TestComponentWillUnmount expectComponentWillUnmount(
         int expectedProps, int expectedState) =>
-    (acutalProps, actualState) {
+    expectAsync2((acutalProps, actualState) {
       expect(expectedProps, acutalProps);
       expect(expectedState, actualState);
-    };
+    });
 
 TestShouldComponentUpdate expectShouldComponentUpdate(int expectedPrevProps,
         int expectedNextProps, int expectedPrevState, int expectedNextState,
         {bool shouldUpdate: true}) =>
-    (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
+    expectAsync4(
+        (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
       expect(expectedNextState, actualNextState);
       return shouldUpdate;
-    };
+    });
 
 TestComponentWillUpdate expectComponentWillUpdate(int expectedPrevProps,
         int expectedNextProps, int expectedPrevState, int expectedNextState) =>
-    (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
+    expectAsync4(
+        (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
       expect(expectedNextState, actualNextState);
-    };
+    });
 
 TestComponentDidUpdate expectComponentDidUpdate(int expectedPrevProps,
         int expectedNextProps, int expectedPrevState, int expectedNextState) =>
-    (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
+    expectAsync4(
+        (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
       expect(expectedNextState, actualNextState);
-    };
+    });
 
 void failOnComponentWillMount(dynamic acutalProps, dynamic actualState) =>
     fail('failOnComponentWillMount');

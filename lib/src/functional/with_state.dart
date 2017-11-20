@@ -31,7 +31,7 @@ class WithState<InnerP, S, OutterP>
   S getInitialState() => props.defaultState;
 
   void _setState(StateSetter<InnerP, S> s) {
-    update((WithStateProps<InnerP, S, OutterP> props, S state) =>
+    setState((WithStateProps<InnerP, S, OutterP> props, S state) =>
         s(props.baseProps, state));
   }
 

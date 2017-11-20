@@ -13,7 +13,10 @@ class UpdateTracker {
   // current location in the update
   Cursor cursor;
   final bool isAsync;
+  final bool shouldAbort;
+
   bool isCancelled = false;
+  bool hasStarted = false;
   List<PendingCursor> pendingCursors = new List<PendingCursor>();
   IdleDeadline deadline;
 
@@ -24,16 +27,18 @@ class UpdateTracker {
           newVNode,
           newVNode,
         ),
-        isAsync = false;
+        isAsync = false,
+        shouldAbort = false;
 
-  UpdateTracker.async(Element node, Component newVNode)
+  UpdateTracker.async(Element node, Component newVNode, bool shouldAbort)
       : cursor = new Cursor(
           node.parent,
           node,
           newVNode,
           newVNode,
         ),
-        isAsync = true;
+        isAsync = true,
+        this.shouldAbort = shouldAbort;
 
   // update changes the current location of the update
   // to avoid accesive garbage, mutate the current cursor

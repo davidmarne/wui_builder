@@ -35,6 +35,9 @@ void main() {
     TestComponent component;
 
     setUp(() {
+      activeUpdates = [];
+      pendingIdleId = null;
+
       host = new DivElement();
       component = new TestComponent(new TestComponentProps()
         ..componentWillMount = expectComponentWillMount(1, 1)
@@ -52,98 +55,243 @@ void main() {
       expect(pendingIdleId, isNull);
     });
 
-    test('correct lifecycle is called and text is rendered', () {
-      component.updateStateIdle(new TestComponentProps()
-        ..componentWillMount = failOnComponentWillMount
-        ..componentDidMount = failOnComponentDidMount
-        ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 2)
-        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
-        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..child = propStateText);
+    group('shouldAbort: false', () {
+      test('correct lifecycle is called and text is rendered', () {
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 2)
+          ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+          ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
 
-      expect(activeUpdates.length, 1);
-      expect(pendingIdleId, isNotNull);
+        expect(activeUpdates.length, 1);
+        expect(pendingIdleId, isNotNull);
 
-      runIdle(aliveIdleDeadline());
-      expect(activeUpdates.length, 0);
-      expect(host.children.length, 1);
-      expect(host.children.first.text, expectedText(1, 2));
-      expect(pendingIdleId, isNull);
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 2));
+        expect(pendingIdleId, isNull);
+      });
+
+      test('update is short circuited when shouldComponentUpdate returns false',
+          () {
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate =
+              expectShouldComponentUpdate(1, 1, 1, 2, shouldUpdate: false)
+          ..componentWillUpdate = failOnComponentWillUpdate
+          ..componentDidUpdate = failOnComponentDidUpdate
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
+
+        expect(activeUpdates.length, 1);
+        expect(pendingIdleId, isNotNull);
+
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 1));
+        expect(pendingIdleId, isNull);
+      });
+
+      test(
+          'update is short circuited by new update if the first update had not started',
+          () {
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate = failOnShouldComponentUpdate
+          ..componentWillUpdate = failOnComponentWillUpdate
+          ..componentDidUpdate = failOnComponentDidUpdate
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
+
+        expect(activeUpdates.length, 1);
+
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 3)
+          ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
+          ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
+
+        expect(activeUpdates.length, 2);
+        expect(activeUpdates[0].isCancelled, isTrue);
+        expect(pendingIdleId, isNotNull);
+
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 3));
+        expect(pendingIdleId, isNull);
+      });
+
+      test(
+          'update is not short circuited by new update if the first update has started',
+          () {
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 2)
+          ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+          ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
+
+        expect(activeUpdates.length, 1);
+        // this sets tracker.hasStarted to true
+        runIdle(completeAfterIdleDeadline(1));
+
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 2, 3)
+          ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+          ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
+
+        expect(activeUpdates.length, 2);
+        expect(activeUpdates[0].isCancelled, isFalse);
+        expect(pendingIdleId, isNotNull);
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 3));
+        expect(pendingIdleId, isNull);
+      });
+
+      test('update requeued if deadline has no time remaining', () {
+        component.updateStateIdle(new TestComponentProps()
+          ..componentWillMount = failOnComponentWillMount
+          ..componentDidMount = failOnComponentDidMount
+          ..shouldComponentUpdate = failOnShouldComponentUpdate
+          ..componentWillUpdate = failOnComponentWillUpdate
+          ..componentDidUpdate = failOnComponentDidUpdate
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..child = propStateText);
+
+        expect(activeUpdates.length, 1);
+        expect(pendingIdleId, isNotNull);
+
+        runIdle(completeIdleDeadline());
+        expect(activeUpdates.length, 1);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 1));
+        expect(pendingIdleId, isNotNull);
+      });
     });
 
-    test('update is short circuited when shouldComponentUpdate returns false',
-        () {
-      component.updateStateIdle(new TestComponentProps()
-        ..componentWillMount = failOnComponentWillMount
-        ..componentDidMount = failOnComponentDidMount
-        ..shouldComponentUpdate =
-            expectShouldComponentUpdate(1, 1, 1, 2, shouldUpdate: false)
-        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
-        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..child = propStateText);
+    group('shouldAbort: true', () {
+      test('correct lifecycle is called and text is rendered', () {
+        component.updateStateIdle(
+            new TestComponentProps()
+              ..componentWillMount = failOnComponentWillMount
+              ..componentDidMount = failOnComponentDidMount
+              ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 2)
+              ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+              ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+              ..componentWillUnmount = failOnComponentWillUnmount
+              ..child = propStateText,
+            shouldAbort: true);
 
-      expect(activeUpdates.length, 1);
-      expect(pendingIdleId, isNotNull);
+        expect(activeUpdates.length, 1);
+        expect(pendingIdleId, isNotNull);
 
-      runIdle(aliveIdleDeadline());
-      expect(activeUpdates.length, 0);
-      expect(host.children.length, 1);
-      expect(host.children.first.text, expectedText(1, 1));
-      expect(pendingIdleId, isNull);
-    });
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 2));
+        expect(pendingIdleId, isNull);
+      });
 
-    test('update is short circuited by new update', () {
-      component.updateStateIdle(new TestComponentProps()
-        ..componentWillMount = failOnComponentWillMount
-        ..componentDidMount = failOnComponentDidMount
-        ..shouldComponentUpdate = failOnShouldComponentUpdate
-        ..componentWillUpdate = failOnComponentWillUpdate
-        ..componentDidUpdate = failOnComponentDidUpdate
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..child = propStateText);
+      test('update is short circuited when shouldComponentUpdate returns false',
+          () {
+        component.updateStateIdle(
+            new TestComponentProps()
+              ..componentWillMount = failOnComponentWillMount
+              ..componentDidMount = failOnComponentDidMount
+              ..shouldComponentUpdate =
+                  expectShouldComponentUpdate(1, 1, 1, 2, shouldUpdate: false)
+              ..componentWillUpdate = failOnComponentWillUpdate
+              ..componentDidUpdate = failOnComponentDidUpdate
+              ..componentWillUnmount = failOnComponentWillUnmount
+              ..child = propStateText,
+            shouldAbort: true);
 
-      expect(activeUpdates.length, 1);
+        expect(activeUpdates.length, 1);
+        expect(pendingIdleId, isNotNull);
 
-      component.updateStateIdle(new TestComponentProps()
-        ..componentWillMount = failOnComponentWillMount
-        ..componentDidMount = failOnComponentDidMount
-        ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 3)
-        ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
-        ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..child = propStateText);
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 1));
+        expect(pendingIdleId, isNull);
+      });
 
-      expect(activeUpdates.length, 2);
-      expect(activeUpdates[0].isCancelled, isTrue);
-      expect(pendingIdleId, isNotNull);
+      test('update is short circuited by new update', () {
+        component.updateStateIdle(
+            new TestComponentProps()
+              ..componentWillMount = failOnComponentWillMount
+              ..componentDidMount = failOnComponentDidMount
+              ..shouldComponentUpdate = failOnShouldComponentUpdate
+              ..componentWillUpdate = failOnComponentWillUpdate
+              ..componentDidUpdate = failOnComponentDidUpdate
+              ..componentWillUnmount = failOnComponentWillUnmount
+              ..child = propStateText,
+            shouldAbort: true);
 
-      runIdle(aliveIdleDeadline());
-      expect(activeUpdates.length, 0);
-      expect(host.children.length, 1);
-      expect(host.children.first.text, expectedText(1, 3));
-      expect(pendingIdleId, isNull);
-    });
+        expect(activeUpdates.length, 1);
 
-    test('update requeued if deadline has no time remaining', () {
-      component.updateStateIdle(new TestComponentProps()
-        ..componentWillMount = failOnComponentWillMount
-        ..componentDidMount = failOnComponentDidMount
-        ..shouldComponentUpdate = failOnShouldComponentUpdate
-        ..componentWillUpdate = failOnComponentWillUpdate
-        ..componentDidUpdate = failOnComponentDidUpdate
-        ..componentWillUnmount = failOnComponentWillUnmount
-        ..child = propStateText);
+        component.updateStateIdle(
+            new TestComponentProps()
+              ..componentWillMount = failOnComponentWillMount
+              ..componentDidMount = failOnComponentDidMount
+              ..shouldComponentUpdate = expectShouldComponentUpdate(1, 1, 1, 3)
+              ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
+              ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
+              ..componentWillUnmount = failOnComponentWillUnmount
+              ..child = propStateText,
+            shouldAbort: true);
 
-      expect(activeUpdates.length, 1);
-      expect(pendingIdleId, isNotNull);
+        expect(activeUpdates.length, 2);
+        expect(activeUpdates[0].isCancelled, isTrue);
+        expect(pendingIdleId, isNotNull);
 
-      runIdle(completeIdleDeadline());
-      expect(activeUpdates.length, 1);
-      expect(host.children.length, 1);
-      expect(host.children.first.text, expectedText(1, 1));
-      expect(pendingIdleId, isNotNull);
+        runIdle(aliveIdleDeadline());
+        expect(activeUpdates.length, 0);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 3));
+        expect(pendingIdleId, isNull);
+      });
+
+      test('update requeued if deadline has no time remaining', () {
+        component.updateStateIdle(
+            new TestComponentProps()
+              ..componentWillMount = failOnComponentWillMount
+              ..componentDidMount = failOnComponentDidMount
+              ..shouldComponentUpdate = failOnShouldComponentUpdate
+              ..componentWillUpdate = failOnComponentWillUpdate
+              ..componentDidUpdate = failOnComponentDidUpdate
+              ..componentWillUnmount = failOnComponentWillUnmount
+              ..child = propStateText,
+            shouldAbort: true);
+
+        expect(activeUpdates.length, 1);
+        expect(pendingIdleId, isNotNull);
+
+        runIdle(completeIdleDeadline());
+        expect(activeUpdates.length, 1);
+        expect(host.children.length, 1);
+        expect(host.children.first.text, expectedText(1, 1));
+        expect(pendingIdleId, isNotNull);
+      });
     });
   });
 }
