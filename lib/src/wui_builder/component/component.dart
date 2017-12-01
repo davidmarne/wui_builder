@@ -40,31 +40,15 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void update() {
     final updateTracker = new UpdateTracker.sync(ref, this);
-    _pendingUpdateTrackers.add(updateTracker);
-    updateVNode(updateTracker);
+    _updatePendingTracker(updateTracker);
+    runSyncUpdate(updateTracker);
   }
 
   @experimental
   @mustCallSuper
   void updateOnIdle({bool shouldAbort: false}) {
     final updateTracker = new UpdateTracker.async(ref, this, shouldAbort);
-
-    // cancel any other pending updates if:
-    // 1. The pending tracker's shouldAbort property is true
-    // 2. The pending update has not even started yet
-    UpdateTracker currentUpdateTracker;
-    for (var i = 0; i < _pendingUpdateTrackers.length;) {
-      currentUpdateTracker = _pendingUpdateTrackers[i];
-      if (currentUpdateTracker.shouldAbort ||
-          !currentUpdateTracker.hasStarted) {
-        currentUpdateTracker.cancel();
-        _pendingUpdateTrackers.removeAt(i);
-        continue;
-      }
-      i++;
-    }
-
-    _pendingUpdateTrackers.add(updateTracker);
+    _updatePendingTracker(updateTracker);
     queueNewUpdate(updateTracker);
   }
 
@@ -80,6 +64,24 @@ abstract class Component<P, S> extends VNode {
       {bool shouldAbort: false}) {
     _updateStateSetter(stateSetter);
     updateOnIdle(shouldAbort: shouldAbort);
+  }
+
+  void _updatePendingTracker(UpdateTracker updateTracker) {
+    // cancel any other pending updates if:
+    // 1. The pending tracker's shouldAbort property is true
+    // 2. The pending update has not even started yet
+    UpdateTracker currentUpdateTracker;
+    for (var i = 0; i < _pendingUpdateTrackers.length;) {
+      currentUpdateTracker = _pendingUpdateTrackers[i];
+      if (currentUpdateTracker.shouldAbort ||
+          !currentUpdateTracker.hasStarted) {
+        currentUpdateTracker.cancel();
+        _pendingUpdateTrackers.removeAt(i);
+        continue;
+      }
+      i++;
+    }
+    _pendingUpdateTrackers.add(updateTracker);
   }
 
   void _updateStateSetter(StateSetter<P, S> stateSetter) {

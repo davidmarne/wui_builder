@@ -27,6 +27,8 @@ class TestComponentProps {
 class TestComponent extends Component<TestComponentProps, TestComponentProps> {
   TestComponent(TestComponentProps props) : super(props);
 
+  VNode child;
+
   @override
   TestComponentProps getInitialState() => props;
 
@@ -53,6 +55,9 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
     if (state.componentDidMount != null)
       state.componentDidMount(props.baseProps, state.baseProps);
   }
+
+//   @override
+//   void componentWillReceiveProps(nextProps) {}
 
   @override
   bool shouldComponentUpdate(nextProps, nextState) {
@@ -84,7 +89,9 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
 
   @override
   VNode render() {
-    return props.child(props.baseProps, state.baseProps);
+    final nextChild = props.child(props.baseProps, state.baseProps);
+    child = child ?? nextChild;
+    return nextChild;
   }
 }
 
@@ -111,7 +118,7 @@ TestComponentWillUnmount expectComponentWillUnmount(
 
 TestShouldComponentUpdate expectShouldComponentUpdate(int expectedPrevProps,
         int expectedNextProps, int expectedPrevState, int expectedNextState,
-        {bool shouldUpdate: true}) =>
+        {bool shouldUpdate: true, int count: 1}) =>
     expectAsync4(
         (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
       expect(expectedPrevProps, acutalPrevProps);
@@ -119,27 +126,29 @@ TestShouldComponentUpdate expectShouldComponentUpdate(int expectedPrevProps,
       expect(expectedPrevState, actualPrevState);
       expect(expectedNextState, actualNextState);
       return shouldUpdate;
-    });
+    }, count: count);
 
 TestComponentWillUpdate expectComponentWillUpdate(int expectedPrevProps,
-        int expectedNextProps, int expectedPrevState, int expectedNextState) =>
+        int expectedNextProps, int expectedPrevState, int expectedNextState,
+        {int count: 1}) =>
     expectAsync4(
         (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
       expect(expectedNextState, actualNextState);
-    });
+    }, count: count);
 
 TestComponentDidUpdate expectComponentDidUpdate(int expectedPrevProps,
-        int expectedNextProps, int expectedPrevState, int expectedNextState) =>
+        int expectedNextProps, int expectedPrevState, int expectedNextState,
+        {int count: 1}) =>
     expectAsync4(
         (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
       expect(expectedNextState, actualNextState);
-    });
+    }, count: count);
 
 void failOnComponentWillMount(dynamic acutalProps, dynamic actualState) =>
     fail('failOnComponentWillMount');
@@ -165,6 +174,14 @@ String expectedText(int p, int s) => '$p $s';
 VNode propStateText(int p, int s) =>
     new VDivElement()..text = expectedText(p, s);
 
+typedef VNode NestedFactory(int p, int s);
+String expectedTextNested(int p, int s, int nestedp, int nesteds) =>
+    '$p $s $nestedp $nesteds';
+NestedFactory nestedComponent(TestComponentProps ownProps) =>
+    (int p, int s) => new TestComponent(ownProps
+      ..child = (int nestedp, int nesteds) => (new VDivElement()
+        ..text = expectedTextNested(p, s, nestedp, nesteds)));
+
 final testContextKey = 'testContextKey';
 String expectedTextContext(int p, int s, int c) => '$p $s $c';
 VNode propStateContextText(int p, int s) => new TestContextComponent(
@@ -180,6 +197,8 @@ class TestContextComponentProps {
 
 class TestContextComponent extends Component<TestContextComponentProps, Null> {
   TestContextComponent(TestContextComponentProps props) : super(props);
+
+  @override
   render() => new VDivElement()
     ..text =
         expectedTextContext(props.p, props.s, context[testContextKey] as int);

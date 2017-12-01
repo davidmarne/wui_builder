@@ -12,7 +12,7 @@ import 'update_queue.dart';
 class UpdateTracker {
   // current location in the update
   Cursor cursor;
-  final bool isAsync;
+  bool isAsync;
   final bool shouldAbort;
 
   bool isCancelled = false;
@@ -54,6 +54,7 @@ class UpdateTracker {
   bool get isPaused {
     if (!isAsync) return false;
     if (_isPaused) return _isPaused;
+    print('_isPaused');
     _isPaused = deadline.timeRemaining() < 1;
     if (_isPaused) queueProcessingUpdate(this);
     return _isPaused;

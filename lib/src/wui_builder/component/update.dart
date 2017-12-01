@@ -56,8 +56,8 @@ bool updateComponent(UpdateTracker tracker) {
   tracker.pushPendingCursor(new ComponentUpdateCursor(
       tracker.cursor.parent,
       tracker.cursor.node,
-      oldVNode,
       newVNode,
+      oldVNode,
       prevProps,
       nextProps,
       prevState,

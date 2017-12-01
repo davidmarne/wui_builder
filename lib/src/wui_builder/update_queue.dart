@@ -32,6 +32,23 @@ void runIdle(IdleDeadline deadline) {
   if (activeUpdates.length > 0) requestIdle();
 }
 
+void runSyncUpdate(UpdateTracker tracker) {
+  // finish any idle updates that have already started
+  while (activeUpdates.isNotEmpty && activeUpdates.first.hasStarted) {
+    final update = activeUpdates.removeAt(0);
+    update.isAsync = false;
+    if (!update.isCancelled) updateVNode(update);
+  }
+
+  updateVNode(tracker);
+
+  // cancel idle callback if no pending operations exist
+  if (activeUpdates.length == 0) {
+    window.cancelIdleCallback(pendingIdleId);
+    pendingIdleId = null;
+  }
+}
+
 void queueNewUpdate(UpdateTracker tracker) {
   // add the tracker to the queue
   activeUpdates.add(tracker);
