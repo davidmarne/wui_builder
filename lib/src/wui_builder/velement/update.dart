@@ -1,21 +1,21 @@
 part of velement;
 
 bool updateElement(UpdateTracker tracker) {
-  final oldVNode = tracker.cursor.oldVNode as VElement;
-  final newVNode = tracker.cursor.newVNode as VElement;
+  final oldVNode = tracker.oldVNode as VElement;
+  final newVNode = tracker.newVNode as VElement;
   // if an async tracker was cancelled causing a virtual dom to not
   // fully be rendered, we create the node now.
-  if (tracker.cursor.node == null) {
-    tracker.cursor.parent.append(createNode(tracker.cursor.newVNode));
+  if (tracker.node == null) {
+    tracker.parent.append(createNode(tracker.newVNode));
     return true;
   }
 
   // update attributes that have changed
-  newVNode.updateElementAttributes(oldVNode, tracker.cursor.node);
+  newVNode.updateElementAttributes(oldVNode, tracker.node);
 
   // if shouldUpdateSubs is set update subscriptions
   if (newVNode.shouldUpdateSubs)
-    newVNode.updateEventListenersToElement(oldVNode, tracker.cursor.node);
+    newVNode.updateEventListenersToElement(oldVNode, tracker.node);
 
   // only push cursor to queue if children > 1 to avoid unneccesary garbage
   final newLength = newVNode.children.length;
@@ -29,11 +29,9 @@ bool updateElement(UpdateTracker tracker) {
     final newChildVNode = newLength > 0 ? newVNode.children.elementAt(0) : null;
     final oldChildVNode = oldLength > 0 ? oldVNode.children.elementAt(0) : null;
 
-    tracker.moveCursor(
-      tracker.cursor.node,
-      tracker.cursor.node.children.length > 0
-          ? tracker.cursor.node.children.first
-          : null,
+    final nextTracker = tracker.nextCursor(
+      tracker.node,
+      tracker.node.children.length > 0 ? tracker.node.children.first : null,
       newChildVNode,
       oldChildVNode,
     );
@@ -43,12 +41,11 @@ bool updateElement(UpdateTracker tracker) {
       oldVNode.children.add(newChildVNode);
     }
 
-    return updateVNode(tracker);
+    return updateVNode(nextTracker);
   }
 
   tracker.pushPendingCursor(new IterableCursor(
-    tracker.cursor.parent,
-    tracker.cursor.node,
+    tracker.node,
     newVNode,
     oldVNode,
   ));
@@ -56,9 +53,9 @@ bool updateElement(UpdateTracker tracker) {
 }
 
 bool updateElementChildren(UpdateTracker tracker) {
-  final cursor = tracker.pendingCursors.last as IterableCursor;
-  final oldVNode = cursor.oldVNode as VElement;
-  final newVNode = cursor.newVNode as VElement;
+  final cursor = tracker.pendingWork as IterableCursor;
+  final oldVNode = cursor.oldVNode;
+  final newVNode = cursor.newVNode;
   while (cursor.index < cursor.newLength || cursor.index < cursor.oldLength) {
     final newChildVNode = cursor.index < cursor.newLength
         ? newVNode.children.elementAt(cursor.index)
@@ -67,7 +64,7 @@ bool updateElementChildren(UpdateTracker tracker) {
         ? oldVNode.children.elementAt(cursor.index)
         : null;
 
-    tracker.moveCursor(
+    final nextTracker = tracker.nextCursor(
       cursor.node,
       cursor.currentChild,
       newChildVNode,
@@ -81,7 +78,7 @@ bool updateElementChildren(UpdateTracker tracker) {
       oldVNode.children.add(newChildVNode);
     }
 
-    final finshed = updateVNode(tracker);
+    final finshed = updateVNode(nextTracker);
 
     if (!finshed) return false;
   }

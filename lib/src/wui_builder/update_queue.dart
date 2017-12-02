@@ -40,7 +40,7 @@ void runSyncUpdate(UpdateTracker tracker) {
       // treat the update as sync from this point foward
       update.isAsync = false;
       updateVNode(update);
-      doPendingWork(update);
+      doPendingWork(update.parentTracker);
     }
   }
 
@@ -81,19 +81,20 @@ void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
 
   // if the current update stack was completed
   // resume its parents updates
-  if (finished) doPendingWork(tracker);
+  if (finished) doPendingWork(tracker.parentTracker);
 }
 
 void doPendingWork(UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
   var finished = true;
-  while (!tracker.pendingCursors.isEmpty) {
-    if (tracker.pendingCursors.last.cursorType == PendingCursors.Iterable) {
+  while (tracker != null) {
+    if (tracker.pendingWork.cursorType == PendingCursors.Iterable) {
       finished = updateElementChildren(tracker);
     } else {
       finishComponentUpdate(tracker);
       finished = true;
     }
     if (!finished) return;
+    tracker = tracker.parentTracker;
   }
 }

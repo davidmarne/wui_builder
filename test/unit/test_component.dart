@@ -56,8 +56,16 @@ class TestComponent extends Component<TestComponentProps, TestComponentProps> {
       state.componentDidMount(props.baseProps, state.baseProps);
   }
 
-//   @override
-//   void componentWillReceiveProps(nextProps) {}
+  @override
+  void componentWillReceiveProps(nextProps, nextState) {
+    state
+      ..componentWillMount = nextProps.componentWillMount
+      ..componentDidMount = nextProps.componentDidMount
+      ..shouldComponentUpdate = nextProps.shouldComponentUpdate
+      ..componentWillUpdate = nextProps.componentWillUpdate
+      ..componentDidUpdate = nextProps.componentDidUpdate
+      ..componentWillUnmount = nextProps.componentWillUnmount;
+  }
 
   @override
   bool shouldComponentUpdate(nextProps, nextState) {

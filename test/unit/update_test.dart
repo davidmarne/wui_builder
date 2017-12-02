@@ -621,33 +621,60 @@ void main() {
           group('parent update has called update on child already -', () {
             group('child update is sync -', () {
               test('shouldAbort: true', () {
-                // the parent should update and child should be updated twice
-                // both child updates will contain the most recent state
-                // since the parent didn't call the state setter at the time of
-                // sync update
-                // component.updateStateIdle(
-                //     new TestComponentProps()
-                //       ..componentWillMount = failOnComponentWillMount
-                //       ..componentDidMount = failOnComponentDidMount
-                //       ..shouldComponentUpdate =
-                //           expectShouldComponentUpdate(1, 1, 1, 2)
-                //       ..componentWillUpdate =
-                //           expectComponentWillUpdate(1, 1, 1, 2)
-                //       ..componentDidUpdate =
-                //           expectComponentDidUpdate(1, 1, 1, 2)
-                //       ..componentWillUnmount = failOnComponentWillUnmount
-                //       ..child = nestedComponent(new TestComponentProps()
-                //         ..componentWillMount = failOnComponentWillMount
-                //         ..componentDidMount = failOnComponentDidMount
-                //         ..shouldComponentUpdate =
-                //             expectShouldComponentUpdate(1, 1, 1, 1)
-                //         ..componentWillUpdate =
-                //             expectComponentWillUpdate(1, 1, 1, 1)
-                //         ..componentDidUpdate =
-                //             expectComponentDidUpdate(1, 1, 1, 1)
-                //         ..componentWillUnmount = failOnComponentWillUnmount
-                //         ..child = propStateText),
-                //     shouldAbort: true);
+                // the parent should update and child should be updated twice.
+                // once with old state, and once with new.
+                // the first update should not finish sinc shouldAbort is true
+                component.updateStateIdle(
+                    new TestComponentProps()
+                      ..componentWillMount = failOnComponentWillMount
+                      ..componentDidMount = failOnComponentDidMount
+                      ..shouldComponentUpdate =
+                          expectShouldComponentUpdate(1, 1, 1, 2)
+                      ..componentWillUpdate =
+                          expectComponentWillUpdate(1, 1, 1, 2)
+                      ..componentDidUpdate =
+                          expectComponentDidUpdate(1, 1, 1, 2)
+                      ..componentWillUnmount = failOnComponentWillUnmount
+                      ..child = nestedComponent(new TestComponentProps()
+                        ..componentWillMount = failOnComponentWillMount
+                        ..componentDidMount = failOnComponentDidMount
+                        ..shouldComponentUpdate =
+                            expectShouldComponentUpdate(1, 1, 1, 1)
+                        ..componentWillUpdate =
+                            expectComponentWillUpdate(1, 1, 1, 1)
+                        ..componentDidUpdate = failOnComponentDidUpdate
+                        ..componentWillUnmount = failOnComponentWillUnmount
+                        ..child = propStateText),
+                    shouldAbort: true);
+
+                // the update should be queued
+                // the rendered text should not have been be updated yet
+                verifier(expectedTextNested(1, 1, 1, 1), 1);
+
+                // let the update start, and process the initial call to update for
+                // both components, but do not let the vElement update get processed
+                runIdle(completeAfterIdleDeadline(2));
+
+                // the update should be queued
+                // the rendered text should not have been be updated yet
+                verifier(expectedTextNested(1, 1, 1, 1), 1);
+
+                (component.child as TestComponent).updateState(
+                    new TestComponentProps()
+                      ..componentWillMount = failOnComponentWillMount
+                      ..componentDidMount = failOnComponentDidMount
+                      ..shouldComponentUpdate =
+                          expectShouldComponentUpdate(1, 1, 1, 2)
+                      ..componentWillUpdate =
+                          expectComponentWillUpdate(1, 1, 1, 2)
+                      ..componentWillUpdate =
+                          expectComponentWillUpdate(1, 1, 1, 2)
+                      ..componentWillUnmount = failOnComponentWillUnmount
+                      ..child = propStateText);
+
+                // no updates should remain queued
+                // the rendered text should have been updated, representing both updates
+                verifier(expectedTextNested(1, 2, 1, 2), 1);
               });
               test('shouldAbort: false', () {});
             });

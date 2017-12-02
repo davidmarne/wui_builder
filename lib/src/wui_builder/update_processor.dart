@@ -9,18 +9,17 @@ bool updateVNode(UpdateTracker tracker) {
   // if the tracker.deadline is hit request another idle period
   if (tracker.isPaused) return false;
 
-  if (tracker.cursor.oldVNode == null) {
-    tracker.cursor.parent.append(createNode(tracker.cursor.newVNode));
-  } else if (tracker.cursor.newVNode == null) {
+  if (tracker.oldVNode == null) {
+    tracker.parent.append(createNode(tracker.newVNode));
+  } else if (tracker.newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
-    disposeVNode(tracker.cursor.oldVNode);
-    tracker.cursor.node?.remove();
-  } else if (tracker.cursor.newVNode.vNodeType !=
-      tracker.cursor.oldVNode.vNodeType) {
+    disposeVNode(tracker.oldVNode);
+    tracker.node?.remove();
+  } else if (tracker.newVNode.vNodeType != tracker.oldVNode.vNodeType) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
-    disposeVNode(tracker.cursor.oldVNode);
-    tracker.cursor.node = createNode(tracker.cursor.oldVNode);
-  } else if (tracker.cursor.newVNode.vNodeType == VNodeTypes.Element) {
+    disposeVNode(tracker.oldVNode);
+    tracker.node.replaceWith(createNode(tracker.oldVNode));
+  } else if (tracker.newVNode.vNodeType == VNodeTypes.Element) {
     return updateElement(tracker);
   } else {
     return updateComponent(tracker);

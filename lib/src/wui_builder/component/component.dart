@@ -15,8 +15,6 @@ abstract class Component<P, S> extends VNode {
   VNode _renderResult;
   StateSetter<P, S> _pendingStateSetter;
   List<UpdateTracker> _pendingUpdateTrackers = new List<UpdateTracker>();
-  UpdateTracker get _pendingUpdateTracker =>
-      _pendingUpdateTrackers.length > 0 ? _pendingUpdateTrackers.first : null;
 
   Component(this._props);
 
@@ -34,6 +32,7 @@ abstract class Component<P, S> extends VNode {
   void componentDidMount() {}
   void componentWillUnmount() {}
   bool shouldComponentUpdate(P nextProps, S nextState) => true;
+  void componentWillReceiveProps(P nextProps, S nextState) {}
   void componentWillUpdate(P nextProps, S nextState) {}
   void componentDidUpdate(P prevProps, S prevState) {}
 
@@ -75,7 +74,6 @@ abstract class Component<P, S> extends VNode {
       currentUpdateTracker = _pendingUpdateTrackers[i];
       if (currentUpdateTracker.shouldAbort ||
           !currentUpdateTracker.hasStarted) {
-        print("CANCEL component");
         currentUpdateTracker.cancel();
         _pendingUpdateTrackers.removeAt(i);
         continue;

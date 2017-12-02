@@ -10,51 +10,55 @@ import 'update_queue.dart';
 // what work still needs to be done for a given update
 // in a way that allows reconciliation to be paused and resumed.
 class UpdateTracker {
-  // current location in the update
-  Cursor cursor;
-  bool isAsync;
+  UpdateTracker parentTracker;
+  UpdateTracker childTracker;
+  PendingCursor pendingWork;
+
+  final Element parent;
+  final Element node;
+  final VNode newVNode;
+  final VNode oldVNode;
   final bool shouldAbort;
 
+  bool isAsync;
   bool isCancelled = false;
   bool hasStarted = false;
-  List<PendingCursor> pendingCursors = new List<PendingCursor>();
   IdleDeadline deadline;
 
   UpdateTracker.sync(Element node, Component newVNode)
-      : cursor = new Cursor(
-          node.parent,
-          node,
-          newVNode,
-          newVNode,
-        ),
-        isAsync = false,
-        shouldAbort = false;
+      : isAsync = false,
+        shouldAbort = false,
+        parent = node.parent,
+        this.node = node,
+        this.newVNode = newVNode,
+        oldVNode = newVNode;
 
   UpdateTracker.async(Element node, Component newVNode, bool shouldAbort)
-      : cursor = new Cursor(
-          node.parent,
-          node,
-          newVNode,
-          newVNode,
-        ),
-        isAsync = true,
-        this.shouldAbort = shouldAbort;
+      : isAsync = true,
+        this.shouldAbort = shouldAbort,
+        parent = node.parent,
+        this.node = node,
+        this.newVNode = newVNode,
+        oldVNode = newVNode;
+
+  UpdateTracker.clone(this.parent, this.node, this.newVNode, this.oldVNode,
+      this.isAsync, this.shouldAbort, this.parentTracker, this.deadline)
+      : hasStarted = true;
 
   // update changes the current location of the update
   // to avoid accesive garbage, mutate the current cursor
-  void moveCursor(
-      Element parent, Element node, VNode newVNode, VNode oldVNode) {
-    cursor.parent = parent;
-    cursor.node = node;
-    cursor.newVNode = newVNode;
-    cursor.oldVNode = oldVNode;
+  UpdateTracker nextCursor(Element nextParent, Element nextNode,
+      VNode nextNewVNode, VNode nextOldVNode) {
+    final nextChild = new UpdateTracker.clone(nextParent, nextNode,
+        nextNewVNode, nextOldVNode, isAsync, shouldAbort, this, deadline);
+    childTracker = nextChild;
+    return nextChild;
   }
 
-  bool _isPaused;
+  bool _isPaused = false;
   bool get isPaused {
     if (!isAsync) return false;
     if (_isPaused) return _isPaused;
-    print('_isPaused');
     _isPaused = deadline.timeRemaining() < 1;
     if (_isPaused) queueProcessingUpdate(this);
     return _isPaused;
@@ -62,18 +66,20 @@ class UpdateTracker {
 
   void cancel() {
     isCancelled = true;
+    childTracker?.cancel();
   }
 
   void refresh(IdleDeadline d) {
     deadline = d;
     _isPaused = false;
+    childTracker?.refresh(d); // needed?
   }
 
   void pushPendingCursor(PendingCursor cursor) {
-    pendingCursors.add(cursor);
+    pendingWork = cursor;
   }
 
   void popPendingCursor() {
-    pendingCursors.removeLast();
+    pendingWork = null;
   }
 }
