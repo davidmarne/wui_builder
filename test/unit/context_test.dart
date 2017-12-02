@@ -4,7 +4,7 @@ import 'package:wui_builder/wui_builder.dart';
 import 'test_component.dart';
 
 void main() {
-  test('context', () {
+  test('TODO: update this to have nested component - context', () {
     final host = new DivElement();
     final component = new TestComponent(new TestComponentProps()
       ..componentWillMount = expectComponentWillMount(1, 1)

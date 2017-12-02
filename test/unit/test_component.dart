@@ -121,6 +121,7 @@ TestShouldComponentUpdate expectShouldComponentUpdate(int expectedPrevProps,
         {bool shouldUpdate: true, int count: 1}) =>
     expectAsync4(
         (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
+      print('escu actualNextState $actualNextState');
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
@@ -133,6 +134,7 @@ TestComponentWillUpdate expectComponentWillUpdate(int expectedPrevProps,
         {int count: 1}) =>
     expectAsync4(
         (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
+      print('ecwu actualNextState $actualNextState');
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);
@@ -144,6 +146,7 @@ TestComponentDidUpdate expectComponentDidUpdate(int expectedPrevProps,
         {int count: 1}) =>
     expectAsync4(
         (acutalPrevProps, actualNextProps, actualPrevState, actualNextState) {
+      print('cdu actualNextState $actualNextState');
       expect(expectedPrevProps, acutalPrevProps);
       expect(expectedNextProps, actualNextProps);
       expect(expectedPrevState, actualPrevState);

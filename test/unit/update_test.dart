@@ -5,24 +5,33 @@ import 'package:wui_builder/src/wui_builder/update_queue.dart';
 import 'package:mockito/mockito.dart';
 import 'test_component.dart';
 
-class MockIdleDeadline extends Mock implements IdleDeadline {}
+typedef double MockTimeRemaining();
+
+class MockIdleDeadline implements IdleDeadline {
+  MockTimeRemaining mockTimeRemaining;
+
+  MockIdleDeadline(MockTimeRemaining this.mockTimeRemaining);
+
+  @override
+  double timeRemaining() => mockTimeRemaining();
+
+  @override
+  bool get didTimeout => false;
+}
 
 IdleDeadline aliveIdleDeadline() {
-  final mock = new MockIdleDeadline();
-  when(mock.timeRemaining()).thenReturn(2.0);
+  final mock = new MockIdleDeadline(() => 2.0);
   return mock;
 }
 
 IdleDeadline completeIdleDeadline() {
-  final mock = new MockIdleDeadline();
-  when(mock.timeRemaining()).thenReturn(.1);
+  final mock = new MockIdleDeadline(() => 0.1);
   return mock;
 }
 
 IdleDeadline completeAfterIdleDeadline(int after) {
-  final mock = new MockIdleDeadline();
   int count = 0;
-  when(mock.timeRemaining()).thenAnswer((_) {
+  final mock = new MockIdleDeadline(() {
     count++;
     return after >= count ? 2.0 : .1;
   });
@@ -346,10 +355,15 @@ void main() {
                 ..componentWillUnmount = failOnComponentWillUnmount
                 ..child = propStateText);
 
+              // idle update will be in the queue but cancelled
+              verifier(expectedText(1, 3), 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+              runIdle(aliveIdleDeadline());
+
               // no updates should remain queued
               // the rendered text should have been updated, representing 2 updates
               verifier(expectedText(1, 3), 0);
-            }, skip: 'something to do with hasStarted not being true');
+            });
 
             test('second update is async', () {
               // this update should not be executed since shouldAbort is true
@@ -368,7 +382,7 @@ void main() {
               // the rendered text should not have been be updated yet
               verifier(expectedText(1, 1), 1);
 
-              // run a sync update
+              // run an async update
               component.updateStateIdle(new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -394,38 +408,295 @@ void main() {
         });
 
         group('async - shouldAbort: false -', () {
-          group('first update had started', () {
-            test('second update is sync', () {});
-            test('second update is async', () {});
+          group('first update had started - ', () {
+            test('second update is sync', () {
+              // this update should be executed since shouldAbort is false
+              component.updateStateIdle(
+                  new TestComponentProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 1, 1, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                    ..componentWillUnmount = failOnComponentWillUnmount
+                    ..child = propStateText,
+                  shouldAbort: false);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 1);
+
+              // let the update start, and process the initial call to update component
+              runIdle(completeAfterIdleDeadline(1));
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 1);
+
+              // run a sync update
+              // it will run with the proceeding state twice
+              // since completeIdleDeadline will cause it to bail
+              // before running setState with only the previous idle update's state
+              component.updateState(new TestComponentProps()
+                ..componentWillMount = failOnComponentWillMount
+                ..componentDidMount = failOnComponentDidMount
+                ..shouldComponentUpdate =
+                    expectShouldComponentUpdate(1, 1, 2, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                ..componentWillUnmount = failOnComponentWillUnmount
+                ..child = propStateText);
+
+              // no updates should remain queued
+              // the rendered text should have been updated, representing 2 updates
+              verifier(expectedText(1, 3), 0);
+            });
+
+            test('second update is async', () {
+              // this update should be executed since shouldAbort is false
+              component.updateStateIdle(
+                  new TestComponentProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 1, 1, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                    ..componentWillUnmount = failOnComponentWillUnmount
+                    ..child = propStateText,
+                  shouldAbort: false);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 1);
+
+              // let the update start, and process the initial call to update component
+              runIdle(completeAfterIdleDeadline(1));
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 1);
+
+              // run a async update
+              // it will run with the proceeding state twice
+              // since completeIdleDeadline will cause it to bail
+              // before running setState with only the previous idle update's state
+              component.updateStateIdle(new TestComponentProps()
+                ..componentWillMount = failOnComponentWillMount
+                ..componentDidMount = failOnComponentDidMount
+                ..shouldComponentUpdate =
+                    expectShouldComponentUpdate(1, 1, 2, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                ..componentWillUnmount = failOnComponentWillUnmount
+                ..child = propStateText);
+
+              // the 2 updates should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 2);
+
+              // let the updates finsh
+              runIdle(aliveIdleDeadline());
+
+              // no updates should remain queued
+              // the rendered text should have been updated, representing 2 updates
+              verifier(expectedText(1, 3), 0);
+            });
           });
 
-          group('first update had not started', () {
-            test('second update is sync', () {});
-            test('second update is async', () {});
+          group('first update had not started -', () {
+            test('second update is sync', () {
+              // this update should not be executed even tho shouldAbort is false
+              // since it had not started
+              component.updateStateIdle(
+                  new TestComponentProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate = failOnShouldComponentUpdate
+                    ..componentWillUpdate = failOnComponentWillUpdate
+                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..componentWillUnmount = failOnComponentWillUnmount
+                    ..child = propStateText,
+                  shouldAbort: false);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 1);
+
+              // run a sync update
+              component.updateState(new TestComponentProps()
+                ..componentWillMount = failOnComponentWillMount
+                ..componentDidMount = failOnComponentDidMount
+                ..shouldComponentUpdate =
+                    expectShouldComponentUpdate(1, 1, 1, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
+                ..componentWillUnmount = failOnComponentWillUnmount
+                ..child = propStateText);
+
+              // idle update will be in the queue but cancelled
+              verifier(expectedText(1, 3), 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+              runIdle(aliveIdleDeadline());
+
+              // no updates should remain queued
+              // the rendered text should have been updated, representing 2 updates
+              verifier(expectedText(1, 3), 0);
+            });
+
+            test('second update is async', () {
+              // this update should not be executed even tho shouldAbort is false
+              // since it had not started
+              component.updateStateIdle(
+                  new TestComponentProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate = failOnShouldComponentUpdate
+                    ..componentWillUpdate = failOnComponentWillUpdate
+                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..componentWillUnmount = failOnComponentWillUnmount
+                    ..child = propStateText,
+                  shouldAbort: false);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 1);
+
+              // run an async update
+              component.updateStateIdle(new TestComponentProps()
+                ..componentWillMount = failOnComponentWillMount
+                ..componentDidMount = failOnComponentDidMount
+                ..shouldComponentUpdate =
+                    expectShouldComponentUpdate(1, 1, 1, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
+                ..componentWillUnmount = failOnComponentWillUnmount
+                ..child = propStateText);
+
+              // the 2 updates should be queued
+              // the rendered text should not have been be updated yet
+              verifier(expectedText(1, 1), 2);
+
+              // let the updates finsh
+              runIdle(aliveIdleDeadline());
+
+              // no updates should remain queued
+              // the rendered text should have been updated, representing 2 updates
+              verifier(expectedText(1, 3), 0);
+            });
           });
         });
-      });
-
-      group('update requeued if deadline has no time remaining -', () {
-        test('shouldAbort: true', () {});
-        test('shouldAbort: false', () {});
       });
     });
 
     group('nesting level 2 -', () {
-      group('parent update followed by child update -', () {
+      setUp(() {
+        // renders a test component
+        component = new TestComponent(new TestComponentProps()
+          ..componentWillMount = expectComponentWillMount(1, 1)
+          ..componentDidMount = expectComponentDidMount(1, 1)
+          ..shouldComponentUpdate = failOnShouldComponentUpdate
+          ..componentWillUpdate = failOnComponentWillUpdate
+          ..componentDidUpdate = failOnComponentDidUpdate
+          ..componentWillUnmount = failOnComponentWillUnmount
+          ..baseProps = 1
+          ..child = nestedComponent(new TestComponentProps()
+            ..componentWillMount = expectComponentWillMount(1, 1)
+            ..componentDidMount = expectComponentDidMount(1, 1)
+            ..shouldComponentUpdate = failOnShouldComponentUpdate
+            ..componentWillUpdate = failOnComponentWillUpdate
+            ..componentDidUpdate = failOnComponentDidUpdate
+            ..componentWillUnmount = failOnComponentWillUnmount
+            ..baseProps = 1
+            ..child = propStateText));
+
+        render(component, host);
+        verifier(expectedTextNested(1, 1, 1, 1), 0);
+      });
+      group('async parent update followed by child update -', () {
         group('parent has started -', () {
-          group('child update is sync -', () {
-            test('shouldAbort: true', () {});
-            test('shouldAbort: false', () {});
+          group('parent update has called update on child already -', () {
+            group('child update is sync -', () {
+              test('shouldAbort: true', () {
+                // the parent should update and child should be updated twice
+                // both child updates will contain the most recent state
+                // since the parent didn't call the state setter at the time of
+                // sync update
+                // component.updateStateIdle(
+                //     new TestComponentProps()
+                //       ..componentWillMount = failOnComponentWillMount
+                //       ..componentDidMount = failOnComponentDidMount
+                //       ..shouldComponentUpdate =
+                //           expectShouldComponentUpdate(1, 1, 1, 2)
+                //       ..componentWillUpdate =
+                //           expectComponentWillUpdate(1, 1, 1, 2)
+                //       ..componentDidUpdate =
+                //           expectComponentDidUpdate(1, 1, 1, 2)
+                //       ..componentWillUnmount = failOnComponentWillUnmount
+                //       ..child = nestedComponent(new TestComponentProps()
+                //         ..componentWillMount = failOnComponentWillMount
+                //         ..componentDidMount = failOnComponentDidMount
+                //         ..shouldComponentUpdate =
+                //             expectShouldComponentUpdate(1, 1, 1, 1)
+                //         ..componentWillUpdate =
+                //             expectComponentWillUpdate(1, 1, 1, 1)
+                //         ..componentDidUpdate =
+                //             expectComponentDidUpdate(1, 1, 1, 1)
+                //         ..componentWillUnmount = failOnComponentWillUnmount
+                //         ..child = propStateText),
+                //     shouldAbort: true);
+              });
+              test('shouldAbort: false', () {});
+            });
+            group('child update is async -', () {
+              test('shouldAbort: true', () {});
+              test('shouldAbort: false', () {});
+            });
           });
-          group('child update is async -', () {
-            test('shouldAbort: true', () {});
-            test('shouldAbort: false', () {});
+          group('parent update has not called update on child already -', () {
+            group('child update is sync -', () {
+              test('shouldAbort: true', () {
+                // the parent should update and child should be updated twice
+                // both child updates will contain the most recent state
+                // since the parent didn't call the state setter at the time of
+                // sync update
+                // component.updateStateIdle(
+                //     new TestComponentProps()
+                //       ..componentWillMount = failOnComponentWillMount
+                //       ..componentDidMount = failOnComponentDidMount
+                //       ..shouldComponentUpdate =
+                //           expectShouldComponentUpdate(1, 1, 1, 2)
+                //       ..componentWillUpdate =
+                //           expectComponentWillUpdate(1, 1, 1, 2)
+                //       ..componentDidUpdate =
+                //           expectComponentDidUpdate(1, 1, 1, 2)
+                //       ..componentWillUnmount = failOnComponentWillUnmount
+                //       ..child = nestedComponent(new TestComponentProps()
+                //         ..componentWillMount = failOnComponentWillMount
+                //         ..componentDidMount = failOnComponentDidMount
+                //         ..shouldComponentUpdate =
+                //             expectShouldComponentUpdate(1, 1, 1, 2)
+                //         ..componentWillUpdate =
+                //             expectComponentWillUpdate(1, 1, 1, 2)
+                //         ..componentDidUpdate =
+                //             expectComponentDidUpdate(1, 1, 1, 2)
+                //         ..componentWillUnmount = failOnComponentWillUnmount
+                //         ..child = propStateText),
+                //     shouldAbort: true);
+              });
+              test('shouldAbort: false', () {});
+            });
+            group('child update is async -', () {
+              test('shouldAbort: true', () {});
+              test('shouldAbort: false', () {});
+            });
           });
         });
 
-        group('parent has not started -', () {
+        group('async parent has not started -', () {
           group('child update is sync -', () {
             test('shouldAbort: true', () {});
             test('shouldAbort: false', () {});
@@ -437,7 +708,7 @@ void main() {
         });
       });
 
-      group('child update followed by parent update -', () {
+      group('async child update followed by parent update -', () {
         group('child has started -', () {
           group('parent update is sync -', () {
             test('shouldAbort: true', () {});
@@ -449,7 +720,7 @@ void main() {
           });
         });
 
-        group('child has not started -', () {
+        group('async child has not started -', () {
           group('parent update is sync -', () {
             test('shouldAbort: true', () {});
             test('shouldAbort: false', () {});

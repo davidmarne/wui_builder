@@ -75,6 +75,7 @@ abstract class Component<P, S> extends VNode {
       currentUpdateTracker = _pendingUpdateTrackers[i];
       if (currentUpdateTracker.shouldAbort ||
           !currentUpdateTracker.hasStarted) {
+        print("CANCEL component");
         currentUpdateTracker.cancel();
         _pendingUpdateTrackers.removeAt(i);
         continue;

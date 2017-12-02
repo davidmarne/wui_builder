@@ -36,8 +36,12 @@ void runSyncUpdate(UpdateTracker tracker) {
   // finish any idle updates that have already started
   while (activeUpdates.isNotEmpty && activeUpdates.first.hasStarted) {
     final update = activeUpdates.removeAt(0);
-    update.isAsync = false;
-    if (!update.isCancelled) updateVNode(update);
+    if (!update.isCancelled) {
+      // treat the update as sync from this point foward
+      update.isAsync = false;
+      updateVNode(update);
+      doPendingWork(update);
+    }
   }
 
   updateVNode(tracker);
