@@ -79,6 +79,7 @@ abstract class Component<P, S> extends VNode {
       currentUpdateTracker = _pendingUpdateTrackers[i];
       if (currentUpdateTracker.shouldAbort ||
           !currentUpdateTracker.hasStarted) {
+        // TODO: inverse this and just don't add this update
         currentUpdateTracker.cancel();
         _pendingUpdateTrackers.removeAt(i);
         continue;

@@ -118,7 +118,8 @@ void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
 void doPendingWork(UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
   var finished = true;
-  while (tracker != null) {
+  // why do i need the second clause?
+  while (tracker != null && tracker.pendingWork != null) {
     if (tracker.pendingWork.cursorType == PendingCursors.Iterable) {
       finished = updateElementChildren(tracker);
     } else {
