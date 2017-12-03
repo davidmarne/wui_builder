@@ -17,13 +17,14 @@ bool updateComponent(UpdateTracker tracker) {
   for (var i = 0; i < oldVNode._pendingUpdateTrackers.length;) {
     currentUpdateTracker = oldVNode._pendingUpdateTrackers[i];
     if (currentUpdateTracker != tracker &&
-        (!tracker.isAsync ||
-            currentUpdateTracker.shouldAbort ||
-            !currentUpdateTracker.hasStarted)) {
+        (!currentUpdateTracker.hasStarted ||
+            !currentUpdateTracker.isAsync ||
+            currentUpdateTracker.shouldAbort)) {
       currentUpdateTracker.cancel();
       oldVNode._pendingUpdateTrackers.removeAt(i);
       continue;
     }
+
     i++;
   }
 

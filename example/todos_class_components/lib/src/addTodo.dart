@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/components.dart';
 
 import 'todo.dart';
 
@@ -11,7 +12,7 @@ class AddTodoProps {
   AddTodoT addTodo;
 }
 
-class AddTodo extends PropComponent<AddTodoProps> {
+class AddTodo extends PComponent<AddTodoProps> {
   AddTodo(AddTodoProps props) : super(props);
 
   @override

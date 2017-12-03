@@ -1,5 +1,6 @@
+import '../../components.dart';
+
 import 'functional.dart';
-import '../../wui_builder.dart';
 
 typedef void ComponentWillMount<P>(P props);
 typedef void ComponentDidMount<P>(P props);
@@ -60,7 +61,7 @@ class LifeCycleProps<P> {
   P baseProps;
 }
 
-class LifeCycle<P> extends PropComponent<LifeCycleProps<P>> {
+class LifeCycle<P> extends PComponent<LifeCycleProps<P>> {
   LifeCycle(LifeCycleProps<P> props) : super(props);
 
   @override

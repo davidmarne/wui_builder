@@ -2,10 +2,6 @@ part of component;
 
 typedef S StateSetter<P, S>(P props, S prevState);
 
-abstract class PropComponent<P> extends Component<P, Null> {
-  PropComponent(P props) : super(props);
-}
-
 abstract class Component<P, S> extends VNode {
   final vNodeType = VNodeTypes.Component;
 
@@ -44,7 +40,7 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void update() {
     final updateTracker = new UpdateTracker.sync(ref, this);
-    _updatePendingTracker(updateTracker);
+    // _updatePendingTracker(updateTracker);
     runSyncUpdate(updateTracker);
   }
 
@@ -77,9 +73,13 @@ abstract class Component<P, S> extends VNode {
     UpdateTracker currentUpdateTracker;
     for (var i = 0; i < _pendingUpdateTrackers.length;) {
       currentUpdateTracker = _pendingUpdateTrackers[i];
-      if (currentUpdateTracker.shouldAbort ||
-          !currentUpdateTracker.hasStarted) {
-        // TODO: inverse this and just don't add this update
+
+      // this update will be processed when the
+      // currentUpdateTracker gets its turn
+      if (!currentUpdateTracker.hasStarted) return;
+
+      // if it has started and we can abort it do so
+      if (currentUpdateTracker.shouldAbort) {
         currentUpdateTracker.cancel();
         _pendingUpdateTrackers.removeAt(i);
         continue;

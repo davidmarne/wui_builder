@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'functional.dart';
 import '../../wui_builder.dart';
+import '../../components.dart';
 
 typedef OutterP RefMapper<InnerP, E extends Element, OutterP>(
     InnerP props, E ref);
@@ -21,7 +22,7 @@ class WithRefProps<InnerP, E extends Element, OutterP> {
 }
 
 class WithRef<InnerP, E extends Element, OutterP>
-    extends PropComponent<WithRefProps<InnerP, E, OutterP>> {
+    extends PComponent<WithRefProps<InnerP, E, OutterP>> {
   WithRef(WithRefProps<InnerP, E, OutterP> props) : super(props);
 
   VNode render() =>

@@ -1,12 +1,13 @@
 // import 'package:wui_builder/functional.dart';
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/components.dart';
 
 class HeroProps {
   int remaining;
 }
 
-class Hero extends PropComponent<HeroProps> {
+class Hero extends PComponent<HeroProps> {
   Hero(HeroProps props) : super(props);
 
   @override

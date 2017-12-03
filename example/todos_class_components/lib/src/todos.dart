@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/components.dart';
 
 import 'todo.dart';
 
@@ -13,7 +14,7 @@ class TodoProps {
   PutAfter putAfter;
 }
 
-class Todos extends PropComponent<TodoProps> {
+class Todos extends PComponent<TodoProps> {
   Todos(TodoProps props) : super(props);
 
   VNode render() => new Va()

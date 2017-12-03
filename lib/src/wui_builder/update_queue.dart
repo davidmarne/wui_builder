@@ -34,36 +34,36 @@ void runIdle(IdleDeadline deadline) {
 
 void runSyncUpdate(UpdateTracker tracker) {
   // finish any idle updates that have already started
-  while (activeUpdates.isNotEmpty && activeUpdates.first.hasStarted) {
-    final update = activeUpdates.removeAt(0);
+  // while (activeUpdates.isNotEmpty && activeUpdates.first.hasStarted) {
+  //   final update = activeUpdates.removeAt(0);
 
-    // if the update is not cancelled continue it
-    if (!update.isCancelled) {
-      // treat the update as sync from this point foward
-      update.convertToSync();
-      updateVNode(update);
-      doPendingWork(update.parentTracker);
-    } else {
-      // if the update was cancelled find the first parent
-      // that isn't cancelled and finish its pending work
-      final nonCancelled = firstNonCancelledParent(update);
-      if (nonCancelled != null) {
-        // treat the update as sync from this point foward
-        nonCancelled.convertToSync();
-        doPendingWork(nonCancelled);
-      }
-    }
-  }
+  //   // if the update is not cancelled continue it
+  //   if (!update.isCancelled) {
+  //     // treat the update as sync from this point foward
+  //     update.convertToSync();
+  //     updateVNode(update);
+  //     doPendingWork(update.parentTracker);
+  //   } else {
+  //     // if the update was cancelled find the first parent
+  //     // that isn't cancelled and finish its pending work
+  //     final nonCancelled = firstNonCancelledParent(update);
+  //     if (nonCancelled != null) {
+  //       // treat the update as sync from this point foward
+  //       nonCancelled.convertToSync();
+  //       doPendingWork(nonCancelled);
+  //     }
+  //   }
+  // }
 
   // the update may have been executed by an existing idle
   // update. If so the sync tracker will be cancelled
-  if (!tracker.isCancelled) updateVNode(tracker);
+  updateVNode(tracker);
 
   // cancel idle callback if no pending operations exist
-  if (activeUpdates.length == 0) {
-    window.cancelIdleCallback(pendingIdleId);
-    pendingIdleId = null;
-  }
+  // if (activeUpdates.length == 0) {
+  //   window.cancelIdleCallback(pendingIdleId);
+  //   pendingIdleId = null;
+  // }
 }
 
 UpdateTracker firstNonCancelledParent(UpdateTracker tracker) {
@@ -119,7 +119,8 @@ void doPendingWork(UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
   var finished = true;
   // why do i need the second clause?
-  while (tracker != null && tracker.pendingWork != null) {
+  while (tracker != null) {
+    // && tracker.pendingWork != null) {
     if (tracker.pendingWork.cursorType == PendingCursors.Iterable) {
       finished = updateElementChildren(tracker);
     } else {
