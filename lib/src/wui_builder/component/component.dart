@@ -26,6 +26,11 @@ abstract class Component<P, S> extends VNode {
   VNode render();
 
   S getInitialState() => null;
+
+  /// [getChildContext] is the only way to set context
+  /// there is no method to update context
+  /// if you would like to change context you have to rekey your
+  /// component causing a full on rerender
   Map<String, dynamic> getChildContext() => <String, dynamic>{};
 
   void componentWillMount() {}
@@ -53,7 +58,7 @@ abstract class Component<P, S> extends VNode {
 
   @mustCallSuper
   void setState(StateSetter<P, S> stateSetter) {
-    _updateStateSetter(stateSetter);
+    queueStateUpdate(stateSetter);
     update();
   }
 
@@ -61,7 +66,7 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void setStateOnIdle(StateSetter<P, S> stateSetter,
       {bool shouldAbort: false}) {
-    _updateStateSetter(stateSetter);
+    queueStateUpdate(stateSetter);
     updateOnIdle(shouldAbort: shouldAbort);
   }
 
@@ -83,7 +88,7 @@ abstract class Component<P, S> extends VNode {
     _pendingUpdateTrackers.add(updateTracker);
   }
 
-  void _updateStateSetter(StateSetter<P, S> stateSetter) {
+  void queueStateUpdate(StateSetter<P, S> stateSetter) {
     // if there is already a _pendingStateSetter combine it with stateSetter
     if (_pendingStateSetter != null) {
       final prevStateSetter = _pendingStateSetter;

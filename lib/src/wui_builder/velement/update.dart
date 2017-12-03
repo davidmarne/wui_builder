@@ -89,4 +89,5 @@ bool updateElementChildren(UpdateTracker tracker) {
 
 void disposeVElement(VElement vnode) {
   vnode.dispose();
+  for (final c in vnode.children) disposeVNode(c);
 }

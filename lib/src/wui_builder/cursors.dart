@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'component.dart';
 import 'velement.dart';
-import 'vnode.dart';
 
 enum PendingCursors {
   Iterable,

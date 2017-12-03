@@ -5,10 +5,9 @@ bool updateComponent(UpdateTracker tracker) {
   final newVNode = tracker.newVNode as Component;
   final oldResult = oldVNode._renderResult;
   final dynamic prevProps = oldVNode._props;
-  final dynamic nextProps = newVNode.props;
+  final dynamic nextProps = newVNode._props;
   final dynamic prevState = oldVNode._state;
   final bool initiatedByParent = tracker.parentTracker != null;
-  oldVNode._props = newVNode._props;
 
   // cancel any other pending updates if:
   // 1. This tracker is synchronous, in which case the most recent state will be rendered completely
@@ -54,6 +53,7 @@ bool updateComponent(UpdateTracker tracker) {
 
   // set the state of the new node to next state
   oldVNode._state = nextState;
+  oldVNode._props = nextProps;
 
   // build the new virtual tree
   final newResult = oldVNode.render();
@@ -89,6 +89,7 @@ void finishComponentUpdate(UpdateTracker tracker) {
 // calls the necessary methods to clean up a vnode
 void disposeComponent(Component node) {
   node.componentWillUnmount();
+  disposeVNode(node._renderResult);
 }
 
 // called to revert a state change when a pending

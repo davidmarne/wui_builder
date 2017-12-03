@@ -55,13 +55,11 @@ class UpdateTracker {
     return nextChild;
   }
 
-  bool _isPaused = false;
-  bool get isPaused {
+  bool get shouldPause {
     if (!isAsync) return false;
-    if (_isPaused) return _isPaused;
-    _isPaused = deadline.timeRemaining() < 1;
-    if (_isPaused) queueProcessingUpdate(this);
-    return _isPaused;
+    final deadlineHit = deadline.timeRemaining() < 1;
+    if (deadlineHit) queueProcessingUpdate(this);
+    return deadlineHit;
   }
 
   void cancel() {
@@ -71,8 +69,12 @@ class UpdateTracker {
 
   void refresh(IdleDeadline d) {
     deadline = d;
-    _isPaused = false;
-    childTracker?.refresh(d); // needed?
+    parentTracker?.refresh(d);
+  }
+
+  void convertToSync() {
+    isAsync = false;
+    parentTracker?.convertToSync();
   }
 
   void pushPendingCursor(PendingCursor cursor) {

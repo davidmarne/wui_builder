@@ -7,7 +7,7 @@ import 'vnode.dart';
 // returns true if the update was complete
 bool updateVNode(UpdateTracker tracker) {
   // if the tracker.deadline is hit request another idle period
-  if (tracker.isPaused) return false;
+  if (tracker.shouldPause) return false;
 
   if (tracker.oldVNode == null) {
     tracker.parent.append(createNode(tracker.newVNode));

@@ -36,21 +36,42 @@ void runSyncUpdate(UpdateTracker tracker) {
   // finish any idle updates that have already started
   while (activeUpdates.isNotEmpty && activeUpdates.first.hasStarted) {
     final update = activeUpdates.removeAt(0);
+
+    // if the update is not cancelled continue it
     if (!update.isCancelled) {
       // treat the update as sync from this point foward
-      update.isAsync = false;
+      update.convertToSync();
       updateVNode(update);
       doPendingWork(update.parentTracker);
+    } else {
+      // if the update was cancelled find the first parent
+      // that isn't cancelled and finish its pending work
+      final nonCancelled = firstNonCancelledParent(update);
+      if (nonCancelled != null) {
+        // treat the update as sync from this point foward
+        nonCancelled.convertToSync();
+        doPendingWork(nonCancelled);
+      }
     }
   }
 
-  updateVNode(tracker);
+  // the update may have been executed by an existing idle
+  // update. If so the sync tracker will be cancelled
+  if (!tracker.isCancelled) updateVNode(tracker);
 
   // cancel idle callback if no pending operations exist
   if (activeUpdates.length == 0) {
     window.cancelIdleCallback(pendingIdleId);
     pendingIdleId = null;
   }
+}
+
+UpdateTracker firstNonCancelledParent(UpdateTracker tracker) {
+  while (tracker != null) {
+    if (!tracker.isCancelled) return tracker;
+    tracker = tracker.parentTracker;
+  }
+  return null;
 }
 
 void queueNewUpdate(UpdateTracker tracker) {
@@ -72,16 +93,26 @@ void queueProcessingUpdate(UpdateTracker tracker) {
 void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
   tracker.hasStarted = true;
 
-  // if the deadline has been cancelled bail
-  if (tracker.isCancelled) return;
+  // if the deadline has been cancelled finsh any parent
+  // work that is not cancelled
+  if (tracker.isCancelled) {
+    // if the update was cancelled find the first parent
+    // that isn't cancelled and finish its pending work
+    final nonCancelled = firstNonCancelledParent(tracker);
+    if (nonCancelled != null) {
+      // treat the update as sync from this point foward
+      nonCancelled.convertToSync();
+      doPendingWork(nonCancelled);
+    }
+  } else {
+    // update the deadline on the tracker and update it
+    tracker.refresh(deadline);
+    final finished = updateVNode(tracker);
 
-  // update the deadline on the tracker and update it
-  tracker.refresh(deadline);
-  final finished = updateVNode(tracker);
-
-  // if the current update stack was completed
-  // resume its parents updates
-  if (finished) doPendingWork(tracker.parentTracker);
+    // if the current update stack was completed
+    // resume its parents updates
+    if (finished) doPendingWork(tracker.parentTracker);
+  }
 }
 
 void doPendingWork(UpdateTracker tracker) {
