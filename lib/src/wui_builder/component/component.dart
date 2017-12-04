@@ -47,29 +47,6 @@ abstract class Component<P, S> extends VNode {
   @experimental
   @mustCallSuper
   void updateOnIdle({bool shouldAbort: false}) {
-    final updateTracker = new UpdateTracker.async(ref, this, shouldAbort);
-    _updatePendingTracker(updateTracker);
-    queueNewUpdate(updateTracker);
-  }
-
-  @mustCallSuper
-  void setState(StateSetter<P, S> stateSetter) {
-    queueStateUpdate(stateSetter);
-    update();
-  }
-
-  @experimental
-  @mustCallSuper
-  void setStateOnIdle(StateSetter<P, S> stateSetter,
-      {bool shouldAbort: false}) {
-    queueStateUpdate(stateSetter);
-    updateOnIdle(shouldAbort: shouldAbort);
-  }
-
-  void _updatePendingTracker(UpdateTracker updateTracker) {
-    // cancel any other pending updates if:
-    // 1. The pending tracker's shouldAbort property is true
-    // 2. The pending update has not even started yet
     UpdateTracker currentUpdateTracker;
     for (var i = 0; i < _pendingUpdateTrackers.length;) {
       currentUpdateTracker = _pendingUpdateTrackers[i];
@@ -86,7 +63,24 @@ abstract class Component<P, S> extends VNode {
       }
       i++;
     }
+
+    final updateTracker = new UpdateTracker.async(ref, this, shouldAbort);
     _pendingUpdateTrackers.add(updateTracker);
+    queueNewUpdate(updateTracker);
+  }
+
+  @mustCallSuper
+  void setState(StateSetter<P, S> stateSetter) {
+    queueStateUpdate(stateSetter);
+    update();
+  }
+
+  @experimental
+  @mustCallSuper
+  void setStateOnIdle(StateSetter<P, S> stateSetter,
+      {bool shouldAbort: false}) {
+    queueStateUpdate(stateSetter);
+    updateOnIdle(shouldAbort: shouldAbort);
   }
 
   void queueStateUpdate(StateSetter<P, S> stateSetter) {

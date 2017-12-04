@@ -234,22 +234,26 @@ void main() {
                 ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
-              // no updates should remain queued
+              // original update should remain queued, but cancelled
               // the rendered text should have been updated, representing 2 updates
+              verifier(1, 3, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(1, 3, 0);
             });
 
             test('shouldAbort: false', () {
-              // this update should be executed since shouldAbort is false
+              // this update should not be executed even tho shouldAbort is false
+              // since the proceeding update is sync
               component.updateStateIdle(
                   new SingleVElementChildProps()
                     ..componentWillMount = failOnComponentWillMount
                     ..componentDidMount = failOnComponentDidMount
-                    ..shouldComponentUpdate =
-                        expectShouldComponentUpdate(1, 1, 1, 2)
-                    ..componentWillUpdate =
-                        expectComponentWillUpdate(1, 1, 1, 2)
-                    ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                    ..shouldComponentUpdate = failOnShouldComponentUpdate
+                    ..componentWillUpdate = failOnComponentWillUpdate
+                    ..componentDidUpdate = failOnComponentDidUpdate
                     ..componentWillUnmount = failOnComponentWillUnmount,
                   shouldAbort: false);
 
@@ -258,7 +262,7 @@ void main() {
               verifier(1, 1, 1);
 
               // let the update start, and process the initial call to update component
-              runIdle(completeAfterIdleDeadline(1));
+              runIdle(completeIdleDeadline());
 
               // the update should be queued
               // the rendered text should not have been be updated yet
@@ -272,13 +276,18 @@ void main() {
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
                 ..shouldComponentUpdate =
-                    expectShouldComponentUpdate(1, 1, 2, 3)
-                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
-                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                    expectShouldComponentUpdate(1, 1, 1, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
-              // no updates should remain queued
+              // original update should remain queued, but cancelled
               // the rendered text should have been updated, representing 2 updates
+              verifier(1, 3, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(1, 3, 0);
             });
           });
@@ -317,9 +326,10 @@ void main() {
                 ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
-              // the 2 updates should be queued
+              // the 2 updates should be queued. The first should have been cancelled by the second
               // the rendered text should not have been be updated yet
               verifier(1, 1, 2);
+              expect(activeUpdates[0].isCancelled, isTrue);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -330,16 +340,15 @@ void main() {
             });
 
             test('shouldAbort: false', () {
-              // this update should be executed since shouldAbort is false
+              // this update should be executed with the state from the proceeding
+              // update since it had not called the state setter yet
               component.updateStateIdle(
                   new SingleVElementChildProps()
                     ..componentWillMount = failOnComponentWillMount
                     ..componentDidMount = failOnComponentDidMount
-                    ..shouldComponentUpdate =
-                        expectShouldComponentUpdate(1, 1, 1, 2)
-                    ..componentWillUpdate =
-                        expectComponentWillUpdate(1, 1, 1, 2)
-                    ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                    ..shouldComponentUpdate = failOnShouldComponentUpdate
+                    ..componentWillUpdate = failOnComponentWillUpdate
+                    ..componentDidUpdate = failOnComponentDidUpdate
                     ..componentWillUnmount = failOnComponentWillUnmount,
                   shouldAbort: false);
 
@@ -347,8 +356,8 @@ void main() {
               // the rendered text should not have been be updated yet
               verifier(1, 1, 1);
 
-              // let the update start, and process the initial call to update component
-              runIdle(completeAfterIdleDeadline(1));
+              // let the update start, but not process anything
+              runIdle(completeIdleDeadline());
 
               // the update should be queued
               // the rendered text should not have been be updated yet
@@ -362,14 +371,19 @@ void main() {
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
                 ..shouldComponentUpdate =
-                    expectShouldComponentUpdate(1, 1, 2, 3)
-                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
-                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                    expectShouldComponentUpdate(1, 1, 1, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
               // the 2 updates should be queued
               // the rendered text should not have been be updated yet
               verifier(1, 1, 2);
+
+              // let the first update finish, it should cancel the proceeding update
+              runIdle(completeAfterIdleDeadline(2));
+              verifier(1, 3, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -410,12 +424,12 @@ void main() {
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
               // idle update will be in the queue but cancelled
+              // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
               expect(activeUpdates[0].isCancelled, isTrue);
-              runIdle(aliveIdleDeadline());
 
-              // no updates should remain queued
-              // the rendered text should have been updated, representing 2 updates
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(1, 3, 0);
             });
 
@@ -447,12 +461,10 @@ void main() {
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
               // idle update will be in the queue but cancelled
+              // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
               expect(activeUpdates[0].isCancelled, isTrue);
               runIdle(aliveIdleDeadline());
-
-              // no updates should remain queued
-              // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 0);
             });
           });
@@ -484,9 +496,9 @@ void main() {
                 ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
-              // the 2 updates should be queued
+              // the 2nd update should not be queued since the first update had not started
               // the rendered text should not have been be updated yet
-              verifier(1, 1, 2);
+              verifier(1, 1, 1);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -523,9 +535,216 @@ void main() {
                 ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 3)
                 ..componentWillUnmount = failOnComponentWillUnmount);
 
+              // the 2nd update should not be queued since the first update had not started
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // let the updates finsh
+              runIdle(aliveIdleDeadline());
+
+              // no updates should remain queued
+              // the rendered text should have been updated, representing 2 updates
+              verifier(1, 3, 0);
+            });
+          });
+        });
+
+        group('first update had started and run updateComponent - ', () {
+          group('second update is sync -', () {
+            test('shouldAbort: true', () {
+              // this update should not be executed since shouldAbort is true
+              component.updateStateIdle(
+                  new SingleVElementChildProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 1, 1, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..componentWillUnmount = failOnComponentWillUnmount,
+                  shouldAbort: true);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // let the update start, and process only the component update
+              runIdle(completeAfterIdleDeadline(1));
+
+              // the update should be queued
+              // the rendered text should have only updated the first node
+              verifier(1, 1, 1);
+
+              // run a sync update
+              component.updateState(
+                new SingleVElementChildProps()
+                  ..componentWillMount = failOnComponentWillMount
+                  ..componentDidMount = failOnComponentDidMount
+                  ..shouldComponentUpdate =
+                      expectShouldComponentUpdate(1, 1, 2, 3)
+                  ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+                  ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                  ..componentWillUnmount = failOnComponentWillUnmount,
+              );
+
+              // the first update should be queued but cancelled
+              // the rendered text should have been updated, representing 2 updates
+              verifier(1, 3, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
+              verifier(1, 3, 0);
+            });
+
+            test('shouldAbort: false', () {
+              // this update should still be cancelled since the second update is sync
+              component.updateStateIdle(
+                  new SingleVElementChildProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 1, 1, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..componentWillUnmount = failOnComponentWillUnmount,
+                  shouldAbort: false);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // let the update start, and process only the component update
+              runIdle(completeAfterIdleDeadline(1));
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // run a sync update
+              // it will run with the proceeding state twice
+              // since completeIdleDeadline will cause it to bail
+              // before running setState with only the previous idle update's state
+              component.updateState(
+                new SingleVElementChildProps()
+                  ..componentWillMount = failOnComponentWillMount
+                  ..componentDidMount = failOnComponentDidMount
+                  ..shouldComponentUpdate =
+                      expectShouldComponentUpdate(1, 1, 2, 3)
+                  ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+                  ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                  ..componentWillUnmount = failOnComponentWillUnmount,
+              );
+
+              // the first update should be queued but cancelled
+              // the rendered text should have been updated, representing 2 updates
+              verifier(1, 3, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
+              verifier(1, 3, 0);
+            });
+          });
+
+          group('second update is async -', () {
+            test('shouldAbort: true', () {
+              // this update should not be executed since shouldAbort is true
+              component.updateStateIdle(
+                  new SingleVElementChildProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 1, 1, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..componentWillUnmount = failOnComponentWillUnmount,
+                  shouldAbort: true);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // let the update start, and process only the component update
+              runIdle(completeAfterIdleDeadline(1));
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // run a sync update
+              component.updateStateIdle(new SingleVElementChildProps()
+                ..componentWillMount = failOnComponentWillMount
+                ..componentDidMount = failOnComponentDidMount
+                ..shouldComponentUpdate =
+                    expectShouldComponentUpdate(1, 1, 2, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                ..componentWillUnmount = failOnComponentWillUnmount);
+
               // the 2 updates should be queued
               // the rendered text should not have been be updated yet
               verifier(1, 1, 2);
+              // the first update should be cancelled when the second is queued
+              expect(activeUpdates[0].isCancelled, true);
+              expect(activeUpdates[1].isCancelled, false);
+
+              // let the updates finsh
+              runIdle(aliveIdleDeadline());
+
+              // no updates should remain queued
+              // the rendered text should have been updated, representing 2 updates
+              verifier(1, 3, 0);
+            });
+
+            test('shouldAbort: false', () {
+              // this update should be executed since shouldAbort is false
+              component.updateStateIdle(
+                  new SingleVElementChildProps()
+                    ..componentWillMount = failOnComponentWillMount
+                    ..componentDidMount = failOnComponentDidMount
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 1, 1, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                    ..componentWillUnmount = failOnComponentWillUnmount,
+                  shouldAbort: false);
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // let the update start, and process only the component update
+              runIdle(completeAfterIdleDeadline(1));
+
+              // the update should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 1);
+
+              // run a async update
+              // it will run with the proceeding state twice
+              // since completeIdleDeadline will cause it to bail
+              // before running setState with only the previous idle update's state
+              component.updateStateIdle(new SingleVElementChildProps()
+                ..componentWillMount = failOnComponentWillMount
+                ..componentDidMount = failOnComponentDidMount
+                ..shouldComponentUpdate =
+                    expectShouldComponentUpdate(1, 1, 2, 3)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 2, 3)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 2, 3)
+                ..componentWillUnmount = failOnComponentWillUnmount);
+
+              // the 2 updates should be queued
+              // the rendered text should not have been be updated yet
+              verifier(1, 1, 2);
+              // first should be cancelled even tho shouldAbort is false
+              // since it had not started
+              expect(activeUpdates[0].isCancelled, false);
+              expect(activeUpdates[1].isCancelled, false);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());

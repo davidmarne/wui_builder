@@ -18,7 +18,7 @@ bool updateComponent(UpdateTracker tracker) {
     currentUpdateTracker = oldVNode._pendingUpdateTrackers[i];
     if (currentUpdateTracker != tracker &&
         (!currentUpdateTracker.hasStarted ||
-            !currentUpdateTracker.isAsync ||
+            !tracker.isAsync ||
             currentUpdateTracker.shouldAbort)) {
       currentUpdateTracker.cancel();
       oldVNode._pendingUpdateTrackers.removeAt(i);

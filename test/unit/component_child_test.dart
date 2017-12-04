@@ -471,14 +471,19 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // no updates should remain queued
+              // original update should remain queued, but cancelled
               // the rendered text should have been updated, representing 2 updates
+              verifier(3, 1, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
 
             test('shouldAbort: false', () {
-              // run a async update, will not run lifecycle even tho shouldAbort is false
-              // since it will use the state setter set by the proceeding update
+              // this update should not be executed even tho shouldAbort is false
+              // since the proceeding update is sync
               component.updateStateIdle(
                   new ComponentChildProps()
                     ..componentWillMount = failOnComponentWillMount
@@ -529,8 +534,13 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // no updates should remain queued
+              // original update should remain queued, but cancelled
               // the rendered text should have been updated, representing 2 updates
+              verifier(3, 1, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
           });
@@ -587,9 +597,10 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // the 2 updates should be queued
+              // the 2 updates should be queued. The first should have been cancelled by the second
               // the rendered text should not have been be updated yet
               verifier(1, 1, 2);
+              expect(activeUpdates[0].isCancelled, isTrue);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -727,8 +738,13 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // no updates should remain queued
+              // idle update will be in the queue but cancelled
               // the rendered text should have been updated, representing 2 updates
+              verifier(3, 1, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
 
@@ -781,9 +797,6 @@ void main() {
               // the original update should remained queued, but should be cancelled
               verifier(3, 1, 1);
               expect(activeUpdates[0].isCancelled, true);
-
-              // let it finish to confirm lifecycle isn't called again
-              // by cancelled update
               runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
@@ -834,11 +847,9 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // the 2 updates should be queued
+              // the 2nd update should not be queued since the first update had not started
               // the rendered text should not have been be updated yet
-              verifier(1, 1, 2);
-              expect(activeUpdates[0].isCancelled, true);
-              expect(activeUpdates[1].isCancelled, false);
+              verifier(1, 1, 1);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -894,15 +905,11 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // the 2 updates should be queued
+              // the 2nd update should not be queued since the first update had not started
               // the rendered text should not have been be updated yet
-              verifier(1, 1, 2);
-              // first should be cancelled even tho shouldAbort is false
-              // since it had not started
-              expect(activeUpdates[0].isCancelled, true);
-              expect(activeUpdates[1].isCancelled, false);
+              verifier(1, 1, 1);
 
-              // no updates should remain queued after running again
+              // let the updates finsh
               runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
@@ -967,13 +974,18 @@ void main() {
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // no updates should remain queued
+              // the first update should be queued but cancelled
               // the rendered text should have been updated, representing 2 updates
+              verifier(3, 1, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
 
             test('shouldAbort: false', () {
-              // run a async update, will run lifecycle
+              // this update should still be cancelled since the second update is sync
               component.updateStateIdle(
                   new ComponentChildProps()
                     ..componentWillMount = failOnComponentWillMount
@@ -982,17 +994,14 @@ void main() {
                         expectShouldComponentUpdate(1, 1, 1, 2)
                     ..componentWillUpdate =
                         expectComponentWillUpdate(1, 1, 1, 2)
-                    ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                    ..componentDidUpdate = failOnComponentDidUpdate
                     ..componentWillUnmount = failOnComponentWillUnmount
                     ..nestedComponentProps = (new TestComponentProps()
                       ..componentWillMount = failOnComponentWillMount
                       ..componentDidMount = failOnComponentDidMount
-                      ..shouldComponentUpdate =
-                          expectShouldComponentUpdate(1, 2, 1, 1)
-                      ..componentWillUpdate =
-                          expectComponentWillUpdate(1, 2, 1, 1)
-                      ..componentDidUpdate =
-                          expectComponentDidUpdate(1, 2, 1, 1)
+                      ..shouldComponentUpdate = failOnShouldComponentUpdate
+                      ..componentWillUpdate = failOnComponentWillUpdate
+                      ..componentDidUpdate = failOnComponentDidUpdate
                       ..componentWillUnmount = failOnComponentWillUnmount),
                   shouldAbort: false);
 
@@ -1024,14 +1033,20 @@ void main() {
                     ..componentWillMount = failOnComponentWillMount
                     ..componentDidMount = failOnComponentDidMount
                     ..shouldComponentUpdate =
-                        expectShouldComponentUpdate(2, 3, 1, 1)
+                        expectShouldComponentUpdate(1, 3, 1, 1)
                     ..componentWillUpdate =
-                        expectComponentWillUpdate(2, 3, 1, 1)
-                    ..componentDidUpdate = expectComponentDidUpdate(2, 3, 1, 1)
+                        expectComponentWillUpdate(1, 3, 1, 1)
+                    ..componentDidUpdate = expectComponentDidUpdate(1, 3, 1, 1)
                     ..componentWillUnmount = failOnComponentWillUnmount),
               );
 
-              // nothing should be queued
+              // the first update should be queued but cancelled
+              // the rendered text should have been updated, representing 2 updates
+              verifier(3, 1, 1);
+              expect(activeUpdates[0].isCancelled, isTrue);
+
+              // let it finish
+              runIdle(aliveIdleDeadline());
               verifier(3, 1, 0);
             });
           });
@@ -1207,9 +1222,12 @@ void main() {
                     ..nestedComponentProps = (new TestComponentProps()
                       ..componentWillMount = failOnComponentWillMount
                       ..componentDidMount = failOnComponentDidMount
-                      ..shouldComponentUpdate = failOnShouldComponentUpdate
-                      ..componentWillUpdate = failOnComponentWillUpdate
-                      ..componentDidUpdate = failOnComponentDidUpdate
+                      ..shouldComponentUpdate =
+                          expectShouldComponentUpdate(1, 2, 2, 2)
+                      ..componentWillUpdate =
+                          expectComponentWillUpdate(1, 2, 2, 2)
+                      ..componentDidUpdate =
+                          expectComponentDidUpdate(1, 2, 2, 2)
                       ..componentWillUnmount = failOnComponentWillUnmount),
                   shouldAbort: true);
 
@@ -1231,13 +1249,18 @@ void main() {
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
                   ..shouldComponentUpdate =
-                      expectShouldComponentUpdate(1, 2, 1, 2)
-                  ..componentWillUpdate = expectComponentWillUpdate(1, 2, 1, 2)
-                  ..componentDidUpdate = expectComponentDidUpdate(1, 2, 1, 2)
+                      expectShouldComponentUpdate(1, 1, 1, 2)
+                  ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+                  ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
                   ..componentWillUnmount = failOnComponentWillUnmount,
               );
 
-              // both child and parent should have updated
+              // only child should have updated
+              verifier(1, 2, 1);
+
+              // let the first update finish
+              runIdle(aliveIdleDeadline());
+
               verifier(2, 2, 0);
             });
             test('shouldAbort: false', () {
@@ -1255,9 +1278,12 @@ void main() {
                     ..nestedComponentProps = (new TestComponentProps()
                       ..componentWillMount = failOnComponentWillMount
                       ..componentDidMount = failOnComponentDidMount
-                      ..shouldComponentUpdate = failOnShouldComponentUpdate
-                      ..componentWillUpdate = failOnComponentWillUpdate
-                      ..componentDidUpdate = failOnComponentDidUpdate
+                      ..shouldComponentUpdate =
+                          expectShouldComponentUpdate(1, 2, 2, 2)
+                      ..componentWillUpdate =
+                          expectComponentWillUpdate(1, 2, 2, 2)
+                      ..componentDidUpdate =
+                          expectComponentDidUpdate(1, 2, 2, 2)
                       ..componentWillUnmount = failOnComponentWillUnmount),
                   shouldAbort: false);
 
@@ -1279,13 +1305,18 @@ void main() {
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
                   ..shouldComponentUpdate =
-                      expectShouldComponentUpdate(1, 2, 1, 2)
-                  ..componentWillUpdate = expectComponentWillUpdate(1, 2, 1, 2)
-                  ..componentDidUpdate = expectComponentDidUpdate(1, 2, 1, 2)
+                      expectShouldComponentUpdate(1, 1, 1, 2)
+                  ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+                  ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
                   ..componentWillUnmount = failOnComponentWillUnmount,
               );
 
-              // both child and parent should have updated
+              // only child should have updated
+              verifier(1, 2, 1);
+
+              // let the first update finish
+              runIdle(aliveIdleDeadline());
+
               verifier(2, 2, 0);
             });
           });
@@ -1635,9 +1666,11 @@ void main() {
                   ..nestedComponentProps = (new TestComponentProps()
                     ..componentWillMount = failOnComponentWillMount
                     ..componentDidMount = failOnComponentDidMount
-                    ..shouldComponentUpdate = failOnShouldComponentUpdate
-                    ..componentWillUpdate = failOnComponentWillUpdate
-                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 2, 2, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 2, 2, 2)
+                    ..componentDidUpdate = expectComponentDidUpdate(1, 2, 2, 2)
                     ..componentWillUnmount = failOnComponentWillUnmount),
                 shouldAbort: true);
 
@@ -1659,13 +1692,18 @@ void main() {
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
                 ..shouldComponentUpdate =
-                    expectShouldComponentUpdate(1, 2, 1, 2)
-                ..componentWillUpdate = expectComponentWillUpdate(1, 2, 1, 2)
-                ..componentDidUpdate = expectComponentDidUpdate(1, 2, 1, 2)
+                    expectShouldComponentUpdate(1, 1, 1, 2)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
                 ..componentWillUnmount = failOnComponentWillUnmount,
             );
 
-            // parent forced to complete
+            // only child updated
+            verifier(1, 2, 1);
+
+            // let the update finish
+            runIdle(aliveIdleDeadline());
+
             verifier(2, 2, 0);
           });
           test('shouldAbort: false', () {
@@ -1682,9 +1720,11 @@ void main() {
                   ..nestedComponentProps = (new TestComponentProps()
                     ..componentWillMount = failOnComponentWillMount
                     ..componentDidMount = failOnComponentDidMount
-                    ..shouldComponentUpdate = failOnShouldComponentUpdate
-                    ..componentWillUpdate = failOnComponentWillUpdate
-                    ..componentDidUpdate = failOnComponentDidUpdate
+                    ..shouldComponentUpdate =
+                        expectShouldComponentUpdate(1, 2, 2, 2)
+                    ..componentWillUpdate =
+                        expectComponentWillUpdate(1, 2, 2, 2)
+                    ..componentDidUpdate = expectComponentDidUpdate(1, 2, 2, 2)
                     ..componentWillUnmount = failOnComponentWillUnmount),
                 shouldAbort: false);
 
@@ -1706,13 +1746,18 @@ void main() {
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
                 ..shouldComponentUpdate =
-                    expectShouldComponentUpdate(1, 2, 1, 2)
-                ..componentWillUpdate = expectComponentWillUpdate(1, 2, 1, 2)
-                ..componentDidUpdate = expectComponentDidUpdate(1, 2, 1, 2)
+                    expectShouldComponentUpdate(1, 1, 1, 2)
+                ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
+                ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
                 ..componentWillUnmount = failOnComponentWillUnmount,
             );
 
-            // parent forced to complete
+            // only child updated
+            verifier(1, 2, 1);
+
+            // let the update finish
+            runIdle(aliveIdleDeadline());
+
             verifier(2, 2, 0);
           });
         });
@@ -1841,8 +1886,8 @@ void main() {
           () {
         group('child update is sync -', () {
           test('shouldAbort: true', () {
-            // this parent should be executed, the child will not
-            // as it will call the childs pending state setter
+            // the child update will not be finished since proceeding sync setState
+            // cancels it
             component.updateStateIdle(
                 new ComponentChildProps()
                   ..componentWillMount = failOnComponentWillMount
@@ -1886,12 +1931,19 @@ void main() {
                 ..componentWillUnmount = failOnComponentWillUnmount,
             );
 
-            // parent forced to complete
+            // only the child has updated
+            // the child tracker should be cancelled, but no the parent
+            verifier(2, 2, 1);
+            expect(activeUpdates[0].parentTracker.isCancelled, isTrue);
+            expect(activeUpdates[0].parentTracker.parentTracker.isCancelled,
+                isFalse);
+
+            runIdle(aliveIdleDeadline());
             verifier(2, 2, 0);
           });
           test('shouldAbort: false', () {
-            // this parent should be executed, the child will not
-            // as it will call the childs pending state setter
+            // the child update will not be finished since proceeding sync setState
+            // cancels it
             component.updateStateIdle(
                 new ComponentChildProps()
                   ..componentWillMount = failOnComponentWillMount
@@ -1907,7 +1959,7 @@ void main() {
                         expectShouldComponentUpdate(1, 2, 1, 1)
                     ..componentWillUpdate =
                         expectComponentWillUpdate(1, 2, 1, 1)
-                    ..componentDidUpdate = expectComponentWillUpdate(1, 2, 1, 1)
+                    ..componentDidUpdate = failOnShouldComponentUpdate
                     ..componentWillUnmount = failOnComponentWillUnmount),
                 shouldAbort: false);
 
@@ -1935,7 +1987,15 @@ void main() {
                 ..componentWillUnmount = failOnComponentWillUnmount,
             );
 
-            // parent forced to complete
+            // only the child has updated
+            // the child tracker should be cancelled even tho shouldAbort
+            // is false since the update was sync
+            verifier(2, 2, 1);
+            expect(activeUpdates[0].parentTracker.isCancelled, isTrue);
+            expect(activeUpdates[0].parentTracker.parentTracker.isCancelled,
+                isFalse);
+
+            runIdle(aliveIdleDeadline());
             verifier(2, 2, 0);
           });
         });
@@ -2059,9 +2119,9 @@ void main() {
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
                   ..shouldComponentUpdate =
-                      expectShouldComponentUpdate(1, 1, 1, 2)
-                  ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
-                  ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                      expectShouldComponentUpdate(1, 2, 1, 2)
+                  ..componentWillUpdate = expectComponentWillUpdate(1, 2, 1, 2)
+                  ..componentDidUpdate = expectComponentDidUpdate(1, 2, 1, 2)
                   ..componentWillUnmount = failOnComponentWillUnmount,
                 shouldAbort: true);
 
@@ -2069,6 +2129,7 @@ void main() {
 
             runIdle(completeIdleDeadline());
 
+            // will use previous updates state setter
             component.updateState(
               new ComponentChildProps()
                 ..componentWillMount = failOnComponentWillMount
@@ -2080,13 +2141,16 @@ void main() {
                 ..nestedComponentProps = (new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
-                  ..shouldComponentUpdate =
-                      expectShouldComponentUpdate(1, 2, 2, 2)
-                  ..componentWillUpdate = expectComponentWillUpdate(1, 2, 2, 2)
-                  ..componentDidUpdate = expectComponentDidUpdate(1, 2, 2, 2)
+                  ..shouldComponentUpdate = failOnShouldComponentUpdate
+                  ..componentWillUpdate = failOnComponentWillUpdate
+                  ..componentDidUpdate = failOnComponentDidUpdate
                   ..componentWillUnmount = failOnComponentWillUnmount),
             );
 
+            verifier(2, 2, 1);
+            expect(activeUpdates[0].isCancelled, isTrue);
+
+            runIdle(aliveIdleDeadline());
             verifier(2, 2, 0);
           });
           test('shouldAbort: false', () {
@@ -2095,9 +2159,9 @@ void main() {
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
                   ..shouldComponentUpdate =
-                      expectShouldComponentUpdate(1, 1, 1, 2)
-                  ..componentWillUpdate = expectComponentWillUpdate(1, 1, 1, 2)
-                  ..componentDidUpdate = expectComponentDidUpdate(1, 1, 1, 2)
+                      expectShouldComponentUpdate(1, 2, 1, 2)
+                  ..componentWillUpdate = expectComponentWillUpdate(1, 2, 1, 2)
+                  ..componentDidUpdate = expectComponentDidUpdate(1, 2, 1, 2)
                   ..componentWillUnmount = failOnComponentWillUnmount,
                 shouldAbort: false);
 
@@ -2105,6 +2169,7 @@ void main() {
 
             runIdle(completeIdleDeadline());
 
+            // will use previous updates state setters
             component.updateState(
               new ComponentChildProps()
                 ..componentWillMount = failOnComponentWillMount
@@ -2116,13 +2181,18 @@ void main() {
                 ..nestedComponentProps = (new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
-                  ..shouldComponentUpdate =
-                      expectShouldComponentUpdate(1, 2, 2, 2)
-                  ..componentWillUpdate = expectComponentWillUpdate(1, 2, 2, 2)
-                  ..componentDidUpdate = expectComponentDidUpdate(1, 2, 2, 2)
+                  ..shouldComponentUpdate = failOnShouldComponentUpdate
+                  ..componentWillUpdate = failOnComponentWillUpdate
+                  ..componentDidUpdate = failOnComponentDidUpdate
                   ..componentWillUnmount = failOnComponentWillUnmount),
             );
 
+            // will be cancelled even tho shouldAbort is false since
+            // the proceeding update was sync
+            verifier(2, 2, 1);
+            expect(activeUpdates[0].isCancelled, isTrue);
+
+            runIdle(aliveIdleDeadline());
             verifier(2, 2, 0);
           });
         });
@@ -2227,7 +2297,6 @@ void main() {
 
             verifier(1, 1, 1);
 
-            print('start');
             component.updateState(
               new ComponentChildProps()
                 ..componentWillMount = failOnComponentWillMount
