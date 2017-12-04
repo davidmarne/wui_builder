@@ -16,7 +16,7 @@ in the dart html/svg packages. Each virtual dom element builder as typed setters
 setter in the relative html/svg Element. This makes it easy to write resilient componenents.
 
 wui_builder also supports async rendering to avoid blocking the main thread on large updates.
-Async updeates only processes on idle callbacks, which means the rendering job & layout will be split
+Async updates only processes on idle callbacks, which means the rendering job & layout will be split
 across multiple frames.
 
 Note, requestIdleCallback is not supported by all browsers at this time and wui_builder does NOT include a polyfill at this time.
