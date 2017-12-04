@@ -24,11 +24,11 @@ class Container extends Component<Null, List<Todo>> {
     ];
 
   void _addTodo(Todo todo) {
-    update((_, prev) => prev.toList()..add(todo));
+    setState((_, prev) => prev.toList()..add(todo));
   }
 
   void _updateTodo(int id) {
-    update((_, prev) {
+    setState((_, prev) {
       var todo = prev.firstWhere((todo) => todo.id == id);
       todo.isComplete = !todo.isComplete;
       return prev;
@@ -36,7 +36,7 @@ class Container extends Component<Null, List<Todo>> {
   }
 
   void _putAfter(int before, int after) {
-    update((_, prev) {
+    setState((_, prev) {
       var nextState = prev.toList();
       var afterTodo = nextState.firstWhere((t) => t.id == after);
       var beforeTodo = nextState.firstWhere((t) => t.id == before);

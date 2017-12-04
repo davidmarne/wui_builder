@@ -1,5 +1,6 @@
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/components.dart';
 
 import 'addTodo.dart';
 import 'todos.dart';
@@ -16,7 +17,7 @@ class ContentProps {
   PutAfter putAfter;
 }
 
-class Content extends PropComponent<ContentProps> {
+class Content extends PComponent<ContentProps> {
   Content(ContentProps props) : super(props);
 
   @override

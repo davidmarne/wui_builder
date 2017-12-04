@@ -32,6 +32,14 @@ void runIdle(IdleDeadline deadline) {
   if (activeUpdates.length > 0) requestIdle();
 }
 
+UpdateTracker firstNonCancelledParent(UpdateTracker tracker) {
+  while (tracker != null) {
+    if (!tracker.isCancelled) return tracker;
+    tracker = tracker.parentTracker;
+  }
+  return null;
+}
+
 void queueNewUpdate(UpdateTracker tracker) {
   // add the tracker to the queue
   activeUpdates.add(tracker);
@@ -49,28 +57,41 @@ void queueProcessingUpdate(UpdateTracker tracker) {
 }
 
 void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
-  // if the deadline has been cancelled bail
-  if (tracker.isCancelled) return;
+  tracker.hasStarted = true;
 
-  // update the deadline on the tracker and update it
-  tracker.refresh(deadline);
-  final finished = updateVNode(tracker);
+  // if the deadline has been cancelled finsh any parent
+  // work that is not cancelled
+  if (tracker.isCancelled) {
+    // if the update was cancelled find the first parent
+    // that isn't cancelled and finish its pending work
+    final nonCancelled = firstNonCancelledParent(tracker);
+    if (nonCancelled != null) {
+      doPendingWork(nonCancelled);
+    }
+  } else {
+    // update the deadline on the tracker and update it
+    tracker.refresh(deadline);
+    final finished = updateVNode(tracker);
 
-  // if the current update stack was completed
-  // resume its parents updates
-  if (finished) doPendingWork(tracker);
+    // if the current update stack was completed
+    // resume its parents updates
+    if (finished) doPendingWork(tracker.parentTracker);
+  }
 }
 
 void doPendingWork(UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
   var finished = true;
-  while (!tracker.pendingCursors.isEmpty) {
-    if (tracker.pendingCursors.last.cursorType == PendingCursors.Iterable) {
+  // why do i need the second clause?
+  while (tracker != null) {
+    // && tracker.pendingWork != null) {
+    if (tracker.pendingWork.cursorType == PendingCursors.Iterable) {
       finished = updateElementChildren(tracker);
     } else {
       finishComponentUpdate(tracker);
       finished = true;
     }
     if (!finished) return;
+    tracker = tracker.parentTracker;
   }
 }
