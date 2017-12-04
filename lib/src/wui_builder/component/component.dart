@@ -41,7 +41,7 @@ abstract class Component<P, S> extends VNode {
   void update() {
     final updateTracker = new UpdateTracker.sync(ref, this);
     // _updatePendingTracker(updateTracker);
-    runSyncUpdate(updateTracker);
+    updateVNode(updateTracker);
   }
 
   @experimental

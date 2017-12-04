@@ -32,40 +32,6 @@ void runIdle(IdleDeadline deadline) {
   if (activeUpdates.length > 0) requestIdle();
 }
 
-void runSyncUpdate(UpdateTracker tracker) {
-  // finish any idle updates that have already started
-  // while (activeUpdates.isNotEmpty && activeUpdates.first.hasStarted) {
-  //   final update = activeUpdates.removeAt(0);
-
-  //   // if the update is not cancelled continue it
-  //   if (!update.isCancelled) {
-  //     // treat the update as sync from this point foward
-  //     update.convertToSync();
-  //     updateVNode(update);
-  //     doPendingWork(update.parentTracker);
-  //   } else {
-  //     // if the update was cancelled find the first parent
-  //     // that isn't cancelled and finish its pending work
-  //     final nonCancelled = firstNonCancelledParent(update);
-  //     if (nonCancelled != null) {
-  //       // treat the update as sync from this point foward
-  //       nonCancelled.convertToSync();
-  //       doPendingWork(nonCancelled);
-  //     }
-  //   }
-  // }
-
-  // the update may have been executed by an existing idle
-  // update. If so the sync tracker will be cancelled
-  updateVNode(tracker);
-
-  // cancel idle callback if no pending operations exist
-  // if (activeUpdates.length == 0) {
-  //   window.cancelIdleCallback(pendingIdleId);
-  //   pendingIdleId = null;
-  // }
-}
-
 UpdateTracker firstNonCancelledParent(UpdateTracker tracker) {
   while (tracker != null) {
     if (!tracker.isCancelled) return tracker;
@@ -100,8 +66,6 @@ void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
     // that isn't cancelled and finish its pending work
     final nonCancelled = firstNonCancelledParent(tracker);
     if (nonCancelled != null) {
-      // treat the update as sync from this point foward
-      nonCancelled.convertToSync();
       doPendingWork(nonCancelled);
     }
   } else {

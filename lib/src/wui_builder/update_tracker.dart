@@ -72,11 +72,6 @@ class UpdateTracker {
     parentTracker?.refresh(d);
   }
 
-  void convertToSync() {
-    isAsync = false;
-    parentTracker?.convertToSync();
-  }
-
   void pushPendingCursor(PendingCursor cursor) {
     pendingWork = cursor;
   }

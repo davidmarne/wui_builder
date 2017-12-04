@@ -7,7 +7,6 @@ import 'package:wui_builder/components.dart';
 const targetSize = 25.0;
 
 void main() {
-  print('DAVE: ${ querySelector('#container')}');
   render(new App(null), querySelector('#container'));
 }
 
