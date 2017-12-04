@@ -36,7 +36,7 @@ render(component, querySelector('#container'));
 ## Custom components
 
 ```dart
-class HelloWorld extends PropComponent<Null> {
+class HelloWorld extends PComponent<Null> {
     HelloWorld(props) : super(props);
 
     @override
@@ -59,7 +59,7 @@ class HelloWorldProps {
     String text;
 }
 
-class HelloWorld extends PropComponent<HelloWorldProps> {
+class HelloWorld extends PComponent<HelloWorldProps> {
     HelloWorld(props) : super(props);
 
     @override
@@ -84,7 +84,7 @@ class HelloWorldState {
     String text;
 }
 
-class HelloWorld extends Component<Null, HelloWorldState> {
+class HelloWorld extends SComponent<HelloWorldState> {
     HelloWorld(props) : super(props);
 
     @override
@@ -98,7 +98,7 @@ class HelloWorld extends Component<Null, HelloWorldState> {
 
     void _onClick(_) {
         // update the state, causing the component to redraw
-        update((_, previousState) => new HelloWorldState()
+        setState((_, previousState) => new HelloWorldState()
             ..text = '$previousState again');
     }
 }
@@ -113,4 +113,5 @@ render(component, querySelector('#container'));
 
 ## Async Rendering
 
-Using updateIdle in leu of update will kick off an update that only processes on idle callbacks.
+Using updateOnIdle or in leu of update or setStateOnIdle in lue of setState will kick off an update that only processes on idle callbacks. Feel free to use a mix of update and updateOnIdle in your application.
+
