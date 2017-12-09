@@ -17,6 +17,7 @@ The generator generates virtual dom element builder for each Element type defini
 in the dart html/svg packages. Each virtual dom element builder as typed setters for each
 setter in the relative html/svg Element. This makes it easy to write resilient componenents.
 
+<<<<<<< HEAD
 ### Configurable Update Scheduling
 
 Next, wui_builder supports iterative rendering to avoid blocking the main thread on large updates.
@@ -29,6 +30,11 @@ across multiple frames. wui_builder gives power to the developer to decide when 
 However, syncronous updates are also allowed to run on demand, without waiting for an animation frame or idle callback.
 
 ### Smart Update Batching
+=======
+wui_builder also supports async rendering to avoid blocking the main thread on large updates.
+Async updates only processes on idle callbacks, which means the rendering job & layout will be split
+across multiple frames.
+>>>>>>> 34f61dea8c474c18a0dab48159a1b6b0b665df33
 
 Finally, wui_builder prevents uneccessary updates when multiple updates to the same component are queued before any can process. For example, say I have a component that updates on animation frame, but before the next animation frame is fired setStateOnAnimationFrame is called twice. The update process will only be run once in this case, while allowing both state setter functions to be executed.
 
@@ -48,7 +54,7 @@ render(component, querySelector('#container'));
 ## Custom components
 
 ```dart
-class HelloWorld extends PropComponent<Null> {
+class HelloWorld extends PComponent<Null> {
     HelloWorld(props) : super(props);
 
     @override
@@ -71,7 +77,7 @@ class HelloWorldProps {
     String text;
 }
 
-class HelloWorld extends PropComponent<HelloWorldProps> {
+class HelloWorld extends PComponent<HelloWorldProps> {
     HelloWorld(props) : super(props);
 
     @override
@@ -96,7 +102,7 @@ class HelloWorldState {
     String text;
 }
 
-class HelloWorld extends Component<Null, HelloWorldState> {
+class HelloWorld extends SComponent<HelloWorldState> {
     HelloWorld(props) : super(props);
 
     @override
@@ -110,7 +116,7 @@ class HelloWorld extends Component<Null, HelloWorldState> {
 
     void _onClick(_) {
         // update the state, causing the component to redraw
-        update((_, previousState) => new HelloWorldState()
+        setState((_, previousState) => new HelloWorldState()
             ..text = '$previousState again');
     }
 }
@@ -125,6 +131,7 @@ render(component, querySelector('#container'));
 
 ## Stateful components - synchronous updates on animation frame
 
+<<<<<<< HEAD
 ```dart
 class HelloWorldState {
     String text;
@@ -189,3 +196,7 @@ final component = new HelloWorld(null);
 
 // render the virtual element into a container
 render(component, querySelector('#container'));
+=======
+Using updateOnIdle or in leu of update or setStateOnIdle in lue of setState will kick off an update that only processes on idle callbacks. Feel free to use a mix of update and updateOnIdle in your application.
+
+>>>>>>> 34f61dea8c474c18a0dab48159a1b6b0b665df33
