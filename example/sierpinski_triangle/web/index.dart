@@ -1,5 +1,6 @@
-import 'dart:html';
 import 'dart:async';
+import 'dart:html';
+
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/components.dart';
@@ -112,7 +113,7 @@ class CounterStateHOC extends Component<Null, int> {
 
   @override
   void componentDidMount() {
-    new Timer.periodic(new Duration(seconds: 1),
+    new Timer.periodic(const Duration(seconds: 1),
         (_) => setStateOnIdle((_, prevState) => (prevState % 10) + 1));
   }
 
@@ -127,26 +128,26 @@ class CounterStateHOC extends Component<Null, int> {
 }
 
 class App extends Component<Null, int> {
-  App(Null props) : super(props);
+  final int start;
+  App(Null props)
+      : start = new DateTime.now().millisecondsSinceEpoch,
+        super(props);
 
   @override
   int getInitialState() => new DateTime.now().millisecondsSinceEpoch;
 
   @override
-  void componentDidMount() {
-    final start = new DateTime.now().millisecondsSinceEpoch;
-    new Timer.periodic(
-        new Duration(milliseconds: 16),
-        (_) => setState(
-            (_, s) => new DateTime.now().millisecondsSinceEpoch - start));
-  }
+  BeforeAnimationFrame get beforeAnimationFrame => () {
+        setStateOnAnimationFrame(
+            (_, s) => new DateTime.now().millisecondsSinceEpoch - start);
+      };
 
-  void _styleBuilder(CssStyleDeclaration b) {
+  void _styleBuilder(CssStyleDeclaration styleBuilder) {
     final t = (state / 1000) % 10;
     final scale = 1 + (t > 5 ? 10 - t : t) / 10;
     final transform = 'scaleX(${scale / 2.1}) scaleY(0.7) translateZ(0.1px)';
 
-    b
+    styleBuilder
       ..transform = transform
       ..position = 'absolute'
       ..transformOrigin = '0 0'

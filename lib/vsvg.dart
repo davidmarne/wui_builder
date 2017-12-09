@@ -1,6 +1,8 @@
 import 'dart:svg';
 import 'package:meta/meta.dart';
 import 'wui_builder.dart' show VElement;
+// ignore_for_file: annotate_overrides
+// ignore_for_file: overridden_fields
 
 class VAElement extends VGraphicsElement<AElement> {
   @override
@@ -900,7 +902,7 @@ class VScriptElement extends VSvgElement<ScriptElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -966,7 +968,7 @@ class VStyleElement extends VSvgElement<StyleElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -974,7 +976,7 @@ class VStyleElement extends VSvgElement<StyleElement> {
   String _media;
   bool _mediaSet = false;
   String get media => _media;
-  void set media(String v) {
+  set media(String v) {
     _media = v;
     _mediaSet = true;
   }
@@ -982,7 +984,7 @@ class VStyleElement extends VSvgElement<StyleElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -1021,7 +1023,7 @@ abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
   String _innerHtml;
   bool _innerHtmlSet = false;
   String get innerHtml => _innerHtml;
-  void set innerHtml(String v) {
+  set innerHtml(String v) {
     _innerHtml = v;
     _innerHtmlSet = true;
   }
@@ -1053,7 +1055,7 @@ class VSvgSvgElement extends VGraphicsElement<SvgSvgElement> {
   num _currentScale;
   bool _currentScaleSet = false;
   num get currentScale => _currentScale;
-  void set currentScale(num v) {
+  set currentScale(num v) {
     _currentScale = v;
     _currentScaleSet = true;
   }
@@ -1061,7 +1063,7 @@ class VSvgSvgElement extends VGraphicsElement<SvgSvgElement> {
   int _zoomAndPan;
   bool _zoomAndPanSet = false;
   int get zoomAndPan => _zoomAndPan;
-  void set zoomAndPan(int v) {
+  set zoomAndPan(int v) {
     _zoomAndPan = v;
     _zoomAndPanSet = true;
   }
@@ -1246,7 +1248,7 @@ class VViewElement extends VSvgElement<ViewElement> {
   int _zoomAndPan;
   bool _zoomAndPanSet = false;
   int get zoomAndPan => _zoomAndPan;
-  void set zoomAndPan(int v) {
+  set zoomAndPan(int v) {
     _zoomAndPan = v;
     _zoomAndPanSet = true;
   }

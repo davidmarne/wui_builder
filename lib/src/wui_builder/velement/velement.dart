@@ -1,7 +1,10 @@
 part of velement;
+// ignore_for_file: annotate_overrides
+// ignore_for_file: overridden_fields
 
 abstract class VElement<E extends Element> extends VNode {
-  final vNodeType = VNodeTypes.Element;
+  @override
+  VNodeTypes get vNodeType => VNodeTypes.element;
 
   E elementFactory();
 
@@ -9,16 +12,16 @@ abstract class VElement<E extends Element> extends VNode {
 
   StyleBuilder styleBuilder;
 
-  List<VNode> _children = new List<VNode>();
+  var _children = <VNode>[];
   List<VNode> get children => _children;
-  void set children(Iterable<VNode> c) {
+  set children(Iterable<VNode> c) {
     _children = c.toList();
   }
 
   String _text;
   bool _textSet = false;
   String get text => _text;
-  void set text(String v) {
+  set text(String v) {
     _text = v;
     _textSet = true;
   }
@@ -26,7 +29,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _contentEditable;
   bool _contentEditableSet = false;
   String get contentEditable => _contentEditable;
-  void set contentEditable(String v) {
+  set contentEditable(String v) {
     _contentEditable = v;
     _contentEditableSet = true;
   }
@@ -34,7 +37,7 @@ abstract class VElement<E extends Element> extends VNode {
   MenuElement _contextMenu;
   bool _contextMenuSet = false;
   MenuElement get contextMenu => _contextMenu;
-  void set contextMenu(MenuElement v) {
+  set contextMenu(MenuElement v) {
     _contextMenu = v;
     _contextMenuSet = true;
   }
@@ -42,7 +45,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _dir;
   bool _dirSet = false;
   String get dir => _dir;
-  void set dir(String v) {
+  set dir(String v) {
     _dir = v;
     _dirSet = true;
   }
@@ -50,7 +53,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _draggable;
   bool _draggableSet = false;
   bool get draggable => _draggable;
-  void set draggable(bool v) {
+  set draggable(bool v) {
     _draggable = v;
     _draggableSet = true;
   }
@@ -58,7 +61,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _hidden;
   bool _hiddenSet = false;
   bool get hidden => _hidden;
-  void set hidden(bool v) {
+  set hidden(bool v) {
     _hidden = v;
     _hiddenSet = true;
   }
@@ -66,7 +69,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _lang;
   bool _langSet = false;
   String get lang => _lang;
-  void set lang(String v) {
+  set lang(String v) {
     _lang = v;
     _langSet = true;
   }
@@ -74,7 +77,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _spellcheck;
   bool _spellcheckSet = false;
   bool get spellcheck => _spellcheck;
-  void set spellcheck(bool v) {
+  set spellcheck(bool v) {
     _spellcheck = v;
     _spellcheckSet = true;
   }
@@ -82,7 +85,7 @@ abstract class VElement<E extends Element> extends VNode {
   int _tabIndex;
   bool _tabIndexSet = false;
   int get tabIndex => _tabIndex;
-  void set tabIndex(int v) {
+  set tabIndex(int v) {
     _tabIndex = v;
     _tabIndexSet = true;
   }
@@ -90,7 +93,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _title;
   bool _titleSet = false;
   String get title => _title;
-  void set title(String v) {
+  set title(String v) {
     _title = v;
     _titleSet = true;
   }
@@ -98,7 +101,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _translate;
   bool _translateSet = false;
   bool get translate => _translate;
-  void set translate(bool v) {
+  set translate(bool v) {
     _translate = v;
     _translateSet = true;
   }
@@ -106,7 +109,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _dropzone;
   bool _dropzoneSet = false;
   String get dropzone => _dropzone;
-  void set dropzone(String v) {
+  set dropzone(String v) {
     _dropzone = v;
     _dropzoneSet = true;
   }
@@ -114,7 +117,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _className;
   bool _classNameSet = false;
   String get className => _className;
-  void set className(String v) {
+  set className(String v) {
     _className = v;
     _classNameSet = true;
   }
@@ -122,7 +125,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _id;
   bool _idSet = false;
   String get id => _id;
-  void set id(String v) {
+  set id(String v) {
     _id = v;
     _idSet = true;
   }
@@ -130,7 +133,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _slot;
   bool _slotSet = false;
   String get slot => _slot;
-  void set slot(String v) {
+  set slot(String v) {
     _slot = v;
     _slotSet = true;
   }
@@ -138,7 +141,7 @@ abstract class VElement<E extends Element> extends VNode {
   Map<String, String> _attributes;
   bool _attributesSet = false;
   Map<String, String> get attributes => _attributes;
-  void set attributes(Map<String, String> v) {
+  set attributes(Map<String, String> v) {
     _attributes = v;
     _attributesSet = true;
   }
@@ -146,7 +149,7 @@ abstract class VElement<E extends Element> extends VNode {
   Iterable<String> _classes;
   bool _classesSet = false;
   Iterable<String> get classes => _classes;
-  void set classes(Iterable<String> v) {
+  set classes(Iterable<String> v) {
     _classes = v;
     _classesSet = true;
   }
@@ -154,7 +157,7 @@ abstract class VElement<E extends Element> extends VNode {
   Map<String, String> _dataset;
   bool _datasetSet = false;
   Map<String, String> get dataset => _dataset;
-  void set dataset(Map<String, String> v) {
+  set dataset(Map<String, String> v) {
     _dataset = v;
     _datasetSet = true;
   }
@@ -162,7 +165,7 @@ abstract class VElement<E extends Element> extends VNode {
   Element _xtag;
   bool _xtagSet = false;
   Element get xtag => _xtag;
-  void set xtag(Element v) {
+  set xtag(Element v) {
     _xtag = v;
     _xtagSet = true;
   }
@@ -170,7 +173,7 @@ abstract class VElement<E extends Element> extends VNode {
   String _innerHtml;
   bool _innerHtmlSet = false;
   String get innerHtml => _innerHtml;
-  void set innerHtml(String v) {
+  set innerHtml(String v) {
     _innerHtml = v;
     _innerHtmlSet = true;
   }
@@ -178,7 +181,7 @@ abstract class VElement<E extends Element> extends VNode {
   int _scrollLeft;
   bool _scrollLeftSet = false;
   int get scrollLeft => _scrollLeft;
-  void set scrollLeft(int v) {
+  set scrollLeft(int v) {
     _scrollLeft = v;
     _scrollLeftSet = true;
   }
@@ -186,7 +189,7 @@ abstract class VElement<E extends Element> extends VNode {
   int _scrollTop;
   bool _scrollTopSet = false;
   int get scrollTop => _scrollTop;
-  void set scrollTop(int v) {
+  set scrollTop(int v) {
     _scrollTop = v;
     _scrollTopSet = true;
   }
@@ -195,7 +198,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onAbortSet = false;
   EventHandler<Event> _onAbort;
   EventHandler<Event> get onAbort => _onAbort;
-  void set onAbort(EventHandler<Event> v) {
+  set onAbort(EventHandler<Event> v) {
     _onAbort = v;
     _onAbortSet = true;
     shouldUpdateSubs = true;
@@ -205,7 +208,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onBeforeCopySet = false;
   EventHandler<Event> _onBeforeCopy;
   EventHandler<Event> get onBeforeCopy => _onBeforeCopy;
-  void set onBeforeCopy(EventHandler<Event> v) {
+  set onBeforeCopy(EventHandler<Event> v) {
     _onBeforeCopy = v;
     _onBeforeCopySet = true;
     shouldUpdateSubs = true;
@@ -215,7 +218,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onBeforeCutSet = false;
   EventHandler<Event> _onBeforeCut;
   EventHandler<Event> get onBeforeCut => _onBeforeCut;
-  void set onBeforeCut(EventHandler<Event> v) {
+  set onBeforeCut(EventHandler<Event> v) {
     _onBeforeCut = v;
     _onBeforeCutSet = true;
     shouldUpdateSubs = true;
@@ -225,7 +228,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onBeforePasteSet = false;
   EventHandler<Event> _onBeforePaste;
   EventHandler<Event> get onBeforePaste => _onBeforePaste;
-  void set onBeforePaste(EventHandler<Event> v) {
+  set onBeforePaste(EventHandler<Event> v) {
     _onBeforePaste = v;
     _onBeforePasteSet = true;
     shouldUpdateSubs = true;
@@ -235,7 +238,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onBlurSet = false;
   EventHandler<Event> _onBlur;
   EventHandler<Event> get onBlur => _onBlur;
-  void set onBlur(EventHandler<Event> v) {
+  set onBlur(EventHandler<Event> v) {
     _onBlur = v;
     _onBlurSet = true;
     shouldUpdateSubs = true;
@@ -245,7 +248,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onCanPlaySet = false;
   EventHandler<Event> _onCanPlay;
   EventHandler<Event> get onCanPlay => _onCanPlay;
-  void set onCanPlay(EventHandler<Event> v) {
+  set onCanPlay(EventHandler<Event> v) {
     _onCanPlay = v;
     _onCanPlaySet = true;
     shouldUpdateSubs = true;
@@ -255,7 +258,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onCanPlayThroughSet = false;
   EventHandler<Event> _onCanPlayThrough;
   EventHandler<Event> get onCanPlayThrough => _onCanPlayThrough;
-  void set onCanPlayThrough(EventHandler<Event> v) {
+  set onCanPlayThrough(EventHandler<Event> v) {
     _onCanPlayThrough = v;
     _onCanPlayThroughSet = true;
     shouldUpdateSubs = true;
@@ -265,7 +268,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onChangeSet = false;
   EventHandler<Event> _onChange;
   EventHandler<Event> get onChange => _onChange;
-  void set onChange(EventHandler<Event> v) {
+  set onChange(EventHandler<Event> v) {
     _onChange = v;
     _onChangeSet = true;
     shouldUpdateSubs = true;
@@ -275,7 +278,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onClickSet = false;
   EventHandler<MouseEvent> _onClick;
   EventHandler<MouseEvent> get onClick => _onClick;
-  void set onClick(EventHandler<MouseEvent> v) {
+  set onClick(EventHandler<MouseEvent> v) {
     _onClick = v;
     _onClickSet = true;
     shouldUpdateSubs = true;
@@ -285,7 +288,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onContextMenuSet = false;
   EventHandler<MouseEvent> _onContextMenu;
   EventHandler<MouseEvent> get onContextMenu => _onContextMenu;
-  void set onContextMenu(EventHandler<MouseEvent> v) {
+  set onContextMenu(EventHandler<MouseEvent> v) {
     _onContextMenu = v;
     _onContextMenuSet = true;
     shouldUpdateSubs = true;
@@ -295,7 +298,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onCopySet = false;
   EventHandler<ClipboardEvent> _onCopy;
   EventHandler<ClipboardEvent> get onCopy => _onCopy;
-  void set onCopy(EventHandler<ClipboardEvent> v) {
+  set onCopy(EventHandler<ClipboardEvent> v) {
     _onCopy = v;
     _onCopySet = true;
     shouldUpdateSubs = true;
@@ -305,7 +308,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onCutSet = false;
   EventHandler<ClipboardEvent> _onCut;
   EventHandler<ClipboardEvent> get onCut => _onCut;
-  void set onCut(EventHandler<ClipboardEvent> v) {
+  set onCut(EventHandler<ClipboardEvent> v) {
     _onCut = v;
     _onCutSet = true;
     shouldUpdateSubs = true;
@@ -315,7 +318,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDoubleClickSet = false;
   EventHandler<Event> _onDoubleClick;
   EventHandler<Event> get onDoubleClick => _onDoubleClick;
-  void set onDoubleClick(EventHandler<Event> v) {
+  set onDoubleClick(EventHandler<Event> v) {
     _onDoubleClick = v;
     _onDoubleClickSet = true;
     shouldUpdateSubs = true;
@@ -325,7 +328,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDragSet = false;
   EventHandler<MouseEvent> _onDrag;
   EventHandler<MouseEvent> get onDrag => _onDrag;
-  void set onDrag(EventHandler<MouseEvent> v) {
+  set onDrag(EventHandler<MouseEvent> v) {
     _onDrag = v;
     _onDragSet = true;
     shouldUpdateSubs = true;
@@ -335,7 +338,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDragEndSet = false;
   EventHandler<MouseEvent> _onDragEnd;
   EventHandler<MouseEvent> get onDragEnd => _onDragEnd;
-  void set onDragEnd(EventHandler<MouseEvent> v) {
+  set onDragEnd(EventHandler<MouseEvent> v) {
     _onDragEnd = v;
     _onDragEndSet = true;
     shouldUpdateSubs = true;
@@ -345,7 +348,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDragEnterSet = false;
   EventHandler<MouseEvent> _onDragEnter;
   EventHandler<MouseEvent> get onDragEnter => _onDragEnter;
-  void set onDragEnter(EventHandler<MouseEvent> v) {
+  set onDragEnter(EventHandler<MouseEvent> v) {
     _onDragEnter = v;
     _onDragEnterSet = true;
     shouldUpdateSubs = true;
@@ -355,7 +358,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDragLeaveSet = false;
   EventHandler<MouseEvent> _onDragLeave;
   EventHandler<MouseEvent> get onDragLeave => _onDragLeave;
-  void set onDragLeave(EventHandler<MouseEvent> v) {
+  set onDragLeave(EventHandler<MouseEvent> v) {
     _onDragLeave = v;
     _onDragLeaveSet = true;
     shouldUpdateSubs = true;
@@ -365,7 +368,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDragOverSet = false;
   EventHandler<MouseEvent> _onDragOver;
   EventHandler<MouseEvent> get onDragOver => _onDragOver;
-  void set onDragOver(EventHandler<MouseEvent> v) {
+  set onDragOver(EventHandler<MouseEvent> v) {
     _onDragOver = v;
     _onDragOverSet = true;
     shouldUpdateSubs = true;
@@ -375,7 +378,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDragStartSet = false;
   EventHandler<MouseEvent> _onDragStart;
   EventHandler<MouseEvent> get onDragStart => _onDragStart;
-  void set onDragStart(EventHandler<MouseEvent> v) {
+  set onDragStart(EventHandler<MouseEvent> v) {
     _onDragStart = v;
     _onDragStartSet = true;
     shouldUpdateSubs = true;
@@ -385,7 +388,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDropSet = false;
   EventHandler<MouseEvent> _onDrop;
   EventHandler<MouseEvent> get onDrop => _onDrop;
-  void set onDrop(EventHandler<MouseEvent> v) {
+  set onDrop(EventHandler<MouseEvent> v) {
     _onDrop = v;
     _onDropSet = true;
     shouldUpdateSubs = true;
@@ -395,7 +398,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onDurationChangeSet = false;
   EventHandler<Event> _onDurationChange;
   EventHandler<Event> get onDurationChange => _onDurationChange;
-  void set onDurationChange(EventHandler<Event> v) {
+  set onDurationChange(EventHandler<Event> v) {
     _onDurationChange = v;
     _onDurationChangeSet = true;
     shouldUpdateSubs = true;
@@ -405,7 +408,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onEmptiedSet = false;
   EventHandler<Event> _onEmptied;
   EventHandler<Event> get onEmptied => _onEmptied;
-  void set onEmptied(EventHandler<Event> v) {
+  set onEmptied(EventHandler<Event> v) {
     _onEmptied = v;
     _onEmptiedSet = true;
     shouldUpdateSubs = true;
@@ -415,7 +418,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onEndedSet = false;
   EventHandler<Event> _onEnded;
   EventHandler<Event> get onEnded => _onEnded;
-  void set onEnded(EventHandler<Event> v) {
+  set onEnded(EventHandler<Event> v) {
     _onEnded = v;
     _onEndedSet = true;
     shouldUpdateSubs = true;
@@ -425,7 +428,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onErrorSet = false;
   EventHandler<Event> _onError;
   EventHandler<Event> get onError => _onError;
-  void set onError(EventHandler<Event> v) {
+  set onError(EventHandler<Event> v) {
     _onError = v;
     _onErrorSet = true;
     shouldUpdateSubs = true;
@@ -435,7 +438,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onFocusSet = false;
   EventHandler<Event> _onFocus;
   EventHandler<Event> get onFocus => _onFocus;
-  void set onFocus(EventHandler<Event> v) {
+  set onFocus(EventHandler<Event> v) {
     _onFocus = v;
     _onFocusSet = true;
     shouldUpdateSubs = true;
@@ -445,7 +448,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onInputSet = false;
   EventHandler<Event> _onInput;
   EventHandler<Event> get onInput => _onInput;
-  void set onInput(EventHandler<Event> v) {
+  set onInput(EventHandler<Event> v) {
     _onInput = v;
     _onInputSet = true;
     shouldUpdateSubs = true;
@@ -455,7 +458,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onInvalidSet = false;
   EventHandler<Event> _onInvalid;
   EventHandler<Event> get onInvalid => _onInvalid;
-  void set onInvalid(EventHandler<Event> v) {
+  set onInvalid(EventHandler<Event> v) {
     _onInvalid = v;
     _onInvalidSet = true;
     shouldUpdateSubs = true;
@@ -465,7 +468,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onKeyDownSet = false;
   EventHandler<KeyboardEvent> _onKeyDown;
   EventHandler<KeyboardEvent> get onKeyDown => _onKeyDown;
-  void set onKeyDown(EventHandler<KeyboardEvent> v) {
+  set onKeyDown(EventHandler<KeyboardEvent> v) {
     _onKeyDown = v;
     _onKeyDownSet = true;
     shouldUpdateSubs = true;
@@ -475,7 +478,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onKeyPressSet = false;
   EventHandler<KeyboardEvent> _onKeyPress;
   EventHandler<KeyboardEvent> get onKeyPress => _onKeyPress;
-  void set onKeyPress(EventHandler<KeyboardEvent> v) {
+  set onKeyPress(EventHandler<KeyboardEvent> v) {
     _onKeyPress = v;
     _onKeyPressSet = true;
     shouldUpdateSubs = true;
@@ -485,7 +488,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onKeyUpSet = false;
   EventHandler<KeyboardEvent> _onKeyUp;
   EventHandler<KeyboardEvent> get onKeyUp => _onKeyUp;
-  void set onKeyUp(EventHandler<KeyboardEvent> v) {
+  set onKeyUp(EventHandler<KeyboardEvent> v) {
     _onKeyUp = v;
     _onKeyUpSet = true;
     shouldUpdateSubs = true;
@@ -495,7 +498,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onLoadSet = false;
   EventHandler<Event> _onLoad;
   EventHandler<Event> get onLoad => _onLoad;
-  void set onLoad(EventHandler<Event> v) {
+  set onLoad(EventHandler<Event> v) {
     _onLoad = v;
     _onLoadSet = true;
     shouldUpdateSubs = true;
@@ -505,7 +508,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onLoadedDataSet = false;
   EventHandler<Event> _onLoadedData;
   EventHandler<Event> get onLoadedData => _onLoadedData;
-  void set onLoadedData(EventHandler<Event> v) {
+  set onLoadedData(EventHandler<Event> v) {
     _onLoadedData = v;
     _onLoadedDataSet = true;
     shouldUpdateSubs = true;
@@ -515,7 +518,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onLoadedMetadataSet = false;
   EventHandler<Event> _onLoadedMetadata;
   EventHandler<Event> get onLoadedMetadata => _onLoadedMetadata;
-  void set onLoadedMetadata(EventHandler<Event> v) {
+  set onLoadedMetadata(EventHandler<Event> v) {
     _onLoadedMetadata = v;
     _onLoadedMetadataSet = true;
     shouldUpdateSubs = true;
@@ -525,7 +528,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseDownSet = false;
   EventHandler<MouseEvent> _onMouseDown;
   EventHandler<MouseEvent> get onMouseDown => _onMouseDown;
-  void set onMouseDown(EventHandler<MouseEvent> v) {
+  set onMouseDown(EventHandler<MouseEvent> v) {
     _onMouseDown = v;
     _onMouseDownSet = true;
     shouldUpdateSubs = true;
@@ -535,7 +538,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseEnterSet = false;
   EventHandler<MouseEvent> _onMouseEnter;
   EventHandler<MouseEvent> get onMouseEnter => _onMouseEnter;
-  void set onMouseEnter(EventHandler<MouseEvent> v) {
+  set onMouseEnter(EventHandler<MouseEvent> v) {
     _onMouseEnter = v;
     _onMouseEnterSet = true;
     shouldUpdateSubs = true;
@@ -545,7 +548,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseLeaveSet = false;
   EventHandler<MouseEvent> _onMouseLeave;
   EventHandler<MouseEvent> get onMouseLeave => _onMouseLeave;
-  void set onMouseLeave(EventHandler<MouseEvent> v) {
+  set onMouseLeave(EventHandler<MouseEvent> v) {
     _onMouseLeave = v;
     _onMouseLeaveSet = true;
     shouldUpdateSubs = true;
@@ -555,7 +558,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseMoveSet = false;
   EventHandler<MouseEvent> _onMouseMove;
   EventHandler<MouseEvent> get onMouseMove => _onMouseMove;
-  void set onMouseMove(EventHandler<MouseEvent> v) {
+  set onMouseMove(EventHandler<MouseEvent> v) {
     _onMouseMove = v;
     _onMouseMoveSet = true;
     shouldUpdateSubs = true;
@@ -565,7 +568,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseOutSet = false;
   EventHandler<MouseEvent> _onMouseOut;
   EventHandler<MouseEvent> get onMouseOut => _onMouseOut;
-  void set onMouseOut(EventHandler<MouseEvent> v) {
+  set onMouseOut(EventHandler<MouseEvent> v) {
     _onMouseOut = v;
     _onMouseOutSet = true;
     shouldUpdateSubs = true;
@@ -575,7 +578,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseOverSet = false;
   EventHandler<MouseEvent> _onMouseOver;
   EventHandler<MouseEvent> get onMouseOver => _onMouseOver;
-  void set onMouseOver(EventHandler<MouseEvent> v) {
+  set onMouseOver(EventHandler<MouseEvent> v) {
     _onMouseOver = v;
     _onMouseOverSet = true;
     shouldUpdateSubs = true;
@@ -585,7 +588,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseUpSet = false;
   EventHandler<MouseEvent> _onMouseUp;
   EventHandler<MouseEvent> get onMouseUp => _onMouseUp;
-  void set onMouseUp(EventHandler<MouseEvent> v) {
+  set onMouseUp(EventHandler<MouseEvent> v) {
     _onMouseUp = v;
     _onMouseUpSet = true;
     shouldUpdateSubs = true;
@@ -595,7 +598,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onMouseWheelSet = false;
   EventHandler<WheelEvent> _onMouseWheel;
   EventHandler<WheelEvent> get onMouseWheel => _onMouseWheel;
-  void set onMouseWheel(EventHandler<WheelEvent> v) {
+  set onMouseWheel(EventHandler<WheelEvent> v) {
     _onMouseWheel = v;
     _onMouseWheelSet = true;
     shouldUpdateSubs = true;
@@ -605,7 +608,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onPasteSet = false;
   EventHandler<ClipboardEvent> _onPaste;
   EventHandler<ClipboardEvent> get onPaste => _onPaste;
-  void set onPaste(EventHandler<ClipboardEvent> v) {
+  set onPaste(EventHandler<ClipboardEvent> v) {
     _onPaste = v;
     _onPasteSet = true;
     shouldUpdateSubs = true;
@@ -615,7 +618,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onPauseSet = false;
   EventHandler<Event> _onPause;
   EventHandler<Event> get onPause => _onPause;
-  void set onPause(EventHandler<Event> v) {
+  set onPause(EventHandler<Event> v) {
     _onPause = v;
     _onPauseSet = true;
     shouldUpdateSubs = true;
@@ -625,7 +628,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onPlaySet = false;
   EventHandler<Event> _onPlay;
   EventHandler<Event> get onPlay => _onPlay;
-  void set onPlay(EventHandler<Event> v) {
+  set onPlay(EventHandler<Event> v) {
     _onPlay = v;
     _onPlaySet = true;
     shouldUpdateSubs = true;
@@ -635,7 +638,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onPlayingSet = false;
   EventHandler<Event> _onPlaying;
   EventHandler<Event> get onPlaying => _onPlaying;
-  void set onPlaying(EventHandler<Event> v) {
+  set onPlaying(EventHandler<Event> v) {
     _onPlaying = v;
     _onPlayingSet = true;
     shouldUpdateSubs = true;
@@ -645,7 +648,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onRateChangeSet = false;
   EventHandler<Event> _onRateChange;
   EventHandler<Event> get onRateChange => _onRateChange;
-  void set onRateChange(EventHandler<Event> v) {
+  set onRateChange(EventHandler<Event> v) {
     _onRateChange = v;
     _onRateChangeSet = true;
     shouldUpdateSubs = true;
@@ -655,7 +658,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onResetSet = false;
   EventHandler<Event> _onReset;
   EventHandler<Event> get onReset => _onReset;
-  void set onReset(EventHandler<Event> v) {
+  set onReset(EventHandler<Event> v) {
     _onReset = v;
     _onResetSet = true;
     shouldUpdateSubs = true;
@@ -665,7 +668,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onResizeSet = false;
   EventHandler<Event> _onResize;
   EventHandler<Event> get onResize => _onResize;
-  void set onResize(EventHandler<Event> v) {
+  set onResize(EventHandler<Event> v) {
     _onResize = v;
     _onResizeSet = true;
     shouldUpdateSubs = true;
@@ -675,7 +678,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onScrollSet = false;
   EventHandler<Event> _onScroll;
   EventHandler<Event> get onScroll => _onScroll;
-  void set onScroll(EventHandler<Event> v) {
+  set onScroll(EventHandler<Event> v) {
     _onScroll = v;
     _onScrollSet = true;
     shouldUpdateSubs = true;
@@ -685,7 +688,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSearchSet = false;
   EventHandler<Event> _onSearch;
   EventHandler<Event> get onSearch => _onSearch;
-  void set onSearch(EventHandler<Event> v) {
+  set onSearch(EventHandler<Event> v) {
     _onSearch = v;
     _onSearchSet = true;
     shouldUpdateSubs = true;
@@ -695,7 +698,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSeekedSet = false;
   EventHandler<Event> _onSeeked;
   EventHandler<Event> get onSeeked => _onSeeked;
-  void set onSeeked(EventHandler<Event> v) {
+  set onSeeked(EventHandler<Event> v) {
     _onSeeked = v;
     _onSeekedSet = true;
     shouldUpdateSubs = true;
@@ -705,7 +708,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSeekingSet = false;
   EventHandler<Event> _onSeeking;
   EventHandler<Event> get onSeeking => _onSeeking;
-  void set onSeeking(EventHandler<Event> v) {
+  set onSeeking(EventHandler<Event> v) {
     _onSeeking = v;
     _onSeekingSet = true;
     shouldUpdateSubs = true;
@@ -715,7 +718,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSelectSet = false;
   EventHandler<Event> _onSelect;
   EventHandler<Event> get onSelect => _onSelect;
-  void set onSelect(EventHandler<Event> v) {
+  set onSelect(EventHandler<Event> v) {
     _onSelect = v;
     _onSelectSet = true;
     shouldUpdateSubs = true;
@@ -725,7 +728,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSelectStartSet = false;
   EventHandler<Event> _onSelectStart;
   EventHandler<Event> get onSelectStart => _onSelectStart;
-  void set onSelectStart(EventHandler<Event> v) {
+  set onSelectStart(EventHandler<Event> v) {
     _onSelectStart = v;
     _onSelectStartSet = true;
     shouldUpdateSubs = true;
@@ -735,7 +738,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onStalledSet = false;
   EventHandler<Event> _onStalled;
   EventHandler<Event> get onStalled => _onStalled;
-  void set onStalled(EventHandler<Event> v) {
+  set onStalled(EventHandler<Event> v) {
     _onStalled = v;
     _onStalledSet = true;
     shouldUpdateSubs = true;
@@ -745,7 +748,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSubmitSet = false;
   EventHandler<Event> _onSubmit;
   EventHandler<Event> get onSubmit => _onSubmit;
-  void set onSubmit(EventHandler<Event> v) {
+  set onSubmit(EventHandler<Event> v) {
     _onSubmit = v;
     _onSubmitSet = true;
     shouldUpdateSubs = true;
@@ -755,7 +758,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onSuspendSet = false;
   EventHandler<Event> _onSuspend;
   EventHandler<Event> get onSuspend => _onSuspend;
-  void set onSuspend(EventHandler<Event> v) {
+  set onSuspend(EventHandler<Event> v) {
     _onSuspend = v;
     _onSuspendSet = true;
     shouldUpdateSubs = true;
@@ -765,7 +768,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTimeUpdateSet = false;
   EventHandler<Event> _onTimeUpdate;
   EventHandler<Event> get onTimeUpdate => _onTimeUpdate;
-  void set onTimeUpdate(EventHandler<Event> v) {
+  set onTimeUpdate(EventHandler<Event> v) {
     _onTimeUpdate = v;
     _onTimeUpdateSet = true;
     shouldUpdateSubs = true;
@@ -775,7 +778,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTouchCancelSet = false;
   EventHandler<TouchEvent> _onTouchCancel;
   EventHandler<TouchEvent> get onTouchCancel => _onTouchCancel;
-  void set onTouchCancel(EventHandler<TouchEvent> v) {
+  set onTouchCancel(EventHandler<TouchEvent> v) {
     _onTouchCancel = v;
     _onTouchCancelSet = true;
     shouldUpdateSubs = true;
@@ -785,7 +788,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTouchEndSet = false;
   EventHandler<TouchEvent> _onTouchEnd;
   EventHandler<TouchEvent> get onTouchEnd => _onTouchEnd;
-  void set onTouchEnd(EventHandler<TouchEvent> v) {
+  set onTouchEnd(EventHandler<TouchEvent> v) {
     _onTouchEnd = v;
     _onTouchEndSet = true;
     shouldUpdateSubs = true;
@@ -795,7 +798,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTouchEnterSet = false;
   EventHandler<TouchEvent> _onTouchEnter;
   EventHandler<TouchEvent> get onTouchEnter => _onTouchEnter;
-  void set onTouchEnter(EventHandler<TouchEvent> v) {
+  set onTouchEnter(EventHandler<TouchEvent> v) {
     _onTouchEnter = v;
     _onTouchEnterSet = true;
     shouldUpdateSubs = true;
@@ -805,7 +808,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTouchLeaveSet = false;
   EventHandler<TouchEvent> _onTouchLeave;
   EventHandler<TouchEvent> get onTouchLeave => _onTouchLeave;
-  void set onTouchLeave(EventHandler<TouchEvent> v) {
+  set onTouchLeave(EventHandler<TouchEvent> v) {
     _onTouchLeave = v;
     _onTouchLeaveSet = true;
     shouldUpdateSubs = true;
@@ -815,7 +818,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTouchMoveSet = false;
   EventHandler<TouchEvent> _onTouchMove;
   EventHandler<TouchEvent> get onTouchMove => _onTouchMove;
-  void set onTouchMove(EventHandler<TouchEvent> v) {
+  set onTouchMove(EventHandler<TouchEvent> v) {
     _onTouchMove = v;
     _onTouchMoveSet = true;
     shouldUpdateSubs = true;
@@ -825,7 +828,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTouchStartSet = false;
   EventHandler<TouchEvent> _onTouchStart;
   EventHandler<TouchEvent> get onTouchStart => _onTouchStart;
-  void set onTouchStart(EventHandler<TouchEvent> v) {
+  set onTouchStart(EventHandler<TouchEvent> v) {
     _onTouchStart = v;
     _onTouchStartSet = true;
     shouldUpdateSubs = true;
@@ -835,7 +838,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onTransitionEndSet = false;
   EventHandler<TransitionEvent> _onTransitionEnd;
   EventHandler<TransitionEvent> get onTransitionEnd => _onTransitionEnd;
-  void set onTransitionEnd(EventHandler<TransitionEvent> v) {
+  set onTransitionEnd(EventHandler<TransitionEvent> v) {
     _onTransitionEnd = v;
     _onTransitionEndSet = true;
     shouldUpdateSubs = true;
@@ -845,7 +848,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onVolumeChangeSet = false;
   EventHandler<Event> _onVolumeChange;
   EventHandler<Event> get onVolumeChange => _onVolumeChange;
-  void set onVolumeChange(EventHandler<Event> v) {
+  set onVolumeChange(EventHandler<Event> v) {
     _onVolumeChange = v;
     _onVolumeChangeSet = true;
     shouldUpdateSubs = true;
@@ -855,7 +858,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onWaitingSet = false;
   EventHandler<Event> _onWaiting;
   EventHandler<Event> get onWaiting => _onWaiting;
-  void set onWaiting(EventHandler<Event> v) {
+  set onWaiting(EventHandler<Event> v) {
     _onWaiting = v;
     _onWaitingSet = true;
     shouldUpdateSubs = true;
@@ -865,7 +868,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onFullscreenChangeSet = false;
   EventHandler<Event> _onFullscreenChange;
   EventHandler<Event> get onFullscreenChange => _onFullscreenChange;
-  void set onFullscreenChange(EventHandler<Event> v) {
+  set onFullscreenChange(EventHandler<Event> v) {
     _onFullscreenChange = v;
     _onFullscreenChangeSet = true;
     shouldUpdateSubs = true;
@@ -875,7 +878,7 @@ abstract class VElement<E extends Element> extends VNode {
   bool _onFullscreenErrorSet = false;
   EventHandler<Event> _onFullscreenError;
   EventHandler<Event> get onFullscreenError => _onFullscreenError;
-  void set onFullscreenError(EventHandler<Event> v) {
+  set onFullscreenError(EventHandler<Event> v) {
     _onFullscreenError = v;
     _onFullscreenErrorSet = true;
     shouldUpdateSubs = true;

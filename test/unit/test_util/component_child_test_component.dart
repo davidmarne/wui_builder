@@ -34,12 +34,12 @@ class ComponentChildComponent extends TestComponent<ComponentChildProps> {
       <String, dynamic>{testContextKey: props.context};
 
   void updateState(ComponentChildProps p) {
-    setState((_1, prevState) => p..actualValue = prevState.actualValue + 1);
+    setState((_, prevState) => p..actualValue = prevState.actualValue + 1);
   }
 
   void updateStateIdle(ComponentChildProps p, {bool shouldAbort: false}) =>
       setStateOnIdle(
-          (_1, prevState) => p..actualValue = prevState.actualValue + 1,
+          (_, prevState) => p..actualValue = prevState.actualValue + 1,
           shouldAbort: shouldAbort);
 
   @override
@@ -58,12 +58,12 @@ class NestedComponentChildComponent extends TestComponent<TestComponentProps> {
   TestComponentProps getInitialState() => props;
 
   void updateState(TestComponentProps p) {
-    setState((_1, prevState) => p..actualValue = prevState.actualValue + 1);
+    setState((_, prevState) => p..actualValue = prevState.actualValue + 1);
   }
 
   void updateStateIdle(TestComponentProps p, {bool shouldAbort: false}) =>
       setStateOnIdle(
-          (_1, prevState) => p..actualValue = prevState.actualValue + 1,
+          (_, prevState) => p..actualValue = prevState.actualValue + 1,
           shouldAbort: shouldAbort);
 
   @override

@@ -31,7 +31,7 @@ bool updateElement(UpdateTracker tracker) {
 
     final nextTracker = tracker.nextCursor(
       tracker.node,
-      tracker.node.children.length > 0 ? tracker.node.children.first : null,
+      tracker.node.children.isNotEmpty ? tracker.node.children.first : null,
       newChildVNode,
       oldChildVNode,
     );
@@ -89,5 +89,5 @@ bool updateElementChildren(UpdateTracker tracker) {
 
 void disposeVElement(VElement vnode) {
   vnode.dispose();
-  for (final c in vnode.children) disposeVNode(c);
+  vnode.children.forEach(disposeVNode);
 }

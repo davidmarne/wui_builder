@@ -25,7 +25,8 @@ Future<Null> main(List<String> args) async {
     ];
 
   config.coverage
-    ..html = true
+    ..html = false
+    ..pubServe = true
     ..reportOn = ['lib/'];
 
   await dev(args);

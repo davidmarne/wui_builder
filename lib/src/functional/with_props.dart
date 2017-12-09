@@ -1,6 +1,6 @@
 import 'functional.dart';
 
-/// [mapProps] will transform the props with the [mapper] funtion provider before invokeing [baseComponent]
+/// [withProps] will transform the props with the [mapper] funtion provider before invokeing `baseComponent`
 ///
 /// Example
 ///  ```dart
@@ -20,5 +20,4 @@ import 'functional.dart';
 ///   ```
 ComponentEnhancer<InnerP, OutterP> withProps<InnerP, OutterP>(
         PropMapper<InnerP, OutterP> mapper) =>
-    (FunctionalComponent<OutterP> baseComponent) =>
-        (InnerP props) => baseComponent(mapper(props));
+    (baseComponent) => (props) => baseComponent(mapper(props));

@@ -23,4 +23,3 @@ abstract class PCComponent<P, C> extends CComponent<P, Null, C> {
 abstract class SCComponent<S, C> extends CComponent<Null, S, C> {
   SCComponent() : super(null);
 }
-

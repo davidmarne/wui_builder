@@ -1,9 +1,8 @@
 import 'dart:html';
 
-import 'component.dart';
 import 'cursors.dart';
-import 'vnode.dart';
 import 'update_queue.dart';
+import 'vnode.dart';
 
 // a UpdateTracker contains state relating to where in the
 // reconciliation process we are for a given update. It tracks
@@ -25,20 +24,15 @@ class UpdateTracker {
   bool hasStarted = false;
   IdleDeadline deadline;
 
-  UpdateTracker.sync(Element node, Component newVNode)
+  UpdateTracker.sync(this.node, this.newVNode)
       : isAsync = false,
         shouldAbort = false,
         parent = node.parent,
-        this.node = node,
-        this.newVNode = newVNode,
         oldVNode = newVNode;
 
-  UpdateTracker.async(Element node, Component newVNode, bool shouldAbort)
+  UpdateTracker.async(this.node, this.newVNode, this.shouldAbort)
       : isAsync = true,
-        this.shouldAbort = shouldAbort,
         parent = node.parent,
-        this.node = node,
-        this.newVNode = newVNode,
         oldVNode = newVNode;
 
   UpdateTracker.clone(this.parent, this.node, this.newVNode, this.oldVNode,
@@ -58,7 +52,7 @@ class UpdateTracker {
   bool get shouldPause {
     if (!isAsync) return false;
     final deadlineHit = deadline.timeRemaining() < 1;
-    if (deadlineHit) queueProcessingUpdate(this);
+    if (deadlineHit) queueProcessingIdleUpdate(this);
     return deadlineHit;
   }
 

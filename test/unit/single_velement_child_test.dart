@@ -7,6 +7,7 @@ import 'package:wui_builder/src/wui_builder/update_queue.dart';
 import 'test_util/single_velement_child_test_component.dart';
 import 'test_util/test_component_util.dart';
 import 'test_util/test_idle_deadline.dart';
+import 'test_util/testbed.dart';
 
 void main() {
   group('single velement child test -', () {
@@ -20,14 +21,14 @@ void main() {
       expect(host.children.first, component.ref);
       expectRenderedOutput(
           host, expectedPropValue, expectedStateValue, testContextValue);
-      expect(activeUpdates.length, expectedNumPendingUpdates);
+      expect(pendingIdleUpdates.length, expectedNumPendingUpdates);
       // if any updates are pending the pendingIdleId should also be set
       expect(pendingIdleId, expectedNumPendingUpdates > 0 ? isNotNull : isNull);
+      expect(beforeAnimationFrameCallbacks.isEmpty, isTrue);
     }
 
     setUp(() {
-      activeUpdates = [];
-      pendingIdleId = null;
+      setUpTestbed();
       host = new DivElement();
 
       // renders a test component
@@ -237,7 +238,7 @@ void main() {
               // original update should remain queued, but cancelled
               // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let it finish
               runIdle(aliveIdleDeadline());
@@ -284,7 +285,7 @@ void main() {
               // original update should remain queued, but cancelled
               // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let it finish
               runIdle(aliveIdleDeadline());
@@ -329,7 +330,7 @@ void main() {
               // the 2 updates should be queued. The first should have been cancelled by the second
               // the rendered text should not have been be updated yet
               verifier(1, 1, 2);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -383,7 +384,7 @@ void main() {
               // let the first update finish, it should cancel the proceeding update
               runIdle(completeAfterIdleDeadline(2));
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -426,7 +427,7 @@ void main() {
               // idle update will be in the queue but cancelled
               // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let it finish
               runIdle(aliveIdleDeadline());
@@ -463,7 +464,7 @@ void main() {
               // idle update will be in the queue but cancelled
               // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
               runIdle(aliveIdleDeadline());
               verifier(1, 3, 0);
             });
@@ -591,7 +592,7 @@ void main() {
               // the first update should be queued but cancelled
               // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let it finish
               runIdle(aliveIdleDeadline());
@@ -641,7 +642,7 @@ void main() {
               // the first update should be queued but cancelled
               // the rendered text should have been updated, representing 2 updates
               verifier(1, 3, 1);
-              expect(activeUpdates[0].isCancelled, isTrue);
+              expect(pendingIdleUpdates[0].isCancelled, isTrue);
 
               // let it finish
               runIdle(aliveIdleDeadline());
@@ -689,8 +690,8 @@ void main() {
               // the rendered text should not have been be updated yet
               verifier(1, 1, 2);
               // the first update should be cancelled when the second is queued
-              expect(activeUpdates[0].isCancelled, true);
-              expect(activeUpdates[1].isCancelled, false);
+              expect(pendingIdleUpdates[0].isCancelled, true);
+              expect(pendingIdleUpdates[1].isCancelled, false);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());
@@ -743,8 +744,8 @@ void main() {
               verifier(1, 1, 2);
               // first should be cancelled even tho shouldAbort is false
               // since it had not started
-              expect(activeUpdates[0].isCancelled, false);
-              expect(activeUpdates[1].isCancelled, false);
+              expect(pendingIdleUpdates[0].isCancelled, false);
+              expect(pendingIdleUpdates[1].isCancelled, false);
 
               // let the updates finsh
               runIdle(aliveIdleDeadline());

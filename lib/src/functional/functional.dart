@@ -9,5 +9,5 @@ typedef VNode FunctionalComponent<P>(P props);
 typedef FunctionalComponent<InnerP> ComponentEnhancer<InnerP, OutterP>(
     FunctionalComponent<OutterP> baseComponent);
 
-/// [PropsMapper] takes a props object of type [P] and returns a props object of type [T]
+/// [PropMapper] takes a props object of type [P] and returns a props object of type [T]
 typedef T PropMapper<P, T>(P props);

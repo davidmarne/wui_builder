@@ -6,20 +6,72 @@ import 'update_processor.dart';
 import 'update_tracker.dart';
 import 'velement.dart';
 
-List<UpdateTracker> activeUpdates = [];
+// settable methods for testing
+var animationFrameRequstMethod = window.requestAnimationFrame;
+var idleCallbackRequestMethod = window.requestIdleCallback;
+
+// updates queued to run on the next idle callback
+List<UpdateTracker> pendingIdleUpdates = [];
 int pendingIdleId;
+
+// updates queued to run on the next animation frame
+List<UpdateTracker> pendingAnimationFrameUpdates = [];
+int pendingAnimationFrameId;
+
+// callbacks registered to run before each animation frame
+List<BeforeAnimationFrame> beforeAnimationFrameCallbacks = [];
+
+void addBeforeAnimationFrameCallback(BeforeAnimationFrame callback) {
+  // register the callback
+  beforeAnimationFrameCallbacks.add(callback);
+
+  // request a frame if there already isn't one requested
+  if (pendingAnimationFrameId == null) requestAnimationFrame();
+}
+
+void queueNewAnimationFrameUpdate(UpdateTracker tracker) {
+  // add the tracker to the queue
+  pendingAnimationFrameUpdates.add(tracker);
+
+  // request idle time if necessary
+  if (pendingAnimationFrameId == null) requestAnimationFrame();
+}
+
+void requestAnimationFrame() {
+  // request idle time to render
+  pendingAnimationFrameId = animationFrameRequstMethod(onAnimationFrame);
+}
+
+void onAnimationFrame(num _) {
+  // call any registered callbacks in beforeAnimationFrameCallbacks
+  for (final callback in beforeAnimationFrameCallbacks) callback();
+
+  while (pendingAnimationFrameUpdates.isNotEmpty) {
+    // remove the update at the head of the queue and resume it
+    final update = pendingAnimationFrameUpdates.removeAt(0);
+
+    resumeUpdate(update);
+  }
+
+  pendingAnimationFrameId = null;
+  if (beforeAnimationFrameCallbacks.isNotEmpty) requestAnimationFrame();
+}
 
 void requestIdle() {
   // request idle time to render
-  pendingIdleId = window.requestIdleCallback(runIdle);
+  pendingIdleId = idleCallbackRequestMethod(runIdle);
 }
 
 void runIdle(IdleDeadline deadline) {
   // run the update cycle for each update in the queue
-  while (!activeUpdates.isEmpty) {
+  while (pendingIdleUpdates.isNotEmpty) {
     // remove the update at the head of the queue and resume it
-    final update = activeUpdates.removeAt(0);
-    resumeUpdate(deadline, update);
+    final update = pendingIdleUpdates.removeAt(0);
+
+    // update the deadline on the tracker and update it
+    update.refresh(deadline);
+
+    resumeUpdate(update);
 
     // break out of the loop if the timeout is hit
     if (deadline.timeRemaining() < 1) break;
@@ -29,34 +81,32 @@ void runIdle(IdleDeadline deadline) {
   pendingIdleId = null;
 
   // if there are still updates in the queue request idle time
-  if (activeUpdates.length > 0) requestIdle();
+  if (pendingIdleUpdates.isNotEmpty) requestIdle();
 }
 
 UpdateTracker firstNonCancelledParent(UpdateTracker tracker) {
-  while (tracker != null) {
-    if (!tracker.isCancelled) return tracker;
-    tracker = tracker.parentTracker;
+  var current = tracker;
+  while (current != null) {
+    if (!current.isCancelled) return current;
+    current = current.parentTracker;
   }
   return null;
 }
 
-void queueNewUpdate(UpdateTracker tracker) {
+void queueNewIdleUpdate(UpdateTracker tracker) {
   // add the tracker to the queue
-  activeUpdates.add(tracker);
+  pendingIdleUpdates.add(tracker);
 
   // request idle time if necessary
   if (pendingIdleId == null) requestIdle();
 }
 
-void queueProcessingUpdate(UpdateTracker tracker) {
+void queueProcessingIdleUpdate(UpdateTracker tracker) {
   // add the tracker to the queue
-  activeUpdates.insert(0, tracker);
-
-  // request idle time if necessary
-  if (pendingIdleId == null) requestIdle();
+  pendingIdleUpdates.insert(0, tracker);
 }
 
-void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
+void resumeUpdate(UpdateTracker tracker) {
   tracker.hasStarted = true;
 
   // if the deadline has been cancelled finsh any parent
@@ -69,8 +119,6 @@ void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
       doPendingWork(nonCancelled);
     }
   } else {
-    // update the deadline on the tracker and update it
-    tracker.refresh(deadline);
     final finished = updateVNode(tracker);
 
     // if the current update stack was completed
@@ -82,16 +130,15 @@ void resumeUpdate(IdleDeadline deadline, UpdateTracker tracker) {
 void doPendingWork(UpdateTracker tracker) {
   // pop work of the queue until the tracker is complete or paused
   var finished = true;
-  // why do i need the second clause?
-  while (tracker != null) {
-    // && tracker.pendingWork != null) {
-    if (tracker.pendingWork.cursorType == PendingCursors.Iterable) {
-      finished = updateElementChildren(tracker);
+  var current = tracker;
+  while (current != null) {
+    if (current.pendingWork.cursorType == PendingCursors.iterable) {
+      finished = updateElementChildren(current);
     } else {
-      finishComponentUpdate(tracker);
+      finishComponentUpdate(current);
       finished = true;
     }
     if (!finished) return;
-    tracker = tracker.parentTracker;
+    current = current.parentTracker;
   }
 }

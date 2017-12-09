@@ -5,7 +5,7 @@ typedef double TestTimeRemaining();
 class TestIdleDeadline implements IdleDeadline {
   TestTimeRemaining testTimeRemaining;
 
-  TestIdleDeadline(TestTimeRemaining this.testTimeRemaining);
+  TestIdleDeadline(this.testTimeRemaining);
 
   @override
   double timeRemaining() => testTimeRemaining();

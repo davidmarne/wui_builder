@@ -17,6 +17,7 @@ class TodoProps {
 class Todos extends PComponent<TodoProps> {
   Todos(TodoProps props) : super(props);
 
+  @override
   VNode render() => new Va()
     ..draggable = true
     ..onDragStart = _onDrag
@@ -31,7 +32,7 @@ class Todos extends PComponent<TodoProps> {
           new VCheckboxInputElement()..checked = props.todo.isComplete,
         ],
       new VSpanElement()
-        ..text = ' ' + props.todo.text
+        ..text = ' ${props.todo.text}'
         ..styleBuilder =
             ((style) => _styleBuilder(style, props.todo.isComplete)),
     ];

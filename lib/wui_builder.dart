@@ -1,7 +1,8 @@
 library wui_builder;
 
+export 'src/wui_builder/component.dart'
+    show BeforeAnimationFrame, Component, StateSetter;
 export 'src/wui_builder/create_nodes.dart' show render;
-export 'src/wui_builder/component.dart' show Component, StateSetter;
 export 'src/wui_builder/velement.dart'
-    show VElement, StyleBuilder, EventHandler;
+    show EventHandler, StyleBuilder, VElement;
 export 'src/wui_builder/vnode.dart' show VNode;

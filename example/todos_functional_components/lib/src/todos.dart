@@ -27,7 +27,7 @@ VNode todo(TodoProps props) => new Va()
         new VCheckboxInputElement()..checked = props.todo.isComplete,
       ],
     new VSpanElement()
-      ..text = ' ' + props.todo.text
+      ..text = ' ${props.todo.text}'
       ..styleBuilder = ((style) => _styleBuilder(style, props.todo.isComplete)),
   ];
 

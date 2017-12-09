@@ -1,4 +1,5 @@
 import '../../components.dart';
+import '../../wui_builder.dart';
 
 import 'functional.dart';
 
@@ -37,17 +38,16 @@ ComponentEnhancer<P, P> lifecycle<P>({
   ComponentDidUpdate<P> componentDidUpdate,
   ComponentWillUnmount<P> componentWillUnmount,
 }) =>
-    (FunctionalComponent<P> baseComponent) =>
-        (P props) => new LifeCycle<P>(new LifeCycleProps()
-          ..componentWillMount = componentWillMount
-          ..componentDidMount = componentDidMount
-          ..componentWillReceiveProps = componentWillReceiveProps
-          ..shouldComponentUpdate = shouldComponentUpdate
-          ..componentWillUpdate = componentWillUpdate
-          ..componentDidUpdate = componentDidUpdate
-          ..componentWillUnmount = componentWillUnmount
-          ..baseProps = props
-          ..baseComponent = baseComponent);
+    (baseComponent) => (props) => new LifeCycle<P>(new LifeCycleProps()
+      ..componentWillMount = componentWillMount
+      ..componentDidMount = componentDidMount
+      ..componentWillReceiveProps = componentWillReceiveProps
+      ..shouldComponentUpdate = shouldComponentUpdate
+      ..componentWillUpdate = componentWillUpdate
+      ..componentDidUpdate = componentDidUpdate
+      ..componentWillUnmount = componentWillUnmount
+      ..baseProps = props
+      ..baseComponent = baseComponent);
 
 class LifeCycleProps<P> {
   ComponentWillMount<P> componentWillMount;
@@ -101,5 +101,6 @@ class LifeCycle<P> extends PComponent<LifeCycleProps<P>> {
       props.componentWillUnmount(props.baseProps);
   }
 
-  render() => props.baseComponent(props.baseProps);
+  @override
+  VNode render() => props.baseComponent(props.baseProps);
 }
