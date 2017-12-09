@@ -125,7 +125,6 @@ render(component, querySelector('#container'));
 
 ## Stateful components - synchronous updates on animation frame
 
-<<<<<<< HEAD
 ```dart
 class HelloWorldState {
     String text;
@@ -190,7 +189,4 @@ final component = new HelloWorld(null);
 
 // render the virtual element into a container
 render(component, querySelector('#container'));
-=======
-Using updateOnIdle or in leu of update or setStateOnIdle in lue of setState will kick off an update that only processes on idle callbacks. Feel free to use a mix of update and updateOnIdle in your application.
-
->>>>>>> 34f61dea8c474c18a0dab48159a1b6b0b665df33
+```
