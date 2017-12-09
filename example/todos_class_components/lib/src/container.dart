@@ -1,9 +1,9 @@
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
 
-import 'todo.dart';
-import 'hero.dart';
 import 'content.dart';
+import 'hero.dart';
+import 'todo.dart';
 
 class Container extends Component<Null, List<Todo>> {
   Container(Null props) : super(props);
@@ -29,7 +29,7 @@ class Container extends Component<Null, List<Todo>> {
 
   void _updateTodo(int id) {
     setState((_, prev) {
-      var todo = prev.firstWhere((todo) => todo.id == id);
+      final todo = prev.firstWhere((todo) => todo.id == id);
       todo.isComplete = !todo.isComplete;
       return prev;
     });
@@ -37,9 +37,9 @@ class Container extends Component<Null, List<Todo>> {
 
   void _putAfter(int before, int after) {
     setState((_, prev) {
-      var nextState = prev.toList();
-      var afterTodo = nextState.firstWhere((t) => t.id == after);
-      var beforeTodo = nextState.firstWhere((t) => t.id == before);
+      final nextState = prev.toList();
+      final afterTodo = nextState.firstWhere((t) => t.id == after);
+      final beforeTodo = nextState.firstWhere((t) => t.id == before);
       nextState.removeWhere((t) => t.id == after);
       nextState.insert(nextState.indexOf(beforeTodo) + 1, afterTodo);
       return nextState;

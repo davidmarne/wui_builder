@@ -33,13 +33,13 @@ class MultipleVElementChildrenComponent
       <String, dynamic>{testContextKey: props.context};
 
   void updateState(MultipleVElementChildrenProps p) {
-    setState((_1, prevState) => p..actualValue = prevState.actualValue + 1);
+    setState((_, prevState) => p..actualValue = prevState.actualValue + 1);
   }
 
   void updateStateIdle(MultipleVElementChildrenProps p,
           {bool shouldAbort: false}) =>
       setStateOnIdle(
-          (_1, prevState) => p..actualValue = prevState.actualValue + 1,
+          (_, prevState) => p..actualValue = prevState.actualValue + 1,
           shouldAbort: shouldAbort);
 
   // render state again so we can test pausing between the 2nd & 3rd node

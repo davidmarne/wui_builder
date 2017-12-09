@@ -3,8 +3,8 @@ import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/components.dart';
 
 import 'addTodo.dart';
-import 'todos.dart';
 import 'todo.dart';
+import 'todos.dart';
 
 typedef void AddTodoT(Todo todo);
 typedef void UpdateTodo(int id);

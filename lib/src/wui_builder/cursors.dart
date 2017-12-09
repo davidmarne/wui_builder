@@ -4,8 +4,8 @@ import 'component.dart';
 import 'velement.dart';
 
 enum PendingCursors {
-  Iterable,
-  Component,
+  iterable,
+  component,
 }
 
 abstract class PendingCursor {
@@ -13,7 +13,6 @@ abstract class PendingCursor {
 }
 
 class IterableCursor extends PendingCursor {
-  final cursorType = PendingCursors.Iterable;
   VElement newVNode;
   VElement oldVNode;
   Element node;
@@ -23,9 +22,12 @@ class IterableCursor extends PendingCursor {
   int index = 0;
 
   IterableCursor(this.node, this.newVNode, this.oldVNode)
-      : currentChild = node.children.length > 0 ? node.children.first : null,
+      : currentChild = node.children.isNotEmpty ? node.children.first : null,
         newLength = newVNode.children.length,
         oldLength = oldVNode.children.length;
+
+  @override
+  PendingCursors get cursorType => PendingCursors.iterable;
 
   void next() {
     index++;
@@ -34,7 +36,6 @@ class IterableCursor extends PendingCursor {
 }
 
 class ComponentUpdateCursor extends PendingCursor {
-  final cursorType = PendingCursors.Component;
   Component vNode;
   dynamic prevProps;
   dynamic nextProps;
@@ -45,4 +46,7 @@ class ComponentUpdateCursor extends PendingCursor {
     this.prevProps,
     this.prevState,
   );
+
+  @override
+  PendingCursors get cursorType => PendingCursors.component;
 }

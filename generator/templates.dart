@@ -2,7 +2,8 @@ import 'parsing.dart';
 
 String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
   abstract class VElement<E extends Element> extends VNode {
-    final vNodeType = VNodeTypes.Element;
+    @override
+    VNodeTypes get vNodeType => VNodeTypes.element;
 
     E elementFactory();
     
@@ -10,9 +11,9 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
     StyleBuilder styleBuilder;
 
-    List<VNode> _children = new List<VNode>();
+    var _children = <VNode>[];
     List<VNode> get children => _children;
-    void set children(Iterable<VNode> c) {
+    set children(Iterable<VNode> c) {
       _children = c.toList();
     }
 
@@ -103,6 +104,8 @@ String customFactoryElement(
     $classElementName elementFactory() => new $classElementName.$constructorName();
   }''';
 
+// TODO: generate typed constructor
+// TODO: generate hashCode
 String vElementSubclass(
   String classElementName,
   String superclass,
@@ -171,7 +174,7 @@ String attributeDeclarationTemplate(Setter setter) => '''
   ${setter.type} _${setter.name};
   bool _${setter.name}Set = false;
   ${setter.type} get ${setter.name} => _${setter.name};
-  void set ${setter.name}(${setter.type} v) {
+  set ${setter.name}(${setter.type} v) {
       _${setter.name} = v;
       _${setter.name}Set = true;
   }''';
@@ -199,7 +202,7 @@ String eventDeclarationTemplate(VEvent event) => '''
     bool _${event.name}Set = false;
     ${event.type} _${event.name};
     ${event.type} get ${event.name} => _${event.name};
-    void set ${event.name}(${event.type} v) {
+    set ${event.name}(${event.type} v) {
         _${event.name} = v;
         _${event.name}Set = true;
         shouldUpdateSubs = true;

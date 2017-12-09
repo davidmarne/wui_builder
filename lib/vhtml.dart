@@ -1,6 +1,8 @@
 import 'dart:html';
 import 'package:meta/meta.dart';
 import 'wui_builder.dart' show VElement;
+// ignore_for_file: annotate_overrides
+// ignore_for_file: overridden_fields
 
 abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {
   @override
@@ -23,7 +25,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _download;
   bool _downloadSet = false;
   String get download => _download;
-  void set download(String v) {
+  set download(String v) {
     _download = v;
     _downloadSet = true;
   }
@@ -31,7 +33,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _hreflang;
   bool _hreflangSet = false;
   String get hreflang => _hreflang;
-  void set hreflang(String v) {
+  set hreflang(String v) {
     _hreflang = v;
     _hreflangSet = true;
   }
@@ -39,7 +41,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _referrerpolicy;
   bool _referrerpolicySet = false;
   String get referrerpolicy => _referrerpolicy;
-  void set referrerpolicy(String v) {
+  set referrerpolicy(String v) {
     _referrerpolicy = v;
     _referrerpolicySet = true;
   }
@@ -47,7 +49,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _rel;
   bool _relSet = false;
   String get rel => _rel;
-  void set rel(String v) {
+  set rel(String v) {
     _rel = v;
     _relSet = true;
   }
@@ -55,7 +57,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _target;
   bool _targetSet = false;
   String get target => _target;
-  void set target(String v) {
+  set target(String v) {
     _target = v;
     _targetSet = true;
   }
@@ -63,7 +65,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -71,7 +73,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _hash;
   bool _hashSet = false;
   String get hash => _hash;
-  void set hash(String v) {
+  set hash(String v) {
     _hash = v;
     _hashSet = true;
   }
@@ -79,7 +81,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _host;
   bool _hostSet = false;
   String get host => _host;
-  void set host(String v) {
+  set host(String v) {
     _host = v;
     _hostSet = true;
   }
@@ -87,7 +89,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _hostname;
   bool _hostnameSet = false;
   String get hostname => _hostname;
-  void set hostname(String v) {
+  set hostname(String v) {
     _hostname = v;
     _hostnameSet = true;
   }
@@ -95,7 +97,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _href;
   bool _hrefSet = false;
   String get href => _href;
-  void set href(String v) {
+  set href(String v) {
     _href = v;
     _hrefSet = true;
   }
@@ -103,7 +105,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _password;
   bool _passwordSet = false;
   String get password => _password;
-  void set password(String v) {
+  set password(String v) {
     _password = v;
     _passwordSet = true;
   }
@@ -111,7 +113,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _pathname;
   bool _pathnameSet = false;
   String get pathname => _pathname;
-  void set pathname(String v) {
+  set pathname(String v) {
     _pathname = v;
     _pathnameSet = true;
   }
@@ -119,7 +121,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _port;
   bool _portSet = false;
   String get port => _port;
-  void set port(String v) {
+  set port(String v) {
     _port = v;
     _portSet = true;
   }
@@ -127,7 +129,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _protocol;
   bool _protocolSet = false;
   String get protocol => _protocol;
-  void set protocol(String v) {
+  set protocol(String v) {
     _protocol = v;
     _protocolSet = true;
   }
@@ -135,7 +137,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _search;
   bool _searchSet = false;
   String get search => _search;
-  void set search(String v) {
+  set search(String v) {
     _search = v;
     _searchSet = true;
   }
@@ -143,7 +145,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   String _username;
   bool _usernameSet = false;
   String get username => _username;
-  void set username(String v) {
+  set username(String v) {
     _username = v;
     _usernameSet = true;
   }
@@ -250,7 +252,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
-  void set alt(String v) {
+  set alt(String v) {
     _alt = v;
     _altSet = true;
   }
@@ -258,7 +260,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _coords;
   bool _coordsSet = false;
   String get coords => _coords;
-  void set coords(String v) {
+  set coords(String v) {
     _coords = v;
     _coordsSet = true;
   }
@@ -266,7 +268,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _referrerpolicy;
   bool _referrerpolicySet = false;
   String get referrerpolicy => _referrerpolicy;
-  void set referrerpolicy(String v) {
+  set referrerpolicy(String v) {
     _referrerpolicy = v;
     _referrerpolicySet = true;
   }
@@ -274,7 +276,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _shape;
   bool _shapeSet = false;
   String get shape => _shape;
-  void set shape(String v) {
+  set shape(String v) {
     _shape = v;
     _shapeSet = true;
   }
@@ -282,7 +284,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _target;
   bool _targetSet = false;
   String get target => _target;
-  void set target(String v) {
+  set target(String v) {
     _target = v;
     _targetSet = true;
   }
@@ -290,7 +292,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _hash;
   bool _hashSet = false;
   String get hash => _hash;
-  void set hash(String v) {
+  set hash(String v) {
     _hash = v;
     _hashSet = true;
   }
@@ -298,7 +300,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _host;
   bool _hostSet = false;
   String get host => _host;
-  void set host(String v) {
+  set host(String v) {
     _host = v;
     _hostSet = true;
   }
@@ -306,7 +308,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _hostname;
   bool _hostnameSet = false;
   String get hostname => _hostname;
-  void set hostname(String v) {
+  set hostname(String v) {
     _hostname = v;
     _hostnameSet = true;
   }
@@ -314,7 +316,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _href;
   bool _hrefSet = false;
   String get href => _href;
-  void set href(String v) {
+  set href(String v) {
     _href = v;
     _hrefSet = true;
   }
@@ -322,7 +324,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _password;
   bool _passwordSet = false;
   String get password => _password;
-  void set password(String v) {
+  set password(String v) {
     _password = v;
     _passwordSet = true;
   }
@@ -330,7 +332,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _pathname;
   bool _pathnameSet = false;
   String get pathname => _pathname;
-  void set pathname(String v) {
+  set pathname(String v) {
     _pathname = v;
     _pathnameSet = true;
   }
@@ -338,7 +340,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _port;
   bool _portSet = false;
   String get port => _port;
-  void set port(String v) {
+  set port(String v) {
     _port = v;
     _portSet = true;
   }
@@ -346,7 +348,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _protocol;
   bool _protocolSet = false;
   String get protocol => _protocol;
-  void set protocol(String v) {
+  set protocol(String v) {
     _protocol = v;
     _protocolSet = true;
   }
@@ -354,7 +356,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _search;
   bool _searchSet = false;
   String get search => _search;
-  void set search(String v) {
+  set search(String v) {
     _search = v;
     _searchSet = true;
   }
@@ -362,7 +364,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   String _username;
   bool _usernameSet = false;
   String get username => _username;
-  void set username(String v) {
+  set username(String v) {
     _username = v;
     _usernameSet = true;
   }
@@ -498,7 +500,7 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   String _href;
   bool _hrefSet = false;
   String get href => _href;
-  void set href(String v) {
+  set href(String v) {
     _href = v;
     _hrefSet = true;
   }
@@ -506,7 +508,7 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   String _target;
   bool _targetSet = false;
   String get target => _target;
-  void set target(String v) {
+  set target(String v) {
     _target = v;
     _targetSet = true;
   }
@@ -560,7 +562,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -568,7 +570,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -576,7 +578,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _formAction;
   bool _formActionSet = false;
   String get formAction => _formAction;
-  void set formAction(String v) {
+  set formAction(String v) {
     _formAction = v;
     _formActionSet = true;
   }
@@ -584,7 +586,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _formEnctype;
   bool _formEnctypeSet = false;
   String get formEnctype => _formEnctype;
-  void set formEnctype(String v) {
+  set formEnctype(String v) {
     _formEnctype = v;
     _formEnctypeSet = true;
   }
@@ -592,7 +594,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _formMethod;
   bool _formMethodSet = false;
   String get formMethod => _formMethod;
-  void set formMethod(String v) {
+  set formMethod(String v) {
     _formMethod = v;
     _formMethodSet = true;
   }
@@ -600,7 +602,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   bool _formNoValidate;
   bool _formNoValidateSet = false;
   bool get formNoValidate => _formNoValidate;
-  void set formNoValidate(bool v) {
+  set formNoValidate(bool v) {
     _formNoValidate = v;
     _formNoValidateSet = true;
   }
@@ -608,7 +610,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _formTarget;
   bool _formTargetSet = false;
   String get formTarget => _formTarget;
-  void set formTarget(String v) {
+  set formTarget(String v) {
     _formTarget = v;
     _formTargetSet = true;
   }
@@ -616,7 +618,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -624,7 +626,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -632,7 +634,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -709,7 +711,7 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   int _height;
   bool _heightSet = false;
   int get height => _height;
-  void set height(int v) {
+  set height(int v) {
     _height = v;
     _heightSet = true;
   }
@@ -717,7 +719,7 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   int _width;
   bool _widthSet = false;
   int get width => _width;
-  void set width(int v) {
+  set width(int v) {
     _width = v;
     _widthSet = true;
   }
@@ -754,7 +756,7 @@ class VContentElement extends VHtmlElement<ContentElement> {
   String _select;
   bool _selectSet = false;
   String get select => _select;
-  void set select(String v) {
+  set select(String v) {
     _select = v;
     _selectSet = true;
   }
@@ -820,7 +822,7 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
   bool _open;
   bool _openSet = false;
   bool get open => _open;
-  void set open(bool v) {
+  set open(bool v) {
     _open = v;
     _openSet = true;
   }
@@ -849,7 +851,7 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   bool _open;
   bool _openSet = false;
   bool get open => _open;
-  void set open(bool v) {
+  set open(bool v) {
     _open = v;
     _openSet = true;
   }
@@ -857,7 +859,7 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   String _returnValue;
   bool _returnValueSet = false;
   String get returnValue => _returnValue;
-  void set returnValue(String v) {
+  set returnValue(String v) {
     _returnValue = v;
     _returnValueSet = true;
   }
@@ -1056,7 +1058,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   String _height;
   bool _heightSet = false;
   String get height => _height;
-  void set height(String v) {
+  set height(String v) {
     _height = v;
     _heightSet = true;
   }
@@ -1064,7 +1066,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -1072,7 +1074,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -1080,7 +1082,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -1088,7 +1090,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   String _width;
   bool _widthSet = false;
   String get width => _width;
-  void set width(String v) {
+  set width(String v) {
     _width = v;
     _widthSet = true;
   }
@@ -1140,7 +1142,7 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -1148,7 +1150,7 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -1185,7 +1187,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _acceptCharset;
   bool _acceptCharsetSet = false;
   String get acceptCharset => _acceptCharset;
-  void set acceptCharset(String v) {
+  set acceptCharset(String v) {
     _acceptCharset = v;
     _acceptCharsetSet = true;
   }
@@ -1193,7 +1195,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _action;
   bool _actionSet = false;
   String get action => _action;
-  void set action(String v) {
+  set action(String v) {
     _action = v;
     _actionSet = true;
   }
@@ -1201,7 +1203,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _autocomplete;
   bool _autocompleteSet = false;
   String get autocomplete => _autocomplete;
-  void set autocomplete(String v) {
+  set autocomplete(String v) {
     _autocomplete = v;
     _autocompleteSet = true;
   }
@@ -1209,7 +1211,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _encoding;
   bool _encodingSet = false;
   String get encoding => _encoding;
-  void set encoding(String v) {
+  set encoding(String v) {
     _encoding = v;
     _encodingSet = true;
   }
@@ -1217,7 +1219,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _enctype;
   bool _enctypeSet = false;
   String get enctype => _enctype;
-  void set enctype(String v) {
+  set enctype(String v) {
     _enctype = v;
     _enctypeSet = true;
   }
@@ -1225,7 +1227,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _method;
   bool _methodSet = false;
   String get method => _method;
-  void set method(String v) {
+  set method(String v) {
     _method = v;
     _methodSet = true;
   }
@@ -1233,7 +1235,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -1241,7 +1243,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   bool _noValidate;
   bool _noValidateSet = false;
   bool get noValidate => _noValidate;
-  void set noValidate(bool v) {
+  set noValidate(bool v) {
     _noValidate = v;
     _noValidateSet = true;
   }
@@ -1249,7 +1251,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   String _target;
   bool _targetSet = false;
   String get target => _target;
-  void set target(String v) {
+  set target(String v) {
     _target = v;
     _targetSet = true;
   }
@@ -1321,7 +1323,7 @@ class VHRElement extends VHtmlElement<HRElement> {
   String _color;
   bool _colorSet = false;
   String get color => _color;
-  void set color(String v) {
+  set color(String v) {
     _color = v;
     _colorSet = true;
   }
@@ -1432,7 +1434,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   bool _allowFullscreen;
   bool _allowFullscreenSet = false;
   bool get allowFullscreen => _allowFullscreen;
-  void set allowFullscreen(bool v) {
+  set allowFullscreen(bool v) {
     _allowFullscreen = v;
     _allowFullscreenSet = true;
   }
@@ -1440,7 +1442,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   String _height;
   bool _heightSet = false;
   String get height => _height;
-  void set height(String v) {
+  set height(String v) {
     _height = v;
     _heightSet = true;
   }
@@ -1448,7 +1450,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -1456,7 +1458,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   String _referrerpolicy;
   bool _referrerpolicySet = false;
   String get referrerpolicy => _referrerpolicy;
-  void set referrerpolicy(String v) {
+  set referrerpolicy(String v) {
     _referrerpolicy = v;
     _referrerpolicySet = true;
   }
@@ -1464,7 +1466,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -1472,7 +1474,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   String _srcdoc;
   bool _srcdocSet = false;
   String get srcdoc => _srcdoc;
-  void set srcdoc(String v) {
+  set srcdoc(String v) {
     _srcdoc = v;
     _srcdocSet = true;
   }
@@ -1480,7 +1482,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   String _width;
   bool _widthSet = false;
   String get width => _width;
-  void set width(String v) {
+  set width(String v) {
     _width = v;
     _widthSet = true;
   }
@@ -1542,7 +1544,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
-  void set alt(String v) {
+  set alt(String v) {
     _alt = v;
     _altSet = true;
   }
@@ -1550,7 +1552,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _crossOrigin;
   bool _crossOriginSet = false;
   String get crossOrigin => _crossOrigin;
-  void set crossOrigin(String v) {
+  set crossOrigin(String v) {
     _crossOrigin = v;
     _crossOriginSet = true;
   }
@@ -1558,7 +1560,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   int _height;
   bool _heightSet = false;
   int get height => _height;
-  void set height(int v) {
+  set height(int v) {
     _height = v;
     _heightSet = true;
   }
@@ -1566,7 +1568,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   bool _isMap;
   bool _isMapSet = false;
   bool get isMap => _isMap;
-  void set isMap(bool v) {
+  set isMap(bool v) {
     _isMap = v;
     _isMapSet = true;
   }
@@ -1574,7 +1576,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _referrerpolicy;
   bool _referrerpolicySet = false;
   String get referrerpolicy => _referrerpolicy;
-  void set referrerpolicy(String v) {
+  set referrerpolicy(String v) {
     _referrerpolicy = v;
     _referrerpolicySet = true;
   }
@@ -1582,7 +1584,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _sizes;
   bool _sizesSet = false;
   String get sizes => _sizes;
-  void set sizes(String v) {
+  set sizes(String v) {
     _sizes = v;
     _sizesSet = true;
   }
@@ -1590,7 +1592,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -1598,7 +1600,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _srcset;
   bool _srcsetSet = false;
   String get srcset => _srcset;
-  void set srcset(String v) {
+  set srcset(String v) {
     _srcset = v;
     _srcsetSet = true;
   }
@@ -1606,7 +1608,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String _useMap;
   bool _useMapSet = false;
   String get useMap => _useMap;
-  void set useMap(String v) {
+  set useMap(String v) {
     _useMap = v;
     _useMapSet = true;
   }
@@ -1614,7 +1616,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   int _width;
   bool _widthSet = false;
   int get width => _width;
-  void set width(int v) {
+  set width(int v) {
     _width = v;
     _widthSet = true;
   }
@@ -1691,7 +1693,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _accept;
   bool _acceptSet = false;
   String get accept => _accept;
-  void set accept(String v) {
+  set accept(String v) {
     _accept = v;
     _acceptSet = true;
   }
@@ -1699,7 +1701,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
-  void set alt(String v) {
+  set alt(String v) {
     _alt = v;
     _altSet = true;
   }
@@ -1707,7 +1709,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _autocapitalize;
   bool _autocapitalizeSet = false;
   String get autocapitalize => _autocapitalize;
-  void set autocapitalize(String v) {
+  set autocapitalize(String v) {
     _autocapitalize = v;
     _autocapitalizeSet = true;
   }
@@ -1715,7 +1717,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _autocomplete;
   bool _autocompleteSet = false;
   String get autocomplete => _autocomplete;
-  void set autocomplete(String v) {
+  set autocomplete(String v) {
     _autocomplete = v;
     _autocompleteSet = true;
   }
@@ -1723,7 +1725,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -1731,7 +1733,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _capture;
   bool _captureSet = false;
   bool get capture => _capture;
-  void set capture(bool v) {
+  set capture(bool v) {
     _capture = v;
     _captureSet = true;
   }
@@ -1739,7 +1741,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _checked;
   bool _checkedSet = false;
   bool get checked => _checked;
-  void set checked(bool v) {
+  set checked(bool v) {
     _checked = v;
     _checkedSet = true;
   }
@@ -1747,7 +1749,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _defaultChecked;
   bool _defaultCheckedSet = false;
   bool get defaultChecked => _defaultChecked;
-  void set defaultChecked(bool v) {
+  set defaultChecked(bool v) {
     _defaultChecked = v;
     _defaultCheckedSet = true;
   }
@@ -1755,7 +1757,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _defaultValue;
   bool _defaultValueSet = false;
   String get defaultValue => _defaultValue;
-  void set defaultValue(String v) {
+  set defaultValue(String v) {
     _defaultValue = v;
     _defaultValueSet = true;
   }
@@ -1763,7 +1765,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _dirName;
   bool _dirNameSet = false;
   String get dirName => _dirName;
-  void set dirName(String v) {
+  set dirName(String v) {
     _dirName = v;
     _dirNameSet = true;
   }
@@ -1771,7 +1773,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -1779,7 +1781,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   List<File> _files;
   bool _filesSet = false;
   List<File> get files => _files;
-  void set files(List<File> v) {
+  set files(List<File> v) {
     _files = v;
     _filesSet = true;
   }
@@ -1787,7 +1789,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _formAction;
   bool _formActionSet = false;
   String get formAction => _formAction;
-  void set formAction(String v) {
+  set formAction(String v) {
     _formAction = v;
     _formActionSet = true;
   }
@@ -1795,7 +1797,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _formEnctype;
   bool _formEnctypeSet = false;
   String get formEnctype => _formEnctype;
-  void set formEnctype(String v) {
+  set formEnctype(String v) {
     _formEnctype = v;
     _formEnctypeSet = true;
   }
@@ -1803,7 +1805,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _formMethod;
   bool _formMethodSet = false;
   String get formMethod => _formMethod;
-  void set formMethod(String v) {
+  set formMethod(String v) {
     _formMethod = v;
     _formMethodSet = true;
   }
@@ -1811,7 +1813,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _formNoValidate;
   bool _formNoValidateSet = false;
   bool get formNoValidate => _formNoValidate;
-  void set formNoValidate(bool v) {
+  set formNoValidate(bool v) {
     _formNoValidate = v;
     _formNoValidateSet = true;
   }
@@ -1819,7 +1821,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _formTarget;
   bool _formTargetSet = false;
   String get formTarget => _formTarget;
-  void set formTarget(String v) {
+  set formTarget(String v) {
     _formTarget = v;
     _formTargetSet = true;
   }
@@ -1827,7 +1829,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _height;
   bool _heightSet = false;
   int get height => _height;
-  void set height(int v) {
+  set height(int v) {
     _height = v;
     _heightSet = true;
   }
@@ -1835,7 +1837,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _incremental;
   bool _incrementalSet = false;
   bool get incremental => _incremental;
-  void set incremental(bool v) {
+  set incremental(bool v) {
     _incremental = v;
     _incrementalSet = true;
   }
@@ -1843,7 +1845,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _indeterminate;
   bool _indeterminateSet = false;
   bool get indeterminate => _indeterminate;
-  void set indeterminate(bool v) {
+  set indeterminate(bool v) {
     _indeterminate = v;
     _indeterminateSet = true;
   }
@@ -1851,7 +1853,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _inputMode;
   bool _inputModeSet = false;
   String get inputMode => _inputMode;
-  void set inputMode(String v) {
+  set inputMode(String v) {
     _inputMode = v;
     _inputModeSet = true;
   }
@@ -1859,7 +1861,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _max;
   bool _maxSet = false;
   String get max => _max;
-  void set max(String v) {
+  set max(String v) {
     _max = v;
     _maxSet = true;
   }
@@ -1867,7 +1869,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _maxLength;
   bool _maxLengthSet = false;
   int get maxLength => _maxLength;
-  void set maxLength(int v) {
+  set maxLength(int v) {
     _maxLength = v;
     _maxLengthSet = true;
   }
@@ -1875,7 +1877,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _min;
   bool _minSet = false;
   String get min => _min;
-  void set min(String v) {
+  set min(String v) {
     _min = v;
     _minSet = true;
   }
@@ -1883,7 +1885,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _minLength;
   bool _minLengthSet = false;
   int get minLength => _minLength;
-  void set minLength(int v) {
+  set minLength(int v) {
     _minLength = v;
     _minLengthSet = true;
   }
@@ -1891,7 +1893,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _multiple;
   bool _multipleSet = false;
   bool get multiple => _multiple;
-  void set multiple(bool v) {
+  set multiple(bool v) {
     _multiple = v;
     _multipleSet = true;
   }
@@ -1899,7 +1901,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -1907,7 +1909,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _pattern;
   bool _patternSet = false;
   String get pattern => _pattern;
-  void set pattern(String v) {
+  set pattern(String v) {
     _pattern = v;
     _patternSet = true;
   }
@@ -1915,7 +1917,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _placeholder;
   bool _placeholderSet = false;
   String get placeholder => _placeholder;
-  void set placeholder(String v) {
+  set placeholder(String v) {
     _placeholder = v;
     _placeholderSet = true;
   }
@@ -1923,7 +1925,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -1931,7 +1933,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -1939,7 +1941,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _selectionDirection;
   bool _selectionDirectionSet = false;
   String get selectionDirection => _selectionDirection;
-  void set selectionDirection(String v) {
+  set selectionDirection(String v) {
     _selectionDirection = v;
     _selectionDirectionSet = true;
   }
@@ -1947,7 +1949,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _selectionEnd;
   bool _selectionEndSet = false;
   int get selectionEnd => _selectionEnd;
-  void set selectionEnd(int v) {
+  set selectionEnd(int v) {
     _selectionEnd = v;
     _selectionEndSet = true;
   }
@@ -1955,7 +1957,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _selectionStart;
   bool _selectionStartSet = false;
   int get selectionStart => _selectionStart;
-  void set selectionStart(int v) {
+  set selectionStart(int v) {
     _selectionStart = v;
     _selectionStartSet = true;
   }
@@ -1963,7 +1965,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _size;
   bool _sizeSet = false;
   int get size => _size;
-  void set size(int v) {
+  set size(int v) {
     _size = v;
     _sizeSet = true;
   }
@@ -1971,7 +1973,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -1979,7 +1981,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _step;
   bool _stepSet = false;
   String get step => _step;
-  void set step(String v) {
+  set step(String v) {
     _step = v;
     _stepSet = true;
   }
@@ -1987,7 +1989,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -1995,7 +1997,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -2003,7 +2005,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   num _valueAsNumber;
   bool _valueAsNumberSet = false;
   num get valueAsNumber => _valueAsNumber;
-  void set valueAsNumber(num v) {
+  set valueAsNumber(num v) {
     _valueAsNumber = v;
     _valueAsNumberSet = true;
   }
@@ -2011,7 +2013,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   bool _directory;
   bool _directorySet = false;
   bool get directory => _directory;
-  void set directory(bool v) {
+  set directory(bool v) {
     _directory = v;
     _directorySet = true;
   }
@@ -2019,7 +2021,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   int _width;
   bool _widthSet = false;
   int get width => _width;
-  void set width(int v) {
+  set width(int v) {
     _width = v;
     _widthSet = true;
   }
@@ -2027,7 +2029,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
-  void set valueAsDate(DateTime v) {
+  set valueAsDate(DateTime v) {
     _valueAsDate = v;
     _valueAsDateSet = true;
   }
@@ -2267,7 +2269,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -2275,7 +2277,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -2283,7 +2285,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   bool _incremental;
   bool _incrementalSet = false;
   bool get incremental => _incremental;
-  void set incremental(bool v) {
+  set incremental(bool v) {
     _incremental = v;
     _incrementalSet = true;
   }
@@ -2291,7 +2293,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   bool _indeterminate;
   bool _indeterminateSet = false;
   bool get indeterminate => _indeterminate;
-  void set indeterminate(bool v) {
+  set indeterminate(bool v) {
     _indeterminate = v;
     _indeterminateSet = true;
   }
@@ -2299,7 +2301,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -2307,7 +2309,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -2380,7 +2382,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   String _autocomplete;
   bool _autocompleteSet = false;
   String get autocomplete => _autocomplete;
-  void set autocomplete(String v) {
+  set autocomplete(String v) {
     _autocomplete = v;
     _autocompleteSet = true;
   }
@@ -2388,7 +2390,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   int _maxLength;
   bool _maxLengthSet = false;
   int get maxLength => _maxLength;
-  void set maxLength(int v) {
+  set maxLength(int v) {
     _maxLength = v;
     _maxLengthSet = true;
   }
@@ -2396,7 +2398,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   String _pattern;
   bool _patternSet = false;
   String get pattern => _pattern;
-  void set pattern(String v) {
+  set pattern(String v) {
     _pattern = v;
     _patternSet = true;
   }
@@ -2404,7 +2406,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   String _placeholder;
   bool _placeholderSet = false;
   String get placeholder => _placeholder;
-  void set placeholder(String v) {
+  set placeholder(String v) {
     _placeholder = v;
     _placeholderSet = true;
   }
@@ -2412,7 +2414,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -2420,7 +2422,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -2428,7 +2430,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   int _size;
   bool _sizeSet = false;
   int get size => _size;
-  void set size(int v) {
+  set size(int v) {
     _size = v;
     _sizeSet = true;
   }
@@ -2436,7 +2438,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   String _selectionDirection;
   bool _selectionDirectionSet = false;
   String get selectionDirection => _selectionDirection;
-  void set selectionDirection(String v) {
+  set selectionDirection(String v) {
     _selectionDirection = v;
     _selectionDirectionSet = true;
   }
@@ -2444,7 +2446,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   int _selectionEnd;
   bool _selectionEndSet = false;
   int get selectionEnd => _selectionEnd;
-  void set selectionEnd(int v) {
+  set selectionEnd(int v) {
     _selectionEnd = v;
     _selectionEndSet = true;
   }
@@ -2452,7 +2454,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   int _selectionStart;
   bool _selectionStartSet = false;
   int get selectionStart => _selectionStart;
-  void set selectionStart(int v) {
+  set selectionStart(int v) {
     _selectionStart = v;
     _selectionStartSet = true;
   }
@@ -2529,7 +2531,7 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   String _dirName;
   bool _dirNameSet = false;
   String get dirName => _dirName;
-  void set dirName(String v) {
+  set dirName(String v) {
     _dirName = v;
     _dirNameSet = true;
   }
@@ -2562,7 +2564,7 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   String _dirName;
   bool _dirNameSet = false;
   String get dirName => _dirName;
-  void set dirName(String v) {
+  set dirName(String v) {
     _dirName = v;
     _dirNameSet = true;
   }
@@ -2630,7 +2632,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   String _autocomplete;
   bool _autocompleteSet = false;
   String get autocomplete => _autocomplete;
-  void set autocomplete(String v) {
+  set autocomplete(String v) {
     _autocomplete = v;
     _autocompleteSet = true;
   }
@@ -2638,7 +2640,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -2646,7 +2648,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   int _maxLength;
   bool _maxLengthSet = false;
   int get maxLength => _maxLength;
-  void set maxLength(int v) {
+  set maxLength(int v) {
     _maxLength = v;
     _maxLengthSet = true;
   }
@@ -2654,7 +2656,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   bool _multiple;
   bool _multipleSet = false;
   bool get multiple => _multiple;
-  void set multiple(bool v) {
+  set multiple(bool v) {
     _multiple = v;
     _multipleSet = true;
   }
@@ -2662,7 +2664,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   String _pattern;
   bool _patternSet = false;
   String get pattern => _pattern;
-  void set pattern(String v) {
+  set pattern(String v) {
     _pattern = v;
     _patternSet = true;
   }
@@ -2670,7 +2672,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   String _placeholder;
   bool _placeholderSet = false;
   String get placeholder => _placeholder;
-  void set placeholder(String v) {
+  set placeholder(String v) {
     _placeholder = v;
     _placeholderSet = true;
   }
@@ -2678,7 +2680,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -2686,7 +2688,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -2694,7 +2696,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   int _size;
   bool _sizeSet = false;
   int get size => _size;
-  void set size(int v) {
+  set size(int v) {
     _size = v;
     _sizeSet = true;
   }
@@ -2783,7 +2785,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   String _max;
   bool _maxSet = false;
   String get max => _max;
-  void set max(String v) {
+  set max(String v) {
     _max = v;
     _maxSet = true;
   }
@@ -2791,7 +2793,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   String _min;
   bool _minSet = false;
   String get min => _min;
-  void set min(String v) {
+  set min(String v) {
     _min = v;
     _minSet = true;
   }
@@ -2799,7 +2801,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   String _step;
   bool _stepSet = false;
   String get step => _step;
-  void set step(String v) {
+  set step(String v) {
     _step = v;
     _stepSet = true;
   }
@@ -2807,7 +2809,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   num _valueAsNumber;
   bool _valueAsNumberSet = false;
   num get valueAsNumber => _valueAsNumber;
-  void set valueAsNumber(num v) {
+  set valueAsNumber(num v) {
     _valueAsNumber = v;
     _valueAsNumberSet = true;
   }
@@ -2855,7 +2857,7 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
-  void set valueAsDate(DateTime v) {
+  set valueAsDate(DateTime v) {
     _valueAsDate = v;
     _valueAsDateSet = true;
   }
@@ -2863,7 +2865,7 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -2871,7 +2873,7 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -2913,7 +2915,7 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
-  void set valueAsDate(DateTime v) {
+  set valueAsDate(DateTime v) {
     _valueAsDate = v;
     _valueAsDateSet = true;
   }
@@ -2921,7 +2923,7 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -2929,7 +2931,7 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -2971,7 +2973,7 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
-  void set valueAsDate(DateTime v) {
+  set valueAsDate(DateTime v) {
     _valueAsDate = v;
     _valueAsDateSet = true;
   }
@@ -2979,7 +2981,7 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -2987,7 +2989,7 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3029,7 +3031,7 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   DateTime _valueAsDate;
   bool _valueAsDateSet = false;
   DateTime get valueAsDate => _valueAsDate;
-  void set valueAsDate(DateTime v) {
+  set valueAsDate(DateTime v) {
     _valueAsDate = v;
     _valueAsDateSet = true;
   }
@@ -3037,7 +3039,7 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -3045,7 +3047,7 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3088,7 +3090,7 @@ class VLocalDateTimeInputElement
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -3096,7 +3098,7 @@ class VLocalDateTimeInputElement
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3134,7 +3136,7 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   String _placeholder;
   bool _placeholderSet = false;
   String get placeholder => _placeholder;
-  void set placeholder(String v) {
+  set placeholder(String v) {
     _placeholder = v;
     _placeholderSet = true;
   }
@@ -3142,7 +3144,7 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -3150,7 +3152,7 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3210,7 +3212,7 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   bool _checked;
   bool _checkedSet = false;
   bool get checked => _checked;
-  void set checked(bool v) {
+  set checked(bool v) {
     _checked = v;
     _checkedSet = true;
   }
@@ -3218,7 +3220,7 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3257,7 +3259,7 @@ class VRadioButtonInputElement
   bool _checked;
   bool _checkedSet = false;
   bool get checked => _checked;
-  void set checked(bool v) {
+  set checked(bool v) {
     _checked = v;
     _checkedSet = true;
   }
@@ -3265,7 +3267,7 @@ class VRadioButtonInputElement
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3304,7 +3306,7 @@ class VFileUploadInputElement
   String _accept;
   bool _acceptSet = false;
   String get accept => _accept;
-  void set accept(String v) {
+  set accept(String v) {
     _accept = v;
     _acceptSet = true;
   }
@@ -3312,7 +3314,7 @@ class VFileUploadInputElement
   bool _multiple;
   bool _multipleSet = false;
   bool get multiple => _multiple;
-  void set multiple(bool v) {
+  set multiple(bool v) {
     _multiple = v;
     _multipleSet = true;
   }
@@ -3320,7 +3322,7 @@ class VFileUploadInputElement
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -3328,7 +3330,7 @@ class VFileUploadInputElement
   List<File> _files;
   bool _filesSet = false;
   List<File> get files => _files;
-  void set files(List<File> v) {
+  set files(List<File> v) {
     _files = v;
     _filesSet = true;
   }
@@ -3377,7 +3379,7 @@ class VSubmitButtonInputElement
   String _formAction;
   bool _formActionSet = false;
   String get formAction => _formAction;
-  void set formAction(String v) {
+  set formAction(String v) {
     _formAction = v;
     _formActionSet = true;
   }
@@ -3385,7 +3387,7 @@ class VSubmitButtonInputElement
   String _formEnctype;
   bool _formEnctypeSet = false;
   String get formEnctype => _formEnctype;
-  void set formEnctype(String v) {
+  set formEnctype(String v) {
     _formEnctype = v;
     _formEnctypeSet = true;
   }
@@ -3393,7 +3395,7 @@ class VSubmitButtonInputElement
   String _formMethod;
   bool _formMethodSet = false;
   String get formMethod => _formMethod;
-  void set formMethod(String v) {
+  set formMethod(String v) {
     _formMethod = v;
     _formMethodSet = true;
   }
@@ -3401,7 +3403,7 @@ class VSubmitButtonInputElement
   bool _formNoValidate;
   bool _formNoValidateSet = false;
   bool get formNoValidate => _formNoValidate;
-  void set formNoValidate(bool v) {
+  set formNoValidate(bool v) {
     _formNoValidate = v;
     _formNoValidateSet = true;
   }
@@ -3409,7 +3411,7 @@ class VSubmitButtonInputElement
   String _formTarget;
   bool _formTargetSet = false;
   String get formTarget => _formTarget;
-  void set formTarget(String v) {
+  set formTarget(String v) {
     _formTarget = v;
     _formTargetSet = true;
   }
@@ -3463,7 +3465,7 @@ class VImageButtonInputElement
   String _alt;
   bool _altSet = false;
   String get alt => _alt;
-  void set alt(String v) {
+  set alt(String v) {
     _alt = v;
     _altSet = true;
   }
@@ -3471,7 +3473,7 @@ class VImageButtonInputElement
   String _formAction;
   bool _formActionSet = false;
   String get formAction => _formAction;
-  void set formAction(String v) {
+  set formAction(String v) {
     _formAction = v;
     _formActionSet = true;
   }
@@ -3479,7 +3481,7 @@ class VImageButtonInputElement
   String _formEnctype;
   bool _formEnctypeSet = false;
   String get formEnctype => _formEnctype;
-  void set formEnctype(String v) {
+  set formEnctype(String v) {
     _formEnctype = v;
     _formEnctypeSet = true;
   }
@@ -3487,7 +3489,7 @@ class VImageButtonInputElement
   String _formMethod;
   bool _formMethodSet = false;
   String get formMethod => _formMethod;
-  void set formMethod(String v) {
+  set formMethod(String v) {
     _formMethod = v;
     _formMethodSet = true;
   }
@@ -3495,7 +3497,7 @@ class VImageButtonInputElement
   bool _formNoValidate;
   bool _formNoValidateSet = false;
   bool get formNoValidate => _formNoValidate;
-  void set formNoValidate(bool v) {
+  set formNoValidate(bool v) {
     _formNoValidate = v;
     _formNoValidateSet = true;
   }
@@ -3503,7 +3505,7 @@ class VImageButtonInputElement
   String _formTarget;
   bool _formTargetSet = false;
   String get formTarget => _formTarget;
-  void set formTarget(String v) {
+  set formTarget(String v) {
     _formTarget = v;
     _formTargetSet = true;
   }
@@ -3511,7 +3513,7 @@ class VImageButtonInputElement
   int _height;
   bool _heightSet = false;
   int get height => _height;
-  void set height(int v) {
+  set height(int v) {
     _height = v;
     _heightSet = true;
   }
@@ -3519,7 +3521,7 @@ class VImageButtonInputElement
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -3527,7 +3529,7 @@ class VImageButtonInputElement
   int _width;
   bool _widthSet = false;
   int get width => _width;
-  void set width(int v) {
+  set width(int v) {
     _width = v;
     _widthSet = true;
   }
@@ -3637,7 +3639,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -3645,7 +3647,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   String _challenge;
   bool _challengeSet = false;
   String get challenge => _challenge;
-  void set challenge(String v) {
+  set challenge(String v) {
     _challenge = v;
     _challengeSet = true;
   }
@@ -3653,7 +3655,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -3661,7 +3663,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   String _keytype;
   bool _keytypeSet = false;
   String get keytype => _keytype;
-  void set keytype(String v) {
+  set keytype(String v) {
     _keytype = v;
     _keytypeSet = true;
   }
@@ -3669,7 +3671,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -3721,7 +3723,7 @@ class VLIElement extends VHtmlElement<LIElement> {
   int _value;
   bool _valueSet = false;
   int get value => _value;
-  void set value(int v) {
+  set value(int v) {
     _value = v;
     _valueSet = true;
   }
@@ -3753,7 +3755,7 @@ class VLabelElement extends VHtmlElement<LabelElement> {
   String _htmlFor;
   bool _htmlForSet = false;
   String get htmlFor => _htmlFor;
-  void set htmlFor(String v) {
+  set htmlFor(String v) {
     _htmlFor = v;
     _htmlForSet = true;
   }
@@ -3802,7 +3804,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _as;
   bool _asSet = false;
   String get as => _as;
-  void set as(String v) {
+  set as(String v) {
     _as = v;
     _asSet = true;
   }
@@ -3810,7 +3812,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _crossOrigin;
   bool _crossOriginSet = false;
   String get crossOrigin => _crossOrigin;
-  void set crossOrigin(String v) {
+  set crossOrigin(String v) {
     _crossOrigin = v;
     _crossOriginSet = true;
   }
@@ -3818,7 +3820,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -3826,7 +3828,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _href;
   bool _hrefSet = false;
   String get href => _href;
-  void set href(String v) {
+  set href(String v) {
     _href = v;
     _hrefSet = true;
   }
@@ -3834,7 +3836,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _hreflang;
   bool _hreflangSet = false;
   String get hreflang => _hreflang;
-  void set hreflang(String v) {
+  set hreflang(String v) {
     _hreflang = v;
     _hreflangSet = true;
   }
@@ -3842,7 +3844,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _integrity;
   bool _integritySet = false;
   String get integrity => _integrity;
-  void set integrity(String v) {
+  set integrity(String v) {
     _integrity = v;
     _integritySet = true;
   }
@@ -3850,7 +3852,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _media;
   bool _mediaSet = false;
   String get media => _media;
-  void set media(String v) {
+  set media(String v) {
     _media = v;
     _mediaSet = true;
   }
@@ -3858,7 +3860,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _rel;
   bool _relSet = false;
   String get rel => _rel;
-  void set rel(String v) {
+  set rel(String v) {
     _rel = v;
     _relSet = true;
   }
@@ -3866,7 +3868,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -3938,7 +3940,7 @@ class VMapElement extends VHtmlElement<MapElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -3967,7 +3969,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   bool _autoplay;
   bool _autoplaySet = false;
   bool get autoplay => _autoplay;
-  void set autoplay(bool v) {
+  set autoplay(bool v) {
     _autoplay = v;
     _autoplaySet = true;
   }
@@ -3975,7 +3977,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   bool _controls;
   bool _controlsSet = false;
   bool get controls => _controls;
-  void set controls(bool v) {
+  set controls(bool v) {
     _controls = v;
     _controlsSet = true;
   }
@@ -3983,7 +3985,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   String _crossOrigin;
   bool _crossOriginSet = false;
   String get crossOrigin => _crossOrigin;
-  void set crossOrigin(String v) {
+  set crossOrigin(String v) {
     _crossOrigin = v;
     _crossOriginSet = true;
   }
@@ -3991,7 +3993,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   num _currentTime;
   bool _currentTimeSet = false;
   num get currentTime => _currentTime;
-  void set currentTime(num v) {
+  set currentTime(num v) {
     _currentTime = v;
     _currentTimeSet = true;
   }
@@ -3999,7 +4001,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   bool _defaultMuted;
   bool _defaultMutedSet = false;
   bool get defaultMuted => _defaultMuted;
-  void set defaultMuted(bool v) {
+  set defaultMuted(bool v) {
     _defaultMuted = v;
     _defaultMutedSet = true;
   }
@@ -4007,7 +4009,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   num _defaultPlaybackRate;
   bool _defaultPlaybackRateSet = false;
   num get defaultPlaybackRate => _defaultPlaybackRate;
-  void set defaultPlaybackRate(num v) {
+  set defaultPlaybackRate(num v) {
     _defaultPlaybackRate = v;
     _defaultPlaybackRateSet = true;
   }
@@ -4015,7 +4017,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   bool _disableRemotePlayback;
   bool _disableRemotePlaybackSet = false;
   bool get disableRemotePlayback => _disableRemotePlayback;
-  void set disableRemotePlayback(bool v) {
+  set disableRemotePlayback(bool v) {
     _disableRemotePlayback = v;
     _disableRemotePlaybackSet = true;
   }
@@ -4023,7 +4025,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   bool _loop;
   bool _loopSet = false;
   bool get loop => _loop;
-  void set loop(bool v) {
+  set loop(bool v) {
     _loop = v;
     _loopSet = true;
   }
@@ -4031,7 +4033,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   bool _muted;
   bool _mutedSet = false;
   bool get muted => _muted;
-  void set muted(bool v) {
+  set muted(bool v) {
     _muted = v;
     _mutedSet = true;
   }
@@ -4039,7 +4041,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   num _playbackRate;
   bool _playbackRateSet = false;
   num get playbackRate => _playbackRate;
-  void set playbackRate(num v) {
+  set playbackRate(num v) {
     _playbackRate = v;
     _playbackRateSet = true;
   }
@@ -4047,7 +4049,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   String _preload;
   bool _preloadSet = false;
   String get preload => _preload;
-  void set preload(String v) {
+  set preload(String v) {
     _preload = v;
     _preloadSet = true;
   }
@@ -4055,7 +4057,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   MediaSession _session;
   bool _sessionSet = false;
   MediaSession get session => _session;
-  void set session(MediaSession v) {
+  set session(MediaSession v) {
     _session = v;
     _sessionSet = true;
   }
@@ -4063,7 +4065,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -4071,7 +4073,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   num _volume;
   bool _volumeSet = false;
   num get volume => _volume;
-  void set volume(num v) {
+  set volume(num v) {
     _volume = v;
     _volumeSet = true;
   }
@@ -4169,7 +4171,7 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   String _label;
   bool _labelSet = false;
   String get label => _label;
-  void set label(String v) {
+  set label(String v) {
     _label = v;
     _labelSet = true;
   }
@@ -4177,7 +4179,7 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -4212,7 +4214,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   bool _checked;
   bool _checkedSet = false;
   bool get checked => _checked;
-  void set checked(bool v) {
+  set checked(bool v) {
     _checked = v;
     _checkedSet = true;
   }
@@ -4220,7 +4222,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   bool _defaultValue;
   bool _defaultValueSet = false;
   bool get defaultValue => _defaultValue;
-  void set defaultValue(bool v) {
+  set defaultValue(bool v) {
     _defaultValue = v;
     _defaultValueSet = true;
   }
@@ -4228,7 +4230,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -4236,7 +4238,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   String _icon;
   bool _iconSet = false;
   String get icon => _icon;
-  void set icon(String v) {
+  set icon(String v) {
     _icon = v;
     _iconSet = true;
   }
@@ -4244,7 +4246,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   String _label;
   bool _labelSet = false;
   String get label => _label;
-  void set label(String v) {
+  set label(String v) {
     _label = v;
     _labelSet = true;
   }
@@ -4252,7 +4254,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   String _radiogroup;
   bool _radiogroupSet = false;
   String get radiogroup => _radiogroup;
-  void set radiogroup(String v) {
+  set radiogroup(String v) {
     _radiogroup = v;
     _radiogroupSet = true;
   }
@@ -4260,7 +4262,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -4322,7 +4324,7 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   String _content;
   bool _contentSet = false;
   String get content => _content;
-  void set content(String v) {
+  set content(String v) {
     _content = v;
     _contentSet = true;
   }
@@ -4330,7 +4332,7 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   String _httpEquiv;
   bool _httpEquivSet = false;
   String get httpEquiv => _httpEquiv;
-  void set httpEquiv(String v) {
+  set httpEquiv(String v) {
     _httpEquiv = v;
     _httpEquivSet = true;
   }
@@ -4338,7 +4340,7 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -4380,7 +4382,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   num _high;
   bool _highSet = false;
   num get high => _high;
-  void set high(num v) {
+  set high(num v) {
     _high = v;
     _highSet = true;
   }
@@ -4388,7 +4390,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   num _low;
   bool _lowSet = false;
   num get low => _low;
-  void set low(num v) {
+  set low(num v) {
     _low = v;
     _lowSet = true;
   }
@@ -4396,7 +4398,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   num _max;
   bool _maxSet = false;
   num get max => _max;
-  void set max(num v) {
+  set max(num v) {
     _max = v;
     _maxSet = true;
   }
@@ -4404,7 +4406,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   num _min;
   bool _minSet = false;
   num get min => _min;
-  void set min(num v) {
+  set min(num v) {
     _min = v;
     _minSet = true;
   }
@@ -4412,7 +4414,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   num _optimum;
   bool _optimumSet = false;
   num get optimum => _optimum;
-  void set optimum(num v) {
+  set optimum(num v) {
     _optimum = v;
     _optimumSet = true;
   }
@@ -4420,7 +4422,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   num _value;
   bool _valueSet = false;
   num get value => _value;
-  void set value(num v) {
+  set value(num v) {
     _value = v;
     _valueSet = true;
   }
@@ -4474,7 +4476,7 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   String _cite;
   bool _citeSet = false;
   String get cite => _cite;
-  void set cite(String v) {
+  set cite(String v) {
     _cite = v;
     _citeSet = true;
   }
@@ -4482,7 +4484,7 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   String _dateTime;
   bool _dateTimeSet = false;
   String get dateTime => _dateTime;
-  void set dateTime(String v) {
+  set dateTime(String v) {
     _dateTime = v;
     _dateTimeSet = true;
   }
@@ -4519,7 +4521,7 @@ class VOListElement extends VHtmlElement<OListElement> {
   bool _reversed;
   bool _reversedSet = false;
   bool get reversed => _reversed;
-  void set reversed(bool v) {
+  set reversed(bool v) {
     _reversed = v;
     _reversedSet = true;
   }
@@ -4527,7 +4529,7 @@ class VOListElement extends VHtmlElement<OListElement> {
   int _start;
   bool _startSet = false;
   int get start => _start;
-  void set start(int v) {
+  set start(int v) {
     _start = v;
     _startSet = true;
   }
@@ -4535,7 +4537,7 @@ class VOListElement extends VHtmlElement<OListElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -4577,7 +4579,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   String _data;
   bool _dataSet = false;
   String get data => _data;
-  void set data(String v) {
+  set data(String v) {
     _data = v;
     _dataSet = true;
   }
@@ -4585,7 +4587,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   String _height;
   bool _heightSet = false;
   String get height => _height;
-  void set height(String v) {
+  set height(String v) {
     _height = v;
     _heightSet = true;
   }
@@ -4593,7 +4595,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -4601,7 +4603,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -4609,7 +4611,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   String _useMap;
   bool _useMapSet = false;
   String get useMap => _useMap;
-  void set useMap(String v) {
+  set useMap(String v) {
     _useMap = v;
     _useMapSet = true;
   }
@@ -4617,7 +4619,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   String _width;
   bool _widthSet = false;
   String get width => _width;
-  void set width(String v) {
+  set width(String v) {
     _width = v;
     _widthSet = true;
   }
@@ -4674,7 +4676,7 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -4682,7 +4684,7 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   String _label;
   bool _labelSet = false;
   String get label => _label;
-  void set label(String v) {
+  set label(String v) {
     _label = v;
     _labelSet = true;
   }
@@ -4719,7 +4721,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   bool _defaultSelected;
   bool _defaultSelectedSet = false;
   bool get defaultSelected => _defaultSelected;
-  void set defaultSelected(bool v) {
+  set defaultSelected(bool v) {
     _defaultSelected = v;
     _defaultSelectedSet = true;
   }
@@ -4727,7 +4729,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -4735,7 +4737,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   String _label;
   bool _labelSet = false;
   String get label => _label;
-  void set label(String v) {
+  set label(String v) {
     _label = v;
     _labelSet = true;
   }
@@ -4743,7 +4745,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   bool _selected;
   bool _selectedSet = false;
   bool get selected => _selected;
-  void set selected(bool v) {
+  set selected(bool v) {
     _selected = v;
     _selectedSet = true;
   }
@@ -4751,7 +4753,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -4803,7 +4805,7 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   String _defaultValue;
   bool _defaultValueSet = false;
   String get defaultValue => _defaultValue;
-  void set defaultValue(String v) {
+  set defaultValue(String v) {
     _defaultValue = v;
     _defaultValueSet = true;
   }
@@ -4811,7 +4813,7 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -4819,7 +4821,7 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -4878,7 +4880,7 @@ class VParamElement extends VHtmlElement<ParamElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -4886,7 +4888,7 @@ class VParamElement extends VHtmlElement<ParamElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -4955,7 +4957,7 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   num _max;
   bool _maxSet = false;
   num get max => _max;
-  void set max(num v) {
+  set max(num v) {
     _max = v;
     _maxSet = true;
   }
@@ -4963,7 +4965,7 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   num _value;
   bool _valueSet = false;
   num get value => _value;
-  void set value(num v) {
+  set value(num v) {
     _value = v;
     _valueSet = true;
   }
@@ -5000,7 +5002,7 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
   String _cite;
   bool _citeSet = false;
   String get cite => _cite;
-  void set cite(String v) {
+  set cite(String v) {
     _cite = v;
     _citeSet = true;
   }
@@ -5032,7 +5034,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   bool _async;
   bool _asyncSet = false;
   bool get async => _async;
-  void set async(bool v) {
+  set async(bool v) {
     _async = v;
     _asyncSet = true;
   }
@@ -5040,7 +5042,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   String _charset;
   bool _charsetSet = false;
   String get charset => _charset;
-  void set charset(String v) {
+  set charset(String v) {
     _charset = v;
     _charsetSet = true;
   }
@@ -5048,7 +5050,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   String _crossOrigin;
   bool _crossOriginSet = false;
   String get crossOrigin => _crossOrigin;
-  void set crossOrigin(String v) {
+  set crossOrigin(String v) {
     _crossOrigin = v;
     _crossOriginSet = true;
   }
@@ -5056,7 +5058,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   bool _defer;
   bool _deferSet = false;
   bool get defer => _defer;
-  void set defer(bool v) {
+  set defer(bool v) {
     _defer = v;
     _deferSet = true;
   }
@@ -5064,7 +5066,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   String _integrity;
   bool _integritySet = false;
   String get integrity => _integrity;
-  void set integrity(String v) {
+  set integrity(String v) {
     _integrity = v;
     _integritySet = true;
   }
@@ -5072,7 +5074,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   String _nonce;
   bool _nonceSet = false;
   String get nonce => _nonce;
-  void set nonce(String v) {
+  set nonce(String v) {
     _nonce = v;
     _nonceSet = true;
   }
@@ -5080,7 +5082,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -5088,7 +5090,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -5155,7 +5157,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -5163,7 +5165,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -5171,7 +5173,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   int _length;
   bool _lengthSet = false;
   int get length => _length;
-  void set length(int v) {
+  set length(int v) {
     _length = v;
     _lengthSet = true;
   }
@@ -5179,7 +5181,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   bool _multiple;
   bool _multipleSet = false;
   bool get multiple => _multiple;
-  void set multiple(bool v) {
+  set multiple(bool v) {
     _multiple = v;
     _multipleSet = true;
   }
@@ -5187,7 +5189,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -5195,7 +5197,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -5203,7 +5205,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   int _selectedIndex;
   bool _selectedIndexSet = false;
   int get selectedIndex => _selectedIndex;
-  void set selectedIndex(int v) {
+  set selectedIndex(int v) {
     _selectedIndex = v;
     _selectedIndexSet = true;
   }
@@ -5211,7 +5213,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   int _size;
   bool _sizeSet = false;
   int get size => _size;
-  void set size(int v) {
+  set size(int v) {
     _size = v;
     _sizeSet = true;
   }
@@ -5219,7 +5221,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -5305,7 +5307,7 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -5337,7 +5339,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   String _media;
   bool _mediaSet = false;
   String get media => _media;
-  void set media(String v) {
+  set media(String v) {
     _media = v;
     _mediaSet = true;
   }
@@ -5345,7 +5347,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   String _sizes;
   bool _sizesSet = false;
   String get sizes => _sizes;
-  void set sizes(String v) {
+  set sizes(String v) {
     _sizes = v;
     _sizesSet = true;
   }
@@ -5353,7 +5355,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -5361,7 +5363,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   String _srcset;
   bool _srcsetSet = false;
   String get srcset => _srcset;
-  void set srcset(String v) {
+  set srcset(String v) {
     _srcset = v;
     _srcsetSet = true;
   }
@@ -5369,7 +5371,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -5438,7 +5440,7 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -5446,7 +5448,7 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   String _media;
   bool _mediaSet = false;
   String get media => _media;
-  void set media(String v) {
+  set media(String v) {
     _media = v;
     _mediaSet = true;
   }
@@ -5454,7 +5456,7 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   String _type;
   bool _typeSet = false;
   String get type => _type;
-  void set type(String v) {
+  set type(String v) {
     _type = v;
     _typeSet = true;
   }
@@ -5514,7 +5516,7 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   int _colSpan;
   bool _colSpanSet = false;
   int get colSpan => _colSpan;
-  void set colSpan(int v) {
+  set colSpan(int v) {
     _colSpan = v;
     _colSpanSet = true;
   }
@@ -5522,7 +5524,7 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   String _headers;
   bool _headersSet = false;
   String get headers => _headers;
-  void set headers(String v) {
+  set headers(String v) {
     _headers = v;
     _headersSet = true;
   }
@@ -5530,7 +5532,7 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   int _rowSpan;
   bool _rowSpanSet = false;
   int get rowSpan => _rowSpan;
-  void set rowSpan(int v) {
+  set rowSpan(int v) {
     _rowSpan = v;
     _rowSpanSet = true;
   }
@@ -5572,7 +5574,7 @@ class VTableColElement extends VHtmlElement<TableColElement> {
   int _span;
   bool _spanSet = false;
   int get span => _span;
-  void set span(int v) {
+  set span(int v) {
     _span = v;
     _spanSet = true;
   }
@@ -5604,7 +5606,7 @@ class VTableElement extends VHtmlElement<TableElement> {
   TableCaptionElement _caption;
   bool _captionSet = false;
   TableCaptionElement get caption => _caption;
-  void set caption(TableCaptionElement v) {
+  set caption(TableCaptionElement v) {
     _caption = v;
     _captionSet = true;
   }
@@ -5612,7 +5614,7 @@ class VTableElement extends VHtmlElement<TableElement> {
   TableSectionElement _tFoot;
   bool _tFootSet = false;
   TableSectionElement get tFoot => _tFoot;
-  void set tFoot(TableSectionElement v) {
+  set tFoot(TableSectionElement v) {
     _tFoot = v;
     _tFootSet = true;
   }
@@ -5620,7 +5622,7 @@ class VTableElement extends VHtmlElement<TableElement> {
   TableSectionElement _tHead;
   bool _tHeadSet = false;
   TableSectionElement get tHead => _tHead;
-  void set tHead(TableSectionElement v) {
+  set tHead(TableSectionElement v) {
     _tHead = v;
     _tHeadSet = true;
   }
@@ -5711,7 +5713,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _autocapitalize;
   bool _autocapitalizeSet = false;
   String get autocapitalize => _autocapitalize;
-  void set autocapitalize(String v) {
+  set autocapitalize(String v) {
     _autocapitalize = v;
     _autocapitalizeSet = true;
   }
@@ -5719,7 +5721,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   bool _autofocus;
   bool _autofocusSet = false;
   bool get autofocus => _autofocus;
-  void set autofocus(bool v) {
+  set autofocus(bool v) {
     _autofocus = v;
     _autofocusSet = true;
   }
@@ -5727,7 +5729,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   int _cols;
   bool _colsSet = false;
   int get cols => _cols;
-  void set cols(int v) {
+  set cols(int v) {
     _cols = v;
     _colsSet = true;
   }
@@ -5735,7 +5737,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _defaultValue;
   bool _defaultValueSet = false;
   String get defaultValue => _defaultValue;
-  void set defaultValue(String v) {
+  set defaultValue(String v) {
     _defaultValue = v;
     _defaultValueSet = true;
   }
@@ -5743,7 +5745,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _dirName;
   bool _dirNameSet = false;
   String get dirName => _dirName;
-  void set dirName(String v) {
+  set dirName(String v) {
     _dirName = v;
     _dirNameSet = true;
   }
@@ -5751,7 +5753,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   bool _disabled;
   bool _disabledSet = false;
   bool get disabled => _disabled;
-  void set disabled(bool v) {
+  set disabled(bool v) {
     _disabled = v;
     _disabledSet = true;
   }
@@ -5759,7 +5761,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _inputMode;
   bool _inputModeSet = false;
   String get inputMode => _inputMode;
-  void set inputMode(String v) {
+  set inputMode(String v) {
     _inputMode = v;
     _inputModeSet = true;
   }
@@ -5767,7 +5769,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   int _maxLength;
   bool _maxLengthSet = false;
   int get maxLength => _maxLength;
-  void set maxLength(int v) {
+  set maxLength(int v) {
     _maxLength = v;
     _maxLengthSet = true;
   }
@@ -5775,7 +5777,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   int _minLength;
   bool _minLengthSet = false;
   int get minLength => _minLength;
-  void set minLength(int v) {
+  set minLength(int v) {
     _minLength = v;
     _minLengthSet = true;
   }
@@ -5783,7 +5785,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _name;
   bool _nameSet = false;
   String get name => _name;
-  void set name(String v) {
+  set name(String v) {
     _name = v;
     _nameSet = true;
   }
@@ -5791,7 +5793,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _placeholder;
   bool _placeholderSet = false;
   String get placeholder => _placeholder;
-  void set placeholder(String v) {
+  set placeholder(String v) {
     _placeholder = v;
     _placeholderSet = true;
   }
@@ -5799,7 +5801,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   bool _readOnly;
   bool _readOnlySet = false;
   bool get readOnly => _readOnly;
-  void set readOnly(bool v) {
+  set readOnly(bool v) {
     _readOnly = v;
     _readOnlySet = true;
   }
@@ -5807,7 +5809,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   bool _required;
   bool _requiredSet = false;
   bool get required => _required;
-  void set required(bool v) {
+  set required(bool v) {
     _required = v;
     _requiredSet = true;
   }
@@ -5815,7 +5817,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   int _rows;
   bool _rowsSet = false;
   int get rows => _rows;
-  void set rows(int v) {
+  set rows(int v) {
     _rows = v;
     _rowsSet = true;
   }
@@ -5823,7 +5825,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _selectionDirection;
   bool _selectionDirectionSet = false;
   String get selectionDirection => _selectionDirection;
-  void set selectionDirection(String v) {
+  set selectionDirection(String v) {
     _selectionDirection = v;
     _selectionDirectionSet = true;
   }
@@ -5831,7 +5833,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   int _selectionEnd;
   bool _selectionEndSet = false;
   int get selectionEnd => _selectionEnd;
-  void set selectionEnd(int v) {
+  set selectionEnd(int v) {
     _selectionEnd = v;
     _selectionEndSet = true;
   }
@@ -5839,7 +5841,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   int _selectionStart;
   bool _selectionStartSet = false;
   int get selectionStart => _selectionStart;
-  void set selectionStart(int v) {
+  set selectionStart(int v) {
     _selectionStart = v;
     _selectionStartSet = true;
   }
@@ -5847,7 +5849,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _value;
   bool _valueSet = false;
   String get value => _value;
-  void set value(String v) {
+  set value(String v) {
     _value = v;
     _valueSet = true;
   }
@@ -5855,7 +5857,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   String _wrap;
   bool _wrapSet = false;
   String get wrap => _wrap;
-  void set wrap(String v) {
+  set wrap(String v) {
     _wrap = v;
     _wrapSet = true;
   }
@@ -5994,7 +5996,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   bool _defaultValue;
   bool _defaultValueSet = false;
   bool get defaultValue => _defaultValue;
-  void set defaultValue(bool v) {
+  set defaultValue(bool v) {
     _defaultValue = v;
     _defaultValueSet = true;
   }
@@ -6002,7 +6004,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   String _kind;
   bool _kindSet = false;
   String get kind => _kind;
-  void set kind(String v) {
+  set kind(String v) {
     _kind = v;
     _kindSet = true;
   }
@@ -6010,7 +6012,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   String _label;
   bool _labelSet = false;
   String get label => _label;
-  void set label(String v) {
+  set label(String v) {
     _label = v;
     _labelSet = true;
   }
@@ -6018,7 +6020,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   String _src;
   bool _srcSet = false;
   String get src => _src;
-  void set src(String v) {
+  set src(String v) {
     _src = v;
     _srcSet = true;
   }
@@ -6026,7 +6028,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   String _srclang;
   bool _srclangSet = false;
   String get srclang => _srclang;
-  void set srclang(String v) {
+  set srclang(String v) {
     _srclang = v;
     _srclangSet = true;
   }
@@ -6110,7 +6112,7 @@ class VVideoElement extends VMediaElement<VideoElement> {
   int _height;
   bool _heightSet = false;
   int get height => _height;
-  void set height(int v) {
+  set height(int v) {
     _height = v;
     _heightSet = true;
   }
@@ -6118,7 +6120,7 @@ class VVideoElement extends VMediaElement<VideoElement> {
   String _poster;
   bool _posterSet = false;
   String get poster => _poster;
-  void set poster(String v) {
+  set poster(String v) {
     _poster = v;
     _posterSet = true;
   }
@@ -6126,7 +6128,7 @@ class VVideoElement extends VMediaElement<VideoElement> {
   int _width;
   bool _widthSet = false;
   int get width => _width;
-  void set width(int v) {
+  set width(int v) {
     _width = v;
     _widthSet = true;
   }

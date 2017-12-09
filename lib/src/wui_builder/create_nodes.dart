@@ -9,7 +9,7 @@ void render(VNode vnode, Element mount) {
 }
 
 Element createNode(VNode vnode) {
-  if (vnode.vNodeType == VNodeTypes.Element) {
+  if (vnode.vNodeType == VNodeTypes.element) {
     return createElementNode(vnode as VElement);
   } else {
     return createComponentNode(vnode as Component);

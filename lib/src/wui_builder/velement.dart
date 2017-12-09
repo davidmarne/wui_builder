@@ -1,7 +1,7 @@
 library velement;
 
-import 'dart:html';
 import 'dart:async';
+import 'dart:html';
 
 import 'package:meta/meta.dart';
 

@@ -2,9 +2,9 @@ import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/functional.dart';
 import 'package:wui_builder/vhtml.dart';
 
-import 'todo.dart';
-import 'hero.dart';
 import 'content.dart';
+import 'hero.dart';
+import 'todo.dart';
 
 typedef void AddTodo(Todo todo);
 typedef void UpdateTodo(int id);
@@ -21,24 +21,26 @@ ContainerProps stateMapper(
   Null _,
   Iterable<Todo> state,
   SetState<Null, Iterable<Todo>> setState,
+  SetState<Null, Iterable<Todo>> setStateOnIdle,
+  SetState<Null, Iterable<Todo>> setStateOnFrame,
 ) =>
     new ContainerProps()
       ..todos = state
-      ..addTodo = ((Todo todo) {
+      ..addTodo = ((todo) {
         setState((_, prev) => prev.toList()..add(todo));
       })
-      ..updateTodo = ((int id) {
+      ..updateTodo = ((id) {
         setState((_, prev) {
-          var todo = prev.firstWhere((todo) => todo.id == id);
+          final todo = prev.firstWhere((todo) => todo.id == id);
           todo.isComplete = !todo.isComplete;
           return prev;
         });
       })
-      ..putAfter = ((int before, int after) {
+      ..putAfter = ((before, after) {
         setState((_, prev) {
-          var nextState = prev.toList();
-          var afterTodo = nextState.firstWhere((t) => t.id == after);
-          var beforeTodo = nextState.firstWhere((t) => t.id == before);
+          final nextState = prev.toList();
+          final afterTodo = nextState.firstWhere((t) => t.id == after);
+          final beforeTodo = nextState.firstWhere((t) => t.id == before);
           nextState.removeWhere((t) => t.id == after);
           nextState.insert(nextState.indexOf(beforeTodo) + 1, afterTodo);
           return nextState;

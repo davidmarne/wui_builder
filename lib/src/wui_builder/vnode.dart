@@ -4,10 +4,10 @@ abstract class VNode {
   Element ref;
   VNode parent;
   dynamic key;
-  VNodeTypes vNodeType;
+  VNodeTypes get vNodeType;
 }
 
 enum VNodeTypes {
-  Element,
-  Component,
+  element,
+  component,
 }

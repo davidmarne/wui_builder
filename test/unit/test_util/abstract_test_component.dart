@@ -43,10 +43,8 @@ abstract class TestComponent<PS extends TestComponentProps>
   }
 
   @override
-  bool shouldComponentUpdate(nextProps, nextState) {
-    return nextState.shouldComponentUpdate(props.actualValue,
+  bool shouldComponentUpdate(nextProps, nextState) => nextState.shouldComponentUpdate(props.actualValue,
         nextProps.actualValue, state.actualValue, nextState.actualValue);
-  }
 
   @override
   void componentWillUpdate(nextProps, nextState) {

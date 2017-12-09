@@ -26,4 +26,4 @@ typedef bool BranchTest<P>(P props);
 ///   ```
 FunctionalComponent<P> branch<P>(BranchTest<P> test,
         FunctionalComponent<P> left, FunctionalComponent<P> right) =>
-    (P props) => test(props) ? left(props) : right(props);
+    (props) => test(props) ? left(props) : right(props);

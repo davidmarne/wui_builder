@@ -42,6 +42,9 @@ bool updateComponent(UpdateTracker tracker) {
     oldVNode._pendingStateSetter = null;
   }
 
+  // lifecycle - only call componentWillReceiveProps if this update
+  // was initiated by a parent component calling update. If update
+  // was called by this component, it is not receiving new props.
   if (initiatedByParent) {
     oldVNode.componentWillReceiveProps(nextProps, nextState);
   }
@@ -53,16 +56,18 @@ bool updateComponent(UpdateTracker tracker) {
   oldVNode.componentWillUpdate(nextProps, nextState);
 
   // set the state of the new node to next state
-  oldVNode._state = nextState;
-  oldVNode._props = nextProps;
+  oldVNode
+    .._state = nextState
+    .._props = nextProps;
 
   // build the new virtual tree
   final newResult = oldVNode.render();
 
-  // move the update position to the next node
+  // create a new tracker for the child update
   final nextTracker =
       tracker.nextCursor(tracker.parent, tracker.node, newResult, oldResult);
 
+  // run the child tracker
   final finished = updateVNode(nextTracker);
 
   // push an update to run lifecycle events and null the _pendingUpdateTracker
@@ -89,12 +94,16 @@ void finishComponentUpdate(UpdateTracker tracker) {
 
 // calls the necessary methods to clean up a vnode
 void disposeComponent(Component node) {
+  // lifecycle - componentWillUnmount
   node.componentWillUnmount();
-  disposeVNode(node._renderResult);
-}
 
-// called to revert a state change when a pending
-// update is cancelled
-void revertState(Component updatingComponent, dynamic state) {
-  updatingComponent._state = state;
+  // cancel any queued updates
+  for (final tracker in node._pendingUpdateTrackers) tracker.cancel();
+
+  // deregister the beforeAnimationFrameCallback if it is set
+  if (node.beforeAnimationFrame != null)
+    beforeAnimationFrameCallbacks.remove(node.beforeAnimationFrame);
+
+  // dispose of its children
+  disposeVNode(node._renderResult);
 }

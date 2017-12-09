@@ -1,16 +1,21 @@
-import 'functional.dart';
 import '../../wui_builder.dart';
+import 'functional.dart';
 
-typedef SetState<P, S>(StateSetter<P, S> newState);
+typedef void SetState<P, S>(StateSetter<P, S> newState);
 
 typedef OutterP StateMapper<InnerP, S, OutterP>(
-    InnerP props, S state, SetState<InnerP, S> setState);
+    InnerP props,
+    S state,
+    SetState<InnerP, S> setState,
+    SetState<InnerP, S> setStateOnIdle,
+    SetState<InnerP, S> setStateOnAnimationFrame);
 
-/// withState will pass your component a [state] object and [setState] function
+/// [withState] will let you map your props, given the recieved props,
+/// the state, and a state setter
 ComponentEnhancer<InnerP, OutterP> withState<InnerP, S, OutterP>(
         S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
-    (FunctionalComponent<OutterP> baseComponent) =>
-        (InnerP props) => new WithState<InnerP, S, OutterP>(new WithStateProps()
+    (baseComponent) =>
+        (props) => new WithState<InnerP, S, OutterP>(new WithStateProps()
           ..defaultState = defaultState
           ..mapper = mapper
           ..baseProps = props
@@ -31,10 +36,23 @@ class WithState<InnerP, S, OutterP>
   S getInitialState() => props.defaultState;
 
   void _setState(StateSetter<InnerP, S> s) {
-    setState((WithStateProps<InnerP, S, OutterP> props, S state) =>
-        s(props.baseProps, state));
+    setState((sprops, state) => s(props.baseProps, state));
   }
 
-  render() =>
-      props.baseComponent(props.mapper(props.baseProps, state, _setState));
+  void _setStateOnIdle(StateSetter<InnerP, S> s) {
+    setStateOnIdle((sprops, state) => s(props.baseProps, state));
+  }
+
+  void _setStateOnAnimationFrame(StateSetter<InnerP, S> s) {
+    setStateOnAnimationFrame((sprops, state) => s(props.baseProps, state));
+  }
+
+  @override
+  VNode render() => props.baseComponent(props.mapper(
+        props.baseProps,
+        state,
+        _setState,
+        _setStateOnIdle,
+        _setStateOnAnimationFrame,
+      ));
 }

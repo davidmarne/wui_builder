@@ -2,18 +2,16 @@ import 'dart:io';
 import 'package:dart_style/dart_style.dart';
 
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/file_system/file_system.dart' hide File;
 import 'package:analyzer/file_system/physical_file_system.dart';
 import 'package:analyzer/src/dart/sdk/sdk.dart';
 import 'package:analyzer/src/generated/engine.dart';
-import 'package:analyzer/src/generated/sdk.dart' show DartSdk;
 import 'package:analyzer/src/generated/source.dart';
 import 'package:analyzer/src/generated/source_io.dart';
 import 'package:analyzer/src/source/source_resource.dart';
 
-import 'templates.dart';
 import 'parsing.dart';
+import 'templates.dart';
 
 void main(List<String> args) {
   if (args.length != 1) {
@@ -31,17 +29,24 @@ void main(List<String> args) {
   final svgTypes = svgLib.element.library.definingCompilationUnit.types;
   final allTypes = htmlTypes.toList();
 
+  final lintIgnores = '''\n
+    // ignore_for_file: annotate_overrides
+    // ignore_for_file: overridden_fields\n
+  ''';
+
   ///..addAll(svgTypes);
   print('${htmlTypes.length} ${svgTypes.length} ${allTypes.length}');
-  final result = new StringBuffer();
-  result.write("import 'dart:html';");
-  result.write("import 'package:meta/meta.dart';");
-  result.write("import 'wui_builder.dart' show VElement;");
+  final result = new StringBuffer()
+    ..write("import 'dart:html';")
+    ..write("import 'package:meta/meta.dart';")
+    ..write("import 'wui_builder.dart' show VElement;")
+    ..write(lintIgnores);
 
   for (final classElement in htmlTypes) {
     if (classElement.name == 'Element') {
-      final vEleResult = new StringBuffer();
-      vEleResult.write("part of velement;");
+      final vEleResult = new StringBuffer()
+        ..write("part of velement;")
+        ..write(lintIgnores);
 
       final setters = localSetters(classElement).where(
           (setter) => setter.name != 'children' && setter.name != 'nodes');
@@ -49,9 +54,9 @@ void main(List<String> args) {
 
       vEleResult.write(vElement(setters, events));
 
-      if (classElement.constructors.length > 0) {
+      if (classElement.constructors.isNotEmpty) {
         for (var constructor in classElement.constructors) {
-          var constructorName = constructor.name;
+          final constructorName = constructor.name;
           // Workaround: ignore the following constructors
           if (constructorName == '' ||
               constructorName == '_' ||
@@ -76,7 +81,7 @@ void main(List<String> args) {
 
       // Workaround: VInputElementBase is an interface not an abstract class so
       // elements that implement VInputElementBase are treated as subclasses of VInputElementBase
-      var superclass =
+      final superclass =
           isInput(classElement) && classElement.name != 'InputElement'
               ? classElement.interfaces.first.element.name
               : classElement.supertype.element.name;
@@ -90,9 +95,9 @@ void main(List<String> args) {
             vElementSubclass(classElement.name, superclass, setters, 'html'));
       }
 
-      if (classElement.constructors.length > 0) {
+      if (classElement.constructors.isNotEmpty) {
         for (var constructor in classElement.constructors) {
-          var constructorName = constructor.name;
+          final constructorName = constructor.name;
           if (constructorName == '' ||
               constructorName == '_' ||
               constructorName == 'created' ||
@@ -112,11 +117,13 @@ void main(List<String> args) {
   final formatted = formatter.format(result.toString());
   new File('lib/vhtml.dart').writeAsStringSync(formatted);
 
-  result.clear();
+  result
+    ..clear()
+    ..write("import 'dart:svg';")
+    ..write("import 'package:meta/meta.dart';")
+    ..write("import 'wui_builder.dart' show VElement;")
+    ..write(lintIgnores);
 
-  result.write("import 'dart:svg';");
-  result.write("import 'package:meta/meta.dart';");
-  result.write("import 'wui_builder.dart' show VElement;");
   for (final classElement in svgTypes) {
     if (isElement(classElement) && classElement.isPublic) {
       final setters = localSetters(classElement);
@@ -136,9 +143,9 @@ void main(List<String> args) {
             vElementSubclass(classElement.name, superclass, setters, 'svg'));
       }
 
-      if (classElement.constructors.length > 0) {
-        for (var constructor in classElement.constructors) {
-          var constructorName = constructor.name;
+      if (classElement.constructors.isNotEmpty) {
+        for (final constructor in classElement.constructors) {
+          final constructorName = constructor.name;
           if (constructorName == '' ||
               constructorName == '_' ||
               constructorName == 'created' ||
@@ -160,22 +167,22 @@ void main(List<String> args) {
 
 // resolves the ast structure
 CompilationUnit _resolveLibrary(String sdkRoot, String libPath) {
-  PhysicalResourceProvider resourceProvider = PhysicalResourceProvider.INSTANCE;
-  DartSdk sdk = new FolderBasedDartSdk(
+  final resourceProvider = PhysicalResourceProvider.INSTANCE;
+  final sdk = new FolderBasedDartSdk(
       resourceProvider, resourceProvider.getFolder(sdkRoot));
 
-  var resolvers = [
+  final resolvers = [
     new DartUriResolver(sdk),
     new ResourceUriResolver(resourceProvider)
   ];
 
-  AnalysisContext context = AnalysisEngine.instance.createAnalysisContext()
+  final context = AnalysisEngine.instance.createAnalysisContext()
     ..sourceFactory = new SourceFactory(resolvers);
 
-  Source source = new FileSource(resourceProvider.getFile(libPath));
-  ChangeSet changeSet = new ChangeSet()..addedSource(source);
+  final source = new FileSource(resourceProvider.getFile(libPath));
+  final changeSet = new ChangeSet()..addedSource(source);
   context.applyChanges(changeSet);
-  LibraryElement libElement = context.computeLibraryElement(source);
+  final libElement = context.computeLibraryElement(source);
 
   return context.resolveCompilationUnit(source, libElement);
 }

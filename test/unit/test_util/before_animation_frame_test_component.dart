@@ -16,29 +16,32 @@ void expectRenderedOutput(
 String _expectedText(int propValue, int stateValue, int contextValue) =>
     '$propValue $stateValue $contextValue';
 
-class SingleVElementChildProps extends TestComponentProps {
+class BeforeAnimationFrameProps extends TestComponentProps {
   int context;
 }
 
-class SingleVElementChildComponent
-    extends TestComponent<SingleVElementChildProps> {
-  SingleVElementChildComponent(SingleVElementChildProps props) : super(props);
+class BeforeAnimationFrameComponent
+    extends TestComponent<BeforeAnimationFrameProps> {
+  BeforeAnimationFrameProps _expectation;
+
+  BeforeAnimationFrameComponent(BeforeAnimationFrameProps props) : super(props);
 
   @override
-  SingleVElementChildProps getInitialState() => props;
+  BeforeAnimationFrameProps getInitialState() => props;
 
   @override
   Map<String, dynamic> getChildContext() =>
       <String, dynamic>{testContextKey: props.context};
 
-  void updateState(SingleVElementChildProps p) {
-    setState((_, prevState) => p..actualValue = prevState.actualValue + 1);
+  void setExpectation(BeforeAnimationFrameProps p) {
+    _expectation = p;
   }
 
-  void updateStateIdle(SingleVElementChildProps p, {bool shouldAbort: false}) =>
-      setStateOnIdle(
-          (_, prevState) => p..actualValue = prevState.actualValue + 1,
-          shouldAbort: shouldAbort);
+  @override
+  BeforeAnimationFrame get beforeAnimationFrame => () {
+        setStateOnAnimationFrame((_, prevState) =>
+            _expectation..actualValue = prevState.actualValue + 1);
+      };
 
   @override
   VNode render() => new VDivElement()

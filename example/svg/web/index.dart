@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'dart:async';
 import 'dart:math';
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vsvg.dart';
@@ -22,13 +21,12 @@ class Circler extends Component<Null, int> {
   int getInitialState() => 0;
 
   @override
-  void componentWillMount() {
-    new Timer.periodic(new Duration(milliseconds: 16),
-        (_) => setState((_, s) => (s + 6) % 360));
-  }
+  BeforeAnimationFrame get beforeAnimationFrame => () {
+        setStateOnAnimationFrame((_, s) => (s + 6) % 360);
+      };
 
   @override
-  render() => new VSvgSvgElement()
+  VNode render() => new VSvgSvgElement()
     ..attributes = {
       'height': '1000',
       'width': '1000',

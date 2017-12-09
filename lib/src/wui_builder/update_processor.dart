@@ -1,5 +1,5 @@
-import 'create_nodes.dart';
 import 'component.dart';
+import 'create_nodes.dart';
 import 'update_tracker.dart';
 import 'velement.dart';
 import 'vnode.dart';
@@ -19,7 +19,7 @@ bool updateVNode(UpdateTracker tracker) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     disposeVNode(tracker.oldVNode);
     tracker.node.replaceWith(createNode(tracker.oldVNode));
-  } else if (tracker.newVNode.vNodeType == VNodeTypes.Element) {
+  } else if (tracker.newVNode.vNodeType == VNodeTypes.element) {
     return updateElement(tracker);
   } else {
     return updateComponent(tracker);
@@ -30,7 +30,7 @@ bool updateVNode(UpdateTracker tracker) {
 
 // calls the necessary methods to clean up a vnode
 void disposeVNode(VNode node) {
-  if (node.vNodeType == VNodeTypes.Component) {
+  if (node.vNodeType == VNodeTypes.component) {
     disposeComponent(node as Component);
   } else {
     disposeVElement(node as VElement);

@@ -16,29 +16,23 @@ void expectRenderedOutput(
 String _expectedText(int propValue, int stateValue, int contextValue) =>
     '$propValue $stateValue $contextValue';
 
-class SingleVElementChildProps extends TestComponentProps {
+class AnimationFrameProps extends TestComponentProps {
   int context;
 }
 
-class SingleVElementChildComponent
-    extends TestComponent<SingleVElementChildProps> {
-  SingleVElementChildComponent(SingleVElementChildProps props) : super(props);
+class AnimationFrameComponent extends TestComponent<AnimationFrameProps> {
+  AnimationFrameComponent(AnimationFrameProps props) : super(props);
 
   @override
-  SingleVElementChildProps getInitialState() => props;
+  AnimationFrameProps getInitialState() => props;
 
   @override
   Map<String, dynamic> getChildContext() =>
       <String, dynamic>{testContextKey: props.context};
 
-  void updateState(SingleVElementChildProps p) {
-    setState((_, prevState) => p..actualValue = prevState.actualValue + 1);
-  }
-
-  void updateStateIdle(SingleVElementChildProps p, {bool shouldAbort: false}) =>
-      setStateOnIdle(
-          (_, prevState) => p..actualValue = prevState.actualValue + 1,
-          shouldAbort: shouldAbort);
+  void updateStateOnAnimationFrame(AnimationFrameProps p) =>
+      setStateOnAnimationFrame(
+          (_, prevState) => p..actualValue = prevState.actualValue + 1);
 
   @override
   VNode render() => new VDivElement()
