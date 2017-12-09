@@ -15,22 +15,22 @@ typedef OutterP StateMapper<InnerP, S, OutterP>(
 ComponentEnhancer<InnerP, OutterP> withState<InnerP, S, OutterP>(
         S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
     (baseComponent) =>
-        (props) => new WithState<InnerP, S, OutterP>(new WithStateProps()
+        (props) => new _WithState<InnerP, S, OutterP>(new _WithStateProps()
           ..defaultState = defaultState
           ..mapper = mapper
           ..baseProps = props
           ..baseComponent = baseComponent);
 
-class WithStateProps<InnerP, S, OutterP> {
+class _WithStateProps<InnerP, S, OutterP> {
   S defaultState;
   StateMapper<InnerP, S, OutterP> mapper;
   InnerP baseProps;
   FunctionalComponent<OutterP> baseComponent;
 }
 
-class WithState<InnerP, S, OutterP>
-    extends Component<WithStateProps<InnerP, S, OutterP>, S> {
-  WithState(WithStateProps<InnerP, S, OutterP> props) : super(props);
+class _WithState<InnerP, S, OutterP>
+    extends Component<_WithStateProps<InnerP, S, OutterP>, S> {
+  _WithState(_WithStateProps<InnerP, S, OutterP> props) : super(props);
 
   @override
   S getInitialState() => props.defaultState;
