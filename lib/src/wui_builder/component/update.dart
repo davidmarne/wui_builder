@@ -3,7 +3,7 @@ part of component;
 bool updateComponent(UpdateTracker tracker) {
   final oldVNode = tracker.oldVNode as Component;
   final newVNode = tracker.newVNode as Component;
-  final oldResult = oldVNode._renderResult;
+  final oldResult = oldVNode.child;
   final dynamic prevProps = oldVNode._props;
   final dynamic nextProps = newVNode._props;
   final dynamic prevState = oldVNode._state;
@@ -56,9 +56,8 @@ bool updateComponent(UpdateTracker tracker) {
   oldVNode.componentWillUpdate(nextProps, nextState);
 
   // set the state of the new node to next state
-  oldVNode
-    .._state = nextState
-    .._props = nextProps;
+  oldVNode._state = nextState;
+  oldVNode._props = nextProps;
 
   // build the new virtual tree
   final newResult = oldVNode.render();
@@ -69,6 +68,10 @@ bool updateComponent(UpdateTracker tracker) {
 
   // run the child tracker
   final finished = updateVNode(nextTracker);
+
+  // if the render result type has changed, replace child
+  if (oldVNode.child.runtimeType != newResult.runtimeType ||
+      oldVNode.child.key != newResult.key) oldVNode._child = newResult;
 
   // push an update to run lifecycle events and null the _pendingUpdateTracker
   tracker.pushPendingCursor(
@@ -105,5 +108,5 @@ void disposeComponent(Component node) {
     beforeAnimationFrameCallbacks.remove(node.beforeAnimationFrame);
 
   // dispose of its children
-  disposeVNode(node._renderResult);
+  disposeVNode(node.child);
 }

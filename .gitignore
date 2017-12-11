@@ -6,3 +6,4 @@ build/
 benchmark/
 perf.pad
 coverage/
+.dart_tool/

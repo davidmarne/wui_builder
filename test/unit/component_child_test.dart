@@ -16,6 +16,7 @@ void main() {
 
     DivElement host;
     ComponentChildComponent component;
+    NestedComponentChildComponent child;
 
     void verifier(int expectedPropValue, int expectedStateValue,
         int expectedNumPendingUpdates) {
@@ -53,6 +54,7 @@ void main() {
       );
 
       render(component, host);
+      child = component.child as NestedComponentChildComponent;
       verifier(1, 1, 0);
     });
 
@@ -149,7 +151,7 @@ void main() {
 
       group('child update -', () {
         test('sync', () {
-          component.child.updateState(
+          child.updateState(
             new TestComponentProps()
               ..componentWillMount = failOnComponentWillMount
               ..componentDidMount = failOnComponentDidMount
@@ -165,7 +167,7 @@ void main() {
         });
 
         test('async - shouldAbort: true', () {
-          component.child.updateStateIdle(
+          child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -189,7 +191,7 @@ void main() {
         });
 
         test('async - shouldAbort: false', () {
-          component.child.updateStateIdle(
+          child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -307,7 +309,7 @@ void main() {
 
       group('child update -', () {
         test('sync', () {
-          component.child.updateState(
+          child.updateState(
             new TestComponentProps()
               ..componentWillMount = failOnComponentWillMount
               ..componentDidMount = failOnComponentDidMount
@@ -324,7 +326,7 @@ void main() {
         });
 
         test('async - shouldAbort: true', () {
-          component.child.updateStateIdle(
+          child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -348,7 +350,7 @@ void main() {
         });
 
         test('async - shouldAbort: false', () {
-          component.child.updateStateIdle(
+          child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -1245,7 +1247,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateState(
+              child.updateState(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1301,7 +1303,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateState(
+              child.updateState(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1356,7 +1358,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateStateIdle(
+              child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1410,7 +1412,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateStateIdle(
+              child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1464,7 +1466,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateState(
+              child.updateState(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1513,7 +1515,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateState(
+              child.updateState(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1562,7 +1564,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateStateIdle(
+              child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1617,7 +1619,7 @@ void main() {
 
               // when child updates it is still unaware
               // of the processing parent update
-              component.child.updateStateIdle(
+              child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -1688,7 +1690,7 @@ void main() {
 
             // when child updates it is still unaware
             // of the processing parent update
-            component.child.updateState(
+            child.updateState(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -1742,7 +1744,7 @@ void main() {
 
             // when child updates it is still unaware
             // of the processing parent update
-            component.child.updateState(
+            child.updateState(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -1796,7 +1798,7 @@ void main() {
 
             // when child updates it is still unaware
             // of the processing parent update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -1854,7 +1856,7 @@ void main() {
 
             // when child updates it is still unaware
             // of the processing parent update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -1921,7 +1923,7 @@ void main() {
 
             // when child updates it is aware
             // of the processing parent update
-            component.child.updateState(
+            child.updateState(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -1978,7 +1980,7 @@ void main() {
 
             // when child updates it is aware
             // of the processing parent update
-            component.child.updateState(
+            child.updateState(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -2038,7 +2040,7 @@ void main() {
 
             // when child updates it is aware
             // of the processing parent update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -2093,7 +2095,7 @@ void main() {
 
             // when child updates it is aware
             // of the processing parent update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
               new TestComponentProps()
                 ..componentWillMount = failOnComponentWillMount
                 ..componentDidMount = failOnComponentDidMount
@@ -2117,7 +2119,7 @@ void main() {
       group('child has started -', () {
         group('parent update is sync -', () {
           test('shouldAbort: true', () {
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2157,7 +2159,7 @@ void main() {
             verifier(2, 2, 0);
           });
           test('shouldAbort: false', () {
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2201,7 +2203,7 @@ void main() {
         });
         group('parent update is async -', () {
           test('shouldAbort: true', () {
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2241,7 +2243,7 @@ void main() {
             verifier(2, 2, 0);
           });
           test('shouldAbort: false', () {
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2287,7 +2289,7 @@ void main() {
         group('parent update is sync -', () {
           test('shouldAbort: true', () {
             // should get cancelled by sync update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2324,7 +2326,7 @@ void main() {
           });
           test('shouldAbort: false', () {
             // should execute before sync update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2365,7 +2367,7 @@ void main() {
         group('parent update is async -', () {
           test('shouldAbort: true', () {
             // should execute before sync update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount
@@ -2404,7 +2406,7 @@ void main() {
           });
           test('shouldAbort: false', () {
             // should execute before sync update
-            component.child.updateStateIdle(
+            child.updateStateIdle(
                 new TestComponentProps()
                   ..componentWillMount = failOnComponentWillMount
                   ..componentDidMount = failOnComponentDidMount

@@ -1,6 +1,7 @@
 part of component;
 
-Element createComponentNode(Component vnode) {
+Element createComponentNode(
+    Component vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   // register the beforeAnimationFrameCallback if it is set
   if (vnode.beforeAnimationFrame != null)
     addBeforeAnimationFrameCallback(vnode.beforeAnimationFrame);
@@ -12,19 +13,19 @@ Element createComponentNode(Component vnode) {
   vnode.componentWillMount();
 
   // build the new virtual tree
-  vnode._renderResult = vnode.render();
+  vnode._child = vnode.render();
 
   // set the parent of the render result to this node
-  vnode._renderResult.parent = vnode;
+  vnode.child.parent = vnode;
 
   // create a dom node for the render result
-  final domNode = createNode(vnode._renderResult);
+  final domNode = createNode(vnode.child, pendingComponentDidMounts);
 
   // update the ref on the component instance
   vnode.ref = domNode;
 
   // lifecycle - componentDidMount
-  vnode.componentDidMount();
+  pendingComponentDidMounts.add(vnode.componentDidMount);
 
   // return the newly created dom node for this component
   return domNode;

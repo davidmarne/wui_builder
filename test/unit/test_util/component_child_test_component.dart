@@ -24,8 +24,6 @@ class ComponentChildProps extends TestComponentProps {
 class ComponentChildComponent extends TestComponent<ComponentChildProps> {
   ComponentChildComponent(ComponentChildProps props) : super(props);
 
-  NestedComponentChildComponent child;
-
   @override
   ComponentChildProps getInitialState() => props;
 
@@ -43,12 +41,8 @@ class ComponentChildComponent extends TestComponent<ComponentChildProps> {
           shouldAbort: shouldAbort);
 
   @override
-  VNode render() {
-    final nextChild = new NestedComponentChildComponent(
-        state.nestedComponentProps..actualValue = state.actualValue);
-    child = child ?? nextChild;
-    return nextChild;
-  }
+  VNode render() => new NestedComponentChildComponent(
+      state.nestedComponentProps..actualValue = state.actualValue);
 }
 
 class NestedComponentChildComponent extends TestComponent<TestComponentProps> {

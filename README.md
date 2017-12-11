@@ -8,6 +8,10 @@ Supports defining custom components with an interface similar to react. All of t
 
 Built with async rendering in mind from the start.
 
+## Documentation and examples
+
+Check out the [documentation on github pages][docs] for an in depth look at the framework
+
 ## What makes this virtual dom framework different?
 
 ### Generated virtual dom elements
@@ -34,37 +38,7 @@ Finally, wui_builder prevents uneccessary updates when multiple updates to the s
 
 Note, requestIdleCallback is not supported by all browsers at this time and wui_builder does NOT include a polyfill at this time. Synchronous rendering still works on all browsers.
 
-## Hello world
-
-```dart
-// component is a virtual dom node
-final component = new VDivElement()
-    ..text = 'Hello world';
-
-// render the virtual element into a container
-render(component, querySelector('#container'));
-```
-
-## Custom components
-
-```dart
-class HelloWorld extends PComponent<Null> {
-    HelloWorld(props) : super(props);
-
-    @override
-    VNode render() => new VDivElement()
-        ..text = 'Hello world';
-}
-
-// instantiate the component, it does not require any props
-// so null is passed to the constructor
-final component = new HelloWorld(null);
-
-// render the virtual element into a container
-render(component, querySelector('#container'));
-```
-
-## Passing props to custom components
+### Syntax
 
 ```dart
 class HelloWorldProps {
@@ -89,104 +63,4 @@ final component = new HelloWorld(
 render(component, querySelector('#container'));
 ```
 
-## Stateful components - immediate synchronous updates
-
-```dart
-class HelloWorldState {
-    String text;
-}
-
-class HelloWorld extends SComponent<HelloWorldState> {
-    HelloWorld(props) : super(props);
-
-    @override
-    VNode render() => new VDivElement()
-        ..text = state.text
-        ..onClick = _onClick;
-
-    @override
-    HelloWorldState getInitialState() => new HelloWorldState()
-        ..text = 'Hello world';
-
-    void _onClick(_) {
-        // update the state, causing the component to redraw
-        setState((_, previousState) => new HelloWorldState()
-            ..text = '$previousState again');
-    }
-}
-
-// instantiate the component, it does not require any props
-// so null is passed to the constructor
-final component = new HelloWorld(null);
-
-// render the virtual element into a container
-render(component, querySelector('#container'));
-```
-
-## Stateful components - synchronous updates on animation frame
-
-```dart
-class HelloWorldState {
-    String text;
-}
-
-class HelloWorld extends Component<Null, HelloWorldState> {
-    HelloWorld(props) : super(props);
-
-    @override
-    VNode render() => new VDivElement()
-        ..text = state.text
-        ..onClick = _onClick;
-
-    @override
-    HelloWorldState getInitialState() => new HelloWorldState()
-        ..text = 'Hello world';
-
-    void _onClick(_) {
-        // update the state, causing the component to redraw on the next frame
-        setStateOnAnimationFrame((_, previousState) => new HelloWorldState()
-            ..text = '$previousState again');
-    }
-}
-
-// instantiate the component, it does not require any props
-// so null is passed to the constructor
-final component = new HelloWorld(null);
-
-// render the virtual element into a container
-render(component, querySelector('#container'));
-```
-
-## Stateful components - iterative updates on idle callback
-
-```dart
-class HelloWorldState {
-    String text;
-}
-
-class HelloWorld extends Component<Null, HelloWorldState> {
-    HelloWorld(props) : super(props);
-
-    @override
-    VNode render() => new VDivElement()
-        ..text = state.text
-        ..onClick = _onClick;
-
-    @override
-    HelloWorldState getInitialState() => new HelloWorldState()
-        ..text = 'Hello world';
-
-    void _onClick(_) {
-        // update the state, causing the component to redraw on the next idle callback
-        setStateOnIdle((_, previousState) => new HelloWorldState()
-            ..text = '$previousState again');
-    }
-}
-
-// instantiate the component, it does not require any props
-// so null is passed to the constructor
-final component = new HelloWorld(null);
-
-// render the virtual element into a container
-render(component, querySelector('#container'));
-```
+[docs]: https://davidmarne.github.io

@@ -104,6 +104,14 @@ String customFactoryElement(
     $classElementName elementFactory() => new $classElementName.$constructorName();
   }''';
 
+// Workaround: elements that don't have tags defined in dart html that we still want
+// Workaround: elements that don't have tags defined in dart html that we still want
+String generalTagFactoryElement(String constructorName) => '''
+  class V$constructorName extends VElement<Element> {
+    @override
+    Element elementFactory() => new Element.tag(\'$constructorName\');
+  }''';
+
 // TODO: generate typed constructor
 // TODO: generate hashCode
 String vElementSubclass(
