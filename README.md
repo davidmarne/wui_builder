@@ -36,7 +36,7 @@ However, syncronous updates are also allowed to run on demand, without waiting f
 
 Finally, wui_builder prevents uneccessary updates when multiple updates to the same component are queued before any can process. For example, say I have a component that updates on animation frame, but before the next animation frame is fired setStateOnAnimationFrame is called twice. The update process will only be run once in this case, while allowing both state setter functions to be executed.
 
-Note, requestIdleCallback is not supported by all browsers at this time and wui_builder does NOT include a polyfill at this time. Synchronous rendering still works on all browsers.
+Note, requestIdleCallback is not currently supported by all browsers and wui_builder does NOT include a polyfill at this time. Synchronous rendering still works on all browsers. See a compatability chart [here][compatability].
 
 ### Syntax
 
@@ -64,3 +64,5 @@ render(component, querySelector('#container'));
 ```
 
 [docs]: https://davidmarne.github.io
+
+[compatability]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
