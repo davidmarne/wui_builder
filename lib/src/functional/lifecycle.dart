@@ -38,7 +38,7 @@ ComponentEnhancer<P, P> lifecycle<P>({
   ComponentDidUpdate<P> componentDidUpdate,
   ComponentWillUnmount<P> componentWillUnmount,
 }) =>
-    (baseComponent) => (props) => new LifeCycle<P>(new LifeCycleProps()
+    (baseComponent) => (props) => new _LifeCycle<P>(new _LifeCycleProps()
       ..componentWillMount = componentWillMount
       ..componentDidMount = componentDidMount
       ..componentWillReceiveProps = componentWillReceiveProps
@@ -49,7 +49,7 @@ ComponentEnhancer<P, P> lifecycle<P>({
       ..baseProps = props
       ..baseComponent = baseComponent);
 
-class LifeCycleProps<P> {
+class _LifeCycleProps<P> {
   ComponentWillMount<P> componentWillMount;
   ComponentDidMount<P> componentDidMount;
   ComponentWillReceiveProps<P> componentWillReceiveProps;
@@ -61,8 +61,8 @@ class LifeCycleProps<P> {
   P baseProps;
 }
 
-class LifeCycle<P> extends PComponent<LifeCycleProps<P>> {
-  LifeCycle(LifeCycleProps<P> props) : super(props);
+class _LifeCycle<P> extends PComponent<_LifeCycleProps<P>> {
+  _LifeCycle(_LifeCycleProps<P> props) : super(props);
 
   @override
   void componentWillMount() {
