@@ -38,7 +38,7 @@ Finally, wui_builder prevents uneccessary updates when multiple updates to the s
 
 Note, requestIdleCallback is not currently supported by all browsers and wui_builder does NOT include a polyfill at this time. Synchronous rendering still works on all browsers. See a compatability chart [here][compatability].
 
-### Syntax
+## Syntax
 
 ```dart
 class HelloWorldProps {
@@ -62,6 +62,18 @@ final component = new HelloWorld(
 // render the virtual element into a container
 render(component, querySelector('#container'));
 ```
+
+## Motivation
+
+It started as a fun project to help learn about virtual doms.
+However, there is motivation to keep progressing because:
+- I really hate JS.
+- I really like dart.
+- I don't like un-typed templates, so angular ain't my jam.
+- over_react has some downsides:
+  - it incurs a large performance burden due to js interop & map lookups
+  - it requires a transformer
+  - it has to adapt to a js api, which can be difficult due to differences in the languages
 
 [docs]: https://davidmarne.github.io
 
