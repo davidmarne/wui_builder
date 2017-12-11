@@ -1,6 +1,7 @@
 part of velement;
 
-Element createElementNode(VElement vnode, List<ComponentDidMount> pendingComponentDidMounts) {
+Element createElementNode(
+    VElement vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   final Element domNode = vnode.elementFactory();
   vnode.ref = domNode;
   vnode.applyAttributesToElement(domNode);
