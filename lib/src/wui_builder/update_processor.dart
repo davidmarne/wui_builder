@@ -10,15 +10,22 @@ bool updateVNode(UpdateTracker tracker) {
   if (tracker.shouldPause) return false;
 
   if (tracker.oldVNode == null) {
-    tracker.parent.append(createNode(tracker.newVNode));
+    final pendingComponentDidMounts = <ComponentDidMount>[];
+    tracker.parent
+        .append(createNode(tracker.newVNode, pendingComponentDidMounts));
+    for (final cdm in pendingComponentDidMounts) cdm();
   } else if (tracker.newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
     disposeVNode(tracker.oldVNode);
     tracker.node?.remove();
-  } else if (tracker.newVNode.vNodeType != tracker.oldVNode.vNodeType) {
+  } else if (tracker.newVNode.runtimeType != tracker.oldVNode.runtimeType ||
+      tracker.newVNode.key != tracker.oldVNode.key) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     disposeVNode(tracker.oldVNode);
-    tracker.node.replaceWith(createNode(tracker.oldVNode));
+    final pendingComponentDidMounts = <ComponentDidMount>[];
+    tracker.node
+        .replaceWith(createNode(tracker.newVNode, pendingComponentDidMounts));
+    for (final cdm in pendingComponentDidMounts) cdm();
   } else if (tracker.newVNode.vNodeType == VNodeTypes.element) {
     return updateElement(tracker);
   } else {

@@ -6,7 +6,10 @@ bool updateElement(UpdateTracker tracker) {
   // if an async tracker was cancelled causing a virtual dom to not
   // fully be rendered, we create the node now.
   if (tracker.node == null) {
-    tracker.parent.append(createNode(tracker.newVNode));
+    final pendingComponentDidMounts = <ComponentDidMount>[];
+    tracker.parent
+        .append(createNode(tracker.newVNode, pendingComponentDidMounts));
+    for (final cdm in pendingComponentDidMounts) cdm();
     return true;
   }
 
@@ -39,6 +42,9 @@ bool updateElement(UpdateTracker tracker) {
     // update parent/child relationship
     if (oldChildVNode == null) {
       oldVNode.children.add(newChildVNode);
+    } else if (oldChildVNode.runtimeType != newChildVNode.runtimeType ||
+        oldChildVNode.key != newChildVNode.key) {
+      oldVNode.children[0] = newChildVNode;
     }
 
     return updateVNode(nextTracker);
@@ -76,6 +82,9 @@ bool updateElementChildren(UpdateTracker tracker) {
     // update parent/child relationship
     if (oldChildVNode == null) {
       oldVNode.children.add(newChildVNode);
+    } else if (oldChildVNode.runtimeType != newChildVNode.runtimeType ||
+        oldChildVNode.key != newChildVNode.key) {
+      oldVNode.children[cursor.index] = newChildVNode;
     }
 
     final finshed = updateVNode(nextTracker);

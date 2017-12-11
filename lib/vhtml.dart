@@ -906,151 +906,6 @@ class VDivElement extends VHtmlElement<DivElement> {
   }
 }
 
-class Va extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.a();
-}
-
-class Varticle extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.article();
-}
-
-class Vaside extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.aside();
-}
-
-class Vaudio extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.audio();
-}
-
-class Vbr extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.br();
-}
-
-class Vcanvas extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.canvas();
-}
-
-class Vdiv extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.div();
-}
-
-class Vfooter extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.footer();
-}
-
-class Vheader extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.header();
-}
-
-class Vhr extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.hr();
-}
-
-class Viframe extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.iframe();
-}
-
-class Vimg extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.img();
-}
-
-class Vli extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.li();
-}
-
-class Vnav extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.nav();
-}
-
-class Vol extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.ol();
-}
-
-class Voption extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.option();
-}
-
-class Vp extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.p();
-}
-
-class Vpre extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.pre();
-}
-
-class Vsection extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.section();
-}
-
-class Vselect extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.select();
-}
-
-class Vspan extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.span();
-}
-
-class Vsvg extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.svg();
-}
-
-class Vtable extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.table();
-}
-
-class Vtd extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.td();
-}
-
-class Vtextarea extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.textarea();
-}
-
-class Vth extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.th();
-}
-
-class Vtr extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.tr();
-}
-
-class Vul extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.ul();
-}
-
-class Vvideo extends VElement<Element> {
-  @override
-  Element elementFactory() => new Element.video();
-}
-
 class VEmbedElement extends VHtmlElement<EmbedElement> {
   @override
   EmbedElement elementFactory() => new EmbedElement();
@@ -1378,36 +1233,6 @@ abstract class VHeadingElement<T extends HeadingElement>
   void updateElementAttributes(covariant VHeadingElement<T> prev, T ele) {
     super.updateElementAttributes(prev, ele);
   }
-}
-
-class Vh1 extends VElement<HeadingElement> {
-  @override
-  HeadingElement elementFactory() => new HeadingElement.h1();
-}
-
-class Vh2 extends VElement<HeadingElement> {
-  @override
-  HeadingElement elementFactory() => new HeadingElement.h2();
-}
-
-class Vh3 extends VElement<HeadingElement> {
-  @override
-  HeadingElement elementFactory() => new HeadingElement.h3();
-}
-
-class Vh4 extends VElement<HeadingElement> {
-  @override
-  HeadingElement elementFactory() => new HeadingElement.h4();
-}
-
-class Vh5 extends VElement<HeadingElement> {
-  @override
-  HeadingElement elementFactory() => new HeadingElement.h5();
-}
-
-class Vh6 extends VElement<HeadingElement> {
-  @override
-  HeadingElement elementFactory() => new HeadingElement.h6();
 }
 
 class VHtmlHtmlElement extends VHtmlElement<HtmlHtmlElement> {
@@ -6161,4 +5986,504 @@ class VVideoElement extends VMediaElement<VideoElement> {
       prev.width = _width;
     }
   }
+}
+
+class Va extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('a');
+}
+
+class Vabbr extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('abbr');
+}
+
+class Vacronym extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('acronym');
+}
+
+class Vaddress extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('address');
+}
+
+class Varea extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('area');
+}
+
+class Varticle extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('article');
+}
+
+class Vaside extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('aside');
+}
+
+class Vaudio extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('audio');
+}
+
+class Vb extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('b');
+}
+
+class Vbdi extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('bdi');
+}
+
+class Vbdo extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('bdo');
+}
+
+class Vbig extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('big');
+}
+
+class Vblockquote extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('blockquote');
+}
+
+class Vbr extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('br');
+}
+
+class Vbutton extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('button');
+}
+
+class Vcanvas extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('canvas');
+}
+
+class Vcaption extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('caption');
+}
+
+class Vcenter extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('center');
+}
+
+class Vcite extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('cite');
+}
+
+class Vcode extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('code');
+}
+
+class Vcol extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('col');
+}
+
+class Vcolgroup extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('colgroup');
+}
+
+class Vcommand extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('command');
+}
+
+class Vdata extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('data');
+}
+
+class Vdatalist extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('datalist');
+}
+
+class Vdd extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('dd');
+}
+
+class Vdel extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('del');
+}
+
+class Vdetails extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('details');
+}
+
+class Vdfn extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('dfn');
+}
+
+class Vdir extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('dir');
+}
+
+class Vdiv extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('div');
+}
+
+class Vdl extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('dl');
+}
+
+class Vdt extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('dt');
+}
+
+class Vem extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('em');
+}
+
+class Vfieldset extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('fieldset');
+}
+
+class Vfigcaption extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('figcaption');
+}
+
+class Vfigure extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('figure');
+}
+
+class Vfont extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('font');
+}
+
+class Vfooter extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('footer');
+}
+
+class Vform extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('form');
+}
+
+class Vh1 extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('h1');
+}
+
+class Vh2 extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('h2');
+}
+
+class Vh3 extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('h3');
+}
+
+class Vh4 extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('h4');
+}
+
+class Vh5 extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('h5');
+}
+
+class Vh6 extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('h6');
+}
+
+class Vheader extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('header');
+}
+
+class Vhgroup extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('hgroup');
+}
+
+class Vhr extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('hr');
+}
+
+class Vi extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('i');
+}
+
+class Viframe extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('iframe');
+}
+
+class Vimg extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('img');
+}
+
+class Vinput extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('input');
+}
+
+class Vins extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('ins');
+}
+
+class Vkbd extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('kbd');
+}
+
+class Vlabel extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('label');
+}
+
+class Vlegend extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('legend');
+}
+
+class Vli extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('li');
+}
+
+class Vmap extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('map');
+}
+
+class Vmark extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('mark');
+}
+
+class Vmenu extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('menu');
+}
+
+class Vmeter extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('meter');
+}
+
+class Vnav extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('nav');
+}
+
+class Vnobr extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('nobr');
+}
+
+class Vol extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('ol');
+}
+
+class Voptgroup extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('optgroup');
+}
+
+class Voption extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('option');
+}
+
+class Voutput extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('output');
+}
+
+class Vp extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('p');
+}
+
+class Vpre extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('pre');
+}
+
+class Vprogress extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('progress');
+}
+
+class Vq extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('q');
+}
+
+class Vs extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('s');
+}
+
+class Vsamp extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('samp');
+}
+
+class Vsection extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('section');
+}
+
+class Vselect extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('select');
+}
+
+class Vsmall extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('small');
+}
+
+class Vsource extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('source');
+}
+
+class Vspan extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('span');
+}
+
+class Vstrike extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('strike');
+}
+
+class Vstrong extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('strong');
+}
+
+class Vsub extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('sub');
+}
+
+class Vsummary extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('summary');
+}
+
+class Vsup extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('sup');
+}
+
+class Vtable extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('table');
+}
+
+class Vtbody extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('tbody');
+}
+
+class Vtd extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('td');
+}
+
+class Vtextarea extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('textarea');
+}
+
+class Vtfoot extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('tfoot');
+}
+
+class Vth extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('th');
+}
+
+class Vthead extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('thead');
+}
+
+class Vtime extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('time');
+}
+
+class Vtr extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('tr');
+}
+
+class Vtrack extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('track');
+}
+
+class Vtt extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('tt');
+}
+
+class Vu extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('u');
+}
+
+class Vul extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('ul');
+}
+
+class Vvar extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('var');
+}
+
+class Vvideo extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('video');
+}
+
+class Vwbr extends VElement<Element> {
+  @override
+  Element elementFactory() => new Element.tag('wbr');
 }

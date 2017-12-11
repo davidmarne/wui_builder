@@ -20,7 +20,7 @@ Iterable<Setter> localSetters(ClassElement e) => e.accessors
     .map((accessor) => new Setter(
           accessor.name.substring(0, accessor.name.length - 1),
           accessor.parameters.first.type.toString(),
-          '',
+          accessor.documentationComment,
         ));
 
 Iterable<VEvent> localEvents(ClassElement e) => e.accessors
@@ -35,7 +35,7 @@ Iterable<VEvent> localEvents(ClassElement e) => e.accessors
           accessor.returnType
               .toString()
               .replaceFirst('ElementStream', 'EventHandler'),
-          '',
+          accessor.documentationComment,
         ));
 
 class VEvent {

@@ -27,15 +27,12 @@ void main(List<String> args) {
   final htmlTypes = htmlLib.element.library.definingCompilationUnit.types;
   final svgLib = _resolveLibrary(sdkRoot, svgPath);
   final svgTypes = svgLib.element.library.definingCompilationUnit.types;
-  final allTypes = htmlTypes.toList();
 
   final lintIgnores = '''\n
     // ignore_for_file: annotate_overrides
     // ignore_for_file: overridden_fields\n
   ''';
 
-  ///..addAll(svgTypes);
-  print('${htmlTypes.length} ${svgTypes.length} ${allTypes.length}');
   final result = new StringBuffer()
     ..write("import 'dart:html';")
     ..write("import 'package:meta/meta.dart';")
@@ -53,23 +50,6 @@ void main(List<String> args) {
       final events = localEvents(classElement);
 
       vEleResult.write(vElement(setters, events));
-
-      if (classElement.constructors.isNotEmpty) {
-        for (var constructor in classElement.constructors) {
-          final constructorName = constructor.name;
-          // Workaround: ignore the following constructors
-          if (constructorName == '' ||
-              constructorName == '_' ||
-              constructorName == 'created' ||
-              constructorName == 'html' ||
-              constructorName == 'tag') continue;
-          result.write(customFactoryElement(
-            constructorName,
-            classElement.name,
-            'html',
-          ));
-        }
-      }
 
       final formatter = new DartFormatter();
       final formatted = formatter.format(vEleResult.toString());
@@ -94,24 +74,10 @@ void main(List<String> args) {
         result.write(
             vElementSubclass(classElement.name, superclass, setters, 'html'));
       }
-
-      if (classElement.constructors.isNotEmpty) {
-        for (var constructor in classElement.constructors) {
-          final constructorName = constructor.name;
-          if (constructorName == '' ||
-              constructorName == '_' ||
-              constructorName == 'created' ||
-              constructorName == 'tag' ||
-              constructorName == 'svg') continue;
-          result.write(customFactoryElement(
-            constructorName,
-            classElement.name,
-            'html',
-          ));
-        }
-      }
     }
   }
+
+  for (final tag in _html5Tags) result.write(generalTagFactoryElement(tag));
 
   final formatter = new DartFormatter();
   final formatted = formatter.format(result.toString());
@@ -186,3 +152,106 @@ CompilationUnit _resolveLibrary(String sdkRoot, String libPath) {
 
   return context.resolveCompilationUnit(source, libElement);
 }
+
+const _html5Tags = const <String>[
+  'a',
+  'abbr',
+  'acronym',
+  'address',
+  'area',
+  'article',
+  'aside',
+  'audio',
+  'b',
+  'bdi',
+  'bdo',
+  'big',
+  'blockquote',
+  'br',
+  'button',
+  'canvas',
+  'caption',
+  'center',
+  'cite',
+  'code',
+  'col',
+  'colgroup',
+  'command',
+  'data',
+  'datalist',
+  'dd',
+  'del',
+  'details',
+  'dfn',
+  'dir',
+  'div',
+  'dl',
+  'dt',
+  'em',
+  'fieldset',
+  'figcaption',
+  'figure',
+  'font',
+  'footer',
+  'form',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'header',
+  'hgroup',
+  'hr',
+  'i',
+  'iframe',
+  'img',
+  'input',
+  'ins',
+  'kbd',
+  'label',
+  'legend',
+  'li',
+  'map',
+  'mark',
+  'menu',
+  'meter',
+  'nav',
+  'nobr',
+  'ol',
+  'optgroup',
+  'option',
+  'output',
+  'p',
+  'pre',
+  'progress',
+  'q',
+  's',
+  'samp',
+  'section',
+  'select',
+  'small',
+  'source',
+  'span',
+  'strike',
+  'strong',
+  'sub',
+  'summary',
+  'sup',
+  'table',
+  'tbody',
+  'td',
+  'textarea',
+  'tfoot',
+  'th',
+  'thead',
+  'time',
+  'tr',
+  'track',
+  'tt',
+  'u',
+  'ul',
+  'var',
+  'video',
+  'wbr',
+];

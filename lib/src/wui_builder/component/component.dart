@@ -13,7 +13,7 @@ abstract class Component<P, S> extends VNode {
   P _props;
   S _state;
   Map<String, dynamic> _context;
-  VNode _renderResult;
+  VNode _child;
   StateSetter<P, S> _pendingStateSetter;
   final _pendingUpdateTrackers = <UpdateTracker>[];
 
@@ -21,6 +21,8 @@ abstract class Component<P, S> extends VNode {
 
   @override
   VNodeTypes get vNodeType => VNodeTypes.component;
+
+  VNode get child => _child;
 
   /// [props] returns the props passed to the component
   P get props => _props;
@@ -82,9 +84,8 @@ abstract class Component<P, S> extends VNode {
   /// updates were queued very quickly, elements that get updated early on in the update
   /// process would animate for each update, while elements that get touched at the
   /// end of the update process would never update.
-  @experimental
   @mustCallSuper
-  void updateOnIdle({bool shouldAbort: false}) {
+  void updateOnIdle({@experimental bool shouldAbort: false}) {
     UpdateTracker currentUpdateTracker;
     for (var i = 0; i < _pendingUpdateTrackers.length;) {
       currentUpdateTracker = _pendingUpdateTrackers[i];
@@ -112,13 +113,12 @@ abstract class Component<P, S> extends VNode {
   /// run to completion. Note that if multiple updates are queued using
   /// [updateOnAnimationFrame] inbetween frames, the update process will
   /// only be run once.
-  @experimental
   @mustCallSuper
   void updateOnAnimationFrame() {
     UpdateTracker currentUpdateTracker;
     for (var i = 0; i < _pendingUpdateTrackers.length;) {
       currentUpdateTracker = _pendingUpdateTrackers[i];
-      // TODO: only run this if tracker is also an 'animation frame' tracker
+      // TODO: only run this if tracker is also an 'animation frame' tracker?
 
       // this update will be processed when the
       // currentUpdateTracker gets its turn
@@ -146,16 +146,14 @@ abstract class Component<P, S> extends VNode {
   }
 
   /// [setState] queues a state change and runs `updateOnIdle`
-  @experimental
   @mustCallSuper
   void setStateOnIdle(StateSetter<P, S> stateSetter,
-      {bool shouldAbort: false}) {
+      {@experimental bool shouldAbort: false}) {
     queueStateUpdate(stateSetter);
     updateOnIdle(shouldAbort: shouldAbort);
   }
 
   /// [setState] queues a state change and runs `updateOnAnimationFrame`
-  @experimental
   @mustCallSuper
   void setStateOnAnimationFrame(StateSetter<P, S> stateSetter) {
     queueStateUpdate(stateSetter);
