@@ -28,7 +28,7 @@ Iterative updates only processes on idle callbacks, which means the rendering jo
 across multiple frames. wui_builder gives power to the developer to decide when components should render. This means the developer can decide if a component updates syncronously, on animation frame, or on and idle callback. Ideally, a component will either:
 
 - render on animation frame for high priority updates that must finish. updates from mulitiple components can be batch rendered on animation frames.
-- render on idle callbacks for low priority updates that can be split across frames. these updates can be cancelled by proceeding updates if the shouldAbort option is true.
+- render on idle callbacks for low priority updates that can be split across frames.
 
 However, syncronous updates are also allowed to run on demand, without waiting for an animation frame or idle callback.
 
