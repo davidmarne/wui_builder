@@ -3,8 +3,9 @@ part of velement;
 bool updateElement(UpdateTracker tracker) {
   final oldVNode = tracker.oldVNode as VElement;
   final newVNode = tracker.newVNode as VElement;
+
   // if an async tracker was cancelled causing a virtual dom to not
-  // fully be rendered, we create the node now.
+  // fully be rendered, we create the node now. Can be removed if shouldAbort is removed
   if (tracker.node == null) {
     final pendingComponentDidMounts = <ComponentDidMount>[];
     tracker.parent
@@ -28,27 +29,27 @@ bool updateElement(UpdateTracker tracker) {
   if (oldLength == 0 && newLength == 0) return true;
 
   // no resumable cursor
-  if (oldLength < 2 && newLength < 2) {
-    final newChildVNode = newLength > 0 ? newVNode.children.elementAt(0) : null;
-    final oldChildVNode = oldLength > 0 ? oldVNode.children.elementAt(0) : null;
+  // if (oldLength < 2 && newLength < 2) {
+  //   final newChildVNode = newLength > 0 ? newVNode.children.elementAt(0) : null;
+  //   final oldChildVNode = oldLength > 0 ? oldVNode.children.elementAt(0) : null;
 
-    final nextTracker = tracker.nextCursor(
-      tracker.node,
-      tracker.node.children.isNotEmpty ? tracker.node.children.first : null,
-      newChildVNode,
-      oldChildVNode,
-    );
+  //   final nextTracker = tracker.nextCursor(
+  //     tracker.node,
+  //     tracker.node.children.isNotEmpty ? tracker.node.children.first : null,
+  //     newChildVNode,
+  //     oldChildVNode,
+  //   );
 
-    // update parent/child relationship
-    if (oldChildVNode == null) {
-      oldVNode.children.add(newChildVNode);
-    } else if (oldChildVNode.runtimeType != newChildVNode.runtimeType ||
-        oldChildVNode.key != newChildVNode.key) {
-      oldVNode.children[0] = newChildVNode;
-    }
+  //   // update parent/child relationship
+  //   if (oldChildVNode == null) {
+  //     oldVNode.children.add(newChildVNode);
+  //   } else if (oldChildVNode.runtimeType != newChildVNode.runtimeType ||
+  //       oldChildVNode.key != newChildVNode.key) {
+  //     oldVNode.children[0] = newChildVNode;
+  //   }
 
-    return updateVNode(nextTracker);
-  }
+  //   return updateVNode(nextTracker);
+  // }
 
   tracker.pushPendingCursor(new IterableCursor(
     tracker.node,
@@ -77,20 +78,24 @@ bool updateElementChildren(UpdateTracker tracker) {
       oldChildVNode,
     );
 
-    cursor.next();
-
     // update parent/child relationship
     if (oldChildVNode == null) {
       oldVNode.children.add(newChildVNode);
-    } else if (oldChildVNode.runtimeType != newChildVNode.runtimeType ||
+    } else if (oldChildVNode.runtimeType != newChildVNode?.runtimeType ||
         oldChildVNode.key != newChildVNode.key) {
       oldVNode.children[cursor.index] = newChildVNode;
     }
+
+    cursor.next();
 
     final finshed = updateVNode(nextTracker);
 
     if (!finshed) return false;
   }
+
+  for (var i = oldVNode.children.length - 1;
+      oldVNode.children.isNotEmpty && oldVNode.children[i] == null;
+      i--) oldVNode.children.removeLast();
 
   tracker.popPendingCursor();
   return true;
