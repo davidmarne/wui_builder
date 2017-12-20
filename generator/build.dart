@@ -51,10 +51,10 @@ void main(List<String> args) {
 
       vEleResult.write(vElement(setters, events));
 
-      final formatter = new DartFormatter();
-      final formatted = formatter.format(vEleResult.toString());
+      // final formatter = new DartFormatter();
+      // final formatted = formatter.format(vEleResult.toString());
       new File('lib/src/wui_builder/velement/velement.dart')
-          .writeAsStringSync(formatted);
+          .writeAsStringSync(vEleResult.toString());
     } else if ((isElement(classElement) || isInput(classElement)) &&
         classElement.isPublic) {
       final setters = localSetters(classElement);
@@ -79,9 +79,9 @@ void main(List<String> args) {
 
   for (final tag in _html5Tags) result.write(generalTagFactoryElement(tag));
 
-  final formatter = new DartFormatter();
-  final formatted = formatter.format(result.toString());
-  new File('lib/vhtml.dart').writeAsStringSync(formatted);
+  // final formatter = new DartFormatter();
+  // final formatted = formatter.format(result.toString());
+  // new File('lib/vhtml.dart').writeAsStringSync(formatted);
 
   result
     ..clear()
@@ -127,8 +127,8 @@ void main(List<String> args) {
     }
   }
 
-  final svgFormatted = formatter.format(result.toString());
-  new File('lib/vsvg.dart').writeAsStringSync(svgFormatted);
+  // final svgFormatted = formatter.format(result.toString());
+  // new File('lib/vsvg.dart').writeAsStringSync(svgFormatted);
 }
 
 // resolves the ast structure

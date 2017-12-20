@@ -1,14 +1,21 @@
 import 'parsing.dart';
 
 String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
+  typedef void RemoveIfNecessary(String k, dynamic value);
   abstract class VElement<E extends Element> extends VNode {
     @override
     VNodeTypes get vNodeType => VNodeTypes.element;
+
+    final _setValues = <String, dynamic>{};
+    final _customAttributes = <String, String>{};
+    final _style = <String, String>{};
+    final _setSubs = <String, EventHandler>{};
 
     E elementFactory();
     
     bool shouldUpdateSubs = false;
 
+    // TODO: gen builder for css style
     StyleBuilder styleBuilder;
 
     var _children = <VNode>[];
@@ -25,28 +32,77 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
     @protected
     void applyAttributesToElement(E ele) {
-      if (_textSet) {
-        ${vElementTextSet()}
-      }
-      ${vElementStyleBuilderSet()}
-      ${attributesSetTemplate(setters)}
+      _style.forEach(_updateStyle);
+      _customAttributes.forEach(_updateAttribute);
+      _setValues.forEach(_updateAttribute);
     }
 
     @protected
     void updateElementAttributes(covariant VElement<E> prev, E ele) {
-      if (_text != prev._text) {
-        ${vElementTextUpdate()}
+      prev._style.forEach(_updateStyle);
+      prev._customAttributes.forEach(_removeAttributeIfNecessary);
+      prev._setValues.forEach(_removeAttributeIfNecessary);
+
+      _style.forEach(_updateStyle);
+      _customAttributes.forEach(_updateAttribute);
+      _setValues.forEach(_updateAttribute);
+
+      prev._style = _style;
+      prev._customAttributes = _customAttributes;
+      prev._setValues = _setValues;
+    }
+
+    void _updateAttribute(String key, dynamic value) {
+      switch(key) {
+        case 'text':
+          ${vElementTextSet()}
+          break;
+        ${updateAttributesSwitchTemplate(setters)}
+        default:
+
       }
-      ${vElementStyleBuilderUpdate()}
-      ${attributesUpdateTemplate(setters)}
+    }
+
+    // TODO: find out if more efficient to do lookups or get values/keys to iterate over
+    RemoveIfNecessary _removeAttributeIfNecessary(E ele) => (String key, dynamic value) {
+      if (_setValues.containsKey(key)) return;
+      switch(key) {
+        case 'text':
+          // TODO: remove text node
+          break;
+        ${removeAttributeSwitchBody(setters)}
+      }
     }
 
     void applyEventListenersToElement(Element ele) {
-      ${eventsSetTemplate(events)}
+      _setSubs.forEach(_applyEventListener);
     }
 
     void updateEventListenersToElement(VElement prev, Element ele) {
-      ${eventsUpdateTemplate(events)}
+      _setSubs.forEach(_applyEventListener);
+
+      prev._setSubs.forEach(_removeEventListenerIfNeccessary);
+
+      prev._setSubs = _setSubs;
+    }
+
+    void _applyEventListener(String key, dynamic value) {
+      switch(key) {
+        case 'text':
+          ${vElementTextSet()}
+          break;
+        ${updateEventListenerSwitchBody(setters)}
+      }
+    }
+
+    RemoveIfNecessary _removeEventListenerIfNeccessary(E ele) => (String key, dynamic value) {
+      if (_setValues.containsKey(key)) return;
+      switch(key) {
+        case 'text':
+          // TODO: remove text node
+          break;
+        ${removeAttributeSwitchBody(setters)}
+      }
     }
 
     void dispose() {
@@ -172,23 +228,23 @@ String vElementAbstractSubclass(
 String attributesDeclarationTemplate(Iterable<Setter> setters) => setters.fold(
     '', (code, setter) => '$code\n${attributeDeclarationTemplate(setter)}');
 
-String attributesSetTemplate(Iterable<Setter> setters) => setters.fold(
-    '', (code, setter) => '$code\n${attributeSetTemplate(setter)}');
+String updateAttributesSwitchTemplate(Iterable<Setter> setters) => setters.fold(
+    '', (code, setter) => '$code\n${updateAttributeSwitchTemplate(setter)}');
 
 String attributesUpdateTemplate(Iterable<Setter> setters) => setters.fold(
     '', (code, setter) => '$code\n${attributeUpdateTemplate(setter)}');
 
 String attributeDeclarationTemplate(Setter setter) => '''
-  ${setter.type} _${setter.name};
-  bool _${setter.name}Set = false;
-  ${setter.type} get ${setter.name} => _${setter.name};
+  ${setter.type} get ${setter.name} => _setValues[\'${setter.name}\'};
   set ${setter.name}(${setter.type} v) {
-      _${setter.name} = v;
-      _${setter.name}Set = true;
+      _setValues[\'${setter.name}\'] = v;
   }''';
 
-String attributeSetTemplate(Setter setter) =>
-    'if (_${setter.name}Set) ele.${setter.name} = _${setter.name};';
+String updateAttributeSwitchTemplate(Setter setter) => '''
+    case \'${setter.name}\': 
+      ele.${setter.name} = value as ${setter.type};
+      break;
+  ''';
 
 String attributeUpdateTemplate(Setter setter) =>
     '''if (_${setter.name} != prev._${setter.name}) {
