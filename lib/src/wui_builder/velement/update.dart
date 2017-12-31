@@ -28,29 +28,6 @@ bool updateElement(UpdateTracker tracker) {
   // no cursor
   if (oldLength == 0 && newLength == 0) return true;
 
-  // no resumable cursor
-  // if (oldLength < 2 && newLength < 2) {
-  //   final newChildVNode = newLength > 0 ? newVNode.children.elementAt(0) : null;
-  //   final oldChildVNode = oldLength > 0 ? oldVNode.children.elementAt(0) : null;
-
-  //   final nextTracker = tracker.nextCursor(
-  //     tracker.node,
-  //     tracker.node.children.isNotEmpty ? tracker.node.children.first : null,
-  //     newChildVNode,
-  //     oldChildVNode,
-  //   );
-
-  //   // update parent/child relationship
-  //   if (oldChildVNode == null) {
-  //     oldVNode.children.add(newChildVNode);
-  //   } else if (oldChildVNode.runtimeType != newChildVNode.runtimeType ||
-  //       oldChildVNode.key != newChildVNode.key) {
-  //     oldVNode.children[0] = newChildVNode;
-  //   }
-
-  //   return updateVNode(nextTracker);
-  // }
-
   tracker.pushPendingCursor(new IterableCursor(
     tracker.node,
     newVNode,

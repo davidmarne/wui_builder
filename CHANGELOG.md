@@ -2,7 +2,7 @@
 
 * Add changelog.
 * Move home_page into example and rename to docs.
-* Move generator to tool.
+* fix issue where removing some, but not all, children caused errors
 
 ## 0.3.0
 
