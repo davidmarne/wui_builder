@@ -112,7 +112,6 @@ String generalTagFactoryElement(String constructorName) => '''
     Element elementFactory() => new Element.tag(\'$constructorName\');
   }''';
 
-// TODO: generate typed constructor
 // TODO: generate hashCode
 String vElementSubclass(
   String classElementName,

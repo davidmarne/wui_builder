@@ -1,11 +1,11 @@
-name: home_page
+name: docs
 version: 0.0.0
 author: David Marne <davemarne@gmail.com>
 
 dependencies:
   prettify: ^0.2.1
   wui_builder:
-    path: ../
+    path: ../../
 
 dev_dependencies:
   build: '>=0.10.0 <0.12.0'
