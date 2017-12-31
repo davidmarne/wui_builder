@@ -46,7 +46,7 @@ class Perf extends PComponent<Component> {
 
   Perf(Component props) : super(props);
 
-  String get _name => '$props${key == null ? '' : ' - $key'}';
+  String get _name => '${props.runtimeType}${key == null ? '' : ' - $key'}';
 
   @override
   void componentWillMount() {

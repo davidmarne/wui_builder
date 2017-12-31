@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-const version = '0.3.0';
+const version = '0.0.0';
 
 const functional = r'''
 import 'package:wui_builder/vhtml.dart';
