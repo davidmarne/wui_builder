@@ -13,7 +13,7 @@ Future<Null> main() async {
   final contents = dir.listSync();
   result.write('\n// ignore_for_file: constant_identifier_names\n');
 
-  final pubspecFile = new File('pubspec.yaml');
+  final pubspecFile = new File('../../pubspec.yaml');
   final dynamic pubspecYaml = loadYaml(pubspecFile.readAsStringSync());
   final version = pubspecYaml['version'] as String;
   result.write('\nconst version = \'$version\';\n\n');

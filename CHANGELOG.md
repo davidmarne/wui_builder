@@ -3,6 +3,7 @@
 * Add changelog.
 * Move home_page into example and rename to docs.
 * fix issue where removing some, but not all, children caused errors
+* Added Perf HOC
 
 ## 0.3.0
 
