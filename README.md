@@ -68,7 +68,7 @@ render(component, querySelector('#container'));
 It started as a fun project to help learn about virtual doms.
 However, there is motivation to keep progressing because:
 - I really hate JS.
-- I really like dart.
+- I quite like dart.
 - I don't like un-typed templates, so angular ain't my jam.
 - over_react has some downsides:
   - it incurs a large performance burden due to js interop & map lookups
