@@ -72,7 +72,6 @@ However, there is motivation to keep progressing because:
 - I don't like un-typed templates, so angular ain't my jam.
 - over_react has some downsides:
   - it incurs a large performance burden due to js interop & map lookups
-  - it requires a transformer
   - it has to adapt to a js api, which can be difficult due to differences in the languages
 
 [docs]: https://davidmarne.github.io
