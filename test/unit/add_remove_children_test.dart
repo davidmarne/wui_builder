@@ -5,13 +5,10 @@ import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/src/wui_builder/update_queue.dart';
 
 import 'test_util/add_remove_children_component.dart';
-import 'test_util/test_idle_deadline.dart';
 import 'test_util/testbed.dart';
 
 void main() {
   group('add/remove children test -', () {
-    const initalNumChildren = 5;
-
     DivElement host;
     AddRemoveChildrenComponent component;
 
