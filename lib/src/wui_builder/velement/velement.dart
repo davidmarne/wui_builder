@@ -111,279 +111,279 @@ part of velement;
   }
 
     
-    EventHandler<Event> get onAbort => _setValues['onAbort'] as EventHandler<Event>;
+    EventHandler<Event> get onAbort => _setSubs['onAbort'] as EventHandler<Event>;
     set onAbort(EventHandler<Event> v) {
         _setSubs['onAbort'] = v;
     }
-    EventHandler<Event> get onBeforeCopy => _setValues['onBeforeCopy'] as EventHandler<Event>;
+    EventHandler<Event> get onBeforeCopy => _setSubs['onBeforeCopy'] as EventHandler<Event>;
     set onBeforeCopy(EventHandler<Event> v) {
         _setSubs['onBeforeCopy'] = v;
     }
-    EventHandler<Event> get onBeforeCut => _setValues['onBeforeCut'] as EventHandler<Event>;
+    EventHandler<Event> get onBeforeCut => _setSubs['onBeforeCut'] as EventHandler<Event>;
     set onBeforeCut(EventHandler<Event> v) {
         _setSubs['onBeforeCut'] = v;
     }
-    EventHandler<Event> get onBeforePaste => _setValues['onBeforePaste'] as EventHandler<Event>;
+    EventHandler<Event> get onBeforePaste => _setSubs['onBeforePaste'] as EventHandler<Event>;
     set onBeforePaste(EventHandler<Event> v) {
         _setSubs['onBeforePaste'] = v;
     }
-    EventHandler<Event> get onBlur => _setValues['onBlur'] as EventHandler<Event>;
+    EventHandler<Event> get onBlur => _setSubs['onBlur'] as EventHandler<Event>;
     set onBlur(EventHandler<Event> v) {
         _setSubs['onBlur'] = v;
     }
-    EventHandler<Event> get onCanPlay => _setValues['onCanPlay'] as EventHandler<Event>;
+    EventHandler<Event> get onCanPlay => _setSubs['onCanPlay'] as EventHandler<Event>;
     set onCanPlay(EventHandler<Event> v) {
         _setSubs['onCanPlay'] = v;
     }
-    EventHandler<Event> get onCanPlayThrough => _setValues['onCanPlayThrough'] as EventHandler<Event>;
+    EventHandler<Event> get onCanPlayThrough => _setSubs['onCanPlayThrough'] as EventHandler<Event>;
     set onCanPlayThrough(EventHandler<Event> v) {
         _setSubs['onCanPlayThrough'] = v;
     }
-    EventHandler<Event> get onChange => _setValues['onChange'] as EventHandler<Event>;
+    EventHandler<Event> get onChange => _setSubs['onChange'] as EventHandler<Event>;
     set onChange(EventHandler<Event> v) {
         _setSubs['onChange'] = v;
     }
-    EventHandler<MouseEvent> get onClick => _setValues['onClick'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onClick => _setSubs['onClick'] as EventHandler<MouseEvent>;
     set onClick(EventHandler<MouseEvent> v) {
         _setSubs['onClick'] = v;
     }
-    EventHandler<MouseEvent> get onContextMenu => _setValues['onContextMenu'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onContextMenu => _setSubs['onContextMenu'] as EventHandler<MouseEvent>;
     set onContextMenu(EventHandler<MouseEvent> v) {
         _setSubs['onContextMenu'] = v;
     }
-    EventHandler<ClipboardEvent> get onCopy => _setValues['onCopy'] as EventHandler<ClipboardEvent>;
+    EventHandler<ClipboardEvent> get onCopy => _setSubs['onCopy'] as EventHandler<ClipboardEvent>;
     set onCopy(EventHandler<ClipboardEvent> v) {
         _setSubs['onCopy'] = v;
     }
-    EventHandler<ClipboardEvent> get onCut => _setValues['onCut'] as EventHandler<ClipboardEvent>;
+    EventHandler<ClipboardEvent> get onCut => _setSubs['onCut'] as EventHandler<ClipboardEvent>;
     set onCut(EventHandler<ClipboardEvent> v) {
         _setSubs['onCut'] = v;
     }
-    EventHandler<Event> get onDoubleClick => _setValues['onDoubleClick'] as EventHandler<Event>;
+    EventHandler<Event> get onDoubleClick => _setSubs['onDoubleClick'] as EventHandler<Event>;
     set onDoubleClick(EventHandler<Event> v) {
         _setSubs['onDoubleClick'] = v;
     }
-    EventHandler<MouseEvent> get onDrag => _setValues['onDrag'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDrag => _setSubs['onDrag'] as EventHandler<MouseEvent>;
     set onDrag(EventHandler<MouseEvent> v) {
         _setSubs['onDrag'] = v;
     }
-    EventHandler<MouseEvent> get onDragEnd => _setValues['onDragEnd'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDragEnd => _setSubs['onDragEnd'] as EventHandler<MouseEvent>;
     set onDragEnd(EventHandler<MouseEvent> v) {
         _setSubs['onDragEnd'] = v;
     }
-    EventHandler<MouseEvent> get onDragEnter => _setValues['onDragEnter'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDragEnter => _setSubs['onDragEnter'] as EventHandler<MouseEvent>;
     set onDragEnter(EventHandler<MouseEvent> v) {
         _setSubs['onDragEnter'] = v;
     }
-    EventHandler<MouseEvent> get onDragLeave => _setValues['onDragLeave'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDragLeave => _setSubs['onDragLeave'] as EventHandler<MouseEvent>;
     set onDragLeave(EventHandler<MouseEvent> v) {
         _setSubs['onDragLeave'] = v;
     }
-    EventHandler<MouseEvent> get onDragOver => _setValues['onDragOver'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDragOver => _setSubs['onDragOver'] as EventHandler<MouseEvent>;
     set onDragOver(EventHandler<MouseEvent> v) {
         _setSubs['onDragOver'] = v;
     }
-    EventHandler<MouseEvent> get onDragStart => _setValues['onDragStart'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDragStart => _setSubs['onDragStart'] as EventHandler<MouseEvent>;
     set onDragStart(EventHandler<MouseEvent> v) {
         _setSubs['onDragStart'] = v;
     }
-    EventHandler<MouseEvent> get onDrop => _setValues['onDrop'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onDrop => _setSubs['onDrop'] as EventHandler<MouseEvent>;
     set onDrop(EventHandler<MouseEvent> v) {
         _setSubs['onDrop'] = v;
     }
-    EventHandler<Event> get onDurationChange => _setValues['onDurationChange'] as EventHandler<Event>;
+    EventHandler<Event> get onDurationChange => _setSubs['onDurationChange'] as EventHandler<Event>;
     set onDurationChange(EventHandler<Event> v) {
         _setSubs['onDurationChange'] = v;
     }
-    EventHandler<Event> get onEmptied => _setValues['onEmptied'] as EventHandler<Event>;
+    EventHandler<Event> get onEmptied => _setSubs['onEmptied'] as EventHandler<Event>;
     set onEmptied(EventHandler<Event> v) {
         _setSubs['onEmptied'] = v;
     }
-    EventHandler<Event> get onEnded => _setValues['onEnded'] as EventHandler<Event>;
+    EventHandler<Event> get onEnded => _setSubs['onEnded'] as EventHandler<Event>;
     set onEnded(EventHandler<Event> v) {
         _setSubs['onEnded'] = v;
     }
-    EventHandler<Event> get onError => _setValues['onError'] as EventHandler<Event>;
+    EventHandler<Event> get onError => _setSubs['onError'] as EventHandler<Event>;
     set onError(EventHandler<Event> v) {
         _setSubs['onError'] = v;
     }
-    EventHandler<Event> get onFocus => _setValues['onFocus'] as EventHandler<Event>;
+    EventHandler<Event> get onFocus => _setSubs['onFocus'] as EventHandler<Event>;
     set onFocus(EventHandler<Event> v) {
         _setSubs['onFocus'] = v;
     }
-    EventHandler<Event> get onInput => _setValues['onInput'] as EventHandler<Event>;
+    EventHandler<Event> get onInput => _setSubs['onInput'] as EventHandler<Event>;
     set onInput(EventHandler<Event> v) {
         _setSubs['onInput'] = v;
     }
-    EventHandler<Event> get onInvalid => _setValues['onInvalid'] as EventHandler<Event>;
+    EventHandler<Event> get onInvalid => _setSubs['onInvalid'] as EventHandler<Event>;
     set onInvalid(EventHandler<Event> v) {
         _setSubs['onInvalid'] = v;
     }
-    EventHandler<KeyboardEvent> get onKeyDown => _setValues['onKeyDown'] as EventHandler<KeyboardEvent>;
+    EventHandler<KeyboardEvent> get onKeyDown => _setSubs['onKeyDown'] as EventHandler<KeyboardEvent>;
     set onKeyDown(EventHandler<KeyboardEvent> v) {
         _setSubs['onKeyDown'] = v;
     }
-    EventHandler<KeyboardEvent> get onKeyPress => _setValues['onKeyPress'] as EventHandler<KeyboardEvent>;
+    EventHandler<KeyboardEvent> get onKeyPress => _setSubs['onKeyPress'] as EventHandler<KeyboardEvent>;
     set onKeyPress(EventHandler<KeyboardEvent> v) {
         _setSubs['onKeyPress'] = v;
     }
-    EventHandler<KeyboardEvent> get onKeyUp => _setValues['onKeyUp'] as EventHandler<KeyboardEvent>;
+    EventHandler<KeyboardEvent> get onKeyUp => _setSubs['onKeyUp'] as EventHandler<KeyboardEvent>;
     set onKeyUp(EventHandler<KeyboardEvent> v) {
         _setSubs['onKeyUp'] = v;
     }
-    EventHandler<Event> get onLoad => _setValues['onLoad'] as EventHandler<Event>;
+    EventHandler<Event> get onLoad => _setSubs['onLoad'] as EventHandler<Event>;
     set onLoad(EventHandler<Event> v) {
         _setSubs['onLoad'] = v;
     }
-    EventHandler<Event> get onLoadedData => _setValues['onLoadedData'] as EventHandler<Event>;
+    EventHandler<Event> get onLoadedData => _setSubs['onLoadedData'] as EventHandler<Event>;
     set onLoadedData(EventHandler<Event> v) {
         _setSubs['onLoadedData'] = v;
     }
-    EventHandler<Event> get onLoadedMetadata => _setValues['onLoadedMetadata'] as EventHandler<Event>;
+    EventHandler<Event> get onLoadedMetadata => _setSubs['onLoadedMetadata'] as EventHandler<Event>;
     set onLoadedMetadata(EventHandler<Event> v) {
         _setSubs['onLoadedMetadata'] = v;
     }
-    EventHandler<MouseEvent> get onMouseDown => _setValues['onMouseDown'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseDown => _setSubs['onMouseDown'] as EventHandler<MouseEvent>;
     set onMouseDown(EventHandler<MouseEvent> v) {
         _setSubs['onMouseDown'] = v;
     }
-    EventHandler<MouseEvent> get onMouseEnter => _setValues['onMouseEnter'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseEnter => _setSubs['onMouseEnter'] as EventHandler<MouseEvent>;
     set onMouseEnter(EventHandler<MouseEvent> v) {
         _setSubs['onMouseEnter'] = v;
     }
-    EventHandler<MouseEvent> get onMouseLeave => _setValues['onMouseLeave'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseLeave => _setSubs['onMouseLeave'] as EventHandler<MouseEvent>;
     set onMouseLeave(EventHandler<MouseEvent> v) {
         _setSubs['onMouseLeave'] = v;
     }
-    EventHandler<MouseEvent> get onMouseMove => _setValues['onMouseMove'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseMove => _setSubs['onMouseMove'] as EventHandler<MouseEvent>;
     set onMouseMove(EventHandler<MouseEvent> v) {
         _setSubs['onMouseMove'] = v;
     }
-    EventHandler<MouseEvent> get onMouseOut => _setValues['onMouseOut'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseOut => _setSubs['onMouseOut'] as EventHandler<MouseEvent>;
     set onMouseOut(EventHandler<MouseEvent> v) {
         _setSubs['onMouseOut'] = v;
     }
-    EventHandler<MouseEvent> get onMouseOver => _setValues['onMouseOver'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseOver => _setSubs['onMouseOver'] as EventHandler<MouseEvent>;
     set onMouseOver(EventHandler<MouseEvent> v) {
         _setSubs['onMouseOver'] = v;
     }
-    EventHandler<MouseEvent> get onMouseUp => _setValues['onMouseUp'] as EventHandler<MouseEvent>;
+    EventHandler<MouseEvent> get onMouseUp => _setSubs['onMouseUp'] as EventHandler<MouseEvent>;
     set onMouseUp(EventHandler<MouseEvent> v) {
         _setSubs['onMouseUp'] = v;
     }
-    EventHandler<WheelEvent> get onMouseWheel => _setValues['onMouseWheel'] as EventHandler<WheelEvent>;
+    EventHandler<WheelEvent> get onMouseWheel => _setSubs['onMouseWheel'] as EventHandler<WheelEvent>;
     set onMouseWheel(EventHandler<WheelEvent> v) {
         _setSubs['onMouseWheel'] = v;
     }
-    EventHandler<ClipboardEvent> get onPaste => _setValues['onPaste'] as EventHandler<ClipboardEvent>;
+    EventHandler<ClipboardEvent> get onPaste => _setSubs['onPaste'] as EventHandler<ClipboardEvent>;
     set onPaste(EventHandler<ClipboardEvent> v) {
         _setSubs['onPaste'] = v;
     }
-    EventHandler<Event> get onPause => _setValues['onPause'] as EventHandler<Event>;
+    EventHandler<Event> get onPause => _setSubs['onPause'] as EventHandler<Event>;
     set onPause(EventHandler<Event> v) {
         _setSubs['onPause'] = v;
     }
-    EventHandler<Event> get onPlay => _setValues['onPlay'] as EventHandler<Event>;
+    EventHandler<Event> get onPlay => _setSubs['onPlay'] as EventHandler<Event>;
     set onPlay(EventHandler<Event> v) {
         _setSubs['onPlay'] = v;
     }
-    EventHandler<Event> get onPlaying => _setValues['onPlaying'] as EventHandler<Event>;
+    EventHandler<Event> get onPlaying => _setSubs['onPlaying'] as EventHandler<Event>;
     set onPlaying(EventHandler<Event> v) {
         _setSubs['onPlaying'] = v;
     }
-    EventHandler<Event> get onRateChange => _setValues['onRateChange'] as EventHandler<Event>;
+    EventHandler<Event> get onRateChange => _setSubs['onRateChange'] as EventHandler<Event>;
     set onRateChange(EventHandler<Event> v) {
         _setSubs['onRateChange'] = v;
     }
-    EventHandler<Event> get onReset => _setValues['onReset'] as EventHandler<Event>;
+    EventHandler<Event> get onReset => _setSubs['onReset'] as EventHandler<Event>;
     set onReset(EventHandler<Event> v) {
         _setSubs['onReset'] = v;
     }
-    EventHandler<Event> get onResize => _setValues['onResize'] as EventHandler<Event>;
+    EventHandler<Event> get onResize => _setSubs['onResize'] as EventHandler<Event>;
     set onResize(EventHandler<Event> v) {
         _setSubs['onResize'] = v;
     }
-    EventHandler<Event> get onScroll => _setValues['onScroll'] as EventHandler<Event>;
+    EventHandler<Event> get onScroll => _setSubs['onScroll'] as EventHandler<Event>;
     set onScroll(EventHandler<Event> v) {
         _setSubs['onScroll'] = v;
     }
-    EventHandler<Event> get onSearch => _setValues['onSearch'] as EventHandler<Event>;
+    EventHandler<Event> get onSearch => _setSubs['onSearch'] as EventHandler<Event>;
     set onSearch(EventHandler<Event> v) {
         _setSubs['onSearch'] = v;
     }
-    EventHandler<Event> get onSeeked => _setValues['onSeeked'] as EventHandler<Event>;
+    EventHandler<Event> get onSeeked => _setSubs['onSeeked'] as EventHandler<Event>;
     set onSeeked(EventHandler<Event> v) {
         _setSubs['onSeeked'] = v;
     }
-    EventHandler<Event> get onSeeking => _setValues['onSeeking'] as EventHandler<Event>;
+    EventHandler<Event> get onSeeking => _setSubs['onSeeking'] as EventHandler<Event>;
     set onSeeking(EventHandler<Event> v) {
         _setSubs['onSeeking'] = v;
     }
-    EventHandler<Event> get onSelect => _setValues['onSelect'] as EventHandler<Event>;
+    EventHandler<Event> get onSelect => _setSubs['onSelect'] as EventHandler<Event>;
     set onSelect(EventHandler<Event> v) {
         _setSubs['onSelect'] = v;
     }
-    EventHandler<Event> get onSelectStart => _setValues['onSelectStart'] as EventHandler<Event>;
+    EventHandler<Event> get onSelectStart => _setSubs['onSelectStart'] as EventHandler<Event>;
     set onSelectStart(EventHandler<Event> v) {
         _setSubs['onSelectStart'] = v;
     }
-    EventHandler<Event> get onStalled => _setValues['onStalled'] as EventHandler<Event>;
+    EventHandler<Event> get onStalled => _setSubs['onStalled'] as EventHandler<Event>;
     set onStalled(EventHandler<Event> v) {
         _setSubs['onStalled'] = v;
     }
-    EventHandler<Event> get onSubmit => _setValues['onSubmit'] as EventHandler<Event>;
+    EventHandler<Event> get onSubmit => _setSubs['onSubmit'] as EventHandler<Event>;
     set onSubmit(EventHandler<Event> v) {
         _setSubs['onSubmit'] = v;
     }
-    EventHandler<Event> get onSuspend => _setValues['onSuspend'] as EventHandler<Event>;
+    EventHandler<Event> get onSuspend => _setSubs['onSuspend'] as EventHandler<Event>;
     set onSuspend(EventHandler<Event> v) {
         _setSubs['onSuspend'] = v;
     }
-    EventHandler<Event> get onTimeUpdate => _setValues['onTimeUpdate'] as EventHandler<Event>;
+    EventHandler<Event> get onTimeUpdate => _setSubs['onTimeUpdate'] as EventHandler<Event>;
     set onTimeUpdate(EventHandler<Event> v) {
         _setSubs['onTimeUpdate'] = v;
     }
-    EventHandler<TouchEvent> get onTouchCancel => _setValues['onTouchCancel'] as EventHandler<TouchEvent>;
+    EventHandler<TouchEvent> get onTouchCancel => _setSubs['onTouchCancel'] as EventHandler<TouchEvent>;
     set onTouchCancel(EventHandler<TouchEvent> v) {
         _setSubs['onTouchCancel'] = v;
     }
-    EventHandler<TouchEvent> get onTouchEnd => _setValues['onTouchEnd'] as EventHandler<TouchEvent>;
+    EventHandler<TouchEvent> get onTouchEnd => _setSubs['onTouchEnd'] as EventHandler<TouchEvent>;
     set onTouchEnd(EventHandler<TouchEvent> v) {
         _setSubs['onTouchEnd'] = v;
     }
-    EventHandler<TouchEvent> get onTouchEnter => _setValues['onTouchEnter'] as EventHandler<TouchEvent>;
+    EventHandler<TouchEvent> get onTouchEnter => _setSubs['onTouchEnter'] as EventHandler<TouchEvent>;
     set onTouchEnter(EventHandler<TouchEvent> v) {
         _setSubs['onTouchEnter'] = v;
     }
-    EventHandler<TouchEvent> get onTouchLeave => _setValues['onTouchLeave'] as EventHandler<TouchEvent>;
+    EventHandler<TouchEvent> get onTouchLeave => _setSubs['onTouchLeave'] as EventHandler<TouchEvent>;
     set onTouchLeave(EventHandler<TouchEvent> v) {
         _setSubs['onTouchLeave'] = v;
     }
-    EventHandler<TouchEvent> get onTouchMove => _setValues['onTouchMove'] as EventHandler<TouchEvent>;
+    EventHandler<TouchEvent> get onTouchMove => _setSubs['onTouchMove'] as EventHandler<TouchEvent>;
     set onTouchMove(EventHandler<TouchEvent> v) {
         _setSubs['onTouchMove'] = v;
     }
-    EventHandler<TouchEvent> get onTouchStart => _setValues['onTouchStart'] as EventHandler<TouchEvent>;
+    EventHandler<TouchEvent> get onTouchStart => _setSubs['onTouchStart'] as EventHandler<TouchEvent>;
     set onTouchStart(EventHandler<TouchEvent> v) {
         _setSubs['onTouchStart'] = v;
     }
-    EventHandler<TransitionEvent> get onTransitionEnd => _setValues['onTransitionEnd'] as EventHandler<TransitionEvent>;
+    EventHandler<TransitionEvent> get onTransitionEnd => _setSubs['onTransitionEnd'] as EventHandler<TransitionEvent>;
     set onTransitionEnd(EventHandler<TransitionEvent> v) {
         _setSubs['onTransitionEnd'] = v;
     }
-    EventHandler<Event> get onVolumeChange => _setValues['onVolumeChange'] as EventHandler<Event>;
+    EventHandler<Event> get onVolumeChange => _setSubs['onVolumeChange'] as EventHandler<Event>;
     set onVolumeChange(EventHandler<Event> v) {
         _setSubs['onVolumeChange'] = v;
     }
-    EventHandler<Event> get onWaiting => _setValues['onWaiting'] as EventHandler<Event>;
+    EventHandler<Event> get onWaiting => _setSubs['onWaiting'] as EventHandler<Event>;
     set onWaiting(EventHandler<Event> v) {
         _setSubs['onWaiting'] = v;
     }
-    EventHandler<Event> get onFullscreenChange => _setValues['onFullscreenChange'] as EventHandler<Event>;
+    EventHandler<Event> get onFullscreenChange => _setSubs['onFullscreenChange'] as EventHandler<Event>;
     set onFullscreenChange(EventHandler<Event> v) {
         _setSubs['onFullscreenChange'] = v;
     }
-    EventHandler<Event> get onFullscreenError => _setValues['onFullscreenError'] as EventHandler<Event>;
+    EventHandler<Event> get onFullscreenError => _setSubs['onFullscreenError'] as EventHandler<Event>;
     set onFullscreenError(EventHandler<Event> v) {
         _setSubs['onFullscreenError'] = v;
     }
@@ -609,298 +609,298 @@ part of velement;
     }
 
     void updateEventListenersToElement(VElement prev, Element ele) {
-      _setSubs.forEach((k, v) => _applyEventListener(ele, k, v));
-      prev._setSubs.forEach(_removeEventListenerIfNeccessary);
+      _setSubs.forEach((k, v) => _removeEventListenerIfNeccessary(prev, k, v));
       prev._setSubs = _setSubs;
-      prev._eventSubs = _eventSubs;
+      prev._setSubs.forEach((k, v) => prev._applyEventListener(ele, k, v));
     }
 
     void _applyEventListener(Element ele, String key, dynamic value) {
+      if (_eventSubs.containsKey(key)) return;
       switch(key) {
         
     case 'onAbort': 
-      _eventSubs['onAbort'] = ele.onAbort.listen(_setSubs['onAbort'] as EventHandler<Event>);
+      _eventSubs['onAbort'] = ele.onAbort.listen(onAbort);
       break;
   
     case 'onBeforeCopy': 
-      _eventSubs['onBeforeCopy'] = ele.onBeforeCopy.listen(_setSubs['onBeforeCopy'] as EventHandler<Event>);
+      _eventSubs['onBeforeCopy'] = ele.onBeforeCopy.listen(onBeforeCopy);
       break;
   
     case 'onBeforeCut': 
-      _eventSubs['onBeforeCut'] = ele.onBeforeCut.listen(_setSubs['onBeforeCut'] as EventHandler<Event>);
+      _eventSubs['onBeforeCut'] = ele.onBeforeCut.listen(onBeforeCut);
       break;
   
     case 'onBeforePaste': 
-      _eventSubs['onBeforePaste'] = ele.onBeforePaste.listen(_setSubs['onBeforePaste'] as EventHandler<Event>);
+      _eventSubs['onBeforePaste'] = ele.onBeforePaste.listen(onBeforePaste);
       break;
   
     case 'onBlur': 
-      _eventSubs['onBlur'] = ele.onBlur.listen(_setSubs['onBlur'] as EventHandler<Event>);
+      _eventSubs['onBlur'] = ele.onBlur.listen(onBlur);
       break;
   
     case 'onCanPlay': 
-      _eventSubs['onCanPlay'] = ele.onCanPlay.listen(_setSubs['onCanPlay'] as EventHandler<Event>);
+      _eventSubs['onCanPlay'] = ele.onCanPlay.listen(onCanPlay);
       break;
   
     case 'onCanPlayThrough': 
-      _eventSubs['onCanPlayThrough'] = ele.onCanPlayThrough.listen(_setSubs['onCanPlayThrough'] as EventHandler<Event>);
+      _eventSubs['onCanPlayThrough'] = ele.onCanPlayThrough.listen(onCanPlayThrough);
       break;
   
     case 'onChange': 
-      _eventSubs['onChange'] = ele.onChange.listen(_setSubs['onChange'] as EventHandler<Event>);
+      _eventSubs['onChange'] = ele.onChange.listen(onChange);
       break;
   
     case 'onClick': 
-      _eventSubs['onClick'] = ele.onClick.listen(_setSubs['onClick'] as EventHandler<MouseEvent>);
+      _eventSubs['onClick'] = ele.onClick.listen(onClick);
       break;
   
     case 'onContextMenu': 
-      _eventSubs['onContextMenu'] = ele.onContextMenu.listen(_setSubs['onContextMenu'] as EventHandler<MouseEvent>);
+      _eventSubs['onContextMenu'] = ele.onContextMenu.listen(onContextMenu);
       break;
   
     case 'onCopy': 
-      _eventSubs['onCopy'] = ele.onCopy.listen(_setSubs['onCopy'] as EventHandler<ClipboardEvent>);
+      _eventSubs['onCopy'] = ele.onCopy.listen(onCopy);
       break;
   
     case 'onCut': 
-      _eventSubs['onCut'] = ele.onCut.listen(_setSubs['onCut'] as EventHandler<ClipboardEvent>);
+      _eventSubs['onCut'] = ele.onCut.listen(onCut);
       break;
   
     case 'onDoubleClick': 
-      _eventSubs['onDoubleClick'] = ele.onDoubleClick.listen(_setSubs['onDoubleClick'] as EventHandler<Event>);
+      _eventSubs['onDoubleClick'] = ele.onDoubleClick.listen(onDoubleClick);
       break;
   
     case 'onDrag': 
-      _eventSubs['onDrag'] = ele.onDrag.listen(_setSubs['onDrag'] as EventHandler<MouseEvent>);
+      _eventSubs['onDrag'] = ele.onDrag.listen(onDrag);
       break;
   
     case 'onDragEnd': 
-      _eventSubs['onDragEnd'] = ele.onDragEnd.listen(_setSubs['onDragEnd'] as EventHandler<MouseEvent>);
+      _eventSubs['onDragEnd'] = ele.onDragEnd.listen(onDragEnd);
       break;
   
     case 'onDragEnter': 
-      _eventSubs['onDragEnter'] = ele.onDragEnter.listen(_setSubs['onDragEnter'] as EventHandler<MouseEvent>);
+      _eventSubs['onDragEnter'] = ele.onDragEnter.listen(onDragEnter);
       break;
   
     case 'onDragLeave': 
-      _eventSubs['onDragLeave'] = ele.onDragLeave.listen(_setSubs['onDragLeave'] as EventHandler<MouseEvent>);
+      _eventSubs['onDragLeave'] = ele.onDragLeave.listen(onDragLeave);
       break;
   
     case 'onDragOver': 
-      _eventSubs['onDragOver'] = ele.onDragOver.listen(_setSubs['onDragOver'] as EventHandler<MouseEvent>);
+      _eventSubs['onDragOver'] = ele.onDragOver.listen(onDragOver);
       break;
   
     case 'onDragStart': 
-      _eventSubs['onDragStart'] = ele.onDragStart.listen(_setSubs['onDragStart'] as EventHandler<MouseEvent>);
+      _eventSubs['onDragStart'] = ele.onDragStart.listen(onDragStart);
       break;
   
     case 'onDrop': 
-      _eventSubs['onDrop'] = ele.onDrop.listen(_setSubs['onDrop'] as EventHandler<MouseEvent>);
+      _eventSubs['onDrop'] = ele.onDrop.listen(onDrop);
       break;
   
     case 'onDurationChange': 
-      _eventSubs['onDurationChange'] = ele.onDurationChange.listen(_setSubs['onDurationChange'] as EventHandler<Event>);
+      _eventSubs['onDurationChange'] = ele.onDurationChange.listen(onDurationChange);
       break;
   
     case 'onEmptied': 
-      _eventSubs['onEmptied'] = ele.onEmptied.listen(_setSubs['onEmptied'] as EventHandler<Event>);
+      _eventSubs['onEmptied'] = ele.onEmptied.listen(onEmptied);
       break;
   
     case 'onEnded': 
-      _eventSubs['onEnded'] = ele.onEnded.listen(_setSubs['onEnded'] as EventHandler<Event>);
+      _eventSubs['onEnded'] = ele.onEnded.listen(onEnded);
       break;
   
     case 'onError': 
-      _eventSubs['onError'] = ele.onError.listen(_setSubs['onError'] as EventHandler<Event>);
+      _eventSubs['onError'] = ele.onError.listen(onError);
       break;
   
     case 'onFocus': 
-      _eventSubs['onFocus'] = ele.onFocus.listen(_setSubs['onFocus'] as EventHandler<Event>);
+      _eventSubs['onFocus'] = ele.onFocus.listen(onFocus);
       break;
   
     case 'onInput': 
-      _eventSubs['onInput'] = ele.onInput.listen(_setSubs['onInput'] as EventHandler<Event>);
+      _eventSubs['onInput'] = ele.onInput.listen(onInput);
       break;
   
     case 'onInvalid': 
-      _eventSubs['onInvalid'] = ele.onInvalid.listen(_setSubs['onInvalid'] as EventHandler<Event>);
+      _eventSubs['onInvalid'] = ele.onInvalid.listen(onInvalid);
       break;
   
     case 'onKeyDown': 
-      _eventSubs['onKeyDown'] = ele.onKeyDown.listen(_setSubs['onKeyDown'] as EventHandler<KeyboardEvent>);
+      _eventSubs['onKeyDown'] = ele.onKeyDown.listen(onKeyDown);
       break;
   
     case 'onKeyPress': 
-      _eventSubs['onKeyPress'] = ele.onKeyPress.listen(_setSubs['onKeyPress'] as EventHandler<KeyboardEvent>);
+      _eventSubs['onKeyPress'] = ele.onKeyPress.listen(onKeyPress);
       break;
   
     case 'onKeyUp': 
-      _eventSubs['onKeyUp'] = ele.onKeyUp.listen(_setSubs['onKeyUp'] as EventHandler<KeyboardEvent>);
+      _eventSubs['onKeyUp'] = ele.onKeyUp.listen(onKeyUp);
       break;
   
     case 'onLoad': 
-      _eventSubs['onLoad'] = ele.onLoad.listen(_setSubs['onLoad'] as EventHandler<Event>);
+      _eventSubs['onLoad'] = ele.onLoad.listen(onLoad);
       break;
   
     case 'onLoadedData': 
-      _eventSubs['onLoadedData'] = ele.onLoadedData.listen(_setSubs['onLoadedData'] as EventHandler<Event>);
+      _eventSubs['onLoadedData'] = ele.onLoadedData.listen(onLoadedData);
       break;
   
     case 'onLoadedMetadata': 
-      _eventSubs['onLoadedMetadata'] = ele.onLoadedMetadata.listen(_setSubs['onLoadedMetadata'] as EventHandler<Event>);
+      _eventSubs['onLoadedMetadata'] = ele.onLoadedMetadata.listen(onLoadedMetadata);
       break;
   
     case 'onMouseDown': 
-      _eventSubs['onMouseDown'] = ele.onMouseDown.listen(_setSubs['onMouseDown'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseDown'] = ele.onMouseDown.listen(onMouseDown);
       break;
   
     case 'onMouseEnter': 
-      _eventSubs['onMouseEnter'] = ele.onMouseEnter.listen(_setSubs['onMouseEnter'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseEnter'] = ele.onMouseEnter.listen(onMouseEnter);
       break;
   
     case 'onMouseLeave': 
-      _eventSubs['onMouseLeave'] = ele.onMouseLeave.listen(_setSubs['onMouseLeave'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseLeave'] = ele.onMouseLeave.listen(onMouseLeave);
       break;
   
     case 'onMouseMove': 
-      _eventSubs['onMouseMove'] = ele.onMouseMove.listen(_setSubs['onMouseMove'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseMove'] = ele.onMouseMove.listen(onMouseMove);
       break;
   
     case 'onMouseOut': 
-      _eventSubs['onMouseOut'] = ele.onMouseOut.listen(_setSubs['onMouseOut'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseOut'] = ele.onMouseOut.listen(onMouseOut);
       break;
   
     case 'onMouseOver': 
-      _eventSubs['onMouseOver'] = ele.onMouseOver.listen(_setSubs['onMouseOver'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseOver'] = ele.onMouseOver.listen(onMouseOver);
       break;
   
     case 'onMouseUp': 
-      _eventSubs['onMouseUp'] = ele.onMouseUp.listen(_setSubs['onMouseUp'] as EventHandler<MouseEvent>);
+      _eventSubs['onMouseUp'] = ele.onMouseUp.listen(onMouseUp);
       break;
   
     case 'onMouseWheel': 
-      _eventSubs['onMouseWheel'] = ele.onMouseWheel.listen(_setSubs['onMouseWheel'] as EventHandler<WheelEvent>);
+      _eventSubs['onMouseWheel'] = ele.onMouseWheel.listen(onMouseWheel);
       break;
   
     case 'onPaste': 
-      _eventSubs['onPaste'] = ele.onPaste.listen(_setSubs['onPaste'] as EventHandler<ClipboardEvent>);
+      _eventSubs['onPaste'] = ele.onPaste.listen(onPaste);
       break;
   
     case 'onPause': 
-      _eventSubs['onPause'] = ele.onPause.listen(_setSubs['onPause'] as EventHandler<Event>);
+      _eventSubs['onPause'] = ele.onPause.listen(onPause);
       break;
   
     case 'onPlay': 
-      _eventSubs['onPlay'] = ele.onPlay.listen(_setSubs['onPlay'] as EventHandler<Event>);
+      _eventSubs['onPlay'] = ele.onPlay.listen(onPlay);
       break;
   
     case 'onPlaying': 
-      _eventSubs['onPlaying'] = ele.onPlaying.listen(_setSubs['onPlaying'] as EventHandler<Event>);
+      _eventSubs['onPlaying'] = ele.onPlaying.listen(onPlaying);
       break;
   
     case 'onRateChange': 
-      _eventSubs['onRateChange'] = ele.onRateChange.listen(_setSubs['onRateChange'] as EventHandler<Event>);
+      _eventSubs['onRateChange'] = ele.onRateChange.listen(onRateChange);
       break;
   
     case 'onReset': 
-      _eventSubs['onReset'] = ele.onReset.listen(_setSubs['onReset'] as EventHandler<Event>);
+      _eventSubs['onReset'] = ele.onReset.listen(onReset);
       break;
   
     case 'onResize': 
-      _eventSubs['onResize'] = ele.onResize.listen(_setSubs['onResize'] as EventHandler<Event>);
+      _eventSubs['onResize'] = ele.onResize.listen(onResize);
       break;
   
     case 'onScroll': 
-      _eventSubs['onScroll'] = ele.onScroll.listen(_setSubs['onScroll'] as EventHandler<Event>);
+      _eventSubs['onScroll'] = ele.onScroll.listen(onScroll);
       break;
   
     case 'onSearch': 
-      _eventSubs['onSearch'] = ele.onSearch.listen(_setSubs['onSearch'] as EventHandler<Event>);
+      _eventSubs['onSearch'] = ele.onSearch.listen(onSearch);
       break;
   
     case 'onSeeked': 
-      _eventSubs['onSeeked'] = ele.onSeeked.listen(_setSubs['onSeeked'] as EventHandler<Event>);
+      _eventSubs['onSeeked'] = ele.onSeeked.listen(onSeeked);
       break;
   
     case 'onSeeking': 
-      _eventSubs['onSeeking'] = ele.onSeeking.listen(_setSubs['onSeeking'] as EventHandler<Event>);
+      _eventSubs['onSeeking'] = ele.onSeeking.listen(onSeeking);
       break;
   
     case 'onSelect': 
-      _eventSubs['onSelect'] = ele.onSelect.listen(_setSubs['onSelect'] as EventHandler<Event>);
+      _eventSubs['onSelect'] = ele.onSelect.listen(onSelect);
       break;
   
     case 'onSelectStart': 
-      _eventSubs['onSelectStart'] = ele.onSelectStart.listen(_setSubs['onSelectStart'] as EventHandler<Event>);
+      _eventSubs['onSelectStart'] = ele.onSelectStart.listen(onSelectStart);
       break;
   
     case 'onStalled': 
-      _eventSubs['onStalled'] = ele.onStalled.listen(_setSubs['onStalled'] as EventHandler<Event>);
+      _eventSubs['onStalled'] = ele.onStalled.listen(onStalled);
       break;
   
     case 'onSubmit': 
-      _eventSubs['onSubmit'] = ele.onSubmit.listen(_setSubs['onSubmit'] as EventHandler<Event>);
+      _eventSubs['onSubmit'] = ele.onSubmit.listen(onSubmit);
       break;
   
     case 'onSuspend': 
-      _eventSubs['onSuspend'] = ele.onSuspend.listen(_setSubs['onSuspend'] as EventHandler<Event>);
+      _eventSubs['onSuspend'] = ele.onSuspend.listen(onSuspend);
       break;
   
     case 'onTimeUpdate': 
-      _eventSubs['onTimeUpdate'] = ele.onTimeUpdate.listen(_setSubs['onTimeUpdate'] as EventHandler<Event>);
+      _eventSubs['onTimeUpdate'] = ele.onTimeUpdate.listen(onTimeUpdate);
       break;
   
     case 'onTouchCancel': 
-      _eventSubs['onTouchCancel'] = ele.onTouchCancel.listen(_setSubs['onTouchCancel'] as EventHandler<TouchEvent>);
+      _eventSubs['onTouchCancel'] = ele.onTouchCancel.listen(onTouchCancel);
       break;
   
     case 'onTouchEnd': 
-      _eventSubs['onTouchEnd'] = ele.onTouchEnd.listen(_setSubs['onTouchEnd'] as EventHandler<TouchEvent>);
+      _eventSubs['onTouchEnd'] = ele.onTouchEnd.listen(onTouchEnd);
       break;
   
     case 'onTouchEnter': 
-      _eventSubs['onTouchEnter'] = ele.onTouchEnter.listen(_setSubs['onTouchEnter'] as EventHandler<TouchEvent>);
+      _eventSubs['onTouchEnter'] = ele.onTouchEnter.listen(onTouchEnter);
       break;
   
     case 'onTouchLeave': 
-      _eventSubs['onTouchLeave'] = ele.onTouchLeave.listen(_setSubs['onTouchLeave'] as EventHandler<TouchEvent>);
+      _eventSubs['onTouchLeave'] = ele.onTouchLeave.listen(onTouchLeave);
       break;
   
     case 'onTouchMove': 
-      _eventSubs['onTouchMove'] = ele.onTouchMove.listen(_setSubs['onTouchMove'] as EventHandler<TouchEvent>);
+      _eventSubs['onTouchMove'] = ele.onTouchMove.listen(onTouchMove);
       break;
   
     case 'onTouchStart': 
-      _eventSubs['onTouchStart'] = ele.onTouchStart.listen(_setSubs['onTouchStart'] as EventHandler<TouchEvent>);
+      _eventSubs['onTouchStart'] = ele.onTouchStart.listen(onTouchStart);
       break;
   
     case 'onTransitionEnd': 
-      _eventSubs['onTransitionEnd'] = ele.onTransitionEnd.listen(_setSubs['onTransitionEnd'] as EventHandler<TransitionEvent>);
+      _eventSubs['onTransitionEnd'] = ele.onTransitionEnd.listen(onTransitionEnd);
       break;
   
     case 'onVolumeChange': 
-      _eventSubs['onVolumeChange'] = ele.onVolumeChange.listen(_setSubs['onVolumeChange'] as EventHandler<Event>);
+      _eventSubs['onVolumeChange'] = ele.onVolumeChange.listen(onVolumeChange);
       break;
   
     case 'onWaiting': 
-      _eventSubs['onWaiting'] = ele.onWaiting.listen(_setSubs['onWaiting'] as EventHandler<Event>);
+      _eventSubs['onWaiting'] = ele.onWaiting.listen(onWaiting);
       break;
   
     case 'onFullscreenChange': 
-      _eventSubs['onFullscreenChange'] = ele.onFullscreenChange.listen(_setSubs['onFullscreenChange'] as EventHandler<Event>);
+      _eventSubs['onFullscreenChange'] = ele.onFullscreenChange.listen(onFullscreenChange);
       break;
   
     case 'onFullscreenError': 
-      _eventSubs['onFullscreenError'] = ele.onFullscreenError.listen(_setSubs['onFullscreenError'] as EventHandler<Event>);
+      _eventSubs['onFullscreenError'] = ele.onFullscreenError.listen(onFullscreenError);
       break;
   
       }
     }
 
-    void _removeEventListenerIfNeccessary(String key, dynamic value) {
-      if (_setSubs.containsKey(key)) return;
-      _eventSubs[key].cancel();
-      _eventSubs[key] = null;
+    void _removeEventListenerIfNeccessary(VElement prev, String key, dynamic value) {
+      if (prev._setSubs.containsKey(key)) return;
+      prev._eventSubs[key].cancel();
+      prev._eventSubs[key] = null;
     }
 
     void dispose() {

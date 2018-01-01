@@ -79,9 +79,9 @@ void main(List<String> args) {
 
   for (final tag in _html5Tags) result.write(generalTagFactoryElement(tag));
 
-  // final formatter = new DartFormatter();
-  // final formatted = formatter.format(result.toString());
-  // new File('lib/vhtml.dart').writeAsStringSync(formatted);
+  final formatter = new DartFormatter();
+  final formatted = formatter.format(result.toString());
+  new File('lib/vhtml.dart').writeAsStringSync(formatted);
 
   result
     ..clear()
@@ -127,8 +127,8 @@ void main(List<String> args) {
     }
   }
 
-  // final svgFormatted = formatter.format(result.toString());
-  // new File('lib/vsvg.dart').writeAsStringSync(svgFormatted);
+  final svgFormatted = formatter.format(result.toString());
+  new File('lib/vsvg.dart').writeAsStringSync(svgFormatted);
 }
 
 // resolves the ast structure

@@ -83,22 +83,22 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
     }
 
     void updateEventListenersToElement(VElement prev, Element ele) {
-      _setSubs.forEach((k, v) => _applyEventListener(ele, k, v));
-      prev._setSubs.forEach(_removeEventListenerIfNeccessary);
+      _setSubs.forEach((k, v) => _removeEventListenerIfNeccessary(prev, k, v));
       prev._setSubs = _setSubs;
-      prev._eventSubs = _eventSubs;
+      prev._setSubs.forEach((k, v) => prev._applyEventListener(ele, k, v));
     }
 
     void _applyEventListener(Element ele, String key, dynamic value) {
+      if (_eventSubs.containsKey(key)) return;
       switch(key) {
         ${updateEventListenerSwitchBody(events)}
       }
     }
 
-    void _removeEventListenerIfNeccessary(String key, dynamic value) {
-      if (_setSubs.containsKey(key)) return;
-      _eventSubs[key].cancel();
-      _eventSubs[key] = null;
+    void _removeEventListenerIfNeccessary(VElement prev, String key, dynamic value) {
+      if (prev._setSubs.containsKey(key)) return;
+      prev._eventSubs[key].cancel();
+      prev._eventSubs[key] = null;
     }
 
     void dispose() {
@@ -178,20 +178,35 @@ String vElementSubclass(
     @override
     $classElementName elementFactory() => new $classElementName();
 
+    var _setValues = <String, dynamic>{};
+
     ${attributesDeclarationTemplate(setters)}
 
     @override
-    @protected
     void applyAttributesToElement($classElementName ele) {
+      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
       super.applyAttributesToElement(ele);
-      attributesSetTemplate(setters)
     }
 
     @override
-    @protected
     void updateElementAttributes(V$classElementName prev, $classElementName ele) {
+      prev._setValues.forEach((k, dynamic v) => _removeAttributeIfNecessary$classElementName(ele, k, v));
+      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
+      prev._setValues = _setValues;
       super.updateElementAttributes(prev, ele);
-      ${attributesUpdateTemplate(setters)}
+    }
+
+    void _updateAttribute$classElementName($classElementName ele, String key, dynamic value) {
+      switch(key) {
+        ${updateAttributesSwitchTemplate(setters)}
+      }
+    }
+
+    void _removeAttributeIfNecessary$classElementName($classElementName ele, String key, dynamic value) {
+      if (_setValues.containsKey(key)) return;
+      switch(key) {
+        ${removeAttributeSwitchBody(setters)}
+      }
     }
   }
 ''';
@@ -204,20 +219,35 @@ String vElementAbstractSubclass(
 ) =>
     '''
   abstract class V$classElementName<T extends $classElementName> extends  V$superclass<T> {
+    var _setValues = <String, dynamic>{};
+
     ${attributesDeclarationTemplate(setters)}
 
     @override
-    @protected
     void applyAttributesToElement(T ele) {
+      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
       super.applyAttributesToElement(ele);
-      attributesSetTemplate(setters)
     }
 
     @override
-    @protected
     void updateElementAttributes(covariant V$classElementName<T> prev, T ele) {
+      prev._setValues.forEach((k, dynamic v) => _removeAttributeIfNecessary$classElementName(ele, k, v));
+      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
+      prev._setValues = _setValues;
       super.updateElementAttributes(prev, ele);
-      ${attributesUpdateTemplate(setters)}
+    }
+
+    void _updateAttribute$classElementName($classElementName ele, String key, dynamic value) {
+      switch(key) {
+        ${updateAttributesSwitchTemplate(setters)}
+      }
+    }
+
+    void _removeAttributeIfNecessary$classElementName($classElementName ele, String key, dynamic value) {
+      if (_setValues.containsKey(key)) return;
+      switch(key) {
+        ${removeAttributeSwitchBody(setters)}
+      }
     }
   }
 ''';
@@ -273,37 +303,21 @@ String attributeUpdateTemplate(Setter setter) =>
 
 String updateEventListenerSwitchTemplate(VEvent event) => '''
     case \'${event.name}\': 
-      _eventSubs[\'${event.name}\'] = ele.${event.name}.listen(_setSubs[\'${event.name}\'] as ${event.type});
+      _eventSubs[\'${event.name}\'] = ele.${event.name}.listen(${event.name});
       break;
   ''';
+
 String eventsDeclarationTemplate(Iterable<VEvent> events) => events.fold(
     '', (code, event) => '$code\n${eventDeclarationTemplate(event)}');
 
 String eventsSetTemplate(Iterable<VEvent> events) =>
     events.fold('', (code, event) => '$code\n${eventSetTemplate(event)}');
 
-String eventsUpdateTemplate(Iterable<VEvent> events) =>
-    events.fold('', (code, event) => '$code\n${eventUpdateTemplate(event)}');
-
 String eventDeclarationTemplate(VEvent event) => '''
-    ${event.type} get ${event.name} => _setValues[\'${event.name}\'] as ${event.type};
+    ${event.type} get ${event.name} => _setSubs[\'${event.name}\'] as ${event.type};
     set ${event.name}(${event.type} v) {
         _setSubs[\'${event.name}\'] = v;
     }''';
 
 String eventSetTemplate(VEvent event) =>
     'if (_${event.name}Set) _${event.name}Sub = ele.${event.name}.listen((e) => ${event.name}(e));';
-
-String eventUpdateTemplate(VEvent event) => '''
-    if (_${event.name}Set) {
-      if (!prev._${event.name}Set) {
-        prev._${event.name} = _${event.name};
-        prev._${event.name}Sub = ele.${event.name}.listen((e) => ${event.name}(e));
-      } else if (prev.${event.name} != ${event.name}) {
-        prev._${event.name} = _${event.name};
-      }
-    } else if (prev._${event.name}Set) {
-      prev._${event.name}Sub.cancel();
-      prev._${event.name}Sub = null;
-      prev._${event.name}Set = false;
-    }''';
