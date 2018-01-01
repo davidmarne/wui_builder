@@ -15,7 +15,8 @@ Iterable<Setter> localSetters(ClassElement e) => e.accessors
       (accessor) =>
           accessor.isSetter &&
           accessor.isPublic &&
-          !accessor.name.contains('children'),
+          !accessor.name.contains('children') &&
+          !accessor.name.contains('attributes'),
     )
     .map((accessor) => new Setter(
           accessor.name.substring(0, accessor.name.length - 1),
