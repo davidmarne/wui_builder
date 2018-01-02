@@ -1,14 +1,35 @@
 import 'parsing.dart';
 
+String vElementAttributesEnums(
+    String classElementName, Iterable<Setter> setters) {
+  final buffer = new StringBuffer();
+  for (var i = 0; i < setters.length; i++) {
+    buffer.write(
+        'const ${setters.elementAt(i).name}${classElementName}Attribute = $i;\n');
+  }
+  if (classElementName == 'Element')
+    buffer
+        .write('const text${classElementName}Attribute = ${setters.length};\n');
+  return buffer.toString();
+}
+
+String vElementEventsEnums(Iterable<VEvent> events) {
+  final buffer = new StringBuffer();
+  for (var i = 0; i < events.length; i++) {
+    buffer.write('const ${events.elementAt(i).name}Event = $i;\n');
+  }
+  return buffer.toString();
+}
+
 String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
   abstract class VElement<E extends Element> extends VNode {
     @override
     VNodeTypes get vNodeType => VNodeTypes.element;
 
-    var _setValues = <String, dynamic>{};
-    var _setSubs = <String, EventHandler>{};
+    var _setValuesElement = <int, dynamic>{};
+    var _setSubs = <int, EventHandler>{};
     var _style = <String, String>{};
-    var _eventSubs = <String, StreamSubscription>{};
+    var _eventSubs = <int, StreamSubscription>{};
     var attributes = <String, String>{};
 
     E elementFactory();
@@ -22,9 +43,9 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       _children = c.toList();
     }
     
-    ${attributeDeclarationTemplate(new Setter('text', 'String', ''))}
+    ${attributeDeclarationTemplate('Element', new Setter('text', 'String', ''))}
 
-    ${attributesDeclarationTemplate(setters)}
+    ${attributesDeclarationTemplate('Element', setters)}
 
     ${eventsDeclarationTemplate(events)}
 
@@ -32,50 +53,39 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
     void applyAttributesToElement(E ele) {
      // _style.forEach(_updateStyle);
       attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
-      _setValues.forEach((k, dynamic v) => _updateAttribute(ele, k, v));
+      _setValuesElement.forEach((k, dynamic v) => _updateAttribute(ele, k, v));
     }
 
     @protected
     void updateElementAttributes(covariant VElement<E> prev, E ele) {
       //prev._style.forEach(_updateStyle);
-      prev.attributes.forEach((k, v) => _removeCustomAttributeIfNecessary(ele, k, v));
-      prev._setValues.forEach((k, dynamic v) => _removeAttributeIfNecessary(ele, k, v));
+      prev.attributes.forEach((k, v) {
+        final newValue = attributes[k];
+        if (newValue != v)
+          _updateCustomAttribute(ele, k, newValue);
+      });
 
-      //_style.forEach(_updateStyle);
-      attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
-      _setValues.forEach((k, dynamic v) => _updateAttribute(ele, k, v));
+      prev._setValuesElement.forEach((k, dynamic v) {
+        final dynamic newValue = _setValuesElement[k];
+        if (newValue != v)
+          _updateAttribute(ele, k, newValue);
+      });
 
       prev._style = _style;
       prev.attributes = attributes;
-      prev._setValues = _setValues;
+      prev._setValuesElement = _setValuesElement;
     }
 
-    void _updateAttribute(Element ele, String key, dynamic value) {
+    void _updateAttribute(Element ele, int key, dynamic value) {
       switch(key) {
-        case 'text':
+        case textElementAttribute:
           ${vElementTextSet()}
-          break;
-        ${updateAttributesSwitchTemplate(setters)}
+          break;${updateAttributesSwitchTemplate('Element', setters)}
       }
     }
 
-    void _updateCustomAttribute(Element ele, String key, dynamic value) {
-      ele.attributes[key] = value as String;
-    }
-
-    void _removeAttributeIfNecessary(E ele, String key, dynamic value) {
-      if (_setValues.containsKey(key)) return;
-      switch(key) {
-        case 'text':
-          // TODO: remove text node
-          break;
-        ${removeAttributeSwitchBody(setters)}
-      }
-    }
-
-    void _removeCustomAttributeIfNecessary(E ele, String key, dynamic value) {
-      if (attributes.containsKey(key)) return;
-        ele.attributes[key] = null;
+    void _updateCustomAttribute(Element ele, String key, String value) {
+      ele.attributes[key] = value;
     }
 
     void applyEventListenersToElement(Element ele) {
@@ -88,14 +98,14 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       prev._setSubs.forEach((k, v) => prev._applyEventListener(ele, k, v));
     }
 
-    void _applyEventListener(Element ele, String key, dynamic value) {
+    void _applyEventListener(Element ele, int key, dynamic value) {
       if (_eventSubs.containsKey(key)) return;
       switch(key) {
-        ${updateEventListenerSwitchBody(events)}
+        ${updateEventListenerSwitchBody('Element', events)}
       }
     }
 
-    void _removeEventListenerIfNeccessary(VElement prev, String key, dynamic value) {
+    void _removeEventListenerIfNeccessary(VElement prev, int key, dynamic value) {
       if (prev._setSubs.containsKey(key)) return;
       prev._eventSubs[key].cancel();
       prev._eventSubs[key] = null;
@@ -107,45 +117,22 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
       _eventSubs = null;
     }
   }
-  ''';
+''';
 
 // Workaround: perf is better with this than setting
 // the text property directly on the element
 String vElementTextSet() => '''
   final first = ele.firstChild;
   if (first != null && first == ele.lastChild && first.nodeType == Node.TEXT_NODE) {
-    first.text = text;
+    first.text = value as String;
   } else {
-    ele.text = text;
-  }
-''';
+    ele.text = value as String;
+  }''';
 
 // Workaround: style is final on the element, so VElements can provide
 // a fuction to build the style
 String vElementStyleBuilderSet() => '''if (styleBuilder != null) {
       styleBuilder(ele.style);
-    }''';
-
-// Workaround: perf is better with this than setting
-// the text property directly on the element
-String vElementTextUpdate() => '''
-  final first = ele.firstChild;
-  if (first != null && first == ele.lastChild && first.nodeType == Node.TEXT_NODE) {
-    first.text = text;
-  } else {
-    ele.text = text;
-  }
-  prev.text = _text;
-''';
-
-// Workaround: style is final on the element, so VElements can provide
-// a fuction to build the style
-String vElementStyleBuilderUpdate() => '''if (styleBuilder != null) {
-      ele.setAttribute('style', '');
-      styleBuilder(ele.style);
-      prev.styleBuilder = styleBuilder;
-    } else if (prev.styleBuilder != null) {
-      prev.styleBuilder = null;
     }''';
 
 // Workaround: elements that have multple factories can use this
@@ -171,141 +158,127 @@ String vElementSubclass(
   String classElementName,
   String superclass,
   Iterable<Setter> setters,
-  String lib,
 ) =>
     '''
   class V$classElementName extends V$superclass<$classElementName> {
     @override
     $classElementName elementFactory() => new $classElementName();
 
-    var _setValues = <String, dynamic>{};
+    ${vElementSubclassBody(classElementName, setters)}
+  }''';
 
-    ${attributesDeclarationTemplate(setters)}
+String vElementSubclassBody(
+  String classElementName,
+  Iterable<Setter> setters,
+) =>
+    setters.isEmpty
+        ? ''
+        : '''var _setValues${classElementName} = <int, dynamic>{};
+
+    ${attributesDeclarationTemplate(classElementName, setters)}
 
     @override
     void applyAttributesToElement($classElementName ele) {
-      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
+      _setValues${classElementName}.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
       super.applyAttributesToElement(ele);
     }
 
     @override
     void updateElementAttributes(V$classElementName prev, $classElementName ele) {
-      prev._setValues.forEach((k, dynamic v) => _removeAttributeIfNecessary$classElementName(ele, k, v));
-      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
-      prev._setValues = _setValues;
+      prev._setValues${classElementName}.forEach((k, dynamic v) {
+        final dynamic newValue = _setValues${classElementName}[k];
+        if (v != newValue)
+          _updateAttribute$classElementName(ele, k, newValue);
+      });
+      prev._setValues${classElementName} = _setValues${classElementName};
       super.updateElementAttributes(prev, ele);
     }
 
-    void _updateAttribute$classElementName($classElementName ele, String key, dynamic value) {
+    void _updateAttribute$classElementName($classElementName ele, int key, dynamic value) {
       switch(key) {
-        ${updateAttributesSwitchTemplate(setters)}
+        ${updateAttributesSwitchTemplate(classElementName, setters)}
       }
-    }
-
-    void _removeAttributeIfNecessary$classElementName($classElementName ele, String key, dynamic value) {
-      if (_setValues.containsKey(key)) return;
-      switch(key) {
-        ${removeAttributeSwitchBody(setters)}
-      }
-    }
-  }
-''';
+    }''';
 
 String vElementAbstractSubclass(
   String classElementName,
   String superclass,
   Iterable<Setter> setters,
-  String lib,
 ) =>
     '''
   abstract class V$classElementName<T extends $classElementName> extends  V$superclass<T> {
-    var _setValues = <String, dynamic>{};
+    ${vElementAbstractSubclassBody(classElementName, setters)}
+  }''';
 
-    ${attributesDeclarationTemplate(setters)}
+String vElementAbstractSubclassBody(
+  String classElementName,
+  Iterable<Setter> setters,
+) =>
+    setters.isEmpty
+        ? ''
+        : '''var _setValues${classElementName} = <int, dynamic>{};
+
+    ${attributesDeclarationTemplate(classElementName, setters)}
 
     @override
     void applyAttributesToElement(T ele) {
-      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
+      _setValues${classElementName}.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
       super.applyAttributesToElement(ele);
     }
 
     @override
     void updateElementAttributes(covariant V$classElementName<T> prev, T ele) {
-      prev._setValues.forEach((k, dynamic v) => _removeAttributeIfNecessary$classElementName(ele, k, v));
-      _setValues.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
-      prev._setValues = _setValues;
+      prev._setValues${classElementName}.forEach((k, dynamic v) {
+        final dynamic newValue = _setValues${classElementName}[k];
+        if (v != newValue)
+          _updateAttribute$classElementName(ele, k, newValue);
+      });
+      prev._setValues${classElementName} = _setValues${classElementName};
       super.updateElementAttributes(prev, ele);
     }
 
-    void _updateAttribute$classElementName($classElementName ele, String key, dynamic value) {
+    void _updateAttribute$classElementName($classElementName ele, int key, dynamic value) {
       switch(key) {
-        ${updateAttributesSwitchTemplate(setters)}
+        ${updateAttributesSwitchTemplate(classElementName, setters)}
       }
-    }
-
-    void _removeAttributeIfNecessary$classElementName($classElementName ele, String key, dynamic value) {
-      if (_setValues.containsKey(key)) return;
-      switch(key) {
-        ${removeAttributeSwitchBody(setters)}
-      }
-    }
-  }
-''';
-
-String attributesDeclarationTemplate(Iterable<Setter> setters) => setters.fold(
-    '', (code, setter) => '$code\n${attributeDeclarationTemplate(setter)}');
-
-String updateAttributesSwitchTemplate(Iterable<Setter> setters) => setters.fold(
-    '', (code, setter) => '$code\n${updateAttributeSwitchTemplate(setter)}');
-
-String removeAttributeSwitchBody(Iterable<Setter> setters) => setters.fold(
-    '', (code, setter) => '$code\n${removeAttributeSwitchTemplate(setter)}');
-
-String removeEventListenerSwitchBody(Iterable<VEvent> events) => events.fold(
-    '', (code, event) => '$code\n${removeEventListenerSwitchTemplate(event)}');
-
-String attributesUpdateTemplate(Iterable<Setter> setters) => setters.fold(
-    '', (code, setter) => '$code\n${attributeUpdateTemplate(setter)}');
-
-String updateEventListenerSwitchBody(Iterable<VEvent> events) => events.fold(
-    '', (code, event) => '$code\n${updateEventListenerSwitchTemplate(event)}');
-
-String attributeDeclarationTemplate(Setter setter) => '''
-  ${setter.type} get ${setter.name} => _setValues[\'${setter.name}\'] as ${setter.type};
-  set ${setter.name}(${setter.type} v) {
-      _setValues[\'${setter.name}\'] = v;
-  }''';
-
-String updateAttributeSwitchTemplate(Setter setter) => '''
-    case \'${setter.name}\': 
-      ele.${setter.name} = value as ${setter.type};
-      break;
-  ''';
-
-String removeAttributeSwitchTemplate(Setter setter) => '''
-    case \'${setter.name}\': 
-      ele.${setter.name} = null;
-      break;
-  ''';
-
-String removeEventListenerSwitchTemplate(VEvent event) => '''
-  case \'${event.name}\': 
-    _eventSubs[\'${event.name}\'].cancel();
-    _eventSubs[\'${event.name}\'] = null;
-    break;
-''';
-
-String attributeUpdateTemplate(Setter setter) =>
-    '''if (_${setter.name} != prev._${setter.name}) {
-      ele.${setter.name} = _${setter.name};
-      prev.${setter.name} = _${setter.name};
     }''';
 
-String updateEventListenerSwitchTemplate(VEvent event) => '''
-    case \'${event.name}\': 
-      _eventSubs[\'${event.name}\'] = ele.${event.name}.listen(${event.name});
-      break;
-  ''';
+String attributesDeclarationTemplate(
+        String className, Iterable<Setter> setters) =>
+    setters.fold(
+        '',
+        (code, setter) =>
+            '$code\n${attributeDeclarationTemplate(className, setter)}');
+
+String updateAttributesSwitchTemplate(
+        String className, Iterable<Setter> setters) =>
+    setters.fold(
+        '',
+        (code, setter) =>
+            '$code\n${updateAttributeSwitchTemplate(className, setter)}');
+
+String updateEventListenerSwitchBody(
+        String className, Iterable<VEvent> events) =>
+    events.fold(
+        '',
+        (code, event) =>
+            '$code\n${updateEventListenerSwitchTemplate(className, event)}');
+
+String attributeDeclarationTemplate(String className, Setter setter) => '''
+  ${setter.type} get ${setter.name} => _setValues${className}[${setter.name}${className}Attribute] as ${setter.type};
+  set ${setter.name}(${setter.type} v) {
+      _setValues${className}[${setter.name}${className}Attribute] = v;
+  }''';
+
+String updateAttributeSwitchTemplate(String className, Setter setter) => '''
+    case ${setter.name}${className}Attribute:
+      ele.${setter.name} = value as ${setter.type};
+      break;''';
+
+String updateEventListenerSwitchTemplate(String className, VEvent event) => '''
+    case ${event.name}Event: 
+      _eventSubs[${event.name}Event] = ele.${event.name}.listen(${event.name});
+      break;''';
 
 String eventsDeclarationTemplate(Iterable<VEvent> events) => events.fold(
     '', (code, event) => '$code\n${eventDeclarationTemplate(event)}');
@@ -314,9 +287,9 @@ String eventsSetTemplate(Iterable<VEvent> events) =>
     events.fold('', (code, event) => '$code\n${eventSetTemplate(event)}');
 
 String eventDeclarationTemplate(VEvent event) => '''
-    ${event.type} get ${event.name} => _setSubs[\'${event.name}\'] as ${event.type};
+    ${event.type} get ${event.name} => _setSubs[${event.name}Event] as ${event.type};
     set ${event.name}(${event.type} v) {
-        _setSubs[\'${event.name}\'] = v;
+        _setSubs[${event.name}Event] = v;
     }''';
 
 String eventSetTemplate(VEvent event) =>
