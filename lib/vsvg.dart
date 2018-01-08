@@ -269,6 +269,7 @@ class VScriptElement extends VSvgElement<ScriptElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ScriptElement ele) {
     _setValuesScriptElement
         .forEach((k, dynamic v) => _updateAttributeScriptElement(ele, k, v));
@@ -276,6 +277,7 @@ class VScriptElement extends VSvgElement<ScriptElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VScriptElement prev, ScriptElement ele) {
     prev._setValuesScriptElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesScriptElement[k];
@@ -334,6 +336,7 @@ class VStyleElement extends VSvgElement<StyleElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(StyleElement ele) {
     _setValuesStyleElement
         .forEach((k, dynamic v) => _updateAttributeStyleElement(ele, k, v));
@@ -341,6 +344,7 @@ class VStyleElement extends VSvgElement<StyleElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VStyleElement prev, StyleElement ele) {
     prev._setValuesStyleElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesStyleElement[k];
@@ -377,6 +381,7 @@ abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesSvgElement
         .forEach((k, dynamic v) => _updateAttributeSvgElement(ele, k, v));
@@ -384,6 +389,7 @@ abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VSvgElement<T> prev, T ele) {
     prev._setValuesSvgElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesSvgElement[k];
@@ -424,6 +430,7 @@ class VSvgSvgElement extends VGraphicsElement<SvgSvgElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(SvgSvgElement ele) {
     _setValuesSvgSvgElement
         .forEach((k, dynamic v) => _updateAttributeSvgSvgElement(ele, k, v));
@@ -431,6 +438,7 @@ class VSvgSvgElement extends VGraphicsElement<SvgSvgElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VSvgSvgElement prev, SvgSvgElement ele) {
     prev._setValuesSvgSvgElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesSvgSvgElement[k];
@@ -507,6 +515,7 @@ class VViewElement extends VSvgElement<ViewElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ViewElement ele) {
     _setValuesViewElement
         .forEach((k, dynamic v) => _updateAttributeViewElement(ele, k, v));
@@ -514,6 +523,7 @@ class VViewElement extends VSvgElement<ViewElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VViewElement prev, ViewElement ele) {
     prev._setValuesViewElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesViewElement[k];

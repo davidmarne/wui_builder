@@ -178,12 +178,14 @@ String vElementSubclassBody(
     ${attributesDeclarationTemplate(classElementName, setters)}
 
     @override
+    @protected
     void applyAttributesToElement($classElementName ele) {
       _setValues${classElementName}.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
       super.applyAttributesToElement(ele);
     }
 
     @override
+    @protected
     void updateElementAttributes(V$classElementName prev, $classElementName ele) {
       prev._setValues${classElementName}.forEach((k, dynamic v) {
         final dynamic newValue = _setValues${classElementName}[k];
@@ -221,12 +223,14 @@ String vElementAbstractSubclassBody(
     ${attributesDeclarationTemplate(classElementName, setters)}
 
     @override
+    @protected
     void applyAttributesToElement(T ele) {
       _setValues${classElementName}.forEach((k, dynamic v) => _updateAttribute$classElementName(ele, k, v));
       super.applyAttributesToElement(ele);
     }
 
     @override
+    @protected
     void updateElementAttributes(covariant V$classElementName<T> prev, T ele) {
       prev._setValues${classElementName}.forEach((k, dynamic v) {
         final dynamic newValue = _setValues${classElementName}[k];

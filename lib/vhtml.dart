@@ -126,6 +126,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(AnchorElement ele) {
     _setValuesAnchorElement
         .forEach((k, dynamic v) => _updateAttributeAnchorElement(ele, k, v));
@@ -133,6 +134,7 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VAnchorElement prev, AnchorElement ele) {
     prev._setValuesAnchorElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesAnchorElement[k];
@@ -305,6 +307,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(AreaElement ele) {
     _setValuesAreaElement
         .forEach((k, dynamic v) => _updateAttributeAreaElement(ele, k, v));
@@ -312,6 +315,7 @@ class VAreaElement extends VHtmlElement<AreaElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VAreaElement prev, AreaElement ele) {
     prev._setValuesAreaElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesAreaElement[k];
@@ -403,6 +407,7 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(BaseElement ele) {
     _setValuesBaseElement
         .forEach((k, dynamic v) => _updateAttributeBaseElement(ele, k, v));
@@ -410,6 +415,7 @@ class VBaseElement extends VHtmlElement<BaseElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VBaseElement prev, BaseElement ele) {
     prev._setValuesBaseElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesBaseElement[k];
@@ -514,6 +520,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ButtonElement ele) {
     _setValuesButtonElement
         .forEach((k, dynamic v) => _updateAttributeButtonElement(ele, k, v));
@@ -521,6 +528,7 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VButtonElement prev, ButtonElement ele) {
     prev._setValuesButtonElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesButtonElement[k];
@@ -588,6 +596,7 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(CanvasElement ele) {
     _setValuesCanvasElement
         .forEach((k, dynamic v) => _updateAttributeCanvasElement(ele, k, v));
@@ -595,6 +604,7 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VCanvasElement prev, CanvasElement ele) {
     prev._setValuesCanvasElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesCanvasElement[k];
@@ -632,6 +642,7 @@ class VContentElement extends VHtmlElement<ContentElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ContentElement ele) {
     _setValuesContentElement
         .forEach((k, dynamic v) => _updateAttributeContentElement(ele, k, v));
@@ -639,6 +650,7 @@ class VContentElement extends VHtmlElement<ContentElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VContentElement prev, ContentElement ele) {
     prev._setValuesContentElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesContentElement[k];
@@ -683,6 +695,7 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(DetailsElement ele) {
     _setValuesDetailsElement
         .forEach((k, dynamic v) => _updateAttributeDetailsElement(ele, k, v));
@@ -690,6 +703,7 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VDetailsElement prev, DetailsElement ele) {
     prev._setValuesDetailsElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesDetailsElement[k];
@@ -727,6 +741,7 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesDialogElement
         .forEach((k, dynamic v) => _updateAttributeDialogElement(ele, k, v));
@@ -734,6 +749,7 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VDialogElement<T> prev, T ele) {
     prev._setValuesDialogElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesDialogElement[k];
@@ -803,6 +819,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(EmbedElement ele) {
     _setValuesEmbedElement
         .forEach((k, dynamic v) => _updateAttributeEmbedElement(ele, k, v));
@@ -810,6 +827,7 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VEmbedElement prev, EmbedElement ele) {
     prev._setValuesEmbedElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesEmbedElement[k];
@@ -862,6 +880,7 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(FieldSetElement ele) {
     _setValuesFieldSetElement
         .forEach((k, dynamic v) => _updateAttributeFieldSetElement(ele, k, v));
@@ -869,6 +888,7 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VFieldSetElement prev, FieldSetElement ele) {
     prev._setValuesFieldSetElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesFieldSetElement[k];
@@ -961,6 +981,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(FormElement ele) {
     _setValuesFormElement
         .forEach((k, dynamic v) => _updateAttributeFormElement(ele, k, v));
@@ -968,6 +989,7 @@ class VFormElement extends VHtmlElement<FormElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VFormElement prev, FormElement ele) {
     prev._setValuesFormElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesFormElement[k];
@@ -1024,6 +1046,7 @@ class VHRElement extends VHtmlElement<HRElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(HRElement ele) {
     _setValuesHRElement
         .forEach((k, dynamic v) => _updateAttributeHRElement(ele, k, v));
@@ -1031,6 +1054,7 @@ class VHRElement extends VHtmlElement<HRElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VHRElement prev, HRElement ele) {
     prev._setValuesHRElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesHRElement[k];
@@ -1119,6 +1143,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(IFrameElement ele) {
     _setValuesIFrameElement
         .forEach((k, dynamic v) => _updateAttributeIFrameElement(ele, k, v));
@@ -1126,6 +1151,7 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VIFrameElement prev, IFrameElement ele) {
     prev._setValuesIFrameElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesIFrameElement[k];
@@ -1236,6 +1262,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ImageElement ele) {
     _setValuesImageElement
         .forEach((k, dynamic v) => _updateAttributeImageElement(ele, k, v));
@@ -1243,6 +1270,7 @@ class VImageElement extends VHtmlElement<ImageElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VImageElement prev, ImageElement ele) {
     prev._setValuesImageElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesImageElement[k];
@@ -1590,6 +1618,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(InputElement ele) {
     _setValuesInputElement
         .forEach((k, dynamic v) => _updateAttributeInputElement(ele, k, v));
@@ -1597,6 +1626,7 @@ class VInputElement extends VHtmlElement<InputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VInputElement prev, InputElement ele) {
     prev._setValuesInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesInputElement[k];
@@ -1790,6 +1820,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesInputElementBase
         .forEach((k, dynamic v) => _updateAttributeInputElementBase(ele, k, v));
@@ -1797,6 +1828,7 @@ abstract class VInputElementBase<T extends InputElementBase>
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VInputElementBase<T> prev, T ele) {
     prev._setValuesInputElementBase.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesInputElementBase[k];
@@ -1924,6 +1956,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesTextInputElementBase.forEach(
         (k, dynamic v) => _updateAttributeTextInputElementBase(ele, k, v));
@@ -1931,6 +1964,7 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VTextInputElementBase<T> prev, T ele) {
     prev._setValuesTextInputElementBase.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTextInputElementBase[k];
@@ -1993,6 +2027,7 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(SearchInputElement ele) {
     _setValuesSearchInputElement.forEach(
         (k, dynamic v) => _updateAttributeSearchInputElement(ele, k, v));
@@ -2000,6 +2035,7 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VSearchInputElement prev, SearchInputElement ele) {
     prev._setValuesSearchInputElement.forEach((k, dynamic v) {
@@ -2035,6 +2071,7 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TextInputElement ele) {
     _setValuesTextInputElement
         .forEach((k, dynamic v) => _updateAttributeTextInputElement(ele, k, v));
@@ -2042,6 +2079,7 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTextInputElement prev, TextInputElement ele) {
     prev._setValuesTextInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTextInputElement[k];
@@ -2145,6 +2183,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(EmailInputElement ele) {
     _setValuesEmailInputElement.forEach(
         (k, dynamic v) => _updateAttributeEmailInputElement(ele, k, v));
@@ -2152,6 +2191,7 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VEmailInputElement prev, EmailInputElement ele) {
     prev._setValuesEmailInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesEmailInputElement[k];
@@ -2239,6 +2279,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesRangeInputElementBase.forEach(
         (k, dynamic v) => _updateAttributeRangeInputElementBase(ele, k, v));
@@ -2246,6 +2287,7 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
   }
 
   @override
+  @protected
   void updateElementAttributes(
       covariant VRangeInputElementBase<T> prev, T ele) {
     prev._setValuesRangeInputElementBase.forEach((k, dynamic v) {
@@ -2306,6 +2348,7 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(DateInputElement ele) {
     _setValuesDateInputElement
         .forEach((k, dynamic v) => _updateAttributeDateInputElement(ele, k, v));
@@ -2313,6 +2356,7 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VDateInputElement prev, DateInputElement ele) {
     prev._setValuesDateInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesDateInputElement[k];
@@ -2368,6 +2412,7 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(MonthInputElement ele) {
     _setValuesMonthInputElement.forEach(
         (k, dynamic v) => _updateAttributeMonthInputElement(ele, k, v));
@@ -2375,6 +2420,7 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VMonthInputElement prev, MonthInputElement ele) {
     prev._setValuesMonthInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMonthInputElement[k];
@@ -2430,6 +2476,7 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(WeekInputElement ele) {
     _setValuesWeekInputElement
         .forEach((k, dynamic v) => _updateAttributeWeekInputElement(ele, k, v));
@@ -2437,6 +2484,7 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VWeekInputElement prev, WeekInputElement ele) {
     prev._setValuesWeekInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesWeekInputElement[k];
@@ -2492,6 +2540,7 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TimeInputElement ele) {
     _setValuesTimeInputElement
         .forEach((k, dynamic v) => _updateAttributeTimeInputElement(ele, k, v));
@@ -2499,6 +2548,7 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTimeInputElement prev, TimeInputElement ele) {
     prev._setValuesTimeInputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTimeInputElement[k];
@@ -2549,6 +2599,7 @@ class VLocalDateTimeInputElement
   }
 
   @override
+  @protected
   void applyAttributesToElement(LocalDateTimeInputElement ele) {
     _setValuesLocalDateTimeInputElement.forEach(
         (k, dynamic v) => _updateAttributeLocalDateTimeInputElement(ele, k, v));
@@ -2556,6 +2607,7 @@ class VLocalDateTimeInputElement
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VLocalDateTimeInputElement prev, LocalDateTimeInputElement ele) {
     prev._setValuesLocalDateTimeInputElement.forEach((k, dynamic v) {
@@ -2611,6 +2663,7 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(NumberInputElement ele) {
     _setValuesNumberInputElement.forEach(
         (k, dynamic v) => _updateAttributeNumberInputElement(ele, k, v));
@@ -2618,6 +2671,7 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VNumberInputElement prev, NumberInputElement ele) {
     prev._setValuesNumberInputElement.forEach((k, dynamic v) {
@@ -2673,6 +2727,7 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(CheckboxInputElement ele) {
     _setValuesCheckboxInputElement.forEach(
         (k, dynamic v) => _updateAttributeCheckboxInputElement(ele, k, v));
@@ -2680,6 +2735,7 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VCheckboxInputElement prev, CheckboxInputElement ele) {
     prev._setValuesCheckboxInputElement.forEach((k, dynamic v) {
@@ -2729,6 +2785,7 @@ class VRadioButtonInputElement
   }
 
   @override
+  @protected
   void applyAttributesToElement(RadioButtonInputElement ele) {
     _setValuesRadioButtonInputElement.forEach(
         (k, dynamic v) => _updateAttributeRadioButtonInputElement(ele, k, v));
@@ -2736,6 +2793,7 @@ class VRadioButtonInputElement
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VRadioButtonInputElement prev, RadioButtonInputElement ele) {
     prev._setValuesRadioButtonInputElement.forEach((k, dynamic v) {
@@ -2803,6 +2861,7 @@ class VFileUploadInputElement
   }
 
   @override
+  @protected
   void applyAttributesToElement(FileUploadInputElement ele) {
     _setValuesFileUploadInputElement.forEach(
         (k, dynamic v) => _updateAttributeFileUploadInputElement(ele, k, v));
@@ -2810,6 +2869,7 @@ class VFileUploadInputElement
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VFileUploadInputElement prev, FileUploadInputElement ele) {
     prev._setValuesFileUploadInputElement.forEach((k, dynamic v) {
@@ -2889,6 +2949,7 @@ class VSubmitButtonInputElement
   }
 
   @override
+  @protected
   void applyAttributesToElement(SubmitButtonInputElement ele) {
     _setValuesSubmitButtonInputElement.forEach(
         (k, dynamic v) => _updateAttributeSubmitButtonInputElement(ele, k, v));
@@ -2896,6 +2957,7 @@ class VSubmitButtonInputElement
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VSubmitButtonInputElement prev, SubmitButtonInputElement ele) {
     prev._setValuesSubmitButtonInputElement.forEach((k, dynamic v) {
@@ -3013,6 +3075,7 @@ class VImageButtonInputElement
   }
 
   @override
+  @protected
   void applyAttributesToElement(ImageButtonInputElement ele) {
     _setValuesImageButtonInputElement.forEach(
         (k, dynamic v) => _updateAttributeImageButtonInputElement(ele, k, v));
@@ -3020,6 +3083,7 @@ class VImageButtonInputElement
   }
 
   @override
+  @protected
   void updateElementAttributes(
       VImageButtonInputElement prev, ImageButtonInputElement ele) {
     prev._setValuesImageButtonInputElement.forEach((k, dynamic v) {
@@ -3119,6 +3183,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(KeygenElement ele) {
     _setValuesKeygenElement
         .forEach((k, dynamic v) => _updateAttributeKeygenElement(ele, k, v));
@@ -3126,6 +3191,7 @@ class VKeygenElement extends VHtmlElement<KeygenElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
     prev._setValuesKeygenElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesKeygenElement[k];
@@ -3171,6 +3237,7 @@ class VLIElement extends VHtmlElement<LIElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(LIElement ele) {
     _setValuesLIElement
         .forEach((k, dynamic v) => _updateAttributeLIElement(ele, k, v));
@@ -3178,6 +3245,7 @@ class VLIElement extends VHtmlElement<LIElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VLIElement prev, LIElement ele) {
     prev._setValuesLIElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesLIElement[k];
@@ -3211,6 +3279,7 @@ class VLabelElement extends VHtmlElement<LabelElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(LabelElement ele) {
     _setValuesLabelElement
         .forEach((k, dynamic v) => _updateAttributeLabelElement(ele, k, v));
@@ -3218,6 +3287,7 @@ class VLabelElement extends VHtmlElement<LabelElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VLabelElement prev, LabelElement ele) {
     prev._setValuesLabelElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesLabelElement[k];
@@ -3308,6 +3378,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(LinkElement ele) {
     _setValuesLinkElement
         .forEach((k, dynamic v) => _updateAttributeLinkElement(ele, k, v));
@@ -3315,6 +3386,7 @@ class VLinkElement extends VHtmlElement<LinkElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VLinkElement prev, LinkElement ele) {
     prev._setValuesLinkElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesLinkElement[k];
@@ -3371,6 +3443,7 @@ class VMapElement extends VHtmlElement<MapElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(MapElement ele) {
     _setValuesMapElement
         .forEach((k, dynamic v) => _updateAttributeMapElement(ele, k, v));
@@ -3378,6 +3451,7 @@ class VMapElement extends VHtmlElement<MapElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VMapElement prev, MapElement ele) {
     prev._setValuesMapElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMapElement[k];
@@ -3496,6 +3570,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesMediaElement
         .forEach((k, dynamic v) => _updateAttributeMediaElement(ele, k, v));
@@ -3503,6 +3578,7 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VMediaElement<T> prev, T ele) {
     prev._setValuesMediaElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMediaElement[k];
@@ -3581,6 +3657,7 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(MenuElement ele) {
     _setValuesMenuElement
         .forEach((k, dynamic v) => _updateAttributeMenuElement(ele, k, v));
@@ -3588,6 +3665,7 @@ class VMenuElement extends VHtmlElement<MenuElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VMenuElement prev, MenuElement ele) {
     prev._setValuesMenuElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMenuElement[k];
@@ -3664,6 +3742,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesMenuItemElement
         .forEach((k, dynamic v) => _updateAttributeMenuItemElement(ele, k, v));
@@ -3671,6 +3750,7 @@ abstract class VMenuItemElement<T extends MenuItemElement>
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
     prev._setValuesMenuItemElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMenuItemElement[k];
@@ -3736,6 +3816,7 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(MetaElement ele) {
     _setValuesMetaElement
         .forEach((k, dynamic v) => _updateAttributeMetaElement(ele, k, v));
@@ -3743,6 +3824,7 @@ class VMetaElement extends VHtmlElement<MetaElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VMetaElement prev, MetaElement ele) {
     prev._setValuesMetaElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMetaElement[k];
@@ -3812,6 +3894,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(MeterElement ele) {
     _setValuesMeterElement
         .forEach((k, dynamic v) => _updateAttributeMeterElement(ele, k, v));
@@ -3819,6 +3902,7 @@ class VMeterElement extends VHtmlElement<MeterElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VMeterElement prev, MeterElement ele) {
     prev._setValuesMeterElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesMeterElement[k];
@@ -3870,6 +3954,7 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesModElement
         .forEach((k, dynamic v) => _updateAttributeModElement(ele, k, v));
@@ -3877,6 +3962,7 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VModElement<T> prev, T ele) {
     prev._setValuesModElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesModElement[k];
@@ -3926,6 +4012,7 @@ class VOListElement extends VHtmlElement<OListElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(OListElement ele) {
     _setValuesOListElement
         .forEach((k, dynamic v) => _updateAttributeOListElement(ele, k, v));
@@ -3933,6 +4020,7 @@ class VOListElement extends VHtmlElement<OListElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VOListElement prev, OListElement ele) {
     prev._setValuesOListElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesOListElement[k];
@@ -4007,6 +4095,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ObjectElement ele) {
     _setValuesObjectElement
         .forEach((k, dynamic v) => _updateAttributeObjectElement(ele, k, v));
@@ -4014,6 +4103,7 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VObjectElement prev, ObjectElement ele) {
     prev._setValuesObjectElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesObjectElement[k];
@@ -4070,6 +4160,7 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(OptGroupElement ele) {
     _setValuesOptGroupElement
         .forEach((k, dynamic v) => _updateAttributeOptGroupElement(ele, k, v));
@@ -4077,6 +4168,7 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VOptGroupElement prev, OptGroupElement ele) {
     prev._setValuesOptGroupElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesOptGroupElement[k];
@@ -4142,6 +4234,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(OptionElement ele) {
     _setValuesOptionElement
         .forEach((k, dynamic v) => _updateAttributeOptionElement(ele, k, v));
@@ -4149,6 +4242,7 @@ class VOptionElement extends VHtmlElement<OptionElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VOptionElement prev, OptionElement ele) {
     prev._setValuesOptionElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesOptionElement[k];
@@ -4209,6 +4303,7 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(OutputElement ele) {
     _setValuesOutputElement
         .forEach((k, dynamic v) => _updateAttributeOutputElement(ele, k, v));
@@ -4216,6 +4311,7 @@ class VOutputElement extends VHtmlElement<OutputElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VOutputElement prev, OutputElement ele) {
     prev._setValuesOutputElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesOutputElement[k];
@@ -4268,6 +4364,7 @@ class VParamElement extends VHtmlElement<ParamElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ParamElement ele) {
     _setValuesParamElement
         .forEach((k, dynamic v) => _updateAttributeParamElement(ele, k, v));
@@ -4275,6 +4372,7 @@ class VParamElement extends VHtmlElement<ParamElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VParamElement prev, ParamElement ele) {
     prev._setValuesParamElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesParamElement[k];
@@ -4325,6 +4423,7 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ProgressElement ele) {
     _setValuesProgressElement
         .forEach((k, dynamic v) => _updateAttributeProgressElement(ele, k, v));
@@ -4332,6 +4431,7 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VProgressElement prev, ProgressElement ele) {
     prev._setValuesProgressElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesProgressElement[k];
@@ -4369,6 +4469,7 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(QuoteElement ele) {
     _setValuesQuoteElement
         .forEach((k, dynamic v) => _updateAttributeQuoteElement(ele, k, v));
@@ -4376,6 +4477,7 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VQuoteElement prev, QuoteElement ele) {
     prev._setValuesQuoteElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesQuoteElement[k];
@@ -4458,6 +4560,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(ScriptElement ele) {
     _setValuesScriptElement
         .forEach((k, dynamic v) => _updateAttributeScriptElement(ele, k, v));
@@ -4465,6 +4568,7 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VScriptElement prev, ScriptElement ele) {
     prev._setValuesScriptElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesScriptElement[k];
@@ -4575,6 +4679,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(SelectElement ele) {
     _setValuesSelectElement
         .forEach((k, dynamic v) => _updateAttributeSelectElement(ele, k, v));
@@ -4582,6 +4687,7 @@ class VSelectElement extends VHtmlElement<SelectElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VSelectElement prev, SelectElement ele) {
     prev._setValuesSelectElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesSelectElement[k];
@@ -4641,6 +4747,7 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(T ele) {
     _setValuesSlotElement
         .forEach((k, dynamic v) => _updateAttributeSlotElement(ele, k, v));
@@ -4648,6 +4755,7 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
   }
 
   @override
+  @protected
   void updateElementAttributes(covariant VSlotElement<T> prev, T ele) {
     prev._setValuesSlotElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesSlotElement[k];
@@ -4709,6 +4817,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(SourceElement ele) {
     _setValuesSourceElement
         .forEach((k, dynamic v) => _updateAttributeSourceElement(ele, k, v));
@@ -4716,6 +4825,7 @@ class VSourceElement extends VHtmlElement<SourceElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VSourceElement prev, SourceElement ele) {
     prev._setValuesSourceElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesSourceElement[k];
@@ -4781,6 +4891,7 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(StyleElement ele) {
     _setValuesStyleElement
         .forEach((k, dynamic v) => _updateAttributeStyleElement(ele, k, v));
@@ -4788,6 +4899,7 @@ class VStyleElement extends VHtmlElement<StyleElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VStyleElement prev, StyleElement ele) {
     prev._setValuesStyleElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesStyleElement[k];
@@ -4846,6 +4958,7 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TableCellElement ele) {
     _setValuesTableCellElement
         .forEach((k, dynamic v) => _updateAttributeTableCellElement(ele, k, v));
@@ -4853,6 +4966,7 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTableCellElement prev, TableCellElement ele) {
     prev._setValuesTableCellElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTableCellElement[k];
@@ -4893,6 +5007,7 @@ class VTableColElement extends VHtmlElement<TableColElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TableColElement ele) {
     _setValuesTableColElement
         .forEach((k, dynamic v) => _updateAttributeTableColElement(ele, k, v));
@@ -4900,6 +5015,7 @@ class VTableColElement extends VHtmlElement<TableColElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTableColElement prev, TableColElement ele) {
     prev._setValuesTableColElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTableColElement[k];
@@ -4949,6 +5065,7 @@ class VTableElement extends VHtmlElement<TableElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TableElement ele) {
     _setValuesTableElement
         .forEach((k, dynamic v) => _updateAttributeTableElement(ele, k, v));
@@ -4956,6 +5073,7 @@ class VTableElement extends VHtmlElement<TableElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTableElement prev, TableElement ele) {
     prev._setValuesTableElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTableElement[k];
@@ -5136,6 +5254,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TextAreaElement ele) {
     _setValuesTextAreaElement
         .forEach((k, dynamic v) => _updateAttributeTextAreaElement(ele, k, v));
@@ -5143,6 +5262,7 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTextAreaElement prev, TextAreaElement ele) {
     prev._setValuesTextAreaElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTextAreaElement[k];
@@ -5263,6 +5383,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(TrackElement ele) {
     _setValuesTrackElement
         .forEach((k, dynamic v) => _updateAttributeTrackElement(ele, k, v));
@@ -5270,6 +5391,7 @@ class VTrackElement extends VHtmlElement<TrackElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VTrackElement prev, TrackElement ele) {
     prev._setValuesTrackElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesTrackElement[k];
@@ -5335,6 +5457,7 @@ class VVideoElement extends VMediaElement<VideoElement> {
   }
 
   @override
+  @protected
   void applyAttributesToElement(VideoElement ele) {
     _setValuesVideoElement
         .forEach((k, dynamic v) => _updateAttributeVideoElement(ele, k, v));
@@ -5342,6 +5465,7 @@ class VVideoElement extends VMediaElement<VideoElement> {
   }
 
   @override
+  @protected
   void updateElementAttributes(VVideoElement prev, VideoElement ele) {
     prev._setValuesVideoElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesVideoElement[k];

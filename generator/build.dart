@@ -40,7 +40,9 @@ void main(List<String> args) {
     ..write(lintIgnores);
 
   for (final classElement in htmlTypes) {
-    if (classElement.name == 'Element') {
+    if (classElement.name == 'CssStyleDeclaration') {
+      print("H");
+    } else if (classElement.name == 'Element') {
       final vEleResult = new StringBuffer()
         ..write("part of velement;")
         ..write(lintIgnores);
