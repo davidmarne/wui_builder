@@ -6,7 +6,7 @@ Element createElementNode(
   vnode.ref = domNode;
   vnode.applyAttributesToElement(domNode);
   vnode.applyEventListenersToElement(domNode);
-  if (vnode.children != null) {
+  if (vnode.children.isNotEmpty) {
     for (final c in vnode.children) {
       domNode.append(createNode(c, pendingComponentDidMounts));
       c.parent = vnode;
