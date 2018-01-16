@@ -38,7 +38,7 @@ class Nav extends PComponent<NavProps> {
     ..children = [
       new Vspan()
         ..className = 'icon is-small'
-        ..styleBuilder = ((s) => s..paddingLeft = '5px')
+        ..styleBuilder = (new StyleBuilder()..paddingLeft = '5px')
         ..children = [new Vi()..className = 'fa fa-github']
     ];
 }

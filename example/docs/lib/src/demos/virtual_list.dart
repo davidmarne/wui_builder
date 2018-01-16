@@ -23,9 +23,13 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
 
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _containerStyleBuilder
     ..onScroll = _onScroll
-    ..children = _items;
+    ..children = _items
+    ..styleBuilder = (new StyleBuilder()
+      ..height = '${containerHeight}px'
+      ..width = '${containerWidth}px'
+      ..overflow = 'auto'
+      ..position = 'relative');
 
   Iterable<VDivElement> get _items {
     final chunkStartIndex = state.chunkTop ~/ itemHeight;
@@ -37,35 +41,21 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
     )..insert(0, _scrollCapture());
   }
 
-  VDivElement _scrollCapture() =>
-      new VDivElement()..styleBuilder = _scrollCaptureStyleBuilder;
-
-  void _scrollCaptureStyleBuilder(CssStyleDeclaration builder) {
-    builder
+  VDivElement _scrollCapture() => new VDivElement()
+    ..styleBuilder = (new StyleBuilder()
       ..position = 'absolute'
       ..top = '0px'
       ..opacity = '0'
       ..left = '0px'
       ..width = '100%'
       ..maxHeight = '${containerVirtualHeight}px'
-      ..height = '${containerVirtualHeight}px';
-  }
+      ..height = '${containerVirtualHeight}px');
 
-  void _containerStyleBuilder(CssStyleDeclaration builder) {
-    builder
-      ..height = '${containerHeight}px'
-      ..width = '${containerWidth}px'
-      ..overflow = 'auto'
-      ..position = 'relative';
-  }
-
-  StyleBuilder _itemStyleBuilder(int index) => (builder) {
-        builder
-          ..height = '${itemHeight}px'
-          ..width = '${itemWidth}px'
-          ..position = 'absolute'
-          ..top = '${index * itemHeight}px';
-      };
+  StyleBuilder _itemStyleBuilder(int index) => new StyleBuilder()
+    ..height = '${itemHeight}px'
+    ..width = '${itemWidth}px'
+    ..position = 'absolute'
+    ..top = '${index * itemHeight}px';
 
   void _onScroll(Event e) {
     final chunkTop = ref.scrollTop - (ref.scrollTop % containerHeight);

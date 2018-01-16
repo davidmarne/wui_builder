@@ -21,17 +21,17 @@ class IterableCursor extends PendingCursor {
   Element currentChild;
   int index = 0;
 
-  IterableCursor(this.node, this.newVNode, this.oldVNode)
-      : currentChild = node.children.isNotEmpty ? node.children.first : null,
-        newLength = newVNode.children.length,
-        oldLength = oldVNode.children.length;
+  IterableCursor(
+      this.node, this.newVNode, this.oldVNode, this.newLength, this.oldLength)
+      : currentChild = node.firstChild as Element;
 
   @override
   PendingCursors get cursorType => PendingCursors.iterable;
 
   void next() {
-    index++;
-    if (currentChild != null) currentChild = currentChild.nextElementSibling;
+    ++index;
+    currentChild =
+        currentChild == null ? currentChild : currentChild.nextElementSibling;
   }
 }
 

@@ -28,12 +28,9 @@ VNode todo(TodoProps props) => new Va()
       ],
     new VSpanElement()
       ..text = ' ${props.todo.text}'
-      ..styleBuilder = ((style) => _styleBuilder(style, props.todo.isComplete)),
+      ..styleBuilder = (new StyleBuilder()
+        ..textDecoration = props.todo.isComplete ? 'line-through' : ''),
   ];
-
-void _styleBuilder(CssStyleDeclaration style, bool isComplete) {
-  style.textDecoration = isComplete ? 'line-through' : '';
-}
 
 void _onDrag(MouseEvent e, Todo todo) {
   e.dataTransfer.setData('todo-id', '${todo.id}');

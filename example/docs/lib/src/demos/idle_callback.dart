@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -14,7 +12,9 @@ const numRows = 5000;
 class IdleCallbackExample extends SComponent<int> {
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _containerStyleBuilder
+    ..styleBuilder = (new StyleBuilder()
+      ..overflow = 'scroll'
+      ..maxHeight = '1000px')
     ..children = [
       _buttonGroup(),
       _table(),
@@ -50,10 +50,4 @@ class IdleCallbackExample extends SComponent<int> {
             new Vtd()..text = 'row $i col 2 update ${state} | ',
             new Vtd()..text = 'row $i col 3 update ${state}',
           ]);
-
-  void _containerStyleBuilder(CssStyleDeclaration builder) {
-    builder
-      ..overflow = 'scroll'
-      ..maxHeight = '1000px';
-  }
 }

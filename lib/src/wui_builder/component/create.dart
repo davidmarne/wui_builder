@@ -4,7 +4,7 @@ Element createComponentNode(
     Component vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   // register the beforeAnimationFrameCallback if it is set
   if (vnode.beforeAnimationFrame != null)
-    addBeforeAnimationFrameCallback(vnode.beforeAnimationFrame);
+    addBeforeAnimationFrameCallback(vnode);
 
   // lifecycle - set the initial state for the component
   vnode._state = vnode.getInitialState();

@@ -30,7 +30,8 @@ void main(List<String> args) {
 
   final lintIgnores = '''\n
     // ignore_for_file: annotate_overrides
-    // ignore_for_file: overridden_fields\n
+    // ignore_for_file: overridden_fields
+    // ignore_for_file: prefer_final_fields\n
   ''';
 
   final result = new StringBuffer()
@@ -39,14 +40,23 @@ void main(List<String> args) {
     ..write("import 'wui_builder.dart' show VElement;")
     ..write(lintIgnores);
 
-  for (final classElement in htmlTypes) {
-    if (classElement.name == 'CssStyleDeclaration') {
-      print("H");
-    } else if (classElement.name == 'Element') {
-      final vEleResult = new StringBuffer()
-        ..write("part of velement;")
-        ..write(lintIgnores);
+  final vEleResult = new StringBuffer()
+    ..write("part of velement;")
+    ..write(lintIgnores);
 
+  for (final classElement in htmlTypes) {
+    final immediate = localSetters(classElement).toList();
+    if (classElement.name == 'CssStyleDeclaration') {
+      // LOL O(n^3)
+      final List<Setter> setters = classElement.allSupertypes.fold(
+          immediate,
+          (accessors, supertype) => accessors
+            ..addAll(localSetters(supertype.element)
+                .where((s) => !immediate.any((s2) => s.name == s2.name))));
+
+      vEleResult.write(styleBiulderEnums(setters));
+      vEleResult.write(styleBuilder(setters));
+    } else if (classElement.name == 'Element') {
       final setters = localSetters(classElement).where(
           (setter) => setter.name != 'children' && setter.name != 'nodes');
       final events = localEvents(classElement);
@@ -55,11 +65,6 @@ void main(List<String> args) {
       vEleResult.write(vElementEventsEnums(events));
 
       vEleResult.write(vElement(setters, events));
-
-      final formatter = new DartFormatter();
-      final formatted = formatter.format(vEleResult.toString());
-      new File('lib/src/wui_builder/velement/velement.dart')
-          .writeAsStringSync(formatted);
     } else if ((isElement(classElement) || isInput(classElement)) &&
         classElement.isPublic) {
       final setters = localSetters(classElement);
@@ -87,6 +92,10 @@ void main(List<String> args) {
   for (final tag in _html5Tags) result.write(generalTagFactoryElement(tag));
 
   final formatter = new DartFormatter();
+  final vEleFormatted = formatter.format(vEleResult.toString());
+  new File('lib/src/wui_builder/velement/velement.dart')
+      .writeAsStringSync(vEleFormatted);
+
   final formatted = formatter.format(result.toString());
   new File('lib/vhtml.dart').writeAsStringSync(formatted);
 

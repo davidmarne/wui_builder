@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'wui_builder.dart' show VElement;
 // ignore_for_file: annotate_overrides
 // ignore_for_file: overridden_fields
+// ignore_for_file: prefer_final_fields
 
 abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {}
 

@@ -11,7 +11,7 @@ void setUpTestbed() {
   animationFrameRequstMethod = mockRequestAnimationFrame;
   idleCallbackRequestMethod = mockRequestIdleCallback;
   pendingAnimationFrameUpdates = [];
-  beforeAnimationFrameCallbacks = [];
+  beforeAnimationFrameCallbacks = {};
   pendingAnimationFrameId = null;
   pendingIdleId = null;
 }

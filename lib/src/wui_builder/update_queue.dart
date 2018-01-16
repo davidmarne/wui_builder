@@ -19,11 +19,11 @@ List<UpdateTracker> pendingAnimationFrameUpdates = [];
 int pendingAnimationFrameId;
 
 // callbacks registered to run before each animation frame
-List<BeforeAnimationFrame> beforeAnimationFrameCallbacks = [];
+Map<int, BeforeAnimationFrame> beforeAnimationFrameCallbacks = {};
 
-void addBeforeAnimationFrameCallback(BeforeAnimationFrame callback) {
+void addBeforeAnimationFrameCallback(Component node) {
   // register the callback
-  beforeAnimationFrameCallbacks.add(callback);
+  beforeAnimationFrameCallbacks[node.hashCode] = node.beforeAnimationFrame;
 
   // request a frame if there already isn't one requested
   if (pendingAnimationFrameId == null) requestAnimationFrame();
@@ -44,7 +44,7 @@ void requestAnimationFrame() {
 
 void onAnimationFrame(num _) {
   // call any registered callbacks in beforeAnimationFrameCallbacks
-  for (final callback in beforeAnimationFrameCallbacks) callback();
+  for (final callback in beforeAnimationFrameCallbacks.values) callback();
 
   while (pendingAnimationFrameUpdates.isNotEmpty) {
     // remove the update at the head of the queue and resume it

@@ -28,8 +28,8 @@ class AddRemoveChildrenComponent extends Component<int, int> {
   // render state again so we can test pausing between the 2nd & 3rd node
   @override
   VNode render() => new VDivElement()
-    ..children = new List<VDivElement>.generate(state, (i) {
-      print('$i');
-      return new VDivElement()..text = '$i';
-    });
+    ..children = new List<VDivElement>.generate(
+        state, (i) => new VDivElement()..text = '$i');
 }
+
+Iterable<String> data;

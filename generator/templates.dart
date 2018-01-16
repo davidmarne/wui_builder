@@ -1,5 +1,43 @@
 import 'parsing.dart';
 
+String styleBiulderEnums(Iterable<Setter> setters) {
+  final buffer = new StringBuffer();
+  for (var i = 0; i < setters.length; i++) {
+    buffer.write('const ${setters.elementAt(i).name}StyleKey = $i;\n');
+  }
+  return buffer.toString();
+}
+
+String styleBuilder(Iterable<Setter> setters) => '''
+  class StyleBuilder {
+    final _setStyle = <int, String>{};
+
+    ${stylesDeclarationTemplate(setters)}
+  }
+
+  void _updateStyle(Element ele, int key, String value) {
+    switch (key) {
+      ${updateStylesSwitchTemplate(setters)}
+    }
+  }''';
+
+String stylesDeclarationTemplate(Iterable<Setter> setters) => setters.fold(
+    '', (code, setter) => '$code\n${styleDeclarationTemplate(setter)}');
+
+String styleDeclarationTemplate(Setter setter) => '''
+  ${setter.type} get ${setter.name} => _setStyle[${setter.name}StyleKey];
+  set ${setter.name}(${setter.type} v) {
+      _setStyle[${setter.name}StyleKey] = v;
+  }''';
+
+String updateStylesSwitchTemplate(Iterable<Setter> setters) => setters.fold(
+    '', (code, setter) => '$code\n${updateStyleSwitchTemplate(setter)}');
+
+String updateStyleSwitchTemplate(Setter setter) => '''
+    case ${setter.name}StyleKey:
+      ele.style.${setter.name} = value;
+      break;''';
+
 String vElementAttributesEnums(
     String classElementName, Iterable<Setter> setters) {
   final buffer = new StringBuffer();
@@ -28,13 +66,11 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
     var _setValuesElement = <int, dynamic>{};
     var _setSubs = <int, EventHandler>{};
-    var _style = <String, String>{};
     var _eventSubs = <int, StreamSubscription>{};
-    var attributes = <String, String>{};
 
     E elementFactory();
     
-    // TODO: gen builder for css style
+    Map<String, String> attributes;
     StyleBuilder styleBuilder;
 
     var _children = <VNode>[];
@@ -51,19 +87,44 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
 
     @protected
     void applyAttributesToElement(E ele) {
-     // _style.forEach(_updateStyle);
-      attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
+      if (styleBuilder != null) styleBuilder._setStyle.forEach((k, v) => _updateStyle(ele, k, v));
+      if (attributes != null) attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
       _setValuesElement.forEach((k, dynamic v) => _updateAttribute(ele, k, v));
     }
 
     @protected
     void updateElementAttributes(covariant VElement<E> prev, E ele) {
-      //prev._style.forEach(_updateStyle);
-      prev.attributes.forEach((k, v) {
-        final newValue = attributes[k];
-        if (newValue != v)
-          _updateCustomAttribute(ele, k, newValue);
-      });
+      if (prev.styleBuilder != null) {
+        if( styleBuilder == null) {
+          prev.styleBuilder._setStyle.forEach((k, v) {
+            _updateStyle(ele, k, '');
+          });
+        } else {
+          prev.styleBuilder._setStyle.forEach((k, v) {
+            final newValue = styleBuilder._setStyle[k];
+            if (newValue != v)
+              _updateStyle(ele, k, newValue);
+          });
+        }
+      } else if (styleBuilder != null) {
+        styleBuilder._setStyle.forEach((k, v) => _updateStyle(ele, k, v));
+      }
+
+      if (prev.attributes != null) {
+        if (attributes == null) 
+          prev.attributes.forEach((k, v) {
+            _updateCustomAttribute(ele, k, '');
+          });
+        else {
+          prev.attributes.forEach((k, v) {
+            final newValue = attributes[k];
+            if (newValue != v)
+              _updateCustomAttribute(ele, k, newValue);
+          });
+        }
+      } else if (attributes != null) {
+        attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
+      }
 
       prev._setValuesElement.forEach((k, dynamic v) {
         final dynamic newValue = _setValuesElement[k];
@@ -71,7 +132,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
           _updateAttribute(ele, k, newValue);
       });
 
-      prev._style = _style;
+      prev.styleBuilder = styleBuilder;
       prev.attributes = attributes;
       prev._setValuesElement = _setValuesElement;
     }
@@ -85,7 +146,7 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
     }
 
     void _updateCustomAttribute(Element ele, String key, String value) {
-      ele.attributes[key] = value;
+      ele.attributes[key] = value ?? '';
     }
 
     void applyEventListenersToElement(Element ele) {

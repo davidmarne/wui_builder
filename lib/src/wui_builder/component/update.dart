@@ -25,7 +25,7 @@ bool updateComponent(UpdateTracker tracker) {
       continue;
     }
 
-    i++;
+    ++i;
   }
 
   if (initiatedByParent) {
@@ -104,8 +104,9 @@ void disposeComponent(Component node) {
   for (final tracker in node._pendingUpdateTrackers) tracker.cancel();
 
   // deregister the beforeAnimationFrameCallback if it is set
-  if (node.beforeAnimationFrame != null)
-    beforeAnimationFrameCallbacks.remove(node.beforeAnimationFrame);
+  if (node.beforeAnimationFrame != null) {
+    beforeAnimationFrameCallbacks.remove(node.hashCode);
+  }
 
   // dispose of its children
   disposeVNode(node.child);

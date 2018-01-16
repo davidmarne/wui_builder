@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -49,9 +47,5 @@ class ContextChild extends PCComponent<ContextChildProps, Theme> {
   @override
   VNode render() => new VDivElement()
     ..text = props.message
-    ..styleBuilder = _styleBuilder;
-
-  void _styleBuilder(CssStyleDeclaration builder) {
-    builder.color = contextValue.color;
-  }
+    ..styleBuilder = (new StyleBuilder()..color = contextValue.color);
 }

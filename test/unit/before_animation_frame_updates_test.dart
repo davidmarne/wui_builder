@@ -87,5 +87,12 @@ void main() {
       // the rendered text should not have been updated
       verifier(1, 1, 0);
     });
+
+    test('removes callback on unmount', () {
+      expect(beforeAnimationFrameCallbacks.isEmpty, isFalse);
+      component.state.componentWillUnmount = expectComponentWillUnmount(1, 1);
+      disposeVNode(component);
+      expect(beforeAnimationFrameCallbacks.isEmpty, isTrue);
+    });
   });
 }
