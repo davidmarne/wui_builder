@@ -35,7 +35,7 @@ class Pure extends PComponent<Component> {
   Pure(Component props) : super(props);
 
   @override
-  bool shouldComponentUpdate(nextProps, __) => props.props != nextProps.props;
+  bool shouldComponentUpdate(nextProps, _) => props.props != nextProps.props;
 
   @override
   VNode render() => props;

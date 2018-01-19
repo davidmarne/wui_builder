@@ -21,8 +21,6 @@ ContainerProps stateMapper(
   Null _,
   Iterable<Todo> state,
   SetState<Null, Iterable<Todo>> setState,
-  SetState<Null, Iterable<Todo>> setStateOnIdle,
-  SetState<Null, Iterable<Todo>> setStateOnFrame,
 ) =>
     new ContainerProps()
       ..todos = state
@@ -48,7 +46,7 @@ ContainerProps stateMapper(
       });
 
 FunctionalComponent<Null> container =
-    withState<Null, Iterable<Todo>, ContainerProps>([], stateMapper)(
+    withStateSync<Null, Iterable<Todo>, ContainerProps>([], stateMapper)(
         _container);
 
 VNode _container(ContainerProps props) => new VDivElement()

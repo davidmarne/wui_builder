@@ -3,7 +3,6 @@ import 'dart:html';
 import 'package:test/test.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
-import 'package:wui_builder/components.dart';
 
 void expectRenderedOutput(
     Element host, Iterable<String> keys, Iterable<int> stateValues) {

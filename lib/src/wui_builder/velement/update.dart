@@ -59,6 +59,7 @@ bool updateElementChildren(UpdateTracker tracker) {
     }
   }
 
+  // build a map of new vnodes with keys
   final newKeyedNodes = <dynamic, VNode>{};
   for (final c in newVNode.children) {
     if (c.key != null) {
@@ -100,11 +101,12 @@ bool updateElementChildren(UpdateTracker tracker) {
           cursor.node.append(oldChildVNodeWithKey.ref);
 
         // if the key no longer exists, move it to the end where it will
-        // be cleaned up later. TODO: recycle
+        // be cleaned up later. TODO: recycle if possible
         if (oldChildVNode != null) {
           final isRemoval = !newKeyedNodes.containsKey(oldChildVNode.key);
           if (isRemoval) {
-            // remove the vnode
+            // remove the vnode. This is really only moving it towards the
+            // end of the list, which will cause it to be cleaned up later.
             oldVNode.children.remove(oldChildVNode);
             oldVNode.children.add(oldChildVNode);
             cursor.node.append(oldChildVNode.ref);
@@ -114,18 +116,19 @@ bool updateElementChildren(UpdateTracker tracker) {
             for (var i = 0; i < newVNode.children.length; i++) {
               c = newVNode.children[i];
               if (c.key == oldChildVNode.key) {
+                // insert the actual dom element
                 if (i >= cursor.node.children.length - 1)
                   cursor.node.append(oldChildVNode.ref);
                 else
                   cursor.node.insertBefore(
                       oldChildVNode.ref, cursor.node.children[i + 1]);
 
+                // update the parent vnode's children list
                 oldVNode.children.remove(oldChildVNode);
                 if (i >= oldVNode.children.length)
                   oldVNode.children.add(oldChildVNode);
                 else
                   oldVNode.children.insert(i, oldChildVNode);
-
                 break;
               }
             }

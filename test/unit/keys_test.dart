@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';
-import 'package:wui_builder/src/wui_builder/update_queue.dart';
 
 import 'test_util/keys_test_component.dart';
 import 'test_util/testbed.dart';

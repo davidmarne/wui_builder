@@ -23,3 +23,11 @@ abstract class PCComponent<P, C> extends CComponent<P, Null, C> {
 abstract class SCComponent<S, C> extends CComponent<Null, S, C> {
   SCComponent() : super(null);
 }
+
+abstract class NComponent extends Component<Null, Null> {
+  NComponent() : super(null);
+}
+
+abstract class NCComponent<C> extends CComponent<Null, Null, C> {
+  NCComponent() : super(null);
+}

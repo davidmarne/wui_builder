@@ -17,10 +17,6 @@ class AnimationFrame extends SComponent<int> {
   BeforeAnimationFrame get beforeAnimationFrame => () {
         setStateOnAnimationFrame((_, s) => (s + 6) % 360);
       };
-  @override
-  void componentWillUnmount() {
-    print('componentWillUnmount');
-  }
 
   @override
   VNode render() => new VSvgSvgElement()

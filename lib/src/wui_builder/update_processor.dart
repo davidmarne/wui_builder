@@ -18,12 +18,8 @@ bool updateVNode(UpdateTracker tracker) {
     tracker.parent
         .append(createNode(tracker.newVNode, pendingComponentDidMounts));
     for (final cdm in pendingComponentDidMounts) cdm();
-  } else if (
-      // tracker.newVNode.vNodeType !=
-      //       tracker.oldVNode
-      //           .vNodeType || // TODO: decide if should keep this first clause
-      tracker.newVNode.key != tracker.oldVNode.key ||
-          tracker.newVNode.runtimeType != tracker.oldVNode.runtimeType) {
+  } else if (tracker.newVNode.key != tracker.oldVNode.key ||
+      tracker.newVNode.runtimeType != tracker.oldVNode.runtimeType) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     disposeVNode(tracker.oldVNode);
     final pendingComponentDidMounts = <ComponentDidMount>[];
@@ -46,4 +42,9 @@ void disposeVNode(VNode node) {
   } else {
     disposeVElement(node as VElement);
   }
+}
+
+void unmount(VNode node) {
+  node.ref.remove();
+  disposeVNode(node);
 }

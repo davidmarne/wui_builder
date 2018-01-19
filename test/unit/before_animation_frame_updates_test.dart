@@ -91,7 +91,7 @@ void main() {
     test('removes callback on unmount', () {
       expect(beforeAnimationFrameCallbacks.isEmpty, isFalse);
       component.state.componentWillUnmount = expectComponentWillUnmount(1, 1);
-      disposeVNode(component);
+      unmount(component);
       expect(beforeAnimationFrameCallbacks.isEmpty, isTrue);
     });
   });
