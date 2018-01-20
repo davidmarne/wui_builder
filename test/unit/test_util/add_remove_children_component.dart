@@ -31,5 +31,3 @@ class AddRemoveChildrenComponent extends Component<int, int> {
     ..children = new List<VDivElement>.generate(
         state, (i) => new VDivElement()..text = '$i');
 }
-
-Iterable<String> data;
