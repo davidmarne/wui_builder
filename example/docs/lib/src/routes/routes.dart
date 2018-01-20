@@ -4,6 +4,7 @@ enum Route {
   state,
   animationFrame,
   idleCallback,
+  keys,
   context,
   immutability,
   hocs,

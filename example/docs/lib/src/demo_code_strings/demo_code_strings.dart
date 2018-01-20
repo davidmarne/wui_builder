@@ -1,6 +1,160 @@
 // ignore_for_file: constant_identifier_names
 
-const version = '0.3.0';
+const version = '0.3.1';
+
+const keys = r'''
+import 'dart:html';
+
+import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/wui_builder.dart';
+import 'package:wui_builder/components.dart';
+
+// KeysExample shows a two list of stateful components that can be
+// reordered. The keyed list preserves the state for a row when it is
+// moved, whild the non-keyed list does not. Each row has an string
+// representing it a prop value and another integer representing
+// a state value.
+class KeysExample extends NComponent {
+  @override
+  VNode render() => new Vdiv()
+    ..className = 'columns'
+    ..children = [
+      new Vdiv()
+        ..className = 'column'
+        ..children = [
+          new ReorderableList(true),
+        ],
+      new Vdiv()
+        ..className = 'column'
+        ..children = [
+          new ReorderableList(false),
+        ],
+    ];
+}
+
+class ReorderableListState {
+  List<String> items;
+  String selected;
+}
+
+class ReorderableList extends Component<bool, ReorderableListState> {
+  ReorderableList(bool isKeyed) : super(isKeyed);
+
+  @override
+  ReorderableListState getInitialState() => new ReorderableListState()
+    ..items = ['foo', 'bar', 'baz']
+    ..selected = 'foo';
+
+  @override
+  VNode render() => new Vnav()
+    ..className = 'panel'
+    ..children = _panelItems();
+
+  bool get _isKeyed => props;
+
+  Iterable<VNode> _panelItems() => [
+        _heading(),
+        _controls(),
+      ]..addAll(_items());
+
+  VNode _heading() => new Vp()
+    ..className = 'panel-heading'
+    ..text = _isKeyed ? 'Keyed' : 'Not Keyed';
+
+  VNode _controls() => new Vp()
+    ..className = 'panel-tabs'
+    ..children = [
+      new Va()
+        ..onClick = _onMoveUp
+        ..text = 'Move Up',
+      new Va()
+        ..onClick = _onMoveDown
+        ..text = 'Move Down',
+    ];
+
+  Iterable<VNode> _items() => state.items.map(
+        (item) => new ReorderableListItem(
+            _isKeyed ? item : null, // give it a non-null key if props is true
+            new ReorderableListItemProps()
+              ..isSelected = item == state.selected
+              ..item = item
+              ..onSelect = _onSelect),
+      );
+
+  void _onMoveUp(Event e) {
+    setState(_moveUp);
+  }
+
+  void _onMoveDown(Event e) {
+    setState(_moveDown);
+  }
+
+  void _onSelect(String item) {
+    setState((_, prevState) => new ReorderableListState()
+      ..selected = item
+      ..items = prevState.items);
+  }
+
+  ReorderableListState _moveUp(bool props, ReorderableListState prevState) {
+    final selectedIndex = prevState.items.indexOf(prevState.selected);
+    if (selectedIndex == 0) return prevState;
+    final newList = prevState.items.toList();
+    newList[selectedIndex] = newList[selectedIndex - 1];
+    newList[selectedIndex - 1] = prevState.selected;
+    return new ReorderableListState()
+      ..selected = prevState.selected
+      ..items = newList;
+  }
+
+  ReorderableListState _moveDown(bool props, ReorderableListState prevState) {
+    final selectedIndex = prevState.items.indexOf(prevState.selected);
+    if (selectedIndex == prevState.items.length - 1) return prevState;
+    final newList = prevState.items.toList();
+    newList[selectedIndex] = newList[selectedIndex + 1];
+    newList[selectedIndex + 1] = prevState.selected;
+    return new ReorderableListState()
+      ..selected = prevState.selected
+      ..items = newList;
+  }
+}
+
+typedef void OnSelect(String item);
+
+class ReorderableListItemProps {
+  String item;
+  bool isSelected;
+  OnSelect onSelect;
+}
+
+class ReorderableListItem extends Component<ReorderableListItemProps, int> {
+  ReorderableListItem(String key, ReorderableListItemProps props)
+      : super(props, key: key);
+
+  @override
+  int getInitialState() => 0;
+
+  @override
+  VNode render() => new Va()
+    ..className = 'panel-block ${props.isSelected ? "is-active" : ""}'
+    ..onClick = _onItemSelect
+    ..children = [
+      new Vspan()..text = 'props: ${props.item}, state: $state',
+      new Va()
+        ..className = 'button'
+        ..text = 'increment state'
+        ..onClick = _increment,
+    ];
+
+  void _onItemSelect(Event e) {
+    props.onSelect(props.item);
+  }
+
+  void _increment(Event e) {
+    setState((_, prevState) => prevState + 1);
+  }
+}
+
+''';
 
 const functional = r'''
 import 'package:wui_builder/vhtml.dart';
@@ -186,8 +340,6 @@ class Child extends PComponent<ChildProps> {
 ''';
 
 const context = r'''
-import 'dart:html';
-
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -206,9 +358,7 @@ class Theme {
   String color;
 }
 
-class ContextParent extends PComponent<Null> {
-  ContextParent(Null props) : super(props);
-
+class ContextParent extends NComponent {
   // adds the theme to context when the component is created
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
@@ -237,11 +387,7 @@ class ContextChild extends PCComponent<ContextChildProps, Theme> {
   @override
   VNode render() => new VDivElement()
     ..text = props.message
-    ..styleBuilder = _styleBuilder;
-
-  void _styleBuilder(CssStyleDeclaration builder) {
-    builder.color = contextValue.color;
-  }
+    ..styleBuilder = (new StyleBuilder()..color = contextValue.color);
 }
 
 ''';
@@ -397,9 +543,13 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
 
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _containerStyleBuilder
     ..onScroll = _onScroll
-    ..children = _items;
+    ..children = _items
+    ..styleBuilder = (new StyleBuilder()
+      ..height = '${containerHeight}px'
+      ..width = '${containerWidth}px'
+      ..overflow = 'auto'
+      ..position = 'relative');
 
   Iterable<VDivElement> get _items {
     final chunkStartIndex = state.chunkTop ~/ itemHeight;
@@ -411,35 +561,21 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
     )..insert(0, _scrollCapture());
   }
 
-  VDivElement _scrollCapture() =>
-      new VDivElement()..styleBuilder = _scrollCaptureStyleBuilder;
-
-  void _scrollCaptureStyleBuilder(CssStyleDeclaration builder) {
-    builder
+  VDivElement _scrollCapture() => new VDivElement()
+    ..styleBuilder = (new StyleBuilder()
       ..position = 'absolute'
       ..top = '0px'
       ..opacity = '0'
       ..left = '0px'
       ..width = '100%'
       ..maxHeight = '${containerVirtualHeight}px'
-      ..height = '${containerVirtualHeight}px';
-  }
+      ..height = '${containerVirtualHeight}px');
 
-  void _containerStyleBuilder(CssStyleDeclaration builder) {
-    builder
-      ..height = '${containerHeight}px'
-      ..width = '${containerWidth}px'
-      ..overflow = 'auto'
-      ..position = 'relative';
-  }
-
-  StyleBuilder _itemStyleBuilder(int index) => (builder) {
-        builder
-          ..height = '${itemHeight}px'
-          ..width = '${itemWidth}px'
-          ..position = 'absolute'
-          ..top = '${index * itemHeight}px';
-      };
+  StyleBuilder _itemStyleBuilder(int index) => new StyleBuilder()
+    ..height = '${itemHeight}px'
+    ..width = '${itemWidth}px'
+    ..position = 'absolute'
+    ..top = '${index * itemHeight}px';
 
   void _onScroll(Event e) {
     final chunkTop = ref.scrollTop - (ref.scrollTop % containerHeight);
@@ -504,12 +640,12 @@ class TransformContainer extends SComponent<int> {
             (_, s) => new DateTime.now().millisecondsSinceEpoch - start);
       };
 
-  void _styleBuilder(CssStyleDeclaration styleBuilder) {
+  StyleBuilder _styleBuilder() {
     final t = (state / 1000) % 10;
     final scale = 1 + (t > 5 ? 10 - t : t) / 10;
     final transform = 'scaleX(${scale / 2.1}) scaleY(0.7) translateZ(0.1px)';
 
-    styleBuilder
+    return new StyleBuilder()
       ..transform = transform
       ..position = 'absolute'
       ..transformOrigin = '0 0'
@@ -525,7 +661,7 @@ class TransformContainer extends SComponent<int> {
   // VDivElement every frame
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _styleBuilder
+    ..styleBuilder = _styleBuilder()
     ..children = [
       new UpdateBlocker(
         new VDivElement()
@@ -632,9 +768,9 @@ class Dot extends Component<DotProps, Null> {
 
   Dot(DotProps props) : super(props);
 
-  void _styleBuilder(CssStyleDeclaration b) {
+  StyleBuilder _styleBuilder() {
     final s = props.size * 1.3;
-    b
+    return new StyleBuilder()
       ..position = 'absolute'
       ..background = '#61dafb'
       ..font = 'normal 15px sans-serif'
@@ -650,15 +786,13 @@ class Dot extends Component<DotProps, Null> {
 
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _styleBuilder
+    ..styleBuilder = _styleBuilder()
     ..text = props.text;
 }
 
 ''';
 
 const idle_callback = r'''
-import 'dart:html';
-
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -673,7 +807,9 @@ const numRows = 5000;
 class IdleCallbackExample extends SComponent<int> {
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _containerStyleBuilder
+    ..styleBuilder = (new StyleBuilder()
+      ..overflow = 'scroll'
+      ..maxHeight = '1000px')
     ..children = [
       _buttonGroup(),
       _table(),
@@ -709,12 +845,6 @@ class IdleCallbackExample extends SComponent<int> {
             new Vtd()..text = 'row $i col 2 update ${state} | ',
             new Vtd()..text = 'row $i col 3 update ${state}',
           ]);
-
-  void _containerStyleBuilder(CssStyleDeclaration builder) {
-    builder
-      ..overflow = 'scroll'
-      ..maxHeight = '1000px';
-  }
 }
 
 ''';
@@ -726,11 +856,8 @@ import 'package:wui_builder/wui_builder.dart';
 
 // Hello world is a component that simply renders
 // the text 'hello world' in a div. It takes no props,
-// which is why the generic type is Null. It has no state
-// which is why we use PComponent rather than Component
-class HelloWorld extends PComponent<Null> {
-  HelloWorld(Null props) : super(props);
-
+// and it has no state, which is why we use NComponent rather than Component
+class HelloWorld extends NComponent {
   // render is the method the only method your component
   // must implement. It returns a VNode, which is a virtual
   // node in the virtual dom, that represents a node in the real

@@ -26,6 +26,7 @@ class Panel extends PComponent<PanelProps> {
       ]),
       menuLabel('Advanced Concepts'),
       containerMenuItem([
+        terminalMenuItem('Keys', Route.keys),
         terminalMenuItem('Updating on Animation Frame', Route.animationFrame),
         terminalMenuItem('Updating on Idle Callbacks', Route.idleCallback),
         terminalMenuItem('Context', Route.context),

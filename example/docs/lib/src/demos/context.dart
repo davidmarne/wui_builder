@@ -16,9 +16,7 @@ class Theme {
   String color;
 }
 
-class ContextParent extends PComponent<Null> {
-  ContextParent(Null props) : super(props);
-
+class ContextParent extends NComponent {
   // adds the theme to context when the component is created
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
