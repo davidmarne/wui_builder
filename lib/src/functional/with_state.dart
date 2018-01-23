@@ -9,49 +9,25 @@ typedef OutterP StateMapper<InnerP, S, OutterP>(
   SetState<InnerP, S> setState,
 );
 
-enum _UpdateKind { syncr, idle, animationFrame }
+enum UpdateKind { syncronous, idleCallback, animationFrame }
 
-/// [withStateSync] will let you map your props, given the recieved props,
-/// the state, and a state setter that executes synchronously
-ComponentEnhancer<InnerP, OutterP> withStateSync<InnerP, S, OutterP>(
-        S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
+/// [withState] will let you map your props, given the recieved props,
+/// the state, and a state setter that executes with the update type specified
+ComponentEnhancer<InnerP, OutterP> withState<InnerP, S, OutterP>(S defaultState,
+        UpdateKind updateKind, StateMapper<InnerP, S, OutterP> mapper) =>
     (baseComponent) =>
         (props) => new _WithState<InnerP, S, OutterP>(new _WithStateProps()
           ..defaultState = defaultState
           ..mapper = mapper
           ..baseProps = props
-          ..updateKind = _UpdateKind.syncr
-          ..baseComponent = baseComponent);
-
-/// [withStateIdle] will let you map your props, given the recieved props,
-/// the state, and a state setter that executes on idle callbacks
-ComponentEnhancer<InnerP, OutterP> withStateIdle<InnerP, S, OutterP>(
-        S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
-    (baseComponent) =>
-        (props) => new _WithState<InnerP, S, OutterP>(new _WithStateProps()
-          ..defaultState = defaultState
-          ..mapper = mapper
-          ..baseProps = props
-          ..updateKind = _UpdateKind.idle
-          ..baseComponent = baseComponent);
-
-/// [withStateAnimationFrame] will let you map your props, given the recieved props,
-/// the state, and a state setter that executes on animation frame
-ComponentEnhancer<InnerP, OutterP> withStateAnimationFrame<InnerP, S, OutterP>(
-        S defaultState, StateMapper<InnerP, S, OutterP> mapper) =>
-    (baseComponent) =>
-        (props) => new _WithState<InnerP, S, OutterP>(new _WithStateProps()
-          ..defaultState = defaultState
-          ..mapper = mapper
-          ..baseProps = props
-          ..updateKind = _UpdateKind.animationFrame
+          ..updateKind = updateKind
           ..baseComponent = baseComponent);
 
 class _WithStateProps<InnerP, S, OutterP> {
   S defaultState;
   StateMapper<InnerP, S, OutterP> mapper;
   InnerP baseProps;
-  _UpdateKind updateKind;
+  UpdateKind updateKind;
   FunctionalComponent<OutterP> baseComponent;
 }
 
@@ -76,13 +52,13 @@ class _WithState<InnerP, S, OutterP>
 
   void _setStateSwitch(StateSetter<InnerP, S> s) {
     switch (props.updateKind) {
-      case _UpdateKind.syncr:
+      case UpdateKind.syncronous:
         _setState(s);
         break;
-      case _UpdateKind.idle:
+      case UpdateKind.idleCallback:
         _setStateOnIdle(s);
         break;
-      case _UpdateKind.animationFrame:
+      case UpdateKind.animationFrame:
         _setStateOnAnimationFrame(s);
         break;
     }

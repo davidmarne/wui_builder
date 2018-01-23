@@ -46,8 +46,8 @@ ContainerProps stateMapper(
       });
 
 FunctionalComponent<Null> container =
-    withStateSync<Null, Iterable<Todo>, ContainerProps>([], stateMapper)(
-        _container);
+    withState<Null, Iterable<Todo>, ContainerProps>(
+        [], UpdateKind.syncronous, stateMapper)(_container);
 
 VNode _container(ContainerProps props) => new VDivElement()
   ..children = [
