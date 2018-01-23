@@ -1,5 +1,7 @@
 # Performance
 
+[Results][results] of performance tests vs angular-dart and over_react.
+
 Performance tests were running using my fork of [js-framework-benchmark][js-framework-benchmark].
 
 You can see the wui_builder, over_react, and angular-dart impelmentations there.
@@ -13,4 +15,4 @@ You can see the wui_builder, over_react, and angular-dart impelmentations there.
 
 [js-framework-benchmark]: https://github.com/davidmarne/js-framework-benchmark
 
-[results]: table.html
+[results]: https://cdn.rawgit.com/davidmarne/js-framework-benchmark/dart_frameworks/webdriver-ts-results/table.html
