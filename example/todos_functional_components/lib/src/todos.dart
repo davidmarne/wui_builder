@@ -14,6 +14,7 @@ class TodoProps {
 }
 
 VNode todo(TodoProps props) => new Va()
+  ..key = props.todo.id
   ..draggable = true
   ..onDragStart = ((e) => _onDrag(e, props.todo))
   ..onDragOver = _onDragOver

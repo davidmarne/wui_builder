@@ -3895,223 +3895,245 @@ abstract class VElement<E extends Element> extends VNode {
     if (_eventSubs.containsKey(key)) return;
     switch (key) {
       case onAbortEvent:
-        _eventSubs[onAbortEvent] = ele.onAbort.listen(onAbort);
+        _eventSubs[onAbortEvent] = ele.onAbort.listen((e) => onAbort(e));
         break;
       case onBeforeCopyEvent:
-        _eventSubs[onBeforeCopyEvent] = ele.onBeforeCopy.listen(onBeforeCopy);
+        _eventSubs[onBeforeCopyEvent] =
+            ele.onBeforeCopy.listen((e) => onBeforeCopy(e));
         break;
       case onBeforeCutEvent:
-        _eventSubs[onBeforeCutEvent] = ele.onBeforeCut.listen(onBeforeCut);
+        _eventSubs[onBeforeCutEvent] =
+            ele.onBeforeCut.listen((e) => onBeforeCut(e));
         break;
       case onBeforePasteEvent:
         _eventSubs[onBeforePasteEvent] =
-            ele.onBeforePaste.listen(onBeforePaste);
+            ele.onBeforePaste.listen((e) => onBeforePaste(e));
         break;
       case onBlurEvent:
-        _eventSubs[onBlurEvent] = ele.onBlur.listen(onBlur);
+        _eventSubs[onBlurEvent] = ele.onBlur.listen((e) => onBlur(e));
         break;
       case onCanPlayEvent:
-        _eventSubs[onCanPlayEvent] = ele.onCanPlay.listen(onCanPlay);
+        _eventSubs[onCanPlayEvent] = ele.onCanPlay.listen((e) => onCanPlay(e));
         break;
       case onCanPlayThroughEvent:
         _eventSubs[onCanPlayThroughEvent] =
-            ele.onCanPlayThrough.listen(onCanPlayThrough);
+            ele.onCanPlayThrough.listen((e) => onCanPlayThrough(e));
         break;
       case onChangeEvent:
-        _eventSubs[onChangeEvent] = ele.onChange.listen(onChange);
+        _eventSubs[onChangeEvent] = ele.onChange.listen((e) => onChange(e));
         break;
       case onClickEvent:
-        _eventSubs[onClickEvent] = ele.onClick.listen(onClick);
+        _eventSubs[onClickEvent] = ele.onClick.listen((e) => onClick(e));
         break;
       case onContextMenuEvent:
         _eventSubs[onContextMenuEvent] =
-            ele.onContextMenu.listen(onContextMenu);
+            ele.onContextMenu.listen((e) => onContextMenu(e));
         break;
       case onCopyEvent:
-        _eventSubs[onCopyEvent] = ele.onCopy.listen(onCopy);
+        _eventSubs[onCopyEvent] = ele.onCopy.listen((e) => onCopy(e));
         break;
       case onCutEvent:
-        _eventSubs[onCutEvent] = ele.onCut.listen(onCut);
+        _eventSubs[onCutEvent] = ele.onCut.listen((e) => onCut(e));
         break;
       case onDoubleClickEvent:
         _eventSubs[onDoubleClickEvent] =
-            ele.onDoubleClick.listen(onDoubleClick);
+            ele.onDoubleClick.listen((e) => onDoubleClick(e));
         break;
       case onDragEvent:
-        _eventSubs[onDragEvent] = ele.onDrag.listen(onDrag);
+        _eventSubs[onDragEvent] = ele.onDrag.listen((e) => onDrag(e));
         break;
       case onDragEndEvent:
-        _eventSubs[onDragEndEvent] = ele.onDragEnd.listen(onDragEnd);
+        _eventSubs[onDragEndEvent] = ele.onDragEnd.listen((e) => onDragEnd(e));
         break;
       case onDragEnterEvent:
-        _eventSubs[onDragEnterEvent] = ele.onDragEnter.listen(onDragEnter);
+        _eventSubs[onDragEnterEvent] =
+            ele.onDragEnter.listen((e) => onDragEnter(e));
         break;
       case onDragLeaveEvent:
-        _eventSubs[onDragLeaveEvent] = ele.onDragLeave.listen(onDragLeave);
+        _eventSubs[onDragLeaveEvent] =
+            ele.onDragLeave.listen((e) => onDragLeave(e));
         break;
       case onDragOverEvent:
-        _eventSubs[onDragOverEvent] = ele.onDragOver.listen(onDragOver);
+        _eventSubs[onDragOverEvent] =
+            ele.onDragOver.listen((e) => onDragOver(e));
         break;
       case onDragStartEvent:
-        _eventSubs[onDragStartEvent] = ele.onDragStart.listen(onDragStart);
+        _eventSubs[onDragStartEvent] =
+            ele.onDragStart.listen((e) => onDragStart(e));
         break;
       case onDropEvent:
-        _eventSubs[onDropEvent] = ele.onDrop.listen(onDrop);
+        _eventSubs[onDropEvent] = ele.onDrop.listen((e) => onDrop(e));
         break;
       case onDurationChangeEvent:
         _eventSubs[onDurationChangeEvent] =
-            ele.onDurationChange.listen(onDurationChange);
+            ele.onDurationChange.listen((e) => onDurationChange(e));
         break;
       case onEmptiedEvent:
-        _eventSubs[onEmptiedEvent] = ele.onEmptied.listen(onEmptied);
+        _eventSubs[onEmptiedEvent] = ele.onEmptied.listen((e) => onEmptied(e));
         break;
       case onEndedEvent:
-        _eventSubs[onEndedEvent] = ele.onEnded.listen(onEnded);
+        _eventSubs[onEndedEvent] = ele.onEnded.listen((e) => onEnded(e));
         break;
       case onErrorEvent:
-        _eventSubs[onErrorEvent] = ele.onError.listen(onError);
+        _eventSubs[onErrorEvent] = ele.onError.listen((e) => onError(e));
         break;
       case onFocusEvent:
-        _eventSubs[onFocusEvent] = ele.onFocus.listen(onFocus);
+        _eventSubs[onFocusEvent] = ele.onFocus.listen((e) => onFocus(e));
         break;
       case onInputEvent:
-        _eventSubs[onInputEvent] = ele.onInput.listen(onInput);
+        _eventSubs[onInputEvent] = ele.onInput.listen((e) => onInput(e));
         break;
       case onInvalidEvent:
-        _eventSubs[onInvalidEvent] = ele.onInvalid.listen(onInvalid);
+        _eventSubs[onInvalidEvent] = ele.onInvalid.listen((e) => onInvalid(e));
         break;
       case onKeyDownEvent:
-        _eventSubs[onKeyDownEvent] = ele.onKeyDown.listen(onKeyDown);
+        _eventSubs[onKeyDownEvent] = ele.onKeyDown.listen((e) => onKeyDown(e));
         break;
       case onKeyPressEvent:
-        _eventSubs[onKeyPressEvent] = ele.onKeyPress.listen(onKeyPress);
+        _eventSubs[onKeyPressEvent] =
+            ele.onKeyPress.listen((e) => onKeyPress(e));
         break;
       case onKeyUpEvent:
-        _eventSubs[onKeyUpEvent] = ele.onKeyUp.listen(onKeyUp);
+        _eventSubs[onKeyUpEvent] = ele.onKeyUp.listen((e) => onKeyUp(e));
         break;
       case onLoadEvent:
-        _eventSubs[onLoadEvent] = ele.onLoad.listen(onLoad);
+        _eventSubs[onLoadEvent] = ele.onLoad.listen((e) => onLoad(e));
         break;
       case onLoadedDataEvent:
-        _eventSubs[onLoadedDataEvent] = ele.onLoadedData.listen(onLoadedData);
+        _eventSubs[onLoadedDataEvent] =
+            ele.onLoadedData.listen((e) => onLoadedData(e));
         break;
       case onLoadedMetadataEvent:
         _eventSubs[onLoadedMetadataEvent] =
-            ele.onLoadedMetadata.listen(onLoadedMetadata);
+            ele.onLoadedMetadata.listen((e) => onLoadedMetadata(e));
         break;
       case onMouseDownEvent:
-        _eventSubs[onMouseDownEvent] = ele.onMouseDown.listen(onMouseDown);
+        _eventSubs[onMouseDownEvent] =
+            ele.onMouseDown.listen((e) => onMouseDown(e));
         break;
       case onMouseEnterEvent:
-        _eventSubs[onMouseEnterEvent] = ele.onMouseEnter.listen(onMouseEnter);
+        _eventSubs[onMouseEnterEvent] =
+            ele.onMouseEnter.listen((e) => onMouseEnter(e));
         break;
       case onMouseLeaveEvent:
-        _eventSubs[onMouseLeaveEvent] = ele.onMouseLeave.listen(onMouseLeave);
+        _eventSubs[onMouseLeaveEvent] =
+            ele.onMouseLeave.listen((e) => onMouseLeave(e));
         break;
       case onMouseMoveEvent:
-        _eventSubs[onMouseMoveEvent] = ele.onMouseMove.listen(onMouseMove);
+        _eventSubs[onMouseMoveEvent] =
+            ele.onMouseMove.listen((e) => onMouseMove(e));
         break;
       case onMouseOutEvent:
-        _eventSubs[onMouseOutEvent] = ele.onMouseOut.listen(onMouseOut);
+        _eventSubs[onMouseOutEvent] =
+            ele.onMouseOut.listen((e) => onMouseOut(e));
         break;
       case onMouseOverEvent:
-        _eventSubs[onMouseOverEvent] = ele.onMouseOver.listen(onMouseOver);
+        _eventSubs[onMouseOverEvent] =
+            ele.onMouseOver.listen((e) => onMouseOver(e));
         break;
       case onMouseUpEvent:
-        _eventSubs[onMouseUpEvent] = ele.onMouseUp.listen(onMouseUp);
+        _eventSubs[onMouseUpEvent] = ele.onMouseUp.listen((e) => onMouseUp(e));
         break;
       case onMouseWheelEvent:
-        _eventSubs[onMouseWheelEvent] = ele.onMouseWheel.listen(onMouseWheel);
+        _eventSubs[onMouseWheelEvent] =
+            ele.onMouseWheel.listen((e) => onMouseWheel(e));
         break;
       case onPasteEvent:
-        _eventSubs[onPasteEvent] = ele.onPaste.listen(onPaste);
+        _eventSubs[onPasteEvent] = ele.onPaste.listen((e) => onPaste(e));
         break;
       case onPauseEvent:
-        _eventSubs[onPauseEvent] = ele.onPause.listen(onPause);
+        _eventSubs[onPauseEvent] = ele.onPause.listen((e) => onPause(e));
         break;
       case onPlayEvent:
-        _eventSubs[onPlayEvent] = ele.onPlay.listen(onPlay);
+        _eventSubs[onPlayEvent] = ele.onPlay.listen((e) => onPlay(e));
         break;
       case onPlayingEvent:
-        _eventSubs[onPlayingEvent] = ele.onPlaying.listen(onPlaying);
+        _eventSubs[onPlayingEvent] = ele.onPlaying.listen((e) => onPlaying(e));
         break;
       case onRateChangeEvent:
-        _eventSubs[onRateChangeEvent] = ele.onRateChange.listen(onRateChange);
+        _eventSubs[onRateChangeEvent] =
+            ele.onRateChange.listen((e) => onRateChange(e));
         break;
       case onResetEvent:
-        _eventSubs[onResetEvent] = ele.onReset.listen(onReset);
+        _eventSubs[onResetEvent] = ele.onReset.listen((e) => onReset(e));
         break;
       case onResizeEvent:
-        _eventSubs[onResizeEvent] = ele.onResize.listen(onResize);
+        _eventSubs[onResizeEvent] = ele.onResize.listen((e) => onResize(e));
         break;
       case onScrollEvent:
-        _eventSubs[onScrollEvent] = ele.onScroll.listen(onScroll);
+        _eventSubs[onScrollEvent] = ele.onScroll.listen((e) => onScroll(e));
         break;
       case onSearchEvent:
-        _eventSubs[onSearchEvent] = ele.onSearch.listen(onSearch);
+        _eventSubs[onSearchEvent] = ele.onSearch.listen((e) => onSearch(e));
         break;
       case onSeekedEvent:
-        _eventSubs[onSeekedEvent] = ele.onSeeked.listen(onSeeked);
+        _eventSubs[onSeekedEvent] = ele.onSeeked.listen((e) => onSeeked(e));
         break;
       case onSeekingEvent:
-        _eventSubs[onSeekingEvent] = ele.onSeeking.listen(onSeeking);
+        _eventSubs[onSeekingEvent] = ele.onSeeking.listen((e) => onSeeking(e));
         break;
       case onSelectEvent:
-        _eventSubs[onSelectEvent] = ele.onSelect.listen(onSelect);
+        _eventSubs[onSelectEvent] = ele.onSelect.listen((e) => onSelect(e));
         break;
       case onSelectStartEvent:
         _eventSubs[onSelectStartEvent] =
-            ele.onSelectStart.listen(onSelectStart);
+            ele.onSelectStart.listen((e) => onSelectStart(e));
         break;
       case onStalledEvent:
-        _eventSubs[onStalledEvent] = ele.onStalled.listen(onStalled);
+        _eventSubs[onStalledEvent] = ele.onStalled.listen((e) => onStalled(e));
         break;
       case onSubmitEvent:
-        _eventSubs[onSubmitEvent] = ele.onSubmit.listen(onSubmit);
+        _eventSubs[onSubmitEvent] = ele.onSubmit.listen((e) => onSubmit(e));
         break;
       case onSuspendEvent:
-        _eventSubs[onSuspendEvent] = ele.onSuspend.listen(onSuspend);
+        _eventSubs[onSuspendEvent] = ele.onSuspend.listen((e) => onSuspend(e));
         break;
       case onTimeUpdateEvent:
-        _eventSubs[onTimeUpdateEvent] = ele.onTimeUpdate.listen(onTimeUpdate);
+        _eventSubs[onTimeUpdateEvent] =
+            ele.onTimeUpdate.listen((e) => onTimeUpdate(e));
         break;
       case onTouchCancelEvent:
         _eventSubs[onTouchCancelEvent] =
-            ele.onTouchCancel.listen(onTouchCancel);
+            ele.onTouchCancel.listen((e) => onTouchCancel(e));
         break;
       case onTouchEndEvent:
-        _eventSubs[onTouchEndEvent] = ele.onTouchEnd.listen(onTouchEnd);
+        _eventSubs[onTouchEndEvent] =
+            ele.onTouchEnd.listen((e) => onTouchEnd(e));
         break;
       case onTouchEnterEvent:
-        _eventSubs[onTouchEnterEvent] = ele.onTouchEnter.listen(onTouchEnter);
+        _eventSubs[onTouchEnterEvent] =
+            ele.onTouchEnter.listen((e) => onTouchEnter(e));
         break;
       case onTouchLeaveEvent:
-        _eventSubs[onTouchLeaveEvent] = ele.onTouchLeave.listen(onTouchLeave);
+        _eventSubs[onTouchLeaveEvent] =
+            ele.onTouchLeave.listen((e) => onTouchLeave(e));
         break;
       case onTouchMoveEvent:
-        _eventSubs[onTouchMoveEvent] = ele.onTouchMove.listen(onTouchMove);
+        _eventSubs[onTouchMoveEvent] =
+            ele.onTouchMove.listen((e) => onTouchMove(e));
         break;
       case onTouchStartEvent:
-        _eventSubs[onTouchStartEvent] = ele.onTouchStart.listen(onTouchStart);
+        _eventSubs[onTouchStartEvent] =
+            ele.onTouchStart.listen((e) => onTouchStart(e));
         break;
       case onTransitionEndEvent:
         _eventSubs[onTransitionEndEvent] =
-            ele.onTransitionEnd.listen(onTransitionEnd);
+            ele.onTransitionEnd.listen((e) => onTransitionEnd(e));
         break;
       case onVolumeChangeEvent:
         _eventSubs[onVolumeChangeEvent] =
-            ele.onVolumeChange.listen(onVolumeChange);
+            ele.onVolumeChange.listen((e) => onVolumeChange(e));
         break;
       case onWaitingEvent:
-        _eventSubs[onWaitingEvent] = ele.onWaiting.listen(onWaiting);
+        _eventSubs[onWaitingEvent] = ele.onWaiting.listen((e) => onWaiting(e));
         break;
       case onFullscreenChangeEvent:
         _eventSubs[onFullscreenChangeEvent] =
-            ele.onFullscreenChange.listen(onFullscreenChange);
+            ele.onFullscreenChange.listen((e) => onFullscreenChange(e));
         break;
       case onFullscreenErrorEvent:
         _eventSubs[onFullscreenErrorEvent] =
-            ele.onFullscreenError.listen(onFullscreenError);
+            ele.onFullscreenError.listen((e) => onFullscreenError(e));
         break;
     }
   }

@@ -10,7 +10,8 @@ class ContextSetterProps<C> {
 }
 
 abstract class ContextSetter<C> extends Component<ContextSetterProps, Null> {
-  ContextSetter(ContextSetterProps<C> props) : super(props);
+  ContextSetter(ContextSetterProps<C> props, {dynamic key: null})
+      : super(props, key: key);
 
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
@@ -22,7 +23,7 @@ abstract class ContextSetter<C> extends Component<ContextSetterProps, Null> {
 }
 
 class UpdateBlocker extends PComponent<VNode> {
-  UpdateBlocker(VNode props) : super(props);
+  UpdateBlocker(VNode props, {dynamic key: null}) : super(props, key: key);
 
   @override
   bool shouldComponentUpdate(_, __) => false;
@@ -32,7 +33,7 @@ class UpdateBlocker extends PComponent<VNode> {
 }
 
 class Pure extends PComponent<Component> {
-  Pure(Component props) : super(props);
+  Pure(Component props, {dynamic key: null}) : super(props, key: key);
 
   @override
   bool shouldComponentUpdate(nextProps, _) => props.props != nextProps.props;
@@ -44,7 +45,7 @@ class Pure extends PComponent<Component> {
 class Perf extends PComponent<Component> {
   double _start;
 
-  Perf(Component props) : super(props);
+  Perf(Component props, {dynamic key: null}) : super(props, key: key);
 
   String get _name => '${props.runtimeType}${key == null ? '' : ' - $key'}';
 

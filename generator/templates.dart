@@ -342,7 +342,7 @@ String updateAttributeSwitchTemplate(String className, Setter setter) => '''
 
 String updateEventListenerSwitchTemplate(String className, VEvent event) => '''
     case ${event.name}Event: 
-      _eventSubs[${event.name}Event] = ele.${event.name}.listen(${event.name});
+      _eventSubs[${event.name}Event] = ele.${event.name}.listen((e) => ${event.name}(e));
       break;''';
 
 String eventsDeclarationTemplate(Iterable<VEvent> events) => events.fold(

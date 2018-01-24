@@ -15,7 +15,7 @@ class TodoProps {
 }
 
 class Todos extends PComponent<TodoProps> {
-  Todos(TodoProps props) : super(props);
+  Todos(TodoProps props) : super(props, key: props.todo.id);
 
   @override
   VNode render() => new Va()
