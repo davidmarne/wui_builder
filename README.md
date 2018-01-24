@@ -11,6 +11,8 @@ Supports defining custom components with an interface similar to react. All of t
 
 Built with async rendering in mind from the start.
 
+Fully compliant with strong mode and the DDC.
+
 ## Documentation and examples
 
 Check out the [documentation on github pages][docs] for an in depth look at the framework
@@ -34,7 +36,7 @@ However, syncronous updates are also allowed to run on demand, without waiting f
 
 ### Smart Update Batching
 
-Finally, wui_builder prevents uneccessary updates when multiple updates to the same component are queued before any can process. For example, say I have a component that updates on animation frame, but before a given animation frame is fired setStateOnAnimationFrame is called twice. The update process will only be run once in this case, while allowing both state setter functions to be executed.
+Finally, wui_builder prevents uneccessary updates when multiple updates to the same component are queued before any can process. For example, say I have a component that updates on animation frame using setStateOnAnimationFrame. If setStateOnAnimationFrame is called twice between frames the update process will only be run once while allowing both state setter functions to be executed.
 
 Note, requestIdleCallback is not currently supported by all browsers and wui_builder does NOT include a polyfill at this time. Synchronous rendering still works on all browsers. See a compatability chart [here][compatability].
 
@@ -63,6 +65,8 @@ final component = new HelloWorld(
 render(component, querySelector('#container'));
 ```
 
+Check out the [documentation on github pages][docs] for more in depth examples.
+
 ## Motivation
 
 It started as a fun project to help learn about virtual doms.
@@ -72,7 +76,7 @@ However, there is motivation to keep progressing because:
 - I quite like dart.
 - I don't like un-typed templates, so angular ain't my jam.
 - over_react has some downsides:
-  - it incurs a large performance burden due to js interop & map lookups
+  - it incurs a large performance burden due to js interop
   - it has to adapt to a js api, which can be difficult due to differences in the languages
 
 [docs]: https://davidmarne.github.io

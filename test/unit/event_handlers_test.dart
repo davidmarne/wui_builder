@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'dart:async';
 
 import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';

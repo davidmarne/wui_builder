@@ -214,7 +214,6 @@ String generalTagFactoryElement(String constructorName) => '''
     Element elementFactory() => new Element.tag(\'$constructorName\');
   }''';
 
-// TODO: generate hashCode
 String vElementSubclass(
   String classElementName,
   String superclass,
