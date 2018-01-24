@@ -2,7 +2,7 @@ import '../../wui_builder.dart';
 import 'reduced_components.dart';
 
 abstract class PureComponent<P, S> extends Component<P, S> {
-  PureComponent(P props) : super(props);
+  PureComponent(P props, {dynamic key: null}) : super(props, key: key);
 
   @override
   bool shouldComponentUpdate(nextProps, nextState) =>
@@ -10,7 +10,7 @@ abstract class PureComponent<P, S> extends Component<P, S> {
 }
 
 abstract class PurePComponent<P> extends PComponent<P> {
-  PurePComponent(P props) : super(props);
+  PurePComponent(P props, {dynamic key: null}) : super(props, key: key);
 
   @override
   bool shouldComponentUpdate(nextProps, nextState) => props != nextProps;

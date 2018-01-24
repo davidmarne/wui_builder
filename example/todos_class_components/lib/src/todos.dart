@@ -15,7 +15,7 @@ class TodoProps {
 }
 
 class Todos extends PComponent<TodoProps> {
-  Todos(TodoProps props) : super(props);
+  Todos(TodoProps props) : super(props, key: props.todo.id);
 
   @override
   VNode render() => new Va()
@@ -33,13 +33,9 @@ class Todos extends PComponent<TodoProps> {
         ],
       new VSpanElement()
         ..text = ' ${props.todo.text}'
-        ..styleBuilder =
-            ((style) => _styleBuilder(style, props.todo.isComplete)),
+        ..styleBuilder = (new StyleBuilder()
+          ..textDecoration = props.todo.isComplete ? 'line-through' : ''),
     ];
-
-  void _styleBuilder(CssStyleDeclaration style, bool isComplete) {
-    style.textDecoration = isComplete ? 'line-through' : '';
-  }
 
   void _onDrag(MouseEvent e) {
     e.dataTransfer.setData('todo-id', '${props.todo.id}');

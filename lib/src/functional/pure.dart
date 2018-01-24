@@ -14,11 +14,10 @@ import 'lifecycle.dart';
 ///
 ///   FunctionalComponent purified = pure(baseComponent);
 ///
-///   FunctionalComponent baseComponent(ExampleProps props) => Dom.div()(props.foo);
+///   FunctionalComponent baseComponent(ExampleProps props) => Dom.div()..text = props.foo;
 ///
 ///   ```
 FunctionalComponent<P> pure<P>(FunctionalComponent<P> baseComponent) =>
     lifecycle<P>(
-      shouldComponentUpdate: (currentProps, nextProps) =>
-          (currentProps != nextProps),
-    )(baseComponent);
+        shouldComponentUpdate: (currentProps, nextProps) =>
+            (currentProps != nextProps))(baseComponent);

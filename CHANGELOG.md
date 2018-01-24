@@ -1,3 +1,35 @@
+
+## 0.4.0
+
+wui_builder.dart
+
+* **Breaking changes**:
+  * Changed StyleBuilder from a typedef to an Object
+* Keyed children can now be moved amongst their siblings while maintaining their state
+* added an exported function, unmount, which disposes a vnode and removes it from the dom.
+
+components.dart
+
+* added NComponent and NCComponent for when you want a component with Null prop and state types.
+
+functional.dart:
+
+* **Breaking changes**:
+  * removed element generic from withRef
+  * removed added update type to withState hoc
+
+performance audit:
+
+* move to usage of maps for set properties on velements
+* move to usage of custom attribute diffing
+* use `ele.text = '';` to remove all children from an element
+* use node.firstChild rather than node.children.first
+* use ++i and --i instead of i++ and i--
+
+bug fixes:
+
+* correctly clean up beforeAnimationFrame callbacks after components are unmounted
+
 ## 0.3.1
 
 * Add changelog.

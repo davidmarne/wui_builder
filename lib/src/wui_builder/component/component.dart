@@ -17,11 +17,14 @@ abstract class Component<P, S> extends VNode {
   StateSetter<P, S> _pendingStateSetter;
   final _pendingUpdateTrackers = <UpdateTracker>[];
 
-  Component(this._props);
+  Component(this._props, {dynamic key: null}) {
+    this.key = key;
+  }
 
   @override
   VNodeTypes get vNodeType => VNodeTypes.component;
 
+  /// [child] is the VNode returned from render
   VNode get child => _child;
 
   /// [props] returns the props passed to the component
@@ -100,7 +103,7 @@ abstract class Component<P, S> extends VNode {
         _pendingUpdateTrackers.removeAt(i);
         continue;
       }
-      i++;
+      ++i;
     }
 
     final updateTracker = new UpdateTracker.async(ref, this, shouldAbort);
@@ -130,7 +133,7 @@ abstract class Component<P, S> extends VNode {
         _pendingUpdateTrackers.removeAt(i);
         continue;
       }
-      i++;
+      ++i;
     }
 
     final updateTracker = new UpdateTracker.sync(ref, this);

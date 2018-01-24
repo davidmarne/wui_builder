@@ -1,15 +1,15 @@
 import '../../wui_builder.dart';
 
 abstract class PComponent<P> extends Component<P, Null> {
-  PComponent(P props) : super(props);
+  PComponent(P props, {dynamic key: null}) : super(props, key: key);
 }
 
 abstract class SComponent<S> extends Component<Null, S> {
-  SComponent() : super(null);
+  SComponent({dynamic key: null}) : super(null, key: key);
 }
 
 abstract class CComponent<P, S, C> extends Component<P, S> {
-  CComponent(P props) : super(props);
+  CComponent(P props, {dynamic key: null}) : super(props, key: key);
 
   String get contextKey;
 
@@ -17,9 +17,17 @@ abstract class CComponent<P, S, C> extends Component<P, S> {
 }
 
 abstract class PCComponent<P, C> extends CComponent<P, Null, C> {
-  PCComponent(P props) : super(props);
+  PCComponent(P props, {dynamic key: null}) : super(props, key: key);
 }
 
 abstract class SCComponent<S, C> extends CComponent<Null, S, C> {
-  SCComponent() : super(null);
+  SCComponent({dynamic key: null}) : super(null, key: key);
+}
+
+abstract class NComponent extends Component<Null, Null> {
+  NComponent({dynamic key: null}) : super(null, key: key);
+}
+
+abstract class NCComponent<C> extends CComponent<Null, Null, C> {
+  NCComponent({dynamic key: null}) : super(null, key: key);
 }

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -23,7 +21,7 @@ class Container extends SComponent<ContainerState> {
     ..children = [
       new Nav(new NavProps()),
       new VDivElement()
-        ..styleBuilder = _contentStyle
+        ..styleBuilder = (new StyleBuilder()..paddingTop = '2rem')
         ..className = 'columns'
         ..children = [
           new VDivElement()
@@ -66,10 +64,6 @@ class Container extends SComponent<ContainerState> {
             ],
         ],
     ];
-
-  void _contentStyle(CssStyleDeclaration builder) {
-    builder.paddingTop = '2rem';
-  }
 
   void _updateRoute(Route route) {
     setStateOnAnimationFrame(

@@ -5,8 +5,8 @@ Element createElementNode(
   final Element domNode = vnode.elementFactory();
   vnode.ref = domNode;
   vnode.applyAttributesToElement(domNode);
-  if (vnode.shouldUpdateSubs) vnode.applyEventListenersToElement(domNode);
-  if (vnode.children != null) {
+  vnode.applyEventListenersToElement(domNode);
+  if (vnode.children.isNotEmpty) {
     for (final c in vnode.children) {
       domNode.append(createNode(c, pendingComponentDidMounts));
       c.parent = vnode;

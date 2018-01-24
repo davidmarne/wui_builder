@@ -11,6 +11,7 @@ import '../demos/hello_world.dart';
 import '../demos/hocs.dart';
 import '../demos/idle_callback.dart';
 import '../demos/immutability.dart';
+import '../demos/keys.dart';
 import '../demos/props_example.dart';
 import '../demos/state_example.dart';
 import '../demos/triangle.dart';
@@ -54,7 +55,7 @@ class CodeView extends PComponent<CodeViewProps> {
   VNode currentExample() {
     switch (props.route) {
       case Route.helloWorld:
-        return new HelloWorld(null);
+        return new HelloWorld();
       case Route.props:
         return new PropsExample(
             new PropsExampleProps()..message = 'Hello World!');
@@ -64,8 +65,10 @@ class CodeView extends PComponent<CodeViewProps> {
         return new AnimationFrame();
       case Route.idleCallback:
         return new IdleCallbackExample();
+      case Route.keys:
+        return new KeysExample();
       case Route.context:
-        return new ContextParent(null);
+        return new ContextParent();
       case Route.immutability:
         return new ImmutabilityExample();
       case Route.hocs:
@@ -92,6 +95,8 @@ class CodeView extends PComponent<CodeViewProps> {
         return animation_frame;
       case Route.idleCallback:
         return idle_callback;
+      case Route.keys:
+        return keys;
       case Route.context:
         return context;
       case Route.immutability:

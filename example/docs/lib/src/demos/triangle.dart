@@ -26,12 +26,12 @@ class TransformContainer extends SComponent<int> {
             (_, s) => new DateTime.now().millisecondsSinceEpoch - start);
       };
 
-  void _styleBuilder(CssStyleDeclaration styleBuilder) {
+  StyleBuilder _styleBuilder() {
     final t = (state / 1000) % 10;
     final scale = 1 + (t > 5 ? 10 - t : t) / 10;
     final transform = 'scaleX(${scale / 2.1}) scaleY(0.7) translateZ(0.1px)';
 
-    styleBuilder
+    return new StyleBuilder()
       ..transform = transform
       ..position = 'absolute'
       ..transformOrigin = '0 0'
@@ -47,7 +47,7 @@ class TransformContainer extends SComponent<int> {
   // VDivElement every frame
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _styleBuilder
+    ..styleBuilder = _styleBuilder()
     ..children = [
       new UpdateBlocker(
         new VDivElement()
@@ -154,9 +154,9 @@ class Dot extends Component<DotProps, Null> {
 
   Dot(DotProps props) : super(props);
 
-  void _styleBuilder(CssStyleDeclaration b) {
+  StyleBuilder _styleBuilder() {
     final s = props.size * 1.3;
-    b
+    return new StyleBuilder()
       ..position = 'absolute'
       ..background = '#61dafb'
       ..font = 'normal 15px sans-serif'
@@ -172,6 +172,6 @@ class Dot extends Component<DotProps, Null> {
 
   @override
   VNode render() => new VDivElement()
-    ..styleBuilder = _styleBuilder
+    ..styleBuilder = _styleBuilder()
     ..text = props.text;
 }

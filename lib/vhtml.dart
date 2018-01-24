@@ -3,458 +3,376 @@ import 'package:meta/meta.dart';
 import 'wui_builder.dart' show VElement;
 // ignore_for_file: annotate_overrides
 // ignore_for_file: overridden_fields
+// ignore_for_file: prefer_final_fields
 
-abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {
-  @override
-  @protected
-  void applyAttributesToElement(T ele) {
-    super.applyAttributesToElement(ele);
-  }
+abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {}
 
-  @override
-  @protected
-  void updateElementAttributes(covariant VHtmlElement<T> prev, T ele) {
-    super.updateElementAttributes(prev, ele);
-  }
-}
+const downloadAnchorElementAttribute = 0;
+const hreflangAnchorElementAttribute = 1;
+const referrerpolicyAnchorElementAttribute = 2;
+const relAnchorElementAttribute = 3;
+const targetAnchorElementAttribute = 4;
+const typeAnchorElementAttribute = 5;
+const hashAnchorElementAttribute = 6;
+const hostAnchorElementAttribute = 7;
+const hostnameAnchorElementAttribute = 8;
+const hrefAnchorElementAttribute = 9;
+const passwordAnchorElementAttribute = 10;
+const pathnameAnchorElementAttribute = 11;
+const portAnchorElementAttribute = 12;
+const protocolAnchorElementAttribute = 13;
+const searchAnchorElementAttribute = 14;
+const usernameAnchorElementAttribute = 15;
 
 class VAnchorElement extends VHtmlElement<AnchorElement> {
   @override
   AnchorElement elementFactory() => new AnchorElement();
 
-  String _download;
-  bool _downloadSet = false;
-  String get download => _download;
+  var _setValuesAnchorElement = <int, dynamic>{};
+
+  String get download =>
+      _setValuesAnchorElement[downloadAnchorElementAttribute] as String;
   set download(String v) {
-    _download = v;
-    _downloadSet = true;
+    _setValuesAnchorElement[downloadAnchorElementAttribute] = v;
   }
 
-  String _hreflang;
-  bool _hreflangSet = false;
-  String get hreflang => _hreflang;
+  String get hreflang =>
+      _setValuesAnchorElement[hreflangAnchorElementAttribute] as String;
   set hreflang(String v) {
-    _hreflang = v;
-    _hreflangSet = true;
+    _setValuesAnchorElement[hreflangAnchorElementAttribute] = v;
   }
 
-  String _referrerpolicy;
-  bool _referrerpolicySet = false;
-  String get referrerpolicy => _referrerpolicy;
+  String get referrerpolicy =>
+      _setValuesAnchorElement[referrerpolicyAnchorElementAttribute] as String;
   set referrerpolicy(String v) {
-    _referrerpolicy = v;
-    _referrerpolicySet = true;
+    _setValuesAnchorElement[referrerpolicyAnchorElementAttribute] = v;
   }
 
-  String _rel;
-  bool _relSet = false;
-  String get rel => _rel;
+  String get rel =>
+      _setValuesAnchorElement[relAnchorElementAttribute] as String;
   set rel(String v) {
-    _rel = v;
-    _relSet = true;
+    _setValuesAnchorElement[relAnchorElementAttribute] = v;
   }
 
-  String _target;
-  bool _targetSet = false;
-  String get target => _target;
+  String get target =>
+      _setValuesAnchorElement[targetAnchorElementAttribute] as String;
   set target(String v) {
-    _target = v;
-    _targetSet = true;
+    _setValuesAnchorElement[targetAnchorElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesAnchorElement[typeAnchorElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesAnchorElement[typeAnchorElementAttribute] = v;
   }
 
-  String _hash;
-  bool _hashSet = false;
-  String get hash => _hash;
+  String get hash =>
+      _setValuesAnchorElement[hashAnchorElementAttribute] as String;
   set hash(String v) {
-    _hash = v;
-    _hashSet = true;
+    _setValuesAnchorElement[hashAnchorElementAttribute] = v;
   }
 
-  String _host;
-  bool _hostSet = false;
-  String get host => _host;
+  String get host =>
+      _setValuesAnchorElement[hostAnchorElementAttribute] as String;
   set host(String v) {
-    _host = v;
-    _hostSet = true;
+    _setValuesAnchorElement[hostAnchorElementAttribute] = v;
   }
 
-  String _hostname;
-  bool _hostnameSet = false;
-  String get hostname => _hostname;
+  String get hostname =>
+      _setValuesAnchorElement[hostnameAnchorElementAttribute] as String;
   set hostname(String v) {
-    _hostname = v;
-    _hostnameSet = true;
+    _setValuesAnchorElement[hostnameAnchorElementAttribute] = v;
   }
 
-  String _href;
-  bool _hrefSet = false;
-  String get href => _href;
+  String get href =>
+      _setValuesAnchorElement[hrefAnchorElementAttribute] as String;
   set href(String v) {
-    _href = v;
-    _hrefSet = true;
+    _setValuesAnchorElement[hrefAnchorElementAttribute] = v;
   }
 
-  String _password;
-  bool _passwordSet = false;
-  String get password => _password;
+  String get password =>
+      _setValuesAnchorElement[passwordAnchorElementAttribute] as String;
   set password(String v) {
-    _password = v;
-    _passwordSet = true;
+    _setValuesAnchorElement[passwordAnchorElementAttribute] = v;
   }
 
-  String _pathname;
-  bool _pathnameSet = false;
-  String get pathname => _pathname;
+  String get pathname =>
+      _setValuesAnchorElement[pathnameAnchorElementAttribute] as String;
   set pathname(String v) {
-    _pathname = v;
-    _pathnameSet = true;
+    _setValuesAnchorElement[pathnameAnchorElementAttribute] = v;
   }
 
-  String _port;
-  bool _portSet = false;
-  String get port => _port;
+  String get port =>
+      _setValuesAnchorElement[portAnchorElementAttribute] as String;
   set port(String v) {
-    _port = v;
-    _portSet = true;
+    _setValuesAnchorElement[portAnchorElementAttribute] = v;
   }
 
-  String _protocol;
-  bool _protocolSet = false;
-  String get protocol => _protocol;
+  String get protocol =>
+      _setValuesAnchorElement[protocolAnchorElementAttribute] as String;
   set protocol(String v) {
-    _protocol = v;
-    _protocolSet = true;
+    _setValuesAnchorElement[protocolAnchorElementAttribute] = v;
   }
 
-  String _search;
-  bool _searchSet = false;
-  String get search => _search;
+  String get search =>
+      _setValuesAnchorElement[searchAnchorElementAttribute] as String;
   set search(String v) {
-    _search = v;
-    _searchSet = true;
+    _setValuesAnchorElement[searchAnchorElementAttribute] = v;
   }
 
-  String _username;
-  bool _usernameSet = false;
-  String get username => _username;
+  String get username =>
+      _setValuesAnchorElement[usernameAnchorElementAttribute] as String;
   set username(String v) {
-    _username = v;
-    _usernameSet = true;
+    _setValuesAnchorElement[usernameAnchorElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(AnchorElement ele) {
+    _setValuesAnchorElement
+        .forEach((k, dynamic v) => _updateAttributeAnchorElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_downloadSet) ele.download = _download;
-    if (_hreflangSet) ele.hreflang = _hreflang;
-    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
-    if (_relSet) ele.rel = _rel;
-    if (_targetSet) ele.target = _target;
-    if (_typeSet) ele.type = _type;
-    if (_hashSet) ele.hash = _hash;
-    if (_hostSet) ele.host = _host;
-    if (_hostnameSet) ele.hostname = _hostname;
-    if (_hrefSet) ele.href = _href;
-    if (_passwordSet) ele.password = _password;
-    if (_pathnameSet) ele.pathname = _pathname;
-    if (_portSet) ele.port = _port;
-    if (_protocolSet) ele.protocol = _protocol;
-    if (_searchSet) ele.search = _search;
-    if (_usernameSet) ele.username = _username;
   }
 
   @override
   @protected
   void updateElementAttributes(VAnchorElement prev, AnchorElement ele) {
+    prev._setValuesAnchorElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesAnchorElement[k];
+      if (v != newValue) _updateAttributeAnchorElement(ele, k, newValue);
+    });
+    prev._setValuesAnchorElement = _setValuesAnchorElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_download != prev._download) {
-      ele.download = _download;
-      prev.download = _download;
-    }
-    if (_hreflang != prev._hreflang) {
-      ele.hreflang = _hreflang;
-      prev.hreflang = _hreflang;
-    }
-    if (_referrerpolicy != prev._referrerpolicy) {
-      ele.referrerpolicy = _referrerpolicy;
-      prev.referrerpolicy = _referrerpolicy;
-    }
-    if (_rel != prev._rel) {
-      ele.rel = _rel;
-      prev.rel = _rel;
-    }
-    if (_target != prev._target) {
-      ele.target = _target;
-      prev.target = _target;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
-    }
-    if (_hash != prev._hash) {
-      ele.hash = _hash;
-      prev.hash = _hash;
-    }
-    if (_host != prev._host) {
-      ele.host = _host;
-      prev.host = _host;
-    }
-    if (_hostname != prev._hostname) {
-      ele.hostname = _hostname;
-      prev.hostname = _hostname;
-    }
-    if (_href != prev._href) {
-      ele.href = _href;
-      prev.href = _href;
-    }
-    if (_password != prev._password) {
-      ele.password = _password;
-      prev.password = _password;
-    }
-    if (_pathname != prev._pathname) {
-      ele.pathname = _pathname;
-      prev.pathname = _pathname;
-    }
-    if (_port != prev._port) {
-      ele.port = _port;
-      prev.port = _port;
-    }
-    if (_protocol != prev._protocol) {
-      ele.protocol = _protocol;
-      prev.protocol = _protocol;
-    }
-    if (_search != prev._search) {
-      ele.search = _search;
-      prev.search = _search;
-    }
-    if (_username != prev._username) {
-      ele.username = _username;
-      prev.username = _username;
+  void _updateAttributeAnchorElement(
+      AnchorElement ele, int key, dynamic value) {
+    switch (key) {
+      case downloadAnchorElementAttribute:
+        ele.download = value as String;
+        break;
+      case hreflangAnchorElementAttribute:
+        ele.hreflang = value as String;
+        break;
+      case referrerpolicyAnchorElementAttribute:
+        ele.referrerpolicy = value as String;
+        break;
+      case relAnchorElementAttribute:
+        ele.rel = value as String;
+        break;
+      case targetAnchorElementAttribute:
+        ele.target = value as String;
+        break;
+      case typeAnchorElementAttribute:
+        ele.type = value as String;
+        break;
+      case hashAnchorElementAttribute:
+        ele.hash = value as String;
+        break;
+      case hostAnchorElementAttribute:
+        ele.host = value as String;
+        break;
+      case hostnameAnchorElementAttribute:
+        ele.hostname = value as String;
+        break;
+      case hrefAnchorElementAttribute:
+        ele.href = value as String;
+        break;
+      case passwordAnchorElementAttribute:
+        ele.password = value as String;
+        break;
+      case pathnameAnchorElementAttribute:
+        ele.pathname = value as String;
+        break;
+      case portAnchorElementAttribute:
+        ele.port = value as String;
+        break;
+      case protocolAnchorElementAttribute:
+        ele.protocol = value as String;
+        break;
+      case searchAnchorElementAttribute:
+        ele.search = value as String;
+        break;
+      case usernameAnchorElementAttribute:
+        ele.username = value as String;
+        break;
     }
   }
 }
+
+const altAreaElementAttribute = 0;
+const coordsAreaElementAttribute = 1;
+const referrerpolicyAreaElementAttribute = 2;
+const shapeAreaElementAttribute = 3;
+const targetAreaElementAttribute = 4;
+const hashAreaElementAttribute = 5;
+const hostAreaElementAttribute = 6;
+const hostnameAreaElementAttribute = 7;
+const hrefAreaElementAttribute = 8;
+const passwordAreaElementAttribute = 9;
+const pathnameAreaElementAttribute = 10;
+const portAreaElementAttribute = 11;
+const protocolAreaElementAttribute = 12;
+const searchAreaElementAttribute = 13;
+const usernameAreaElementAttribute = 14;
 
 class VAreaElement extends VHtmlElement<AreaElement> {
   @override
   AreaElement elementFactory() => new AreaElement();
 
-  String _alt;
-  bool _altSet = false;
-  String get alt => _alt;
+  var _setValuesAreaElement = <int, dynamic>{};
+
+  String get alt => _setValuesAreaElement[altAreaElementAttribute] as String;
   set alt(String v) {
-    _alt = v;
-    _altSet = true;
+    _setValuesAreaElement[altAreaElementAttribute] = v;
   }
 
-  String _coords;
-  bool _coordsSet = false;
-  String get coords => _coords;
+  String get coords =>
+      _setValuesAreaElement[coordsAreaElementAttribute] as String;
   set coords(String v) {
-    _coords = v;
-    _coordsSet = true;
+    _setValuesAreaElement[coordsAreaElementAttribute] = v;
   }
 
-  String _referrerpolicy;
-  bool _referrerpolicySet = false;
-  String get referrerpolicy => _referrerpolicy;
+  String get referrerpolicy =>
+      _setValuesAreaElement[referrerpolicyAreaElementAttribute] as String;
   set referrerpolicy(String v) {
-    _referrerpolicy = v;
-    _referrerpolicySet = true;
+    _setValuesAreaElement[referrerpolicyAreaElementAttribute] = v;
   }
 
-  String _shape;
-  bool _shapeSet = false;
-  String get shape => _shape;
+  String get shape =>
+      _setValuesAreaElement[shapeAreaElementAttribute] as String;
   set shape(String v) {
-    _shape = v;
-    _shapeSet = true;
+    _setValuesAreaElement[shapeAreaElementAttribute] = v;
   }
 
-  String _target;
-  bool _targetSet = false;
-  String get target => _target;
+  String get target =>
+      _setValuesAreaElement[targetAreaElementAttribute] as String;
   set target(String v) {
-    _target = v;
-    _targetSet = true;
+    _setValuesAreaElement[targetAreaElementAttribute] = v;
   }
 
-  String _hash;
-  bool _hashSet = false;
-  String get hash => _hash;
+  String get hash => _setValuesAreaElement[hashAreaElementAttribute] as String;
   set hash(String v) {
-    _hash = v;
-    _hashSet = true;
+    _setValuesAreaElement[hashAreaElementAttribute] = v;
   }
 
-  String _host;
-  bool _hostSet = false;
-  String get host => _host;
+  String get host => _setValuesAreaElement[hostAreaElementAttribute] as String;
   set host(String v) {
-    _host = v;
-    _hostSet = true;
+    _setValuesAreaElement[hostAreaElementAttribute] = v;
   }
 
-  String _hostname;
-  bool _hostnameSet = false;
-  String get hostname => _hostname;
+  String get hostname =>
+      _setValuesAreaElement[hostnameAreaElementAttribute] as String;
   set hostname(String v) {
-    _hostname = v;
-    _hostnameSet = true;
+    _setValuesAreaElement[hostnameAreaElementAttribute] = v;
   }
 
-  String _href;
-  bool _hrefSet = false;
-  String get href => _href;
+  String get href => _setValuesAreaElement[hrefAreaElementAttribute] as String;
   set href(String v) {
-    _href = v;
-    _hrefSet = true;
+    _setValuesAreaElement[hrefAreaElementAttribute] = v;
   }
 
-  String _password;
-  bool _passwordSet = false;
-  String get password => _password;
+  String get password =>
+      _setValuesAreaElement[passwordAreaElementAttribute] as String;
   set password(String v) {
-    _password = v;
-    _passwordSet = true;
+    _setValuesAreaElement[passwordAreaElementAttribute] = v;
   }
 
-  String _pathname;
-  bool _pathnameSet = false;
-  String get pathname => _pathname;
+  String get pathname =>
+      _setValuesAreaElement[pathnameAreaElementAttribute] as String;
   set pathname(String v) {
-    _pathname = v;
-    _pathnameSet = true;
+    _setValuesAreaElement[pathnameAreaElementAttribute] = v;
   }
 
-  String _port;
-  bool _portSet = false;
-  String get port => _port;
+  String get port => _setValuesAreaElement[portAreaElementAttribute] as String;
   set port(String v) {
-    _port = v;
-    _portSet = true;
+    _setValuesAreaElement[portAreaElementAttribute] = v;
   }
 
-  String _protocol;
-  bool _protocolSet = false;
-  String get protocol => _protocol;
+  String get protocol =>
+      _setValuesAreaElement[protocolAreaElementAttribute] as String;
   set protocol(String v) {
-    _protocol = v;
-    _protocolSet = true;
+    _setValuesAreaElement[protocolAreaElementAttribute] = v;
   }
 
-  String _search;
-  bool _searchSet = false;
-  String get search => _search;
+  String get search =>
+      _setValuesAreaElement[searchAreaElementAttribute] as String;
   set search(String v) {
-    _search = v;
-    _searchSet = true;
+    _setValuesAreaElement[searchAreaElementAttribute] = v;
   }
 
-  String _username;
-  bool _usernameSet = false;
-  String get username => _username;
+  String get username =>
+      _setValuesAreaElement[usernameAreaElementAttribute] as String;
   set username(String v) {
-    _username = v;
-    _usernameSet = true;
+    _setValuesAreaElement[usernameAreaElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(AreaElement ele) {
+    _setValuesAreaElement
+        .forEach((k, dynamic v) => _updateAttributeAreaElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_altSet) ele.alt = _alt;
-    if (_coordsSet) ele.coords = _coords;
-    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
-    if (_shapeSet) ele.shape = _shape;
-    if (_targetSet) ele.target = _target;
-    if (_hashSet) ele.hash = _hash;
-    if (_hostSet) ele.host = _host;
-    if (_hostnameSet) ele.hostname = _hostname;
-    if (_hrefSet) ele.href = _href;
-    if (_passwordSet) ele.password = _password;
-    if (_pathnameSet) ele.pathname = _pathname;
-    if (_portSet) ele.port = _port;
-    if (_protocolSet) ele.protocol = _protocol;
-    if (_searchSet) ele.search = _search;
-    if (_usernameSet) ele.username = _username;
   }
 
   @override
   @protected
   void updateElementAttributes(VAreaElement prev, AreaElement ele) {
+    prev._setValuesAreaElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesAreaElement[k];
+      if (v != newValue) _updateAttributeAreaElement(ele, k, newValue);
+    });
+    prev._setValuesAreaElement = _setValuesAreaElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_alt != prev._alt) {
-      ele.alt = _alt;
-      prev.alt = _alt;
-    }
-    if (_coords != prev._coords) {
-      ele.coords = _coords;
-      prev.coords = _coords;
-    }
-    if (_referrerpolicy != prev._referrerpolicy) {
-      ele.referrerpolicy = _referrerpolicy;
-      prev.referrerpolicy = _referrerpolicy;
-    }
-    if (_shape != prev._shape) {
-      ele.shape = _shape;
-      prev.shape = _shape;
-    }
-    if (_target != prev._target) {
-      ele.target = _target;
-      prev.target = _target;
-    }
-    if (_hash != prev._hash) {
-      ele.hash = _hash;
-      prev.hash = _hash;
-    }
-    if (_host != prev._host) {
-      ele.host = _host;
-      prev.host = _host;
-    }
-    if (_hostname != prev._hostname) {
-      ele.hostname = _hostname;
-      prev.hostname = _hostname;
-    }
-    if (_href != prev._href) {
-      ele.href = _href;
-      prev.href = _href;
-    }
-    if (_password != prev._password) {
-      ele.password = _password;
-      prev.password = _password;
-    }
-    if (_pathname != prev._pathname) {
-      ele.pathname = _pathname;
-      prev.pathname = _pathname;
-    }
-    if (_port != prev._port) {
-      ele.port = _port;
-      prev.port = _port;
-    }
-    if (_protocol != prev._protocol) {
-      ele.protocol = _protocol;
-      prev.protocol = _protocol;
-    }
-    if (_search != prev._search) {
-      ele.search = _search;
-      prev.search = _search;
-    }
-    if (_username != prev._username) {
-      ele.username = _username;
-      prev.username = _username;
+  void _updateAttributeAreaElement(AreaElement ele, int key, dynamic value) {
+    switch (key) {
+      case altAreaElementAttribute:
+        ele.alt = value as String;
+        break;
+      case coordsAreaElementAttribute:
+        ele.coords = value as String;
+        break;
+      case referrerpolicyAreaElementAttribute:
+        ele.referrerpolicy = value as String;
+        break;
+      case shapeAreaElementAttribute:
+        ele.shape = value as String;
+        break;
+      case targetAreaElementAttribute:
+        ele.target = value as String;
+        break;
+      case hashAreaElementAttribute:
+        ele.hash = value as String;
+        break;
+      case hostAreaElementAttribute:
+        ele.host = value as String;
+        break;
+      case hostnameAreaElementAttribute:
+        ele.hostname = value as String;
+        break;
+      case hrefAreaElementAttribute:
+        ele.href = value as String;
+        break;
+      case passwordAreaElementAttribute:
+        ele.password = value as String;
+        break;
+      case pathnameAreaElementAttribute:
+        ele.pathname = value as String;
+        break;
+      case portAreaElementAttribute:
+        ele.port = value as String;
+        break;
+      case protocolAreaElementAttribute:
+        ele.protocol = value as String;
+        break;
+      case searchAreaElementAttribute:
+        ele.search = value as String;
+        break;
+      case usernameAreaElementAttribute:
+        ele.username = value as String;
+        break;
     }
   }
 }
@@ -462,78 +380,60 @@ class VAreaElement extends VHtmlElement<AreaElement> {
 class VAudioElement extends VMediaElement<AudioElement> {
   @override
   AudioElement elementFactory() => new AudioElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(AudioElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VAudioElement prev, AudioElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 class VBRElement extends VHtmlElement<BRElement> {
   @override
   BRElement elementFactory() => new BRElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(BRElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VBRElement prev, BRElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const hrefBaseElementAttribute = 0;
+const targetBaseElementAttribute = 1;
 
 class VBaseElement extends VHtmlElement<BaseElement> {
   @override
   BaseElement elementFactory() => new BaseElement();
 
-  String _href;
-  bool _hrefSet = false;
-  String get href => _href;
+  var _setValuesBaseElement = <int, dynamic>{};
+
+  String get href => _setValuesBaseElement[hrefBaseElementAttribute] as String;
   set href(String v) {
-    _href = v;
-    _hrefSet = true;
+    _setValuesBaseElement[hrefBaseElementAttribute] = v;
   }
 
-  String _target;
-  bool _targetSet = false;
-  String get target => _target;
+  String get target =>
+      _setValuesBaseElement[targetBaseElementAttribute] as String;
   set target(String v) {
-    _target = v;
-    _targetSet = true;
+    _setValuesBaseElement[targetBaseElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(BaseElement ele) {
+    _setValuesBaseElement
+        .forEach((k, dynamic v) => _updateAttributeBaseElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_hrefSet) ele.href = _href;
-    if (_targetSet) ele.target = _target;
   }
 
   @override
   @protected
   void updateElementAttributes(VBaseElement prev, BaseElement ele) {
+    prev._setValuesBaseElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesBaseElement[k];
+      if (v != newValue) _updateAttributeBaseElement(ele, k, newValue);
+    });
+    prev._setValuesBaseElement = _setValuesBaseElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_href != prev._href) {
-      ele.href = _href;
-      prev.href = _href;
-    }
-    if (_target != prev._target) {
-      ele.target = _target;
-      prev.target = _target;
+  void _updateAttributeBaseElement(BaseElement ele, int key, dynamic value) {
+    switch (key) {
+      case hrefBaseElementAttribute:
+        ele.href = value as String;
+        break;
+      case targetBaseElementAttribute:
+        ele.target = value as String;
+        break;
     }
   }
 }
@@ -541,242 +441,232 @@ class VBaseElement extends VHtmlElement<BaseElement> {
 class VBodyElement extends VHtmlElement<BodyElement> {
   @override
   BodyElement elementFactory() => new BodyElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(BodyElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VBodyElement prev, BodyElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const autofocusButtonElementAttribute = 0;
+const disabledButtonElementAttribute = 1;
+const formActionButtonElementAttribute = 2;
+const formEnctypeButtonElementAttribute = 3;
+const formMethodButtonElementAttribute = 4;
+const formNoValidateButtonElementAttribute = 5;
+const formTargetButtonElementAttribute = 6;
+const nameButtonElementAttribute = 7;
+const typeButtonElementAttribute = 8;
+const valueButtonElementAttribute = 9;
 
 class VButtonElement extends VHtmlElement<ButtonElement> {
   @override
   ButtonElement elementFactory() => new ButtonElement();
 
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  var _setValuesButtonElement = <int, dynamic>{};
+
+  bool get autofocus =>
+      _setValuesButtonElement[autofocusButtonElementAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesButtonElement[autofocusButtonElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesButtonElement[disabledButtonElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesButtonElement[disabledButtonElementAttribute] = v;
   }
 
-  String _formAction;
-  bool _formActionSet = false;
-  String get formAction => _formAction;
+  String get formAction =>
+      _setValuesButtonElement[formActionButtonElementAttribute] as String;
   set formAction(String v) {
-    _formAction = v;
-    _formActionSet = true;
+    _setValuesButtonElement[formActionButtonElementAttribute] = v;
   }
 
-  String _formEnctype;
-  bool _formEnctypeSet = false;
-  String get formEnctype => _formEnctype;
+  String get formEnctype =>
+      _setValuesButtonElement[formEnctypeButtonElementAttribute] as String;
   set formEnctype(String v) {
-    _formEnctype = v;
-    _formEnctypeSet = true;
+    _setValuesButtonElement[formEnctypeButtonElementAttribute] = v;
   }
 
-  String _formMethod;
-  bool _formMethodSet = false;
-  String get formMethod => _formMethod;
+  String get formMethod =>
+      _setValuesButtonElement[formMethodButtonElementAttribute] as String;
   set formMethod(String v) {
-    _formMethod = v;
-    _formMethodSet = true;
+    _setValuesButtonElement[formMethodButtonElementAttribute] = v;
   }
 
-  bool _formNoValidate;
-  bool _formNoValidateSet = false;
-  bool get formNoValidate => _formNoValidate;
+  bool get formNoValidate =>
+      _setValuesButtonElement[formNoValidateButtonElementAttribute] as bool;
   set formNoValidate(bool v) {
-    _formNoValidate = v;
-    _formNoValidateSet = true;
+    _setValuesButtonElement[formNoValidateButtonElementAttribute] = v;
   }
 
-  String _formTarget;
-  bool _formTargetSet = false;
-  String get formTarget => _formTarget;
+  String get formTarget =>
+      _setValuesButtonElement[formTargetButtonElementAttribute] as String;
   set formTarget(String v) {
-    _formTarget = v;
-    _formTargetSet = true;
+    _setValuesButtonElement[formTargetButtonElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesButtonElement[nameButtonElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesButtonElement[nameButtonElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesButtonElement[typeButtonElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesButtonElement[typeButtonElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesButtonElement[valueButtonElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesButtonElement[valueButtonElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ButtonElement ele) {
+    _setValuesButtonElement
+        .forEach((k, dynamic v) => _updateAttributeButtonElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_formActionSet) ele.formAction = _formAction;
-    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
-    if (_formMethodSet) ele.formMethod = _formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
-    if (_formTargetSet) ele.formTarget = _formTarget;
-    if (_nameSet) ele.name = _name;
-    if (_typeSet) ele.type = _type;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VButtonElement prev, ButtonElement ele) {
+    prev._setValuesButtonElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesButtonElement[k];
+      if (v != newValue) _updateAttributeButtonElement(ele, k, newValue);
+    });
+    prev._setValuesButtonElement = _setValuesButtonElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_formAction != prev._formAction) {
-      ele.formAction = _formAction;
-      prev.formAction = _formAction;
-    }
-    if (_formEnctype != prev._formEnctype) {
-      ele.formEnctype = _formEnctype;
-      prev.formEnctype = _formEnctype;
-    }
-    if (_formMethod != prev._formMethod) {
-      ele.formMethod = _formMethod;
-      prev.formMethod = _formMethod;
-    }
-    if (_formNoValidate != prev._formNoValidate) {
-      ele.formNoValidate = _formNoValidate;
-      prev.formNoValidate = _formNoValidate;
-    }
-    if (_formTarget != prev._formTarget) {
-      ele.formTarget = _formTarget;
-      prev.formTarget = _formTarget;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeButtonElement(
+      ButtonElement ele, int key, dynamic value) {
+    switch (key) {
+      case autofocusButtonElementAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case disabledButtonElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case formActionButtonElementAttribute:
+        ele.formAction = value as String;
+        break;
+      case formEnctypeButtonElementAttribute:
+        ele.formEnctype = value as String;
+        break;
+      case formMethodButtonElementAttribute:
+        ele.formMethod = value as String;
+        break;
+      case formNoValidateButtonElementAttribute:
+        ele.formNoValidate = value as bool;
+        break;
+      case formTargetButtonElementAttribute:
+        ele.formTarget = value as String;
+        break;
+      case nameButtonElementAttribute:
+        ele.name = value as String;
+        break;
+      case typeButtonElementAttribute:
+        ele.type = value as String;
+        break;
+      case valueButtonElementAttribute:
+        ele.value = value as String;
+        break;
     }
   }
 }
+
+const heightCanvasElementAttribute = 0;
+const widthCanvasElementAttribute = 1;
 
 class VCanvasElement extends VHtmlElement<CanvasElement> {
   @override
   CanvasElement elementFactory() => new CanvasElement();
 
-  int _height;
-  bool _heightSet = false;
-  int get height => _height;
+  var _setValuesCanvasElement = <int, dynamic>{};
+
+  int get height =>
+      _setValuesCanvasElement[heightCanvasElementAttribute] as int;
   set height(int v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesCanvasElement[heightCanvasElementAttribute] = v;
   }
 
-  int _width;
-  bool _widthSet = false;
-  int get width => _width;
+  int get width => _setValuesCanvasElement[widthCanvasElementAttribute] as int;
   set width(int v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesCanvasElement[widthCanvasElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(CanvasElement ele) {
+    _setValuesCanvasElement
+        .forEach((k, dynamic v) => _updateAttributeCanvasElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_heightSet) ele.height = _height;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(VCanvasElement prev, CanvasElement ele) {
+    prev._setValuesCanvasElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesCanvasElement[k];
+      if (v != newValue) _updateAttributeCanvasElement(ele, k, newValue);
+    });
+    prev._setValuesCanvasElement = _setValuesCanvasElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeCanvasElement(
+      CanvasElement ele, int key, dynamic value) {
+    switch (key) {
+      case heightCanvasElementAttribute:
+        ele.height = value as int;
+        break;
+      case widthCanvasElementAttribute:
+        ele.width = value as int;
+        break;
     }
   }
 }
+
+const selectContentElementAttribute = 0;
 
 class VContentElement extends VHtmlElement<ContentElement> {
   @override
   ContentElement elementFactory() => new ContentElement();
 
-  String _select;
-  bool _selectSet = false;
-  String get select => _select;
+  var _setValuesContentElement = <int, dynamic>{};
+
+  String get select =>
+      _setValuesContentElement[selectContentElementAttribute] as String;
   set select(String v) {
-    _select = v;
-    _selectSet = true;
+    _setValuesContentElement[selectContentElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ContentElement ele) {
+    _setValuesContentElement
+        .forEach((k, dynamic v) => _updateAttributeContentElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_selectSet) ele.select = _select;
   }
 
   @override
   @protected
   void updateElementAttributes(VContentElement prev, ContentElement ele) {
+    prev._setValuesContentElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesContentElement[k];
+      if (v != newValue) _updateAttributeContentElement(ele, k, newValue);
+    });
+    prev._setValuesContentElement = _setValuesContentElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_select != prev._select) {
-      ele.select = _select;
-      prev.select = _select;
+  void _updateAttributeContentElement(
+      ContentElement ele, int key, dynamic value) {
+    switch (key) {
+      case selectContentElementAttribute:
+        ele.select = value as String;
+        break;
     }
   }
 }
@@ -784,107 +674,101 @@ class VContentElement extends VHtmlElement<ContentElement> {
 class VDListElement extends VHtmlElement<DListElement> {
   @override
   DListElement elementFactory() => new DListElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(DListElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VDListElement prev, DListElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 class VDataListElement extends VHtmlElement<DataListElement> {
   @override
   DataListElement elementFactory() => new DataListElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(DataListElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VDataListElement prev, DataListElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const openDetailsElementAttribute = 0;
 
 class VDetailsElement extends VHtmlElement<DetailsElement> {
   @override
   DetailsElement elementFactory() => new DetailsElement();
 
-  bool _open;
-  bool _openSet = false;
-  bool get open => _open;
+  var _setValuesDetailsElement = <int, dynamic>{};
+
+  bool get open =>
+      _setValuesDetailsElement[openDetailsElementAttribute] as bool;
   set open(bool v) {
-    _open = v;
-    _openSet = true;
+    _setValuesDetailsElement[openDetailsElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(DetailsElement ele) {
+    _setValuesDetailsElement
+        .forEach((k, dynamic v) => _updateAttributeDetailsElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_openSet) ele.open = _open;
   }
 
   @override
   @protected
   void updateElementAttributes(VDetailsElement prev, DetailsElement ele) {
+    prev._setValuesDetailsElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesDetailsElement[k];
+      if (v != newValue) _updateAttributeDetailsElement(ele, k, newValue);
+    });
+    prev._setValuesDetailsElement = _setValuesDetailsElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_open != prev._open) {
-      ele.open = _open;
-      prev.open = _open;
+  void _updateAttributeDetailsElement(
+      DetailsElement ele, int key, dynamic value) {
+    switch (key) {
+      case openDetailsElementAttribute:
+        ele.open = value as bool;
+        break;
     }
   }
 }
 
+const openDialogElementAttribute = 0;
+const returnValueDialogElementAttribute = 1;
+
 abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
-  bool _open;
-  bool _openSet = false;
-  bool get open => _open;
+  var _setValuesDialogElement = <int, dynamic>{};
+
+  bool get open => _setValuesDialogElement[openDialogElementAttribute] as bool;
   set open(bool v) {
-    _open = v;
-    _openSet = true;
+    _setValuesDialogElement[openDialogElementAttribute] = v;
   }
 
-  String _returnValue;
-  bool _returnValueSet = false;
-  String get returnValue => _returnValue;
+  String get returnValue =>
+      _setValuesDialogElement[returnValueDialogElementAttribute] as String;
   set returnValue(String v) {
-    _returnValue = v;
-    _returnValueSet = true;
+    _setValuesDialogElement[returnValueDialogElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesDialogElement
+        .forEach((k, dynamic v) => _updateAttributeDialogElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_openSet) ele.open = _open;
-    if (_returnValueSet) ele.returnValue = _returnValue;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VDialogElement<T> prev, T ele) {
+    prev._setValuesDialogElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesDialogElement[k];
+      if (v != newValue) _updateAttributeDialogElement(ele, k, newValue);
+    });
+    prev._setValuesDialogElement = _setValuesDialogElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_open != prev._open) {
-      ele.open = _open;
-      prev.open = _open;
-    }
-    if (_returnValue != prev._returnValue) {
-      ele.returnValue = _returnValue;
-      prev.returnValue = _returnValue;
+  void _updateAttributeDialogElement(
+      DialogElement ele, int key, dynamic value) {
+    switch (key) {
+      case openDialogElementAttribute:
+        ele.open = value as bool;
+        break;
+      case returnValueDialogElementAttribute:
+        ele.returnValue = value as String;
+        break;
     }
   }
 }
@@ -892,313 +776,300 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
 class VDivElement extends VHtmlElement<DivElement> {
   @override
   DivElement elementFactory() => new DivElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(DivElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VDivElement prev, DivElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const heightEmbedElementAttribute = 0;
+const nameEmbedElementAttribute = 1;
+const srcEmbedElementAttribute = 2;
+const typeEmbedElementAttribute = 3;
+const widthEmbedElementAttribute = 4;
 
 class VEmbedElement extends VHtmlElement<EmbedElement> {
   @override
   EmbedElement elementFactory() => new EmbedElement();
 
-  String _height;
-  bool _heightSet = false;
-  String get height => _height;
+  var _setValuesEmbedElement = <int, dynamic>{};
+
+  String get height =>
+      _setValuesEmbedElement[heightEmbedElementAttribute] as String;
   set height(String v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesEmbedElement[heightEmbedElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesEmbedElement[nameEmbedElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesEmbedElement[nameEmbedElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src => _setValuesEmbedElement[srcEmbedElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesEmbedElement[srcEmbedElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesEmbedElement[typeEmbedElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesEmbedElement[typeEmbedElementAttribute] = v;
   }
 
-  String _width;
-  bool _widthSet = false;
-  String get width => _width;
+  String get width =>
+      _setValuesEmbedElement[widthEmbedElementAttribute] as String;
   set width(String v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesEmbedElement[widthEmbedElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(EmbedElement ele) {
+    _setValuesEmbedElement
+        .forEach((k, dynamic v) => _updateAttributeEmbedElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_heightSet) ele.height = _height;
-    if (_nameSet) ele.name = _name;
-    if (_srcSet) ele.src = _src;
-    if (_typeSet) ele.type = _type;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(VEmbedElement prev, EmbedElement ele) {
+    prev._setValuesEmbedElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesEmbedElement[k];
+      if (v != newValue) _updateAttributeEmbedElement(ele, k, newValue);
+    });
+    prev._setValuesEmbedElement = _setValuesEmbedElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeEmbedElement(EmbedElement ele, int key, dynamic value) {
+    switch (key) {
+      case heightEmbedElementAttribute:
+        ele.height = value as String;
+        break;
+      case nameEmbedElementAttribute:
+        ele.name = value as String;
+        break;
+      case srcEmbedElementAttribute:
+        ele.src = value as String;
+        break;
+      case typeEmbedElementAttribute:
+        ele.type = value as String;
+        break;
+      case widthEmbedElementAttribute:
+        ele.width = value as String;
+        break;
     }
   }
 }
+
+const disabledFieldSetElementAttribute = 0;
+const nameFieldSetElementAttribute = 1;
 
 class VFieldSetElement extends VHtmlElement<FieldSetElement> {
   @override
   FieldSetElement elementFactory() => new FieldSetElement();
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  var _setValuesFieldSetElement = <int, dynamic>{};
+
+  bool get disabled =>
+      _setValuesFieldSetElement[disabledFieldSetElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesFieldSetElement[disabledFieldSetElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesFieldSetElement[nameFieldSetElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesFieldSetElement[nameFieldSetElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(FieldSetElement ele) {
+    _setValuesFieldSetElement
+        .forEach((k, dynamic v) => _updateAttributeFieldSetElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_nameSet) ele.name = _name;
   }
 
   @override
   @protected
   void updateElementAttributes(VFieldSetElement prev, FieldSetElement ele) {
+    prev._setValuesFieldSetElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesFieldSetElement[k];
+      if (v != newValue) _updateAttributeFieldSetElement(ele, k, newValue);
+    });
+    prev._setValuesFieldSetElement = _setValuesFieldSetElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
+  void _updateAttributeFieldSetElement(
+      FieldSetElement ele, int key, dynamic value) {
+    switch (key) {
+      case disabledFieldSetElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case nameFieldSetElementAttribute:
+        ele.name = value as String;
+        break;
     }
   }
 }
+
+const acceptCharsetFormElementAttribute = 0;
+const actionFormElementAttribute = 1;
+const autocompleteFormElementAttribute = 2;
+const encodingFormElementAttribute = 3;
+const enctypeFormElementAttribute = 4;
+const methodFormElementAttribute = 5;
+const nameFormElementAttribute = 6;
+const noValidateFormElementAttribute = 7;
+const targetFormElementAttribute = 8;
 
 class VFormElement extends VHtmlElement<FormElement> {
   @override
   FormElement elementFactory() => new FormElement();
 
-  String _acceptCharset;
-  bool _acceptCharsetSet = false;
-  String get acceptCharset => _acceptCharset;
+  var _setValuesFormElement = <int, dynamic>{};
+
+  String get acceptCharset =>
+      _setValuesFormElement[acceptCharsetFormElementAttribute] as String;
   set acceptCharset(String v) {
-    _acceptCharset = v;
-    _acceptCharsetSet = true;
+    _setValuesFormElement[acceptCharsetFormElementAttribute] = v;
   }
 
-  String _action;
-  bool _actionSet = false;
-  String get action => _action;
+  String get action =>
+      _setValuesFormElement[actionFormElementAttribute] as String;
   set action(String v) {
-    _action = v;
-    _actionSet = true;
+    _setValuesFormElement[actionFormElementAttribute] = v;
   }
 
-  String _autocomplete;
-  bool _autocompleteSet = false;
-  String get autocomplete => _autocomplete;
+  String get autocomplete =>
+      _setValuesFormElement[autocompleteFormElementAttribute] as String;
   set autocomplete(String v) {
-    _autocomplete = v;
-    _autocompleteSet = true;
+    _setValuesFormElement[autocompleteFormElementAttribute] = v;
   }
 
-  String _encoding;
-  bool _encodingSet = false;
-  String get encoding => _encoding;
+  String get encoding =>
+      _setValuesFormElement[encodingFormElementAttribute] as String;
   set encoding(String v) {
-    _encoding = v;
-    _encodingSet = true;
+    _setValuesFormElement[encodingFormElementAttribute] = v;
   }
 
-  String _enctype;
-  bool _enctypeSet = false;
-  String get enctype => _enctype;
+  String get enctype =>
+      _setValuesFormElement[enctypeFormElementAttribute] as String;
   set enctype(String v) {
-    _enctype = v;
-    _enctypeSet = true;
+    _setValuesFormElement[enctypeFormElementAttribute] = v;
   }
 
-  String _method;
-  bool _methodSet = false;
-  String get method => _method;
+  String get method =>
+      _setValuesFormElement[methodFormElementAttribute] as String;
   set method(String v) {
-    _method = v;
-    _methodSet = true;
+    _setValuesFormElement[methodFormElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name => _setValuesFormElement[nameFormElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesFormElement[nameFormElementAttribute] = v;
   }
 
-  bool _noValidate;
-  bool _noValidateSet = false;
-  bool get noValidate => _noValidate;
+  bool get noValidate =>
+      _setValuesFormElement[noValidateFormElementAttribute] as bool;
   set noValidate(bool v) {
-    _noValidate = v;
-    _noValidateSet = true;
+    _setValuesFormElement[noValidateFormElementAttribute] = v;
   }
 
-  String _target;
-  bool _targetSet = false;
-  String get target => _target;
+  String get target =>
+      _setValuesFormElement[targetFormElementAttribute] as String;
   set target(String v) {
-    _target = v;
-    _targetSet = true;
+    _setValuesFormElement[targetFormElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(FormElement ele) {
+    _setValuesFormElement
+        .forEach((k, dynamic v) => _updateAttributeFormElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_acceptCharsetSet) ele.acceptCharset = _acceptCharset;
-    if (_actionSet) ele.action = _action;
-    if (_autocompleteSet) ele.autocomplete = _autocomplete;
-    if (_encodingSet) ele.encoding = _encoding;
-    if (_enctypeSet) ele.enctype = _enctype;
-    if (_methodSet) ele.method = _method;
-    if (_nameSet) ele.name = _name;
-    if (_noValidateSet) ele.noValidate = _noValidate;
-    if (_targetSet) ele.target = _target;
   }
 
   @override
   @protected
   void updateElementAttributes(VFormElement prev, FormElement ele) {
+    prev._setValuesFormElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesFormElement[k];
+      if (v != newValue) _updateAttributeFormElement(ele, k, newValue);
+    });
+    prev._setValuesFormElement = _setValuesFormElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_acceptCharset != prev._acceptCharset) {
-      ele.acceptCharset = _acceptCharset;
-      prev.acceptCharset = _acceptCharset;
-    }
-    if (_action != prev._action) {
-      ele.action = _action;
-      prev.action = _action;
-    }
-    if (_autocomplete != prev._autocomplete) {
-      ele.autocomplete = _autocomplete;
-      prev.autocomplete = _autocomplete;
-    }
-    if (_encoding != prev._encoding) {
-      ele.encoding = _encoding;
-      prev.encoding = _encoding;
-    }
-    if (_enctype != prev._enctype) {
-      ele.enctype = _enctype;
-      prev.enctype = _enctype;
-    }
-    if (_method != prev._method) {
-      ele.method = _method;
-      prev.method = _method;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_noValidate != prev._noValidate) {
-      ele.noValidate = _noValidate;
-      prev.noValidate = _noValidate;
-    }
-    if (_target != prev._target) {
-      ele.target = _target;
-      prev.target = _target;
+  void _updateAttributeFormElement(FormElement ele, int key, dynamic value) {
+    switch (key) {
+      case acceptCharsetFormElementAttribute:
+        ele.acceptCharset = value as String;
+        break;
+      case actionFormElementAttribute:
+        ele.action = value as String;
+        break;
+      case autocompleteFormElementAttribute:
+        ele.autocomplete = value as String;
+        break;
+      case encodingFormElementAttribute:
+        ele.encoding = value as String;
+        break;
+      case enctypeFormElementAttribute:
+        ele.enctype = value as String;
+        break;
+      case methodFormElementAttribute:
+        ele.method = value as String;
+        break;
+      case nameFormElementAttribute:
+        ele.name = value as String;
+        break;
+      case noValidateFormElementAttribute:
+        ele.noValidate = value as bool;
+        break;
+      case targetFormElementAttribute:
+        ele.target = value as String;
+        break;
     }
   }
 }
+
+const colorHRElementAttribute = 0;
 
 class VHRElement extends VHtmlElement<HRElement> {
   @override
   HRElement elementFactory() => new HRElement();
 
-  String _color;
-  bool _colorSet = false;
-  String get color => _color;
+  var _setValuesHRElement = <int, dynamic>{};
+
+  String get color => _setValuesHRElement[colorHRElementAttribute] as String;
   set color(String v) {
-    _color = v;
-    _colorSet = true;
+    _setValuesHRElement[colorHRElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(HRElement ele) {
+    _setValuesHRElement
+        .forEach((k, dynamic v) => _updateAttributeHRElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_colorSet) ele.color = _color;
   }
 
   @override
   @protected
   void updateElementAttributes(VHRElement prev, HRElement ele) {
+    prev._setValuesHRElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesHRElement[k];
+      if (v != newValue) _updateAttributeHRElement(ele, k, newValue);
+    });
+    prev._setValuesHRElement = _setValuesHRElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_color != prev._color) {
-      ele.color = _color;
-      prev.color = _color;
+  void _updateAttributeHRElement(HRElement ele, int key, dynamic value) {
+    switch (key) {
+      case colorHRElementAttribute:
+        ele.color = value as String;
+        break;
     }
   }
 }
@@ -1206,980 +1077,789 @@ class VHRElement extends VHtmlElement<HRElement> {
 class VHeadElement extends VHtmlElement<HeadElement> {
   @override
   HeadElement elementFactory() => new HeadElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(HeadElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VHeadElement prev, HeadElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 abstract class VHeadingElement<T extends HeadingElement>
-    extends VHtmlElement<T> {
-  @override
-  @protected
-  void applyAttributesToElement(T ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(covariant VHeadingElement<T> prev, T ele) {
-    super.updateElementAttributes(prev, ele);
-  }
-}
+    extends VHtmlElement<T> {}
 
 class VHtmlHtmlElement extends VHtmlElement<HtmlHtmlElement> {
   @override
   HtmlHtmlElement elementFactory() => new HtmlHtmlElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(HtmlHtmlElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VHtmlHtmlElement prev, HtmlHtmlElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const allowFullscreenIFrameElementAttribute = 0;
+const heightIFrameElementAttribute = 1;
+const nameIFrameElementAttribute = 2;
+const referrerpolicyIFrameElementAttribute = 3;
+const srcIFrameElementAttribute = 4;
+const srcdocIFrameElementAttribute = 5;
+const widthIFrameElementAttribute = 6;
 
 class VIFrameElement extends VHtmlElement<IFrameElement> {
   @override
   IFrameElement elementFactory() => new IFrameElement();
 
-  bool _allowFullscreen;
-  bool _allowFullscreenSet = false;
-  bool get allowFullscreen => _allowFullscreen;
+  var _setValuesIFrameElement = <int, dynamic>{};
+
+  bool get allowFullscreen =>
+      _setValuesIFrameElement[allowFullscreenIFrameElementAttribute] as bool;
   set allowFullscreen(bool v) {
-    _allowFullscreen = v;
-    _allowFullscreenSet = true;
+    _setValuesIFrameElement[allowFullscreenIFrameElementAttribute] = v;
   }
 
-  String _height;
-  bool _heightSet = false;
-  String get height => _height;
+  String get height =>
+      _setValuesIFrameElement[heightIFrameElementAttribute] as String;
   set height(String v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesIFrameElement[heightIFrameElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesIFrameElement[nameIFrameElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesIFrameElement[nameIFrameElementAttribute] = v;
   }
 
-  String _referrerpolicy;
-  bool _referrerpolicySet = false;
-  String get referrerpolicy => _referrerpolicy;
+  String get referrerpolicy =>
+      _setValuesIFrameElement[referrerpolicyIFrameElementAttribute] as String;
   set referrerpolicy(String v) {
-    _referrerpolicy = v;
-    _referrerpolicySet = true;
+    _setValuesIFrameElement[referrerpolicyIFrameElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src =>
+      _setValuesIFrameElement[srcIFrameElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesIFrameElement[srcIFrameElementAttribute] = v;
   }
 
-  String _srcdoc;
-  bool _srcdocSet = false;
-  String get srcdoc => _srcdoc;
+  String get srcdoc =>
+      _setValuesIFrameElement[srcdocIFrameElementAttribute] as String;
   set srcdoc(String v) {
-    _srcdoc = v;
-    _srcdocSet = true;
+    _setValuesIFrameElement[srcdocIFrameElementAttribute] = v;
   }
 
-  String _width;
-  bool _widthSet = false;
-  String get width => _width;
+  String get width =>
+      _setValuesIFrameElement[widthIFrameElementAttribute] as String;
   set width(String v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesIFrameElement[widthIFrameElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(IFrameElement ele) {
+    _setValuesIFrameElement
+        .forEach((k, dynamic v) => _updateAttributeIFrameElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_allowFullscreenSet) ele.allowFullscreen = _allowFullscreen;
-    if (_heightSet) ele.height = _height;
-    if (_nameSet) ele.name = _name;
-    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
-    if (_srcSet) ele.src = _src;
-    if (_srcdocSet) ele.srcdoc = _srcdoc;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(VIFrameElement prev, IFrameElement ele) {
+    prev._setValuesIFrameElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesIFrameElement[k];
+      if (v != newValue) _updateAttributeIFrameElement(ele, k, newValue);
+    });
+    prev._setValuesIFrameElement = _setValuesIFrameElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_allowFullscreen != prev._allowFullscreen) {
-      ele.allowFullscreen = _allowFullscreen;
-      prev.allowFullscreen = _allowFullscreen;
-    }
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_referrerpolicy != prev._referrerpolicy) {
-      ele.referrerpolicy = _referrerpolicy;
-      prev.referrerpolicy = _referrerpolicy;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_srcdoc != prev._srcdoc) {
-      ele.srcdoc = _srcdoc;
-      prev.srcdoc = _srcdoc;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeIFrameElement(
+      IFrameElement ele, int key, dynamic value) {
+    switch (key) {
+      case allowFullscreenIFrameElementAttribute:
+        ele.allowFullscreen = value as bool;
+        break;
+      case heightIFrameElementAttribute:
+        ele.height = value as String;
+        break;
+      case nameIFrameElementAttribute:
+        ele.name = value as String;
+        break;
+      case referrerpolicyIFrameElementAttribute:
+        ele.referrerpolicy = value as String;
+        break;
+      case srcIFrameElementAttribute:
+        ele.src = value as String;
+        break;
+      case srcdocIFrameElementAttribute:
+        ele.srcdoc = value as String;
+        break;
+      case widthIFrameElementAttribute:
+        ele.width = value as String;
+        break;
     }
   }
 }
+
+const altImageElementAttribute = 0;
+const crossOriginImageElementAttribute = 1;
+const heightImageElementAttribute = 2;
+const isMapImageElementAttribute = 3;
+const referrerpolicyImageElementAttribute = 4;
+const sizesImageElementAttribute = 5;
+const srcImageElementAttribute = 6;
+const srcsetImageElementAttribute = 7;
+const useMapImageElementAttribute = 8;
+const widthImageElementAttribute = 9;
 
 class VImageElement extends VHtmlElement<ImageElement> {
   @override
   ImageElement elementFactory() => new ImageElement();
 
-  String _alt;
-  bool _altSet = false;
-  String get alt => _alt;
+  var _setValuesImageElement = <int, dynamic>{};
+
+  String get alt => _setValuesImageElement[altImageElementAttribute] as String;
   set alt(String v) {
-    _alt = v;
-    _altSet = true;
+    _setValuesImageElement[altImageElementAttribute] = v;
   }
 
-  String _crossOrigin;
-  bool _crossOriginSet = false;
-  String get crossOrigin => _crossOrigin;
+  String get crossOrigin =>
+      _setValuesImageElement[crossOriginImageElementAttribute] as String;
   set crossOrigin(String v) {
-    _crossOrigin = v;
-    _crossOriginSet = true;
+    _setValuesImageElement[crossOriginImageElementAttribute] = v;
   }
 
-  int _height;
-  bool _heightSet = false;
-  int get height => _height;
+  int get height => _setValuesImageElement[heightImageElementAttribute] as int;
   set height(int v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesImageElement[heightImageElementAttribute] = v;
   }
 
-  bool _isMap;
-  bool _isMapSet = false;
-  bool get isMap => _isMap;
+  bool get isMap => _setValuesImageElement[isMapImageElementAttribute] as bool;
   set isMap(bool v) {
-    _isMap = v;
-    _isMapSet = true;
+    _setValuesImageElement[isMapImageElementAttribute] = v;
   }
 
-  String _referrerpolicy;
-  bool _referrerpolicySet = false;
-  String get referrerpolicy => _referrerpolicy;
+  String get referrerpolicy =>
+      _setValuesImageElement[referrerpolicyImageElementAttribute] as String;
   set referrerpolicy(String v) {
-    _referrerpolicy = v;
-    _referrerpolicySet = true;
+    _setValuesImageElement[referrerpolicyImageElementAttribute] = v;
   }
 
-  String _sizes;
-  bool _sizesSet = false;
-  String get sizes => _sizes;
+  String get sizes =>
+      _setValuesImageElement[sizesImageElementAttribute] as String;
   set sizes(String v) {
-    _sizes = v;
-    _sizesSet = true;
+    _setValuesImageElement[sizesImageElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src => _setValuesImageElement[srcImageElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesImageElement[srcImageElementAttribute] = v;
   }
 
-  String _srcset;
-  bool _srcsetSet = false;
-  String get srcset => _srcset;
+  String get srcset =>
+      _setValuesImageElement[srcsetImageElementAttribute] as String;
   set srcset(String v) {
-    _srcset = v;
-    _srcsetSet = true;
+    _setValuesImageElement[srcsetImageElementAttribute] = v;
   }
 
-  String _useMap;
-  bool _useMapSet = false;
-  String get useMap => _useMap;
+  String get useMap =>
+      _setValuesImageElement[useMapImageElementAttribute] as String;
   set useMap(String v) {
-    _useMap = v;
-    _useMapSet = true;
+    _setValuesImageElement[useMapImageElementAttribute] = v;
   }
 
-  int _width;
-  bool _widthSet = false;
-  int get width => _width;
+  int get width => _setValuesImageElement[widthImageElementAttribute] as int;
   set width(int v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesImageElement[widthImageElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ImageElement ele) {
+    _setValuesImageElement
+        .forEach((k, dynamic v) => _updateAttributeImageElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_altSet) ele.alt = _alt;
-    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
-    if (_heightSet) ele.height = _height;
-    if (_isMapSet) ele.isMap = _isMap;
-    if (_referrerpolicySet) ele.referrerpolicy = _referrerpolicy;
-    if (_sizesSet) ele.sizes = _sizes;
-    if (_srcSet) ele.src = _src;
-    if (_srcsetSet) ele.srcset = _srcset;
-    if (_useMapSet) ele.useMap = _useMap;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(VImageElement prev, ImageElement ele) {
+    prev._setValuesImageElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesImageElement[k];
+      if (v != newValue) _updateAttributeImageElement(ele, k, newValue);
+    });
+    prev._setValuesImageElement = _setValuesImageElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_alt != prev._alt) {
-      ele.alt = _alt;
-      prev.alt = _alt;
-    }
-    if (_crossOrigin != prev._crossOrigin) {
-      ele.crossOrigin = _crossOrigin;
-      prev.crossOrigin = _crossOrigin;
-    }
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_isMap != prev._isMap) {
-      ele.isMap = _isMap;
-      prev.isMap = _isMap;
-    }
-    if (_referrerpolicy != prev._referrerpolicy) {
-      ele.referrerpolicy = _referrerpolicy;
-      prev.referrerpolicy = _referrerpolicy;
-    }
-    if (_sizes != prev._sizes) {
-      ele.sizes = _sizes;
-      prev.sizes = _sizes;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_srcset != prev._srcset) {
-      ele.srcset = _srcset;
-      prev.srcset = _srcset;
-    }
-    if (_useMap != prev._useMap) {
-      ele.useMap = _useMap;
-      prev.useMap = _useMap;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeImageElement(ImageElement ele, int key, dynamic value) {
+    switch (key) {
+      case altImageElementAttribute:
+        ele.alt = value as String;
+        break;
+      case crossOriginImageElementAttribute:
+        ele.crossOrigin = value as String;
+        break;
+      case heightImageElementAttribute:
+        ele.height = value as int;
+        break;
+      case isMapImageElementAttribute:
+        ele.isMap = value as bool;
+        break;
+      case referrerpolicyImageElementAttribute:
+        ele.referrerpolicy = value as String;
+        break;
+      case sizesImageElementAttribute:
+        ele.sizes = value as String;
+        break;
+      case srcImageElementAttribute:
+        ele.src = value as String;
+        break;
+      case srcsetImageElementAttribute:
+        ele.srcset = value as String;
+        break;
+      case useMapImageElementAttribute:
+        ele.useMap = value as String;
+        break;
+      case widthImageElementAttribute:
+        ele.width = value as int;
+        break;
     }
   }
 }
+
+const acceptInputElementAttribute = 0;
+const altInputElementAttribute = 1;
+const autocapitalizeInputElementAttribute = 2;
+const autocompleteInputElementAttribute = 3;
+const autofocusInputElementAttribute = 4;
+const captureInputElementAttribute = 5;
+const checkedInputElementAttribute = 6;
+const defaultCheckedInputElementAttribute = 7;
+const defaultValueInputElementAttribute = 8;
+const dirNameInputElementAttribute = 9;
+const disabledInputElementAttribute = 10;
+const filesInputElementAttribute = 11;
+const formActionInputElementAttribute = 12;
+const formEnctypeInputElementAttribute = 13;
+const formMethodInputElementAttribute = 14;
+const formNoValidateInputElementAttribute = 15;
+const formTargetInputElementAttribute = 16;
+const heightInputElementAttribute = 17;
+const incrementalInputElementAttribute = 18;
+const indeterminateInputElementAttribute = 19;
+const inputModeInputElementAttribute = 20;
+const maxInputElementAttribute = 21;
+const maxLengthInputElementAttribute = 22;
+const minInputElementAttribute = 23;
+const minLengthInputElementAttribute = 24;
+const multipleInputElementAttribute = 25;
+const nameInputElementAttribute = 26;
+const patternInputElementAttribute = 27;
+const placeholderInputElementAttribute = 28;
+const readOnlyInputElementAttribute = 29;
+const requiredInputElementAttribute = 30;
+const selectionDirectionInputElementAttribute = 31;
+const selectionEndInputElementAttribute = 32;
+const selectionStartInputElementAttribute = 33;
+const sizeInputElementAttribute = 34;
+const srcInputElementAttribute = 35;
+const stepInputElementAttribute = 36;
+const typeInputElementAttribute = 37;
+const valueInputElementAttribute = 38;
+const valueAsNumberInputElementAttribute = 39;
+const directoryInputElementAttribute = 40;
+const widthInputElementAttribute = 41;
+const valueAsDateInputElementAttribute = 42;
 
 class VInputElement extends VHtmlElement<InputElement> {
   @override
   InputElement elementFactory() => new InputElement();
 
-  String _accept;
-  bool _acceptSet = false;
-  String get accept => _accept;
+  var _setValuesInputElement = <int, dynamic>{};
+
+  String get accept =>
+      _setValuesInputElement[acceptInputElementAttribute] as String;
   set accept(String v) {
-    _accept = v;
-    _acceptSet = true;
+    _setValuesInputElement[acceptInputElementAttribute] = v;
   }
 
-  String _alt;
-  bool _altSet = false;
-  String get alt => _alt;
+  String get alt => _setValuesInputElement[altInputElementAttribute] as String;
   set alt(String v) {
-    _alt = v;
-    _altSet = true;
+    _setValuesInputElement[altInputElementAttribute] = v;
   }
 
-  String _autocapitalize;
-  bool _autocapitalizeSet = false;
-  String get autocapitalize => _autocapitalize;
+  String get autocapitalize =>
+      _setValuesInputElement[autocapitalizeInputElementAttribute] as String;
   set autocapitalize(String v) {
-    _autocapitalize = v;
-    _autocapitalizeSet = true;
+    _setValuesInputElement[autocapitalizeInputElementAttribute] = v;
   }
 
-  String _autocomplete;
-  bool _autocompleteSet = false;
-  String get autocomplete => _autocomplete;
+  String get autocomplete =>
+      _setValuesInputElement[autocompleteInputElementAttribute] as String;
   set autocomplete(String v) {
-    _autocomplete = v;
-    _autocompleteSet = true;
+    _setValuesInputElement[autocompleteInputElementAttribute] = v;
   }
 
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  bool get autofocus =>
+      _setValuesInputElement[autofocusInputElementAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesInputElement[autofocusInputElementAttribute] = v;
   }
 
-  bool _capture;
-  bool _captureSet = false;
-  bool get capture => _capture;
+  bool get capture =>
+      _setValuesInputElement[captureInputElementAttribute] as bool;
   set capture(bool v) {
-    _capture = v;
-    _captureSet = true;
+    _setValuesInputElement[captureInputElementAttribute] = v;
   }
 
-  bool _checked;
-  bool _checkedSet = false;
-  bool get checked => _checked;
+  bool get checked =>
+      _setValuesInputElement[checkedInputElementAttribute] as bool;
   set checked(bool v) {
-    _checked = v;
-    _checkedSet = true;
+    _setValuesInputElement[checkedInputElementAttribute] = v;
   }
 
-  bool _defaultChecked;
-  bool _defaultCheckedSet = false;
-  bool get defaultChecked => _defaultChecked;
+  bool get defaultChecked =>
+      _setValuesInputElement[defaultCheckedInputElementAttribute] as bool;
   set defaultChecked(bool v) {
-    _defaultChecked = v;
-    _defaultCheckedSet = true;
+    _setValuesInputElement[defaultCheckedInputElementAttribute] = v;
   }
 
-  String _defaultValue;
-  bool _defaultValueSet = false;
-  String get defaultValue => _defaultValue;
+  String get defaultValue =>
+      _setValuesInputElement[defaultValueInputElementAttribute] as String;
   set defaultValue(String v) {
-    _defaultValue = v;
-    _defaultValueSet = true;
+    _setValuesInputElement[defaultValueInputElementAttribute] = v;
   }
 
-  String _dirName;
-  bool _dirNameSet = false;
-  String get dirName => _dirName;
+  String get dirName =>
+      _setValuesInputElement[dirNameInputElementAttribute] as String;
   set dirName(String v) {
-    _dirName = v;
-    _dirNameSet = true;
+    _setValuesInputElement[dirNameInputElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesInputElement[disabledInputElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesInputElement[disabledInputElementAttribute] = v;
   }
 
-  List<File> _files;
-  bool _filesSet = false;
-  List<File> get files => _files;
+  List<File> get files =>
+      _setValuesInputElement[filesInputElementAttribute] as List<File>;
   set files(List<File> v) {
-    _files = v;
-    _filesSet = true;
+    _setValuesInputElement[filesInputElementAttribute] = v;
   }
 
-  String _formAction;
-  bool _formActionSet = false;
-  String get formAction => _formAction;
+  String get formAction =>
+      _setValuesInputElement[formActionInputElementAttribute] as String;
   set formAction(String v) {
-    _formAction = v;
-    _formActionSet = true;
+    _setValuesInputElement[formActionInputElementAttribute] = v;
   }
 
-  String _formEnctype;
-  bool _formEnctypeSet = false;
-  String get formEnctype => _formEnctype;
+  String get formEnctype =>
+      _setValuesInputElement[formEnctypeInputElementAttribute] as String;
   set formEnctype(String v) {
-    _formEnctype = v;
-    _formEnctypeSet = true;
+    _setValuesInputElement[formEnctypeInputElementAttribute] = v;
   }
 
-  String _formMethod;
-  bool _formMethodSet = false;
-  String get formMethod => _formMethod;
+  String get formMethod =>
+      _setValuesInputElement[formMethodInputElementAttribute] as String;
   set formMethod(String v) {
-    _formMethod = v;
-    _formMethodSet = true;
+    _setValuesInputElement[formMethodInputElementAttribute] = v;
   }
 
-  bool _formNoValidate;
-  bool _formNoValidateSet = false;
-  bool get formNoValidate => _formNoValidate;
+  bool get formNoValidate =>
+      _setValuesInputElement[formNoValidateInputElementAttribute] as bool;
   set formNoValidate(bool v) {
-    _formNoValidate = v;
-    _formNoValidateSet = true;
+    _setValuesInputElement[formNoValidateInputElementAttribute] = v;
   }
 
-  String _formTarget;
-  bool _formTargetSet = false;
-  String get formTarget => _formTarget;
+  String get formTarget =>
+      _setValuesInputElement[formTargetInputElementAttribute] as String;
   set formTarget(String v) {
-    _formTarget = v;
-    _formTargetSet = true;
+    _setValuesInputElement[formTargetInputElementAttribute] = v;
   }
 
-  int _height;
-  bool _heightSet = false;
-  int get height => _height;
+  int get height => _setValuesInputElement[heightInputElementAttribute] as int;
   set height(int v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesInputElement[heightInputElementAttribute] = v;
   }
 
-  bool _incremental;
-  bool _incrementalSet = false;
-  bool get incremental => _incremental;
+  bool get incremental =>
+      _setValuesInputElement[incrementalInputElementAttribute] as bool;
   set incremental(bool v) {
-    _incremental = v;
-    _incrementalSet = true;
+    _setValuesInputElement[incrementalInputElementAttribute] = v;
   }
 
-  bool _indeterminate;
-  bool _indeterminateSet = false;
-  bool get indeterminate => _indeterminate;
+  bool get indeterminate =>
+      _setValuesInputElement[indeterminateInputElementAttribute] as bool;
   set indeterminate(bool v) {
-    _indeterminate = v;
-    _indeterminateSet = true;
+    _setValuesInputElement[indeterminateInputElementAttribute] = v;
   }
 
-  String _inputMode;
-  bool _inputModeSet = false;
-  String get inputMode => _inputMode;
+  String get inputMode =>
+      _setValuesInputElement[inputModeInputElementAttribute] as String;
   set inputMode(String v) {
-    _inputMode = v;
-    _inputModeSet = true;
+    _setValuesInputElement[inputModeInputElementAttribute] = v;
   }
 
-  String _max;
-  bool _maxSet = false;
-  String get max => _max;
+  String get max => _setValuesInputElement[maxInputElementAttribute] as String;
   set max(String v) {
-    _max = v;
-    _maxSet = true;
+    _setValuesInputElement[maxInputElementAttribute] = v;
   }
 
-  int _maxLength;
-  bool _maxLengthSet = false;
-  int get maxLength => _maxLength;
+  int get maxLength =>
+      _setValuesInputElement[maxLengthInputElementAttribute] as int;
   set maxLength(int v) {
-    _maxLength = v;
-    _maxLengthSet = true;
+    _setValuesInputElement[maxLengthInputElementAttribute] = v;
   }
 
-  String _min;
-  bool _minSet = false;
-  String get min => _min;
+  String get min => _setValuesInputElement[minInputElementAttribute] as String;
   set min(String v) {
-    _min = v;
-    _minSet = true;
+    _setValuesInputElement[minInputElementAttribute] = v;
   }
 
-  int _minLength;
-  bool _minLengthSet = false;
-  int get minLength => _minLength;
+  int get minLength =>
+      _setValuesInputElement[minLengthInputElementAttribute] as int;
   set minLength(int v) {
-    _minLength = v;
-    _minLengthSet = true;
+    _setValuesInputElement[minLengthInputElementAttribute] = v;
   }
 
-  bool _multiple;
-  bool _multipleSet = false;
-  bool get multiple => _multiple;
+  bool get multiple =>
+      _setValuesInputElement[multipleInputElementAttribute] as bool;
   set multiple(bool v) {
-    _multiple = v;
-    _multipleSet = true;
+    _setValuesInputElement[multipleInputElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesInputElement[nameInputElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesInputElement[nameInputElementAttribute] = v;
   }
 
-  String _pattern;
-  bool _patternSet = false;
-  String get pattern => _pattern;
+  String get pattern =>
+      _setValuesInputElement[patternInputElementAttribute] as String;
   set pattern(String v) {
-    _pattern = v;
-    _patternSet = true;
+    _setValuesInputElement[patternInputElementAttribute] = v;
   }
 
-  String _placeholder;
-  bool _placeholderSet = false;
-  String get placeholder => _placeholder;
+  String get placeholder =>
+      _setValuesInputElement[placeholderInputElementAttribute] as String;
   set placeholder(String v) {
-    _placeholder = v;
-    _placeholderSet = true;
+    _setValuesInputElement[placeholderInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesInputElement[readOnlyInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesInputElement[readOnlyInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesInputElement[requiredInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesInputElement[requiredInputElementAttribute] = v;
   }
 
-  String _selectionDirection;
-  bool _selectionDirectionSet = false;
-  String get selectionDirection => _selectionDirection;
+  String get selectionDirection =>
+      _setValuesInputElement[selectionDirectionInputElementAttribute] as String;
   set selectionDirection(String v) {
-    _selectionDirection = v;
-    _selectionDirectionSet = true;
+    _setValuesInputElement[selectionDirectionInputElementAttribute] = v;
   }
 
-  int _selectionEnd;
-  bool _selectionEndSet = false;
-  int get selectionEnd => _selectionEnd;
+  int get selectionEnd =>
+      _setValuesInputElement[selectionEndInputElementAttribute] as int;
   set selectionEnd(int v) {
-    _selectionEnd = v;
-    _selectionEndSet = true;
+    _setValuesInputElement[selectionEndInputElementAttribute] = v;
   }
 
-  int _selectionStart;
-  bool _selectionStartSet = false;
-  int get selectionStart => _selectionStart;
+  int get selectionStart =>
+      _setValuesInputElement[selectionStartInputElementAttribute] as int;
   set selectionStart(int v) {
-    _selectionStart = v;
-    _selectionStartSet = true;
+    _setValuesInputElement[selectionStartInputElementAttribute] = v;
   }
 
-  int _size;
-  bool _sizeSet = false;
-  int get size => _size;
+  int get size => _setValuesInputElement[sizeInputElementAttribute] as int;
   set size(int v) {
-    _size = v;
-    _sizeSet = true;
+    _setValuesInputElement[sizeInputElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src => _setValuesInputElement[srcInputElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesInputElement[srcInputElementAttribute] = v;
   }
 
-  String _step;
-  bool _stepSet = false;
-  String get step => _step;
+  String get step =>
+      _setValuesInputElement[stepInputElementAttribute] as String;
   set step(String v) {
-    _step = v;
-    _stepSet = true;
+    _setValuesInputElement[stepInputElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesInputElement[typeInputElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesInputElement[typeInputElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesInputElement[valueInputElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesInputElement[valueInputElementAttribute] = v;
   }
 
-  num _valueAsNumber;
-  bool _valueAsNumberSet = false;
-  num get valueAsNumber => _valueAsNumber;
+  num get valueAsNumber =>
+      _setValuesInputElement[valueAsNumberInputElementAttribute] as num;
   set valueAsNumber(num v) {
-    _valueAsNumber = v;
-    _valueAsNumberSet = true;
+    _setValuesInputElement[valueAsNumberInputElementAttribute] = v;
   }
 
-  bool _directory;
-  bool _directorySet = false;
-  bool get directory => _directory;
+  bool get directory =>
+      _setValuesInputElement[directoryInputElementAttribute] as bool;
   set directory(bool v) {
-    _directory = v;
-    _directorySet = true;
+    _setValuesInputElement[directoryInputElementAttribute] = v;
   }
 
-  int _width;
-  bool _widthSet = false;
-  int get width => _width;
+  int get width => _setValuesInputElement[widthInputElementAttribute] as int;
   set width(int v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesInputElement[widthInputElementAttribute] = v;
   }
 
-  DateTime _valueAsDate;
-  bool _valueAsDateSet = false;
-  DateTime get valueAsDate => _valueAsDate;
+  DateTime get valueAsDate =>
+      _setValuesInputElement[valueAsDateInputElementAttribute] as DateTime;
   set valueAsDate(DateTime v) {
-    _valueAsDate = v;
-    _valueAsDateSet = true;
+    _setValuesInputElement[valueAsDateInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(InputElement ele) {
+    _setValuesInputElement
+        .forEach((k, dynamic v) => _updateAttributeInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_acceptSet) ele.accept = _accept;
-    if (_altSet) ele.alt = _alt;
-    if (_autocapitalizeSet) ele.autocapitalize = _autocapitalize;
-    if (_autocompleteSet) ele.autocomplete = _autocomplete;
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_captureSet) ele.capture = _capture;
-    if (_checkedSet) ele.checked = _checked;
-    if (_defaultCheckedSet) ele.defaultChecked = _defaultChecked;
-    if (_defaultValueSet) ele.defaultValue = _defaultValue;
-    if (_dirNameSet) ele.dirName = _dirName;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_filesSet) ele.files = _files;
-    if (_formActionSet) ele.formAction = _formAction;
-    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
-    if (_formMethodSet) ele.formMethod = _formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
-    if (_formTargetSet) ele.formTarget = _formTarget;
-    if (_heightSet) ele.height = _height;
-    if (_incrementalSet) ele.incremental = _incremental;
-    if (_indeterminateSet) ele.indeterminate = _indeterminate;
-    if (_inputModeSet) ele.inputMode = _inputMode;
-    if (_maxSet) ele.max = _max;
-    if (_maxLengthSet) ele.maxLength = _maxLength;
-    if (_minSet) ele.min = _min;
-    if (_minLengthSet) ele.minLength = _minLength;
-    if (_multipleSet) ele.multiple = _multiple;
-    if (_nameSet) ele.name = _name;
-    if (_patternSet) ele.pattern = _pattern;
-    if (_placeholderSet) ele.placeholder = _placeholder;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
-    if (_selectionDirectionSet) ele.selectionDirection = _selectionDirection;
-    if (_selectionEndSet) ele.selectionEnd = _selectionEnd;
-    if (_selectionStartSet) ele.selectionStart = _selectionStart;
-    if (_sizeSet) ele.size = _size;
-    if (_srcSet) ele.src = _src;
-    if (_stepSet) ele.step = _step;
-    if (_typeSet) ele.type = _type;
-    if (_valueSet) ele.value = _value;
-    if (_valueAsNumberSet) ele.valueAsNumber = _valueAsNumber;
-    if (_directorySet) ele.directory = _directory;
-    if (_widthSet) ele.width = _width;
-    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
   }
 
   @override
   @protected
   void updateElementAttributes(VInputElement prev, InputElement ele) {
+    prev._setValuesInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesInputElement[k];
+      if (v != newValue) _updateAttributeInputElement(ele, k, newValue);
+    });
+    prev._setValuesInputElement = _setValuesInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_accept != prev._accept) {
-      ele.accept = _accept;
-      prev.accept = _accept;
-    }
-    if (_alt != prev._alt) {
-      ele.alt = _alt;
-      prev.alt = _alt;
-    }
-    if (_autocapitalize != prev._autocapitalize) {
-      ele.autocapitalize = _autocapitalize;
-      prev.autocapitalize = _autocapitalize;
-    }
-    if (_autocomplete != prev._autocomplete) {
-      ele.autocomplete = _autocomplete;
-      prev.autocomplete = _autocomplete;
-    }
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_capture != prev._capture) {
-      ele.capture = _capture;
-      prev.capture = _capture;
-    }
-    if (_checked != prev._checked) {
-      ele.checked = _checked;
-      prev.checked = _checked;
-    }
-    if (_defaultChecked != prev._defaultChecked) {
-      ele.defaultChecked = _defaultChecked;
-      prev.defaultChecked = _defaultChecked;
-    }
-    if (_defaultValue != prev._defaultValue) {
-      ele.defaultValue = _defaultValue;
-      prev.defaultValue = _defaultValue;
-    }
-    if (_dirName != prev._dirName) {
-      ele.dirName = _dirName;
-      prev.dirName = _dirName;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_files != prev._files) {
-      ele.files = _files;
-      prev.files = _files;
-    }
-    if (_formAction != prev._formAction) {
-      ele.formAction = _formAction;
-      prev.formAction = _formAction;
-    }
-    if (_formEnctype != prev._formEnctype) {
-      ele.formEnctype = _formEnctype;
-      prev.formEnctype = _formEnctype;
-    }
-    if (_formMethod != prev._formMethod) {
-      ele.formMethod = _formMethod;
-      prev.formMethod = _formMethod;
-    }
-    if (_formNoValidate != prev._formNoValidate) {
-      ele.formNoValidate = _formNoValidate;
-      prev.formNoValidate = _formNoValidate;
-    }
-    if (_formTarget != prev._formTarget) {
-      ele.formTarget = _formTarget;
-      prev.formTarget = _formTarget;
-    }
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_incremental != prev._incremental) {
-      ele.incremental = _incremental;
-      prev.incremental = _incremental;
-    }
-    if (_indeterminate != prev._indeterminate) {
-      ele.indeterminate = _indeterminate;
-      prev.indeterminate = _indeterminate;
-    }
-    if (_inputMode != prev._inputMode) {
-      ele.inputMode = _inputMode;
-      prev.inputMode = _inputMode;
-    }
-    if (_max != prev._max) {
-      ele.max = _max;
-      prev.max = _max;
-    }
-    if (_maxLength != prev._maxLength) {
-      ele.maxLength = _maxLength;
-      prev.maxLength = _maxLength;
-    }
-    if (_min != prev._min) {
-      ele.min = _min;
-      prev.min = _min;
-    }
-    if (_minLength != prev._minLength) {
-      ele.minLength = _minLength;
-      prev.minLength = _minLength;
-    }
-    if (_multiple != prev._multiple) {
-      ele.multiple = _multiple;
-      prev.multiple = _multiple;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_pattern != prev._pattern) {
-      ele.pattern = _pattern;
-      prev.pattern = _pattern;
-    }
-    if (_placeholder != prev._placeholder) {
-      ele.placeholder = _placeholder;
-      prev.placeholder = _placeholder;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
-    }
-    if (_selectionDirection != prev._selectionDirection) {
-      ele.selectionDirection = _selectionDirection;
-      prev.selectionDirection = _selectionDirection;
-    }
-    if (_selectionEnd != prev._selectionEnd) {
-      ele.selectionEnd = _selectionEnd;
-      prev.selectionEnd = _selectionEnd;
-    }
-    if (_selectionStart != prev._selectionStart) {
-      ele.selectionStart = _selectionStart;
-      prev.selectionStart = _selectionStart;
-    }
-    if (_size != prev._size) {
-      ele.size = _size;
-      prev.size = _size;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_step != prev._step) {
-      ele.step = _step;
-      prev.step = _step;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
-    }
-    if (_valueAsNumber != prev._valueAsNumber) {
-      ele.valueAsNumber = _valueAsNumber;
-      prev.valueAsNumber = _valueAsNumber;
-    }
-    if (_directory != prev._directory) {
-      ele.directory = _directory;
-      prev.directory = _directory;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
-    }
-    if (_valueAsDate != prev._valueAsDate) {
-      ele.valueAsDate = _valueAsDate;
-      prev.valueAsDate = _valueAsDate;
+  void _updateAttributeInputElement(InputElement ele, int key, dynamic value) {
+    switch (key) {
+      case acceptInputElementAttribute:
+        ele.accept = value as String;
+        break;
+      case altInputElementAttribute:
+        ele.alt = value as String;
+        break;
+      case autocapitalizeInputElementAttribute:
+        ele.autocapitalize = value as String;
+        break;
+      case autocompleteInputElementAttribute:
+        ele.autocomplete = value as String;
+        break;
+      case autofocusInputElementAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case captureInputElementAttribute:
+        ele.capture = value as bool;
+        break;
+      case checkedInputElementAttribute:
+        ele.checked = value as bool;
+        break;
+      case defaultCheckedInputElementAttribute:
+        ele.defaultChecked = value as bool;
+        break;
+      case defaultValueInputElementAttribute:
+        ele.defaultValue = value as String;
+        break;
+      case dirNameInputElementAttribute:
+        ele.dirName = value as String;
+        break;
+      case disabledInputElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case filesInputElementAttribute:
+        ele.files = value as List<File>;
+        break;
+      case formActionInputElementAttribute:
+        ele.formAction = value as String;
+        break;
+      case formEnctypeInputElementAttribute:
+        ele.formEnctype = value as String;
+        break;
+      case formMethodInputElementAttribute:
+        ele.formMethod = value as String;
+        break;
+      case formNoValidateInputElementAttribute:
+        ele.formNoValidate = value as bool;
+        break;
+      case formTargetInputElementAttribute:
+        ele.formTarget = value as String;
+        break;
+      case heightInputElementAttribute:
+        ele.height = value as int;
+        break;
+      case incrementalInputElementAttribute:
+        ele.incremental = value as bool;
+        break;
+      case indeterminateInputElementAttribute:
+        ele.indeterminate = value as bool;
+        break;
+      case inputModeInputElementAttribute:
+        ele.inputMode = value as String;
+        break;
+      case maxInputElementAttribute:
+        ele.max = value as String;
+        break;
+      case maxLengthInputElementAttribute:
+        ele.maxLength = value as int;
+        break;
+      case minInputElementAttribute:
+        ele.min = value as String;
+        break;
+      case minLengthInputElementAttribute:
+        ele.minLength = value as int;
+        break;
+      case multipleInputElementAttribute:
+        ele.multiple = value as bool;
+        break;
+      case nameInputElementAttribute:
+        ele.name = value as String;
+        break;
+      case patternInputElementAttribute:
+        ele.pattern = value as String;
+        break;
+      case placeholderInputElementAttribute:
+        ele.placeholder = value as String;
+        break;
+      case readOnlyInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredInputElementAttribute:
+        ele.required = value as bool;
+        break;
+      case selectionDirectionInputElementAttribute:
+        ele.selectionDirection = value as String;
+        break;
+      case selectionEndInputElementAttribute:
+        ele.selectionEnd = value as int;
+        break;
+      case selectionStartInputElementAttribute:
+        ele.selectionStart = value as int;
+        break;
+      case sizeInputElementAttribute:
+        ele.size = value as int;
+        break;
+      case srcInputElementAttribute:
+        ele.src = value as String;
+        break;
+      case stepInputElementAttribute:
+        ele.step = value as String;
+        break;
+      case typeInputElementAttribute:
+        ele.type = value as String;
+        break;
+      case valueInputElementAttribute:
+        ele.value = value as String;
+        break;
+      case valueAsNumberInputElementAttribute:
+        ele.valueAsNumber = value as num;
+        break;
+      case directoryInputElementAttribute:
+        ele.directory = value as bool;
+        break;
+      case widthInputElementAttribute:
+        ele.width = value as int;
+        break;
+      case valueAsDateInputElementAttribute:
+        ele.valueAsDate = value as DateTime;
+        break;
     }
   }
 }
 
+const autofocusInputElementBaseAttribute = 0;
+const disabledInputElementBaseAttribute = 1;
+const incrementalInputElementBaseAttribute = 2;
+const indeterminateInputElementBaseAttribute = 3;
+const nameInputElementBaseAttribute = 4;
+const valueInputElementBaseAttribute = 5;
+
 abstract class VInputElementBase<T extends InputElementBase>
     extends VElement<T> {
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  var _setValuesInputElementBase = <int, dynamic>{};
+
+  bool get autofocus =>
+      _setValuesInputElementBase[autofocusInputElementBaseAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesInputElementBase[autofocusInputElementBaseAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesInputElementBase[disabledInputElementBaseAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesInputElementBase[disabledInputElementBaseAttribute] = v;
   }
 
-  bool _incremental;
-  bool _incrementalSet = false;
-  bool get incremental => _incremental;
+  bool get incremental =>
+      _setValuesInputElementBase[incrementalInputElementBaseAttribute] as bool;
   set incremental(bool v) {
-    _incremental = v;
-    _incrementalSet = true;
+    _setValuesInputElementBase[incrementalInputElementBaseAttribute] = v;
   }
 
-  bool _indeterminate;
-  bool _indeterminateSet = false;
-  bool get indeterminate => _indeterminate;
+  bool get indeterminate =>
+      _setValuesInputElementBase[indeterminateInputElementBaseAttribute]
+          as bool;
   set indeterminate(bool v) {
-    _indeterminate = v;
-    _indeterminateSet = true;
+    _setValuesInputElementBase[indeterminateInputElementBaseAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesInputElementBase[nameInputElementBaseAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesInputElementBase[nameInputElementBaseAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesInputElementBase[valueInputElementBaseAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesInputElementBase[valueInputElementBaseAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesInputElementBase
+        .forEach((k, dynamic v) => _updateAttributeInputElementBase(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_incrementalSet) ele.incremental = _incremental;
-    if (_indeterminateSet) ele.indeterminate = _indeterminate;
-    if (_nameSet) ele.name = _name;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VInputElementBase<T> prev, T ele) {
+    prev._setValuesInputElementBase.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesInputElementBase[k];
+      if (v != newValue) _updateAttributeInputElementBase(ele, k, newValue);
+    });
+    prev._setValuesInputElementBase = _setValuesInputElementBase;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_incremental != prev._incremental) {
-      ele.incremental = _incremental;
-      prev.incremental = _incremental;
-    }
-    if (_indeterminate != prev._indeterminate) {
-      ele.indeterminate = _indeterminate;
-      prev.indeterminate = _indeterminate;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeInputElementBase(
+      InputElementBase ele, int key, dynamic value) {
+    switch (key) {
+      case autofocusInputElementBaseAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case disabledInputElementBaseAttribute:
+        ele.disabled = value as bool;
+        break;
+      case incrementalInputElementBaseAttribute:
+        ele.incremental = value as bool;
+        break;
+      case indeterminateInputElementBaseAttribute:
+        ele.indeterminate = value as bool;
+        break;
+      case nameInputElementBaseAttribute:
+        ele.name = value as String;
+        break;
+      case valueInputElementBaseAttribute:
+        ele.value = value as String;
+        break;
     }
   }
 }
@@ -2187,229 +1867,235 @@ abstract class VInputElementBase<T extends InputElementBase>
 class VHiddenInputElement extends VInputElementBase<HiddenInputElement> {
   @override
   HiddenInputElement elementFactory() => new HiddenInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(HiddenInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(
-      VHiddenInputElement prev, HiddenInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const autocompleteTextInputElementBaseAttribute = 0;
+const maxLengthTextInputElementBaseAttribute = 1;
+const patternTextInputElementBaseAttribute = 2;
+const placeholderTextInputElementBaseAttribute = 3;
+const readOnlyTextInputElementBaseAttribute = 4;
+const requiredTextInputElementBaseAttribute = 5;
+const sizeTextInputElementBaseAttribute = 6;
+const selectionDirectionTextInputElementBaseAttribute = 7;
+const selectionEndTextInputElementBaseAttribute = 8;
+const selectionStartTextInputElementBaseAttribute = 9;
 
 abstract class VTextInputElementBase<T extends TextInputElementBase>
     extends VInputElementBase<T> {
-  String _autocomplete;
-  bool _autocompleteSet = false;
-  String get autocomplete => _autocomplete;
+  var _setValuesTextInputElementBase = <int, dynamic>{};
+
+  String get autocomplete =>
+      _setValuesTextInputElementBase[autocompleteTextInputElementBaseAttribute]
+          as String;
   set autocomplete(String v) {
-    _autocomplete = v;
-    _autocompleteSet = true;
+    _setValuesTextInputElementBase[autocompleteTextInputElementBaseAttribute] =
+        v;
   }
 
-  int _maxLength;
-  bool _maxLengthSet = false;
-  int get maxLength => _maxLength;
+  int get maxLength =>
+      _setValuesTextInputElementBase[maxLengthTextInputElementBaseAttribute]
+          as int;
   set maxLength(int v) {
-    _maxLength = v;
-    _maxLengthSet = true;
+    _setValuesTextInputElementBase[maxLengthTextInputElementBaseAttribute] = v;
   }
 
-  String _pattern;
-  bool _patternSet = false;
-  String get pattern => _pattern;
+  String get pattern =>
+      _setValuesTextInputElementBase[patternTextInputElementBaseAttribute]
+          as String;
   set pattern(String v) {
-    _pattern = v;
-    _patternSet = true;
+    _setValuesTextInputElementBase[patternTextInputElementBaseAttribute] = v;
   }
 
-  String _placeholder;
-  bool _placeholderSet = false;
-  String get placeholder => _placeholder;
+  String get placeholder =>
+      _setValuesTextInputElementBase[placeholderTextInputElementBaseAttribute]
+          as String;
   set placeholder(String v) {
-    _placeholder = v;
-    _placeholderSet = true;
+    _setValuesTextInputElementBase[placeholderTextInputElementBaseAttribute] =
+        v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesTextInputElementBase[readOnlyTextInputElementBaseAttribute]
+          as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesTextInputElementBase[readOnlyTextInputElementBaseAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesTextInputElementBase[requiredTextInputElementBaseAttribute]
+          as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesTextInputElementBase[requiredTextInputElementBaseAttribute] = v;
   }
 
-  int _size;
-  bool _sizeSet = false;
-  int get size => _size;
+  int get size =>
+      _setValuesTextInputElementBase[sizeTextInputElementBaseAttribute] as int;
   set size(int v) {
-    _size = v;
-    _sizeSet = true;
+    _setValuesTextInputElementBase[sizeTextInputElementBaseAttribute] = v;
   }
 
-  String _selectionDirection;
-  bool _selectionDirectionSet = false;
-  String get selectionDirection => _selectionDirection;
+  String get selectionDirection => _setValuesTextInputElementBase[
+      selectionDirectionTextInputElementBaseAttribute] as String;
   set selectionDirection(String v) {
-    _selectionDirection = v;
-    _selectionDirectionSet = true;
+    _setValuesTextInputElementBase[
+        selectionDirectionTextInputElementBaseAttribute] = v;
   }
 
-  int _selectionEnd;
-  bool _selectionEndSet = false;
-  int get selectionEnd => _selectionEnd;
+  int get selectionEnd =>
+      _setValuesTextInputElementBase[selectionEndTextInputElementBaseAttribute]
+          as int;
   set selectionEnd(int v) {
-    _selectionEnd = v;
-    _selectionEndSet = true;
+    _setValuesTextInputElementBase[selectionEndTextInputElementBaseAttribute] =
+        v;
   }
 
-  int _selectionStart;
-  bool _selectionStartSet = false;
-  int get selectionStart => _selectionStart;
+  int get selectionStart => _setValuesTextInputElementBase[
+      selectionStartTextInputElementBaseAttribute] as int;
   set selectionStart(int v) {
-    _selectionStart = v;
-    _selectionStartSet = true;
+    _setValuesTextInputElementBase[
+        selectionStartTextInputElementBaseAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesTextInputElementBase.forEach(
+        (k, dynamic v) => _updateAttributeTextInputElementBase(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autocompleteSet) ele.autocomplete = _autocomplete;
-    if (_maxLengthSet) ele.maxLength = _maxLength;
-    if (_patternSet) ele.pattern = _pattern;
-    if (_placeholderSet) ele.placeholder = _placeholder;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
-    if (_sizeSet) ele.size = _size;
-    if (_selectionDirectionSet) ele.selectionDirection = _selectionDirection;
-    if (_selectionEndSet) ele.selectionEnd = _selectionEnd;
-    if (_selectionStartSet) ele.selectionStart = _selectionStart;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VTextInputElementBase<T> prev, T ele) {
+    prev._setValuesTextInputElementBase.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTextInputElementBase[k];
+      if (v != newValue) _updateAttributeTextInputElementBase(ele, k, newValue);
+    });
+    prev._setValuesTextInputElementBase = _setValuesTextInputElementBase;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autocomplete != prev._autocomplete) {
-      ele.autocomplete = _autocomplete;
-      prev.autocomplete = _autocomplete;
-    }
-    if (_maxLength != prev._maxLength) {
-      ele.maxLength = _maxLength;
-      prev.maxLength = _maxLength;
-    }
-    if (_pattern != prev._pattern) {
-      ele.pattern = _pattern;
-      prev.pattern = _pattern;
-    }
-    if (_placeholder != prev._placeholder) {
-      ele.placeholder = _placeholder;
-      prev.placeholder = _placeholder;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
-    }
-    if (_size != prev._size) {
-      ele.size = _size;
-      prev.size = _size;
-    }
-    if (_selectionDirection != prev._selectionDirection) {
-      ele.selectionDirection = _selectionDirection;
-      prev.selectionDirection = _selectionDirection;
-    }
-    if (_selectionEnd != prev._selectionEnd) {
-      ele.selectionEnd = _selectionEnd;
-      prev.selectionEnd = _selectionEnd;
-    }
-    if (_selectionStart != prev._selectionStart) {
-      ele.selectionStart = _selectionStart;
-      prev.selectionStart = _selectionStart;
+  void _updateAttributeTextInputElementBase(
+      TextInputElementBase ele, int key, dynamic value) {
+    switch (key) {
+      case autocompleteTextInputElementBaseAttribute:
+        ele.autocomplete = value as String;
+        break;
+      case maxLengthTextInputElementBaseAttribute:
+        ele.maxLength = value as int;
+        break;
+      case patternTextInputElementBaseAttribute:
+        ele.pattern = value as String;
+        break;
+      case placeholderTextInputElementBaseAttribute:
+        ele.placeholder = value as String;
+        break;
+      case readOnlyTextInputElementBaseAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredTextInputElementBaseAttribute:
+        ele.required = value as bool;
+        break;
+      case sizeTextInputElementBaseAttribute:
+        ele.size = value as int;
+        break;
+      case selectionDirectionTextInputElementBaseAttribute:
+        ele.selectionDirection = value as String;
+        break;
+      case selectionEndTextInputElementBaseAttribute:
+        ele.selectionEnd = value as int;
+        break;
+      case selectionStartTextInputElementBaseAttribute:
+        ele.selectionStart = value as int;
+        break;
     }
   }
 }
+
+const dirNameSearchInputElementAttribute = 0;
 
 class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
   @override
   SearchInputElement elementFactory() => new SearchInputElement();
 
-  String _dirName;
-  bool _dirNameSet = false;
-  String get dirName => _dirName;
+  var _setValuesSearchInputElement = <int, dynamic>{};
+
+  String get dirName =>
+      _setValuesSearchInputElement[dirNameSearchInputElementAttribute]
+          as String;
   set dirName(String v) {
-    _dirName = v;
-    _dirNameSet = true;
+    _setValuesSearchInputElement[dirNameSearchInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(SearchInputElement ele) {
+    _setValuesSearchInputElement.forEach(
+        (k, dynamic v) => _updateAttributeSearchInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_dirNameSet) ele.dirName = _dirName;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VSearchInputElement prev, SearchInputElement ele) {
+    prev._setValuesSearchInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesSearchInputElement[k];
+      if (v != newValue) _updateAttributeSearchInputElement(ele, k, newValue);
+    });
+    prev._setValuesSearchInputElement = _setValuesSearchInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_dirName != prev._dirName) {
-      ele.dirName = _dirName;
-      prev.dirName = _dirName;
+  void _updateAttributeSearchInputElement(
+      SearchInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case dirNameSearchInputElementAttribute:
+        ele.dirName = value as String;
+        break;
     }
   }
 }
+
+const dirNameTextInputElementAttribute = 0;
 
 class VTextInputElement extends VTextInputElementBase<TextInputElement> {
   @override
   TextInputElement elementFactory() => new TextInputElement();
 
-  String _dirName;
-  bool _dirNameSet = false;
-  String get dirName => _dirName;
+  var _setValuesTextInputElement = <int, dynamic>{};
+
+  String get dirName =>
+      _setValuesTextInputElement[dirNameTextInputElementAttribute] as String;
   set dirName(String v) {
-    _dirName = v;
-    _dirNameSet = true;
+    _setValuesTextInputElement[dirNameTextInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TextInputElement ele) {
+    _setValuesTextInputElement
+        .forEach((k, dynamic v) => _updateAttributeTextInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_dirNameSet) ele.dirName = _dirName;
   }
 
   @override
   @protected
   void updateElementAttributes(VTextInputElement prev, TextInputElement ele) {
+    prev._setValuesTextInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTextInputElement[k];
+      if (v != newValue) _updateAttributeTextInputElement(ele, k, newValue);
+    });
+    prev._setValuesTextInputElement = _setValuesTextInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_dirName != prev._dirName) {
-      ele.dirName = _dirName;
-      prev.dirName = _dirName;
+  void _updateAttributeTextInputElement(
+      TextInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case dirNameTextInputElementAttribute:
+        ele.dirName = value as String;
+        break;
     }
   }
 }
@@ -2417,171 +2103,135 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
 class VUrlInputElement extends VTextInputElementBase<UrlInputElement> {
   @override
   UrlInputElement elementFactory() => new UrlInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(UrlInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VUrlInputElement prev, UrlInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 class VTelephoneInputElement
     extends VTextInputElementBase<TelephoneInputElement> {
   @override
   TelephoneInputElement elementFactory() => new TelephoneInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(TelephoneInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(
-      VTelephoneInputElement prev, TelephoneInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const autocompleteEmailInputElementAttribute = 0;
+const autofocusEmailInputElementAttribute = 1;
+const maxLengthEmailInputElementAttribute = 2;
+const multipleEmailInputElementAttribute = 3;
+const patternEmailInputElementAttribute = 4;
+const placeholderEmailInputElementAttribute = 5;
+const readOnlyEmailInputElementAttribute = 6;
+const requiredEmailInputElementAttribute = 7;
+const sizeEmailInputElementAttribute = 8;
 
 class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
   @override
   EmailInputElement elementFactory() => new EmailInputElement();
 
-  String _autocomplete;
-  bool _autocompleteSet = false;
-  String get autocomplete => _autocomplete;
+  var _setValuesEmailInputElement = <int, dynamic>{};
+
+  String get autocomplete =>
+      _setValuesEmailInputElement[autocompleteEmailInputElementAttribute]
+          as String;
   set autocomplete(String v) {
-    _autocomplete = v;
-    _autocompleteSet = true;
+    _setValuesEmailInputElement[autocompleteEmailInputElementAttribute] = v;
   }
 
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  bool get autofocus =>
+      _setValuesEmailInputElement[autofocusEmailInputElementAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesEmailInputElement[autofocusEmailInputElementAttribute] = v;
   }
 
-  int _maxLength;
-  bool _maxLengthSet = false;
-  int get maxLength => _maxLength;
+  int get maxLength =>
+      _setValuesEmailInputElement[maxLengthEmailInputElementAttribute] as int;
   set maxLength(int v) {
-    _maxLength = v;
-    _maxLengthSet = true;
+    _setValuesEmailInputElement[maxLengthEmailInputElementAttribute] = v;
   }
 
-  bool _multiple;
-  bool _multipleSet = false;
-  bool get multiple => _multiple;
+  bool get multiple =>
+      _setValuesEmailInputElement[multipleEmailInputElementAttribute] as bool;
   set multiple(bool v) {
-    _multiple = v;
-    _multipleSet = true;
+    _setValuesEmailInputElement[multipleEmailInputElementAttribute] = v;
   }
 
-  String _pattern;
-  bool _patternSet = false;
-  String get pattern => _pattern;
+  String get pattern =>
+      _setValuesEmailInputElement[patternEmailInputElementAttribute] as String;
   set pattern(String v) {
-    _pattern = v;
-    _patternSet = true;
+    _setValuesEmailInputElement[patternEmailInputElementAttribute] = v;
   }
 
-  String _placeholder;
-  bool _placeholderSet = false;
-  String get placeholder => _placeholder;
+  String get placeholder =>
+      _setValuesEmailInputElement[placeholderEmailInputElementAttribute]
+          as String;
   set placeholder(String v) {
-    _placeholder = v;
-    _placeholderSet = true;
+    _setValuesEmailInputElement[placeholderEmailInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesEmailInputElement[readOnlyEmailInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesEmailInputElement[readOnlyEmailInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesEmailInputElement[requiredEmailInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesEmailInputElement[requiredEmailInputElementAttribute] = v;
   }
 
-  int _size;
-  bool _sizeSet = false;
-  int get size => _size;
+  int get size =>
+      _setValuesEmailInputElement[sizeEmailInputElementAttribute] as int;
   set size(int v) {
-    _size = v;
-    _sizeSet = true;
+    _setValuesEmailInputElement[sizeEmailInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(EmailInputElement ele) {
+    _setValuesEmailInputElement.forEach(
+        (k, dynamic v) => _updateAttributeEmailInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autocompleteSet) ele.autocomplete = _autocomplete;
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_maxLengthSet) ele.maxLength = _maxLength;
-    if (_multipleSet) ele.multiple = _multiple;
-    if (_patternSet) ele.pattern = _pattern;
-    if (_placeholderSet) ele.placeholder = _placeholder;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
-    if (_sizeSet) ele.size = _size;
   }
 
   @override
   @protected
   void updateElementAttributes(VEmailInputElement prev, EmailInputElement ele) {
+    prev._setValuesEmailInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesEmailInputElement[k];
+      if (v != newValue) _updateAttributeEmailInputElement(ele, k, newValue);
+    });
+    prev._setValuesEmailInputElement = _setValuesEmailInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autocomplete != prev._autocomplete) {
-      ele.autocomplete = _autocomplete;
-      prev.autocomplete = _autocomplete;
-    }
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_maxLength != prev._maxLength) {
-      ele.maxLength = _maxLength;
-      prev.maxLength = _maxLength;
-    }
-    if (_multiple != prev._multiple) {
-      ele.multiple = _multiple;
-      prev.multiple = _multiple;
-    }
-    if (_pattern != prev._pattern) {
-      ele.pattern = _pattern;
-      prev.pattern = _pattern;
-    }
-    if (_placeholder != prev._placeholder) {
-      ele.placeholder = _placeholder;
-      prev.placeholder = _placeholder;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
-    }
-    if (_size != prev._size) {
-      ele.size = _size;
-      prev.size = _size;
+  void _updateAttributeEmailInputElement(
+      EmailInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case autocompleteEmailInputElementAttribute:
+        ele.autocomplete = value as String;
+        break;
+      case autofocusEmailInputElementAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case maxLengthEmailInputElementAttribute:
+        ele.maxLength = value as int;
+        break;
+      case multipleEmailInputElementAttribute:
+        ele.multiple = value as bool;
+        break;
+      case patternEmailInputElementAttribute:
+        ele.pattern = value as String;
+        break;
+      case placeholderEmailInputElementAttribute:
+        ele.placeholder = value as String;
+        break;
+      case readOnlyEmailInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredEmailInputElementAttribute:
+        ele.required = value as bool;
+        break;
+      case sizeEmailInputElementAttribute:
+        ele.size = value as int;
+        break;
     }
   }
 }
@@ -2590,425 +2240,461 @@ class VPasswordInputElement
     extends VTextInputElementBase<PasswordInputElement> {
   @override
   PasswordInputElement elementFactory() => new PasswordInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(PasswordInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(
-      VPasswordInputElement prev, PasswordInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const maxRangeInputElementBaseAttribute = 0;
+const minRangeInputElementBaseAttribute = 1;
+const stepRangeInputElementBaseAttribute = 2;
+const valueAsNumberRangeInputElementBaseAttribute = 3;
 
 abstract class VRangeInputElementBase<T extends RangeInputElementBase>
     extends VInputElementBase<T> {
-  String _max;
-  bool _maxSet = false;
-  String get max => _max;
+  var _setValuesRangeInputElementBase = <int, dynamic>{};
+
+  String get max =>
+      _setValuesRangeInputElementBase[maxRangeInputElementBaseAttribute]
+          as String;
   set max(String v) {
-    _max = v;
-    _maxSet = true;
+    _setValuesRangeInputElementBase[maxRangeInputElementBaseAttribute] = v;
   }
 
-  String _min;
-  bool _minSet = false;
-  String get min => _min;
+  String get min =>
+      _setValuesRangeInputElementBase[minRangeInputElementBaseAttribute]
+          as String;
   set min(String v) {
-    _min = v;
-    _minSet = true;
+    _setValuesRangeInputElementBase[minRangeInputElementBaseAttribute] = v;
   }
 
-  String _step;
-  bool _stepSet = false;
-  String get step => _step;
+  String get step =>
+      _setValuesRangeInputElementBase[stepRangeInputElementBaseAttribute]
+          as String;
   set step(String v) {
-    _step = v;
-    _stepSet = true;
+    _setValuesRangeInputElementBase[stepRangeInputElementBaseAttribute] = v;
   }
 
-  num _valueAsNumber;
-  bool _valueAsNumberSet = false;
-  num get valueAsNumber => _valueAsNumber;
+  num get valueAsNumber => _setValuesRangeInputElementBase[
+      valueAsNumberRangeInputElementBaseAttribute] as num;
   set valueAsNumber(num v) {
-    _valueAsNumber = v;
-    _valueAsNumberSet = true;
+    _setValuesRangeInputElementBase[
+        valueAsNumberRangeInputElementBaseAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesRangeInputElementBase.forEach(
+        (k, dynamic v) => _updateAttributeRangeInputElementBase(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_maxSet) ele.max = _max;
-    if (_minSet) ele.min = _min;
-    if (_stepSet) ele.step = _step;
-    if (_valueAsNumberSet) ele.valueAsNumber = _valueAsNumber;
   }
 
   @override
   @protected
   void updateElementAttributes(
       covariant VRangeInputElementBase<T> prev, T ele) {
+    prev._setValuesRangeInputElementBase.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesRangeInputElementBase[k];
+      if (v != newValue)
+        _updateAttributeRangeInputElementBase(ele, k, newValue);
+    });
+    prev._setValuesRangeInputElementBase = _setValuesRangeInputElementBase;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_max != prev._max) {
-      ele.max = _max;
-      prev.max = _max;
-    }
-    if (_min != prev._min) {
-      ele.min = _min;
-      prev.min = _min;
-    }
-    if (_step != prev._step) {
-      ele.step = _step;
-      prev.step = _step;
-    }
-    if (_valueAsNumber != prev._valueAsNumber) {
-      ele.valueAsNumber = _valueAsNumber;
-      prev.valueAsNumber = _valueAsNumber;
+  void _updateAttributeRangeInputElementBase(
+      RangeInputElementBase ele, int key, dynamic value) {
+    switch (key) {
+      case maxRangeInputElementBaseAttribute:
+        ele.max = value as String;
+        break;
+      case minRangeInputElementBaseAttribute:
+        ele.min = value as String;
+        break;
+      case stepRangeInputElementBaseAttribute:
+        ele.step = value as String;
+        break;
+      case valueAsNumberRangeInputElementBaseAttribute:
+        ele.valueAsNumber = value as num;
+        break;
     }
   }
 }
+
+const valueAsDateDateInputElementAttribute = 0;
+const readOnlyDateInputElementAttribute = 1;
+const requiredDateInputElementAttribute = 2;
 
 class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
   @override
   DateInputElement elementFactory() => new DateInputElement();
 
-  DateTime _valueAsDate;
-  bool _valueAsDateSet = false;
-  DateTime get valueAsDate => _valueAsDate;
+  var _setValuesDateInputElement = <int, dynamic>{};
+
+  DateTime get valueAsDate =>
+      _setValuesDateInputElement[valueAsDateDateInputElementAttribute]
+          as DateTime;
   set valueAsDate(DateTime v) {
-    _valueAsDate = v;
-    _valueAsDateSet = true;
+    _setValuesDateInputElement[valueAsDateDateInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesDateInputElement[readOnlyDateInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesDateInputElement[readOnlyDateInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesDateInputElement[requiredDateInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesDateInputElement[requiredDateInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(DateInputElement ele) {
+    _setValuesDateInputElement
+        .forEach((k, dynamic v) => _updateAttributeDateInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(VDateInputElement prev, DateInputElement ele) {
+    prev._setValuesDateInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesDateInputElement[k];
+      if (v != newValue) _updateAttributeDateInputElement(ele, k, newValue);
+    });
+    prev._setValuesDateInputElement = _setValuesDateInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_valueAsDate != prev._valueAsDate) {
-      ele.valueAsDate = _valueAsDate;
-      prev.valueAsDate = _valueAsDate;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeDateInputElement(
+      DateInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case valueAsDateDateInputElementAttribute:
+        ele.valueAsDate = value as DateTime;
+        break;
+      case readOnlyDateInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredDateInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const valueAsDateMonthInputElementAttribute = 0;
+const readOnlyMonthInputElementAttribute = 1;
+const requiredMonthInputElementAttribute = 2;
 
 class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
   @override
   MonthInputElement elementFactory() => new MonthInputElement();
 
-  DateTime _valueAsDate;
-  bool _valueAsDateSet = false;
-  DateTime get valueAsDate => _valueAsDate;
+  var _setValuesMonthInputElement = <int, dynamic>{};
+
+  DateTime get valueAsDate =>
+      _setValuesMonthInputElement[valueAsDateMonthInputElementAttribute]
+          as DateTime;
   set valueAsDate(DateTime v) {
-    _valueAsDate = v;
-    _valueAsDateSet = true;
+    _setValuesMonthInputElement[valueAsDateMonthInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesMonthInputElement[readOnlyMonthInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesMonthInputElement[readOnlyMonthInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesMonthInputElement[requiredMonthInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesMonthInputElement[requiredMonthInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(MonthInputElement ele) {
+    _setValuesMonthInputElement.forEach(
+        (k, dynamic v) => _updateAttributeMonthInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(VMonthInputElement prev, MonthInputElement ele) {
+    prev._setValuesMonthInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMonthInputElement[k];
+      if (v != newValue) _updateAttributeMonthInputElement(ele, k, newValue);
+    });
+    prev._setValuesMonthInputElement = _setValuesMonthInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_valueAsDate != prev._valueAsDate) {
-      ele.valueAsDate = _valueAsDate;
-      prev.valueAsDate = _valueAsDate;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeMonthInputElement(
+      MonthInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case valueAsDateMonthInputElementAttribute:
+        ele.valueAsDate = value as DateTime;
+        break;
+      case readOnlyMonthInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredMonthInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const valueAsDateWeekInputElementAttribute = 0;
+const readOnlyWeekInputElementAttribute = 1;
+const requiredWeekInputElementAttribute = 2;
 
 class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
   @override
   WeekInputElement elementFactory() => new WeekInputElement();
 
-  DateTime _valueAsDate;
-  bool _valueAsDateSet = false;
-  DateTime get valueAsDate => _valueAsDate;
+  var _setValuesWeekInputElement = <int, dynamic>{};
+
+  DateTime get valueAsDate =>
+      _setValuesWeekInputElement[valueAsDateWeekInputElementAttribute]
+          as DateTime;
   set valueAsDate(DateTime v) {
-    _valueAsDate = v;
-    _valueAsDateSet = true;
+    _setValuesWeekInputElement[valueAsDateWeekInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesWeekInputElement[readOnlyWeekInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesWeekInputElement[readOnlyWeekInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesWeekInputElement[requiredWeekInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesWeekInputElement[requiredWeekInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(WeekInputElement ele) {
+    _setValuesWeekInputElement
+        .forEach((k, dynamic v) => _updateAttributeWeekInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(VWeekInputElement prev, WeekInputElement ele) {
+    prev._setValuesWeekInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesWeekInputElement[k];
+      if (v != newValue) _updateAttributeWeekInputElement(ele, k, newValue);
+    });
+    prev._setValuesWeekInputElement = _setValuesWeekInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_valueAsDate != prev._valueAsDate) {
-      ele.valueAsDate = _valueAsDate;
-      prev.valueAsDate = _valueAsDate;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeWeekInputElement(
+      WeekInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case valueAsDateWeekInputElementAttribute:
+        ele.valueAsDate = value as DateTime;
+        break;
+      case readOnlyWeekInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredWeekInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const valueAsDateTimeInputElementAttribute = 0;
+const readOnlyTimeInputElementAttribute = 1;
+const requiredTimeInputElementAttribute = 2;
 
 class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
   @override
   TimeInputElement elementFactory() => new TimeInputElement();
 
-  DateTime _valueAsDate;
-  bool _valueAsDateSet = false;
-  DateTime get valueAsDate => _valueAsDate;
+  var _setValuesTimeInputElement = <int, dynamic>{};
+
+  DateTime get valueAsDate =>
+      _setValuesTimeInputElement[valueAsDateTimeInputElementAttribute]
+          as DateTime;
   set valueAsDate(DateTime v) {
-    _valueAsDate = v;
-    _valueAsDateSet = true;
+    _setValuesTimeInputElement[valueAsDateTimeInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesTimeInputElement[readOnlyTimeInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesTimeInputElement[readOnlyTimeInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesTimeInputElement[requiredTimeInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesTimeInputElement[requiredTimeInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TimeInputElement ele) {
+    _setValuesTimeInputElement
+        .forEach((k, dynamic v) => _updateAttributeTimeInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_valueAsDateSet) ele.valueAsDate = _valueAsDate;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(VTimeInputElement prev, TimeInputElement ele) {
+    prev._setValuesTimeInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTimeInputElement[k];
+      if (v != newValue) _updateAttributeTimeInputElement(ele, k, newValue);
+    });
+    prev._setValuesTimeInputElement = _setValuesTimeInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_valueAsDate != prev._valueAsDate) {
-      ele.valueAsDate = _valueAsDate;
-      prev.valueAsDate = _valueAsDate;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeTimeInputElement(
+      TimeInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case valueAsDateTimeInputElementAttribute:
+        ele.valueAsDate = value as DateTime;
+        break;
+      case readOnlyTimeInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredTimeInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const readOnlyLocalDateTimeInputElementAttribute = 0;
+const requiredLocalDateTimeInputElementAttribute = 1;
 
 class VLocalDateTimeInputElement
     extends VRangeInputElementBase<LocalDateTimeInputElement> {
   @override
   LocalDateTimeInputElement elementFactory() => new LocalDateTimeInputElement();
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  var _setValuesLocalDateTimeInputElement = <int, dynamic>{};
+
+  bool get readOnly => _setValuesLocalDateTimeInputElement[
+      readOnlyLocalDateTimeInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesLocalDateTimeInputElement[
+        readOnlyLocalDateTimeInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required => _setValuesLocalDateTimeInputElement[
+      requiredLocalDateTimeInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesLocalDateTimeInputElement[
+        requiredLocalDateTimeInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(LocalDateTimeInputElement ele) {
+    _setValuesLocalDateTimeInputElement.forEach(
+        (k, dynamic v) => _updateAttributeLocalDateTimeInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VLocalDateTimeInputElement prev, LocalDateTimeInputElement ele) {
+    prev._setValuesLocalDateTimeInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesLocalDateTimeInputElement[k];
+      if (v != newValue)
+        _updateAttributeLocalDateTimeInputElement(ele, k, newValue);
+    });
+    prev._setValuesLocalDateTimeInputElement =
+        _setValuesLocalDateTimeInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeLocalDateTimeInputElement(
+      LocalDateTimeInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case readOnlyLocalDateTimeInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredLocalDateTimeInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const placeholderNumberInputElementAttribute = 0;
+const readOnlyNumberInputElementAttribute = 1;
+const requiredNumberInputElementAttribute = 2;
 
 class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
   @override
   NumberInputElement elementFactory() => new NumberInputElement();
 
-  String _placeholder;
-  bool _placeholderSet = false;
-  String get placeholder => _placeholder;
+  var _setValuesNumberInputElement = <int, dynamic>{};
+
+  String get placeholder =>
+      _setValuesNumberInputElement[placeholderNumberInputElementAttribute]
+          as String;
   set placeholder(String v) {
-    _placeholder = v;
-    _placeholderSet = true;
+    _setValuesNumberInputElement[placeholderNumberInputElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesNumberInputElement[readOnlyNumberInputElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesNumberInputElement[readOnlyNumberInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesNumberInputElement[requiredNumberInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesNumberInputElement[requiredNumberInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(NumberInputElement ele) {
+    _setValuesNumberInputElement.forEach(
+        (k, dynamic v) => _updateAttributeNumberInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_placeholderSet) ele.placeholder = _placeholder;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VNumberInputElement prev, NumberInputElement ele) {
+    prev._setValuesNumberInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesNumberInputElement[k];
+      if (v != newValue) _updateAttributeNumberInputElement(ele, k, newValue);
+    });
+    prev._setValuesNumberInputElement = _setValuesNumberInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_placeholder != prev._placeholder) {
-      ele.placeholder = _placeholder;
-      prev.placeholder = _placeholder;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeNumberInputElement(
+      NumberInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case placeholderNumberInputElementAttribute:
+        ele.placeholder = value as String;
+        break;
+      case readOnlyNumberInputElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredNumberInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
@@ -3016,406 +2702,430 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
 class VRangeInputElement extends VRangeInputElementBase<RangeInputElement> {
   @override
   RangeInputElement elementFactory() => new RangeInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(RangeInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VRangeInputElement prev, RangeInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const checkedCheckboxInputElementAttribute = 0;
+const requiredCheckboxInputElementAttribute = 1;
 
 class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
   @override
   CheckboxInputElement elementFactory() => new CheckboxInputElement();
 
-  bool _checked;
-  bool _checkedSet = false;
-  bool get checked => _checked;
+  var _setValuesCheckboxInputElement = <int, dynamic>{};
+
+  bool get checked =>
+      _setValuesCheckboxInputElement[checkedCheckboxInputElementAttribute]
+          as bool;
   set checked(bool v) {
-    _checked = v;
-    _checkedSet = true;
+    _setValuesCheckboxInputElement[checkedCheckboxInputElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesCheckboxInputElement[requiredCheckboxInputElementAttribute]
+          as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesCheckboxInputElement[requiredCheckboxInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(CheckboxInputElement ele) {
+    _setValuesCheckboxInputElement.forEach(
+        (k, dynamic v) => _updateAttributeCheckboxInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_checkedSet) ele.checked = _checked;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VCheckboxInputElement prev, CheckboxInputElement ele) {
+    prev._setValuesCheckboxInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesCheckboxInputElement[k];
+      if (v != newValue) _updateAttributeCheckboxInputElement(ele, k, newValue);
+    });
+    prev._setValuesCheckboxInputElement = _setValuesCheckboxInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_checked != prev._checked) {
-      ele.checked = _checked;
-      prev.checked = _checked;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeCheckboxInputElement(
+      CheckboxInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case checkedCheckboxInputElementAttribute:
+        ele.checked = value as bool;
+        break;
+      case requiredCheckboxInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const checkedRadioButtonInputElementAttribute = 0;
+const requiredRadioButtonInputElementAttribute = 1;
 
 class VRadioButtonInputElement
     extends VInputElementBase<RadioButtonInputElement> {
   @override
   RadioButtonInputElement elementFactory() => new RadioButtonInputElement();
 
-  bool _checked;
-  bool _checkedSet = false;
-  bool get checked => _checked;
+  var _setValuesRadioButtonInputElement = <int, dynamic>{};
+
+  bool get checked =>
+      _setValuesRadioButtonInputElement[checkedRadioButtonInputElementAttribute]
+          as bool;
   set checked(bool v) {
-    _checked = v;
-    _checkedSet = true;
+    _setValuesRadioButtonInputElement[checkedRadioButtonInputElementAttribute] =
+        v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required => _setValuesRadioButtonInputElement[
+      requiredRadioButtonInputElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesRadioButtonInputElement[
+        requiredRadioButtonInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(RadioButtonInputElement ele) {
+    _setValuesRadioButtonInputElement.forEach(
+        (k, dynamic v) => _updateAttributeRadioButtonInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_checkedSet) ele.checked = _checked;
-    if (_requiredSet) ele.required = _required;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VRadioButtonInputElement prev, RadioButtonInputElement ele) {
+    prev._setValuesRadioButtonInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesRadioButtonInputElement[k];
+      if (v != newValue)
+        _updateAttributeRadioButtonInputElement(ele, k, newValue);
+    });
+    prev._setValuesRadioButtonInputElement = _setValuesRadioButtonInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_checked != prev._checked) {
-      ele.checked = _checked;
-      prev.checked = _checked;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
+  void _updateAttributeRadioButtonInputElement(
+      RadioButtonInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case checkedRadioButtonInputElementAttribute:
+        ele.checked = value as bool;
+        break;
+      case requiredRadioButtonInputElementAttribute:
+        ele.required = value as bool;
+        break;
     }
   }
 }
+
+const acceptFileUploadInputElementAttribute = 0;
+const multipleFileUploadInputElementAttribute = 1;
+const requiredFileUploadInputElementAttribute = 2;
+const filesFileUploadInputElementAttribute = 3;
 
 class VFileUploadInputElement
     extends VInputElementBase<FileUploadInputElement> {
   @override
   FileUploadInputElement elementFactory() => new FileUploadInputElement();
 
-  String _accept;
-  bool _acceptSet = false;
-  String get accept => _accept;
+  var _setValuesFileUploadInputElement = <int, dynamic>{};
+
+  String get accept =>
+      _setValuesFileUploadInputElement[acceptFileUploadInputElementAttribute]
+          as String;
   set accept(String v) {
-    _accept = v;
-    _acceptSet = true;
+    _setValuesFileUploadInputElement[acceptFileUploadInputElementAttribute] = v;
   }
 
-  bool _multiple;
-  bool _multipleSet = false;
-  bool get multiple => _multiple;
+  bool get multiple =>
+      _setValuesFileUploadInputElement[multipleFileUploadInputElementAttribute]
+          as bool;
   set multiple(bool v) {
-    _multiple = v;
-    _multipleSet = true;
+    _setValuesFileUploadInputElement[multipleFileUploadInputElementAttribute] =
+        v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesFileUploadInputElement[requiredFileUploadInputElementAttribute]
+          as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesFileUploadInputElement[requiredFileUploadInputElementAttribute] =
+        v;
   }
 
-  List<File> _files;
-  bool _filesSet = false;
-  List<File> get files => _files;
+  List<File> get files =>
+      _setValuesFileUploadInputElement[filesFileUploadInputElementAttribute]
+          as List<File>;
   set files(List<File> v) {
-    _files = v;
-    _filesSet = true;
+    _setValuesFileUploadInputElement[filesFileUploadInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(FileUploadInputElement ele) {
+    _setValuesFileUploadInputElement.forEach(
+        (k, dynamic v) => _updateAttributeFileUploadInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_acceptSet) ele.accept = _accept;
-    if (_multipleSet) ele.multiple = _multiple;
-    if (_requiredSet) ele.required = _required;
-    if (_filesSet) ele.files = _files;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VFileUploadInputElement prev, FileUploadInputElement ele) {
+    prev._setValuesFileUploadInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesFileUploadInputElement[k];
+      if (v != newValue)
+        _updateAttributeFileUploadInputElement(ele, k, newValue);
+    });
+    prev._setValuesFileUploadInputElement = _setValuesFileUploadInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_accept != prev._accept) {
-      ele.accept = _accept;
-      prev.accept = _accept;
-    }
-    if (_multiple != prev._multiple) {
-      ele.multiple = _multiple;
-      prev.multiple = _multiple;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
-    }
-    if (_files != prev._files) {
-      ele.files = _files;
-      prev.files = _files;
+  void _updateAttributeFileUploadInputElement(
+      FileUploadInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case acceptFileUploadInputElementAttribute:
+        ele.accept = value as String;
+        break;
+      case multipleFileUploadInputElementAttribute:
+        ele.multiple = value as bool;
+        break;
+      case requiredFileUploadInputElementAttribute:
+        ele.required = value as bool;
+        break;
+      case filesFileUploadInputElementAttribute:
+        ele.files = value as List<File>;
+        break;
     }
   }
 }
+
+const formActionSubmitButtonInputElementAttribute = 0;
+const formEnctypeSubmitButtonInputElementAttribute = 1;
+const formMethodSubmitButtonInputElementAttribute = 2;
+const formNoValidateSubmitButtonInputElementAttribute = 3;
+const formTargetSubmitButtonInputElementAttribute = 4;
 
 class VSubmitButtonInputElement
     extends VInputElementBase<SubmitButtonInputElement> {
   @override
   SubmitButtonInputElement elementFactory() => new SubmitButtonInputElement();
 
-  String _formAction;
-  bool _formActionSet = false;
-  String get formAction => _formAction;
+  var _setValuesSubmitButtonInputElement = <int, dynamic>{};
+
+  String get formAction => _setValuesSubmitButtonInputElement[
+      formActionSubmitButtonInputElementAttribute] as String;
   set formAction(String v) {
-    _formAction = v;
-    _formActionSet = true;
+    _setValuesSubmitButtonInputElement[
+        formActionSubmitButtonInputElementAttribute] = v;
   }
 
-  String _formEnctype;
-  bool _formEnctypeSet = false;
-  String get formEnctype => _formEnctype;
+  String get formEnctype => _setValuesSubmitButtonInputElement[
+      formEnctypeSubmitButtonInputElementAttribute] as String;
   set formEnctype(String v) {
-    _formEnctype = v;
-    _formEnctypeSet = true;
+    _setValuesSubmitButtonInputElement[
+        formEnctypeSubmitButtonInputElementAttribute] = v;
   }
 
-  String _formMethod;
-  bool _formMethodSet = false;
-  String get formMethod => _formMethod;
+  String get formMethod => _setValuesSubmitButtonInputElement[
+      formMethodSubmitButtonInputElementAttribute] as String;
   set formMethod(String v) {
-    _formMethod = v;
-    _formMethodSet = true;
+    _setValuesSubmitButtonInputElement[
+        formMethodSubmitButtonInputElementAttribute] = v;
   }
 
-  bool _formNoValidate;
-  bool _formNoValidateSet = false;
-  bool get formNoValidate => _formNoValidate;
+  bool get formNoValidate => _setValuesSubmitButtonInputElement[
+      formNoValidateSubmitButtonInputElementAttribute] as bool;
   set formNoValidate(bool v) {
-    _formNoValidate = v;
-    _formNoValidateSet = true;
+    _setValuesSubmitButtonInputElement[
+        formNoValidateSubmitButtonInputElementAttribute] = v;
   }
 
-  String _formTarget;
-  bool _formTargetSet = false;
-  String get formTarget => _formTarget;
+  String get formTarget => _setValuesSubmitButtonInputElement[
+      formTargetSubmitButtonInputElementAttribute] as String;
   set formTarget(String v) {
-    _formTarget = v;
-    _formTargetSet = true;
+    _setValuesSubmitButtonInputElement[
+        formTargetSubmitButtonInputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(SubmitButtonInputElement ele) {
+    _setValuesSubmitButtonInputElement.forEach(
+        (k, dynamic v) => _updateAttributeSubmitButtonInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_formActionSet) ele.formAction = _formAction;
-    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
-    if (_formMethodSet) ele.formMethod = _formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
-    if (_formTargetSet) ele.formTarget = _formTarget;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VSubmitButtonInputElement prev, SubmitButtonInputElement ele) {
+    prev._setValuesSubmitButtonInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesSubmitButtonInputElement[k];
+      if (v != newValue)
+        _updateAttributeSubmitButtonInputElement(ele, k, newValue);
+    });
+    prev._setValuesSubmitButtonInputElement =
+        _setValuesSubmitButtonInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_formAction != prev._formAction) {
-      ele.formAction = _formAction;
-      prev.formAction = _formAction;
-    }
-    if (_formEnctype != prev._formEnctype) {
-      ele.formEnctype = _formEnctype;
-      prev.formEnctype = _formEnctype;
-    }
-    if (_formMethod != prev._formMethod) {
-      ele.formMethod = _formMethod;
-      prev.formMethod = _formMethod;
-    }
-    if (_formNoValidate != prev._formNoValidate) {
-      ele.formNoValidate = _formNoValidate;
-      prev.formNoValidate = _formNoValidate;
-    }
-    if (_formTarget != prev._formTarget) {
-      ele.formTarget = _formTarget;
-      prev.formTarget = _formTarget;
+  void _updateAttributeSubmitButtonInputElement(
+      SubmitButtonInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case formActionSubmitButtonInputElementAttribute:
+        ele.formAction = value as String;
+        break;
+      case formEnctypeSubmitButtonInputElementAttribute:
+        ele.formEnctype = value as String;
+        break;
+      case formMethodSubmitButtonInputElementAttribute:
+        ele.formMethod = value as String;
+        break;
+      case formNoValidateSubmitButtonInputElementAttribute:
+        ele.formNoValidate = value as bool;
+        break;
+      case formTargetSubmitButtonInputElementAttribute:
+        ele.formTarget = value as String;
+        break;
     }
   }
 }
+
+const altImageButtonInputElementAttribute = 0;
+const formActionImageButtonInputElementAttribute = 1;
+const formEnctypeImageButtonInputElementAttribute = 2;
+const formMethodImageButtonInputElementAttribute = 3;
+const formNoValidateImageButtonInputElementAttribute = 4;
+const formTargetImageButtonInputElementAttribute = 5;
+const heightImageButtonInputElementAttribute = 6;
+const srcImageButtonInputElementAttribute = 7;
+const widthImageButtonInputElementAttribute = 8;
 
 class VImageButtonInputElement
     extends VInputElementBase<ImageButtonInputElement> {
   @override
   ImageButtonInputElement elementFactory() => new ImageButtonInputElement();
 
-  String _alt;
-  bool _altSet = false;
-  String get alt => _alt;
+  var _setValuesImageButtonInputElement = <int, dynamic>{};
+
+  String get alt =>
+      _setValuesImageButtonInputElement[altImageButtonInputElementAttribute]
+          as String;
   set alt(String v) {
-    _alt = v;
-    _altSet = true;
+    _setValuesImageButtonInputElement[altImageButtonInputElementAttribute] = v;
   }
 
-  String _formAction;
-  bool _formActionSet = false;
-  String get formAction => _formAction;
+  String get formAction => _setValuesImageButtonInputElement[
+      formActionImageButtonInputElementAttribute] as String;
   set formAction(String v) {
-    _formAction = v;
-    _formActionSet = true;
+    _setValuesImageButtonInputElement[
+        formActionImageButtonInputElementAttribute] = v;
   }
 
-  String _formEnctype;
-  bool _formEnctypeSet = false;
-  String get formEnctype => _formEnctype;
+  String get formEnctype => _setValuesImageButtonInputElement[
+      formEnctypeImageButtonInputElementAttribute] as String;
   set formEnctype(String v) {
-    _formEnctype = v;
-    _formEnctypeSet = true;
+    _setValuesImageButtonInputElement[
+        formEnctypeImageButtonInputElementAttribute] = v;
   }
 
-  String _formMethod;
-  bool _formMethodSet = false;
-  String get formMethod => _formMethod;
+  String get formMethod => _setValuesImageButtonInputElement[
+      formMethodImageButtonInputElementAttribute] as String;
   set formMethod(String v) {
-    _formMethod = v;
-    _formMethodSet = true;
+    _setValuesImageButtonInputElement[
+        formMethodImageButtonInputElementAttribute] = v;
   }
 
-  bool _formNoValidate;
-  bool _formNoValidateSet = false;
-  bool get formNoValidate => _formNoValidate;
+  bool get formNoValidate => _setValuesImageButtonInputElement[
+      formNoValidateImageButtonInputElementAttribute] as bool;
   set formNoValidate(bool v) {
-    _formNoValidate = v;
-    _formNoValidateSet = true;
+    _setValuesImageButtonInputElement[
+        formNoValidateImageButtonInputElementAttribute] = v;
   }
 
-  String _formTarget;
-  bool _formTargetSet = false;
-  String get formTarget => _formTarget;
+  String get formTarget => _setValuesImageButtonInputElement[
+      formTargetImageButtonInputElementAttribute] as String;
   set formTarget(String v) {
-    _formTarget = v;
-    _formTargetSet = true;
+    _setValuesImageButtonInputElement[
+        formTargetImageButtonInputElementAttribute] = v;
   }
 
-  int _height;
-  bool _heightSet = false;
-  int get height => _height;
+  int get height =>
+      _setValuesImageButtonInputElement[heightImageButtonInputElementAttribute]
+          as int;
   set height(int v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesImageButtonInputElement[heightImageButtonInputElementAttribute] =
+        v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src =>
+      _setValuesImageButtonInputElement[srcImageButtonInputElementAttribute]
+          as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesImageButtonInputElement[srcImageButtonInputElementAttribute] = v;
   }
 
-  int _width;
-  bool _widthSet = false;
-  int get width => _width;
+  int get width =>
+      _setValuesImageButtonInputElement[widthImageButtonInputElementAttribute]
+          as int;
   set width(int v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesImageButtonInputElement[widthImageButtonInputElementAttribute] =
+        v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ImageButtonInputElement ele) {
+    _setValuesImageButtonInputElement.forEach(
+        (k, dynamic v) => _updateAttributeImageButtonInputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_altSet) ele.alt = _alt;
-    if (_formActionSet) ele.formAction = _formAction;
-    if (_formEnctypeSet) ele.formEnctype = _formEnctype;
-    if (_formMethodSet) ele.formMethod = _formMethod;
-    if (_formNoValidateSet) ele.formNoValidate = _formNoValidate;
-    if (_formTargetSet) ele.formTarget = _formTarget;
-    if (_heightSet) ele.height = _height;
-    if (_srcSet) ele.src = _src;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(
       VImageButtonInputElement prev, ImageButtonInputElement ele) {
+    prev._setValuesImageButtonInputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesImageButtonInputElement[k];
+      if (v != newValue)
+        _updateAttributeImageButtonInputElement(ele, k, newValue);
+    });
+    prev._setValuesImageButtonInputElement = _setValuesImageButtonInputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_alt != prev._alt) {
-      ele.alt = _alt;
-      prev.alt = _alt;
-    }
-    if (_formAction != prev._formAction) {
-      ele.formAction = _formAction;
-      prev.formAction = _formAction;
-    }
-    if (_formEnctype != prev._formEnctype) {
-      ele.formEnctype = _formEnctype;
-      prev.formEnctype = _formEnctype;
-    }
-    if (_formMethod != prev._formMethod) {
-      ele.formMethod = _formMethod;
-      prev.formMethod = _formMethod;
-    }
-    if (_formNoValidate != prev._formNoValidate) {
-      ele.formNoValidate = _formNoValidate;
-      prev.formNoValidate = _formNoValidate;
-    }
-    if (_formTarget != prev._formTarget) {
-      ele.formTarget = _formTarget;
-      prev.formTarget = _formTarget;
-    }
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeImageButtonInputElement(
+      ImageButtonInputElement ele, int key, dynamic value) {
+    switch (key) {
+      case altImageButtonInputElementAttribute:
+        ele.alt = value as String;
+        break;
+      case formActionImageButtonInputElementAttribute:
+        ele.formAction = value as String;
+        break;
+      case formEnctypeImageButtonInputElementAttribute:
+        ele.formEnctype = value as String;
+        break;
+      case formMethodImageButtonInputElementAttribute:
+        ele.formMethod = value as String;
+        break;
+      case formNoValidateImageButtonInputElementAttribute:
+        ele.formNoValidate = value as bool;
+        break;
+      case formTargetImageButtonInputElementAttribute:
+        ele.formTarget = value as String;
+        break;
+      case heightImageButtonInputElementAttribute:
+        ele.height = value as int;
+        break;
+      case srcImageButtonInputElementAttribute:
+        ele.src = value as String;
+        break;
+      case widthImageButtonInputElementAttribute:
+        ele.width = value as int;
+        break;
     }
   }
 }
@@ -3424,183 +3134,175 @@ class VResetButtonInputElement
     extends VInputElementBase<ResetButtonInputElement> {
   @override
   ResetButtonInputElement elementFactory() => new ResetButtonInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(ResetButtonInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(
-      VResetButtonInputElement prev, ResetButtonInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 class VButtonInputElement extends VInputElementBase<ButtonInputElement> {
   @override
   ButtonInputElement elementFactory() => new ButtonInputElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(ButtonInputElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(
-      VButtonInputElement prev, ButtonInputElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const autofocusKeygenElementAttribute = 0;
+const challengeKeygenElementAttribute = 1;
+const disabledKeygenElementAttribute = 2;
+const keytypeKeygenElementAttribute = 3;
+const nameKeygenElementAttribute = 4;
 
 class VKeygenElement extends VHtmlElement<KeygenElement> {
   @override
   KeygenElement elementFactory() => new KeygenElement();
 
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  var _setValuesKeygenElement = <int, dynamic>{};
+
+  bool get autofocus =>
+      _setValuesKeygenElement[autofocusKeygenElementAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesKeygenElement[autofocusKeygenElementAttribute] = v;
   }
 
-  String _challenge;
-  bool _challengeSet = false;
-  String get challenge => _challenge;
+  String get challenge =>
+      _setValuesKeygenElement[challengeKeygenElementAttribute] as String;
   set challenge(String v) {
-    _challenge = v;
-    _challengeSet = true;
+    _setValuesKeygenElement[challengeKeygenElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesKeygenElement[disabledKeygenElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesKeygenElement[disabledKeygenElementAttribute] = v;
   }
 
-  String _keytype;
-  bool _keytypeSet = false;
-  String get keytype => _keytype;
+  String get keytype =>
+      _setValuesKeygenElement[keytypeKeygenElementAttribute] as String;
   set keytype(String v) {
-    _keytype = v;
-    _keytypeSet = true;
+    _setValuesKeygenElement[keytypeKeygenElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesKeygenElement[nameKeygenElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesKeygenElement[nameKeygenElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(KeygenElement ele) {
+    _setValuesKeygenElement
+        .forEach((k, dynamic v) => _updateAttributeKeygenElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_challengeSet) ele.challenge = _challenge;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_keytypeSet) ele.keytype = _keytype;
-    if (_nameSet) ele.name = _name;
   }
 
   @override
   @protected
   void updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
+    prev._setValuesKeygenElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesKeygenElement[k];
+      if (v != newValue) _updateAttributeKeygenElement(ele, k, newValue);
+    });
+    prev._setValuesKeygenElement = _setValuesKeygenElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_challenge != prev._challenge) {
-      ele.challenge = _challenge;
-      prev.challenge = _challenge;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_keytype != prev._keytype) {
-      ele.keytype = _keytype;
-      prev.keytype = _keytype;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
+  void _updateAttributeKeygenElement(
+      KeygenElement ele, int key, dynamic value) {
+    switch (key) {
+      case autofocusKeygenElementAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case challengeKeygenElementAttribute:
+        ele.challenge = value as String;
+        break;
+      case disabledKeygenElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case keytypeKeygenElementAttribute:
+        ele.keytype = value as String;
+        break;
+      case nameKeygenElementAttribute:
+        ele.name = value as String;
+        break;
     }
   }
 }
+
+const valueLIElementAttribute = 0;
 
 class VLIElement extends VHtmlElement<LIElement> {
   @override
   LIElement elementFactory() => new LIElement();
 
-  int _value;
-  bool _valueSet = false;
-  int get value => _value;
+  var _setValuesLIElement = <int, dynamic>{};
+
+  int get value => _setValuesLIElement[valueLIElementAttribute] as int;
   set value(int v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesLIElement[valueLIElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(LIElement ele) {
+    _setValuesLIElement
+        .forEach((k, dynamic v) => _updateAttributeLIElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VLIElement prev, LIElement ele) {
+    prev._setValuesLIElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesLIElement[k];
+      if (v != newValue) _updateAttributeLIElement(ele, k, newValue);
+    });
+    prev._setValuesLIElement = _setValuesLIElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeLIElement(LIElement ele, int key, dynamic value) {
+    switch (key) {
+      case valueLIElementAttribute:
+        ele.value = value as int;
+        break;
     }
   }
 }
+
+const htmlForLabelElementAttribute = 0;
 
 class VLabelElement extends VHtmlElement<LabelElement> {
   @override
   LabelElement elementFactory() => new LabelElement();
 
-  String _htmlFor;
-  bool _htmlForSet = false;
-  String get htmlFor => _htmlFor;
+  var _setValuesLabelElement = <int, dynamic>{};
+
+  String get htmlFor =>
+      _setValuesLabelElement[htmlForLabelElementAttribute] as String;
   set htmlFor(String v) {
-    _htmlFor = v;
-    _htmlForSet = true;
+    _setValuesLabelElement[htmlForLabelElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(LabelElement ele) {
+    _setValuesLabelElement
+        .forEach((k, dynamic v) => _updateAttributeLabelElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_htmlForSet) ele.htmlFor = _htmlFor;
   }
 
   @override
   @protected
   void updateElementAttributes(VLabelElement prev, LabelElement ele) {
+    prev._setValuesLabelElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesLabelElement[k];
+      if (v != newValue) _updateAttributeLabelElement(ele, k, newValue);
+    });
+    prev._setValuesLabelElement = _setValuesLabelElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_htmlFor != prev._htmlFor) {
-      ele.htmlFor = _htmlFor;
-      prev.htmlFor = _htmlFor;
+  void _updateAttributeLabelElement(LabelElement ele, int key, dynamic value) {
+    switch (key) {
+      case htmlForLabelElementAttribute:
+        ele.htmlFor = value as String;
+        break;
     }
   }
 }
@@ -3608,1075 +3310,1030 @@ class VLabelElement extends VHtmlElement<LabelElement> {
 class VLegendElement extends VHtmlElement<LegendElement> {
   @override
   LegendElement elementFactory() => new LegendElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(LegendElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VLegendElement prev, LegendElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const asLinkElementAttribute = 0;
+const crossOriginLinkElementAttribute = 1;
+const disabledLinkElementAttribute = 2;
+const hrefLinkElementAttribute = 3;
+const hreflangLinkElementAttribute = 4;
+const integrityLinkElementAttribute = 5;
+const mediaLinkElementAttribute = 6;
+const relLinkElementAttribute = 7;
+const typeLinkElementAttribute = 8;
 
 class VLinkElement extends VHtmlElement<LinkElement> {
   @override
   LinkElement elementFactory() => new LinkElement();
 
-  String _as;
-  bool _asSet = false;
-  String get as => _as;
+  var _setValuesLinkElement = <int, dynamic>{};
+
+  String get as => _setValuesLinkElement[asLinkElementAttribute] as String;
   set as(String v) {
-    _as = v;
-    _asSet = true;
+    _setValuesLinkElement[asLinkElementAttribute] = v;
   }
 
-  String _crossOrigin;
-  bool _crossOriginSet = false;
-  String get crossOrigin => _crossOrigin;
+  String get crossOrigin =>
+      _setValuesLinkElement[crossOriginLinkElementAttribute] as String;
   set crossOrigin(String v) {
-    _crossOrigin = v;
-    _crossOriginSet = true;
+    _setValuesLinkElement[crossOriginLinkElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesLinkElement[disabledLinkElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesLinkElement[disabledLinkElementAttribute] = v;
   }
 
-  String _href;
-  bool _hrefSet = false;
-  String get href => _href;
+  String get href => _setValuesLinkElement[hrefLinkElementAttribute] as String;
   set href(String v) {
-    _href = v;
-    _hrefSet = true;
+    _setValuesLinkElement[hrefLinkElementAttribute] = v;
   }
 
-  String _hreflang;
-  bool _hreflangSet = false;
-  String get hreflang => _hreflang;
+  String get hreflang =>
+      _setValuesLinkElement[hreflangLinkElementAttribute] as String;
   set hreflang(String v) {
-    _hreflang = v;
-    _hreflangSet = true;
+    _setValuesLinkElement[hreflangLinkElementAttribute] = v;
   }
 
-  String _integrity;
-  bool _integritySet = false;
-  String get integrity => _integrity;
+  String get integrity =>
+      _setValuesLinkElement[integrityLinkElementAttribute] as String;
   set integrity(String v) {
-    _integrity = v;
-    _integritySet = true;
+    _setValuesLinkElement[integrityLinkElementAttribute] = v;
   }
 
-  String _media;
-  bool _mediaSet = false;
-  String get media => _media;
+  String get media =>
+      _setValuesLinkElement[mediaLinkElementAttribute] as String;
   set media(String v) {
-    _media = v;
-    _mediaSet = true;
+    _setValuesLinkElement[mediaLinkElementAttribute] = v;
   }
 
-  String _rel;
-  bool _relSet = false;
-  String get rel => _rel;
+  String get rel => _setValuesLinkElement[relLinkElementAttribute] as String;
   set rel(String v) {
-    _rel = v;
-    _relSet = true;
+    _setValuesLinkElement[relLinkElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type => _setValuesLinkElement[typeLinkElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesLinkElement[typeLinkElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(LinkElement ele) {
+    _setValuesLinkElement
+        .forEach((k, dynamic v) => _updateAttributeLinkElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_asSet) ele.as = _as;
-    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_hrefSet) ele.href = _href;
-    if (_hreflangSet) ele.hreflang = _hreflang;
-    if (_integritySet) ele.integrity = _integrity;
-    if (_mediaSet) ele.media = _media;
-    if (_relSet) ele.rel = _rel;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(VLinkElement prev, LinkElement ele) {
+    prev._setValuesLinkElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesLinkElement[k];
+      if (v != newValue) _updateAttributeLinkElement(ele, k, newValue);
+    });
+    prev._setValuesLinkElement = _setValuesLinkElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_as != prev._as) {
-      ele.as = _as;
-      prev.as = _as;
-    }
-    if (_crossOrigin != prev._crossOrigin) {
-      ele.crossOrigin = _crossOrigin;
-      prev.crossOrigin = _crossOrigin;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_href != prev._href) {
-      ele.href = _href;
-      prev.href = _href;
-    }
-    if (_hreflang != prev._hreflang) {
-      ele.hreflang = _hreflang;
-      prev.hreflang = _hreflang;
-    }
-    if (_integrity != prev._integrity) {
-      ele.integrity = _integrity;
-      prev.integrity = _integrity;
-    }
-    if (_media != prev._media) {
-      ele.media = _media;
-      prev.media = _media;
-    }
-    if (_rel != prev._rel) {
-      ele.rel = _rel;
-      prev.rel = _rel;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeLinkElement(LinkElement ele, int key, dynamic value) {
+    switch (key) {
+      case asLinkElementAttribute:
+        ele.as = value as String;
+        break;
+      case crossOriginLinkElementAttribute:
+        ele.crossOrigin = value as String;
+        break;
+      case disabledLinkElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case hrefLinkElementAttribute:
+        ele.href = value as String;
+        break;
+      case hreflangLinkElementAttribute:
+        ele.hreflang = value as String;
+        break;
+      case integrityLinkElementAttribute:
+        ele.integrity = value as String;
+        break;
+      case mediaLinkElementAttribute:
+        ele.media = value as String;
+        break;
+      case relLinkElementAttribute:
+        ele.rel = value as String;
+        break;
+      case typeLinkElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
+
+const nameMapElementAttribute = 0;
 
 class VMapElement extends VHtmlElement<MapElement> {
   @override
   MapElement elementFactory() => new MapElement();
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  var _setValuesMapElement = <int, dynamic>{};
+
+  String get name => _setValuesMapElement[nameMapElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesMapElement[nameMapElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(MapElement ele) {
+    _setValuesMapElement
+        .forEach((k, dynamic v) => _updateAttributeMapElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_nameSet) ele.name = _name;
   }
 
   @override
   @protected
   void updateElementAttributes(VMapElement prev, MapElement ele) {
+    prev._setValuesMapElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMapElement[k];
+      if (v != newValue) _updateAttributeMapElement(ele, k, newValue);
+    });
+    prev._setValuesMapElement = _setValuesMapElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
+  void _updateAttributeMapElement(MapElement ele, int key, dynamic value) {
+    switch (key) {
+      case nameMapElementAttribute:
+        ele.name = value as String;
+        break;
     }
   }
 }
 
+const autoplayMediaElementAttribute = 0;
+const controlsMediaElementAttribute = 1;
+const crossOriginMediaElementAttribute = 2;
+const currentTimeMediaElementAttribute = 3;
+const defaultMutedMediaElementAttribute = 4;
+const defaultPlaybackRateMediaElementAttribute = 5;
+const disableRemotePlaybackMediaElementAttribute = 6;
+const loopMediaElementAttribute = 7;
+const mutedMediaElementAttribute = 8;
+const playbackRateMediaElementAttribute = 9;
+const preloadMediaElementAttribute = 10;
+const sessionMediaElementAttribute = 11;
+const srcMediaElementAttribute = 12;
+const volumeMediaElementAttribute = 13;
+
 abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
-  bool _autoplay;
-  bool _autoplaySet = false;
-  bool get autoplay => _autoplay;
+  var _setValuesMediaElement = <int, dynamic>{};
+
+  bool get autoplay =>
+      _setValuesMediaElement[autoplayMediaElementAttribute] as bool;
   set autoplay(bool v) {
-    _autoplay = v;
-    _autoplaySet = true;
+    _setValuesMediaElement[autoplayMediaElementAttribute] = v;
   }
 
-  bool _controls;
-  bool _controlsSet = false;
-  bool get controls => _controls;
+  bool get controls =>
+      _setValuesMediaElement[controlsMediaElementAttribute] as bool;
   set controls(bool v) {
-    _controls = v;
-    _controlsSet = true;
+    _setValuesMediaElement[controlsMediaElementAttribute] = v;
   }
 
-  String _crossOrigin;
-  bool _crossOriginSet = false;
-  String get crossOrigin => _crossOrigin;
+  String get crossOrigin =>
+      _setValuesMediaElement[crossOriginMediaElementAttribute] as String;
   set crossOrigin(String v) {
-    _crossOrigin = v;
-    _crossOriginSet = true;
+    _setValuesMediaElement[crossOriginMediaElementAttribute] = v;
   }
 
-  num _currentTime;
-  bool _currentTimeSet = false;
-  num get currentTime => _currentTime;
+  num get currentTime =>
+      _setValuesMediaElement[currentTimeMediaElementAttribute] as num;
   set currentTime(num v) {
-    _currentTime = v;
-    _currentTimeSet = true;
+    _setValuesMediaElement[currentTimeMediaElementAttribute] = v;
   }
 
-  bool _defaultMuted;
-  bool _defaultMutedSet = false;
-  bool get defaultMuted => _defaultMuted;
+  bool get defaultMuted =>
+      _setValuesMediaElement[defaultMutedMediaElementAttribute] as bool;
   set defaultMuted(bool v) {
-    _defaultMuted = v;
-    _defaultMutedSet = true;
+    _setValuesMediaElement[defaultMutedMediaElementAttribute] = v;
   }
 
-  num _defaultPlaybackRate;
-  bool _defaultPlaybackRateSet = false;
-  num get defaultPlaybackRate => _defaultPlaybackRate;
+  num get defaultPlaybackRate =>
+      _setValuesMediaElement[defaultPlaybackRateMediaElementAttribute] as num;
   set defaultPlaybackRate(num v) {
-    _defaultPlaybackRate = v;
-    _defaultPlaybackRateSet = true;
+    _setValuesMediaElement[defaultPlaybackRateMediaElementAttribute] = v;
   }
 
-  bool _disableRemotePlayback;
-  bool _disableRemotePlaybackSet = false;
-  bool get disableRemotePlayback => _disableRemotePlayback;
+  bool get disableRemotePlayback =>
+      _setValuesMediaElement[disableRemotePlaybackMediaElementAttribute]
+          as bool;
   set disableRemotePlayback(bool v) {
-    _disableRemotePlayback = v;
-    _disableRemotePlaybackSet = true;
+    _setValuesMediaElement[disableRemotePlaybackMediaElementAttribute] = v;
   }
 
-  bool _loop;
-  bool _loopSet = false;
-  bool get loop => _loop;
+  bool get loop => _setValuesMediaElement[loopMediaElementAttribute] as bool;
   set loop(bool v) {
-    _loop = v;
-    _loopSet = true;
+    _setValuesMediaElement[loopMediaElementAttribute] = v;
   }
 
-  bool _muted;
-  bool _mutedSet = false;
-  bool get muted => _muted;
+  bool get muted => _setValuesMediaElement[mutedMediaElementAttribute] as bool;
   set muted(bool v) {
-    _muted = v;
-    _mutedSet = true;
+    _setValuesMediaElement[mutedMediaElementAttribute] = v;
   }
 
-  num _playbackRate;
-  bool _playbackRateSet = false;
-  num get playbackRate => _playbackRate;
+  num get playbackRate =>
+      _setValuesMediaElement[playbackRateMediaElementAttribute] as num;
   set playbackRate(num v) {
-    _playbackRate = v;
-    _playbackRateSet = true;
+    _setValuesMediaElement[playbackRateMediaElementAttribute] = v;
   }
 
-  String _preload;
-  bool _preloadSet = false;
-  String get preload => _preload;
+  String get preload =>
+      _setValuesMediaElement[preloadMediaElementAttribute] as String;
   set preload(String v) {
-    _preload = v;
-    _preloadSet = true;
+    _setValuesMediaElement[preloadMediaElementAttribute] = v;
   }
 
-  MediaSession _session;
-  bool _sessionSet = false;
-  MediaSession get session => _session;
+  MediaSession get session =>
+      _setValuesMediaElement[sessionMediaElementAttribute] as MediaSession;
   set session(MediaSession v) {
-    _session = v;
-    _sessionSet = true;
+    _setValuesMediaElement[sessionMediaElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src => _setValuesMediaElement[srcMediaElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesMediaElement[srcMediaElementAttribute] = v;
   }
 
-  num _volume;
-  bool _volumeSet = false;
-  num get volume => _volume;
+  num get volume => _setValuesMediaElement[volumeMediaElementAttribute] as num;
   set volume(num v) {
-    _volume = v;
-    _volumeSet = true;
+    _setValuesMediaElement[volumeMediaElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesMediaElement
+        .forEach((k, dynamic v) => _updateAttributeMediaElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autoplaySet) ele.autoplay = _autoplay;
-    if (_controlsSet) ele.controls = _controls;
-    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
-    if (_currentTimeSet) ele.currentTime = _currentTime;
-    if (_defaultMutedSet) ele.defaultMuted = _defaultMuted;
-    if (_defaultPlaybackRateSet) ele.defaultPlaybackRate = _defaultPlaybackRate;
-    if (_disableRemotePlaybackSet)
-      ele.disableRemotePlayback = _disableRemotePlayback;
-    if (_loopSet) ele.loop = _loop;
-    if (_mutedSet) ele.muted = _muted;
-    if (_playbackRateSet) ele.playbackRate = _playbackRate;
-    if (_preloadSet) ele.preload = _preload;
-    if (_sessionSet) ele.session = _session;
-    if (_srcSet) ele.src = _src;
-    if (_volumeSet) ele.volume = _volume;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VMediaElement<T> prev, T ele) {
+    prev._setValuesMediaElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMediaElement[k];
+      if (v != newValue) _updateAttributeMediaElement(ele, k, newValue);
+    });
+    prev._setValuesMediaElement = _setValuesMediaElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autoplay != prev._autoplay) {
-      ele.autoplay = _autoplay;
-      prev.autoplay = _autoplay;
-    }
-    if (_controls != prev._controls) {
-      ele.controls = _controls;
-      prev.controls = _controls;
-    }
-    if (_crossOrigin != prev._crossOrigin) {
-      ele.crossOrigin = _crossOrigin;
-      prev.crossOrigin = _crossOrigin;
-    }
-    if (_currentTime != prev._currentTime) {
-      ele.currentTime = _currentTime;
-      prev.currentTime = _currentTime;
-    }
-    if (_defaultMuted != prev._defaultMuted) {
-      ele.defaultMuted = _defaultMuted;
-      prev.defaultMuted = _defaultMuted;
-    }
-    if (_defaultPlaybackRate != prev._defaultPlaybackRate) {
-      ele.defaultPlaybackRate = _defaultPlaybackRate;
-      prev.defaultPlaybackRate = _defaultPlaybackRate;
-    }
-    if (_disableRemotePlayback != prev._disableRemotePlayback) {
-      ele.disableRemotePlayback = _disableRemotePlayback;
-      prev.disableRemotePlayback = _disableRemotePlayback;
-    }
-    if (_loop != prev._loop) {
-      ele.loop = _loop;
-      prev.loop = _loop;
-    }
-    if (_muted != prev._muted) {
-      ele.muted = _muted;
-      prev.muted = _muted;
-    }
-    if (_playbackRate != prev._playbackRate) {
-      ele.playbackRate = _playbackRate;
-      prev.playbackRate = _playbackRate;
-    }
-    if (_preload != prev._preload) {
-      ele.preload = _preload;
-      prev.preload = _preload;
-    }
-    if (_session != prev._session) {
-      ele.session = _session;
-      prev.session = _session;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_volume != prev._volume) {
-      ele.volume = _volume;
-      prev.volume = _volume;
+  void _updateAttributeMediaElement(MediaElement ele, int key, dynamic value) {
+    switch (key) {
+      case autoplayMediaElementAttribute:
+        ele.autoplay = value as bool;
+        break;
+      case controlsMediaElementAttribute:
+        ele.controls = value as bool;
+        break;
+      case crossOriginMediaElementAttribute:
+        ele.crossOrigin = value as String;
+        break;
+      case currentTimeMediaElementAttribute:
+        ele.currentTime = value as num;
+        break;
+      case defaultMutedMediaElementAttribute:
+        ele.defaultMuted = value as bool;
+        break;
+      case defaultPlaybackRateMediaElementAttribute:
+        ele.defaultPlaybackRate = value as num;
+        break;
+      case disableRemotePlaybackMediaElementAttribute:
+        ele.disableRemotePlayback = value as bool;
+        break;
+      case loopMediaElementAttribute:
+        ele.loop = value as bool;
+        break;
+      case mutedMediaElementAttribute:
+        ele.muted = value as bool;
+        break;
+      case playbackRateMediaElementAttribute:
+        ele.playbackRate = value as num;
+        break;
+      case preloadMediaElementAttribute:
+        ele.preload = value as String;
+        break;
+      case sessionMediaElementAttribute:
+        ele.session = value as MediaSession;
+        break;
+      case srcMediaElementAttribute:
+        ele.src = value as String;
+        break;
+      case volumeMediaElementAttribute:
+        ele.volume = value as num;
+        break;
     }
   }
 }
+
+const labelMenuElementAttribute = 0;
+const typeMenuElementAttribute = 1;
 
 class VMenuElement extends VHtmlElement<MenuElement> {
   @override
   MenuElement elementFactory() => new MenuElement();
 
-  String _label;
-  bool _labelSet = false;
-  String get label => _label;
+  var _setValuesMenuElement = <int, dynamic>{};
+
+  String get label =>
+      _setValuesMenuElement[labelMenuElementAttribute] as String;
   set label(String v) {
-    _label = v;
-    _labelSet = true;
+    _setValuesMenuElement[labelMenuElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type => _setValuesMenuElement[typeMenuElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesMenuElement[typeMenuElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(MenuElement ele) {
+    _setValuesMenuElement
+        .forEach((k, dynamic v) => _updateAttributeMenuElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_labelSet) ele.label = _label;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(VMenuElement prev, MenuElement ele) {
+    prev._setValuesMenuElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMenuElement[k];
+      if (v != newValue) _updateAttributeMenuElement(ele, k, newValue);
+    });
+    prev._setValuesMenuElement = _setValuesMenuElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_label != prev._label) {
-      ele.label = _label;
-      prev.label = _label;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeMenuElement(MenuElement ele, int key, dynamic value) {
+    switch (key) {
+      case labelMenuElementAttribute:
+        ele.label = value as String;
+        break;
+      case typeMenuElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
 
+const checkedMenuItemElementAttribute = 0;
+const defaultValueMenuItemElementAttribute = 1;
+const disabledMenuItemElementAttribute = 2;
+const iconMenuItemElementAttribute = 3;
+const labelMenuItemElementAttribute = 4;
+const radiogroupMenuItemElementAttribute = 5;
+const typeMenuItemElementAttribute = 6;
+
 abstract class VMenuItemElement<T extends MenuItemElement>
     extends VHtmlElement<T> {
-  bool _checked;
-  bool _checkedSet = false;
-  bool get checked => _checked;
+  var _setValuesMenuItemElement = <int, dynamic>{};
+
+  bool get checked =>
+      _setValuesMenuItemElement[checkedMenuItemElementAttribute] as bool;
   set checked(bool v) {
-    _checked = v;
-    _checkedSet = true;
+    _setValuesMenuItemElement[checkedMenuItemElementAttribute] = v;
   }
 
-  bool _defaultValue;
-  bool _defaultValueSet = false;
-  bool get defaultValue => _defaultValue;
+  bool get defaultValue =>
+      _setValuesMenuItemElement[defaultValueMenuItemElementAttribute] as bool;
   set defaultValue(bool v) {
-    _defaultValue = v;
-    _defaultValueSet = true;
+    _setValuesMenuItemElement[defaultValueMenuItemElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesMenuItemElement[disabledMenuItemElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesMenuItemElement[disabledMenuItemElementAttribute] = v;
   }
 
-  String _icon;
-  bool _iconSet = false;
-  String get icon => _icon;
+  String get icon =>
+      _setValuesMenuItemElement[iconMenuItemElementAttribute] as String;
   set icon(String v) {
-    _icon = v;
-    _iconSet = true;
+    _setValuesMenuItemElement[iconMenuItemElementAttribute] = v;
   }
 
-  String _label;
-  bool _labelSet = false;
-  String get label => _label;
+  String get label =>
+      _setValuesMenuItemElement[labelMenuItemElementAttribute] as String;
   set label(String v) {
-    _label = v;
-    _labelSet = true;
+    _setValuesMenuItemElement[labelMenuItemElementAttribute] = v;
   }
 
-  String _radiogroup;
-  bool _radiogroupSet = false;
-  String get radiogroup => _radiogroup;
+  String get radiogroup =>
+      _setValuesMenuItemElement[radiogroupMenuItemElementAttribute] as String;
   set radiogroup(String v) {
-    _radiogroup = v;
-    _radiogroupSet = true;
+    _setValuesMenuItemElement[radiogroupMenuItemElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesMenuItemElement[typeMenuItemElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesMenuItemElement[typeMenuItemElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesMenuItemElement
+        .forEach((k, dynamic v) => _updateAttributeMenuItemElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_checkedSet) ele.checked = _checked;
-    if (_defaultValueSet) ele.defaultValue = _defaultValue;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_iconSet) ele.icon = _icon;
-    if (_labelSet) ele.label = _label;
-    if (_radiogroupSet) ele.radiogroup = _radiogroup;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
+    prev._setValuesMenuItemElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMenuItemElement[k];
+      if (v != newValue) _updateAttributeMenuItemElement(ele, k, newValue);
+    });
+    prev._setValuesMenuItemElement = _setValuesMenuItemElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_checked != prev._checked) {
-      ele.checked = _checked;
-      prev.checked = _checked;
-    }
-    if (_defaultValue != prev._defaultValue) {
-      ele.defaultValue = _defaultValue;
-      prev.defaultValue = _defaultValue;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_icon != prev._icon) {
-      ele.icon = _icon;
-      prev.icon = _icon;
-    }
-    if (_label != prev._label) {
-      ele.label = _label;
-      prev.label = _label;
-    }
-    if (_radiogroup != prev._radiogroup) {
-      ele.radiogroup = _radiogroup;
-      prev.radiogroup = _radiogroup;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeMenuItemElement(
+      MenuItemElement ele, int key, dynamic value) {
+    switch (key) {
+      case checkedMenuItemElementAttribute:
+        ele.checked = value as bool;
+        break;
+      case defaultValueMenuItemElementAttribute:
+        ele.defaultValue = value as bool;
+        break;
+      case disabledMenuItemElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case iconMenuItemElementAttribute:
+        ele.icon = value as String;
+        break;
+      case labelMenuItemElementAttribute:
+        ele.label = value as String;
+        break;
+      case radiogroupMenuItemElementAttribute:
+        ele.radiogroup = value as String;
+        break;
+      case typeMenuItemElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
+
+const contentMetaElementAttribute = 0;
+const httpEquivMetaElementAttribute = 1;
+const nameMetaElementAttribute = 2;
 
 class VMetaElement extends VHtmlElement<MetaElement> {
   @override
   MetaElement elementFactory() => new MetaElement();
 
-  String _content;
-  bool _contentSet = false;
-  String get content => _content;
+  var _setValuesMetaElement = <int, dynamic>{};
+
+  String get content =>
+      _setValuesMetaElement[contentMetaElementAttribute] as String;
   set content(String v) {
-    _content = v;
-    _contentSet = true;
+    _setValuesMetaElement[contentMetaElementAttribute] = v;
   }
 
-  String _httpEquiv;
-  bool _httpEquivSet = false;
-  String get httpEquiv => _httpEquiv;
+  String get httpEquiv =>
+      _setValuesMetaElement[httpEquivMetaElementAttribute] as String;
   set httpEquiv(String v) {
-    _httpEquiv = v;
-    _httpEquivSet = true;
+    _setValuesMetaElement[httpEquivMetaElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name => _setValuesMetaElement[nameMetaElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesMetaElement[nameMetaElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(MetaElement ele) {
+    _setValuesMetaElement
+        .forEach((k, dynamic v) => _updateAttributeMetaElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_contentSet) ele.content = _content;
-    if (_httpEquivSet) ele.httpEquiv = _httpEquiv;
-    if (_nameSet) ele.name = _name;
   }
 
   @override
   @protected
   void updateElementAttributes(VMetaElement prev, MetaElement ele) {
+    prev._setValuesMetaElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMetaElement[k];
+      if (v != newValue) _updateAttributeMetaElement(ele, k, newValue);
+    });
+    prev._setValuesMetaElement = _setValuesMetaElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_content != prev._content) {
-      ele.content = _content;
-      prev.content = _content;
-    }
-    if (_httpEquiv != prev._httpEquiv) {
-      ele.httpEquiv = _httpEquiv;
-      prev.httpEquiv = _httpEquiv;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
+  void _updateAttributeMetaElement(MetaElement ele, int key, dynamic value) {
+    switch (key) {
+      case contentMetaElementAttribute:
+        ele.content = value as String;
+        break;
+      case httpEquivMetaElementAttribute:
+        ele.httpEquiv = value as String;
+        break;
+      case nameMetaElementAttribute:
+        ele.name = value as String;
+        break;
     }
   }
 }
+
+const highMeterElementAttribute = 0;
+const lowMeterElementAttribute = 1;
+const maxMeterElementAttribute = 2;
+const minMeterElementAttribute = 3;
+const optimumMeterElementAttribute = 4;
+const valueMeterElementAttribute = 5;
 
 class VMeterElement extends VHtmlElement<MeterElement> {
   @override
   MeterElement elementFactory() => new MeterElement();
 
-  num _high;
-  bool _highSet = false;
-  num get high => _high;
+  var _setValuesMeterElement = <int, dynamic>{};
+
+  num get high => _setValuesMeterElement[highMeterElementAttribute] as num;
   set high(num v) {
-    _high = v;
-    _highSet = true;
+    _setValuesMeterElement[highMeterElementAttribute] = v;
   }
 
-  num _low;
-  bool _lowSet = false;
-  num get low => _low;
+  num get low => _setValuesMeterElement[lowMeterElementAttribute] as num;
   set low(num v) {
-    _low = v;
-    _lowSet = true;
+    _setValuesMeterElement[lowMeterElementAttribute] = v;
   }
 
-  num _max;
-  bool _maxSet = false;
-  num get max => _max;
+  num get max => _setValuesMeterElement[maxMeterElementAttribute] as num;
   set max(num v) {
-    _max = v;
-    _maxSet = true;
+    _setValuesMeterElement[maxMeterElementAttribute] = v;
   }
 
-  num _min;
-  bool _minSet = false;
-  num get min => _min;
+  num get min => _setValuesMeterElement[minMeterElementAttribute] as num;
   set min(num v) {
-    _min = v;
-    _minSet = true;
+    _setValuesMeterElement[minMeterElementAttribute] = v;
   }
 
-  num _optimum;
-  bool _optimumSet = false;
-  num get optimum => _optimum;
+  num get optimum =>
+      _setValuesMeterElement[optimumMeterElementAttribute] as num;
   set optimum(num v) {
-    _optimum = v;
-    _optimumSet = true;
+    _setValuesMeterElement[optimumMeterElementAttribute] = v;
   }
 
-  num _value;
-  bool _valueSet = false;
-  num get value => _value;
+  num get value => _setValuesMeterElement[valueMeterElementAttribute] as num;
   set value(num v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesMeterElement[valueMeterElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(MeterElement ele) {
+    _setValuesMeterElement
+        .forEach((k, dynamic v) => _updateAttributeMeterElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_highSet) ele.high = _high;
-    if (_lowSet) ele.low = _low;
-    if (_maxSet) ele.max = _max;
-    if (_minSet) ele.min = _min;
-    if (_optimumSet) ele.optimum = _optimum;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VMeterElement prev, MeterElement ele) {
+    prev._setValuesMeterElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesMeterElement[k];
+      if (v != newValue) _updateAttributeMeterElement(ele, k, newValue);
+    });
+    prev._setValuesMeterElement = _setValuesMeterElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_high != prev._high) {
-      ele.high = _high;
-      prev.high = _high;
-    }
-    if (_low != prev._low) {
-      ele.low = _low;
-      prev.low = _low;
-    }
-    if (_max != prev._max) {
-      ele.max = _max;
-      prev.max = _max;
-    }
-    if (_min != prev._min) {
-      ele.min = _min;
-      prev.min = _min;
-    }
-    if (_optimum != prev._optimum) {
-      ele.optimum = _optimum;
-      prev.optimum = _optimum;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeMeterElement(MeterElement ele, int key, dynamic value) {
+    switch (key) {
+      case highMeterElementAttribute:
+        ele.high = value as num;
+        break;
+      case lowMeterElementAttribute:
+        ele.low = value as num;
+        break;
+      case maxMeterElementAttribute:
+        ele.max = value as num;
+        break;
+      case minMeterElementAttribute:
+        ele.min = value as num;
+        break;
+      case optimumMeterElementAttribute:
+        ele.optimum = value as num;
+        break;
+      case valueMeterElementAttribute:
+        ele.value = value as num;
+        break;
     }
   }
 }
 
+const citeModElementAttribute = 0;
+const dateTimeModElementAttribute = 1;
+
 abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
-  String _cite;
-  bool _citeSet = false;
-  String get cite => _cite;
+  var _setValuesModElement = <int, dynamic>{};
+
+  String get cite => _setValuesModElement[citeModElementAttribute] as String;
   set cite(String v) {
-    _cite = v;
-    _citeSet = true;
+    _setValuesModElement[citeModElementAttribute] = v;
   }
 
-  String _dateTime;
-  bool _dateTimeSet = false;
-  String get dateTime => _dateTime;
+  String get dateTime =>
+      _setValuesModElement[dateTimeModElementAttribute] as String;
   set dateTime(String v) {
-    _dateTime = v;
-    _dateTimeSet = true;
+    _setValuesModElement[dateTimeModElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesModElement
+        .forEach((k, dynamic v) => _updateAttributeModElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_citeSet) ele.cite = _cite;
-    if (_dateTimeSet) ele.dateTime = _dateTime;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VModElement<T> prev, T ele) {
+    prev._setValuesModElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesModElement[k];
+      if (v != newValue) _updateAttributeModElement(ele, k, newValue);
+    });
+    prev._setValuesModElement = _setValuesModElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_cite != prev._cite) {
-      ele.cite = _cite;
-      prev.cite = _cite;
-    }
-    if (_dateTime != prev._dateTime) {
-      ele.dateTime = _dateTime;
-      prev.dateTime = _dateTime;
+  void _updateAttributeModElement(ModElement ele, int key, dynamic value) {
+    switch (key) {
+      case citeModElementAttribute:
+        ele.cite = value as String;
+        break;
+      case dateTimeModElementAttribute:
+        ele.dateTime = value as String;
+        break;
     }
   }
 }
+
+const reversedOListElementAttribute = 0;
+const startOListElementAttribute = 1;
+const typeOListElementAttribute = 2;
 
 class VOListElement extends VHtmlElement<OListElement> {
   @override
   OListElement elementFactory() => new OListElement();
 
-  bool _reversed;
-  bool _reversedSet = false;
-  bool get reversed => _reversed;
+  var _setValuesOListElement = <int, dynamic>{};
+
+  bool get reversed =>
+      _setValuesOListElement[reversedOListElementAttribute] as bool;
   set reversed(bool v) {
-    _reversed = v;
-    _reversedSet = true;
+    _setValuesOListElement[reversedOListElementAttribute] = v;
   }
 
-  int _start;
-  bool _startSet = false;
-  int get start => _start;
+  int get start => _setValuesOListElement[startOListElementAttribute] as int;
   set start(int v) {
-    _start = v;
-    _startSet = true;
+    _setValuesOListElement[startOListElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesOListElement[typeOListElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesOListElement[typeOListElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(OListElement ele) {
+    _setValuesOListElement
+        .forEach((k, dynamic v) => _updateAttributeOListElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_reversedSet) ele.reversed = _reversed;
-    if (_startSet) ele.start = _start;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(VOListElement prev, OListElement ele) {
+    prev._setValuesOListElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesOListElement[k];
+      if (v != newValue) _updateAttributeOListElement(ele, k, newValue);
+    });
+    prev._setValuesOListElement = _setValuesOListElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_reversed != prev._reversed) {
-      ele.reversed = _reversed;
-      prev.reversed = _reversed;
-    }
-    if (_start != prev._start) {
-      ele.start = _start;
-      prev.start = _start;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeOListElement(OListElement ele, int key, dynamic value) {
+    switch (key) {
+      case reversedOListElementAttribute:
+        ele.reversed = value as bool;
+        break;
+      case startOListElementAttribute:
+        ele.start = value as int;
+        break;
+      case typeOListElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
+
+const dataObjectElementAttribute = 0;
+const heightObjectElementAttribute = 1;
+const nameObjectElementAttribute = 2;
+const typeObjectElementAttribute = 3;
+const useMapObjectElementAttribute = 4;
+const widthObjectElementAttribute = 5;
 
 class VObjectElement extends VHtmlElement<ObjectElement> {
   @override
   ObjectElement elementFactory() => new ObjectElement();
 
-  String _data;
-  bool _dataSet = false;
-  String get data => _data;
+  var _setValuesObjectElement = <int, dynamic>{};
+
+  String get data =>
+      _setValuesObjectElement[dataObjectElementAttribute] as String;
   set data(String v) {
-    _data = v;
-    _dataSet = true;
+    _setValuesObjectElement[dataObjectElementAttribute] = v;
   }
 
-  String _height;
-  bool _heightSet = false;
-  String get height => _height;
+  String get height =>
+      _setValuesObjectElement[heightObjectElementAttribute] as String;
   set height(String v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesObjectElement[heightObjectElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesObjectElement[nameObjectElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesObjectElement[nameObjectElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesObjectElement[typeObjectElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesObjectElement[typeObjectElementAttribute] = v;
   }
 
-  String _useMap;
-  bool _useMapSet = false;
-  String get useMap => _useMap;
+  String get useMap =>
+      _setValuesObjectElement[useMapObjectElementAttribute] as String;
   set useMap(String v) {
-    _useMap = v;
-    _useMapSet = true;
+    _setValuesObjectElement[useMapObjectElementAttribute] = v;
   }
 
-  String _width;
-  bool _widthSet = false;
-  String get width => _width;
+  String get width =>
+      _setValuesObjectElement[widthObjectElementAttribute] as String;
   set width(String v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesObjectElement[widthObjectElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ObjectElement ele) {
+    _setValuesObjectElement
+        .forEach((k, dynamic v) => _updateAttributeObjectElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_dataSet) ele.data = _data;
-    if (_heightSet) ele.height = _height;
-    if (_nameSet) ele.name = _name;
-    if (_typeSet) ele.type = _type;
-    if (_useMapSet) ele.useMap = _useMap;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(VObjectElement prev, ObjectElement ele) {
+    prev._setValuesObjectElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesObjectElement[k];
+      if (v != newValue) _updateAttributeObjectElement(ele, k, newValue);
+    });
+    prev._setValuesObjectElement = _setValuesObjectElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_data != prev._data) {
-      ele.data = _data;
-      prev.data = _data;
-    }
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
-    }
-    if (_useMap != prev._useMap) {
-      ele.useMap = _useMap;
-      prev.useMap = _useMap;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeObjectElement(
+      ObjectElement ele, int key, dynamic value) {
+    switch (key) {
+      case dataObjectElementAttribute:
+        ele.data = value as String;
+        break;
+      case heightObjectElementAttribute:
+        ele.height = value as String;
+        break;
+      case nameObjectElementAttribute:
+        ele.name = value as String;
+        break;
+      case typeObjectElementAttribute:
+        ele.type = value as String;
+        break;
+      case useMapObjectElementAttribute:
+        ele.useMap = value as String;
+        break;
+      case widthObjectElementAttribute:
+        ele.width = value as String;
+        break;
     }
   }
 }
+
+const disabledOptGroupElementAttribute = 0;
+const labelOptGroupElementAttribute = 1;
 
 class VOptGroupElement extends VHtmlElement<OptGroupElement> {
   @override
   OptGroupElement elementFactory() => new OptGroupElement();
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  var _setValuesOptGroupElement = <int, dynamic>{};
+
+  bool get disabled =>
+      _setValuesOptGroupElement[disabledOptGroupElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesOptGroupElement[disabledOptGroupElementAttribute] = v;
   }
 
-  String _label;
-  bool _labelSet = false;
-  String get label => _label;
+  String get label =>
+      _setValuesOptGroupElement[labelOptGroupElementAttribute] as String;
   set label(String v) {
-    _label = v;
-    _labelSet = true;
+    _setValuesOptGroupElement[labelOptGroupElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(OptGroupElement ele) {
+    _setValuesOptGroupElement
+        .forEach((k, dynamic v) => _updateAttributeOptGroupElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_labelSet) ele.label = _label;
   }
 
   @override
   @protected
   void updateElementAttributes(VOptGroupElement prev, OptGroupElement ele) {
+    prev._setValuesOptGroupElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesOptGroupElement[k];
+      if (v != newValue) _updateAttributeOptGroupElement(ele, k, newValue);
+    });
+    prev._setValuesOptGroupElement = _setValuesOptGroupElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_label != prev._label) {
-      ele.label = _label;
-      prev.label = _label;
+  void _updateAttributeOptGroupElement(
+      OptGroupElement ele, int key, dynamic value) {
+    switch (key) {
+      case disabledOptGroupElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case labelOptGroupElementAttribute:
+        ele.label = value as String;
+        break;
     }
   }
 }
+
+const defaultSelectedOptionElementAttribute = 0;
+const disabledOptionElementAttribute = 1;
+const labelOptionElementAttribute = 2;
+const selectedOptionElementAttribute = 3;
+const valueOptionElementAttribute = 4;
 
 class VOptionElement extends VHtmlElement<OptionElement> {
   @override
   OptionElement elementFactory() => new OptionElement();
 
-  bool _defaultSelected;
-  bool _defaultSelectedSet = false;
-  bool get defaultSelected => _defaultSelected;
+  var _setValuesOptionElement = <int, dynamic>{};
+
+  bool get defaultSelected =>
+      _setValuesOptionElement[defaultSelectedOptionElementAttribute] as bool;
   set defaultSelected(bool v) {
-    _defaultSelected = v;
-    _defaultSelectedSet = true;
+    _setValuesOptionElement[defaultSelectedOptionElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesOptionElement[disabledOptionElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesOptionElement[disabledOptionElementAttribute] = v;
   }
 
-  String _label;
-  bool _labelSet = false;
-  String get label => _label;
+  String get label =>
+      _setValuesOptionElement[labelOptionElementAttribute] as String;
   set label(String v) {
-    _label = v;
-    _labelSet = true;
+    _setValuesOptionElement[labelOptionElementAttribute] = v;
   }
 
-  bool _selected;
-  bool _selectedSet = false;
-  bool get selected => _selected;
+  bool get selected =>
+      _setValuesOptionElement[selectedOptionElementAttribute] as bool;
   set selected(bool v) {
-    _selected = v;
-    _selectedSet = true;
+    _setValuesOptionElement[selectedOptionElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesOptionElement[valueOptionElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesOptionElement[valueOptionElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(OptionElement ele) {
+    _setValuesOptionElement
+        .forEach((k, dynamic v) => _updateAttributeOptionElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_defaultSelectedSet) ele.defaultSelected = _defaultSelected;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_labelSet) ele.label = _label;
-    if (_selectedSet) ele.selected = _selected;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VOptionElement prev, OptionElement ele) {
+    prev._setValuesOptionElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesOptionElement[k];
+      if (v != newValue) _updateAttributeOptionElement(ele, k, newValue);
+    });
+    prev._setValuesOptionElement = _setValuesOptionElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_defaultSelected != prev._defaultSelected) {
-      ele.defaultSelected = _defaultSelected;
-      prev.defaultSelected = _defaultSelected;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_label != prev._label) {
-      ele.label = _label;
-      prev.label = _label;
-    }
-    if (_selected != prev._selected) {
-      ele.selected = _selected;
-      prev.selected = _selected;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeOptionElement(
+      OptionElement ele, int key, dynamic value) {
+    switch (key) {
+      case defaultSelectedOptionElementAttribute:
+        ele.defaultSelected = value as bool;
+        break;
+      case disabledOptionElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case labelOptionElementAttribute:
+        ele.label = value as String;
+        break;
+      case selectedOptionElementAttribute:
+        ele.selected = value as bool;
+        break;
+      case valueOptionElementAttribute:
+        ele.value = value as String;
+        break;
     }
   }
 }
+
+const defaultValueOutputElementAttribute = 0;
+const nameOutputElementAttribute = 1;
+const valueOutputElementAttribute = 2;
 
 class VOutputElement extends VHtmlElement<OutputElement> {
   @override
   OutputElement elementFactory() => new OutputElement();
 
-  String _defaultValue;
-  bool _defaultValueSet = false;
-  String get defaultValue => _defaultValue;
+  var _setValuesOutputElement = <int, dynamic>{};
+
+  String get defaultValue =>
+      _setValuesOutputElement[defaultValueOutputElementAttribute] as String;
   set defaultValue(String v) {
-    _defaultValue = v;
-    _defaultValueSet = true;
+    _setValuesOutputElement[defaultValueOutputElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesOutputElement[nameOutputElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesOutputElement[nameOutputElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesOutputElement[valueOutputElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesOutputElement[valueOutputElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(OutputElement ele) {
+    _setValuesOutputElement
+        .forEach((k, dynamic v) => _updateAttributeOutputElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_defaultValueSet) ele.defaultValue = _defaultValue;
-    if (_nameSet) ele.name = _name;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VOutputElement prev, OutputElement ele) {
+    prev._setValuesOutputElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesOutputElement[k];
+      if (v != newValue) _updateAttributeOutputElement(ele, k, newValue);
+    });
+    prev._setValuesOutputElement = _setValuesOutputElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_defaultValue != prev._defaultValue) {
-      ele.defaultValue = _defaultValue;
-      prev.defaultValue = _defaultValue;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeOutputElement(
+      OutputElement ele, int key, dynamic value) {
+    switch (key) {
+      case defaultValueOutputElementAttribute:
+        ele.defaultValue = value as String;
+        break;
+      case nameOutputElementAttribute:
+        ele.name = value as String;
+        break;
+      case valueOutputElementAttribute:
+        ele.value = value as String;
+        break;
     }
   }
 }
@@ -4684,429 +4341,393 @@ class VOutputElement extends VHtmlElement<OutputElement> {
 class VParagraphElement extends VHtmlElement<ParagraphElement> {
   @override
   ParagraphElement elementFactory() => new ParagraphElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(ParagraphElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VParagraphElement prev, ParagraphElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const nameParamElementAttribute = 0;
+const valueParamElementAttribute = 1;
 
 class VParamElement extends VHtmlElement<ParamElement> {
   @override
   ParamElement elementFactory() => new ParamElement();
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  var _setValuesParamElement = <int, dynamic>{};
+
+  String get name =>
+      _setValuesParamElement[nameParamElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesParamElement[nameParamElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesParamElement[valueParamElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesParamElement[valueParamElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ParamElement ele) {
+    _setValuesParamElement
+        .forEach((k, dynamic v) => _updateAttributeParamElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_nameSet) ele.name = _name;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VParamElement prev, ParamElement ele) {
+    prev._setValuesParamElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesParamElement[k];
+      if (v != newValue) _updateAttributeParamElement(ele, k, newValue);
+    });
+    prev._setValuesParamElement = _setValuesParamElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeParamElement(ParamElement ele, int key, dynamic value) {
+    switch (key) {
+      case nameParamElementAttribute:
+        ele.name = value as String;
+        break;
+      case valueParamElementAttribute:
+        ele.value = value as String;
+        break;
     }
   }
 }
 
 abstract class VPictureElement<T extends PictureElement>
-    extends VHtmlElement<T> {
-  @override
-  @protected
-  void applyAttributesToElement(T ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(covariant VPictureElement<T> prev, T ele) {
-    super.updateElementAttributes(prev, ele);
-  }
-}
+    extends VHtmlElement<T> {}
 
 class VPreElement extends VHtmlElement<PreElement> {
   @override
   PreElement elementFactory() => new PreElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(PreElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VPreElement prev, PreElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const maxProgressElementAttribute = 0;
+const valueProgressElementAttribute = 1;
 
 class VProgressElement extends VHtmlElement<ProgressElement> {
   @override
   ProgressElement elementFactory() => new ProgressElement();
 
-  num _max;
-  bool _maxSet = false;
-  num get max => _max;
+  var _setValuesProgressElement = <int, dynamic>{};
+
+  num get max => _setValuesProgressElement[maxProgressElementAttribute] as num;
   set max(num v) {
-    _max = v;
-    _maxSet = true;
+    _setValuesProgressElement[maxProgressElementAttribute] = v;
   }
 
-  num _value;
-  bool _valueSet = false;
-  num get value => _value;
+  num get value =>
+      _setValuesProgressElement[valueProgressElementAttribute] as num;
   set value(num v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesProgressElement[valueProgressElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ProgressElement ele) {
+    _setValuesProgressElement
+        .forEach((k, dynamic v) => _updateAttributeProgressElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_maxSet) ele.max = _max;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VProgressElement prev, ProgressElement ele) {
+    prev._setValuesProgressElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesProgressElement[k];
+      if (v != newValue) _updateAttributeProgressElement(ele, k, newValue);
+    });
+    prev._setValuesProgressElement = _setValuesProgressElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_max != prev._max) {
-      ele.max = _max;
-      prev.max = _max;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeProgressElement(
+      ProgressElement ele, int key, dynamic value) {
+    switch (key) {
+      case maxProgressElementAttribute:
+        ele.max = value as num;
+        break;
+      case valueProgressElementAttribute:
+        ele.value = value as num;
+        break;
     }
   }
 }
+
+const citeQuoteElementAttribute = 0;
 
 class VQuoteElement extends VHtmlElement<QuoteElement> {
   @override
   QuoteElement elementFactory() => new QuoteElement();
 
-  String _cite;
-  bool _citeSet = false;
-  String get cite => _cite;
+  var _setValuesQuoteElement = <int, dynamic>{};
+
+  String get cite =>
+      _setValuesQuoteElement[citeQuoteElementAttribute] as String;
   set cite(String v) {
-    _cite = v;
-    _citeSet = true;
+    _setValuesQuoteElement[citeQuoteElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(QuoteElement ele) {
+    _setValuesQuoteElement
+        .forEach((k, dynamic v) => _updateAttributeQuoteElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_citeSet) ele.cite = _cite;
   }
 
   @override
   @protected
   void updateElementAttributes(VQuoteElement prev, QuoteElement ele) {
+    prev._setValuesQuoteElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesQuoteElement[k];
+      if (v != newValue) _updateAttributeQuoteElement(ele, k, newValue);
+    });
+    prev._setValuesQuoteElement = _setValuesQuoteElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_cite != prev._cite) {
-      ele.cite = _cite;
-      prev.cite = _cite;
+  void _updateAttributeQuoteElement(QuoteElement ele, int key, dynamic value) {
+    switch (key) {
+      case citeQuoteElementAttribute:
+        ele.cite = value as String;
+        break;
     }
   }
 }
+
+const asyncScriptElementAttribute = 0;
+const charsetScriptElementAttribute = 1;
+const crossOriginScriptElementAttribute = 2;
+const deferScriptElementAttribute = 3;
+const integrityScriptElementAttribute = 4;
+const nonceScriptElementAttribute = 5;
+const srcScriptElementAttribute = 6;
+const typeScriptElementAttribute = 7;
 
 class VScriptElement extends VHtmlElement<ScriptElement> {
   @override
   ScriptElement elementFactory() => new ScriptElement();
 
-  bool _async;
-  bool _asyncSet = false;
-  bool get async => _async;
+  var _setValuesScriptElement = <int, dynamic>{};
+
+  bool get async =>
+      _setValuesScriptElement[asyncScriptElementAttribute] as bool;
   set async(bool v) {
-    _async = v;
-    _asyncSet = true;
+    _setValuesScriptElement[asyncScriptElementAttribute] = v;
   }
 
-  String _charset;
-  bool _charsetSet = false;
-  String get charset => _charset;
+  String get charset =>
+      _setValuesScriptElement[charsetScriptElementAttribute] as String;
   set charset(String v) {
-    _charset = v;
-    _charsetSet = true;
+    _setValuesScriptElement[charsetScriptElementAttribute] = v;
   }
 
-  String _crossOrigin;
-  bool _crossOriginSet = false;
-  String get crossOrigin => _crossOrigin;
+  String get crossOrigin =>
+      _setValuesScriptElement[crossOriginScriptElementAttribute] as String;
   set crossOrigin(String v) {
-    _crossOrigin = v;
-    _crossOriginSet = true;
+    _setValuesScriptElement[crossOriginScriptElementAttribute] = v;
   }
 
-  bool _defer;
-  bool _deferSet = false;
-  bool get defer => _defer;
+  bool get defer =>
+      _setValuesScriptElement[deferScriptElementAttribute] as bool;
   set defer(bool v) {
-    _defer = v;
-    _deferSet = true;
+    _setValuesScriptElement[deferScriptElementAttribute] = v;
   }
 
-  String _integrity;
-  bool _integritySet = false;
-  String get integrity => _integrity;
+  String get integrity =>
+      _setValuesScriptElement[integrityScriptElementAttribute] as String;
   set integrity(String v) {
-    _integrity = v;
-    _integritySet = true;
+    _setValuesScriptElement[integrityScriptElementAttribute] = v;
   }
 
-  String _nonce;
-  bool _nonceSet = false;
-  String get nonce => _nonce;
+  String get nonce =>
+      _setValuesScriptElement[nonceScriptElementAttribute] as String;
   set nonce(String v) {
-    _nonce = v;
-    _nonceSet = true;
+    _setValuesScriptElement[nonceScriptElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src =>
+      _setValuesScriptElement[srcScriptElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesScriptElement[srcScriptElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesScriptElement[typeScriptElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesScriptElement[typeScriptElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(ScriptElement ele) {
+    _setValuesScriptElement
+        .forEach((k, dynamic v) => _updateAttributeScriptElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_asyncSet) ele.async = _async;
-    if (_charsetSet) ele.charset = _charset;
-    if (_crossOriginSet) ele.crossOrigin = _crossOrigin;
-    if (_deferSet) ele.defer = _defer;
-    if (_integritySet) ele.integrity = _integrity;
-    if (_nonceSet) ele.nonce = _nonce;
-    if (_srcSet) ele.src = _src;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(VScriptElement prev, ScriptElement ele) {
+    prev._setValuesScriptElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesScriptElement[k];
+      if (v != newValue) _updateAttributeScriptElement(ele, k, newValue);
+    });
+    prev._setValuesScriptElement = _setValuesScriptElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_async != prev._async) {
-      ele.async = _async;
-      prev.async = _async;
-    }
-    if (_charset != prev._charset) {
-      ele.charset = _charset;
-      prev.charset = _charset;
-    }
-    if (_crossOrigin != prev._crossOrigin) {
-      ele.crossOrigin = _crossOrigin;
-      prev.crossOrigin = _crossOrigin;
-    }
-    if (_defer != prev._defer) {
-      ele.defer = _defer;
-      prev.defer = _defer;
-    }
-    if (_integrity != prev._integrity) {
-      ele.integrity = _integrity;
-      prev.integrity = _integrity;
-    }
-    if (_nonce != prev._nonce) {
-      ele.nonce = _nonce;
-      prev.nonce = _nonce;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeScriptElement(
+      ScriptElement ele, int key, dynamic value) {
+    switch (key) {
+      case asyncScriptElementAttribute:
+        ele.async = value as bool;
+        break;
+      case charsetScriptElementAttribute:
+        ele.charset = value as String;
+        break;
+      case crossOriginScriptElementAttribute:
+        ele.crossOrigin = value as String;
+        break;
+      case deferScriptElementAttribute:
+        ele.defer = value as bool;
+        break;
+      case integrityScriptElementAttribute:
+        ele.integrity = value as String;
+        break;
+      case nonceScriptElementAttribute:
+        ele.nonce = value as String;
+        break;
+      case srcScriptElementAttribute:
+        ele.src = value as String;
+        break;
+      case typeScriptElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
+
+const autofocusSelectElementAttribute = 0;
+const disabledSelectElementAttribute = 1;
+const lengthSelectElementAttribute = 2;
+const multipleSelectElementAttribute = 3;
+const nameSelectElementAttribute = 4;
+const requiredSelectElementAttribute = 5;
+const selectedIndexSelectElementAttribute = 6;
+const sizeSelectElementAttribute = 7;
+const valueSelectElementAttribute = 8;
 
 class VSelectElement extends VHtmlElement<SelectElement> {
   @override
   SelectElement elementFactory() => new SelectElement();
 
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  var _setValuesSelectElement = <int, dynamic>{};
+
+  bool get autofocus =>
+      _setValuesSelectElement[autofocusSelectElementAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesSelectElement[autofocusSelectElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesSelectElement[disabledSelectElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesSelectElement[disabledSelectElementAttribute] = v;
   }
 
-  int _length;
-  bool _lengthSet = false;
-  int get length => _length;
+  int get length =>
+      _setValuesSelectElement[lengthSelectElementAttribute] as int;
   set length(int v) {
-    _length = v;
-    _lengthSet = true;
+    _setValuesSelectElement[lengthSelectElementAttribute] = v;
   }
 
-  bool _multiple;
-  bool _multipleSet = false;
-  bool get multiple => _multiple;
+  bool get multiple =>
+      _setValuesSelectElement[multipleSelectElementAttribute] as bool;
   set multiple(bool v) {
-    _multiple = v;
-    _multipleSet = true;
+    _setValuesSelectElement[multipleSelectElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesSelectElement[nameSelectElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesSelectElement[nameSelectElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesSelectElement[requiredSelectElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesSelectElement[requiredSelectElementAttribute] = v;
   }
 
-  int _selectedIndex;
-  bool _selectedIndexSet = false;
-  int get selectedIndex => _selectedIndex;
+  int get selectedIndex =>
+      _setValuesSelectElement[selectedIndexSelectElementAttribute] as int;
   set selectedIndex(int v) {
-    _selectedIndex = v;
-    _selectedIndexSet = true;
+    _setValuesSelectElement[selectedIndexSelectElementAttribute] = v;
   }
 
-  int _size;
-  bool _sizeSet = false;
-  int get size => _size;
+  int get size => _setValuesSelectElement[sizeSelectElementAttribute] as int;
   set size(int v) {
-    _size = v;
-    _sizeSet = true;
+    _setValuesSelectElement[sizeSelectElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesSelectElement[valueSelectElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesSelectElement[valueSelectElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(SelectElement ele) {
+    _setValuesSelectElement
+        .forEach((k, dynamic v) => _updateAttributeSelectElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_lengthSet) ele.length = _length;
-    if (_multipleSet) ele.multiple = _multiple;
-    if (_nameSet) ele.name = _name;
-    if (_requiredSet) ele.required = _required;
-    if (_selectedIndexSet) ele.selectedIndex = _selectedIndex;
-    if (_sizeSet) ele.size = _size;
-    if (_valueSet) ele.value = _value;
   }
 
   @override
   @protected
   void updateElementAttributes(VSelectElement prev, SelectElement ele) {
+    prev._setValuesSelectElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesSelectElement[k];
+      if (v != newValue) _updateAttributeSelectElement(ele, k, newValue);
+    });
+    prev._setValuesSelectElement = _setValuesSelectElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_length != prev._length) {
-      ele.length = _length;
-      prev.length = _length;
-    }
-    if (_multiple != prev._multiple) {
-      ele.multiple = _multiple;
-      prev.multiple = _multiple;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
-    }
-    if (_selectedIndex != prev._selectedIndex) {
-      ele.selectedIndex = _selectedIndex;
-      prev.selectedIndex = _selectedIndex;
-    }
-    if (_size != prev._size) {
-      ele.size = _size;
-      prev.size = _size;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
+  void _updateAttributeSelectElement(
+      SelectElement ele, int key, dynamic value) {
+    switch (key) {
+      case autofocusSelectElementAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case disabledSelectElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case lengthSelectElementAttribute:
+        ele.length = value as int;
+        break;
+      case multipleSelectElementAttribute:
+        ele.multiple = value as bool;
+        break;
+      case nameSelectElementAttribute:
+        ele.name = value as String;
+        break;
+      case requiredSelectElementAttribute:
+        ele.required = value as bool;
+        break;
+      case selectedIndexSelectElementAttribute:
+        ele.selectedIndex = value as int;
+        break;
+      case sizeSelectElementAttribute:
+        ele.size = value as int;
+        break;
+      case valueSelectElementAttribute:
+        ele.value = value as String;
+        break;
     }
   }
 }
@@ -5114,129 +4735,125 @@ class VSelectElement extends VHtmlElement<SelectElement> {
 class VShadowElement extends VHtmlElement<ShadowElement> {
   @override
   ShadowElement elementFactory() => new ShadowElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(ShadowElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VShadowElement prev, ShadowElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
+const nameSlotElementAttribute = 0;
+
 abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  var _setValuesSlotElement = <int, dynamic>{};
+
+  String get name => _setValuesSlotElement[nameSlotElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesSlotElement[nameSlotElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(T ele) {
+    _setValuesSlotElement
+        .forEach((k, dynamic v) => _updateAttributeSlotElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_nameSet) ele.name = _name;
   }
 
   @override
   @protected
   void updateElementAttributes(covariant VSlotElement<T> prev, T ele) {
+    prev._setValuesSlotElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesSlotElement[k];
+      if (v != newValue) _updateAttributeSlotElement(ele, k, newValue);
+    });
+    prev._setValuesSlotElement = _setValuesSlotElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
+  void _updateAttributeSlotElement(SlotElement ele, int key, dynamic value) {
+    switch (key) {
+      case nameSlotElementAttribute:
+        ele.name = value as String;
+        break;
     }
   }
 }
+
+const mediaSourceElementAttribute = 0;
+const sizesSourceElementAttribute = 1;
+const srcSourceElementAttribute = 2;
+const srcsetSourceElementAttribute = 3;
+const typeSourceElementAttribute = 4;
 
 class VSourceElement extends VHtmlElement<SourceElement> {
   @override
   SourceElement elementFactory() => new SourceElement();
 
-  String _media;
-  bool _mediaSet = false;
-  String get media => _media;
+  var _setValuesSourceElement = <int, dynamic>{};
+
+  String get media =>
+      _setValuesSourceElement[mediaSourceElementAttribute] as String;
   set media(String v) {
-    _media = v;
-    _mediaSet = true;
+    _setValuesSourceElement[mediaSourceElementAttribute] = v;
   }
 
-  String _sizes;
-  bool _sizesSet = false;
-  String get sizes => _sizes;
+  String get sizes =>
+      _setValuesSourceElement[sizesSourceElementAttribute] as String;
   set sizes(String v) {
-    _sizes = v;
-    _sizesSet = true;
+    _setValuesSourceElement[sizesSourceElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src =>
+      _setValuesSourceElement[srcSourceElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesSourceElement[srcSourceElementAttribute] = v;
   }
 
-  String _srcset;
-  bool _srcsetSet = false;
-  String get srcset => _srcset;
+  String get srcset =>
+      _setValuesSourceElement[srcsetSourceElementAttribute] as String;
   set srcset(String v) {
-    _srcset = v;
-    _srcsetSet = true;
+    _setValuesSourceElement[srcsetSourceElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesSourceElement[typeSourceElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesSourceElement[typeSourceElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(SourceElement ele) {
+    _setValuesSourceElement
+        .forEach((k, dynamic v) => _updateAttributeSourceElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_mediaSet) ele.media = _media;
-    if (_sizesSet) ele.sizes = _sizes;
-    if (_srcSet) ele.src = _src;
-    if (_srcsetSet) ele.srcset = _srcset;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(VSourceElement prev, SourceElement ele) {
+    prev._setValuesSourceElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesSourceElement[k];
+      if (v != newValue) _updateAttributeSourceElement(ele, k, newValue);
+    });
+    prev._setValuesSourceElement = _setValuesSourceElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_media != prev._media) {
-      ele.media = _media;
-      prev.media = _media;
-    }
-    if (_sizes != prev._sizes) {
-      ele.sizes = _sizes;
-      prev.sizes = _sizes;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_srcset != prev._srcset) {
-      ele.srcset = _srcset;
-      prev.srcset = _srcset;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeSourceElement(
+      SourceElement ele, int key, dynamic value) {
+    switch (key) {
+      case mediaSourceElementAttribute:
+        ele.media = value as String;
+        break;
+      case sizesSourceElementAttribute:
+        ele.sizes = value as String;
+        break;
+      case srcSourceElementAttribute:
+        ele.src = value as String;
+        break;
+      case srcsetSourceElementAttribute:
+        ele.srcset = value as String;
+        break;
+      case typeSourceElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
@@ -5244,74 +4861,66 @@ class VSourceElement extends VHtmlElement<SourceElement> {
 class VSpanElement extends VHtmlElement<SpanElement> {
   @override
   SpanElement elementFactory() => new SpanElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(SpanElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VSpanElement prev, SpanElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const disabledStyleElementAttribute = 0;
+const mediaStyleElementAttribute = 1;
+const typeStyleElementAttribute = 2;
 
 class VStyleElement extends VHtmlElement<StyleElement> {
   @override
   StyleElement elementFactory() => new StyleElement();
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  var _setValuesStyleElement = <int, dynamic>{};
+
+  bool get disabled =>
+      _setValuesStyleElement[disabledStyleElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesStyleElement[disabledStyleElementAttribute] = v;
   }
 
-  String _media;
-  bool _mediaSet = false;
-  String get media => _media;
+  String get media =>
+      _setValuesStyleElement[mediaStyleElementAttribute] as String;
   set media(String v) {
-    _media = v;
-    _mediaSet = true;
+    _setValuesStyleElement[mediaStyleElementAttribute] = v;
   }
 
-  String _type;
-  bool _typeSet = false;
-  String get type => _type;
+  String get type =>
+      _setValuesStyleElement[typeStyleElementAttribute] as String;
   set type(String v) {
-    _type = v;
-    _typeSet = true;
+    _setValuesStyleElement[typeStyleElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(StyleElement ele) {
+    _setValuesStyleElement
+        .forEach((k, dynamic v) => _updateAttributeStyleElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_mediaSet) ele.media = _media;
-    if (_typeSet) ele.type = _type;
   }
 
   @override
   @protected
   void updateElementAttributes(VStyleElement prev, StyleElement ele) {
+    prev._setValuesStyleElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesStyleElement[k];
+      if (v != newValue) _updateAttributeStyleElement(ele, k, newValue);
+    });
+    prev._setValuesStyleElement = _setValuesStyleElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_media != prev._media) {
-      ele.media = _media;
-      prev.media = _media;
-    }
-    if (_type != prev._type) {
-      ele.type = _type;
-      prev.type = _type;
+  void _updateAttributeStyleElement(StyleElement ele, int key, dynamic value) {
+    switch (key) {
+      case disabledStyleElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case mediaStyleElementAttribute:
+        ele.media = value as String;
+        break;
+      case typeStyleElementAttribute:
+        ele.type = value as String;
+        break;
     }
   }
 }
@@ -5319,165 +4928,173 @@ class VStyleElement extends VHtmlElement<StyleElement> {
 class VTableCaptionElement extends VHtmlElement<TableCaptionElement> {
   @override
   TableCaptionElement elementFactory() => new TableCaptionElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(TableCaptionElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(
-      VTableCaptionElement prev, TableCaptionElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const colSpanTableCellElementAttribute = 0;
+const headersTableCellElementAttribute = 1;
+const rowSpanTableCellElementAttribute = 2;
 
 class VTableCellElement extends VHtmlElement<TableCellElement> {
   @override
   TableCellElement elementFactory() => new TableCellElement();
 
-  int _colSpan;
-  bool _colSpanSet = false;
-  int get colSpan => _colSpan;
+  var _setValuesTableCellElement = <int, dynamic>{};
+
+  int get colSpan =>
+      _setValuesTableCellElement[colSpanTableCellElementAttribute] as int;
   set colSpan(int v) {
-    _colSpan = v;
-    _colSpanSet = true;
+    _setValuesTableCellElement[colSpanTableCellElementAttribute] = v;
   }
 
-  String _headers;
-  bool _headersSet = false;
-  String get headers => _headers;
+  String get headers =>
+      _setValuesTableCellElement[headersTableCellElementAttribute] as String;
   set headers(String v) {
-    _headers = v;
-    _headersSet = true;
+    _setValuesTableCellElement[headersTableCellElementAttribute] = v;
   }
 
-  int _rowSpan;
-  bool _rowSpanSet = false;
-  int get rowSpan => _rowSpan;
+  int get rowSpan =>
+      _setValuesTableCellElement[rowSpanTableCellElementAttribute] as int;
   set rowSpan(int v) {
-    _rowSpan = v;
-    _rowSpanSet = true;
+    _setValuesTableCellElement[rowSpanTableCellElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TableCellElement ele) {
+    _setValuesTableCellElement
+        .forEach((k, dynamic v) => _updateAttributeTableCellElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_colSpanSet) ele.colSpan = _colSpan;
-    if (_headersSet) ele.headers = _headers;
-    if (_rowSpanSet) ele.rowSpan = _rowSpan;
   }
 
   @override
   @protected
   void updateElementAttributes(VTableCellElement prev, TableCellElement ele) {
+    prev._setValuesTableCellElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTableCellElement[k];
+      if (v != newValue) _updateAttributeTableCellElement(ele, k, newValue);
+    });
+    prev._setValuesTableCellElement = _setValuesTableCellElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_colSpan != prev._colSpan) {
-      ele.colSpan = _colSpan;
-      prev.colSpan = _colSpan;
-    }
-    if (_headers != prev._headers) {
-      ele.headers = _headers;
-      prev.headers = _headers;
-    }
-    if (_rowSpan != prev._rowSpan) {
-      ele.rowSpan = _rowSpan;
-      prev.rowSpan = _rowSpan;
+  void _updateAttributeTableCellElement(
+      TableCellElement ele, int key, dynamic value) {
+    switch (key) {
+      case colSpanTableCellElementAttribute:
+        ele.colSpan = value as int;
+        break;
+      case headersTableCellElementAttribute:
+        ele.headers = value as String;
+        break;
+      case rowSpanTableCellElementAttribute:
+        ele.rowSpan = value as int;
+        break;
     }
   }
 }
+
+const spanTableColElementAttribute = 0;
 
 class VTableColElement extends VHtmlElement<TableColElement> {
   @override
   TableColElement elementFactory() => new TableColElement();
 
-  int _span;
-  bool _spanSet = false;
-  int get span => _span;
+  var _setValuesTableColElement = <int, dynamic>{};
+
+  int get span =>
+      _setValuesTableColElement[spanTableColElementAttribute] as int;
   set span(int v) {
-    _span = v;
-    _spanSet = true;
+    _setValuesTableColElement[spanTableColElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TableColElement ele) {
+    _setValuesTableColElement
+        .forEach((k, dynamic v) => _updateAttributeTableColElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_spanSet) ele.span = _span;
   }
 
   @override
   @protected
   void updateElementAttributes(VTableColElement prev, TableColElement ele) {
+    prev._setValuesTableColElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTableColElement[k];
+      if (v != newValue) _updateAttributeTableColElement(ele, k, newValue);
+    });
+    prev._setValuesTableColElement = _setValuesTableColElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_span != prev._span) {
-      ele.span = _span;
-      prev.span = _span;
+  void _updateAttributeTableColElement(
+      TableColElement ele, int key, dynamic value) {
+    switch (key) {
+      case spanTableColElementAttribute:
+        ele.span = value as int;
+        break;
     }
   }
 }
+
+const captionTableElementAttribute = 0;
+const tFootTableElementAttribute = 1;
+const tHeadTableElementAttribute = 2;
 
 class VTableElement extends VHtmlElement<TableElement> {
   @override
   TableElement elementFactory() => new TableElement();
 
-  TableCaptionElement _caption;
-  bool _captionSet = false;
-  TableCaptionElement get caption => _caption;
+  var _setValuesTableElement = <int, dynamic>{};
+
+  TableCaptionElement get caption =>
+      _setValuesTableElement[captionTableElementAttribute]
+          as TableCaptionElement;
   set caption(TableCaptionElement v) {
-    _caption = v;
-    _captionSet = true;
+    _setValuesTableElement[captionTableElementAttribute] = v;
   }
 
-  TableSectionElement _tFoot;
-  bool _tFootSet = false;
-  TableSectionElement get tFoot => _tFoot;
+  TableSectionElement get tFoot =>
+      _setValuesTableElement[tFootTableElementAttribute] as TableSectionElement;
   set tFoot(TableSectionElement v) {
-    _tFoot = v;
-    _tFootSet = true;
+    _setValuesTableElement[tFootTableElementAttribute] = v;
   }
 
-  TableSectionElement _tHead;
-  bool _tHeadSet = false;
-  TableSectionElement get tHead => _tHead;
+  TableSectionElement get tHead =>
+      _setValuesTableElement[tHeadTableElementAttribute] as TableSectionElement;
   set tHead(TableSectionElement v) {
-    _tHead = v;
-    _tHeadSet = true;
+    _setValuesTableElement[tHeadTableElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TableElement ele) {
+    _setValuesTableElement
+        .forEach((k, dynamic v) => _updateAttributeTableElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_captionSet) ele.caption = _caption;
-    if (_tFootSet) ele.tFoot = _tFoot;
-    if (_tHeadSet) ele.tHead = _tHead;
   }
 
   @override
   @protected
   void updateElementAttributes(VTableElement prev, TableElement ele) {
+    prev._setValuesTableElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTableElement[k];
+      if (v != newValue) _updateAttributeTableElement(ele, k, newValue);
+    });
+    prev._setValuesTableElement = _setValuesTableElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_caption != prev._caption) {
-      ele.caption = _caption;
-      prev.caption = _caption;
-    }
-    if (_tFoot != prev._tFoot) {
-      ele.tFoot = _tFoot;
-      prev.tFoot = _tFoot;
-    }
-    if (_tHead != prev._tHead) {
-      ele.tHead = _tHead;
-      prev.tHead = _tHead;
+  void _updateAttributeTableElement(TableElement ele, int key, dynamic value) {
+    switch (key) {
+      case captionTableElementAttribute:
+        ele.caption = value as TableCaptionElement;
+        break;
+      case tFootTableElementAttribute:
+        ele.tFoot = value as TableSectionElement;
+        break;
+      case tHeadTableElementAttribute:
+        ele.tHead = value as TableSectionElement;
+        break;
     }
   }
 }
@@ -5485,314 +5102,237 @@ class VTableElement extends VHtmlElement<TableElement> {
 class VTableRowElement extends VHtmlElement<TableRowElement> {
   @override
   TableRowElement elementFactory() => new TableRowElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(TableRowElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VTableRowElement prev, TableRowElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 abstract class VTableSectionElement<T extends TableSectionElement>
-    extends VHtmlElement<T> {
-  @override
-  @protected
-  void applyAttributesToElement(T ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(covariant VTableSectionElement<T> prev, T ele) {
-    super.updateElementAttributes(prev, ele);
-  }
-}
+    extends VHtmlElement<T> {}
 
 class VTemplateElement extends VHtmlElement<TemplateElement> {
   @override
   TemplateElement elementFactory() => new TemplateElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(TemplateElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VTemplateElement prev, TemplateElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const autocapitalizeTextAreaElementAttribute = 0;
+const autofocusTextAreaElementAttribute = 1;
+const colsTextAreaElementAttribute = 2;
+const defaultValueTextAreaElementAttribute = 3;
+const dirNameTextAreaElementAttribute = 4;
+const disabledTextAreaElementAttribute = 5;
+const inputModeTextAreaElementAttribute = 6;
+const maxLengthTextAreaElementAttribute = 7;
+const minLengthTextAreaElementAttribute = 8;
+const nameTextAreaElementAttribute = 9;
+const placeholderTextAreaElementAttribute = 10;
+const readOnlyTextAreaElementAttribute = 11;
+const requiredTextAreaElementAttribute = 12;
+const rowsTextAreaElementAttribute = 13;
+const selectionDirectionTextAreaElementAttribute = 14;
+const selectionEndTextAreaElementAttribute = 15;
+const selectionStartTextAreaElementAttribute = 16;
+const valueTextAreaElementAttribute = 17;
+const wrapTextAreaElementAttribute = 18;
 
 class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   @override
   TextAreaElement elementFactory() => new TextAreaElement();
 
-  String _autocapitalize;
-  bool _autocapitalizeSet = false;
-  String get autocapitalize => _autocapitalize;
+  var _setValuesTextAreaElement = <int, dynamic>{};
+
+  String get autocapitalize =>
+      _setValuesTextAreaElement[autocapitalizeTextAreaElementAttribute]
+          as String;
   set autocapitalize(String v) {
-    _autocapitalize = v;
-    _autocapitalizeSet = true;
+    _setValuesTextAreaElement[autocapitalizeTextAreaElementAttribute] = v;
   }
 
-  bool _autofocus;
-  bool _autofocusSet = false;
-  bool get autofocus => _autofocus;
+  bool get autofocus =>
+      _setValuesTextAreaElement[autofocusTextAreaElementAttribute] as bool;
   set autofocus(bool v) {
-    _autofocus = v;
-    _autofocusSet = true;
+    _setValuesTextAreaElement[autofocusTextAreaElementAttribute] = v;
   }
 
-  int _cols;
-  bool _colsSet = false;
-  int get cols => _cols;
+  int get cols =>
+      _setValuesTextAreaElement[colsTextAreaElementAttribute] as int;
   set cols(int v) {
-    _cols = v;
-    _colsSet = true;
+    _setValuesTextAreaElement[colsTextAreaElementAttribute] = v;
   }
 
-  String _defaultValue;
-  bool _defaultValueSet = false;
-  String get defaultValue => _defaultValue;
+  String get defaultValue =>
+      _setValuesTextAreaElement[defaultValueTextAreaElementAttribute] as String;
   set defaultValue(String v) {
-    _defaultValue = v;
-    _defaultValueSet = true;
+    _setValuesTextAreaElement[defaultValueTextAreaElementAttribute] = v;
   }
 
-  String _dirName;
-  bool _dirNameSet = false;
-  String get dirName => _dirName;
+  String get dirName =>
+      _setValuesTextAreaElement[dirNameTextAreaElementAttribute] as String;
   set dirName(String v) {
-    _dirName = v;
-    _dirNameSet = true;
+    _setValuesTextAreaElement[dirNameTextAreaElementAttribute] = v;
   }
 
-  bool _disabled;
-  bool _disabledSet = false;
-  bool get disabled => _disabled;
+  bool get disabled =>
+      _setValuesTextAreaElement[disabledTextAreaElementAttribute] as bool;
   set disabled(bool v) {
-    _disabled = v;
-    _disabledSet = true;
+    _setValuesTextAreaElement[disabledTextAreaElementAttribute] = v;
   }
 
-  String _inputMode;
-  bool _inputModeSet = false;
-  String get inputMode => _inputMode;
+  String get inputMode =>
+      _setValuesTextAreaElement[inputModeTextAreaElementAttribute] as String;
   set inputMode(String v) {
-    _inputMode = v;
-    _inputModeSet = true;
+    _setValuesTextAreaElement[inputModeTextAreaElementAttribute] = v;
   }
 
-  int _maxLength;
-  bool _maxLengthSet = false;
-  int get maxLength => _maxLength;
+  int get maxLength =>
+      _setValuesTextAreaElement[maxLengthTextAreaElementAttribute] as int;
   set maxLength(int v) {
-    _maxLength = v;
-    _maxLengthSet = true;
+    _setValuesTextAreaElement[maxLengthTextAreaElementAttribute] = v;
   }
 
-  int _minLength;
-  bool _minLengthSet = false;
-  int get minLength => _minLength;
+  int get minLength =>
+      _setValuesTextAreaElement[minLengthTextAreaElementAttribute] as int;
   set minLength(int v) {
-    _minLength = v;
-    _minLengthSet = true;
+    _setValuesTextAreaElement[minLengthTextAreaElementAttribute] = v;
   }
 
-  String _name;
-  bool _nameSet = false;
-  String get name => _name;
+  String get name =>
+      _setValuesTextAreaElement[nameTextAreaElementAttribute] as String;
   set name(String v) {
-    _name = v;
-    _nameSet = true;
+    _setValuesTextAreaElement[nameTextAreaElementAttribute] = v;
   }
 
-  String _placeholder;
-  bool _placeholderSet = false;
-  String get placeholder => _placeholder;
+  String get placeholder =>
+      _setValuesTextAreaElement[placeholderTextAreaElementAttribute] as String;
   set placeholder(String v) {
-    _placeholder = v;
-    _placeholderSet = true;
+    _setValuesTextAreaElement[placeholderTextAreaElementAttribute] = v;
   }
 
-  bool _readOnly;
-  bool _readOnlySet = false;
-  bool get readOnly => _readOnly;
+  bool get readOnly =>
+      _setValuesTextAreaElement[readOnlyTextAreaElementAttribute] as bool;
   set readOnly(bool v) {
-    _readOnly = v;
-    _readOnlySet = true;
+    _setValuesTextAreaElement[readOnlyTextAreaElementAttribute] = v;
   }
 
-  bool _required;
-  bool _requiredSet = false;
-  bool get required => _required;
+  bool get required =>
+      _setValuesTextAreaElement[requiredTextAreaElementAttribute] as bool;
   set required(bool v) {
-    _required = v;
-    _requiredSet = true;
+    _setValuesTextAreaElement[requiredTextAreaElementAttribute] = v;
   }
 
-  int _rows;
-  bool _rowsSet = false;
-  int get rows => _rows;
+  int get rows =>
+      _setValuesTextAreaElement[rowsTextAreaElementAttribute] as int;
   set rows(int v) {
-    _rows = v;
-    _rowsSet = true;
+    _setValuesTextAreaElement[rowsTextAreaElementAttribute] = v;
   }
 
-  String _selectionDirection;
-  bool _selectionDirectionSet = false;
-  String get selectionDirection => _selectionDirection;
+  String get selectionDirection =>
+      _setValuesTextAreaElement[selectionDirectionTextAreaElementAttribute]
+          as String;
   set selectionDirection(String v) {
-    _selectionDirection = v;
-    _selectionDirectionSet = true;
+    _setValuesTextAreaElement[selectionDirectionTextAreaElementAttribute] = v;
   }
 
-  int _selectionEnd;
-  bool _selectionEndSet = false;
-  int get selectionEnd => _selectionEnd;
+  int get selectionEnd =>
+      _setValuesTextAreaElement[selectionEndTextAreaElementAttribute] as int;
   set selectionEnd(int v) {
-    _selectionEnd = v;
-    _selectionEndSet = true;
+    _setValuesTextAreaElement[selectionEndTextAreaElementAttribute] = v;
   }
 
-  int _selectionStart;
-  bool _selectionStartSet = false;
-  int get selectionStart => _selectionStart;
+  int get selectionStart =>
+      _setValuesTextAreaElement[selectionStartTextAreaElementAttribute] as int;
   set selectionStart(int v) {
-    _selectionStart = v;
-    _selectionStartSet = true;
+    _setValuesTextAreaElement[selectionStartTextAreaElementAttribute] = v;
   }
 
-  String _value;
-  bool _valueSet = false;
-  String get value => _value;
+  String get value =>
+      _setValuesTextAreaElement[valueTextAreaElementAttribute] as String;
   set value(String v) {
-    _value = v;
-    _valueSet = true;
+    _setValuesTextAreaElement[valueTextAreaElementAttribute] = v;
   }
 
-  String _wrap;
-  bool _wrapSet = false;
-  String get wrap => _wrap;
+  String get wrap =>
+      _setValuesTextAreaElement[wrapTextAreaElementAttribute] as String;
   set wrap(String v) {
-    _wrap = v;
-    _wrapSet = true;
+    _setValuesTextAreaElement[wrapTextAreaElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TextAreaElement ele) {
+    _setValuesTextAreaElement
+        .forEach((k, dynamic v) => _updateAttributeTextAreaElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_autocapitalizeSet) ele.autocapitalize = _autocapitalize;
-    if (_autofocusSet) ele.autofocus = _autofocus;
-    if (_colsSet) ele.cols = _cols;
-    if (_defaultValueSet) ele.defaultValue = _defaultValue;
-    if (_dirNameSet) ele.dirName = _dirName;
-    if (_disabledSet) ele.disabled = _disabled;
-    if (_inputModeSet) ele.inputMode = _inputMode;
-    if (_maxLengthSet) ele.maxLength = _maxLength;
-    if (_minLengthSet) ele.minLength = _minLength;
-    if (_nameSet) ele.name = _name;
-    if (_placeholderSet) ele.placeholder = _placeholder;
-    if (_readOnlySet) ele.readOnly = _readOnly;
-    if (_requiredSet) ele.required = _required;
-    if (_rowsSet) ele.rows = _rows;
-    if (_selectionDirectionSet) ele.selectionDirection = _selectionDirection;
-    if (_selectionEndSet) ele.selectionEnd = _selectionEnd;
-    if (_selectionStartSet) ele.selectionStart = _selectionStart;
-    if (_valueSet) ele.value = _value;
-    if (_wrapSet) ele.wrap = _wrap;
   }
 
   @override
   @protected
   void updateElementAttributes(VTextAreaElement prev, TextAreaElement ele) {
+    prev._setValuesTextAreaElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTextAreaElement[k];
+      if (v != newValue) _updateAttributeTextAreaElement(ele, k, newValue);
+    });
+    prev._setValuesTextAreaElement = _setValuesTextAreaElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_autocapitalize != prev._autocapitalize) {
-      ele.autocapitalize = _autocapitalize;
-      prev.autocapitalize = _autocapitalize;
-    }
-    if (_autofocus != prev._autofocus) {
-      ele.autofocus = _autofocus;
-      prev.autofocus = _autofocus;
-    }
-    if (_cols != prev._cols) {
-      ele.cols = _cols;
-      prev.cols = _cols;
-    }
-    if (_defaultValue != prev._defaultValue) {
-      ele.defaultValue = _defaultValue;
-      prev.defaultValue = _defaultValue;
-    }
-    if (_dirName != prev._dirName) {
-      ele.dirName = _dirName;
-      prev.dirName = _dirName;
-    }
-    if (_disabled != prev._disabled) {
-      ele.disabled = _disabled;
-      prev.disabled = _disabled;
-    }
-    if (_inputMode != prev._inputMode) {
-      ele.inputMode = _inputMode;
-      prev.inputMode = _inputMode;
-    }
-    if (_maxLength != prev._maxLength) {
-      ele.maxLength = _maxLength;
-      prev.maxLength = _maxLength;
-    }
-    if (_minLength != prev._minLength) {
-      ele.minLength = _minLength;
-      prev.minLength = _minLength;
-    }
-    if (_name != prev._name) {
-      ele.name = _name;
-      prev.name = _name;
-    }
-    if (_placeholder != prev._placeholder) {
-      ele.placeholder = _placeholder;
-      prev.placeholder = _placeholder;
-    }
-    if (_readOnly != prev._readOnly) {
-      ele.readOnly = _readOnly;
-      prev.readOnly = _readOnly;
-    }
-    if (_required != prev._required) {
-      ele.required = _required;
-      prev.required = _required;
-    }
-    if (_rows != prev._rows) {
-      ele.rows = _rows;
-      prev.rows = _rows;
-    }
-    if (_selectionDirection != prev._selectionDirection) {
-      ele.selectionDirection = _selectionDirection;
-      prev.selectionDirection = _selectionDirection;
-    }
-    if (_selectionEnd != prev._selectionEnd) {
-      ele.selectionEnd = _selectionEnd;
-      prev.selectionEnd = _selectionEnd;
-    }
-    if (_selectionStart != prev._selectionStart) {
-      ele.selectionStart = _selectionStart;
-      prev.selectionStart = _selectionStart;
-    }
-    if (_value != prev._value) {
-      ele.value = _value;
-      prev.value = _value;
-    }
-    if (_wrap != prev._wrap) {
-      ele.wrap = _wrap;
-      prev.wrap = _wrap;
+  void _updateAttributeTextAreaElement(
+      TextAreaElement ele, int key, dynamic value) {
+    switch (key) {
+      case autocapitalizeTextAreaElementAttribute:
+        ele.autocapitalize = value as String;
+        break;
+      case autofocusTextAreaElementAttribute:
+        ele.autofocus = value as bool;
+        break;
+      case colsTextAreaElementAttribute:
+        ele.cols = value as int;
+        break;
+      case defaultValueTextAreaElementAttribute:
+        ele.defaultValue = value as String;
+        break;
+      case dirNameTextAreaElementAttribute:
+        ele.dirName = value as String;
+        break;
+      case disabledTextAreaElementAttribute:
+        ele.disabled = value as bool;
+        break;
+      case inputModeTextAreaElementAttribute:
+        ele.inputMode = value as String;
+        break;
+      case maxLengthTextAreaElementAttribute:
+        ele.maxLength = value as int;
+        break;
+      case minLengthTextAreaElementAttribute:
+        ele.minLength = value as int;
+        break;
+      case nameTextAreaElementAttribute:
+        ele.name = value as String;
+        break;
+      case placeholderTextAreaElementAttribute:
+        ele.placeholder = value as String;
+        break;
+      case readOnlyTextAreaElementAttribute:
+        ele.readOnly = value as bool;
+        break;
+      case requiredTextAreaElementAttribute:
+        ele.required = value as bool;
+        break;
+      case rowsTextAreaElementAttribute:
+        ele.rows = value as int;
+        break;
+      case selectionDirectionTextAreaElementAttribute:
+        ele.selectionDirection = value as String;
+        break;
+      case selectionEndTextAreaElementAttribute:
+        ele.selectionEnd = value as int;
+        break;
+      case selectionStartTextAreaElementAttribute:
+        ele.selectionStart = value as int;
+        break;
+      case valueTextAreaElementAttribute:
+        ele.value = value as String;
+        break;
+      case wrapTextAreaElementAttribute:
+        ele.wrap = value as String;
+        break;
     }
   }
 }
@@ -5800,100 +5340,85 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
 class VTitleElement extends VHtmlElement<TitleElement> {
   @override
   TitleElement elementFactory() => new TitleElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(TitleElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VTitleElement prev, TitleElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
+
+const defaultValueTrackElementAttribute = 0;
+const kindTrackElementAttribute = 1;
+const labelTrackElementAttribute = 2;
+const srcTrackElementAttribute = 3;
+const srclangTrackElementAttribute = 4;
 
 class VTrackElement extends VHtmlElement<TrackElement> {
   @override
   TrackElement elementFactory() => new TrackElement();
 
-  bool _defaultValue;
-  bool _defaultValueSet = false;
-  bool get defaultValue => _defaultValue;
+  var _setValuesTrackElement = <int, dynamic>{};
+
+  bool get defaultValue =>
+      _setValuesTrackElement[defaultValueTrackElementAttribute] as bool;
   set defaultValue(bool v) {
-    _defaultValue = v;
-    _defaultValueSet = true;
+    _setValuesTrackElement[defaultValueTrackElementAttribute] = v;
   }
 
-  String _kind;
-  bool _kindSet = false;
-  String get kind => _kind;
+  String get kind =>
+      _setValuesTrackElement[kindTrackElementAttribute] as String;
   set kind(String v) {
-    _kind = v;
-    _kindSet = true;
+    _setValuesTrackElement[kindTrackElementAttribute] = v;
   }
 
-  String _label;
-  bool _labelSet = false;
-  String get label => _label;
+  String get label =>
+      _setValuesTrackElement[labelTrackElementAttribute] as String;
   set label(String v) {
-    _label = v;
-    _labelSet = true;
+    _setValuesTrackElement[labelTrackElementAttribute] = v;
   }
 
-  String _src;
-  bool _srcSet = false;
-  String get src => _src;
+  String get src => _setValuesTrackElement[srcTrackElementAttribute] as String;
   set src(String v) {
-    _src = v;
-    _srcSet = true;
+    _setValuesTrackElement[srcTrackElementAttribute] = v;
   }
 
-  String _srclang;
-  bool _srclangSet = false;
-  String get srclang => _srclang;
+  String get srclang =>
+      _setValuesTrackElement[srclangTrackElementAttribute] as String;
   set srclang(String v) {
-    _srclang = v;
-    _srclangSet = true;
+    _setValuesTrackElement[srclangTrackElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(TrackElement ele) {
+    _setValuesTrackElement
+        .forEach((k, dynamic v) => _updateAttributeTrackElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_defaultValueSet) ele.defaultValue = _defaultValue;
-    if (_kindSet) ele.kind = _kind;
-    if (_labelSet) ele.label = _label;
-    if (_srcSet) ele.src = _src;
-    if (_srclangSet) ele.srclang = _srclang;
   }
 
   @override
   @protected
   void updateElementAttributes(VTrackElement prev, TrackElement ele) {
+    prev._setValuesTrackElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTrackElement[k];
+      if (v != newValue) _updateAttributeTrackElement(ele, k, newValue);
+    });
+    prev._setValuesTrackElement = _setValuesTrackElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_defaultValue != prev._defaultValue) {
-      ele.defaultValue = _defaultValue;
-      prev.defaultValue = _defaultValue;
-    }
-    if (_kind != prev._kind) {
-      ele.kind = _kind;
-      prev.kind = _kind;
-    }
-    if (_label != prev._label) {
-      ele.label = _label;
-      prev.label = _label;
-    }
-    if (_src != prev._src) {
-      ele.src = _src;
-      prev.src = _src;
-    }
-    if (_srclang != prev._srclang) {
-      ele.srclang = _srclang;
-      prev.srclang = _srclang;
+  void _updateAttributeTrackElement(TrackElement ele, int key, dynamic value) {
+    switch (key) {
+      case defaultValueTrackElementAttribute:
+        ele.defaultValue = value as bool;
+        break;
+      case kindTrackElementAttribute:
+        ele.kind = value as String;
+        break;
+      case labelTrackElementAttribute:
+        ele.label = value as String;
+        break;
+      case srcTrackElementAttribute:
+        ele.src = value as String;
+        break;
+      case srclangTrackElementAttribute:
+        ele.srclang = value as String;
+        break;
     }
   }
 }
@@ -5901,89 +5426,67 @@ class VTrackElement extends VHtmlElement<TrackElement> {
 class VUListElement extends VHtmlElement<UListElement> {
   @override
   UListElement elementFactory() => new UListElement();
-
-  @override
-  @protected
-  void applyAttributesToElement(UListElement ele) {
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VUListElement prev, UListElement ele) {
-    super.updateElementAttributes(prev, ele);
-  }
 }
 
 abstract class VUnknownElement<T extends UnknownElement>
-    extends VHtmlElement<T> {
-  @override
-  @protected
-  void applyAttributesToElement(T ele) {
-    super.applyAttributesToElement(ele);
-  }
+    extends VHtmlElement<T> {}
 
-  @override
-  @protected
-  void updateElementAttributes(covariant VUnknownElement<T> prev, T ele) {
-    super.updateElementAttributes(prev, ele);
-  }
-}
+const heightVideoElementAttribute = 0;
+const posterVideoElementAttribute = 1;
+const widthVideoElementAttribute = 2;
 
 class VVideoElement extends VMediaElement<VideoElement> {
   @override
   VideoElement elementFactory() => new VideoElement();
 
-  int _height;
-  bool _heightSet = false;
-  int get height => _height;
+  var _setValuesVideoElement = <int, dynamic>{};
+
+  int get height => _setValuesVideoElement[heightVideoElementAttribute] as int;
   set height(int v) {
-    _height = v;
-    _heightSet = true;
+    _setValuesVideoElement[heightVideoElementAttribute] = v;
   }
 
-  String _poster;
-  bool _posterSet = false;
-  String get poster => _poster;
+  String get poster =>
+      _setValuesVideoElement[posterVideoElementAttribute] as String;
   set poster(String v) {
-    _poster = v;
-    _posterSet = true;
+    _setValuesVideoElement[posterVideoElementAttribute] = v;
   }
 
-  int _width;
-  bool _widthSet = false;
-  int get width => _width;
+  int get width => _setValuesVideoElement[widthVideoElementAttribute] as int;
   set width(int v) {
-    _width = v;
-    _widthSet = true;
+    _setValuesVideoElement[widthVideoElementAttribute] = v;
   }
 
   @override
   @protected
   void applyAttributesToElement(VideoElement ele) {
+    _setValuesVideoElement
+        .forEach((k, dynamic v) => _updateAttributeVideoElement(ele, k, v));
     super.applyAttributesToElement(ele);
-
-    if (_heightSet) ele.height = _height;
-    if (_posterSet) ele.poster = _poster;
-    if (_widthSet) ele.width = _width;
   }
 
   @override
   @protected
   void updateElementAttributes(VVideoElement prev, VideoElement ele) {
+    prev._setValuesVideoElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesVideoElement[k];
+      if (v != newValue) _updateAttributeVideoElement(ele, k, newValue);
+    });
+    prev._setValuesVideoElement = _setValuesVideoElement;
     super.updateElementAttributes(prev, ele);
+  }
 
-    if (_height != prev._height) {
-      ele.height = _height;
-      prev.height = _height;
-    }
-    if (_poster != prev._poster) {
-      ele.poster = _poster;
-      prev.poster = _poster;
-    }
-    if (_width != prev._width) {
-      ele.width = _width;
-      prev.width = _width;
+  void _updateAttributeVideoElement(VideoElement ele, int key, dynamic value) {
+    switch (key) {
+      case heightVideoElementAttribute:
+        ele.height = value as int;
+        break;
+      case posterVideoElementAttribute:
+        ele.poster = value as String;
+        break;
+      case widthVideoElementAttribute:
+        ele.width = value as int;
+        break;
     }
   }
 }

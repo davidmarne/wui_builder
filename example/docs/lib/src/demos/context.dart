@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -18,9 +16,7 @@ class Theme {
   String color;
 }
 
-class ContextParent extends PComponent<Null> {
-  ContextParent(Null props) : super(props);
-
+class ContextParent extends NComponent {
   // adds the theme to context when the component is created
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
@@ -49,9 +45,5 @@ class ContextChild extends PCComponent<ContextChildProps, Theme> {
   @override
   VNode render() => new VDivElement()
     ..text = props.message
-    ..styleBuilder = _styleBuilder;
-
-  void _styleBuilder(CssStyleDeclaration builder) {
-    builder.color = contextValue.color;
-  }
+    ..styleBuilder = (new StyleBuilder()..color = contextValue.color);
 }
