@@ -1,6 +1,6 @@
 # A dart library for building user interfaces for the web, inspired by reactjs
 
-[![Pub](https://img.shields.io/pub/v/built_redux.svg)](https://pub.dartlang.org/packages/wui_builder)
+[![Pub](https://img.shields.io/pub/v/wui_builder.svg)](https://pub.dartlang.org/packages/wui_builder)
 [![codecov.io](http://codecov.io/github/davidmarne/wui_builder/coverage.svg?branch=master)](http://codecov.io/github/davidmarne/wui_builder?branch=master)
 
 For building declarative, component based web user interfaces in dart.
