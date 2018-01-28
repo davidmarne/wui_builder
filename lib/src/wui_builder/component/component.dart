@@ -187,8 +187,9 @@ abstract class Component<P, S> extends VNode {
   Map<String, dynamic> _findContext() {
     var current = parent;
     while (current != null) {
-      if (current.vNodeType == VNodeTypes.component)
+      if (current.vNodeType == VNodeTypes.component) {
         return (current as Component<dynamic, dynamic>).context;
+      }
       current = current.parent;
     }
     return <String, dynamic>{};

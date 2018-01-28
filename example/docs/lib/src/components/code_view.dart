@@ -1,7 +1,8 @@
+import 'package:meta/meta.dart';
+import 'package:prettify/prettify.dart';
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
-import 'package:prettify/prettify.dart';
 
 import '../demo_code_strings/demo_code_strings.dart';
 import '../demos/animation_frame.dart';
@@ -13,17 +14,23 @@ import '../demos/idle_callback.dart';
 import '../demos/immutability.dart';
 import '../demos/keys.dart';
 import '../demos/props_example.dart';
+import '../demos/routing.dart';
 import '../demos/state_example.dart';
 import '../demos/triangle.dart';
 import '../demos/virtual_list.dart';
 import '../routes/routes.dart';
 
-class CodeViewProps {
-  Route route;
+@immutable
+class CodeViewContentProps {
+  final String route;
+  final String code;
+  final VNode content;
+  CodeViewContentProps(this.route, this.code, this.content);
 }
 
-class CodeView extends PComponent<CodeViewProps> {
-  CodeView(CodeViewProps props) : super(props);
+class CodeViewContent extends PComponent<CodeViewContentProps> {
+  CodeViewContent(String route, String code, VNode content)
+      : super(new CodeViewContentProps(route, code, content));
 
   @override
   void componentDidMount() {
@@ -45,71 +52,137 @@ class CodeView extends PComponent<CodeViewProps> {
           new VPreElement()
             ..key = props.route
             ..className = 'prettyprint lang-dart'
-            ..text = codeContent()
+            ..text = props.code
         ],
       new VDivElement()
         ..className = 'column is-6 hero'
-        ..children = [currentExample()],
+        ..children = [props.content],
     ];
+}
 
-  VNode currentExample() {
-    switch (props.route) {
-      case Route.helloWorld:
-        return new HelloWorld();
-      case Route.props:
-        return new PropsExample(
-            new PropsExampleProps()..message = 'Hello World!');
-      case Route.state:
-        return new StateExample();
-      case Route.animationFrame:
-        return new AnimationFrame();
-      case Route.idleCallback:
-        return new IdleCallbackExample();
-      case Route.keys:
-        return new KeysExample();
-      case Route.context:
-        return new ContextParent();
-      case Route.immutability:
-        return new ImmutabilityExample();
-      case Route.hocs:
-        return new HOCExample();
-      case Route.functional:
-        return tweet();
-      case Route.triangle:
-        return new TransformContainer();
-      case Route.virtualList:
-        return new VirtualScroll();
-    }
-    return new VDivElement()..text = 'throw';
-  }
-
-  String codeContent() {
-    switch (props.route) {
-      case Route.helloWorld:
-        return hello_world;
-      case Route.props:
-        return props_example;
-      case Route.state:
-        return state_example;
-      case Route.animationFrame:
-        return animation_frame;
-      case Route.idleCallback:
-        return idle_callback;
-      case Route.keys:
-        return keys;
-      case Route.context:
-        return context;
-      case Route.immutability:
-        return immutability;
-      case Route.hocs:
-        return hocs;
-      case Route.functional:
-        return functional;
-      case Route.triangle:
-        return triangle;
-      case Route.virtualList:
-        return virtual_list;
-    }
-    return 'throw';
-  }
+class CodeView extends NComponent {
+  @override
+  VNode render() => new Router([
+        new Route(
+          DocsRoutes.helloWorld,
+          (params) => new CodeViewContent(
+                DocsRoutes.helloWorld,
+                hello_world,
+                new HelloWorld(),
+              ),
+          useAsDefault: true,
+        ),
+        new Route(
+          DocsRoutes.props,
+          (params) => new CodeViewContent(
+                DocsRoutes.props,
+                props_example,
+                new PropsExample('Hello World!'),
+              ),
+        ),
+        new Route(
+          DocsRoutes.state,
+          (params) => new CodeViewContent(
+                DocsRoutes.state,
+                state_example,
+                new StateExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.animationFrame,
+          (params) => new CodeViewContent(
+                DocsRoutes.animationFrame,
+                animation_frame,
+                new AnimationFrame(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.idleCallback,
+          (params) => new CodeViewContent(
+                DocsRoutes.idleCallback,
+                idle_callback,
+                new IdleCallbackExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.keys,
+          (params) => new CodeViewContent(
+                DocsRoutes.keys,
+                keys,
+                new KeysExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.routing,
+          (params) => new CodeViewContent(
+                DocsRoutes.routing,
+                routing,
+                new RoutingExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.routingDepth1,
+          (params) => new CodeViewContent(
+                DocsRoutes.routing,
+                routing,
+                new RoutingExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.routingDepth2,
+          (params) => new CodeViewContent(
+                DocsRoutes.routing,
+                routing,
+                new RoutingExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.context,
+          (params) => new CodeViewContent(
+                DocsRoutes.context,
+                context,
+                new ContextParent(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.immutability,
+          (params) => new CodeViewContent(
+                DocsRoutes.immutability,
+                immutability,
+                new ImmutabilityExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.hocs,
+          (params) => new CodeViewContent(
+                DocsRoutes.hocs,
+                hocs,
+                new HOCExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.functional,
+          (params) => new CodeViewContent(
+                DocsRoutes.functional,
+                functional,
+                tweet(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.triangle,
+          (params) => new CodeViewContent(
+                DocsRoutes.triangle,
+                triangle,
+                new TransformContainer(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.virtualList,
+          (params) => new CodeViewContent(
+                DocsRoutes.virtualList,
+                virtual_list,
+                new VirtualScroll(),
+              ),
+        ),
+      ]);
 }
