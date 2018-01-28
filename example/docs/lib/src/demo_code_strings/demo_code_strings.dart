@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-const version = '0.4.0';
+const version = '0.4.1';
 
 const keys = r'''
 import 'dart:html';
