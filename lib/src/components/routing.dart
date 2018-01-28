@@ -9,6 +9,9 @@ import '../../wui_builder.dart';
 
 const historyContextKey = 'historyContextKey';
 
+/// [HistoryProvider] creates an instance of `History` and adds
+/// it to context. This component should only be used once per app
+/// and should exist at the top of the component tree.
 class HistoryProvider extends PComponent<VNode> {
   final _history = new History();
 
@@ -22,6 +25,8 @@ class HistoryProvider extends PComponent<VNode> {
   VNode render() => props;
 }
 
+/// [findHistoryInContext] finds the `History` instance that gets
+/// added to context by a `HistoryProvider`
 History findHistoryInContext(Map<String, dynamic> context) {
   final dynamic history = context[historyContextKey];
   assert(history != null, 'no history found in context');
@@ -30,6 +35,8 @@ History findHistoryInContext(Map<String, dynamic> context) {
   return history as History;
 }
 
+/// [History] is an api for reading and interacting with your applications url.
+/// It uses pushState to update the url.
 class History {
   final _pathChangeController = new StreamController<String>.broadcast();
   StreamSubscription _popStateSub;
@@ -68,23 +75,25 @@ class History {
 }
 
 @immutable
-class RouterProps {
+class _RouterProps {
   final Iterable<Route> routes;
   // final UpdateType updateType;
-  RouterProps(
+  _RouterProps(
     this.routes,
     /*this.updateType*/
   );
 }
 
 @immutable
-class CurrentRoute {
+class _CurrentRoute {
   final Route route;
   final Map<String, String> params;
-  CurrentRoute(this.route, this.params);
+  _CurrentRoute(this.route, this.params);
 }
 
-class Router extends Component<RouterProps, CurrentRoute> {
+/// [Router] is a component that will render the result of a given `Route`'s
+/// componentFactory when the current url's path matches the `Route`'s path.
+class Router extends Component<_RouterProps, _CurrentRoute> {
   StreamSubscription _onPathSub;
   History __history;
 
@@ -92,14 +101,14 @@ class Router extends Component<RouterProps, CurrentRoute> {
     Iterable<Route> routes,
     /*{UpdateType updateType: UpdateType.animationFrame,}*/
   )
-      : super(new RouterProps(
+      : super(new _RouterProps(
           routes, /*updateType*/
         ));
 
   History get _history => __history ?? findHistoryInContext(context);
 
   @override
-  CurrentRoute getInitialState() => _getCurrentRouteForPath(_history.path);
+  _CurrentRoute getInitialState() => _getCurrentRouteForPath(_history.path);
 
   @override
   void componentDidMount() {
@@ -120,7 +129,7 @@ class Router extends Component<RouterProps, CurrentRoute> {
     setStateOnAnimationFrame((_, __) => _getCurrentRouteForPath(path));
   }
 
-  CurrentRoute _getCurrentRouteForPath(String path) {
+  _CurrentRoute _getCurrentRouteForPath(String path) {
     final pathParts = path.split('/');
     for (Route route in props.routes) {
       final routeParts = route.path.split('/');
@@ -140,14 +149,14 @@ class Router extends Component<RouterProps, CurrentRoute> {
       for (var i = 0; i < pathParts.length; i++)
         if (routeParts[i].startsWith(':'))
           params[routeParts[i].replaceFirst(':', '')] = pathParts[i];
-      return new CurrentRoute(route, _paramsForRoute(pathParts, routeParts));
+      return new _CurrentRoute(route, _paramsForRoute(pathParts, routeParts));
     }
 
     // we didn't find a matching route. use the default route.
     final defaultRoute =
         props.routes.firstWhere(_routeIsDefault, orElse: () => null);
 
-    return defaultRoute != null ? new CurrentRoute(defaultRoute, {}) : null;
+    return defaultRoute != null ? new _CurrentRoute(defaultRoute, {}) : null;
   }
 
   Map<String, String> _paramsForRoute(
@@ -165,12 +174,26 @@ class Router extends Component<RouterProps, CurrentRoute> {
   VNode _routeNotFound() => new Vdiv();
 }
 
+/// [RouteVNodeFactory] is a factory that returns a given component
+/// that pairs to a given path. The factory functions is called
+///  with `params`, which is a map of variables found in the path.
+///
+/// For example, if a `Route`s path is /foo/:var1/:var2 and the
+/// current url is /foo/bar/baz, then the params map would be
+/// {var1: 'bar', var2: 'baz'}
 typedef VNode RouteVNodeFactory(Map<String, String> params);
 
+/// [Route] defines a `path` and a `componentFactory` that
+/// can be used by the `Router` to render the result of a given `Route`'s
+/// componentFactory when the current url's path matches the `Route`'s path.
 @immutable
 class Route {
   final String path;
   final RouteVNodeFactory componentFactory;
+
+  /// useAsDefault should be set to true if you would like the router
+  /// to use this Route when the current route does not match any
+  /// `Route`s provided to the `Router`
   final bool useAsDefault;
 
   Route(
