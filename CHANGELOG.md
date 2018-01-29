@@ -1,4 +1,10 @@
 
+## 0.4.1
+
+components.dart
+
+* Added router component that lets you decalare which components to render for a given route
+
 ## 0.4.0
 
 wui_builder.dart

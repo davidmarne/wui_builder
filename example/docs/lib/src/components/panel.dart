@@ -4,60 +4,56 @@ import 'package:wui_builder/wui_builder.dart';
 
 import '../routes/routes.dart';
 
-typedef void UpdateRoute(Route route);
-
-class PanelProps {
-  UpdateRoute updateRoute;
-  Route currentRoute;
-}
-
-class Panel extends PComponent<PanelProps> {
-  Panel(PanelProps props) : super(props);
+class Panel extends NComponent {
+  History __history;
+  History get _history => __history ?? findHistoryInContext(context);
 
   @override
   VNode render() => new Vaside()
     ..className = 'menu'
     ..children = [
-      menuLabel('Basic Concepts'),
-      containerMenuItem([
-        terminalMenuItem('Hello World', Route.helloWorld),
-        terminalMenuItem('Props', Route.props),
-        terminalMenuItem('State', Route.state),
+      _menuLabel('Basic Concepts'),
+      _containerMenuItem([
+        _terminalMenuItem('Hello World', DocsRoutes.helloWorld),
+        _terminalMenuItem('Props', DocsRoutes.props),
+        _terminalMenuItem('State', DocsRoutes.state),
       ]),
-      menuLabel('Advanced Concepts'),
-      containerMenuItem([
-        terminalMenuItem('Keys', Route.keys),
-        terminalMenuItem('Updating on Animation Frame', Route.animationFrame),
-        terminalMenuItem('Updating on Idle Callbacks', Route.idleCallback),
-        terminalMenuItem('Context', Route.context),
-        terminalMenuItem('Immutability', Route.immutability),
-        terminalMenuItem('High order components', Route.hocs),
-        terminalMenuItem('Functional', Route.functional),
+      _menuLabel('Advanced Concepts'),
+      _containerMenuItem([
+        _terminalMenuItem('Keys', DocsRoutes.keys),
+        _terminalMenuItem('Routing', DocsRoutes.routing),
+        _terminalMenuItem(
+            'Updating on Animation Frame', DocsRoutes.animationFrame),
+        _terminalMenuItem(
+            'Updating on Idle Callbacks', DocsRoutes.idleCallback),
+        _terminalMenuItem('Context', DocsRoutes.context),
+        _terminalMenuItem('Immutability', DocsRoutes.immutability),
+        _terminalMenuItem('High order components', DocsRoutes.hocs),
+        _terminalMenuItem('Functional', DocsRoutes.functional),
       ]),
-      menuLabel('Examples'),
-      containerMenuItem([
-        terminalMenuItem('Sierpinski Triangle', Route.triangle),
-        terminalMenuItem('Virtual Scroll', Route.virtualList),
+      _menuLabel('Examples'),
+      _containerMenuItem([
+        _terminalMenuItem('Sierpinski Triangle', DocsRoutes.triangle),
+        _terminalMenuItem('Virtual Scroll', DocsRoutes.virtualList),
       ]),
     ];
 
-  VNode menuLabel(String text) => new Vp()
+  VNode _menuLabel(String text) => new Vp()
     ..className = 'menu-label'
     ..text = text;
 
-  VNode containerMenuItem(Iterable<Vli> children) => new Vul()
+  VNode _containerMenuItem(Iterable<Vli> children) => new Vul()
     ..className = 'menu-list'
     ..children = children;
 
-  Vli terminalMenuItem(String text, Route route) => new Vli()
+  Vli _terminalMenuItem(String text, String route) => new Vli()
     ..children = [
       new Va()
-        ..className = route == props.currentRoute ? 'is-active' : ''
         ..text = text
         ..onClick = (_) => _updateRoute(route),
     ];
 
-  void _updateRoute(Route route) {
-    props.updateRoute(route);
+  void _updateRoute(String route) {
+    _history.push(route);
   }
 }

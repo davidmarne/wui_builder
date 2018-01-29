@@ -8,8 +8,8 @@ Element createElementNode(
   vnode.applyEventListenersToElement(domNode);
   if (vnode.children.isNotEmpty) {
     for (final c in vnode.children) {
-      domNode.append(createNode(c, pendingComponentDidMounts));
       c.parent = vnode;
+      domNode.append(createNode(c, pendingComponentDidMounts));
     }
   }
   return domNode;
