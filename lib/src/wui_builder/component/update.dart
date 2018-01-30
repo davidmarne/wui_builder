@@ -60,7 +60,8 @@ bool updateComponent(UpdateTracker tracker) {
   oldVNode._props = nextProps;
 
   // build the new virtual tree
-  final newResult = oldVNode.render();
+  var newResult = oldVNode.render();
+  if (!newResult.wIf) newResult = null;
 
   // create a new tracker for the child update
   final nextTracker =

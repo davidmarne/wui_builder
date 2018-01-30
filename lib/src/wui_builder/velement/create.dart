@@ -6,10 +6,12 @@ Element createElementNode(
   vnode.ref = domNode;
   vnode.applyAttributesToElement(domNode);
   vnode.applyEventListenersToElement(domNode);
+  vnode.children = vnode.children.where(checkWif);
   if (vnode.children.isNotEmpty) {
     for (final c in vnode.children) {
       c.parent = vnode;
-      domNode.append(createNode(c, pendingComponentDidMounts));
+      final child = createNode(c, pendingComponentDidMounts);
+      if (child != null) domNode.append(child);
     }
   }
   return domNode;

@@ -20,6 +20,8 @@ bool updateElement(UpdateTracker tracker) {
   // if shouldUpdateSubs is set update subscriptions
   newVNode.updateEventListenersToElement(oldVNode, tracker.node);
 
+  newVNode.children = newVNode.children.where(checkWif);
+
   // only push cursor to queue if children > 1 to avoid unneccesary garbage
   final newLength = newVNode.children.length;
   final oldLength = oldVNode.children.length;
@@ -179,3 +181,5 @@ void disposeVElement(VElement vnode) {
   vnode.dispose();
   vnode.children.forEach(disposeVNode);
 }
+
+bool checkWif(VNode node) => node.wIf;
