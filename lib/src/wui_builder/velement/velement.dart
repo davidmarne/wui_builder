@@ -3886,7 +3886,8 @@ abstract class VElement<E extends Element> extends VNode {
   }
 
   void updateEventListenersToElement(VElement prev, Element ele) {
-    _setSubs.forEach((k, v) => _removeEventListenerIfNeccessary(prev, k, v));
+    prev._setSubs
+        .forEach((k, v) => _removeEventListenerIfNeccessary(prev, k, v));
     prev._setSubs = _setSubs;
     prev._setSubs.forEach((k, v) => prev._applyEventListener(ele, k, v));
   }
@@ -4139,9 +4140,9 @@ abstract class VElement<E extends Element> extends VNode {
   }
 
   void _removeEventListenerIfNeccessary(VElement prev, int key, dynamic value) {
-    if (prev._setSubs.containsKey(key)) return;
+    if (_setSubs.containsKey(key)) return;
     prev._eventSubs[key].cancel();
-    prev._eventSubs[key] = null;
+    prev._eventSubs.remove(key);
   }
 
   void dispose() {
