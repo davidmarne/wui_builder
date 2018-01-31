@@ -6,6 +6,7 @@ Element createElementNode(
   vnode.ref = domNode;
   vnode.applyAttributesToElement(domNode);
   vnode.applyEventListenersToElement(domNode);
+  // filter wifs
   vnode.children = vnode.children.where(checkWif);
   if (vnode.children.isNotEmpty) {
     for (final c in vnode.children) {

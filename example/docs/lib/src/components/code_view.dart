@@ -18,6 +18,7 @@ import '../demos/routing.dart';
 import '../demos/state_example.dart';
 import '../demos/triangle.dart';
 import '../demos/virtual_list.dart';
+import '../demos/wif_example.dart';
 import '../routes/routes.dart';
 
 @immutable
@@ -110,6 +111,14 @@ class CodeView extends NComponent {
                 DocsRoutes.keys,
                 keys,
                 new KeysExample(),
+              ),
+        ),
+        new Route(
+          DocsRoutes.wif,
+          (params) => new CodeViewContent(
+                DocsRoutes.wif,
+                wif_example,
+                new WifExample(),
               ),
         ),
         new Route(

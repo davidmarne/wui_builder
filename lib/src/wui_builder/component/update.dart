@@ -61,6 +61,7 @@ bool updateComponent(UpdateTracker tracker) {
 
   // build the new virtual tree
   var newResult = oldVNode.render();
+
   if (!newResult.wIf) newResult = null;
 
   // create a new tracker for the child update
@@ -71,7 +72,9 @@ bool updateComponent(UpdateTracker tracker) {
   final finished = updateVNode(nextTracker);
 
   // if the render result type has changed, replace child
-  if (oldVNode.child.runtimeType != newResult.runtimeType ||
+  if (oldVNode.child != null && newResult == null ||
+      oldVNode.child == null && newResult != null ||
+      oldVNode.child.runtimeType != newResult.runtimeType ||
       oldVNode.child.key != newResult.key) oldVNode._child = newResult;
 
   // push an update to run lifecycle events and null the _pendingUpdateTracker

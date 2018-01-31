@@ -15,7 +15,7 @@ Element createComponentNode(
   // build the new virtual tree
   final child = vnode.render();
 
-  if (!child.wIf) return null;
+  if (!child.wIf) return null; // TODO: still call cdm?
 
   vnode._child = child;
 
