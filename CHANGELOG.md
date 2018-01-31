@@ -1,6 +1,12 @@
 
 ## 0.4.1
 
+wui_builder.dart
+
+* fix issue around remove and readding event subscriptions on dom elements
+
+## 0.4.1
+
 components.dart
 
 * Added router component that lets you decalare which components to render for a given route
