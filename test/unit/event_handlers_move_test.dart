@@ -3,11 +3,11 @@ import 'dart:html';
 import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';
 
-import 'test_util/event_handlers_test_component.dart';
+import 'test_util/event_handlers_move_test_component.dart';
 import 'test_util/testbed.dart';
 
 void main() {
-  group('keys test -', () {
+  group('event handler move test -', () {
     DivElement host;
     EventHandlerTestComponent component;
     Iterable<CheckBoxChildComponent> childrenComponents() =>
