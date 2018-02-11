@@ -46,7 +46,9 @@ void main() {
         initialRender([keyA, keyB], true);
 
         // update the state on the last child
-        (childrenComponents().last.child as VElement).children.last.ref.click();
+        ((childrenComponents().last.child as VElement).children.last.ref
+                as Element)
+            .click();
 
         verifier([keyA, keyB], [false, true]);
 
@@ -57,17 +59,17 @@ void main() {
 
         // update the state on the first child to make sure it changes
         // the checked state of the correct child
-        (childrenComponents().first.child as VElement)
-            .children
-            .last
-            .ref
+        ((childrenComponents().first.child as VElement).children.last.ref
+                as Element)
             .click();
 
         verifier([keyB, keyA], [false, false]);
 
         // update the state on the last child to make sure it changes
         // the checked state of the correct child
-        (childrenComponents().last.child as VElement).children.last.ref.click();
+        ((childrenComponents().last.child as VElement).children.last.ref
+                as Element)
+            .click();
 
         verifier([keyB, keyA], [false, true]);
       });
@@ -78,7 +80,9 @@ void main() {
         initialRender([keyA, keyB], false);
 
         // update the state on the last child
-        (childrenComponents().last.child as VElement).children.last.ref.click();
+        ((childrenComponents().last.child as VElement).children.last.ref
+                as Element)
+            .click();
 
         verifier([keyA, keyB], [false, true]);
 
@@ -89,17 +93,17 @@ void main() {
 
         // update the state on the first child to make sure it changes
         // the checked state of the correct child
-        (childrenComponents().first.child as VElement)
-            .children
-            .last
-            .ref
+        ((childrenComponents().first.child as VElement).children.last.ref
+                as Element)
             .click();
 
         verifier([keyB, keyA], [true, true]);
 
         // update the state on the last child to make sure it changes
         // the checked state of the correct child
-        (childrenComponents().last.child as VElement).children.last.ref.click();
+        ((childrenComponents().last.child as VElement).children.last.ref
+                as Element)
+            .click();
 
         verifier([keyB, keyA], [true, false]);
       });

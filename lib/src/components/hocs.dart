@@ -1,17 +1,26 @@
 import 'dart:html';
-
+import 'package:meta/meta.dart';
 import '../../wui_builder.dart';
 import 'reduced_components.dart';
 
-class ContextSetterProps<C> {
-  String contextKey;
-  C contextValue;
-  VNode child;
+@immutable
+class _ContextSetterProps<C> {
+  final String contextKey;
+  final C contextValue;
+  final VNode child;
+  const _ContextSetterProps(this.contextKey, this.contextValue, this.child);
 }
 
-abstract class ContextSetter<C> extends Component<ContextSetterProps, Null> {
-  ContextSetter(ContextSetterProps<C> props, {dynamic key: null})
-      : super(props, key: key);
+abstract class ContextSetter<C>
+    extends Component<_ContextSetterProps<C>, Null> {
+  ContextSetter({
+    @required String contextKey,
+    @required C contextValue,
+    @required VNode child,
+    dynamic key,
+  })
+      : super(new _ContextSetterProps(contextKey, contextValue, child),
+            key: key);
 
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
@@ -23,7 +32,11 @@ abstract class ContextSetter<C> extends Component<ContextSetterProps, Null> {
 }
 
 class UpdateBlocker extends PComponent<VNode> {
-  UpdateBlocker(VNode props, {dynamic key: null}) : super(props, key: key);
+  UpdateBlocker({
+    @required VNode child,
+    dynamic key,
+  })
+      : super(child, key: key);
 
   @override
   bool shouldComponentUpdate(_, __) => false;
@@ -33,7 +46,11 @@ class UpdateBlocker extends PComponent<VNode> {
 }
 
 class Pure extends PComponent<Component> {
-  Pure(Component props, {dynamic key: null}) : super(props, key: key);
+  Pure({
+    @required Component child,
+    dynamic key,
+  })
+      : super(child, key: key);
 
   @override
   bool shouldComponentUpdate(nextProps, _) => props.props != nextProps.props;
@@ -45,7 +62,11 @@ class Pure extends PComponent<Component> {
 class Perf extends PComponent<Component> {
   double _start;
 
-  Perf(Component props, {dynamic key: null}) : super(props, key: key);
+  Perf({
+    @required Component child,
+    dynamic key,
+  })
+      : super(child, key: key);
 
   String get _name => '${props.runtimeType}${key == null ? '' : ' - $key'}';
 
@@ -56,7 +77,6 @@ class Perf extends PComponent<Component> {
 
   @override
   void componentDidMount() {
-    // TODO: use named logger
     final totalTimeMs = window.performance.now() - _start;
     print('Perf Mount: $_name - $totalTimeMs');
   }

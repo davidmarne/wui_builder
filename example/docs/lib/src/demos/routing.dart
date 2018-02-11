@@ -26,7 +26,7 @@ class RoutingExample extends NComponent {
   // The Router component takes an Iterable of Routes. A Route
   // defines a path to match on and a component factory to be
   // invoked when the corresponding path is matched.
-  VNode _routeContent() => new Router([
+  VNode _routeContent() => new Router(routes: [
         new Route(
           ExampleRoutes.routeA,
           (params) => new RouteAComponent(),

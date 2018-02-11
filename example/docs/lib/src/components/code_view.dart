@@ -25,7 +25,7 @@ class CodeViewContentProps {
   final String route;
   final String code;
   final VNode content;
-  CodeViewContentProps(this.route, this.code, this.content);
+  const CodeViewContentProps(this.route, this.code, this.content);
 }
 
 class CodeViewContent extends PComponent<CodeViewContentProps> {
@@ -62,7 +62,7 @@ class CodeViewContent extends PComponent<CodeViewContentProps> {
 
 class CodeView extends NComponent {
   @override
-  VNode render() => new Router([
+  VNode render() => new Router(routes: [
         new Route(
           DocsRoutes.helloWorld,
           (params) => new CodeViewContent(

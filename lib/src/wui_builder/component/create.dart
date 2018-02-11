@@ -1,6 +1,6 @@
 part of component;
 
-Element createComponentNode(
+Node createComponentNode(
     Component vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   // register the beforeAnimationFrameCallback if it is set
   if (vnode.beforeAnimationFrame != null)

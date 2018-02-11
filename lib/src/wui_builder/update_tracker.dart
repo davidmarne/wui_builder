@@ -13,8 +13,8 @@ class UpdateTracker {
   UpdateTracker childTracker;
   PendingCursor pendingWork;
 
-  final Element parent;
-  final Element node;
+  final Node parent;
+  final Node node;
   final VNode newVNode;
   final VNode oldVNode;
   final bool shouldAbort;
@@ -41,8 +41,8 @@ class UpdateTracker {
 
   // update changes the current location of the update
   // to avoid accesive garbage, mutate the current cursor
-  UpdateTracker nextCursor(Element nextParent, Element nextNode,
-      VNode nextNewVNode, VNode nextOldVNode) {
+  UpdateTracker nextCursor(
+      Node nextParent, Node nextNode, VNode nextNewVNode, VNode nextOldVNode) {
     final nextChild = new UpdateTracker.clone(nextParent, nextNode,
         nextNewVNode, nextOldVNode, isAsync, shouldAbort, this, deadline);
     childTracker = nextChild;

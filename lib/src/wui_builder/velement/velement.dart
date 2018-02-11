@@ -3207,7 +3207,7 @@ const onWaitingEvent = 66;
 const onFullscreenChangeEvent = 67;
 const onFullscreenErrorEvent = 68;
 
-abstract class VElement<E extends Element> extends VNode {
+abstract class VElement<E extends Element> extends VNode implements Children {
   @override
   VNodeTypes get vNodeType => VNodeTypes.element;
 

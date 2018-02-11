@@ -2,7 +2,9 @@ import 'component.dart';
 import 'create_nodes.dart';
 import 'update_tracker.dart';
 import 'velement.dart';
+import 'viterable.dart';
 import 'vnode.dart';
+import 'vtext.dart';
 
 // returns true if the update was complete
 bool updateVNode(UpdateTracker tracker) {
@@ -30,8 +32,12 @@ bool updateVNode(UpdateTracker tracker) {
     for (final cdm in pendingComponentDidMounts) cdm();
   } else if (tracker.newVNode.vNodeType == VNodeTypes.element) {
     return updateElement(tracker);
-  } else {
+  } else if (tracker.newVNode.vNodeType == VNodeTypes.component) {
     return updateComponent(tracker);
+  } else if (tracker.newVNode.vNodeType == VNodeTypes.text) {
+    return updateText(tracker);
+  } else {
+    return updateIterable(tracker);
   }
 
   return true;

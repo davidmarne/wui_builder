@@ -2,9 +2,9 @@ import 'dart:html';
 
 import 'component.dart';
 import 'cursors.dart';
+import 'update_children.dart';
 import 'update_processor.dart';
 import 'update_tracker.dart';
-import 'velement.dart';
 
 // settable methods for testing
 var animationFrameRequstMethod = window.requestAnimationFrame;
@@ -133,7 +133,7 @@ void doPendingWork(UpdateTracker tracker) {
   var current = tracker;
   while (current != null) {
     if (current.pendingWork.cursorType == PendingCursors.iterable) {
-      finished = updateElementChildren(current);
+      finished = updateChildren(current);
     } else {
       finishComponentUpdate(current);
       finished = true;

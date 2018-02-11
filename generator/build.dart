@@ -41,7 +41,7 @@ void main(List<String> args) {
     ..write(lintIgnores);
 
   final vEleResult = new StringBuffer()
-    ..write("part of velement;")
+    ..write('part of velement;')
     ..write(lintIgnores);
 
   for (final classElement in htmlTypes) {

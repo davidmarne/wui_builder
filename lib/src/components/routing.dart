@@ -75,35 +75,23 @@ class History {
 }
 
 @immutable
-class _RouterProps {
-  final Iterable<Route> routes;
-  // final UpdateType updateType;
-  _RouterProps(
-    this.routes,
-    /*this.updateType*/
-  );
-}
-
-@immutable
 class _CurrentRoute {
   final Route route;
   final Map<String, String> params;
-  _CurrentRoute(this.route, this.params);
+  const _CurrentRoute(this.route, this.params);
 }
 
 /// [Router] is a component that will render the result of a given `Route`'s
 /// componentFactory when the current url's path matches the `Route`'s path.
-class Router extends Component<_RouterProps, _CurrentRoute> {
+class Router extends Component<Iterable<Route>, _CurrentRoute> {
   StreamSubscription _onPathSub;
   History __history;
 
-  Router(
-    Iterable<Route> routes,
-    /*{UpdateType updateType: UpdateType.animationFrame,}*/
-  )
-      : super(new _RouterProps(
-          routes, /*updateType*/
-        ));
+  Router({
+    @required Iterable<Route> routes,
+    dynamic key,
+  })
+      : super(routes, key: key);
 
   History get _history => __history ?? findHistoryInContext(context);
 
@@ -131,7 +119,7 @@ class Router extends Component<_RouterProps, _CurrentRoute> {
 
   _CurrentRoute _getCurrentRouteForPath(String path) {
     final pathParts = path.split('/');
-    for (Route route in props.routes) {
+    for (Route route in props) {
       final routeParts = route.path.split('/');
       if (pathParts.length != routeParts.length) continue;
 
@@ -153,8 +141,7 @@ class Router extends Component<_RouterProps, _CurrentRoute> {
     }
 
     // we didn't find a matching route. use the default route.
-    final defaultRoute =
-        props.routes.firstWhere(_routeIsDefault, orElse: () => null);
+    final defaultRoute = props.firstWhere(_routeIsDefault, orElse: () => null);
 
     return defaultRoute != null ? new _CurrentRoute(defaultRoute, {}) : null;
   }

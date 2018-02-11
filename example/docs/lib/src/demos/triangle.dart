@@ -50,7 +50,7 @@ class TransformContainer extends SComponent<int> {
     ..styleBuilder = _styleBuilder()
     ..children = [
       new UpdateBlocker(
-        new VDivElement()
+        child: new VDivElement()
           ..children = [
             new CounterStateHOC(),
           ],

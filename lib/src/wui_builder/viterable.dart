@@ -1,4 +1,4 @@
-library velement;
+library viterable;
 
 import 'dart:async';
 import 'dart:html';
@@ -12,7 +12,6 @@ import 'update_processor.dart';
 import 'update_tracker.dart';
 import 'vnode.dart';
 
-part 'velement/create.dart';
-part 'velement/typdefs.dart';
-part 'velement/update.dart';
-part 'velement/velement.dart';
+part 'viterable/create.dart';
+part 'viterable/update.dart';
+part 'viterable/viterable.dart';

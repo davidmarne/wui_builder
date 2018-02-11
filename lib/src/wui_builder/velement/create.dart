@@ -1,6 +1,6 @@
 part of velement;
 
-Element createElementNode(
+Node createElementNode(
     VElement vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   final Element domNode = vnode.elementFactory();
   vnode.ref = domNode;

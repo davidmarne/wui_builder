@@ -2,7 +2,7 @@ import 'dart:html';
 
 abstract class VNode {
   /// The acutal dom node for the virtual node
-  Element ref;
+  Node ref;
 
   /// The [parent] virtual element
   VNode parent;
@@ -18,4 +18,10 @@ abstract class VNode {
 enum VNodeTypes {
   element,
   component,
+  text,
+  iterable,
+}
+
+abstract class Children {
+  List<VNode> children;
 }
