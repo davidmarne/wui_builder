@@ -17,8 +17,9 @@ abstract class Component<P, S> extends VNode {
   StateSetter<P, S> _pendingStateSetter;
   final _pendingUpdateTrackers = <UpdateTracker>[];
 
-  Component(this._props, {dynamic key}) {
+  Component(this._props, {dynamic key, bool vif: true}) {
     this.key = key;
+    this.vif = vif;
   }
 
   @override

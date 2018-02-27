@@ -13,9 +13,14 @@ const historyContextKey = 'historyContextKey';
 /// it to context. This component should only be used once per app
 /// and should exist at the top of the component tree.
 class HistoryProvider extends PComponent<VNode> {
-  final _history = new History();
+  final History _history;
 
-  HistoryProvider(VNode child) : super(child);
+  HistoryProvider({
+    @required VNode child,
+    History history,
+  })
+      : _history = history ?? new History(),
+        super(child);
 
   @override
   Map<String, dynamic> getChildContext() =>
@@ -183,9 +188,9 @@ class Route {
   /// `Route`s provided to the `Router`
   final bool useAsDefault;
 
-  Route(
-    String path,
-    this.componentFactory, {
+  Route({
+    @required String path,
+    @required this.componentFactory,
     this.useAsDefault: false,
   })
       : this.path = path.startsWith('/') ? path : '/$path';

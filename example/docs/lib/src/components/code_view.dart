@@ -17,6 +17,7 @@ import '../demos/props_example.dart';
 import '../demos/routing.dart';
 import '../demos/state_example.dart';
 import '../demos/triangle.dart';
+import '../demos/vif_example.dart';
 import '../demos/virtual_list.dart';
 import '../routes/routes.dart';
 
@@ -64,8 +65,8 @@ class CodeView extends NComponent {
   @override
   VNode render() => new Router(routes: [
         new Route(
-          DocsRoutes.helloWorld,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.helloWorld,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.helloWorld,
                 hello_world,
                 new HelloWorld(),
@@ -73,112 +74,120 @@ class CodeView extends NComponent {
           useAsDefault: true,
         ),
         new Route(
-          DocsRoutes.props,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.props,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.props,
                 props_example,
                 new PropsExample('Hello World!'),
               ),
         ),
         new Route(
-          DocsRoutes.state,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.state,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.state,
                 state_example,
                 new StateExample(),
               ),
         ),
         new Route(
-          DocsRoutes.animationFrame,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.animationFrame,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.animationFrame,
                 animation_frame,
                 new AnimationFrame(),
               ),
         ),
         new Route(
-          DocsRoutes.idleCallback,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.idleCallback,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.idleCallback,
                 idle_callback,
                 new IdleCallbackExample(),
               ),
         ),
         new Route(
-          DocsRoutes.keys,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.keys,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.keys,
                 keys,
                 new KeysExample(),
               ),
         ),
         new Route(
-          DocsRoutes.routing,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.vif,
+          componentFactory: (params) => new CodeViewContent(
+                DocsRoutes.vif,
+                vif_example,
+                new VifExample(),
+              ),
+        ),
+        new Route(
+          path: DocsRoutes.routing,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.routing,
                 routing,
                 new RoutingExample(),
               ),
         ),
         new Route(
-          DocsRoutes.routingDepth1,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.routingDepth1,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.routing,
                 routing,
                 new RoutingExample(),
               ),
         ),
         new Route(
-          DocsRoutes.routingDepth2,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.routingDepth2,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.routing,
                 routing,
                 new RoutingExample(),
               ),
         ),
         new Route(
-          DocsRoutes.context,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.context,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.context,
                 context,
                 new ContextParent(),
               ),
         ),
         new Route(
-          DocsRoutes.immutability,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.immutability,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.immutability,
                 immutability,
                 new ImmutabilityExample(),
               ),
         ),
         new Route(
-          DocsRoutes.hocs,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.hocs,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.hocs,
                 hocs,
                 new HOCExample(),
               ),
         ),
         new Route(
-          DocsRoutes.functional,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.functional,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.functional,
                 functional,
                 tweet(),
               ),
         ),
         new Route(
-          DocsRoutes.triangle,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.triangle,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.triangle,
                 triangle,
                 new TransformContainer(),
               ),
         ),
         new Route(
-          DocsRoutes.virtualList,
-          (params) => new CodeViewContent(
+          path: DocsRoutes.virtualList,
+          componentFactory: (params) => new CodeViewContent(
                 DocsRoutes.virtualList,
                 virtual_list,
                 new VirtualScroll(),

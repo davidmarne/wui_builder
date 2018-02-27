@@ -11,6 +11,8 @@ abstract class VNode {
   /// VNode changes the VNode will be forced to rerender
   dynamic key;
 
+  bool vif = true;
+
   /// Identifies if the VNode is a component or element
   VNodeTypes get vNodeType;
 }

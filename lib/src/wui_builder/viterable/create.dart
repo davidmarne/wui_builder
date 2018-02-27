@@ -3,12 +3,14 @@ part of viterable;
 Node createIterableNode(
     VIterable vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   final Node domNode = document.createDocumentFragment();
-  vnode.ref = domNode;
-  if (vnode.children.isNotEmpty) {
-    for (final c in vnode.children) {
+  final children = resolveChildren(vnode.children);
+  if (children.isNotEmpty) {
+    for (final c in children) {
       c.parent = vnode;
       domNode.append(createNode(c, pendingComponentDidMounts));
     }
   }
+
+  vnode.ref = domNode.firstChild;
   return domNode;
 }

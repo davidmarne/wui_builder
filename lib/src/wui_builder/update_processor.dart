@@ -26,7 +26,6 @@ bool updateVNode(UpdateTracker tracker) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     disposeVNode(tracker.oldVNode);
     final pendingComponentDidMounts = <ComponentDidMount>[];
-    tracker.newVNode.parent = tracker.parentTracker.oldVNode;
     tracker.node
         .replaceWith(createNode(tracker.newVNode, pendingComponentDidMounts));
     for (final cdm in pendingComponentDidMounts) cdm();
@@ -47,8 +46,10 @@ bool updateVNode(UpdateTracker tracker) {
 void disposeVNode(VNode node) {
   if (node.vNodeType == VNodeTypes.component) {
     disposeComponent(node as Component);
-  } else {
+  } else if (node.vNodeType == VNodeTypes.element) {
     disposeVElement(node as VElement);
+  } else if (node.vNodeType == VNodeTypes.iterable) {
+    disposeVIterable(node as VIterable);
   }
 }
 

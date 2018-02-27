@@ -10,7 +10,8 @@ typedef void ComponentDidMount();
 
 void render(VNode vnode, Node mount) {
   final pendingComponentDidMounts = <ComponentDidMount>[];
-  mount.append(createNode(vnode, pendingComponentDidMounts));
+  final ele = createNode(vnode, pendingComponentDidMounts);
+  if (ele != null) mount.append(ele);
   for (final cdm in pendingComponentDidMounts) cdm();
 }
 

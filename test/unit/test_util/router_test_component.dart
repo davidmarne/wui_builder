@@ -21,22 +21,23 @@ void expectRenderedOutput(Element host, String expectedContent) {
 class RouterComponent extends NComponent {
   @override
   VNode render() => new HistoryProvider(
-        new Router(routes: [
+        child: new Router(routes: [
           new Route(
-            TestRoutes.routeA,
-            (params) => new RouteAComponent(),
+            path: TestRoutes.routeA,
+            componentFactory: (params) => new RouteAComponent(),
             useAsDefault:
                 true, // if no route is matched this route will be used
           ),
           new Route(
-            TestRoutes.routeB,
-            (params) => new RouteBComponent(),
+            path: TestRoutes.routeB,
+            componentFactory: (params) => new RouteBComponent(),
           ),
           new Route(
-            TestRoutes.routeC,
+            path: TestRoutes.routeC,
             // routeC has a param, pathvar, which is read from the params
             // map and pass to RouteCComponent via props
-            (params) => new RouteCComponent(params['pathvar']),
+            componentFactory: (params) =>
+                new RouteCComponent(params['pathvar']),
           ),
         ]),
       );

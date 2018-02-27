@@ -4,9 +4,10 @@ import 'update_tracker.dart';
 import 'viterable.dart';
 import 'vnode.dart';
 
-List<VNode> expandChildren(List<VNode> children) => children
-    .expand<VNode>((vnode) =>
-        vnode is VIterable ? expandChildren(vnode.children) : [vnode])
+List<VNode> resolveChildren(List<VNode> children) => children
+    .expand((vnode) => vnode.vif
+        ? vnode is VIterable ? resolveChildren(vnode.children) : [vnode]
+        : <VNode>[])
     .toList();
 
 bool updateChildren(UpdateTracker tracker) {

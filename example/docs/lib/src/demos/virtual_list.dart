@@ -58,7 +58,9 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
     ..top = '${index * itemHeight}px';
 
   void _onScroll(Event e) {
-    final chunkTop = ref.scrollTop - (ref.scrollTop % containerHeight);
+    final refElement = ref as Element;
+    final chunkTop =
+        refElement.scrollTop - (refElement.scrollTop % containerHeight);
     if (state.chunkTop != chunkTop)
       setStateOnAnimationFrame((nextProps, prevState) =>
           new VirtualScrollState()..chunkTop = chunkTop);

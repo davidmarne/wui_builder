@@ -4,8 +4,8 @@ bool updateIterable(UpdateTracker tracker) {
   final oldVNode = tracker.oldVNode as VIterable;
   final newVNode = tracker.newVNode as VIterable;
 
-  final oldChildren = expandChildren(oldVNode.children);
-  final newChildren = expandChildren(newVNode.children);
+  final oldChildren = resolveChildren(oldVNode.children);
+  final newChildren = resolveChildren(newVNode.children);
 
   // only push cursor to queue if children > 1 to avoid unneccesary garbage
   final newLength = newChildren.length;
@@ -32,4 +32,8 @@ bool updateIterable(UpdateTracker tracker) {
   ));
 
   return updateChildren(tracker);
+}
+
+void disposeVIterable(VIterable vnode) {
+  vnode.children.forEach(disposeVNode);
 }
