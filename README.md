@@ -11,7 +11,7 @@ Supports defining custom components with an interface similar to react. All of t
 
 Built with async rendering in mind from the start.
 
-Fully compliant with strong mode and the DDC.
+Fully compliant with dart 2, strong mode, and the DDC.
 
 ## Documentation and examples
 
