@@ -1,5 +1,6 @@
 part of viterable;
 
+/// Warning! this is experimental and has known bugs.
 /// VIterable lets you insert multiple children
 /// into the virtual tree without a new parent dom element.
 /// `ref` gets set to the first child in the list.
@@ -19,6 +20,7 @@ part of viterable;
 /// <div>hello john sally</div>
 ///
 /// `ref` is the Text node representing 'john'
+@experimental
 class VIterable extends VNode implements Children {
   @override
   List<VNode> children;

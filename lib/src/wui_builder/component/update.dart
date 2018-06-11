@@ -38,9 +38,7 @@ bool updateComponent(UpdateTracker tracker) {
   // update the state to what it would have been if the pending update did process
   dynamic nextState = prevState;
   if (oldVNode._pendingStateSetter != null) {
-    print(nextState.hashCode);
     nextState = oldVNode._pendingStateSetter(nextProps, prevState);
-    print(nextState.hashCode);
     oldVNode._pendingStateSetter = null;
   }
 

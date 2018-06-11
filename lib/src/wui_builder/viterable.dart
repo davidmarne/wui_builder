@@ -1,6 +1,7 @@
 library viterable;
 
 import 'dart:html';
+import 'package:meta/meta.dart';
 
 import 'create_nodes.dart';
 import 'cursors.dart';
