@@ -11,14 +11,15 @@ wui_builder.dart
 
 components.dart
 
-* The following classes now take named required/optional parameters in constructor:
-  * ContextSetter
-  * UpdateBlocker
-  * Pure
-  * Perf
-  * HistoryProvider
-  * Router
-  * Route
+* **Breaking changes**:
+  * The following classes now take named required/optional parameters in constructor:
+    * ContextSetter
+    * UpdateBlocker
+    * Pure
+    * Perf
+    * HistoryProvider
+    * Router
+    * Route
 * Added UpdateDebugger, which prints props & state changes in componentWillUpdate
 
 functional.dart
