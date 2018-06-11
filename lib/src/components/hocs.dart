@@ -18,8 +18,7 @@ abstract class ContextSetter<C>
     @required C contextValue,
     @required VNode child,
     dynamic key,
-  })
-      : super(new _ContextSetterProps(contextKey, contextValue, child),
+  }) : super(new _ContextSetterProps(contextKey, contextValue, child),
             key: key);
 
   @override
@@ -35,8 +34,7 @@ class UpdateBlocker extends PComponent<VNode> {
   UpdateBlocker({
     @required VNode child,
     dynamic key,
-  })
-      : super(child, key: key);
+  }) : super(child, key: key);
 
   @override
   bool shouldComponentUpdate(_, __) => false;
@@ -49,8 +47,7 @@ class Pure extends PComponent<Component> {
   Pure({
     @required Component child,
     dynamic key,
-  })
-      : super(child, key: key);
+  }) : super(child, key: key);
 
   @override
   bool shouldComponentUpdate(nextProps, _) => props.props != nextProps.props;
@@ -65,8 +62,7 @@ class Perf extends PComponent<Component> {
   Perf({
     @required Component child,
     dynamic key,
-  })
-      : super(child, key: key);
+  }) : super(child, key: key);
 
   String get _name => '${props.runtimeType}${key == null ? '' : ' - $key'}';
 
@@ -90,6 +86,25 @@ class Perf extends PComponent<Component> {
   void componentDidUpdate(pp, ps) {
     final totalTimeMs = window.performance.now() - _start;
     print('Perf Update: $_name - $totalTimeMs');
+  }
+
+  @override
+  VNode render() => props;
+}
+
+class UpdateDebugger extends PComponent<Component> {
+  UpdateDebugger({
+    @required Component child,
+    dynamic key,
+  }) : super(child, key: key);
+
+  @override
+  void componentWillUpdate(np, ns) {
+    print('componentDidUpdate');
+    print('prev props: $props');
+    print('next props: $np');
+    print('prev state: $state');
+    print('next state: $ns');
   }
 
   @override

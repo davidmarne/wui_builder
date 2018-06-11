@@ -26,6 +26,7 @@ bool updateVNode(UpdateTracker tracker) {
     // if the new vnode is a different vNodeType, dispose the old and replace it with a new one
     disposeVNode(tracker.oldVNode);
     final pendingComponentDidMounts = <ComponentDidMount>[];
+    tracker.newVNode.parent = tracker.parentTracker.oldVNode;
     tracker.node
         .replaceWith(createNode(tracker.newVNode, pendingComponentDidMounts));
     for (final cdm in pendingComponentDidMounts) cdm();

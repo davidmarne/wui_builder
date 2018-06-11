@@ -3117,26 +3117,25 @@ void _updateStyle(Element ele, int key, String value) {
 }
 
 const contentEditableElementAttribute = 0;
-const contextMenuElementAttribute = 1;
-const dirElementAttribute = 2;
-const draggableElementAttribute = 3;
-const hiddenElementAttribute = 4;
-const langElementAttribute = 5;
-const spellcheckElementAttribute = 6;
-const tabIndexElementAttribute = 7;
-const titleElementAttribute = 8;
-const translateElementAttribute = 9;
-const dropzoneElementAttribute = 10;
+const dirElementAttribute = 1;
+const draggableElementAttribute = 2;
+const hiddenElementAttribute = 3;
+const inertElementAttribute = 4;
+const inputModeElementAttribute = 5;
+const langElementAttribute = 6;
+const spellcheckElementAttribute = 7;
+const tabIndexElementAttribute = 8;
+const titleElementAttribute = 9;
+const translateElementAttribute = 10;
 const classNameElementAttribute = 11;
 const idElementAttribute = 12;
 const slotElementAttribute = 13;
 const classesElementAttribute = 14;
 const datasetElementAttribute = 15;
-const xtagElementAttribute = 16;
-const innerHtmlElementAttribute = 17;
-const scrollLeftElementAttribute = 18;
-const scrollTopElementAttribute = 19;
-const textElementAttribute = 20;
+const innerHtmlElementAttribute = 16;
+const scrollLeftElementAttribute = 17;
+const scrollTopElementAttribute = 18;
+const textElementAttribute = 19;
 const onAbortEvent = 0;
 const onBeforeCopyEvent = 1;
 const onBeforeCutEvent = 2;
@@ -3206,13 +3205,14 @@ const onVolumeChangeEvent = 65;
 const onWaitingEvent = 66;
 const onFullscreenChangeEvent = 67;
 const onFullscreenErrorEvent = 68;
+const onWheelEvent = 69;
 
 abstract class VElement<E extends Element> extends VNode implements Children {
   @override
   VNodeTypes get vNodeType => VNodeTypes.element;
 
   var _setValuesElement = <int, dynamic>{};
-  var _setSubs = <int, EventHandler>{};
+  var _setSubs = <int, dynamic>{};
   var _eventSubs = <int, StreamSubscription>{};
 
   E elementFactory();
@@ -3237,12 +3237,6 @@ abstract class VElement<E extends Element> extends VNode implements Children {
     _setValuesElement[contentEditableElementAttribute] = v;
   }
 
-  MenuElement get contextMenu =>
-      _setValuesElement[contextMenuElementAttribute] as MenuElement;
-  set contextMenu(MenuElement v) {
-    _setValuesElement[contextMenuElementAttribute] = v;
-  }
-
   String get dir => _setValuesElement[dirElementAttribute] as String;
   set dir(String v) {
     _setValuesElement[dirElementAttribute] = v;
@@ -3256,6 +3250,17 @@ abstract class VElement<E extends Element> extends VNode implements Children {
   bool get hidden => _setValuesElement[hiddenElementAttribute] as bool;
   set hidden(bool v) {
     _setValuesElement[hiddenElementAttribute] = v;
+  }
+
+  bool get inert => _setValuesElement[inertElementAttribute] as bool;
+  set inert(bool v) {
+    _setValuesElement[inertElementAttribute] = v;
+  }
+
+  String get inputMode =>
+      _setValuesElement[inputModeElementAttribute] as String;
+  set inputMode(String v) {
+    _setValuesElement[inputModeElementAttribute] = v;
   }
 
   String get lang => _setValuesElement[langElementAttribute] as String;
@@ -3281,11 +3286,6 @@ abstract class VElement<E extends Element> extends VNode implements Children {
   bool get translate => _setValuesElement[translateElementAttribute] as bool;
   set translate(bool v) {
     _setValuesElement[translateElementAttribute] = v;
-  }
-
-  String get dropzone => _setValuesElement[dropzoneElementAttribute] as String;
-  set dropzone(String v) {
-    _setValuesElement[dropzoneElementAttribute] = v;
   }
 
   String get className =>
@@ -3314,11 +3314,6 @@ abstract class VElement<E extends Element> extends VNode implements Children {
       _setValuesElement[datasetElementAttribute] as Map<String, String>;
   set dataset(Map<String, String> v) {
     _setValuesElement[datasetElementAttribute] = v;
-  }
-
-  Element get xtag => _setValuesElement[xtagElementAttribute] as Element;
-  set xtag(Element v) {
-    _setValuesElement[xtagElementAttribute] = v;
   }
 
   String get innerHtml =>
@@ -3751,6 +3746,12 @@ abstract class VElement<E extends Element> extends VNode implements Children {
     _setSubs[onFullscreenErrorEvent] = v;
   }
 
+  EventHandler<WheelEvent> get onWheel =>
+      _setSubs[onWheelEvent] as EventHandler<WheelEvent>;
+  set onWheel(EventHandler<WheelEvent> v) {
+    _setSubs[onWheelEvent] = v;
+  }
+
   @protected
   void applyAttributesToElement(E ele) {
     if (styleBuilder != null)
@@ -3817,9 +3818,6 @@ abstract class VElement<E extends Element> extends VNode implements Children {
       case contentEditableElementAttribute:
         ele.contentEditable = value as String;
         break;
-      case contextMenuElementAttribute:
-        ele.contextMenu = value as MenuElement;
-        break;
       case dirElementAttribute:
         ele.dir = value as String;
         break;
@@ -3828,6 +3826,12 @@ abstract class VElement<E extends Element> extends VNode implements Children {
         break;
       case hiddenElementAttribute:
         ele.hidden = value as bool;
+        break;
+      case inertElementAttribute:
+        ele.inert = value as bool;
+        break;
+      case inputModeElementAttribute:
+        ele.inputMode = value as String;
         break;
       case langElementAttribute:
         ele.lang = value as String;
@@ -3844,9 +3848,6 @@ abstract class VElement<E extends Element> extends VNode implements Children {
       case translateElementAttribute:
         ele.translate = value as bool;
         break;
-      case dropzoneElementAttribute:
-        ele.dropzone = value as String;
-        break;
       case classNameElementAttribute:
         ele.className = value as String;
         break;
@@ -3861,9 +3862,6 @@ abstract class VElement<E extends Element> extends VNode implements Children {
         break;
       case datasetElementAttribute:
         ele.dataset = value as Map<String, String>;
-        break;
-      case xtagElementAttribute:
-        ele.xtag = value as Element;
         break;
       case innerHtmlElementAttribute:
         ele.innerHtml = value as String;
@@ -3882,17 +3880,17 @@ abstract class VElement<E extends Element> extends VNode implements Children {
   }
 
   void applyEventListenersToElement(Element ele) {
-    _setSubs.forEach((k, dynamic v) => _applyEventListener(ele, k, v));
+    _setSubs.forEach((k, dynamic v) => _applyEventListener(ele, k));
   }
 
   void updateEventListenersToElement(VElement prev, Element ele) {
-    prev._setSubs
-        .forEach((k, v) => _removeEventListenerIfNeccessary(prev, k, v));
+    for (final k in prev._setSubs.keys)
+      _removeEventListenerIfNeccessary(prev, k);
     prev._setSubs = _setSubs;
-    prev._setSubs.forEach((k, v) => prev._applyEventListener(ele, k, v));
+    for (final k in prev._setSubs.keys) prev._applyEventListener(ele, k);
   }
 
-  void _applyEventListener(Element ele, int key, dynamic value) {
+  void _applyEventListener(Element ele, int key) {
     if (_eventSubs.containsKey(key)) return;
     switch (key) {
       case onAbortEvent:
@@ -4136,10 +4134,13 @@ abstract class VElement<E extends Element> extends VNode implements Children {
         _eventSubs[onFullscreenErrorEvent] =
             ele.onFullscreenError.listen((e) => onFullscreenError(e));
         break;
+      case onWheelEvent:
+        _eventSubs[onWheelEvent] = ele.onWheel.listen((e) => onWheel(e));
+        break;
     }
   }
 
-  void _removeEventListenerIfNeccessary(VElement prev, int key, dynamic value) {
+  void _removeEventListenerIfNeccessary(VElement prev, int key) {
     if (_setSubs.containsKey(key)) return;
     prev._eventSubs[key].cancel();
     prev._eventSubs.remove(key);

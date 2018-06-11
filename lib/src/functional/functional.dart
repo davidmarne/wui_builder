@@ -16,7 +16,7 @@ typedef EventHandler<T> EventHandlerFactory<P, T>(P p);
 
 /// memoizes an event handler
 ///
-/// final onClick = createEventHandler<int, int, Event>((p, s) => (e) {
+/// final onClick = createEventHandler<int, Event>((p) => (e) {
 ///    // do something
 /// });
 EventHandlerFactory<P, E> createEventHandler<P, E>(
@@ -31,8 +31,7 @@ EventHandlerFactory<P, E> createEventHandler<P, E>(
     } else {
       prevProps = p;
       isInitial = false;
-      prevResult = eventHandlerFactory(p);
-      return prevResult;
+      return prevResult = eventHandlerFactory(p);
     }
   };
 }

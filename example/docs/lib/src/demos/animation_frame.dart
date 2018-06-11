@@ -36,7 +36,7 @@ class AnimationFrame extends SComponent<int> {
         },
     ];
 
-  double _toRadians(int degree) => degree.toDouble() * PI / 180.0;
+  double _toRadians(int degree) => degree.toDouble() * pi / 180.0;
   double get _cy => (sin(_toRadians(state)) * 400) + 500;
   double get _cx => (cos(_toRadians(state)) * 400) + 500;
 }
