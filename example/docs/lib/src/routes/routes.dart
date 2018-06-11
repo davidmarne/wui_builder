@@ -14,4 +14,5 @@ class DocsRoutes {
   static const functional = '/functional';
   static const triangle = '/triangle';
   static const virtualList = '/virtualList';
+  static const vif = '/vif';
 }

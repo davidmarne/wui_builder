@@ -4,7 +4,7 @@ import '../../components.dart';
 import '../../wui_builder.dart';
 import 'functional.dart';
 
-typedef OutterP RefMapper<InnerP, OutterP>(InnerP props, Element ref);
+typedef OutterP RefMapper<InnerP, OutterP>(InnerP props, Node ref);
 
 /// [withRef] with pass a ref to the dom element to `baseComponent`
 ComponentEnhancer<InnerP, OutterP> withRef<InnerP, OutterP>(

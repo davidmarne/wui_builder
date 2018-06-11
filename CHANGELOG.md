@@ -1,3 +1,33 @@
+## 0.5.0
+
+wui_builder.dart
+
+* fix casting issues due to dart 2s new type system (internals only)
+  * _setSubs is now dynamic in VElement
+  * _pendingStateSetter is now dynamicly typed 
+* Added vif parameter to Component, which can be used for easy conditional rendering
+* Added VText vNode, which can be used to render text nodes without additional elements being added to the DOM
+* Added VIterable vNode, which can be used to return a list of VNodes from a render function. This is experimental and has known issues.
+
+components.dart
+
+* **Breaking changes**:
+  * The following classes now take named required/optional parameters in constructor:
+    * ContextSetter
+    * UpdateBlocker
+    * Pure
+    * Perf
+    * HistoryProvider
+    * Router
+    * Route
+* Added UpdateDebugger, which prints props & state changes in componentWillUpdate
+
+functional.dart
+
+* Added createEventHandler function which can be used to memoize inline functions in functional components
+* Added withContext HOC
+* Added withHistory HOC
+
 ## 0.4.3
 
 * fix bug where ref was not set after component updates caused change in ref

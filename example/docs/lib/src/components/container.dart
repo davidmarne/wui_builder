@@ -9,7 +9,7 @@ import 'panel.dart';
 class Container extends NComponent {
   @override
   VNode render() => new HistoryProvider(
-        new VDivElement()
+        child: new VDivElement()
           ..children = [
             new Nav(new NavProps()),
             new VDivElement()

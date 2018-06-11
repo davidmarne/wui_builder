@@ -197,9 +197,46 @@ abstract class VGeometryElement<T extends GeometryElement>
 abstract class VGraphicsElement<T extends GraphicsElement>
     extends VSvgElement<T> {}
 
+const asyncImageElementAttribute = 0;
+
 class VImageElement extends VGraphicsElement<ImageElement> {
   @override
   ImageElement elementFactory() => new ImageElement();
+
+  var _setValuesImageElement = <int, dynamic>{};
+
+  String get async =>
+      _setValuesImageElement[asyncImageElementAttribute] as String;
+  set async(String v) {
+    _setValuesImageElement[asyncImageElementAttribute] = v;
+  }
+
+  @override
+  @protected
+  void applyAttributesToElement(ImageElement ele) {
+    _setValuesImageElement
+        .forEach((k, dynamic v) => _updateAttributeImageElement(ele, k, v));
+    super.applyAttributesToElement(ele);
+  }
+
+  @override
+  @protected
+  void updateElementAttributes(VImageElement prev, ImageElement ele) {
+    prev._setValuesImageElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesImageElement[k];
+      if (v != newValue) _updateAttributeImageElement(ele, k, newValue);
+    });
+    prev._setValuesImageElement = _setValuesImageElement;
+    super.updateElementAttributes(prev, ele);
+  }
+
+  void _updateAttributeImageElement(ImageElement ele, int key, dynamic value) {
+    switch (key) {
+      case asyncImageElementAttribute:
+        ele.async = value as String;
+        break;
+    }
+  }
 }
 
 class VLineElement extends VGeometryElement<LineElement> {
@@ -370,10 +407,16 @@ class VStyleElement extends VSvgElement<StyleElement> {
   }
 }
 
-const innerHtmlSvgElementAttribute = 0;
+const nonceSvgElementAttribute = 0;
+const innerHtmlSvgElementAttribute = 1;
 
 abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
   var _setValuesSvgElement = <int, dynamic>{};
+
+  String get nonce => _setValuesSvgElement[nonceSvgElementAttribute] as String;
+  set nonce(String v) {
+    _setValuesSvgElement[nonceSvgElementAttribute] = v;
+  }
 
   String get innerHtml =>
       _setValuesSvgElement[innerHtmlSvgElementAttribute] as String;
@@ -402,6 +445,9 @@ abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
 
   void _updateAttributeSvgElement(SvgElement ele, int key, dynamic value) {
     switch (key) {
+      case nonceSvgElementAttribute:
+        ele.nonce = value as String;
+        break;
       case innerHtmlSvgElementAttribute:
         ele.innerHtml = value as String;
         break;

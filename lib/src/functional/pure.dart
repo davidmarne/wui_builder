@@ -14,7 +14,7 @@ import 'lifecycle.dart';
 ///
 ///   FunctionalComponent purified = pure(baseComponent);
 ///
-///   FunctionalComponent baseComponent(ExampleProps props) => Dom.div()..text = props.foo;
+///   FunctionalComponent baseComponent(ExampleProps props) => new Vdiv()..text = props.foo;
 ///
 ///   ```
 FunctionalComponent<P> pure<P>(FunctionalComponent<P> baseComponent) =>

@@ -22,6 +22,7 @@ class Panel extends NComponent {
       _containerMenuItem([
         _terminalMenuItem('Keys', DocsRoutes.keys),
         _terminalMenuItem('Routing', DocsRoutes.routing),
+        _terminalMenuItem('Vif', DocsRoutes.vif),
         _terminalMenuItem(
             'Updating on Animation Frame', DocsRoutes.animationFrame),
         _terminalMenuItem(

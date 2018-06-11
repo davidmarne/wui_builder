@@ -1,8 +1,7 @@
 language: dart
 sudo: required
 
-dart:
-  - stable
+dart: dev
   
 addons:
   apt:

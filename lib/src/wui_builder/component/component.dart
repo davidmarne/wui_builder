@@ -14,11 +14,12 @@ abstract class Component<P, S> extends VNode {
   S _state;
   Map<String, dynamic> _context;
   VNode _child;
-  StateSetter<P, S> _pendingStateSetter;
+  StateSetter _pendingStateSetter;
   final _pendingUpdateTrackers = <UpdateTracker>[];
 
-  Component(this._props, {dynamic key: null}) {
+  Component(this._props, {dynamic key, bool vif: true}) {
     this.key = key;
+    this.vif = vif;
   }
 
   @override
@@ -168,9 +169,11 @@ abstract class Component<P, S> extends VNode {
     // if there is already a _pendingStateSetter combine it with stateSetter
     if (_pendingStateSetter != null) {
       final prevStateSetter = _pendingStateSetter;
-      _pendingStateSetter = (p, s) => stateSetter(p, prevStateSetter(p, s));
+      _pendingStateSetter = (dynamic p, dynamic s) =>
+          stateSetter(p as P, prevStateSetter(p, s) as S);
     } else {
-      _pendingStateSetter = stateSetter;
+      _pendingStateSetter =
+          (dynamic p, dynamic s) => stateSetter(p as P, s as S);
     }
   }
 

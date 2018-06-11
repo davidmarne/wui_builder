@@ -5,11 +5,48 @@ import 'wui_builder.dart' show VElement;
 // ignore_for_file: overridden_fields
 // ignore_for_file: prefer_final_fields
 
-abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {}
+const nonceHtmlElementAttribute = 0;
+
+abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {
+  var _setValuesHtmlElement = <int, dynamic>{};
+
+  String get nonce =>
+      _setValuesHtmlElement[nonceHtmlElementAttribute] as String;
+  set nonce(String v) {
+    _setValuesHtmlElement[nonceHtmlElementAttribute] = v;
+  }
+
+  @override
+  @protected
+  void applyAttributesToElement(T ele) {
+    _setValuesHtmlElement
+        .forEach((k, dynamic v) => _updateAttributeHtmlElement(ele, k, v));
+    super.applyAttributesToElement(ele);
+  }
+
+  @override
+  @protected
+  void updateElementAttributes(covariant VHtmlElement<T> prev, T ele) {
+    prev._setValuesHtmlElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesHtmlElement[k];
+      if (v != newValue) _updateAttributeHtmlElement(ele, k, newValue);
+    });
+    prev._setValuesHtmlElement = _setValuesHtmlElement;
+    super.updateElementAttributes(prev, ele);
+  }
+
+  void _updateAttributeHtmlElement(HtmlElement ele, int key, dynamic value) {
+    switch (key) {
+      case nonceHtmlElementAttribute:
+        ele.nonce = value as String;
+        break;
+    }
+  }
+}
 
 const downloadAnchorElementAttribute = 0;
 const hreflangAnchorElementAttribute = 1;
-const referrerpolicyAnchorElementAttribute = 2;
+const referrerPolicyAnchorElementAttribute = 2;
 const relAnchorElementAttribute = 3;
 const targetAnchorElementAttribute = 4;
 const typeAnchorElementAttribute = 5;
@@ -42,10 +79,10 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
     _setValuesAnchorElement[hreflangAnchorElementAttribute] = v;
   }
 
-  String get referrerpolicy =>
-      _setValuesAnchorElement[referrerpolicyAnchorElementAttribute] as String;
-  set referrerpolicy(String v) {
-    _setValuesAnchorElement[referrerpolicyAnchorElementAttribute] = v;
+  String get referrerPolicy =>
+      _setValuesAnchorElement[referrerPolicyAnchorElementAttribute] as String;
+  set referrerPolicy(String v) {
+    _setValuesAnchorElement[referrerPolicyAnchorElementAttribute] = v;
   }
 
   String get rel =>
@@ -154,8 +191,8 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
       case hreflangAnchorElementAttribute:
         ele.hreflang = value as String;
         break;
-      case referrerpolicyAnchorElementAttribute:
-        ele.referrerpolicy = value as String;
+      case referrerPolicyAnchorElementAttribute:
+        ele.referrerPolicy = value as String;
         break;
       case relAnchorElementAttribute:
         ele.rel = value as String;
@@ -202,19 +239,21 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
 
 const altAreaElementAttribute = 0;
 const coordsAreaElementAttribute = 1;
-const referrerpolicyAreaElementAttribute = 2;
-const shapeAreaElementAttribute = 3;
-const targetAreaElementAttribute = 4;
-const hashAreaElementAttribute = 5;
-const hostAreaElementAttribute = 6;
-const hostnameAreaElementAttribute = 7;
-const hrefAreaElementAttribute = 8;
-const passwordAreaElementAttribute = 9;
-const pathnameAreaElementAttribute = 10;
-const portAreaElementAttribute = 11;
-const protocolAreaElementAttribute = 12;
-const searchAreaElementAttribute = 13;
-const usernameAreaElementAttribute = 14;
+const downloadAreaElementAttribute = 2;
+const referrerPolicyAreaElementAttribute = 3;
+const relAreaElementAttribute = 4;
+const shapeAreaElementAttribute = 5;
+const targetAreaElementAttribute = 6;
+const hashAreaElementAttribute = 7;
+const hostAreaElementAttribute = 8;
+const hostnameAreaElementAttribute = 9;
+const hrefAreaElementAttribute = 10;
+const passwordAreaElementAttribute = 11;
+const pathnameAreaElementAttribute = 12;
+const portAreaElementAttribute = 13;
+const protocolAreaElementAttribute = 14;
+const searchAreaElementAttribute = 15;
+const usernameAreaElementAttribute = 16;
 
 class VAreaElement extends VHtmlElement<AreaElement> {
   @override
@@ -233,10 +272,21 @@ class VAreaElement extends VHtmlElement<AreaElement> {
     _setValuesAreaElement[coordsAreaElementAttribute] = v;
   }
 
-  String get referrerpolicy =>
-      _setValuesAreaElement[referrerpolicyAreaElementAttribute] as String;
-  set referrerpolicy(String v) {
-    _setValuesAreaElement[referrerpolicyAreaElementAttribute] = v;
+  String get download =>
+      _setValuesAreaElement[downloadAreaElementAttribute] as String;
+  set download(String v) {
+    _setValuesAreaElement[downloadAreaElementAttribute] = v;
+  }
+
+  String get referrerPolicy =>
+      _setValuesAreaElement[referrerPolicyAreaElementAttribute] as String;
+  set referrerPolicy(String v) {
+    _setValuesAreaElement[referrerPolicyAreaElementAttribute] = v;
+  }
+
+  String get rel => _setValuesAreaElement[relAreaElementAttribute] as String;
+  set rel(String v) {
+    _setValuesAreaElement[relAreaElementAttribute] = v;
   }
 
   String get shape =>
@@ -334,8 +384,14 @@ class VAreaElement extends VHtmlElement<AreaElement> {
       case coordsAreaElementAttribute:
         ele.coords = value as String;
         break;
-      case referrerpolicyAreaElementAttribute:
-        ele.referrerpolicy = value as String;
+      case downloadAreaElementAttribute:
+        ele.download = value as String;
+        break;
+      case referrerPolicyAreaElementAttribute:
+        ele.referrerPolicy = value as String;
+        break;
+      case relAreaElementAttribute:
+        ele.rel = value as String;
         break;
       case shapeAreaElementAttribute:
         ele.shape = value as String;
@@ -674,6 +730,45 @@ class VContentElement extends VHtmlElement<ContentElement> {
 class VDListElement extends VHtmlElement<DListElement> {
   @override
   DListElement elementFactory() => new DListElement();
+}
+
+const valueDataElementAttribute = 0;
+
+abstract class VDataElement<T extends DataElement> extends VHtmlElement<T> {
+  var _setValuesDataElement = <int, dynamic>{};
+
+  String get value =>
+      _setValuesDataElement[valueDataElementAttribute] as String;
+  set value(String v) {
+    _setValuesDataElement[valueDataElementAttribute] = v;
+  }
+
+  @override
+  @protected
+  void applyAttributesToElement(T ele) {
+    _setValuesDataElement
+        .forEach((k, dynamic v) => _updateAttributeDataElement(ele, k, v));
+    super.applyAttributesToElement(ele);
+  }
+
+  @override
+  @protected
+  void updateElementAttributes(covariant VDataElement<T> prev, T ele) {
+    prev._setValuesDataElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesDataElement[k];
+      if (v != newValue) _updateAttributeDataElement(ele, k, newValue);
+    });
+    prev._setValuesDataElement = _setValuesDataElement;
+    super.updateElementAttributes(prev, ele);
+  }
+
+  void _updateAttributeDataElement(DataElement ele, int key, dynamic value) {
+    switch (key) {
+      case valueDataElementAttribute:
+        ele.value = value as String;
+        break;
+    }
+  }
 }
 
 class VDataListElement extends VHtmlElement<DataListElement> {
@@ -1087,13 +1182,16 @@ class VHtmlHtmlElement extends VHtmlElement<HtmlHtmlElement> {
   HtmlHtmlElement elementFactory() => new HtmlHtmlElement();
 }
 
-const allowFullscreenIFrameElementAttribute = 0;
-const heightIFrameElementAttribute = 1;
-const nameIFrameElementAttribute = 2;
-const referrerpolicyIFrameElementAttribute = 3;
-const srcIFrameElementAttribute = 4;
-const srcdocIFrameElementAttribute = 5;
-const widthIFrameElementAttribute = 6;
+const allowIFrameElementAttribute = 0;
+const allowFullscreenIFrameElementAttribute = 1;
+const allowPaymentRequestIFrameElementAttribute = 2;
+const cspIFrameElementAttribute = 3;
+const heightIFrameElementAttribute = 4;
+const nameIFrameElementAttribute = 5;
+const referrerPolicyIFrameElementAttribute = 6;
+const srcIFrameElementAttribute = 7;
+const srcdocIFrameElementAttribute = 8;
+const widthIFrameElementAttribute = 9;
 
 class VIFrameElement extends VHtmlElement<IFrameElement> {
   @override
@@ -1101,10 +1199,29 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
 
   var _setValuesIFrameElement = <int, dynamic>{};
 
+  String get allow =>
+      _setValuesIFrameElement[allowIFrameElementAttribute] as String;
+  set allow(String v) {
+    _setValuesIFrameElement[allowIFrameElementAttribute] = v;
+  }
+
   bool get allowFullscreen =>
       _setValuesIFrameElement[allowFullscreenIFrameElementAttribute] as bool;
   set allowFullscreen(bool v) {
     _setValuesIFrameElement[allowFullscreenIFrameElementAttribute] = v;
+  }
+
+  bool get allowPaymentRequest =>
+      _setValuesIFrameElement[allowPaymentRequestIFrameElementAttribute]
+          as bool;
+  set allowPaymentRequest(bool v) {
+    _setValuesIFrameElement[allowPaymentRequestIFrameElementAttribute] = v;
+  }
+
+  String get csp =>
+      _setValuesIFrameElement[cspIFrameElementAttribute] as String;
+  set csp(String v) {
+    _setValuesIFrameElement[cspIFrameElementAttribute] = v;
   }
 
   String get height =>
@@ -1119,10 +1236,10 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
     _setValuesIFrameElement[nameIFrameElementAttribute] = v;
   }
 
-  String get referrerpolicy =>
-      _setValuesIFrameElement[referrerpolicyIFrameElementAttribute] as String;
-  set referrerpolicy(String v) {
-    _setValuesIFrameElement[referrerpolicyIFrameElementAttribute] = v;
+  String get referrerPolicy =>
+      _setValuesIFrameElement[referrerPolicyIFrameElementAttribute] as String;
+  set referrerPolicy(String v) {
+    _setValuesIFrameElement[referrerPolicyIFrameElementAttribute] = v;
   }
 
   String get src =>
@@ -1165,8 +1282,17 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
   void _updateAttributeIFrameElement(
       IFrameElement ele, int key, dynamic value) {
     switch (key) {
+      case allowIFrameElementAttribute:
+        ele.allow = value as String;
+        break;
       case allowFullscreenIFrameElementAttribute:
         ele.allowFullscreen = value as bool;
+        break;
+      case allowPaymentRequestIFrameElementAttribute:
+        ele.allowPaymentRequest = value as bool;
+        break;
+      case cspIFrameElementAttribute:
+        ele.csp = value as String;
         break;
       case heightIFrameElementAttribute:
         ele.height = value as String;
@@ -1174,8 +1300,8 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
       case nameIFrameElementAttribute:
         ele.name = value as String;
         break;
-      case referrerpolicyIFrameElementAttribute:
-        ele.referrerpolicy = value as String;
+      case referrerPolicyIFrameElementAttribute:
+        ele.referrerPolicy = value as String;
         break;
       case srcIFrameElementAttribute:
         ele.src = value as String;
@@ -1191,15 +1317,16 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
 }
 
 const altImageElementAttribute = 0;
-const crossOriginImageElementAttribute = 1;
-const heightImageElementAttribute = 2;
-const isMapImageElementAttribute = 3;
-const referrerpolicyImageElementAttribute = 4;
-const sizesImageElementAttribute = 5;
-const srcImageElementAttribute = 6;
-const srcsetImageElementAttribute = 7;
-const useMapImageElementAttribute = 8;
-const widthImageElementAttribute = 9;
+const asyncImageElementAttribute = 1;
+const crossOriginImageElementAttribute = 2;
+const heightImageElementAttribute = 3;
+const isMapImageElementAttribute = 4;
+const referrerPolicyImageElementAttribute = 5;
+const sizesImageElementAttribute = 6;
+const srcImageElementAttribute = 7;
+const srcsetImageElementAttribute = 8;
+const useMapImageElementAttribute = 9;
+const widthImageElementAttribute = 10;
 
 class VImageElement extends VHtmlElement<ImageElement> {
   @override
@@ -1210,6 +1337,12 @@ class VImageElement extends VHtmlElement<ImageElement> {
   String get alt => _setValuesImageElement[altImageElementAttribute] as String;
   set alt(String v) {
     _setValuesImageElement[altImageElementAttribute] = v;
+  }
+
+  String get async =>
+      _setValuesImageElement[asyncImageElementAttribute] as String;
+  set async(String v) {
+    _setValuesImageElement[asyncImageElementAttribute] = v;
   }
 
   String get crossOrigin =>
@@ -1228,10 +1361,10 @@ class VImageElement extends VHtmlElement<ImageElement> {
     _setValuesImageElement[isMapImageElementAttribute] = v;
   }
 
-  String get referrerpolicy =>
-      _setValuesImageElement[referrerpolicyImageElementAttribute] as String;
-  set referrerpolicy(String v) {
-    _setValuesImageElement[referrerpolicyImageElementAttribute] = v;
+  String get referrerPolicy =>
+      _setValuesImageElement[referrerPolicyImageElementAttribute] as String;
+  set referrerPolicy(String v) {
+    _setValuesImageElement[referrerPolicyImageElementAttribute] = v;
   }
 
   String get sizes =>
@@ -1286,6 +1419,9 @@ class VImageElement extends VHtmlElement<ImageElement> {
       case altImageElementAttribute:
         ele.alt = value as String;
         break;
+      case asyncImageElementAttribute:
+        ele.async = value as String;
+        break;
       case crossOriginImageElementAttribute:
         ele.crossOrigin = value as String;
         break;
@@ -1295,8 +1431,8 @@ class VImageElement extends VHtmlElement<ImageElement> {
       case isMapImageElementAttribute:
         ele.isMap = value as bool;
         break;
-      case referrerpolicyImageElementAttribute:
-        ele.referrerpolicy = value as String;
+      case referrerPolicyImageElementAttribute:
+        ele.referrerPolicy = value as String;
         break;
       case sizesImageElementAttribute:
         ele.sizes = value as String;
@@ -1337,29 +1473,28 @@ const formTargetInputElementAttribute = 16;
 const heightInputElementAttribute = 17;
 const incrementalInputElementAttribute = 18;
 const indeterminateInputElementAttribute = 19;
-const inputModeInputElementAttribute = 20;
-const maxInputElementAttribute = 21;
-const maxLengthInputElementAttribute = 22;
-const minInputElementAttribute = 23;
-const minLengthInputElementAttribute = 24;
-const multipleInputElementAttribute = 25;
-const nameInputElementAttribute = 26;
-const patternInputElementAttribute = 27;
-const placeholderInputElementAttribute = 28;
-const readOnlyInputElementAttribute = 29;
-const requiredInputElementAttribute = 30;
-const selectionDirectionInputElementAttribute = 31;
-const selectionEndInputElementAttribute = 32;
-const selectionStartInputElementAttribute = 33;
-const sizeInputElementAttribute = 34;
-const srcInputElementAttribute = 35;
-const stepInputElementAttribute = 36;
-const typeInputElementAttribute = 37;
-const valueInputElementAttribute = 38;
-const valueAsNumberInputElementAttribute = 39;
-const directoryInputElementAttribute = 40;
-const widthInputElementAttribute = 41;
-const valueAsDateInputElementAttribute = 42;
+const maxInputElementAttribute = 20;
+const maxLengthInputElementAttribute = 21;
+const minInputElementAttribute = 22;
+const minLengthInputElementAttribute = 23;
+const multipleInputElementAttribute = 24;
+const nameInputElementAttribute = 25;
+const patternInputElementAttribute = 26;
+const placeholderInputElementAttribute = 27;
+const readOnlyInputElementAttribute = 28;
+const requiredInputElementAttribute = 29;
+const selectionDirectionInputElementAttribute = 30;
+const selectionEndInputElementAttribute = 31;
+const selectionStartInputElementAttribute = 32;
+const sizeInputElementAttribute = 33;
+const srcInputElementAttribute = 34;
+const stepInputElementAttribute = 35;
+const typeInputElementAttribute = 36;
+const valueInputElementAttribute = 37;
+const valueAsNumberInputElementAttribute = 38;
+const directoryInputElementAttribute = 39;
+const widthInputElementAttribute = 40;
+const valueAsDateInputElementAttribute = 41;
 
 class VInputElement extends VHtmlElement<InputElement> {
   @override
@@ -1396,9 +1531,9 @@ class VInputElement extends VHtmlElement<InputElement> {
     _setValuesInputElement[autofocusInputElementAttribute] = v;
   }
 
-  bool get capture =>
-      _setValuesInputElement[captureInputElementAttribute] as bool;
-  set capture(bool v) {
+  String get capture =>
+      _setValuesInputElement[captureInputElementAttribute] as String;
+  set capture(String v) {
     _setValuesInputElement[captureInputElementAttribute] = v;
   }
 
@@ -1483,12 +1618,6 @@ class VInputElement extends VHtmlElement<InputElement> {
       _setValuesInputElement[indeterminateInputElementAttribute] as bool;
   set indeterminate(bool v) {
     _setValuesInputElement[indeterminateInputElementAttribute] = v;
-  }
-
-  String get inputMode =>
-      _setValuesInputElement[inputModeInputElementAttribute] as String;
-  set inputMode(String v) {
-    _setValuesInputElement[inputModeInputElementAttribute] = v;
   }
 
   String get max => _setValuesInputElement[maxInputElementAttribute] as String;
@@ -1655,7 +1784,7 @@ class VInputElement extends VHtmlElement<InputElement> {
         ele.autofocus = value as bool;
         break;
       case captureInputElementAttribute:
-        ele.capture = value as bool;
+        ele.capture = value as String;
         break;
       case checkedInputElementAttribute:
         ele.checked = value as bool;
@@ -1698,9 +1827,6 @@ class VInputElement extends VHtmlElement<InputElement> {
         break;
       case indeterminateInputElementAttribute:
         ele.indeterminate = value as bool;
-        break;
-      case inputModeInputElementAttribute:
-        ele.inputMode = value as String;
         break;
       case maxInputElementAttribute:
         ele.max = value as String;
@@ -3141,89 +3267,6 @@ class VButtonInputElement extends VInputElementBase<ButtonInputElement> {
   ButtonInputElement elementFactory() => new ButtonInputElement();
 }
 
-const autofocusKeygenElementAttribute = 0;
-const challengeKeygenElementAttribute = 1;
-const disabledKeygenElementAttribute = 2;
-const keytypeKeygenElementAttribute = 3;
-const nameKeygenElementAttribute = 4;
-
-class VKeygenElement extends VHtmlElement<KeygenElement> {
-  @override
-  KeygenElement elementFactory() => new KeygenElement();
-
-  var _setValuesKeygenElement = <int, dynamic>{};
-
-  bool get autofocus =>
-      _setValuesKeygenElement[autofocusKeygenElementAttribute] as bool;
-  set autofocus(bool v) {
-    _setValuesKeygenElement[autofocusKeygenElementAttribute] = v;
-  }
-
-  String get challenge =>
-      _setValuesKeygenElement[challengeKeygenElementAttribute] as String;
-  set challenge(String v) {
-    _setValuesKeygenElement[challengeKeygenElementAttribute] = v;
-  }
-
-  bool get disabled =>
-      _setValuesKeygenElement[disabledKeygenElementAttribute] as bool;
-  set disabled(bool v) {
-    _setValuesKeygenElement[disabledKeygenElementAttribute] = v;
-  }
-
-  String get keytype =>
-      _setValuesKeygenElement[keytypeKeygenElementAttribute] as String;
-  set keytype(String v) {
-    _setValuesKeygenElement[keytypeKeygenElementAttribute] = v;
-  }
-
-  String get name =>
-      _setValuesKeygenElement[nameKeygenElementAttribute] as String;
-  set name(String v) {
-    _setValuesKeygenElement[nameKeygenElementAttribute] = v;
-  }
-
-  @override
-  @protected
-  void applyAttributesToElement(KeygenElement ele) {
-    _setValuesKeygenElement
-        .forEach((k, dynamic v) => _updateAttributeKeygenElement(ele, k, v));
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VKeygenElement prev, KeygenElement ele) {
-    prev._setValuesKeygenElement.forEach((k, dynamic v) {
-      final dynamic newValue = _setValuesKeygenElement[k];
-      if (v != newValue) _updateAttributeKeygenElement(ele, k, newValue);
-    });
-    prev._setValuesKeygenElement = _setValuesKeygenElement;
-    super.updateElementAttributes(prev, ele);
-  }
-
-  void _updateAttributeKeygenElement(
-      KeygenElement ele, int key, dynamic value) {
-    switch (key) {
-      case autofocusKeygenElementAttribute:
-        ele.autofocus = value as bool;
-        break;
-      case challengeKeygenElementAttribute:
-        ele.challenge = value as String;
-        break;
-      case disabledKeygenElementAttribute:
-        ele.disabled = value as bool;
-        break;
-      case keytypeKeygenElementAttribute:
-        ele.keytype = value as String;
-        break;
-      case nameKeygenElementAttribute:
-        ele.name = value as String;
-        break;
-    }
-  }
-}
-
 const valueLIElementAttribute = 0;
 
 class VLIElement extends VHtmlElement<LIElement> {
@@ -3319,8 +3362,10 @@ const hrefLinkElementAttribute = 3;
 const hreflangLinkElementAttribute = 4;
 const integrityLinkElementAttribute = 5;
 const mediaLinkElementAttribute = 6;
-const relLinkElementAttribute = 7;
-const typeLinkElementAttribute = 8;
+const referrerPolicyLinkElementAttribute = 7;
+const relLinkElementAttribute = 8;
+const scopeLinkElementAttribute = 9;
+const typeLinkElementAttribute = 10;
 
 class VLinkElement extends VHtmlElement<LinkElement> {
   @override
@@ -3368,9 +3413,21 @@ class VLinkElement extends VHtmlElement<LinkElement> {
     _setValuesLinkElement[mediaLinkElementAttribute] = v;
   }
 
+  String get referrerPolicy =>
+      _setValuesLinkElement[referrerPolicyLinkElementAttribute] as String;
+  set referrerPolicy(String v) {
+    _setValuesLinkElement[referrerPolicyLinkElementAttribute] = v;
+  }
+
   String get rel => _setValuesLinkElement[relLinkElementAttribute] as String;
   set rel(String v) {
     _setValuesLinkElement[relLinkElementAttribute] = v;
+  }
+
+  String get scope =>
+      _setValuesLinkElement[scopeLinkElementAttribute] as String;
+  set scope(String v) {
+    _setValuesLinkElement[scopeLinkElementAttribute] = v;
   }
 
   String get type => _setValuesLinkElement[typeLinkElementAttribute] as String;
@@ -3420,8 +3477,14 @@ class VLinkElement extends VHtmlElement<LinkElement> {
       case mediaLinkElementAttribute:
         ele.media = value as String;
         break;
+      case referrerPolicyLinkElementAttribute:
+        ele.referrerPolicy = value as String;
+        break;
       case relLinkElementAttribute:
         ele.rel = value as String;
+        break;
+      case scopeLinkElementAttribute:
+        ele.scope = value as String;
         break;
       case typeLinkElementAttribute:
         ele.type = value as String;
@@ -3482,8 +3545,8 @@ const loopMediaElementAttribute = 7;
 const mutedMediaElementAttribute = 8;
 const playbackRateMediaElementAttribute = 9;
 const preloadMediaElementAttribute = 10;
-const sessionMediaElementAttribute = 11;
-const srcMediaElementAttribute = 12;
+const srcMediaElementAttribute = 11;
+const srcObjectMediaElementAttribute = 12;
 const volumeMediaElementAttribute = 13;
 
 abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
@@ -3554,15 +3617,15 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
     _setValuesMediaElement[preloadMediaElementAttribute] = v;
   }
 
-  MediaSession get session =>
-      _setValuesMediaElement[sessionMediaElementAttribute] as MediaSession;
-  set session(MediaSession v) {
-    _setValuesMediaElement[sessionMediaElementAttribute] = v;
-  }
-
   String get src => _setValuesMediaElement[srcMediaElementAttribute] as String;
   set src(String v) {
     _setValuesMediaElement[srcMediaElementAttribute] = v;
+  }
+
+  MediaStream get srcObject =>
+      _setValuesMediaElement[srcObjectMediaElementAttribute] as MediaStream;
+  set srcObject(MediaStream v) {
+    _setValuesMediaElement[srcObjectMediaElementAttribute] = v;
   }
 
   num get volume => _setValuesMediaElement[volumeMediaElementAttribute] as num;
@@ -3624,11 +3687,11 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
       case preloadMediaElementAttribute:
         ele.preload = value as String;
         break;
-      case sessionMediaElementAttribute:
-        ele.session = value as MediaSession;
-        break;
       case srcMediaElementAttribute:
         ele.src = value as String;
+        break;
+      case srcObjectMediaElementAttribute:
+        ele.srcObject = value as MediaStream;
         break;
       case volumeMediaElementAttribute:
         ele.volume = value as num;
@@ -3637,156 +3700,9 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
   }
 }
 
-const labelMenuElementAttribute = 0;
-const typeMenuElementAttribute = 1;
-
 class VMenuElement extends VHtmlElement<MenuElement> {
   @override
   MenuElement elementFactory() => new MenuElement();
-
-  var _setValuesMenuElement = <int, dynamic>{};
-
-  String get label =>
-      _setValuesMenuElement[labelMenuElementAttribute] as String;
-  set label(String v) {
-    _setValuesMenuElement[labelMenuElementAttribute] = v;
-  }
-
-  String get type => _setValuesMenuElement[typeMenuElementAttribute] as String;
-  set type(String v) {
-    _setValuesMenuElement[typeMenuElementAttribute] = v;
-  }
-
-  @override
-  @protected
-  void applyAttributesToElement(MenuElement ele) {
-    _setValuesMenuElement
-        .forEach((k, dynamic v) => _updateAttributeMenuElement(ele, k, v));
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(VMenuElement prev, MenuElement ele) {
-    prev._setValuesMenuElement.forEach((k, dynamic v) {
-      final dynamic newValue = _setValuesMenuElement[k];
-      if (v != newValue) _updateAttributeMenuElement(ele, k, newValue);
-    });
-    prev._setValuesMenuElement = _setValuesMenuElement;
-    super.updateElementAttributes(prev, ele);
-  }
-
-  void _updateAttributeMenuElement(MenuElement ele, int key, dynamic value) {
-    switch (key) {
-      case labelMenuElementAttribute:
-        ele.label = value as String;
-        break;
-      case typeMenuElementAttribute:
-        ele.type = value as String;
-        break;
-    }
-  }
-}
-
-const checkedMenuItemElementAttribute = 0;
-const defaultValueMenuItemElementAttribute = 1;
-const disabledMenuItemElementAttribute = 2;
-const iconMenuItemElementAttribute = 3;
-const labelMenuItemElementAttribute = 4;
-const radiogroupMenuItemElementAttribute = 5;
-const typeMenuItemElementAttribute = 6;
-
-abstract class VMenuItemElement<T extends MenuItemElement>
-    extends VHtmlElement<T> {
-  var _setValuesMenuItemElement = <int, dynamic>{};
-
-  bool get checked =>
-      _setValuesMenuItemElement[checkedMenuItemElementAttribute] as bool;
-  set checked(bool v) {
-    _setValuesMenuItemElement[checkedMenuItemElementAttribute] = v;
-  }
-
-  bool get defaultValue =>
-      _setValuesMenuItemElement[defaultValueMenuItemElementAttribute] as bool;
-  set defaultValue(bool v) {
-    _setValuesMenuItemElement[defaultValueMenuItemElementAttribute] = v;
-  }
-
-  bool get disabled =>
-      _setValuesMenuItemElement[disabledMenuItemElementAttribute] as bool;
-  set disabled(bool v) {
-    _setValuesMenuItemElement[disabledMenuItemElementAttribute] = v;
-  }
-
-  String get icon =>
-      _setValuesMenuItemElement[iconMenuItemElementAttribute] as String;
-  set icon(String v) {
-    _setValuesMenuItemElement[iconMenuItemElementAttribute] = v;
-  }
-
-  String get label =>
-      _setValuesMenuItemElement[labelMenuItemElementAttribute] as String;
-  set label(String v) {
-    _setValuesMenuItemElement[labelMenuItemElementAttribute] = v;
-  }
-
-  String get radiogroup =>
-      _setValuesMenuItemElement[radiogroupMenuItemElementAttribute] as String;
-  set radiogroup(String v) {
-    _setValuesMenuItemElement[radiogroupMenuItemElementAttribute] = v;
-  }
-
-  String get type =>
-      _setValuesMenuItemElement[typeMenuItemElementAttribute] as String;
-  set type(String v) {
-    _setValuesMenuItemElement[typeMenuItemElementAttribute] = v;
-  }
-
-  @override
-  @protected
-  void applyAttributesToElement(T ele) {
-    _setValuesMenuItemElement
-        .forEach((k, dynamic v) => _updateAttributeMenuItemElement(ele, k, v));
-    super.applyAttributesToElement(ele);
-  }
-
-  @override
-  @protected
-  void updateElementAttributes(covariant VMenuItemElement<T> prev, T ele) {
-    prev._setValuesMenuItemElement.forEach((k, dynamic v) {
-      final dynamic newValue = _setValuesMenuItemElement[k];
-      if (v != newValue) _updateAttributeMenuItemElement(ele, k, newValue);
-    });
-    prev._setValuesMenuItemElement = _setValuesMenuItemElement;
-    super.updateElementAttributes(prev, ele);
-  }
-
-  void _updateAttributeMenuItemElement(
-      MenuItemElement ele, int key, dynamic value) {
-    switch (key) {
-      case checkedMenuItemElementAttribute:
-        ele.checked = value as bool;
-        break;
-      case defaultValueMenuItemElementAttribute:
-        ele.defaultValue = value as bool;
-        break;
-      case disabledMenuItemElementAttribute:
-        ele.disabled = value as bool;
-        break;
-      case iconMenuItemElementAttribute:
-        ele.icon = value as String;
-        break;
-      case labelMenuItemElementAttribute:
-        ele.label = value as String;
-        break;
-      case radiogroupMenuItemElementAttribute:
-        ele.radiogroup = value as String;
-        break;
-      case typeMenuItemElementAttribute:
-        ele.type = value as String;
-        break;
-    }
-  }
 }
 
 const contentMetaElementAttribute = 0;
@@ -4502,7 +4418,7 @@ const charsetScriptElementAttribute = 1;
 const crossOriginScriptElementAttribute = 2;
 const deferScriptElementAttribute = 3;
 const integrityScriptElementAttribute = 4;
-const nonceScriptElementAttribute = 5;
+const noModuleScriptElementAttribute = 5;
 const srcScriptElementAttribute = 6;
 const typeScriptElementAttribute = 7;
 
@@ -4542,10 +4458,10 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
     _setValuesScriptElement[integrityScriptElementAttribute] = v;
   }
 
-  String get nonce =>
-      _setValuesScriptElement[nonceScriptElementAttribute] as String;
-  set nonce(String v) {
-    _setValuesScriptElement[nonceScriptElementAttribute] = v;
+  bool get noModule =>
+      _setValuesScriptElement[noModuleScriptElementAttribute] as bool;
+  set noModule(bool v) {
+    _setValuesScriptElement[noModuleScriptElementAttribute] = v;
   }
 
   String get src =>
@@ -4597,8 +4513,8 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
       case integrityScriptElementAttribute:
         ele.integrity = value as String;
         break;
-      case nonceScriptElementAttribute:
-        ele.nonce = value as String;
+      case noModuleScriptElementAttribute:
+        ele.noModule = value as bool;
         break;
       case srcScriptElementAttribute:
         ele.src = value as String;
@@ -5118,19 +5034,18 @@ const colsTextAreaElementAttribute = 2;
 const defaultValueTextAreaElementAttribute = 3;
 const dirNameTextAreaElementAttribute = 4;
 const disabledTextAreaElementAttribute = 5;
-const inputModeTextAreaElementAttribute = 6;
-const maxLengthTextAreaElementAttribute = 7;
-const minLengthTextAreaElementAttribute = 8;
-const nameTextAreaElementAttribute = 9;
-const placeholderTextAreaElementAttribute = 10;
-const readOnlyTextAreaElementAttribute = 11;
-const requiredTextAreaElementAttribute = 12;
-const rowsTextAreaElementAttribute = 13;
-const selectionDirectionTextAreaElementAttribute = 14;
-const selectionEndTextAreaElementAttribute = 15;
-const selectionStartTextAreaElementAttribute = 16;
-const valueTextAreaElementAttribute = 17;
-const wrapTextAreaElementAttribute = 18;
+const maxLengthTextAreaElementAttribute = 6;
+const minLengthTextAreaElementAttribute = 7;
+const nameTextAreaElementAttribute = 8;
+const placeholderTextAreaElementAttribute = 9;
+const readOnlyTextAreaElementAttribute = 10;
+const requiredTextAreaElementAttribute = 11;
+const rowsTextAreaElementAttribute = 12;
+const selectionDirectionTextAreaElementAttribute = 13;
+const selectionEndTextAreaElementAttribute = 14;
+const selectionStartTextAreaElementAttribute = 15;
+const valueTextAreaElementAttribute = 16;
+const wrapTextAreaElementAttribute = 17;
 
 class VTextAreaElement extends VHtmlElement<TextAreaElement> {
   @override
@@ -5173,12 +5088,6 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
       _setValuesTextAreaElement[disabledTextAreaElementAttribute] as bool;
   set disabled(bool v) {
     _setValuesTextAreaElement[disabledTextAreaElementAttribute] = v;
-  }
-
-  String get inputMode =>
-      _setValuesTextAreaElement[inputModeTextAreaElementAttribute] as String;
-  set inputMode(String v) {
-    _setValuesTextAreaElement[inputModeTextAreaElementAttribute] = v;
   }
 
   int get maxLength =>
@@ -5294,9 +5203,6 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
       case disabledTextAreaElementAttribute:
         ele.disabled = value as bool;
         break;
-      case inputModeTextAreaElementAttribute:
-        ele.inputMode = value as String;
-        break;
       case maxLengthTextAreaElementAttribute:
         ele.maxLength = value as int;
         break;
@@ -5332,6 +5238,45 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
         break;
       case wrapTextAreaElementAttribute:
         ele.wrap = value as String;
+        break;
+    }
+  }
+}
+
+const dateTimeTimeElementAttribute = 0;
+
+abstract class VTimeElement<T extends TimeElement> extends VHtmlElement<T> {
+  var _setValuesTimeElement = <int, dynamic>{};
+
+  String get dateTime =>
+      _setValuesTimeElement[dateTimeTimeElementAttribute] as String;
+  set dateTime(String v) {
+    _setValuesTimeElement[dateTimeTimeElementAttribute] = v;
+  }
+
+  @override
+  @protected
+  void applyAttributesToElement(T ele) {
+    _setValuesTimeElement
+        .forEach((k, dynamic v) => _updateAttributeTimeElement(ele, k, v));
+    super.applyAttributesToElement(ele);
+  }
+
+  @override
+  @protected
+  void updateElementAttributes(covariant VTimeElement<T> prev, T ele) {
+    prev._setValuesTimeElement.forEach((k, dynamic v) {
+      final dynamic newValue = _setValuesTimeElement[k];
+      if (v != newValue) _updateAttributeTimeElement(ele, k, newValue);
+    });
+    prev._setValuesTimeElement = _setValuesTimeElement;
+    super.updateElementAttributes(prev, ele);
+  }
+
+  void _updateAttributeTimeElement(TimeElement ele, int key, dynamic value) {
+    switch (key) {
+      case dateTimeTimeElementAttribute:
+        ele.dateTime = value as String;
         break;
     }
   }

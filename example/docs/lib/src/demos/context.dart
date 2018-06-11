@@ -1,3 +1,4 @@
+import 'package:meta/meta.dart';
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -24,18 +25,17 @@ class ContextParent extends NComponent {
       };
 
   @override
-  VNode render() => new ContextChild(new ContextChildProps()
-    ..message = 'Hello World! What color will i be? Let me check the context.');
-}
-
-class ContextChildProps {
-  String message;
+  VNode render() => new ContextChild(
+      message: 'Hello World! What color will i be? Let me check the context.');
 }
 
 // ContextChild reads the theme from context and used
 // it to render the background color of the text.
-class ContextChild extends PCComponent<ContextChildProps, Theme> {
-  ContextChild(ContextChildProps props) : super(props);
+class ContextChild extends PCComponent<String, Theme> {
+  ContextChild({
+    @required String message,
+  })
+      : super(message);
 
   // A method inherited from PCComponent -> CComponent
   // that declares the context key to use to look up Theme
@@ -44,6 +44,6 @@ class ContextChild extends PCComponent<ContextChildProps, Theme> {
 
   @override
   VNode render() => new VDivElement()
-    ..text = props.message
+    ..text = props
     ..styleBuilder = (new StyleBuilder()..color = contextValue.color);
 }

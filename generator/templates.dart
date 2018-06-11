@@ -60,12 +60,12 @@ String vElementEventsEnums(Iterable<VEvent> events) {
 }
 
 String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
-  abstract class VElement<E extends Element> extends VNode {
+  abstract class VElement<E extends Element> extends VNode implements Children {
     @override
     VNodeTypes get vNodeType => VNodeTypes.element;
 
     var _setValuesElement = <int, dynamic>{};
-    var _setSubs = <int, EventHandler>{};
+    var _setSubs = <int, dynamic>{};
     var _eventSubs = <int, StreamSubscription>{};
 
     E elementFactory();
@@ -150,23 +150,23 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
     }
 
     void applyEventListenersToElement(Element ele) {
-      _setSubs.forEach((k, dynamic v) => _applyEventListener(ele, k, v));
+      _setSubs.forEach((k, dynamic v) => _applyEventListener(ele, k));
     }
 
     void updateEventListenersToElement(VElement prev, Element ele) {
-      prev._setSubs.forEach((k, v) => _removeEventListenerIfNeccessary(prev, k, v));
+      for (final k in prev._setSubs.keys) _removeEventListenerIfNeccessary(prev, k);
       prev._setSubs = _setSubs;
-      prev._setSubs.forEach((k, v) => prev._applyEventListener(ele, k, v));
+      for (final k in prev._setSubs.keys) prev._applyEventListener(ele, k);
     }
 
-    void _applyEventListener(Element ele, int key, dynamic value) {
+    void _applyEventListener(Element ele, int key) {
       if (_eventSubs.containsKey(key)) return;
       switch(key) {
         ${updateEventListenerSwitchBody('Element', events)}
       }
     }
 
-    void _removeEventListenerIfNeccessary(VElement prev, int key, dynamic value) {
+    void _removeEventListenerIfNeccessary(VElement prev, int key) {
       if (_setSubs.containsKey(key)) return;
       prev._eventSubs[key].cancel();
       prev._eventSubs.remove(key);

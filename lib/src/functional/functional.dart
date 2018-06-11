@@ -11,3 +11,27 @@ typedef FunctionalComponent<InnerP> ComponentEnhancer<InnerP, OutterP>(
 
 /// [PropMapper] takes a props object of type [P] and returns a props object of type [T]
 typedef T PropMapper<P, T>(P props);
+
+typedef EventHandler<T> EventHandlerFactory<P, T>(P p);
+
+/// memoizes an event handler
+///
+/// final onClick = createEventHandler<int, Event>((p) => (e) {
+///    // do something
+/// });
+EventHandlerFactory<P, E> createEventHandler<P, E>(
+    EventHandlerFactory<P, E> eventHandlerFactory) {
+  P prevProps;
+  EventHandler<E> prevResult;
+  bool isInitial = true;
+
+  return (p) {
+    if (!isInitial && p == prevProps) {
+      return prevResult;
+    } else {
+      prevProps = p;
+      isInitial = false;
+      return prevResult = eventHandlerFactory(p);
+    }
+  };
+}

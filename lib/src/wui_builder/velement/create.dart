@@ -1,15 +1,18 @@
 part of velement;
 
-Element createElementNode(
+Node createElementNode(
     VElement vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   final Element domNode = vnode.elementFactory();
   vnode.ref = domNode;
   vnode.applyAttributesToElement(domNode);
   vnode.applyEventListenersToElement(domNode);
-  if (vnode.children.isNotEmpty) {
-    for (final c in vnode.children) {
+  // filter vifs
+  final children = resolveChildren(vnode.children);
+  if (children.isNotEmpty) {
+    for (final c in children) {
       c.parent = vnode;
-      domNode.append(createNode(c, pendingComponentDidMounts));
+      final child = createNode(c, pendingComponentDidMounts);
+      if (child != null) domNode.append(child);
     }
   }
   return domNode;

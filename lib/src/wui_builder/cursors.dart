@@ -1,7 +1,7 @@
 import 'dart:html';
 
 import 'component.dart';
-import 'velement.dart';
+import 'vnode.dart';
 
 enum PendingCursors {
   iterable,
@@ -13,25 +13,24 @@ abstract class PendingCursor {
 }
 
 class IterableCursor extends PendingCursor {
-  VElement newVNode;
-  VElement oldVNode;
-  Element node;
+  Children newVNode;
+  Children oldVNode;
+  Node node;
   final int newLength;
   final int oldLength;
-  Element currentChild;
+  Node currentChild;
   int index = 0;
 
   IterableCursor(
       this.node, this.newVNode, this.oldVNode, this.newLength, this.oldLength)
-      : currentChild = node.firstChild as Element;
+      : currentChild = node.firstChild;
 
   @override
   PendingCursors get cursorType => PendingCursors.iterable;
 
   void next() {
     ++index;
-    currentChild =
-        currentChild == null ? currentChild : currentChild.nextElementSibling;
+    currentChild = currentChild == null ? currentChild : currentChild.nextNode;
   }
 }
 

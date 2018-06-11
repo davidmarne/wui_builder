@@ -1,24 +1,8 @@
-part of velement;
+part of viterable;
 
-bool updateElement(UpdateTracker tracker) {
-  final oldVNode = tracker.oldVNode as VElement;
-  final newVNode = tracker.newVNode as VElement;
-
-  // if an async tracker was cancelled causing a virtual dom to not
-  // fully be rendered, we create the node now. Can be removed if shouldAbort is removed
-  if (tracker.node == null) {
-    final pendingComponentDidMounts = <ComponentDidMount>[];
-    tracker.parent
-        .append(createNode(tracker.newVNode, pendingComponentDidMounts));
-    for (final cdm in pendingComponentDidMounts) cdm();
-    return true;
-  }
-
-  // update attributes that have changed
-  newVNode.updateElementAttributes(oldVNode, tracker.node as Element);
-
-  // if shouldUpdateSubs is set update subscriptions
-  newVNode.updateEventListenersToElement(oldVNode, tracker.node as Element);
+bool updateIterable(UpdateTracker tracker) {
+  final oldVNode = tracker.oldVNode as VIterable;
+  final newVNode = tracker.newVNode as VIterable;
 
   final oldChildren = resolveChildren(oldVNode.children);
   final newChildren = resolveChildren(newVNode.children);
@@ -46,10 +30,10 @@ bool updateElement(UpdateTracker tracker) {
     newLength, // pass lengths for performance so they don't have to be re-accessed
     oldLength,
   ));
+
   return updateChildren(tracker);
 }
 
-void disposeVElement(VElement vnode) {
-  vnode.dispose();
+void disposeVIterable(VIterable vnode) {
   vnode.children.forEach(disposeVNode);
 }

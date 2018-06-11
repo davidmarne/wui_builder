@@ -1,6 +1,6 @@
 part of component;
 
-Element createComponentNode(
+Node createComponentNode(
     Component vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   // register the beforeAnimationFrameCallback if it is set
   if (vnode.beforeAnimationFrame != null)
@@ -13,7 +13,11 @@ Element createComponentNode(
   vnode.componentWillMount();
 
   // build the new virtual tree
-  vnode._child = vnode.render();
+  final child = vnode.render();
+
+  if (!child.vif) return null; // TODO: still call cdm?
+
+  vnode._child = child;
 
   // set the parent of the render result to this node
   vnode.child.parent = vnode;
