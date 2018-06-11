@@ -28,7 +28,11 @@ functional.dart
 * Added withContext HOC
 * Added withHistory HOC
 
-## 0.4.1
+## 0.4.3
+
+* fix bug where ref was not set after component updates caused change in ref
+
+## 0.4.2
 
 wui_builder.dart
 
