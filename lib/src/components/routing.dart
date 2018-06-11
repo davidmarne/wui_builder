@@ -18,7 +18,8 @@ class HistoryProvider extends PComponent<VNode> {
   HistoryProvider({
     @required VNode child,
     History history,
-  })  : _history = history ?? new History(),
+  })
+      : _history = history ?? new History(),
         super(child);
 
   @override
@@ -94,7 +95,8 @@ class Router extends Component<Iterable<Route>, _CurrentRoute> {
   Router({
     @required Iterable<Route> routes,
     dynamic key,
-  }) : super(routes, key: key);
+  })
+      : super(routes, key: key);
 
   History get _history => __history ?? findHistoryInContext(context);
 
@@ -190,5 +192,6 @@ class Route {
     @required String path,
     @required this.componentFactory,
     this.useAsDefault: false,
-  }) : this.path = path.startsWith('/') ? path : '/$path';
+  })
+      : this.path = path.startsWith('/') ? path : '/$path';
 }
