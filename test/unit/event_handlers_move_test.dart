@@ -11,8 +11,7 @@ void main() {
     DivElement host;
     EventHandlerTestComponent component;
     Iterable<CheckBoxChildComponent> childrenComponents() =>
-        ((component.child as VElement).children
-            as Iterable<CheckBoxChildComponent>);
+        (component.child as VElement).children.cast<CheckBoxChildComponent>();
 
     void verifier(Iterable<String> keys, Iterable<bool> checkedValues) {
       expect(host.children.first, component.ref);
