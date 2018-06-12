@@ -15,15 +15,15 @@ import 'package:wui_builder/components.dart';
 // TransformContainer manages updating the css transform
 class TransformContainer extends SComponent<int> {
   final int start;
-  TransformContainer() : start = new DateTime.now().millisecondsSinceEpoch;
+  TransformContainer() : start = DateTime.now().millisecondsSinceEpoch;
 
   @override
-  int getInitialState() => new DateTime.now().millisecondsSinceEpoch;
+  int getInitialState() => DateTime.now().millisecondsSinceEpoch;
 
   @override
   BeforeAnimationFrame get beforeAnimationFrame => () {
         setStateOnAnimationFrame(
-            (_, s) => new DateTime.now().millisecondsSinceEpoch - start);
+            (_, s) => DateTime.now().millisecondsSinceEpoch - start);
       };
 
   StyleBuilder _styleBuilder() {
@@ -31,7 +31,7 @@ class TransformContainer extends SComponent<int> {
     final scale = 1 + (t > 5 ? 10 - t : t) / 10;
     final transform = 'scaleX(${scale / 2.1}) scaleY(0.7) translateZ(0.1px)';
 
-    return new StyleBuilder()
+    return StyleBuilder()
       ..transform = transform
       ..position = 'absolute'
       ..transformOrigin = '0 0'
@@ -46,13 +46,13 @@ class TransformContainer extends SComponent<int> {
   // every frame. We only want to update the style on the first
   // VDivElement every frame
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..styleBuilder = _styleBuilder()
     ..children = [
-      new UpdateBlocker(
-        child: new VDivElement()
+      UpdateBlocker(
+        child: VDivElement()
           ..children = [
-            new CounterStateHOC(),
+            CounterStateHOC(),
           ],
       ),
     ];
@@ -66,13 +66,13 @@ class CounterStateHOC extends SComponent<int> {
 
   @override
   void componentDidMount() {
-    new Timer.periodic(const Duration(seconds: 1),
+    Timer.periodic(const Duration(seconds: 1),
         (_) => setStateOnIdle((_, prevState) => (prevState % 10) + 1));
   }
 
   @override
-  VNode render() => new SierpinskiTriangle(
-        new SierpinskiTriangleProps()
+  VNode render() => SierpinskiTriangle(
+        SierpinskiTriangleProps()
           ..x = 0.0
           ..y = 0.0
           ..s = 1000.0
@@ -101,8 +101,8 @@ class SierpinskiTriangle extends PComponent<SierpinskiTriangleProps> {
   @override
   VNode render() {
     if (props.s < targetSize)
-      return new Dot(
-        new DotProps()
+      return Dot(
+        DotProps()
           ..x = props.x - (targetSize / 2.0)
           ..y = props.y - (targetSize / 2.0)
           ..size = targetSize
@@ -115,24 +115,24 @@ class SierpinskiTriangle extends PComponent<SierpinskiTriangleProps> {
     }
 
     final s = props.s / 2;
-    return new VDivElement()
+    return VDivElement()
       ..children = [
-        new SierpinskiTriangle(
-          new SierpinskiTriangleProps()
+        SierpinskiTriangle(
+          SierpinskiTriangleProps()
             ..x = props.x
             ..y = props.y - (s / 2.0)
             ..s = s
             ..seconds = props.seconds,
         ),
-        new SierpinskiTriangle(
-          new SierpinskiTriangleProps()
+        SierpinskiTriangle(
+          SierpinskiTriangleProps()
             ..x = props.x - s
             ..y = props.y + (s / 2.0)
             ..s = s
             ..seconds = props.seconds,
         ),
-        new SierpinskiTriangle(
-          new SierpinskiTriangleProps()
+        SierpinskiTriangle(
+          SierpinskiTriangleProps()
             ..x = props.x + s
             ..y = props.y + (s / 2.0)
             ..s = s
@@ -156,7 +156,7 @@ class Dot extends Component<DotProps, Null> {
 
   StyleBuilder _styleBuilder() {
     final s = props.size * 1.3;
-    return new StyleBuilder()
+    return StyleBuilder()
       ..position = 'absolute'
       ..background = '#61dafb'
       ..font = 'normal 15px sans-serif'
@@ -171,7 +171,7 @@ class Dot extends Component<DotProps, Null> {
   }
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..styleBuilder = _styleBuilder()
     ..text = props.text;
 }

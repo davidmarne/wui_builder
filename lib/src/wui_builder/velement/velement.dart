@@ -3773,6 +3773,10 @@ abstract class VElement<E extends Element> extends VNode implements Children {
           final newValue = styleBuilder._setStyle[k];
           if (newValue != v) _updateStyle(ele, k, newValue);
         });
+
+        styleBuilder._setStyle.forEach((k, v) {
+          if (prev.styleBuilder._setStyle[k] == null) _updateStyle(ele, k, v);
+        });
       }
     } else if (styleBuilder != null) {
       styleBuilder._setStyle.forEach((k, v) => _updateStyle(ele, k, v));
@@ -3788,6 +3792,10 @@ abstract class VElement<E extends Element> extends VNode implements Children {
           final newValue = attributes[k];
           if (newValue != v) _updateCustomAttribute(ele, k, newValue);
         });
+
+        attributes.forEach((k, v) {
+          if (prev.attributes[k] == null) _updateCustomAttribute(ele, k, v);
+        });
       }
     } else if (attributes != null) {
       attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
@@ -3796,6 +3804,10 @@ abstract class VElement<E extends Element> extends VNode implements Children {
     prev._setValuesElement.forEach((k, dynamic v) {
       final dynamic newValue = _setValuesElement[k];
       if (newValue != v) _updateAttribute(ele, k, newValue);
+    });
+
+    _setValuesElement.forEach((k, dynamic v) {
+      if (prev._setValuesElement[k] == null) _updateAttribute(ele, k, v);
     });
 
     prev.styleBuilder = styleBuilder;

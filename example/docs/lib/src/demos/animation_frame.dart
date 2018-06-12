@@ -19,13 +19,13 @@ class AnimationFrame extends SComponent<int> {
       };
 
   @override
-  VNode render() => new VSvgSvgElement()
+  VNode render() => VSvgSvgElement()
     ..attributes = {
       'height': '1000',
       'width': '1000',
     }
     ..children = [
-      new VCircleElement()
+      VCircleElement()
         ..attributes = {
           'cx': '$_cx',
           'cy': '$_cy',

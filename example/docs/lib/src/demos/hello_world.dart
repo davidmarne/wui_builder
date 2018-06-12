@@ -12,5 +12,5 @@ class HelloWorld extends NComponent {
   // dom. In this case the VDivElement is a VNode that represents
   // a div in the actual dom with text that says 'Hello World'
   @override
-  VNode render() => new VDivElement()..text = 'Hello World!';
+  VNode render() => VDivElement()..text = 'Hello World!';
 }

@@ -14,7 +14,7 @@ class ExampleRoutes {
 // one of 3 components, based on the current route
 class RoutingExample extends NComponent {
   @override
-  VNode render() => new Vdiv()
+  VNode render() => Vdiv()
     ..children = [
       _navBar(),
       _routeContent(),
@@ -26,46 +26,46 @@ class RoutingExample extends NComponent {
   // The Router component takes an Iterable of Routes. A Route
   // defines a path to match on and a component factory to be
   // invoked when the corresponding path is matched.
-  VNode _routeContent() => new Router(routes: [
-        new Route(
+  VNode _routeContent() => Router(routes: [
+        Route(
           path: ExampleRoutes.routeA,
-          componentFactory: (params) => new RouteAComponent(),
+          componentFactory: (params) => RouteAComponent(),
           useAsDefault: true, // if no route is matched this route will be used
         ),
-        new Route(
+        Route(
           path: ExampleRoutes.routeB,
-          componentFactory: (params) => new RouteBComponent(),
+          componentFactory: (params) => RouteBComponent(),
         ),
-        new Route(
+        Route(
           path: ExampleRoutes.routeC,
           // routeC has a param, pathvar, which is read from the params
           // map and pass to RouteCComponent via props
-          componentFactory: (params) => new RouteCComponent(params['pathvar']),
+          componentFactory: (params) => RouteCComponent(params['pathvar']),
         ),
       ]);
 
-  VNode _navBar() => new Vnav()
+  VNode _navBar() => Vnav()
     ..className = 'navbar'
     ..children = [
-      new Vdiv()
+      Vdiv()
         ..className = 'navbar-menu'
         ..children = [
-          new Vdiv()
+          Vdiv()
             ..className = 'navbar-start'
             ..children = [
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteAClicked
                 ..text = 'go to /routing/route_a',
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteBClicked
                 ..text = 'go to /routing/route_b',
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteC1Clicked
                 ..text = 'go to /routing/route_c/1',
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteC2Clicked
                 ..text = 'go to /routing/route_c/2'
@@ -102,17 +102,17 @@ class RoutingExample extends NComponent {
 
 class RouteAComponent extends NComponent {
   @override
-  VNode render() => new Vdiv()..text = 'route a component';
+  VNode render() => Vdiv()..text = 'route a component';
 }
 
 class RouteBComponent extends NComponent {
   @override
-  VNode render() => new Vdiv()..text = 'route b component';
+  VNode render() => Vdiv()..text = 'route b component';
 }
 
 class RouteCComponent extends PComponent<String> {
   RouteCComponent(String props) : super(props);
 
   @override
-  VNode render() => new Vdiv()..text = 'route c component. pathvar: $props';
+  VNode render() => Vdiv()..text = 'route c component. pathvar: $props';
 }

@@ -20,8 +20,9 @@ bool updateElement(UpdateTracker tracker) {
   // if shouldUpdateSubs is set update subscriptions
   newVNode.updateEventListenersToElement(oldVNode, tracker.node as Element);
 
-  final oldChildren = resolveChildren(oldVNode.children);
-  final newChildren = resolveChildren(newVNode.children);
+  final oldChildren = oldVNode.children;
+  newVNode.children = resolveChildren(newVNode.children);
+  final newChildren = newVNode.children;
 
   // only push cursor to queue if children > 1 to avoid unneccesary garbage
   final newLength = newChildren.length;

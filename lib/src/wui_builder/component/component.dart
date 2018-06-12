@@ -19,7 +19,7 @@ abstract class Component<P, S> extends VNode {
 
   Component(this._props, {dynamic key, bool vif: true}) {
     this.key = key;
-    this.vif = vif;
+    this.vif = vif ?? true;
   }
 
   @override

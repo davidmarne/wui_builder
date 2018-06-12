@@ -9,7 +9,7 @@ class Panel extends NComponent {
   History get _history => __history ?? findHistoryInContext(context);
 
   @override
-  VNode render() => new Vaside()
+  VNode render() => Vaside()
     ..className = 'menu'
     ..children = [
       _menuLabel('Basic Concepts'),
@@ -39,17 +39,17 @@ class Panel extends NComponent {
       ]),
     ];
 
-  VNode _menuLabel(String text) => new Vp()
+  VNode _menuLabel(String text) => Vp()
     ..className = 'menu-label'
     ..text = text;
 
-  VNode _containerMenuItem(Iterable<Vli> children) => new Vul()
+  VNode _containerMenuItem(Iterable<Vli> children) => Vul()
     ..className = 'menu-list'
     ..children = children;
 
-  Vli _terminalMenuItem(String text, String route) => new Vli()
+  Vli _terminalMenuItem(String text, String route) => Vli()
     ..children = [
-      new Va()
+      Va()
         ..text = text
         ..onClick = (_) => _updateRoute(route),
     ];
