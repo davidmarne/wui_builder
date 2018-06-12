@@ -14,15 +14,6 @@ dev_dependencies:
   dart_dev: ^1.0.0
   dart_style: '>=0.2.4 <2.0.0'
   test: ^0.12.0
-
-transformers:
-  - $dart2js
-  - test/pub_serve:
-      $include: test/**_test{.*,}.dart
       
 environment:
   sdk: ">=1.23.0 <2.0.0"
-
-web:
-  compiler:
-    debug: dartdevc
