@@ -3,9 +3,9 @@ part of viterable;
 Node createIterableNode(
     VIterable vnode, List<ComponentDidMount> pendingComponentDidMounts) {
   final Node domNode = document.createDocumentFragment();
-  final children = resolveChildren(vnode.children);
-  if (children.isNotEmpty) {
-    for (final c in children) {
+  vnode.children = resolveChildren(vnode.children);
+  if (vnode.children.isNotEmpty) {
+    for (final c in vnode.children) {
       c.parent = vnode;
       domNode.append(createNode(c, pendingComponentDidMounts));
     }

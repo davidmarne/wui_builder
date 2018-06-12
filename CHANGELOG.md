@@ -1,3 +1,15 @@
+
+repo:
+* use build_runner test in travis
+
+vhtml.dart:
+* fix issue where adding fields did not work
+* fix vIterable issue
+
+example/docs
+* remove usage of new keyword to construct vnodes
+* add viterable example
+
 ## 0.5.0
 
 wui_builder.dart

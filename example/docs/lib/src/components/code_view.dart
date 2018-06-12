@@ -19,6 +19,7 @@ import '../demos/state_example.dart';
 import '../demos/triangle.dart';
 import '../demos/vif_example.dart';
 import '../demos/virtual_list.dart';
+import '../demos/viterable_example.dart';
 import '../routes/routes.dart';
 
 @immutable
@@ -119,6 +120,14 @@ class CodeView extends NComponent {
                 DocsRoutes.vif,
                 vif_example,
                 VifExample(),
+              ),
+        ),
+        Route(
+          path: DocsRoutes.viterable,
+          componentFactory: (params) => CodeViewContent(
+                DocsRoutes.viterable,
+                viterable_example,
+                VIterableExample(),
               ),
         ),
         Route(

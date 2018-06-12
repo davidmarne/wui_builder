@@ -119,3 +119,11 @@ void disposeComponent(Component node) {
   // dispose of its children
   disposeVNode(node.child);
 }
+
+void removeComponentNode(Component node) {
+  removeNode(node._child);
+}
+
+void replaceComponentNode(Component node, Node newNode) {
+  replaceNode(node._child, newNode);
+}

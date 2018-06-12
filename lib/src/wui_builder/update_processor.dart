@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'component.dart';
 import 'create_nodes.dart';
 import 'update_tracker.dart';
@@ -14,7 +15,7 @@ bool updateVNode(UpdateTracker tracker) {
   if (tracker.newVNode == null) {
     // if the new vnode is null dispose of it and remove it from the dom
     disposeVNode(tracker.oldVNode);
-    tracker.node?.remove();
+    removeNode(tracker.oldVNode);
   } else if (tracker.oldVNode == null) {
     final pendingComponentDidMounts = <ComponentDidMount>[];
     tracker.newVNode.parent = tracker.parentTracker.oldVNode;
@@ -27,8 +28,10 @@ bool updateVNode(UpdateTracker tracker) {
     disposeVNode(tracker.oldVNode);
     final pendingComponentDidMounts = <ComponentDidMount>[];
     tracker.newVNode.parent = tracker.parentTracker.oldVNode;
-    tracker.node
-        .replaceWith(createNode(tracker.newVNode, pendingComponentDidMounts));
+
+    replaceNode(tracker.oldVNode,
+        createNode(tracker.newVNode, pendingComponentDidMounts));
+
     for (final cdm in pendingComponentDidMounts) cdm();
   } else if (tracker.newVNode.vNodeType == VNodeTypes.element) {
     return updateElement(tracker);
@@ -57,4 +60,33 @@ void disposeVNode(VNode node) {
 void unmount(VNode node) {
   node.ref.remove();
   disposeVNode(node);
+}
+
+void removeNode(VNode node) {
+  if (node.vNodeType == VNodeTypes.component) {
+    removeComponentNode(node as Component);
+  } else if (node.vNodeType == VNodeTypes.iterable) {
+    for (final c in (node as VIterable).children) c.ref.remove();
+  } else {
+    node.ref.remove();
+  }
+}
+
+void replaceNode(VNode vnode, Node newNode) {
+  if (vnode.vNodeType == VNodeTypes.component) {
+    replaceComponentNode(vnode as Component, newNode);
+  } else if (vnode.vNodeType == VNodeTypes.iterable) {
+    print('eyyy');
+    var first = true;
+    for (final c in (vnode as VIterable).children) {
+      if (first) {
+        c.ref.replaceWith(newNode);
+        first = false;
+      } else {
+        c.ref.remove();
+      }
+    }
+  } else {
+    vnode.ref.replaceWith(newNode);
+  }
 }

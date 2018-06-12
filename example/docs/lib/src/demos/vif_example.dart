@@ -34,7 +34,7 @@ class VifExample extends SComponent<LoadingState> {
       VButtonElement()
         ..vif = state == LoadingState.loggingOut
         ..disabled = true
-        ..text = 'loging out',
+        ..text = 'logging out',
     ];
 
   void _onLogIn(MouseEvent e) {

@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-const version = '0.5.0';
+const version = '0.5.1';
 
 const keys = r'''
 import 'dart:html';
@@ -376,7 +376,7 @@ class VifExample extends SComponent<LoadingState> {
       VButtonElement()
         ..vif = state == LoadingState.loggingOut
         ..disabled = true
-        ..text = 'loging out',
+        ..text = 'logging out',
     ];
 
   void _onLogIn(MouseEvent e) {
@@ -445,6 +445,25 @@ class ContextChild extends PCComponent<String, Theme> {
   VNode render() => VDivElement()
     ..text = props
     ..styleBuilder = (StyleBuilder()..color = contextValue.color);
+}
+
+''';
+
+const viterable_example = r'''
+import 'package:wui_builder/components.dart';
+import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/wui_builder.dart';
+
+// VIterable can be used to return a list of VNodes
+// from a render function
+class VIterableExample extends NComponent {
+  @override
+  VNode render() => VIterable([
+        Vdiv()..text = 'a',
+        Vdiv()..text = 'b',
+        Vdiv()..text = 'c',
+        Vdiv()..text = 'd',
+      ]);
 }
 
 ''';

@@ -7,9 +7,9 @@ Node createElementNode(
   vnode.applyAttributesToElement(domNode);
   vnode.applyEventListenersToElement(domNode);
   // filter vifs
-  final children = resolveChildren(vnode.children);
-  if (children.isNotEmpty) {
-    for (final c in children) {
+  vnode.children = resolveChildren(vnode.children);
+  if (vnode.children.isNotEmpty) {
+    for (final c in vnode.children) {
       c.parent = vnode;
       final child = createNode(c, pendingComponentDidMounts);
       if (child != null) domNode.append(child);

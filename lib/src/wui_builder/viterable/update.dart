@@ -4,6 +4,7 @@ bool updateIterable(UpdateTracker tracker) {
   final oldVNode = tracker.oldVNode as VIterable;
   final newVNode = tracker.newVNode as VIterable;
   newVNode.children = resolveChildren(newVNode.children);
+  print(newVNode.children.length);
 
   // only push cursor to queue if children > 1 to avoid unneccesary garbage
   final newLength = newVNode.children.length;
@@ -33,5 +34,6 @@ bool updateIterable(UpdateTracker tracker) {
 }
 
 void disposeVIterable(VIterable vnode) {
+  print('dipoiter');
   vnode.children.forEach(disposeVNode);
 }
