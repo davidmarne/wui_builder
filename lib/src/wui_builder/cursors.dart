@@ -13,17 +13,21 @@ abstract class PendingCursor {
 }
 
 class IterableCursor extends PendingCursor {
-  Children newVNode;
-  Children oldVNode;
-  Node node;
+  final Children newVNode;
+  final Children oldVNode;
+  final Node node;
   final int newLength;
   final int oldLength;
+  final int startIndex;
+
   Node currentChild;
-  int index = 0;
+  int index;
 
   IterableCursor(
-      this.node, this.newVNode, this.oldVNode, this.newLength, this.oldLength)
-      : currentChild = node.firstChild;
+      this.node, this.newVNode, this.oldVNode, this.newLength, this.oldLength,
+      {this.startIndex: 0})
+      : currentChild = node.firstChild,
+        index = startIndex;
 
   @override
   PendingCursors get cursorType => PendingCursors.iterable;
@@ -35,11 +39,9 @@ class IterableCursor extends PendingCursor {
 }
 
 class ComponentUpdateCursor extends PendingCursor {
-  Component vNode;
-  dynamic prevProps;
-  dynamic nextProps;
-  dynamic prevState;
-  dynamic nextState;
+  final Component vNode;
+  final dynamic prevProps;
+  final dynamic prevState;
   ComponentUpdateCursor(
     this.vNode,
     this.prevProps,
