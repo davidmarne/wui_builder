@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
 
+import 'test_util/iterable_test_component.dart';
 import 'test_util/testbed.dart';
 
 void main() {
@@ -108,5 +109,28 @@ void main() {
       expect(host.innerHtml, 'odbyecruworld');
       expect(node.ref.text, 'od');
     });
+
+    test('add/remove/shuffle items', () {
+      final component = IterableTestComponent([
+        VText('go'),
+        VText('od'),
+      ]);
+
+      render(component, host);
+
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VText('go'),
+        VText('od'),
+        VText('bye'),
+      ]);
+
+      expect(host.innerHtml, 'goodbye');
+      component.setChildren([
+        VText('go'),
+      ]);
+
+      expect(host.innerHtml, 'go');
+    }, skip: 'fix');
   });
 }

@@ -76,7 +76,6 @@ void replaceNode(VNode vnode, Node newNode) {
   if (vnode.vNodeType == VNodeTypes.component) {
     replaceComponentNode(vnode as Component, newNode);
   } else if (vnode.vNodeType == VNodeTypes.iterable) {
-    print('eyyy');
     var first = true;
     for (final c in (vnode as VIterable).children) {
       if (first) {

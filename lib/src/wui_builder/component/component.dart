@@ -65,7 +65,6 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void update() {
     final updateTracker = new UpdateTracker.sync(ref, this);
-    // _updatePendingTracker(updateTracker);
     updateVNode(updateTracker);
   }
 
