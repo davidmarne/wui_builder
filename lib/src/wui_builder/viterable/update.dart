@@ -35,3 +35,19 @@ bool updateIterable(UpdateTracker tracker) {
 void disposeVIterable(VIterable vnode) {
   vnode.children.forEach(disposeVNode);
 }
+
+void removeIterableNode(VIterable vnode) {
+  for (final c in vnode.children) c.ref.remove();
+}
+
+void replaceIterableNode(VIterable vnode, Node newNode) {
+  var first = true;
+  for (final c in vnode.children) {
+    if (first) {
+      c.ref.replaceWith(newNode);
+      first = false;
+    } else {
+      c.ref.remove();
+    }
+  }
+}

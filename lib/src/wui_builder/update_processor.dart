@@ -86,7 +86,7 @@ void removeNode(VNode node) {
       removeComponentNode(node as Component);
       break;
     case VNodeTypes.iterable:
-      for (final c in (node as VIterable).children) c.ref.remove();
+      removeIterableNode(node as VIterable);
       break;
     default:
       node.ref.remove();
@@ -99,15 +99,7 @@ void replaceNode(VNode vnode, Node newNode) {
       replaceComponentNode(vnode as Component, newNode);
       break;
     case VNodeTypes.iterable:
-      var first = true;
-      for (final c in (vnode as VIterable).children) {
-        if (first) {
-          c.ref.replaceWith(newNode);
-          first = false;
-        } else {
-          c.ref.remove();
-        }
-      }
+      replaceIterableNode(vnode as VIterable, newNode);
       break;
     default:
       vnode.ref.replaceWith(newNode);

@@ -18,16 +18,18 @@ class IterableCursor extends PendingCursor {
   final Node node;
   final int newLength;
   final int oldLength;
-  final int startIndex;
 
   Node currentChild;
   int index;
 
   IterableCursor(
-      this.node, this.newVNode, this.oldVNode, this.newLength, this.oldLength,
-      {this.startIndex: 0})
-      : currentChild = node.firstChild,
-        index = startIndex;
+    this.node,
+    this.newVNode,
+    this.oldVNode,
+    this.newLength,
+    this.oldLength,
+  )   : currentChild = node.firstChild,
+        index = 0;
 
   @override
   PendingCursors get cursorType => PendingCursors.iterable;
