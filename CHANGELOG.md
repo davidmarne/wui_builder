@@ -1,14 +1,22 @@
 
+## 0.6.0
 repo:
 * use build_runner test in travis
 
+
+wui_builder.dart
+* fix vIterable issues
+* **Breaking changes**
+  * Viterable now requires children be passed to its constructor
+
 vhtml.dart:
 * fix issue where adding fields did not work
-* fix vIterable issue
 
 example/docs
 * remove usage of new keyword to construct vnodes
 * add viterable example
+
+
 
 ## 0.5.0
 
