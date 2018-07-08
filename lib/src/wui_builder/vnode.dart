@@ -25,5 +25,5 @@ enum VNodeTypes {
 }
 
 abstract class Children {
-  List<VNode> children;
+  List<VNode> get children;
 }

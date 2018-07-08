@@ -18,14 +18,13 @@ class VirtualScrollState {
 
 class VirtualScroll extends SComponent<VirtualScrollState> {
   @override
-  VirtualScrollState getInitialState() =>
-      new VirtualScrollState()..chunkTop = 0;
+  VirtualScrollState getInitialState() => VirtualScrollState()..chunkTop = 0;
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..onScroll = _onScroll
     ..children = _items
-    ..styleBuilder = (new StyleBuilder()
+    ..styleBuilder = (StyleBuilder()
       ..height = '${containerHeight}px'
       ..width = '${containerWidth}px'
       ..overflow = 'auto'
@@ -33,16 +32,16 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
 
   Iterable<VDivElement> get _items {
     final chunkStartIndex = state.chunkTop ~/ itemHeight;
-    return new List<VDivElement>.generate(
+    return List<VDivElement>.generate(
       itemsPerChunk,
-      (i) => new VDivElement()
+      (i) => VDivElement()
         ..styleBuilder = _itemStyleBuilder(i + chunkStartIndex)
         ..text = 'item ${i + chunkStartIndex}',
     )..insert(0, _scrollCapture());
   }
 
-  VDivElement _scrollCapture() => new VDivElement()
-    ..styleBuilder = (new StyleBuilder()
+  VDivElement _scrollCapture() => VDivElement()
+    ..styleBuilder = (StyleBuilder()
       ..position = 'absolute'
       ..top = '0px'
       ..opacity = '0'
@@ -51,7 +50,7 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
       ..maxHeight = '${containerVirtualHeight}px'
       ..height = '${containerVirtualHeight}px');
 
-  StyleBuilder _itemStyleBuilder(int index) => new StyleBuilder()
+  StyleBuilder _itemStyleBuilder(int index) => StyleBuilder()
     ..height = '${itemHeight}px'
     ..width = '${itemWidth}px'
     ..position = 'absolute'
@@ -62,7 +61,7 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
     final chunkTop =
         refElement.scrollTop - (refElement.scrollTop % containerHeight);
     if (state.chunkTop != chunkTop)
-      setStateOnAnimationFrame((nextProps, prevState) =>
-          new VirtualScrollState()..chunkTop = chunkTop);
+      setStateOnAnimationFrame(
+          (nextProps, prevState) => VirtualScrollState()..chunkTop = chunkTop);
   }
 }

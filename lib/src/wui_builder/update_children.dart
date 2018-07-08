@@ -1,35 +1,21 @@
+import 'dart:html';
 import 'cursors.dart';
 import 'update_processor.dart';
 import 'update_tracker.dart';
 import 'viterable.dart';
 import 'vnode.dart';
 
-List<VNode> resolveChildren(List<VNode> children) => children
-    .expand((vnode) => vnode.vif
-        ? vnode is VIterable ? resolveChildren(vnode.children) : [vnode]
-        : <VNode>[])
-    .toList();
+List<VNode> resolveChildren(List<VNode> children) =>
+    children.where((c) => c.vif).toList();
 
 bool updateChildren(UpdateTracker tracker) {
   final cursor = tracker.pendingWork as IterableCursor;
   final oldVNode = cursor.oldVNode;
   final newVNode = cursor.newVNode;
 
-  // build a map of old vnodes with keys
-  final oldKeyedNodes = <dynamic, VNode>{};
-  for (final c in oldVNode.children) {
-    if (c.key != null) {
-      oldKeyedNodes[c.key] = c;
-    }
-  }
-
-  // build a map of new vnodes with keys
-  final newKeyedNodes = <dynamic, VNode>{};
-  for (final c in newVNode.children) {
-    if (c.key != null) {
-      newKeyedNodes[c.key] = c;
-    }
-  }
+  // build maps of old vnodes with keys
+  final oldKeyedNodes = getKeyedChildNodes(oldVNode);
+  final newKeyedNodes = getKeyedChildNodes(newVNode);
 
   while (cursor.index < cursor.newLength || cursor.index < cursor.oldLength) {
     final newChildVNode = cursor.index < cursor.newLength
@@ -51,56 +37,39 @@ bool updateChildren(UpdateTracker tracker) {
       if (oldChildVNodeWithKey != null &&
           oldChildVNode != oldChildVNodeWithKey) {
         // move vnode into the current position
-        oldVNode.children.remove(oldChildVNodeWithKey);
-        if (cursor.index >= oldVNode.children.length)
-          oldVNode.children.add(oldChildVNodeWithKey);
-        else
-          oldVNode.children.insert(cursor.index, oldChildVNodeWithKey);
+        moveVChildToIndex(oldVNode, oldChildVNodeWithKey, cursor.index);
 
         // move the actual element into the current position
-        if (cursor.currentChild != null)
-          cursor.node
-              .insertBefore(oldChildVNodeWithKey.ref, cursor.currentChild);
+        if (cursor.willFinish)
+          insertAfter(cursor.node, cursor.currentChild, oldChildVNodeWithKey);
         else
-          cursor.node.append(oldChildVNodeWithKey.ref);
+          insertBefore(cursor.node, cursor.currentChild, oldChildVNodeWithKey);
+
+        // update oldChildVNode and the cursor's iterator
+        cursor.currentChild = oldChildVNodeWithKey.ref;
 
         // if the key no longer exists, move it to the end where it will
         // be cleaned up later. TODO: recycle if possible
         if (oldChildVNode != null) {
-          final isRemoval = !newKeyedNodes.containsKey(oldChildVNode.key);
-          if (isRemoval) {
+          final newChildVNodeWithOldKey = newKeyedNodes[oldChildVNode.key];
+          if (newChildVNodeWithOldKey == null) {
             // remove the vnode. This is really only moving it towards the
             // end of the list, which will cause it to be cleaned up later.
-            oldVNode.children.remove(oldChildVNode);
-            oldVNode.children.add(oldChildVNode);
-            cursor.node.append(oldChildVNode.ref);
+            moveToBack(cursor.node, oldVNode, oldChildVNode);
           } else {
-            // otherwise find where the key should live and move it there now
-            VNode c;
-            for (var i = 0; i < newVNode.children.length; i++) {
-              c = newVNode.children[i];
-              if (c.key == oldChildVNode.key) {
-                // insert the actual dom element
-                if (i >= cursor.node.childNodes.length - 1)
-                  cursor.node.append(oldChildVNode.ref);
-                else
-                  cursor.node.insertBefore(
-                      oldChildVNode.ref, cursor.node.childNodes[i + 1]);
+            final index = newVNode.children.indexOf(newChildVNodeWithOldKey);
+            if (oldChildVNode.key != newChildVNodeWithOldKey.key) {
+              if (cursor.willFinish)
+                insertAfter(cursor.node, cursor.currentChild, oldChildVNode);
+              else
+                insertBefore(cursor.node, cursor.currentChild, oldChildVNode);
 
-                // update the parent vnode's children list
-                oldVNode.children.remove(oldChildVNode);
-                if (i >= oldVNode.children.length)
-                  oldVNode.children.add(oldChildVNode);
-                else
-                  oldVNode.children.insert(i, oldChildVNode);
-                break;
-              }
+              // update the parent vnode's children list
+              moveVChildToIndex(oldVNode, oldChildVNode, index);
             }
           }
         }
 
-        // update oldChildVNode and the cursor's iterator
-        cursor.currentChild = oldChildVNodeWithKey.ref;
         oldChildVNode = oldChildVNodeWithKey;
       } else if (oldChildVNode == null) {
         // if the old child was null simply add the new vnode as a child
@@ -137,4 +106,60 @@ bool updateChildren(UpdateTracker tracker) {
   tracker.popPendingCursor();
 
   return true;
+}
+
+Map<dynamic, VNode> getKeyedChildNodes(Children vNode) {
+  // build a map of new vnodes with keys
+  final keyedNodes = <dynamic, VNode>{};
+  for (final c in vNode.children) {
+    if (c.key != null) {
+      keyedNodes[c.key] = c;
+    }
+  }
+  return keyedNodes;
+}
+
+void moveVChildToIndex(Children parent, VNode child, int index) {
+  // move vnode into the current position
+  parent.children.remove(child);
+  if (index >= parent.children.length)
+    parent.children.add(child);
+  else
+    parent.children.insert(index, child);
+}
+
+void insertBefore(Node parent, Node before, VNode child) {
+  if (child.vNodeType == VNodeTypes.iterable) {
+    parent.insertAllBefore((child as VIterable).childNodes, before);
+  } else
+    parent.insertBefore(child.ref, before);
+}
+
+void insertAfter(Node parent, Node after, VNode vchild) {
+  if (after.nextNode == null) {
+    if (vchild.vNodeType == VNodeTypes.iterable) {
+      (vchild as VIterable).childNodes.forEach(parent.append);
+    } else {
+      parent.append(vchild.ref);
+    }
+  } else {
+    if (vchild.vNodeType == VNodeTypes.iterable) {
+      for (final c in (vchild as VIterable).childNodes) {
+        parent.insertBefore(after.nextNode, c);
+      }
+    } else {
+      parent.insertBefore(after.nextNode, vchild.ref);
+    }
+  }
+}
+
+void moveToBack(Node parent, Children vparent, VNode child) {
+  // remove the vnode. This is really only moving it towards the
+  // end of the list, which will cause it to be cleaned up later.
+  vparent.children.remove(child);
+  vparent.children.add(child);
+  if (child.vNodeType == VNodeTypes.iterable)
+    (child as VIterable).childNodes.forEach(parent.append);
+  else
+    parent.append(child.ref);
 }

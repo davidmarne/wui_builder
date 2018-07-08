@@ -21,11 +21,11 @@ class ContextParent extends NComponent {
   // adds the theme to context when the component is created
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
-        themeContextKey: new Theme()..color = 'purple',
+        themeContextKey: Theme()..color = 'purple',
       };
 
   @override
-  VNode render() => new ContextChild(
+  VNode render() => ContextChild(
       message: 'Hello World! What color will i be? Let me check the context.');
 }
 
@@ -34,8 +34,7 @@ class ContextParent extends NComponent {
 class ContextChild extends PCComponent<String, Theme> {
   ContextChild({
     @required String message,
-  })
-      : super(message);
+  }) : super(message);
 
   // A method inherited from PCComponent -> CComponent
   // that declares the context key to use to look up Theme
@@ -43,7 +42,7 @@ class ContextChild extends PCComponent<String, Theme> {
   String get contextKey => themeContextKey;
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..text = props
-    ..styleBuilder = (new StyleBuilder()..color = contextValue.color);
+    ..styleBuilder = (StyleBuilder()..color = contextValue.color);
 }

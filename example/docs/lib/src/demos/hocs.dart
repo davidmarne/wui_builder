@@ -31,27 +31,29 @@ class HOCExample extends SComponent<ChildProps> {
   // getInitialState is overriden to set the initial
   // click count to 0
   @override
-  ChildProps getInitialState() => new ChildProps()..clickCount = 0;
+  ChildProps getInitialState() => ChildProps()..clickCount = 0;
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..children = [
-      new VButtonElement()
+      VButtonElement()
         ..text = 'Immutable Update'
         ..onClick = _immutableUpdate,
-      new VButtonElement()
+      VButtonElement()
         ..text = 'Mutable Update'
         ..onClick = _mutableUpdate,
-      new VDivElement()..text = 'ChildProps.clickCount ${state.clickCount}',
-      new PureHOC(new Child(state)), // wrap the child with the pure hoc
+      VDivElement()..text = 'ChildProps.clickCount ${state.clickCount}',
+      PureHOC(
+        Child(state),
+      ), // wrap the child with the pure hoc
     ];
 
-  // _immutableUpdate creates a new instance of ChildProps. This
+  // _immutableUpdate creates a instance of ChildProps. This
   // will cause the identity of the props object sent
   // to the child to change after this update
   void _immutableUpdate(MouseEvent e) {
     setState((nextProps, prevState) =>
-        new ChildProps()..clickCount = prevState.clickCount + 1);
+        ChildProps()..clickCount = prevState.clickCount + 1);
   }
 
   // _mutableUpdate mutates the current state object. This
@@ -71,5 +73,5 @@ class Child extends PComponent<ChildProps> {
 
   @override
   VNode render() =>
-      new VDivElement()..text = 'props.clickCount: ${props.clickCount}';
+      VDivElement()..text = 'props.clickCount: ${props.clickCount}';
 }

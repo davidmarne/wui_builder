@@ -8,39 +8,39 @@ import 'panel.dart';
 
 class Container extends NComponent {
   @override
-  VNode render() => new HistoryProvider(
-        child: new VDivElement()
+  VNode render() => HistoryProvider(
+        child: VDivElement()
           ..children = [
-            new Nav(new NavProps()),
-            new VDivElement()
-              ..styleBuilder = (new StyleBuilder()..paddingTop = '2rem')
+            Nav(NavProps()),
+            VDivElement()
+              ..styleBuilder = (StyleBuilder()..paddingTop = '2rem')
               ..className = 'columns'
               ..children = [
-                new VDivElement()
+                VDivElement()
                   ..className = 'column is-3 aside hero'
                   ..children = [
-                    new Panel(),
+                    Panel(),
                   ],
-                new VDivElement()
+                VDivElement()
                   ..className = 'column is-9 hero'
-                  ..children = [new CodeView()],
+                  ..children = [CodeView()],
               ],
-            new Vfooter()
+            Vfooter()
               ..className = 'footer'
               ..children = [
-                new VDivElement()
+                VDivElement()
                   ..className = 'container'
                   ..children = [
-                    new VDivElement()
+                    VDivElement()
                       ..className = 'content has-text-centered'
                       ..children = [
-                        new Vp()
+                        Vp()
                           ..text =
                               'wui_builder by David Marne. The source code is licensed MIT.',
-                        new VAnchorElement()
+                        VAnchorElement()
                           ..href = 'https://bulma.io'
                           ..children = [
-                            new VImageElement()
+                            VImageElement()
                               ..src =
                                   'https://bulma.io/images/made-with-bulma.png'
                               ..alt = 'Demo page made with Bulma'

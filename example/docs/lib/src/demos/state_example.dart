@@ -16,11 +16,10 @@ class StateExample extends SComponent<StateExampleState> {
   // getInitialState is overriden to set the initial
   // click count to 0
   @override
-  StateExampleState getInitialState() =>
-      new StateExampleState()..clickCount = 0;
+  StateExampleState getInitialState() => StateExampleState()..clickCount = 0;
 
   @override
-  VNode render() => new VButtonElement()
+  VNode render() => VButtonElement()
     ..text = 'Hello World x${state.clickCount}!'
     ..onClick = _onClick;
 
@@ -28,6 +27,6 @@ class StateExample extends SComponent<StateExampleState> {
   // state.clickCount when the button is clicked
   void _onClick(MouseEvent e) {
     setState((nextProps, prevState) =>
-        new StateExampleState()..clickCount = prevState.clickCount + 1);
+        StateExampleState()..clickCount = prevState.clickCount + 1);
   }
 }

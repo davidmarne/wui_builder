@@ -18,9 +18,9 @@ abstract class ContextSetter<C>
     @required C contextValue,
     @required VNode child,
     dynamic key,
-  })
-      : super(new _ContextSetterProps(contextKey, contextValue, child),
-            key: key);
+    bool vif,
+  }) : super(new _ContextSetterProps(contextKey, contextValue, child),
+            key: key, vif: vif);
 
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
@@ -35,8 +35,8 @@ class UpdateBlocker extends PComponent<VNode> {
   UpdateBlocker({
     @required VNode child,
     dynamic key,
-  })
-      : super(child, key: key);
+    bool vif,
+  }) : super(child, key: key, vif: vif);
 
   @override
   bool shouldComponentUpdate(_, __) => false;
@@ -49,8 +49,8 @@ class Pure extends PComponent<Component> {
   Pure({
     @required Component child,
     dynamic key,
-  })
-      : super(child, key: key);
+    bool vif,
+  }) : super(child, key: key, vif: vif);
 
   @override
   bool shouldComponentUpdate(nextProps, _) => props.props != nextProps.props;
@@ -65,8 +65,8 @@ class Perf extends PComponent<Component> {
   Perf({
     @required Component child,
     dynamic key,
-  })
-      : super(child, key: key);
+    bool vif,
+  }) : super(child, key: key, vif: vif);
 
   String get _name => '${props.runtimeType}${key == null ? '' : ' - $key'}';
 
@@ -100,8 +100,8 @@ class UpdateDebugger extends PComponent<Component> {
   UpdateDebugger({
     @required Component child,
     dynamic key,
-  })
-      : super(child, key: key);
+    bool vif,
+  }) : super(child, key: key, vif: vif);
 
   @override
   void componentWillUpdate(np, ns) {

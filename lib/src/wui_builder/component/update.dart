@@ -87,10 +87,6 @@ bool updateComponent(UpdateTracker tracker) {
 
 void finishComponentUpdate(UpdateTracker tracker) {
   final cursor = tracker.pendingWork as ComponentUpdateCursor;
-  cursor.vNode.ref = cursor.vNode._child.ref;
-
-  // update the ref
-  cursor.vNode.ref = cursor.vNode._child.ref;
 
   // lifecycle - componentDidUpdate
   cursor.vNode.componentDidUpdate(cursor.prevProps, cursor.prevState);
@@ -118,4 +114,12 @@ void disposeComponent(Component node) {
 
   // dispose of its children
   disposeVNode(node.child);
+}
+
+void removeComponentNode(Component node) {
+  removeNode(node._child);
+}
+
+void replaceComponentNode(Component node, Node newNode) {
+  replaceNode(node._child, newNode);
 }

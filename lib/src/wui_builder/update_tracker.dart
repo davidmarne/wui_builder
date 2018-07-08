@@ -18,8 +18,8 @@ class UpdateTracker {
   final VNode newVNode;
   final VNode oldVNode;
   final bool shouldAbort;
+  final bool isAsync;
 
-  bool isAsync;
   bool isCancelled = false;
   bool hasStarted = false;
   IdleDeadline deadline;
@@ -43,8 +43,9 @@ class UpdateTracker {
   // to avoid accesive garbage, mutate the current cursor
   UpdateTracker nextCursor(
       Node nextParent, Node nextNode, VNode nextNewVNode, VNode nextOldVNode) {
-    final nextChild = new UpdateTracker.clone(nextParent, nextNode,
-        nextNewVNode, nextOldVNode, isAsync, shouldAbort, this, deadline);
+    final nextChild = UpdateTracker.clone(nextParent, nextNode, nextNewVNode,
+        nextOldVNode, isAsync, shouldAbort, this, deadline);
+
     childTracker = nextChild;
     return nextChild;
   }

@@ -11,8 +11,8 @@ const numRows = 5000;
 // the start of the update and the update finishing.
 class IdleCallbackExample extends SComponent<int> {
   @override
-  VNode render() => new VDivElement()
-    ..styleBuilder = (new StyleBuilder()
+  VNode render() => VDivElement()
+    ..styleBuilder = (StyleBuilder()
       ..overflow = 'scroll'
       ..maxHeight = '1000px')
     ..children = [
@@ -23,12 +23,12 @@ class IdleCallbackExample extends SComponent<int> {
   @override
   int getInitialState() => 0;
 
-  VNode _buttonGroup() => new VDivElement()
+  VNode _buttonGroup() => VDivElement()
     ..children = [
-      new VButtonElement()
+      VButtonElement()
         ..text = 'dart vdom update sync'
         ..onClick = _update,
-      new VButtonElement()
+      VButtonElement()
         ..text = 'dart vdom update async'
         ..onClick = _updateOnIdle,
     ];
@@ -41,13 +41,13 @@ class IdleCallbackExample extends SComponent<int> {
     setStateOnIdle((_, prevState) => prevState + 1);
   }
 
-  VNode _table() => new VTableElement()
-    ..children = new List<VNode>.generate(
+  VNode _table() => VTableElement()
+    ..children = List<VNode>.generate(
         numRows,
-        (i) => new VTableRowElement()
+        (i) => VTableRowElement()
           ..children = [
-            new Vtd()..text = 'row $i col 1 update ${state} | ',
-            new Vtd()..text = 'row $i col 2 update ${state} | ',
-            new Vtd()..text = 'row $i col 3 update ${state}',
+            Vtd()..text = 'row $i col 1 update ${state} | ',
+            Vtd()..text = 'row $i col 2 update ${state} | ',
+            Vtd()..text = 'row $i col 3 update ${state}',
           ]);
 }

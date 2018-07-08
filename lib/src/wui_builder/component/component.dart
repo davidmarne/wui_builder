@@ -19,11 +19,14 @@ abstract class Component<P, S> extends VNode {
 
   Component(this._props, {dynamic key, bool vif: true}) {
     this.key = key;
-    this.vif = vif;
+    this.vif = vif ?? true;
   }
 
   @override
   VNodeTypes get vNodeType => VNodeTypes.component;
+
+  @override
+  Node get ref => _child.ref;
 
   /// [child] is the VNode returned from render
   VNode get child => _child;
@@ -65,7 +68,6 @@ abstract class Component<P, S> extends VNode {
   @mustCallSuper
   void update() {
     final updateTracker = new UpdateTracker.sync(ref, this);
-    // _updatePendingTracker(updateTracker);
     updateVNode(updateTracker);
   }
 

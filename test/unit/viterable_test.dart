@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 import 'package:wui_builder/wui_builder.dart';
 import 'package:wui_builder/vhtml.dart';
 
+import 'test_util/iterable_test_component.dart';
 import 'test_util/testbed.dart';
 
 void main() {
@@ -12,15 +13,12 @@ void main() {
 
     setUp(() {
       setUpTestbed();
-      host = new DivElement();
+      host = DivElement();
     });
 
     test('renders', () {
-      final node = new VIterable([
-        new VText('goodbye'),
-        new Vdiv()..text = 'cruel',
-        new VText('world')
-      ]);
+      final node =
+          VIterable([VText('goodbye'), Vdiv()..text = 'cruel', VText('world')]);
       render(node, host);
 
       expect(host.innerHtml, 'goodbye<div>cruel</div>world');
@@ -28,10 +26,10 @@ void main() {
     });
 
     test('renders with vifs respected', () {
-      final node = new VIterable([
-        new VText('goodbye')..vif = false,
-        new Vdiv()..text = 'cruel',
-        new VText('world')
+      final node = VIterable([
+        VText('goodbye')..vif = false,
+        Vdiv()..text = 'cruel',
+        VText('world')
       ]);
       render(node, host);
 
@@ -40,13 +38,13 @@ void main() {
     });
 
     test('renders with nested VIterable', () {
-      final node = new VIterable([
-        new VText('goodbye'),
-        new VIterable([
-          new VText('cru'),
-          new VText('el'),
+      final node = VIterable([
+        VText('goodbye'),
+        VIterable([
+          VText('cru'),
+          VText('el'),
         ]),
-        new VText('world'),
+        VText('world'),
       ]);
       render(node, host);
 
@@ -55,13 +53,13 @@ void main() {
     });
 
     test('renders with nested VIterable and vifs', () {
-      final node = new VIterable([
-        new VText('goodbye')..vif = false,
-        new VIterable([
-          new VText('cru'),
-          new VText('el')..vif = false,
+      final node = VIterable([
+        VText('goodbye')..vif = false,
+        VIterable([
+          VText('cru'),
+          VText('el')..vif = false,
         ]),
-        new VText('world'),
+        VText('world'),
       ]);
       render(node, host);
 
@@ -70,17 +68,17 @@ void main() {
     });
 
     test('get deep', () {
-      final node = new VIterable([
-        new VText('go'),
-        new VText('od'),
-        new VIterable([
-          new VText('bye'),
-          new VIterable([
-            new VText('cru'),
-            new Vdiv()..text = 'el',
+      final node = VIterable([
+        VText('go'),
+        VText('od'),
+        VIterable([
+          VText('bye'),
+          VIterable([
+            VText('cru'),
+            Vdiv()..text = 'el',
           ]),
         ]),
-        new VText('world'),
+        VText('world'),
       ]);
       render(node, host);
 
@@ -89,24 +87,206 @@ void main() {
     });
 
     test('get deep with vifs', () {
-      final node = new VIterable([
-        new VText('go')..vif = false,
-        new VText('od'),
-        new VIterable([
-          new VText('bye'),
-          new VIterable([
-            new VText('cru'),
-            new Vdiv()
+      final node = VIterable([
+        VText('go')..vif = false,
+        VText('od'),
+        VIterable([
+          VText('bye'),
+          VIterable([
+            VText('cru'),
+            Vdiv()
               ..text = 'el'
               ..vif = false,
           ]),
         ]),
-        new VText('world'),
+        VText('world'),
       ]);
       render(node, host);
 
       expect(host.innerHtml, 'odbyecruworld');
       expect(node.ref.text, 'od');
+    });
+
+    test('add/remove/shuffle items', () {
+      final component = IterableTestComponent([
+        VText('go'),
+        VText('od'),
+      ]);
+
+      render(component, host);
+
+      // add node
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VText('go'),
+        VText('od'),
+        VText('bye'),
+      ]);
+      expect(host.innerHtml, 'goodbye');
+
+      // swap nodes
+      component.setChildren([
+        VText('od'),
+        VText('go'),
+        VText('bye'),
+      ]);
+      expect(host.innerHtml, 'odgobye');
+
+      // remove node
+      component.setChildren([
+        VText('go'),
+      ]);
+      expect(host.innerHtml, 'go');
+    });
+
+    test('add/remove/shuffle nested lists', () {
+      final component = IterableTestComponent([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ]),
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ]),
+      ]);
+
+      render(component, host);
+
+      // add node
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ]),
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ]),
+        VIterable([
+          VText('by'),
+          VText('e'),
+        ]),
+      ]);
+      expect(host.innerHtml, 'goodbye');
+
+      // swap nodes
+      component.setChildren([
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ]),
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ]),
+        VIterable([
+          VText('by'),
+          VText('e'),
+        ]),
+      ]);
+      expect(host.innerHtml, 'odgobye');
+
+      // remove node
+      component.setChildren([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ]),
+      ]);
+      expect(host.innerHtml, 'go');
+    });
+
+    test('add/remove/shuffle items keyed', () {
+      final component = IterableTestComponent([
+        VText('go', key: 'go'),
+        VText('od', key: 'od'),
+      ]);
+
+      render(component, host);
+
+      // add node
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VText('go', key: 'go'),
+        VText('od', key: 'od'),
+        VText('bye', key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'goodbye');
+
+      // swap nodes
+      component.setChildren([
+        VText('od', key: 'od'),
+        VText('go', key: 'go'),
+        VText('bye', key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'odgobye');
+
+      // remove node
+      component.setChildren([
+        VText('go', key: 'go'),
+      ]);
+      expect(host.innerHtml, 'go');
+    });
+
+    test('add/remove/shuffle nested lists keyed', () {
+      final component = IterableTestComponent([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ], key: 'od'),
+      ]);
+
+      render(component, host);
+
+      // add node
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ], key: 'od'),
+        VIterable([
+          VText('by'),
+          VText('e'),
+        ], key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'goodbye');
+
+      // swap nodes
+      component.setChildren([
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ], key: 'od'),
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+        VIterable([
+          VText('by'),
+          VText('e'),
+        ], key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'odgobye');
+
+      // remove node
+      component.setChildren([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+      ]);
+      expect(host.innerHtml, 'go');
     });
   });
 }

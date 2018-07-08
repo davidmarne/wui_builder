@@ -105,6 +105,11 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
             if (newValue != v)
               _updateStyle(ele, k, newValue);
           });
+
+          styleBuilder._setStyle.forEach((k, v) {
+            if (prev.styleBuilder._setStyle[k] == null)
+              _updateStyle(ele, k, v);
+          });
         }
       } else if (styleBuilder != null) {
         styleBuilder._setStyle.forEach((k, v) => _updateStyle(ele, k, v));
@@ -121,6 +126,11 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
             if (newValue != v)
               _updateCustomAttribute(ele, k, newValue);
           });
+
+          attributes.forEach((k, v) {
+            if (prev.attributes[k] == null)
+              _updateCustomAttribute(ele, k, v);
+          });
         }
       } else if (attributes != null) {
         attributes.forEach((k, v) => _updateCustomAttribute(ele, k, v));
@@ -130,6 +140,11 @@ String vElement(Iterable<Setter> setters, Iterable<VEvent> events) => '''
         final dynamic newValue = _setValuesElement[k];
         if (newValue != v)
           _updateAttribute(ele, k, newValue);
+      });
+
+      _setValuesElement.forEach((k, dynamic v) {
+        if (prev._setValuesElement[k] == null)
+          _updateAttribute(ele, k, v);
       });
 
       prev.styleBuilder = styleBuilder;
@@ -252,6 +267,12 @@ String vElementSubclassBody(
         if (v != newValue)
           _updateAttribute$classElementName(ele, k, newValue);
       });
+
+      _setValues${classElementName}.forEach((k, dynamic v) {
+        if (prev._setValues${classElementName}[k] == null)
+          _updateAttribute$classElementName(ele, k, v);
+      });
+
       prev._setValues${classElementName} = _setValues${classElementName};
       super.updateElementAttributes(prev, ele);
     }
@@ -297,6 +318,12 @@ String vElementAbstractSubclassBody(
         if (v != newValue)
           _updateAttribute$classElementName(ele, k, newValue);
       });
+
+      _setValues${classElementName}.forEach((k, dynamic v) {
+        if (prev._setValues${classElementName}[k] == null)
+          _updateAttribute$classElementName(ele, k, v);
+      });
+
       prev._setValues${classElementName} = _setValues${classElementName};
       super.updateElementAttributes(prev, ele);
     }

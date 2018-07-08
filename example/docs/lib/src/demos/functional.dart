@@ -9,47 +9,48 @@ import 'package:wui_builder/wui_builder.dart';
 
 // tweet is a function that returns a VNode that renders
 // a bulma media object
-VNode tweet() => new Varticle()
+VNode tweet() => Varticle()
   ..className = 'media'
   ..children = [
-    trumpDumbFace(),
+    avatar(),
     tweetBody(),
   ];
 
-VNode trumpDumbFace() => new Vfigure()
+VNode avatar() => Vfigure()
   ..className = 'media-left'
   ..children = [
-    new Vp()
+    Vp()
       ..className = 'image is-64x64'
       ..children = [
-        new VImageElement()
+        VImageElement()
           ..src =
-              'http://dqyfp485dhq1yoa92v2k6m13.wpengine.netdna-cdn.com/wp-content/uploads/2015/11/when-he-said-that-it-was-all-very-strange-500x376.png'
+              'https://pbs.twimg.com/profile_images/585565077207678977/N_eNSBXi_400x400.jpg'
       ]
   ];
 
-VNode tweetBody() => new Vdiv()
+VNode tweetBody() => Vdiv()
   ..className = 'media-content'
   ..children = [
     tweetContent(),
     tweetIcons(),
   ];
 
-VNode tweetContent() => new Vdiv()
+VNode tweetContent() => Vdiv()
   ..className = 'content'
   ..children = [
-    new Vp()
+    Vp()
       ..children = [
-        new Vstrong()..text = 'Donald J. Trump',
-        new Vsmall()..text = ' @realDonaldTrump',
-        new Vdiv()..text = 'Despite the constant negative press covfefe'
+        Vstrong()..text = 'KANYE WEST',
+        Vsmall()..text = ' @kanyewest',
+        Vdiv()
+          ..text = 'I\'m not even gon lie to you. I love me so much right now'
       ]
   ];
 
-VNode tweetIcons() => new Vnav()
+VNode tweetIcons() => Vnav()
   ..className = 'level is-mobile'
   ..children = [
-    new Vdiv()
+    Vdiv()
       ..className = 'level-left'
       ..children = [
         tweetIcon('reply'),
@@ -58,10 +59,10 @@ VNode tweetIcons() => new Vnav()
       ]
   ];
 
-VNode tweetIcon(String icon) => new Va()
+VNode tweetIcon(String icon) => Va()
   ..className = 'level-item'
   ..children = [
-    new Vspan()
+    Vspan()
       ..className = 'icon is-small'
-      ..children = [new Vi()..className = 'fa fa-$icon']
+      ..children = [Vi()..className = 'fa fa-$icon']
   ];

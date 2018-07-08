@@ -11,7 +11,7 @@ void main() {
     DivElement host;
     KeyTestComponent component;
     Iterable<KeyedComponent> childrenComponents() =>
-        ((component.child as VElement).children as Iterable<KeyedComponent>);
+        (component.child as VElement).children.cast<KeyedComponent>();
 
     void verifier(Iterable<String> keys, Iterable<int> stateValues) {
       expect(host.children.first, component.ref);

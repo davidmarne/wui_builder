@@ -14,8 +14,8 @@ class PropsExampleProps {
 // Hello world is a component that simply renders
 // the message property from its props object into a div
 class PropsExample extends PComponent<PropsExampleProps> {
-  PropsExample(String message) : super(new PropsExampleProps(message));
+  PropsExample(String message) : super(PropsExampleProps(message));
 
   @override
-  VNode render() => new VDivElement()..text = props.message;
+  VNode render() => VDivElement()..text = props.message;
 }

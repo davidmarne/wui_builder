@@ -95,7 +95,6 @@ void failOnComponentWillUnmount(dynamic acutalProps, dynamic actualState) =>
 bool failOnShouldComponentUpdate(dynamic actualPrevProps,
     dynamic actualNextProps, dynamic actualPrevState, dynamic actualNextState) {
   fail('failOnShouldComponentUpdate');
-  return false;
 }
 
 void failOnComponentWillUpdate(dynamic actualPrevProps, dynamic actualNextProps,

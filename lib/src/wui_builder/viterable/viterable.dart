@@ -25,8 +25,23 @@ class VIterable extends VNode implements Children {
   @override
   List<VNode> children;
 
-  VIterable([this.children]);
+  VIterable(Iterable<VNode> children, {dynamic key, bool vif}) {
+    this.children = children?.toList() ?? <VNode>[];
+    this.key = key;
+    this.vif = vif ?? true;
+  }
 
   @override
   VNodeTypes get vNodeType => VNodeTypes.iterable;
+
+  @override
+  Node get ref => children.first.ref;
+
+  Node get firstChild => children.isEmpty ? null : children.first.ref;
+
+  Node get lastChild => children.isEmpty ? null : children.last.ref;
+
+  Iterable<Node> get childNodes => children.map(_getRef);
+
+  Node _getRef(VNode node) => node.ref;
 }

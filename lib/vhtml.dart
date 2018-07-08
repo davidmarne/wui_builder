@@ -31,6 +31,12 @@ abstract class VHtmlElement<T extends HtmlElement> extends VElement<T> {
       final dynamic newValue = _setValuesHtmlElement[k];
       if (v != newValue) _updateAttributeHtmlElement(ele, k, newValue);
     });
+
+    _setValuesHtmlElement.forEach((k, dynamic v) {
+      if (prev._setValuesHtmlElement[k] == null)
+        _updateAttributeHtmlElement(ele, k, v);
+    });
+
     prev._setValuesHtmlElement = _setValuesHtmlElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -178,6 +184,12 @@ class VAnchorElement extends VHtmlElement<AnchorElement> {
       final dynamic newValue = _setValuesAnchorElement[k];
       if (v != newValue) _updateAttributeAnchorElement(ele, k, newValue);
     });
+
+    _setValuesAnchorElement.forEach((k, dynamic v) {
+      if (prev._setValuesAnchorElement[k] == null)
+        _updateAttributeAnchorElement(ele, k, v);
+    });
+
     prev._setValuesAnchorElement = _setValuesAnchorElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -372,6 +384,12 @@ class VAreaElement extends VHtmlElement<AreaElement> {
       final dynamic newValue = _setValuesAreaElement[k];
       if (v != newValue) _updateAttributeAreaElement(ele, k, newValue);
     });
+
+    _setValuesAreaElement.forEach((k, dynamic v) {
+      if (prev._setValuesAreaElement[k] == null)
+        _updateAttributeAreaElement(ele, k, v);
+    });
+
     prev._setValuesAreaElement = _setValuesAreaElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -478,6 +496,12 @@ class VBaseElement extends VHtmlElement<BaseElement> {
       final dynamic newValue = _setValuesBaseElement[k];
       if (v != newValue) _updateAttributeBaseElement(ele, k, newValue);
     });
+
+    _setValuesBaseElement.forEach((k, dynamic v) {
+      if (prev._setValuesBaseElement[k] == null)
+        _updateAttributeBaseElement(ele, k, v);
+    });
+
     prev._setValuesBaseElement = _setValuesBaseElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -591,6 +615,12 @@ class VButtonElement extends VHtmlElement<ButtonElement> {
       final dynamic newValue = _setValuesButtonElement[k];
       if (v != newValue) _updateAttributeButtonElement(ele, k, newValue);
     });
+
+    _setValuesButtonElement.forEach((k, dynamic v) {
+      if (prev._setValuesButtonElement[k] == null)
+        _updateAttributeButtonElement(ele, k, v);
+    });
+
     prev._setValuesButtonElement = _setValuesButtonElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -667,6 +697,12 @@ class VCanvasElement extends VHtmlElement<CanvasElement> {
       final dynamic newValue = _setValuesCanvasElement[k];
       if (v != newValue) _updateAttributeCanvasElement(ele, k, newValue);
     });
+
+    _setValuesCanvasElement.forEach((k, dynamic v) {
+      if (prev._setValuesCanvasElement[k] == null)
+        _updateAttributeCanvasElement(ele, k, v);
+    });
+
     prev._setValuesCanvasElement = _setValuesCanvasElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -713,6 +749,12 @@ class VContentElement extends VHtmlElement<ContentElement> {
       final dynamic newValue = _setValuesContentElement[k];
       if (v != newValue) _updateAttributeContentElement(ele, k, newValue);
     });
+
+    _setValuesContentElement.forEach((k, dynamic v) {
+      if (prev._setValuesContentElement[k] == null)
+        _updateAttributeContentElement(ele, k, v);
+    });
+
     prev._setValuesContentElement = _setValuesContentElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -758,6 +800,12 @@ abstract class VDataElement<T extends DataElement> extends VHtmlElement<T> {
       final dynamic newValue = _setValuesDataElement[k];
       if (v != newValue) _updateAttributeDataElement(ele, k, newValue);
     });
+
+    _setValuesDataElement.forEach((k, dynamic v) {
+      if (prev._setValuesDataElement[k] == null)
+        _updateAttributeDataElement(ele, k, v);
+    });
+
     prev._setValuesDataElement = _setValuesDataElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -805,6 +853,12 @@ class VDetailsElement extends VHtmlElement<DetailsElement> {
       final dynamic newValue = _setValuesDetailsElement[k];
       if (v != newValue) _updateAttributeDetailsElement(ele, k, newValue);
     });
+
+    _setValuesDetailsElement.forEach((k, dynamic v) {
+      if (prev._setValuesDetailsElement[k] == null)
+        _updateAttributeDetailsElement(ele, k, v);
+    });
+
     prev._setValuesDetailsElement = _setValuesDetailsElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -851,6 +905,12 @@ abstract class VDialogElement<T extends DialogElement> extends VHtmlElement<T> {
       final dynamic newValue = _setValuesDialogElement[k];
       if (v != newValue) _updateAttributeDialogElement(ele, k, newValue);
     });
+
+    _setValuesDialogElement.forEach((k, dynamic v) {
+      if (prev._setValuesDialogElement[k] == null)
+        _updateAttributeDialogElement(ele, k, v);
+    });
+
     prev._setValuesDialogElement = _setValuesDialogElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -929,6 +989,12 @@ class VEmbedElement extends VHtmlElement<EmbedElement> {
       final dynamic newValue = _setValuesEmbedElement[k];
       if (v != newValue) _updateAttributeEmbedElement(ele, k, newValue);
     });
+
+    _setValuesEmbedElement.forEach((k, dynamic v) {
+      if (prev._setValuesEmbedElement[k] == null)
+        _updateAttributeEmbedElement(ele, k, v);
+    });
+
     prev._setValuesEmbedElement = _setValuesEmbedElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -990,6 +1056,12 @@ class VFieldSetElement extends VHtmlElement<FieldSetElement> {
       final dynamic newValue = _setValuesFieldSetElement[k];
       if (v != newValue) _updateAttributeFieldSetElement(ele, k, newValue);
     });
+
+    _setValuesFieldSetElement.forEach((k, dynamic v) {
+      if (prev._setValuesFieldSetElement[k] == null)
+        _updateAttributeFieldSetElement(ele, k, v);
+    });
+
     prev._setValuesFieldSetElement = _setValuesFieldSetElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -1091,6 +1163,12 @@ class VFormElement extends VHtmlElement<FormElement> {
       final dynamic newValue = _setValuesFormElement[k];
       if (v != newValue) _updateAttributeFormElement(ele, k, newValue);
     });
+
+    _setValuesFormElement.forEach((k, dynamic v) {
+      if (prev._setValuesFormElement[k] == null)
+        _updateAttributeFormElement(ele, k, v);
+    });
+
     prev._setValuesFormElement = _setValuesFormElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -1156,6 +1234,12 @@ class VHRElement extends VHtmlElement<HRElement> {
       final dynamic newValue = _setValuesHRElement[k];
       if (v != newValue) _updateAttributeHRElement(ele, k, newValue);
     });
+
+    _setValuesHRElement.forEach((k, dynamic v) {
+      if (prev._setValuesHRElement[k] == null)
+        _updateAttributeHRElement(ele, k, v);
+    });
+
     prev._setValuesHRElement = _setValuesHRElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -1275,6 +1359,12 @@ class VIFrameElement extends VHtmlElement<IFrameElement> {
       final dynamic newValue = _setValuesIFrameElement[k];
       if (v != newValue) _updateAttributeIFrameElement(ele, k, newValue);
     });
+
+    _setValuesIFrameElement.forEach((k, dynamic v) {
+      if (prev._setValuesIFrameElement[k] == null)
+        _updateAttributeIFrameElement(ele, k, v);
+    });
+
     prev._setValuesIFrameElement = _setValuesIFrameElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -1410,6 +1500,12 @@ class VImageElement extends VHtmlElement<ImageElement> {
       final dynamic newValue = _setValuesImageElement[k];
       if (v != newValue) _updateAttributeImageElement(ele, k, newValue);
     });
+
+    _setValuesImageElement.forEach((k, dynamic v) {
+      if (prev._setValuesImageElement[k] == null)
+        _updateAttributeImageElement(ele, k, v);
+    });
+
     prev._setValuesImageElement = _setValuesImageElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -1762,6 +1858,12 @@ class VInputElement extends VHtmlElement<InputElement> {
       final dynamic newValue = _setValuesInputElement[k];
       if (v != newValue) _updateAttributeInputElement(ele, k, newValue);
     });
+
+    _setValuesInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesInputElement[k] == null)
+        _updateAttributeInputElement(ele, k, v);
+    });
+
     prev._setValuesInputElement = _setValuesInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -1961,6 +2063,12 @@ abstract class VInputElementBase<T extends InputElementBase>
       final dynamic newValue = _setValuesInputElementBase[k];
       if (v != newValue) _updateAttributeInputElementBase(ele, k, newValue);
     });
+
+    _setValuesInputElementBase.forEach((k, dynamic v) {
+      if (prev._setValuesInputElementBase[k] == null)
+        _updateAttributeInputElementBase(ele, k, v);
+    });
+
     prev._setValuesInputElementBase = _setValuesInputElementBase;
     super.updateElementAttributes(prev, ele);
   }
@@ -2097,6 +2205,12 @@ abstract class VTextInputElementBase<T extends TextInputElementBase>
       final dynamic newValue = _setValuesTextInputElementBase[k];
       if (v != newValue) _updateAttributeTextInputElementBase(ele, k, newValue);
     });
+
+    _setValuesTextInputElementBase.forEach((k, dynamic v) {
+      if (prev._setValuesTextInputElementBase[k] == null)
+        _updateAttributeTextInputElementBase(ele, k, v);
+    });
+
     prev._setValuesTextInputElementBase = _setValuesTextInputElementBase;
     super.updateElementAttributes(prev, ele);
   }
@@ -2169,6 +2283,12 @@ class VSearchInputElement extends VTextInputElementBase<SearchInputElement> {
       final dynamic newValue = _setValuesSearchInputElement[k];
       if (v != newValue) _updateAttributeSearchInputElement(ele, k, newValue);
     });
+
+    _setValuesSearchInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesSearchInputElement[k] == null)
+        _updateAttributeSearchInputElement(ele, k, v);
+    });
+
     prev._setValuesSearchInputElement = _setValuesSearchInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2212,6 +2332,12 @@ class VTextInputElement extends VTextInputElementBase<TextInputElement> {
       final dynamic newValue = _setValuesTextInputElement[k];
       if (v != newValue) _updateAttributeTextInputElement(ele, k, newValue);
     });
+
+    _setValuesTextInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesTextInputElement[k] == null)
+        _updateAttributeTextInputElement(ele, k, v);
+    });
+
     prev._setValuesTextInputElement = _setValuesTextInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2324,6 +2450,12 @@ class VEmailInputElement extends VTextInputElementBase<EmailInputElement> {
       final dynamic newValue = _setValuesEmailInputElement[k];
       if (v != newValue) _updateAttributeEmailInputElement(ele, k, newValue);
     });
+
+    _setValuesEmailInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesEmailInputElement[k] == null)
+        _updateAttributeEmailInputElement(ele, k, v);
+    });
+
     prev._setValuesEmailInputElement = _setValuesEmailInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2422,6 +2554,12 @@ abstract class VRangeInputElementBase<T extends RangeInputElementBase>
       if (v != newValue)
         _updateAttributeRangeInputElementBase(ele, k, newValue);
     });
+
+    _setValuesRangeInputElementBase.forEach((k, dynamic v) {
+      if (prev._setValuesRangeInputElementBase[k] == null)
+        _updateAttributeRangeInputElementBase(ele, k, v);
+    });
+
     prev._setValuesRangeInputElementBase = _setValuesRangeInputElementBase;
     super.updateElementAttributes(prev, ele);
   }
@@ -2489,6 +2627,12 @@ class VDateInputElement extends VRangeInputElementBase<DateInputElement> {
       final dynamic newValue = _setValuesDateInputElement[k];
       if (v != newValue) _updateAttributeDateInputElement(ele, k, newValue);
     });
+
+    _setValuesDateInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesDateInputElement[k] == null)
+        _updateAttributeDateInputElement(ele, k, v);
+    });
+
     prev._setValuesDateInputElement = _setValuesDateInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2553,6 +2697,12 @@ class VMonthInputElement extends VRangeInputElementBase<MonthInputElement> {
       final dynamic newValue = _setValuesMonthInputElement[k];
       if (v != newValue) _updateAttributeMonthInputElement(ele, k, newValue);
     });
+
+    _setValuesMonthInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesMonthInputElement[k] == null)
+        _updateAttributeMonthInputElement(ele, k, v);
+    });
+
     prev._setValuesMonthInputElement = _setValuesMonthInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2617,6 +2767,12 @@ class VWeekInputElement extends VRangeInputElementBase<WeekInputElement> {
       final dynamic newValue = _setValuesWeekInputElement[k];
       if (v != newValue) _updateAttributeWeekInputElement(ele, k, newValue);
     });
+
+    _setValuesWeekInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesWeekInputElement[k] == null)
+        _updateAttributeWeekInputElement(ele, k, v);
+    });
+
     prev._setValuesWeekInputElement = _setValuesWeekInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2681,6 +2837,12 @@ class VTimeInputElement extends VRangeInputElementBase<TimeInputElement> {
       final dynamic newValue = _setValuesTimeInputElement[k];
       if (v != newValue) _updateAttributeTimeInputElement(ele, k, newValue);
     });
+
+    _setValuesTimeInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesTimeInputElement[k] == null)
+        _updateAttributeTimeInputElement(ele, k, v);
+    });
+
     prev._setValuesTimeInputElement = _setValuesTimeInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2742,6 +2904,12 @@ class VLocalDateTimeInputElement
       if (v != newValue)
         _updateAttributeLocalDateTimeInputElement(ele, k, newValue);
     });
+
+    _setValuesLocalDateTimeInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesLocalDateTimeInputElement[k] == null)
+        _updateAttributeLocalDateTimeInputElement(ele, k, v);
+    });
+
     prev._setValuesLocalDateTimeInputElement =
         _setValuesLocalDateTimeInputElement;
     super.updateElementAttributes(prev, ele);
@@ -2805,6 +2973,12 @@ class VNumberInputElement extends VRangeInputElementBase<NumberInputElement> {
       final dynamic newValue = _setValuesNumberInputElement[k];
       if (v != newValue) _updateAttributeNumberInputElement(ele, k, newValue);
     });
+
+    _setValuesNumberInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesNumberInputElement[k] == null)
+        _updateAttributeNumberInputElement(ele, k, v);
+    });
+
     prev._setValuesNumberInputElement = _setValuesNumberInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2869,6 +3043,12 @@ class VCheckboxInputElement extends VInputElementBase<CheckboxInputElement> {
       final dynamic newValue = _setValuesCheckboxInputElement[k];
       if (v != newValue) _updateAttributeCheckboxInputElement(ele, k, newValue);
     });
+
+    _setValuesCheckboxInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesCheckboxInputElement[k] == null)
+        _updateAttributeCheckboxInputElement(ele, k, v);
+    });
+
     prev._setValuesCheckboxInputElement = _setValuesCheckboxInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -2928,6 +3108,12 @@ class VRadioButtonInputElement
       if (v != newValue)
         _updateAttributeRadioButtonInputElement(ele, k, newValue);
     });
+
+    _setValuesRadioButtonInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesRadioButtonInputElement[k] == null)
+        _updateAttributeRadioButtonInputElement(ele, k, v);
+    });
+
     prev._setValuesRadioButtonInputElement = _setValuesRadioButtonInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3004,6 +3190,12 @@ class VFileUploadInputElement
       if (v != newValue)
         _updateAttributeFileUploadInputElement(ele, k, newValue);
     });
+
+    _setValuesFileUploadInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesFileUploadInputElement[k] == null)
+        _updateAttributeFileUploadInputElement(ele, k, v);
+    });
+
     prev._setValuesFileUploadInputElement = _setValuesFileUploadInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3092,6 +3284,12 @@ class VSubmitButtonInputElement
       if (v != newValue)
         _updateAttributeSubmitButtonInputElement(ele, k, newValue);
     });
+
+    _setValuesSubmitButtonInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesSubmitButtonInputElement[k] == null)
+        _updateAttributeSubmitButtonInputElement(ele, k, v);
+    });
+
     prev._setValuesSubmitButtonInputElement =
         _setValuesSubmitButtonInputElement;
     super.updateElementAttributes(prev, ele);
@@ -3218,6 +3416,12 @@ class VImageButtonInputElement
       if (v != newValue)
         _updateAttributeImageButtonInputElement(ele, k, newValue);
     });
+
+    _setValuesImageButtonInputElement.forEach((k, dynamic v) {
+      if (prev._setValuesImageButtonInputElement[k] == null)
+        _updateAttributeImageButtonInputElement(ele, k, v);
+    });
+
     prev._setValuesImageButtonInputElement = _setValuesImageButtonInputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3295,6 +3499,12 @@ class VLIElement extends VHtmlElement<LIElement> {
       final dynamic newValue = _setValuesLIElement[k];
       if (v != newValue) _updateAttributeLIElement(ele, k, newValue);
     });
+
+    _setValuesLIElement.forEach((k, dynamic v) {
+      if (prev._setValuesLIElement[k] == null)
+        _updateAttributeLIElement(ele, k, v);
+    });
+
     prev._setValuesLIElement = _setValuesLIElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3337,6 +3547,12 @@ class VLabelElement extends VHtmlElement<LabelElement> {
       final dynamic newValue = _setValuesLabelElement[k];
       if (v != newValue) _updateAttributeLabelElement(ele, k, newValue);
     });
+
+    _setValuesLabelElement.forEach((k, dynamic v) {
+      if (prev._setValuesLabelElement[k] == null)
+        _updateAttributeLabelElement(ele, k, v);
+    });
+
     prev._setValuesLabelElement = _setValuesLabelElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3450,6 +3666,12 @@ class VLinkElement extends VHtmlElement<LinkElement> {
       final dynamic newValue = _setValuesLinkElement[k];
       if (v != newValue) _updateAttributeLinkElement(ele, k, newValue);
     });
+
+    _setValuesLinkElement.forEach((k, dynamic v) {
+      if (prev._setValuesLinkElement[k] == null)
+        _updateAttributeLinkElement(ele, k, v);
+    });
+
     prev._setValuesLinkElement = _setValuesLinkElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3521,6 +3743,12 @@ class VMapElement extends VHtmlElement<MapElement> {
       final dynamic newValue = _setValuesMapElement[k];
       if (v != newValue) _updateAttributeMapElement(ele, k, newValue);
     });
+
+    _setValuesMapElement.forEach((k, dynamic v) {
+      if (prev._setValuesMapElement[k] == null)
+        _updateAttributeMapElement(ele, k, v);
+    });
+
     prev._setValuesMapElement = _setValuesMapElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3648,6 +3876,12 @@ abstract class VMediaElement<T extends MediaElement> extends VHtmlElement<T> {
       final dynamic newValue = _setValuesMediaElement[k];
       if (v != newValue) _updateAttributeMediaElement(ele, k, newValue);
     });
+
+    _setValuesMediaElement.forEach((k, dynamic v) {
+      if (prev._setValuesMediaElement[k] == null)
+        _updateAttributeMediaElement(ele, k, v);
+    });
+
     prev._setValuesMediaElement = _setValuesMediaElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3747,6 +3981,12 @@ class VMetaElement extends VHtmlElement<MetaElement> {
       final dynamic newValue = _setValuesMetaElement[k];
       if (v != newValue) _updateAttributeMetaElement(ele, k, newValue);
     });
+
+    _setValuesMetaElement.forEach((k, dynamic v) {
+      if (prev._setValuesMetaElement[k] == null)
+        _updateAttributeMetaElement(ele, k, v);
+    });
+
     prev._setValuesMetaElement = _setValuesMetaElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3825,6 +4065,12 @@ class VMeterElement extends VHtmlElement<MeterElement> {
       final dynamic newValue = _setValuesMeterElement[k];
       if (v != newValue) _updateAttributeMeterElement(ele, k, newValue);
     });
+
+    _setValuesMeterElement.forEach((k, dynamic v) {
+      if (prev._setValuesMeterElement[k] == null)
+        _updateAttributeMeterElement(ele, k, v);
+    });
+
     prev._setValuesMeterElement = _setValuesMeterElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3885,6 +4131,12 @@ abstract class VModElement<T extends ModElement> extends VHtmlElement<T> {
       final dynamic newValue = _setValuesModElement[k];
       if (v != newValue) _updateAttributeModElement(ele, k, newValue);
     });
+
+    _setValuesModElement.forEach((k, dynamic v) {
+      if (prev._setValuesModElement[k] == null)
+        _updateAttributeModElement(ele, k, v);
+    });
+
     prev._setValuesModElement = _setValuesModElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -3943,6 +4195,12 @@ class VOListElement extends VHtmlElement<OListElement> {
       final dynamic newValue = _setValuesOListElement[k];
       if (v != newValue) _updateAttributeOListElement(ele, k, newValue);
     });
+
+    _setValuesOListElement.forEach((k, dynamic v) {
+      if (prev._setValuesOListElement[k] == null)
+        _updateAttributeOListElement(ele, k, v);
+    });
+
     prev._setValuesOListElement = _setValuesOListElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4026,6 +4284,12 @@ class VObjectElement extends VHtmlElement<ObjectElement> {
       final dynamic newValue = _setValuesObjectElement[k];
       if (v != newValue) _updateAttributeObjectElement(ele, k, newValue);
     });
+
+    _setValuesObjectElement.forEach((k, dynamic v) {
+      if (prev._setValuesObjectElement[k] == null)
+        _updateAttributeObjectElement(ele, k, v);
+    });
+
     prev._setValuesObjectElement = _setValuesObjectElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4091,6 +4355,12 @@ class VOptGroupElement extends VHtmlElement<OptGroupElement> {
       final dynamic newValue = _setValuesOptGroupElement[k];
       if (v != newValue) _updateAttributeOptGroupElement(ele, k, newValue);
     });
+
+    _setValuesOptGroupElement.forEach((k, dynamic v) {
+      if (prev._setValuesOptGroupElement[k] == null)
+        _updateAttributeOptGroupElement(ele, k, v);
+    });
+
     prev._setValuesOptGroupElement = _setValuesOptGroupElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4165,6 +4435,12 @@ class VOptionElement extends VHtmlElement<OptionElement> {
       final dynamic newValue = _setValuesOptionElement[k];
       if (v != newValue) _updateAttributeOptionElement(ele, k, newValue);
     });
+
+    _setValuesOptionElement.forEach((k, dynamic v) {
+      if (prev._setValuesOptionElement[k] == null)
+        _updateAttributeOptionElement(ele, k, v);
+    });
+
     prev._setValuesOptionElement = _setValuesOptionElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4234,6 +4510,12 @@ class VOutputElement extends VHtmlElement<OutputElement> {
       final dynamic newValue = _setValuesOutputElement[k];
       if (v != newValue) _updateAttributeOutputElement(ele, k, newValue);
     });
+
+    _setValuesOutputElement.forEach((k, dynamic v) {
+      if (prev._setValuesOutputElement[k] == null)
+        _updateAttributeOutputElement(ele, k, v);
+    });
+
     prev._setValuesOutputElement = _setValuesOutputElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4295,6 +4577,12 @@ class VParamElement extends VHtmlElement<ParamElement> {
       final dynamic newValue = _setValuesParamElement[k];
       if (v != newValue) _updateAttributeParamElement(ele, k, newValue);
     });
+
+    _setValuesParamElement.forEach((k, dynamic v) {
+      if (prev._setValuesParamElement[k] == null)
+        _updateAttributeParamElement(ele, k, v);
+    });
+
     prev._setValuesParamElement = _setValuesParamElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4354,6 +4642,12 @@ class VProgressElement extends VHtmlElement<ProgressElement> {
       final dynamic newValue = _setValuesProgressElement[k];
       if (v != newValue) _updateAttributeProgressElement(ele, k, newValue);
     });
+
+    _setValuesProgressElement.forEach((k, dynamic v) {
+      if (prev._setValuesProgressElement[k] == null)
+        _updateAttributeProgressElement(ele, k, v);
+    });
+
     prev._setValuesProgressElement = _setValuesProgressElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4400,6 +4694,12 @@ class VQuoteElement extends VHtmlElement<QuoteElement> {
       final dynamic newValue = _setValuesQuoteElement[k];
       if (v != newValue) _updateAttributeQuoteElement(ele, k, newValue);
     });
+
+    _setValuesQuoteElement.forEach((k, dynamic v) {
+      if (prev._setValuesQuoteElement[k] == null)
+        _updateAttributeQuoteElement(ele, k, v);
+    });
+
     prev._setValuesQuoteElement = _setValuesQuoteElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4491,6 +4791,12 @@ class VScriptElement extends VHtmlElement<ScriptElement> {
       final dynamic newValue = _setValuesScriptElement[k];
       if (v != newValue) _updateAttributeScriptElement(ele, k, newValue);
     });
+
+    _setValuesScriptElement.forEach((k, dynamic v) {
+      if (prev._setValuesScriptElement[k] == null)
+        _updateAttributeScriptElement(ele, k, v);
+    });
+
     prev._setValuesScriptElement = _setValuesScriptElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4610,6 +4916,12 @@ class VSelectElement extends VHtmlElement<SelectElement> {
       final dynamic newValue = _setValuesSelectElement[k];
       if (v != newValue) _updateAttributeSelectElement(ele, k, newValue);
     });
+
+    _setValuesSelectElement.forEach((k, dynamic v) {
+      if (prev._setValuesSelectElement[k] == null)
+        _updateAttributeSelectElement(ele, k, v);
+    });
+
     prev._setValuesSelectElement = _setValuesSelectElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4678,6 +4990,12 @@ abstract class VSlotElement<T extends SlotElement> extends VHtmlElement<T> {
       final dynamic newValue = _setValuesSlotElement[k];
       if (v != newValue) _updateAttributeSlotElement(ele, k, newValue);
     });
+
+    _setValuesSlotElement.forEach((k, dynamic v) {
+      if (prev._setValuesSlotElement[k] == null)
+        _updateAttributeSlotElement(ele, k, v);
+    });
+
     prev._setValuesSlotElement = _setValuesSlotElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4748,6 +5066,12 @@ class VSourceElement extends VHtmlElement<SourceElement> {
       final dynamic newValue = _setValuesSourceElement[k];
       if (v != newValue) _updateAttributeSourceElement(ele, k, newValue);
     });
+
+    _setValuesSourceElement.forEach((k, dynamic v) {
+      if (prev._setValuesSourceElement[k] == null)
+        _updateAttributeSourceElement(ele, k, v);
+    });
+
     prev._setValuesSourceElement = _setValuesSourceElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4822,6 +5146,12 @@ class VStyleElement extends VHtmlElement<StyleElement> {
       final dynamic newValue = _setValuesStyleElement[k];
       if (v != newValue) _updateAttributeStyleElement(ele, k, newValue);
     });
+
+    _setValuesStyleElement.forEach((k, dynamic v) {
+      if (prev._setValuesStyleElement[k] == null)
+        _updateAttributeStyleElement(ele, k, v);
+    });
+
     prev._setValuesStyleElement = _setValuesStyleElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4889,6 +5219,12 @@ class VTableCellElement extends VHtmlElement<TableCellElement> {
       final dynamic newValue = _setValuesTableCellElement[k];
       if (v != newValue) _updateAttributeTableCellElement(ele, k, newValue);
     });
+
+    _setValuesTableCellElement.forEach((k, dynamic v) {
+      if (prev._setValuesTableCellElement[k] == null)
+        _updateAttributeTableCellElement(ele, k, v);
+    });
+
     prev._setValuesTableCellElement = _setValuesTableCellElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4938,6 +5274,12 @@ class VTableColElement extends VHtmlElement<TableColElement> {
       final dynamic newValue = _setValuesTableColElement[k];
       if (v != newValue) _updateAttributeTableColElement(ele, k, newValue);
     });
+
+    _setValuesTableColElement.forEach((k, dynamic v) {
+      if (prev._setValuesTableColElement[k] == null)
+        _updateAttributeTableColElement(ele, k, v);
+    });
+
     prev._setValuesTableColElement = _setValuesTableColElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -4996,6 +5338,12 @@ class VTableElement extends VHtmlElement<TableElement> {
       final dynamic newValue = _setValuesTableElement[k];
       if (v != newValue) _updateAttributeTableElement(ele, k, newValue);
     });
+
+    _setValuesTableElement.forEach((k, dynamic v) {
+      if (prev._setValuesTableElement[k] == null)
+        _updateAttributeTableElement(ele, k, v);
+    });
+
     prev._setValuesTableElement = _setValuesTableElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -5178,6 +5526,12 @@ class VTextAreaElement extends VHtmlElement<TextAreaElement> {
       final dynamic newValue = _setValuesTextAreaElement[k];
       if (v != newValue) _updateAttributeTextAreaElement(ele, k, newValue);
     });
+
+    _setValuesTextAreaElement.forEach((k, dynamic v) {
+      if (prev._setValuesTextAreaElement[k] == null)
+        _updateAttributeTextAreaElement(ele, k, v);
+    });
+
     prev._setValuesTextAreaElement = _setValuesTextAreaElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -5269,6 +5623,12 @@ abstract class VTimeElement<T extends TimeElement> extends VHtmlElement<T> {
       final dynamic newValue = _setValuesTimeElement[k];
       if (v != newValue) _updateAttributeTimeElement(ele, k, newValue);
     });
+
+    _setValuesTimeElement.forEach((k, dynamic v) {
+      if (prev._setValuesTimeElement[k] == null)
+        _updateAttributeTimeElement(ele, k, v);
+    });
+
     prev._setValuesTimeElement = _setValuesTimeElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -5343,6 +5703,12 @@ class VTrackElement extends VHtmlElement<TrackElement> {
       final dynamic newValue = _setValuesTrackElement[k];
       if (v != newValue) _updateAttributeTrackElement(ele, k, newValue);
     });
+
+    _setValuesTrackElement.forEach((k, dynamic v) {
+      if (prev._setValuesTrackElement[k] == null)
+        _updateAttributeTrackElement(ele, k, v);
+    });
+
     prev._setValuesTrackElement = _setValuesTrackElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -5417,6 +5783,12 @@ class VVideoElement extends VMediaElement<VideoElement> {
       final dynamic newValue = _setValuesVideoElement[k];
       if (v != newValue) _updateAttributeVideoElement(ele, k, newValue);
     });
+
+    _setValuesVideoElement.forEach((k, dynamic v) {
+      if (prev._setValuesVideoElement[k] == null)
+        _updateAttributeVideoElement(ele, k, v);
+    });
+
     prev._setValuesVideoElement = _setValuesVideoElement;
     super.updateElementAttributes(prev, ele);
   }

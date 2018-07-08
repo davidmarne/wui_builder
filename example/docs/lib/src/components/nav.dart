@@ -10,35 +10,35 @@ class Nav extends PComponent<NavProps> {
   Nav(NavProps props) : super(props);
 
   @override
-  VNode render() => new Vnav()
+  VNode render() => Vnav()
     ..className = 'navbar has-shadow'
     ..children = [
-      new VDivElement()
+      VDivElement()
         ..className = 'navbar-brand'
         ..children = [
-          new VAnchorElement()
+          VAnchorElement()
             ..className = 'navbar-item'
             ..href = 'https://github.com/davidmarne/wui_builder'
             ..children = [
-              new Vspan()..text = 'wui_builder',
+              Vspan()..text = 'wui_builder',
               githubIcon(),
             ]
         ],
-      new VDivElement()
+      VDivElement()
         ..className = 'navbar-end'
         ..children = [
-          new VDivElement()
+          VDivElement()
             ..className = 'navbar-item'
             ..text = version,
         ],
     ];
 
-  VNode githubIcon() => new Va()
+  VNode githubIcon() => Va()
     ..className = 'level-item'
     ..children = [
-      new Vspan()
+      Vspan()
         ..className = 'icon is-small'
-        ..styleBuilder = (new StyleBuilder()..paddingLeft = '5px')
-        ..children = [new Vi()..className = 'fa fa-github']
+        ..styleBuilder = (StyleBuilder()..paddingLeft = '5px')
+        ..children = [Vi()..className = 'fa fa-github']
     ];
 }

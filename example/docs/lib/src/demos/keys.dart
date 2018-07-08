@@ -11,18 +11,18 @@ import 'package:wui_builder/components.dart';
 // a state value.
 class KeysExample extends NComponent {
   @override
-  VNode render() => new Vdiv()
+  VNode render() => Vdiv()
     ..className = 'columns'
     ..children = [
-      new Vdiv()
+      Vdiv()
         ..className = 'column'
         ..children = [
-          new ReorderableList(true),
+          ReorderableList(true),
         ],
-      new Vdiv()
+      Vdiv()
         ..className = 'column'
         ..children = [
-          new ReorderableList(false),
+          ReorderableList(false),
         ],
     ];
 }
@@ -36,12 +36,12 @@ class ReorderableList extends Component<bool, ReorderableListState> {
   ReorderableList(bool isKeyed) : super(isKeyed);
 
   @override
-  ReorderableListState getInitialState() => new ReorderableListState()
+  ReorderableListState getInitialState() => ReorderableListState()
     ..items = ['foo', 'bar', 'baz']
     ..selected = 'foo';
 
   @override
-  VNode render() => new Vnav()
+  VNode render() => Vnav()
     ..className = 'panel'
     ..children = _panelItems();
 
@@ -52,25 +52,25 @@ class ReorderableList extends Component<bool, ReorderableListState> {
         _controls(),
       ]..addAll(_items());
 
-  VNode _heading() => new Vp()
+  VNode _heading() => Vp()
     ..className = 'panel-heading'
     ..text = _isKeyed ? 'Keyed' : 'Not Keyed';
 
-  VNode _controls() => new Vp()
+  VNode _controls() => Vp()
     ..className = 'panel-tabs'
     ..children = [
-      new Va()
+      Va()
         ..onClick = _onMoveUp
         ..text = 'Move Up',
-      new Va()
+      Va()
         ..onClick = _onMoveDown
         ..text = 'Move Down',
     ];
 
   Iterable<VNode> _items() => state.items.map(
-        (item) => new ReorderableListItem(
+        (item) => ReorderableListItem(
             _isKeyed ? item : null, // give it a non-null key if props is true
-            new ReorderableListItemProps()
+            ReorderableListItemProps()
               ..isSelected = item == state.selected
               ..item = item
               ..onSelect = _onSelect),
@@ -85,7 +85,7 @@ class ReorderableList extends Component<bool, ReorderableListState> {
   }
 
   void _onSelect(String item) {
-    setState((_, prevState) => new ReorderableListState()
+    setState((_, prevState) => ReorderableListState()
       ..selected = item
       ..items = prevState.items);
   }
@@ -96,7 +96,7 @@ class ReorderableList extends Component<bool, ReorderableListState> {
     final newList = prevState.items.toList();
     newList[selectedIndex] = newList[selectedIndex - 1];
     newList[selectedIndex - 1] = prevState.selected;
-    return new ReorderableListState()
+    return ReorderableListState()
       ..selected = prevState.selected
       ..items = newList;
   }
@@ -107,7 +107,7 @@ class ReorderableList extends Component<bool, ReorderableListState> {
     final newList = prevState.items.toList();
     newList[selectedIndex] = newList[selectedIndex + 1];
     newList[selectedIndex + 1] = prevState.selected;
-    return new ReorderableListState()
+    return ReorderableListState()
       ..selected = prevState.selected
       ..items = newList;
   }
@@ -129,12 +129,12 @@ class ReorderableListItem extends Component<ReorderableListItemProps, int> {
   int getInitialState() => 0;
 
   @override
-  VNode render() => new Va()
+  VNode render() => Va()
     ..className = 'panel-block ${props.isSelected ? "is-active" : ""}'
     ..onClick = _onItemSelect
     ..children = [
-      new Vspan()..text = 'props: ${props.item}, state: $state',
-      new Va()
+      Vspan()..text = 'props: ${props.item}, state: $state',
+      Va()
         ..className = 'button'
         ..text = 'increment state'
         ..onClick = _increment,

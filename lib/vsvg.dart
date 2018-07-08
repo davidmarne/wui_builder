@@ -226,6 +226,12 @@ class VImageElement extends VGraphicsElement<ImageElement> {
       final dynamic newValue = _setValuesImageElement[k];
       if (v != newValue) _updateAttributeImageElement(ele, k, newValue);
     });
+
+    _setValuesImageElement.forEach((k, dynamic v) {
+      if (prev._setValuesImageElement[k] == null)
+        _updateAttributeImageElement(ele, k, v);
+    });
+
     prev._setValuesImageElement = _setValuesImageElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -321,6 +327,12 @@ class VScriptElement extends VSvgElement<ScriptElement> {
       final dynamic newValue = _setValuesScriptElement[k];
       if (v != newValue) _updateAttributeScriptElement(ele, k, newValue);
     });
+
+    _setValuesScriptElement.forEach((k, dynamic v) {
+      if (prev._setValuesScriptElement[k] == null)
+        _updateAttributeScriptElement(ele, k, v);
+    });
+
     prev._setValuesScriptElement = _setValuesScriptElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -388,6 +400,12 @@ class VStyleElement extends VSvgElement<StyleElement> {
       final dynamic newValue = _setValuesStyleElement[k];
       if (v != newValue) _updateAttributeStyleElement(ele, k, newValue);
     });
+
+    _setValuesStyleElement.forEach((k, dynamic v) {
+      if (prev._setValuesStyleElement[k] == null)
+        _updateAttributeStyleElement(ele, k, v);
+    });
+
     prev._setValuesStyleElement = _setValuesStyleElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -439,6 +457,12 @@ abstract class VSvgElement<T extends SvgElement> extends VElement<T> {
       final dynamic newValue = _setValuesSvgElement[k];
       if (v != newValue) _updateAttributeSvgElement(ele, k, newValue);
     });
+
+    _setValuesSvgElement.forEach((k, dynamic v) {
+      if (prev._setValuesSvgElement[k] == null)
+        _updateAttributeSvgElement(ele, k, v);
+    });
+
     prev._setValuesSvgElement = _setValuesSvgElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -491,6 +515,12 @@ class VSvgSvgElement extends VGraphicsElement<SvgSvgElement> {
       final dynamic newValue = _setValuesSvgSvgElement[k];
       if (v != newValue) _updateAttributeSvgSvgElement(ele, k, newValue);
     });
+
+    _setValuesSvgSvgElement.forEach((k, dynamic v) {
+      if (prev._setValuesSvgSvgElement[k] == null)
+        _updateAttributeSvgSvgElement(ele, k, v);
+    });
+
     prev._setValuesSvgSvgElement = _setValuesSvgSvgElement;
     super.updateElementAttributes(prev, ele);
   }
@@ -576,6 +606,12 @@ class VViewElement extends VSvgElement<ViewElement> {
       final dynamic newValue = _setValuesViewElement[k];
       if (v != newValue) _updateAttributeViewElement(ele, k, newValue);
     });
+
+    _setValuesViewElement.forEach((k, dynamic v) {
+      if (prev._setValuesViewElement[k] == null)
+        _updateAttributeViewElement(ele, k, v);
+    });
+
     prev._setValuesViewElement = _setValuesViewElement;
     super.updateElementAttributes(prev, ele);
   }

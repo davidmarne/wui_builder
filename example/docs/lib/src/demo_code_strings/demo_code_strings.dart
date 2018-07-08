@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-const version = '0.4.1';
+const version = '0.6.0';
 
 const keys = r'''
 import 'dart:html';
@@ -16,18 +16,18 @@ import 'package:wui_builder/components.dart';
 // a state value.
 class KeysExample extends NComponent {
   @override
-  VNode render() => new Vdiv()
+  VNode render() => Vdiv()
     ..className = 'columns'
     ..children = [
-      new Vdiv()
+      Vdiv()
         ..className = 'column'
         ..children = [
-          new ReorderableList(true),
+          ReorderableList(true),
         ],
-      new Vdiv()
+      Vdiv()
         ..className = 'column'
         ..children = [
-          new ReorderableList(false),
+          ReorderableList(false),
         ],
     ];
 }
@@ -41,12 +41,12 @@ class ReorderableList extends Component<bool, ReorderableListState> {
   ReorderableList(bool isKeyed) : super(isKeyed);
 
   @override
-  ReorderableListState getInitialState() => new ReorderableListState()
+  ReorderableListState getInitialState() => ReorderableListState()
     ..items = ['foo', 'bar', 'baz']
     ..selected = 'foo';
 
   @override
-  VNode render() => new Vnav()
+  VNode render() => Vnav()
     ..className = 'panel'
     ..children = _panelItems();
 
@@ -57,25 +57,25 @@ class ReorderableList extends Component<bool, ReorderableListState> {
         _controls(),
       ]..addAll(_items());
 
-  VNode _heading() => new Vp()
+  VNode _heading() => Vp()
     ..className = 'panel-heading'
     ..text = _isKeyed ? 'Keyed' : 'Not Keyed';
 
-  VNode _controls() => new Vp()
+  VNode _controls() => Vp()
     ..className = 'panel-tabs'
     ..children = [
-      new Va()
+      Va()
         ..onClick = _onMoveUp
         ..text = 'Move Up',
-      new Va()
+      Va()
         ..onClick = _onMoveDown
         ..text = 'Move Down',
     ];
 
   Iterable<VNode> _items() => state.items.map(
-        (item) => new ReorderableListItem(
+        (item) => ReorderableListItem(
             _isKeyed ? item : null, // give it a non-null key if props is true
-            new ReorderableListItemProps()
+            ReorderableListItemProps()
               ..isSelected = item == state.selected
               ..item = item
               ..onSelect = _onSelect),
@@ -90,7 +90,7 @@ class ReorderableList extends Component<bool, ReorderableListState> {
   }
 
   void _onSelect(String item) {
-    setState((_, prevState) => new ReorderableListState()
+    setState((_, prevState) => ReorderableListState()
       ..selected = item
       ..items = prevState.items);
   }
@@ -101,7 +101,7 @@ class ReorderableList extends Component<bool, ReorderableListState> {
     final newList = prevState.items.toList();
     newList[selectedIndex] = newList[selectedIndex - 1];
     newList[selectedIndex - 1] = prevState.selected;
-    return new ReorderableListState()
+    return ReorderableListState()
       ..selected = prevState.selected
       ..items = newList;
   }
@@ -112,7 +112,7 @@ class ReorderableList extends Component<bool, ReorderableListState> {
     final newList = prevState.items.toList();
     newList[selectedIndex] = newList[selectedIndex + 1];
     newList[selectedIndex + 1] = prevState.selected;
-    return new ReorderableListState()
+    return ReorderableListState()
       ..selected = prevState.selected
       ..items = newList;
   }
@@ -134,12 +134,12 @@ class ReorderableListItem extends Component<ReorderableListItemProps, int> {
   int getInitialState() => 0;
 
   @override
-  VNode render() => new Va()
+  VNode render() => Va()
     ..className = 'panel-block ${props.isSelected ? "is-active" : ""}'
     ..onClick = _onItemSelect
     ..children = [
-      new Vspan()..text = 'props: ${props.item}, state: $state',
-      new Va()
+      Vspan()..text = 'props: ${props.item}, state: $state',
+      Va()
         ..className = 'button'
         ..text = 'increment state'
         ..onClick = _increment,
@@ -168,47 +168,48 @@ import 'package:wui_builder/wui_builder.dart';
 
 // tweet is a function that returns a VNode that renders
 // a bulma media object
-VNode tweet() => new Varticle()
+VNode tweet() => Varticle()
   ..className = 'media'
   ..children = [
-    trumpDumbFace(),
+    avatar(),
     tweetBody(),
   ];
 
-VNode trumpDumbFace() => new Vfigure()
+VNode avatar() => Vfigure()
   ..className = 'media-left'
   ..children = [
-    new Vp()
+    Vp()
       ..className = 'image is-64x64'
       ..children = [
-        new VImageElement()
+        VImageElement()
           ..src =
-              'http://dqyfp485dhq1yoa92v2k6m13.wpengine.netdna-cdn.com/wp-content/uploads/2015/11/when-he-said-that-it-was-all-very-strange-500x376.png'
+              'https://pbs.twimg.com/profile_images/585565077207678977/N_eNSBXi_400x400.jpg'
       ]
   ];
 
-VNode tweetBody() => new Vdiv()
+VNode tweetBody() => Vdiv()
   ..className = 'media-content'
   ..children = [
     tweetContent(),
     tweetIcons(),
   ];
 
-VNode tweetContent() => new Vdiv()
+VNode tweetContent() => Vdiv()
   ..className = 'content'
   ..children = [
-    new Vp()
+    Vp()
       ..children = [
-        new Vstrong()..text = 'Donald J. Trump',
-        new Vsmall()..text = ' @realDonaldTrump',
-        new Vdiv()..text = 'Despite the constant negative press covfefe'
+        Vstrong()..text = 'KANYE WEST',
+        Vsmall()..text = ' @kanyewest',
+        Vdiv()
+          ..text = 'I\'m not even gon lie to you. I love me so much right now'
       ]
   ];
 
-VNode tweetIcons() => new Vnav()
+VNode tweetIcons() => Vnav()
   ..className = 'level is-mobile'
   ..children = [
-    new Vdiv()
+    Vdiv()
       ..className = 'level-left'
       ..children = [
         tweetIcon('reply'),
@@ -217,12 +218,12 @@ VNode tweetIcons() => new Vnav()
       ]
   ];
 
-VNode tweetIcon(String icon) => new Va()
+VNode tweetIcon(String icon) => Va()
   ..className = 'level-item'
   ..children = [
-    new Vspan()
+    Vspan()
       ..className = 'icon is-small'
-      ..children = [new Vi()..className = 'fa fa-$icon']
+      ..children = [Vi()..className = 'fa fa-$icon']
   ];
 
 ''';
@@ -246,11 +247,10 @@ class StateExample extends SComponent<StateExampleState> {
   // getInitialState is overriden to set the initial
   // click count to 0
   @override
-  StateExampleState getInitialState() =>
-      new StateExampleState()..clickCount = 0;
+  StateExampleState getInitialState() => StateExampleState()..clickCount = 0;
 
   @override
-  VNode render() => new VButtonElement()
+  VNode render() => VButtonElement()
     ..text = 'Hello World x${state.clickCount}!'
     ..onClick = _onClick;
 
@@ -258,7 +258,7 @@ class StateExample extends SComponent<StateExampleState> {
   // state.clickCount when the button is clicked
   void _onClick(MouseEvent e) {
     setState((nextProps, prevState) =>
-        new StateExampleState()..clickCount = prevState.clickCount + 1);
+        StateExampleState()..clickCount = prevState.clickCount + 1);
   }
 }
 
@@ -291,19 +291,19 @@ class ImmutabilityExample extends SComponent<ChildProps> {
   // getInitialState is overriden to set the initial
   // click count to 0
   @override
-  ChildProps getInitialState() => new ChildProps()..clickCount = 0;
+  ChildProps getInitialState() => ChildProps()..clickCount = 0;
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..children = [
-      new VButtonElement()
+      VButtonElement()
         ..text = 'Immutable Update'
         ..onClick = _immutableUpdate,
-      new VButtonElement()
+      VButtonElement()
         ..text = 'Mutable Update'
         ..onClick = _mutableUpdate,
-      new VDivElement()..text = 'ChildProps.clickCount ${state.clickCount}',
-      new Child(state), // wrap the child with the pure hoc
+      VDivElement()..text = 'ChildProps.clickCount ${state.clickCount}',
+      Child(state), // wrap the child with the pure hoc
     ];
 
   // _immutableUpdate creates a new instance of ChildProps. This
@@ -311,7 +311,7 @@ class ImmutabilityExample extends SComponent<ChildProps> {
   // to the child to change after this update
   void _immutableUpdate(MouseEvent e) {
     setState((nextProps, prevState) =>
-        new ChildProps()..clickCount = prevState.clickCount + 1);
+        ChildProps()..clickCount = prevState.clickCount + 1);
   }
 
   // _mutableUpdate mutates the current state object. This
@@ -334,12 +334,71 @@ class Child extends PComponent<ChildProps> {
 
   @override
   VNode render() =>
-      new VDivElement()..text = 'props.clickCount: ${props.clickCount}';
+      VDivElement()..text = 'props.clickCount: ${props.clickCount}';
+}
+
+''';
+
+const vif_example = r'''
+import 'dart:async';
+import 'dart:html';
+
+import 'package:wui_builder/components.dart';
+import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/wui_builder.dart';
+
+enum LoadingState {
+  loggedOut,
+  loggingIn,
+  loggedIn,
+  loggingOut,
+}
+
+class VifExample extends SComponent<LoadingState> {
+  @override
+  LoadingState getInitialState() => LoadingState.loggedOut;
+
+  @override
+  VNode render() => Vdiv()
+    ..children = [
+      VButtonElement()
+        ..vif = state == LoadingState.loggedOut
+        ..onClick = _onLogIn
+        ..text = 'log in',
+      VButtonElement()
+        ..vif = state == LoadingState.loggingIn
+        ..disabled = true
+        ..text = 'logging in',
+      VButtonElement()
+        ..vif = state == LoadingState.loggedIn
+        ..onClick = _onLogOut
+        ..text = 'log out',
+      VButtonElement()
+        ..vif = state == LoadingState.loggingOut
+        ..disabled = true
+        ..text = 'logging out',
+    ];
+
+  void _onLogIn(MouseEvent e) {
+    setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggingIn);
+    Future<Null>.delayed(const Duration(seconds: 2), () {
+      setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggedIn);
+    });
+  }
+
+  void _onLogOut(MouseEvent e) {
+    setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggingOut);
+    Future<Null>.delayed(const Duration(seconds: 2), () {
+      setStateOnAnimationFrame(
+          (nextProps, prevState) => LoadingState.loggedOut);
+    });
+  }
 }
 
 ''';
 
 const context = r'''
+import 'package:meta/meta.dart';
 import 'package:wui_builder/components.dart';
 import 'package:wui_builder/vhtml.dart';
 import 'package:wui_builder/wui_builder.dart';
@@ -362,22 +421,20 @@ class ContextParent extends NComponent {
   // adds the theme to context when the component is created
   @override
   Map<String, dynamic> getChildContext() => <String, dynamic>{
-        themeContextKey: new Theme()..color = 'purple',
+        themeContextKey: Theme()..color = 'purple',
       };
 
   @override
-  VNode render() => new ContextChild(new ContextChildProps()
-    ..message = 'Hello World! What color will i be? Let me check the context.');
-}
-
-class ContextChildProps {
-  String message;
+  VNode render() => ContextChild(
+      message: 'Hello World! What color will i be? Let me check the context.');
 }
 
 // ContextChild reads the theme from context and used
 // it to render the background color of the text.
-class ContextChild extends PCComponent<ContextChildProps, Theme> {
-  ContextChild(ContextChildProps props) : super(props);
+class ContextChild extends PCComponent<String, Theme> {
+  ContextChild({
+    @required String message,
+  }) : super(message);
 
   // A method inherited from PCComponent -> CComponent
   // that declares the context key to use to look up Theme
@@ -385,9 +442,28 @@ class ContextChild extends PCComponent<ContextChildProps, Theme> {
   String get contextKey => themeContextKey;
 
   @override
-  VNode render() => new VDivElement()
-    ..text = props.message
-    ..styleBuilder = (new StyleBuilder()..color = contextValue.color);
+  VNode render() => VDivElement()
+    ..text = props
+    ..styleBuilder = (StyleBuilder()..color = contextValue.color);
+}
+
+''';
+
+const viterable_example = r'''
+import 'package:wui_builder/components.dart';
+import 'package:wui_builder/vhtml.dart';
+import 'package:wui_builder/wui_builder.dart';
+
+// VIterable can be used to return a list of VNodes
+// from a render function
+class VIterableExample extends NComponent {
+  @override
+  VNode render() => VIterable([
+        Vdiv()..text = 'a',
+        Vdiv()..text = 'b',
+        Vdiv()..text = 'c',
+        Vdiv()..text = 'd',
+      ]);
 }
 
 ''';
@@ -414,13 +490,13 @@ class AnimationFrame extends SComponent<int> {
       };
 
   @override
-  VNode render() => new VSvgSvgElement()
+  VNode render() => VSvgSvgElement()
     ..attributes = {
       'height': '1000',
       'width': '1000',
     }
     ..children = [
-      new VCircleElement()
+      VCircleElement()
         ..attributes = {
           'cx': '$_cx',
           'cy': '$_cy',
@@ -431,7 +507,7 @@ class AnimationFrame extends SComponent<int> {
         },
     ];
 
-  double _toRadians(int degree) => degree.toDouble() * PI / 180.0;
+  double _toRadians(int degree) => degree.toDouble() * pi / 180.0;
   double get _cy => (sin(_toRadians(state)) * 400) + 500;
   double get _cx => (cos(_toRadians(state)) * 400) + 500;
 }
@@ -472,27 +548,29 @@ class HOCExample extends SComponent<ChildProps> {
   // getInitialState is overriden to set the initial
   // click count to 0
   @override
-  ChildProps getInitialState() => new ChildProps()..clickCount = 0;
+  ChildProps getInitialState() => ChildProps()..clickCount = 0;
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..children = [
-      new VButtonElement()
+      VButtonElement()
         ..text = 'Immutable Update'
         ..onClick = _immutableUpdate,
-      new VButtonElement()
+      VButtonElement()
         ..text = 'Mutable Update'
         ..onClick = _mutableUpdate,
-      new VDivElement()..text = 'ChildProps.clickCount ${state.clickCount}',
-      new PureHOC(new Child(state)), // wrap the child with the pure hoc
+      VDivElement()..text = 'ChildProps.clickCount ${state.clickCount}',
+      PureHOC(
+        Child(state),
+      ), // wrap the child with the pure hoc
     ];
 
-  // _immutableUpdate creates a new instance of ChildProps. This
+  // _immutableUpdate creates a instance of ChildProps. This
   // will cause the identity of the props object sent
   // to the child to change after this update
   void _immutableUpdate(MouseEvent e) {
     setState((nextProps, prevState) =>
-        new ChildProps()..clickCount = prevState.clickCount + 1);
+        ChildProps()..clickCount = prevState.clickCount + 1);
   }
 
   // _mutableUpdate mutates the current state object. This
@@ -512,7 +590,7 @@ class Child extends PComponent<ChildProps> {
 
   @override
   VNode render() =>
-      new VDivElement()..text = 'props.clickCount: ${props.clickCount}';
+      VDivElement()..text = 'props.clickCount: ${props.clickCount}';
 }
 
 ''';
@@ -538,14 +616,13 @@ class VirtualScrollState {
 
 class VirtualScroll extends SComponent<VirtualScrollState> {
   @override
-  VirtualScrollState getInitialState() =>
-      new VirtualScrollState()..chunkTop = 0;
+  VirtualScrollState getInitialState() => VirtualScrollState()..chunkTop = 0;
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..onScroll = _onScroll
     ..children = _items
-    ..styleBuilder = (new StyleBuilder()
+    ..styleBuilder = (StyleBuilder()
       ..height = '${containerHeight}px'
       ..width = '${containerWidth}px'
       ..overflow = 'auto'
@@ -553,16 +630,16 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
 
   Iterable<VDivElement> get _items {
     final chunkStartIndex = state.chunkTop ~/ itemHeight;
-    return new List<VDivElement>.generate(
+    return List<VDivElement>.generate(
       itemsPerChunk,
-      (i) => new VDivElement()
+      (i) => VDivElement()
         ..styleBuilder = _itemStyleBuilder(i + chunkStartIndex)
         ..text = 'item ${i + chunkStartIndex}',
     )..insert(0, _scrollCapture());
   }
 
-  VDivElement _scrollCapture() => new VDivElement()
-    ..styleBuilder = (new StyleBuilder()
+  VDivElement _scrollCapture() => VDivElement()
+    ..styleBuilder = (StyleBuilder()
       ..position = 'absolute'
       ..top = '0px'
       ..opacity = '0'
@@ -571,17 +648,19 @@ class VirtualScroll extends SComponent<VirtualScrollState> {
       ..maxHeight = '${containerVirtualHeight}px'
       ..height = '${containerVirtualHeight}px');
 
-  StyleBuilder _itemStyleBuilder(int index) => new StyleBuilder()
+  StyleBuilder _itemStyleBuilder(int index) => StyleBuilder()
     ..height = '${itemHeight}px'
     ..width = '${itemWidth}px'
     ..position = 'absolute'
     ..top = '${index * itemHeight}px';
 
   void _onScroll(Event e) {
-    final chunkTop = ref.scrollTop - (ref.scrollTop % containerHeight);
+    final refElement = ref as Element;
+    final chunkTop =
+        refElement.scrollTop - (refElement.scrollTop % containerHeight);
     if (state.chunkTop != chunkTop)
-      setStateOnAnimationFrame((nextProps, prevState) =>
-          new VirtualScrollState()..chunkTop = chunkTop);
+      setStateOnAnimationFrame(
+          (nextProps, prevState) => VirtualScrollState()..chunkTop = chunkTop);
   }
 }
 
@@ -604,10 +683,10 @@ class PropsExampleProps {
 // Hello world is a component that simply renders
 // the message property from its props object into a div
 class PropsExample extends PComponent<PropsExampleProps> {
-  PropsExample(String message) : super(new PropsExampleProps(message));
+  PropsExample(String message) : super(PropsExampleProps(message));
 
   @override
-  VNode render() => new VDivElement()..text = props.message;
+  VNode render() => VDivElement()..text = props.message;
 }
 
 ''';
@@ -630,15 +709,15 @@ import 'package:wui_builder/components.dart';
 // TransformContainer manages updating the css transform
 class TransformContainer extends SComponent<int> {
   final int start;
-  TransformContainer() : start = new DateTime.now().millisecondsSinceEpoch;
+  TransformContainer() : start = DateTime.now().millisecondsSinceEpoch;
 
   @override
-  int getInitialState() => new DateTime.now().millisecondsSinceEpoch;
+  int getInitialState() => DateTime.now().millisecondsSinceEpoch;
 
   @override
   BeforeAnimationFrame get beforeAnimationFrame => () {
         setStateOnAnimationFrame(
-            (_, s) => new DateTime.now().millisecondsSinceEpoch - start);
+            (_, s) => DateTime.now().millisecondsSinceEpoch - start);
       };
 
   StyleBuilder _styleBuilder() {
@@ -646,7 +725,7 @@ class TransformContainer extends SComponent<int> {
     final scale = 1 + (t > 5 ? 10 - t : t) / 10;
     final transform = 'scaleX(${scale / 2.1}) scaleY(0.7) translateZ(0.1px)';
 
-    return new StyleBuilder()
+    return StyleBuilder()
       ..transform = transform
       ..position = 'absolute'
       ..transformOrigin = '0 0'
@@ -661,13 +740,13 @@ class TransformContainer extends SComponent<int> {
   // every frame. We only want to update the style on the first
   // VDivElement every frame
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..styleBuilder = _styleBuilder()
     ..children = [
-      new UpdateBlocker(
-        new VDivElement()
+      UpdateBlocker(
+        child: VDivElement()
           ..children = [
-            new CounterStateHOC(),
+            CounterStateHOC(),
           ],
       ),
     ];
@@ -681,13 +760,13 @@ class CounterStateHOC extends SComponent<int> {
 
   @override
   void componentDidMount() {
-    new Timer.periodic(const Duration(seconds: 1),
+    Timer.periodic(const Duration(seconds: 1),
         (_) => setStateOnIdle((_, prevState) => (prevState % 10) + 1));
   }
 
   @override
-  VNode render() => new SierpinskiTriangle(
-        new SierpinskiTriangleProps()
+  VNode render() => SierpinskiTriangle(
+        SierpinskiTriangleProps()
           ..x = 0.0
           ..y = 0.0
           ..s = 1000.0
@@ -716,8 +795,8 @@ class SierpinskiTriangle extends PComponent<SierpinskiTriangleProps> {
   @override
   VNode render() {
     if (props.s < targetSize)
-      return new Dot(
-        new DotProps()
+      return Dot(
+        DotProps()
           ..x = props.x - (targetSize / 2.0)
           ..y = props.y - (targetSize / 2.0)
           ..size = targetSize
@@ -730,24 +809,24 @@ class SierpinskiTriangle extends PComponent<SierpinskiTriangleProps> {
     }
 
     final s = props.s / 2;
-    return new VDivElement()
+    return VDivElement()
       ..children = [
-        new SierpinskiTriangle(
-          new SierpinskiTriangleProps()
+        SierpinskiTriangle(
+          SierpinskiTriangleProps()
             ..x = props.x
             ..y = props.y - (s / 2.0)
             ..s = s
             ..seconds = props.seconds,
         ),
-        new SierpinskiTriangle(
-          new SierpinskiTriangleProps()
+        SierpinskiTriangle(
+          SierpinskiTriangleProps()
             ..x = props.x - s
             ..y = props.y + (s / 2.0)
             ..s = s
             ..seconds = props.seconds,
         ),
-        new SierpinskiTriangle(
-          new SierpinskiTriangleProps()
+        SierpinskiTriangle(
+          SierpinskiTriangleProps()
             ..x = props.x + s
             ..y = props.y + (s / 2.0)
             ..s = s
@@ -771,7 +850,7 @@ class Dot extends Component<DotProps, Null> {
 
   StyleBuilder _styleBuilder() {
     final s = props.size * 1.3;
-    return new StyleBuilder()
+    return StyleBuilder()
       ..position = 'absolute'
       ..background = '#61dafb'
       ..font = 'normal 15px sans-serif'
@@ -786,67 +865,9 @@ class Dot extends Component<DotProps, Null> {
   }
 
   @override
-  VNode render() => new VDivElement()
+  VNode render() => VDivElement()
     ..styleBuilder = _styleBuilder()
     ..text = props.text;
-}
-
-''';
-
-const vif_example = r'''
-import 'dart:async';
-import 'dart:html';
-
-import 'package:wui_builder/components.dart';
-import 'package:wui_builder/vhtml.dart';
-import 'package:wui_builder/wui_builder.dart';
-
-enum LoadingState {
-  loggedOut,
-  loggingIn,
-  loggedIn,
-  loggingOut,
-}
-
-class VIF extends SComponent<LoadingState> {
-  @override
-  LoadingState getInitialState() => LoadingState.loggedOut;
-
-  @override
-  VNode render() => new Vdiv()
-    ..children = [
-      new VButtonElement()
-        ..vif = state == LoadingState.loggedOut
-        ..onClick = _onLogIn
-        ..text = 'log in',
-      new VButtonElement()
-        ..vif = state == LoadingState.loggingIn
-        ..disabled = true
-        ..text = 'logging in',
-      new VButtonElement()
-        ..vif = state == LoadingState.loggedIn
-        ..onClick = _onLogOut
-        ..text = 'log out',
-      new VButtonElement()
-        ..vif = state == LoadingState.loggingOut
-        ..disabled = true
-        ..text = 'loging out',
-    ];
-
-  void _onLogIn(MouseEvent e) {
-    setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggingIn);
-    new Future<Null>.delayed(const Duration(seconds: 2), () {
-      setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggedIn);
-    });
-  }
-
-  void _onLogOut(MouseEvent e) {
-    setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggingOut);
-    new Future<Null>.delayed(const Duration(seconds: 2), () {
-      setStateOnAnimationFrame(
-          (nextProps, prevState) => LoadingState.loggedOut);
-    });
-  }
 }
 
 ''';
@@ -865,8 +886,8 @@ const numRows = 5000;
 // the start of the update and the update finishing.
 class IdleCallbackExample extends SComponent<int> {
   @override
-  VNode render() => new VDivElement()
-    ..styleBuilder = (new StyleBuilder()
+  VNode render() => VDivElement()
+    ..styleBuilder = (StyleBuilder()
       ..overflow = 'scroll'
       ..maxHeight = '1000px')
     ..children = [
@@ -877,12 +898,12 @@ class IdleCallbackExample extends SComponent<int> {
   @override
   int getInitialState() => 0;
 
-  VNode _buttonGroup() => new VDivElement()
+  VNode _buttonGroup() => VDivElement()
     ..children = [
-      new VButtonElement()
+      VButtonElement()
         ..text = 'dart vdom update sync'
         ..onClick = _update,
-      new VButtonElement()
+      VButtonElement()
         ..text = 'dart vdom update async'
         ..onClick = _updateOnIdle,
     ];
@@ -895,14 +916,14 @@ class IdleCallbackExample extends SComponent<int> {
     setStateOnIdle((_, prevState) => prevState + 1);
   }
 
-  VNode _table() => new VTableElement()
-    ..children = new List<VNode>.generate(
+  VNode _table() => VTableElement()
+    ..children = List<VNode>.generate(
         numRows,
-        (i) => new VTableRowElement()
+        (i) => VTableRowElement()
           ..children = [
-            new Vtd()..text = 'row $i col 1 update ${state} | ',
-            new Vtd()..text = 'row $i col 2 update ${state} | ',
-            new Vtd()..text = 'row $i col 3 update ${state}',
+            Vtd()..text = 'row $i col 1 update ${state} | ',
+            Vtd()..text = 'row $i col 2 update ${state} | ',
+            Vtd()..text = 'row $i col 3 update ${state}',
           ]);
 }
 
@@ -923,7 +944,7 @@ class HelloWorld extends NComponent {
   // dom. In this case the VDivElement is a VNode that represents
   // a div in the actual dom with text that says 'Hello World'
   @override
-  VNode render() => new VDivElement()..text = 'Hello World!';
+  VNode render() => VDivElement()..text = 'Hello World!';
 }
 
 ''';
@@ -945,7 +966,7 @@ class ExampleRoutes {
 // one of 3 components, based on the current route
 class RoutingExample extends NComponent {
   @override
-  VNode render() => new Vdiv()
+  VNode render() => Vdiv()
     ..children = [
       _navBar(),
       _routeContent(),
@@ -957,46 +978,46 @@ class RoutingExample extends NComponent {
   // The Router component takes an Iterable of Routes. A Route
   // defines a path to match on and a component factory to be
   // invoked when the corresponding path is matched.
-  VNode _routeContent() => new Router([
-        new Route(
-          ExampleRoutes.routeA,
-          (params) => new RouteAComponent(),
+  VNode _routeContent() => Router(routes: [
+        Route(
+          path: ExampleRoutes.routeA,
+          componentFactory: (params) => RouteAComponent(),
           useAsDefault: true, // if no route is matched this route will be used
         ),
-        new Route(
-          ExampleRoutes.routeB,
-          (params) => new RouteBComponent(),
+        Route(
+          path: ExampleRoutes.routeB,
+          componentFactory: (params) => RouteBComponent(),
         ),
-        new Route(
-          ExampleRoutes.routeC,
+        Route(
+          path: ExampleRoutes.routeC,
           // routeC has a param, pathvar, which is read from the params
           // map and pass to RouteCComponent via props
-          (params) => new RouteCComponent(params['pathvar']),
+          componentFactory: (params) => RouteCComponent(params['pathvar']),
         ),
       ]);
 
-  VNode _navBar() => new Vnav()
+  VNode _navBar() => Vnav()
     ..className = 'navbar'
     ..children = [
-      new Vdiv()
+      Vdiv()
         ..className = 'navbar-menu'
         ..children = [
-          new Vdiv()
+          Vdiv()
             ..className = 'navbar-start'
             ..children = [
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteAClicked
                 ..text = 'go to /routing/route_a',
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteBClicked
                 ..text = 'go to /routing/route_b',
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteC1Clicked
                 ..text = 'go to /routing/route_c/1',
-              new Va()
+              Va()
                 ..className = 'navbar-item'
                 ..onClick = _onRouteC2Clicked
                 ..text = 'go to /routing/route_c/2'
@@ -1033,19 +1054,19 @@ class RoutingExample extends NComponent {
 
 class RouteAComponent extends NComponent {
   @override
-  VNode render() => new Vdiv()..text = 'route a component';
+  VNode render() => Vdiv()..text = 'route a component';
 }
 
 class RouteBComponent extends NComponent {
   @override
-  VNode render() => new Vdiv()..text = 'route b component';
+  VNode render() => Vdiv()..text = 'route b component';
 }
 
 class RouteCComponent extends PComponent<String> {
   RouteCComponent(String props) : super(props);
 
   @override
-  VNode render() => new Vdiv()..text = 'route c component. pathvar: $props';
+  VNode render() => Vdiv()..text = 'route c component. pathvar: $props';
 }
 
 ''';

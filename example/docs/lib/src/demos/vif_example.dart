@@ -17,38 +17,36 @@ class VifExample extends SComponent<LoadingState> {
   LoadingState getInitialState() => LoadingState.loggedOut;
 
   @override
-  VNode render() => new Vdiv()
+  VNode render() => Vdiv()
     ..children = [
-      new VButtonElement()
+      VButtonElement()
         ..vif = state == LoadingState.loggedOut
         ..onClick = _onLogIn
         ..text = 'log in',
-      new VButtonElement()
+      VButtonElement()
         ..vif = state == LoadingState.loggingIn
         ..disabled = true
         ..text = 'logging in',
-      new VButtonElement()
+      VButtonElement()
         ..vif = state == LoadingState.loggedIn
         ..onClick = _onLogOut
         ..text = 'log out',
-      new VButtonElement()
+      VButtonElement()
         ..vif = state == LoadingState.loggingOut
         ..disabled = true
-        ..text = 'loging out',
+        ..text = 'logging out',
     ];
 
   void _onLogIn(MouseEvent e) {
-    print('_onLogIn');
     setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggingIn);
-    new Future<Null>.delayed(const Duration(seconds: 2), () {
+    Future<Null>.delayed(const Duration(seconds: 2), () {
       setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggedIn);
     });
   }
 
   void _onLogOut(MouseEvent e) {
-    print('_onLogOut');
     setStateOnAnimationFrame((nextProps, prevState) => LoadingState.loggingOut);
-    new Future<Null>.delayed(const Duration(seconds: 2), () {
+    Future<Null>.delayed(const Duration(seconds: 2), () {
       setStateOnAnimationFrame(
           (nextProps, prevState) => LoadingState.loggedOut);
     });
