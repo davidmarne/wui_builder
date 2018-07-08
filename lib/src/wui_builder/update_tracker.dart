@@ -23,7 +23,6 @@ class UpdateTracker {
   bool isCancelled = false;
   bool hasStarted = false;
   IdleDeadline deadline;
-  int index;
 
   UpdateTracker.sync(this.node, this.newVNode)
       : isAsync = false,

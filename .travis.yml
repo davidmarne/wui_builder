@@ -9,6 +9,7 @@ before_install:
  - "t=0; until (xdpyinfo -display :99 &> /dev/null || test $t -gt 10); do sleep 1; let t=$t+1; done"
 
 script:
-  - pub run dart_dev format --check
-  - pub run dart_dev analyze
+  - pub get
+  - dartfmt -n --set-exit-if-changed lib/
+  - dartanalyzer --strong --fatal-warnings --fatal-infos lib/
   - pub run build_runner test --delete-conflicting-outputs -- -p chrome

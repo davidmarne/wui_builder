@@ -8,8 +8,9 @@ dependencies:
     path: ../../
 
 dev_dependencies:
-  build_runner: ^0.7.9
-  build_web_compilers: ^0.3.0
+  analyzer: ^0.32.0
+  build_runner: ^0.9.0
+  build_web_compilers: ^0.4.0
   livereload: ^0.4.0
 
 environment:

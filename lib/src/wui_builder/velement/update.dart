@@ -46,7 +46,9 @@ bool updateElement(UpdateTracker tracker) {
     oldVNode,
     newLength, // pass lengths for performance so they don't have to be re-accessed
     oldLength,
+    tracker.node.firstChild,
   ));
+
   return updateChildren(tracker);
 }
 

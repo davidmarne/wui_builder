@@ -25,6 +25,9 @@ abstract class Component<P, S> extends VNode {
   @override
   VNodeTypes get vNodeType => VNodeTypes.component;
 
+  @override
+  Node get ref => _child.ref;
+
   /// [child] is the VNode returned from render
   VNode get child => _child;
 

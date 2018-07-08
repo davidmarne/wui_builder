@@ -197,5 +197,96 @@ void main() {
       ]);
       expect(host.innerHtml, 'go');
     });
+
+    test('add/remove/shuffle items keyed', () {
+      final component = IterableTestComponent([
+        VText('go', key: 'go'),
+        VText('od', key: 'od'),
+      ]);
+
+      render(component, host);
+
+      // add node
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VText('go', key: 'go'),
+        VText('od', key: 'od'),
+        VText('bye', key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'goodbye');
+
+      // swap nodes
+      component.setChildren([
+        VText('od', key: 'od'),
+        VText('go', key: 'go'),
+        VText('bye', key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'odgobye');
+
+      // remove node
+      component.setChildren([
+        VText('go', key: 'go'),
+      ]);
+      expect(host.innerHtml, 'go');
+    });
+
+    test('add/remove/shuffle nested lists keyed', () {
+      final component = IterableTestComponent([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ], key: 'od'),
+      ]);
+
+      render(component, host);
+
+      // add node
+      expect(host.innerHtml, 'good');
+      component.setChildren([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ], key: 'od'),
+        VIterable([
+          VText('by'),
+          VText('e'),
+        ], key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'goodbye');
+
+      // swap nodes
+      component.setChildren([
+        VIterable([
+          VText('o'),
+          VText('d'),
+        ], key: 'od'),
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+        VIterable([
+          VText('by'),
+          VText('e'),
+        ], key: 'bye'),
+      ]);
+      expect(host.innerHtml, 'odgobye');
+
+      // remove node
+      component.setChildren([
+        VIterable([
+          VText('g'),
+          VText('o'),
+        ], key: 'go'),
+      ]);
+      expect(host.innerHtml, 'go');
+    });
   });
 }

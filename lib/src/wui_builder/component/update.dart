@@ -87,10 +87,10 @@ bool updateComponent(UpdateTracker tracker) {
 
 void finishComponentUpdate(UpdateTracker tracker) {
   final cursor = tracker.pendingWork as ComponentUpdateCursor;
-  cursor.vNode.ref = cursor.vNode._child.ref;
+  // cursor.vNode.ref = cursor.vNode._child.ref;
 
-  // update the ref
-  cursor.vNode.ref = cursor.vNode._child.ref;
+  // // update the ref
+  // cursor.vNode.ref = cursor.vNode._child.ref;
 
   // lifecycle - componentDidUpdate
   cursor.vNode.componentDidUpdate(cursor.prevProps, cursor.prevState);

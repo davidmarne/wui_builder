@@ -11,6 +11,5 @@ Node createIterableNode(
     }
   }
 
-  vnode.ref = domNode.firstChild;
   return domNode;
 }

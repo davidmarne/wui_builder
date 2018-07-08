@@ -25,8 +25,8 @@ Node createComponentNode(
   // create a dom node for the render result
   final domNode = createNode(vnode.child, pendingComponentDidMounts);
 
-  // update the ref on the component instance
-  vnode.ref = domNode;
+  // // update the ref on the component instance
+  // vnode.ref = domNode;
 
   // lifecycle - componentDidMount
   pendingComponentDidMounts.add(vnode.componentDidMount);

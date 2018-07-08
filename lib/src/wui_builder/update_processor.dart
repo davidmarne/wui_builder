@@ -72,6 +72,7 @@ void disposeVNode(VNode node) {
     case VNodeTypes.iterable:
       disposeVIterable(node as VIterable);
       break;
+    default:
   }
 }
 
