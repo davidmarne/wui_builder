@@ -11,7 +11,6 @@ dev_dependencies:
   analyzer: ^0.32.0
   build_runner: ^0.9.0
   build_web_compilers: ^0.4.0
-  livereload: ^0.4.0
 
 environment:
   sdk: ">=1.23.0 <2.0.0"
