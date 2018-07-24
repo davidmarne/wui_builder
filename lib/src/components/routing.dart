@@ -18,7 +18,7 @@ class HistoryProvider extends PComponent<VNode> {
   HistoryProvider({
     @required VNode child,
     History history,
-  })  : _history = history ?? new History(),
+  })  : _history = history ?? PushHistory(),
         super(child);
 
   @override
@@ -41,33 +41,107 @@ History findHistoryInContext(Map<String, dynamic> context) {
 
 /// [History] is an api for reading and interacting with your applications url.
 /// It uses pushState to update the url.
-class History {
-  final _pathChangeController = new StreamController<String>.broadcast();
+abstract class History {
+  Stream<String> get onPathChange;
+  void goForward();
+  void goBack();
+  void go(int n);
+  void push(String path);
+  void replace(String path);
+  String get path;
+  void dispose();
+}
+
+/// [HashHistory] is an implementation of `History` that uses hash routing
+class HashHistory implements History {
+  final _hashChangeController = StreamController<String>.broadcast();
+  StreamSubscription _onHashChangeSub;
+  String _hash = window.location.hash.replaceFirst('#', '');
+
+  HashHistory() {
+    _onHashChangeSub = window.onHashChange.listen(_onHashChange);
+  }
+
+  @override
+  Stream<String> get onPathChange => _hashChangeController.stream;
+
+  @override
+  void goForward() => window.history.go(1);
+
+  @override
+  void goBack() => window.history.go(-1);
+
+  @override
+  void go(int n) => window.history.go(n);
+
+  @override
+  void push(String path) {
+    _hash = path.startsWith('/') ? path : '/$path';
+    window.history.pushState({'path': _hash}, '', '#$_hash');
+    _hashChangeController.add(_hash);
+  }
+
+  @override
+  void replace(String path) {
+    _hash = path.startsWith('/') ? path : '/$path';
+    window.location.hash = '#$_hash';
+    _hashChangeController.add(_hash);
+  }
+
+  @override
+  String get path => _hash;
+
+  @override
+  void dispose() {
+    _onHashChangeSub.cancel();
+  }
+
+  void _onHashChange(Event e) {
+    _hash = window.location.hash.replaceFirst('#', '');
+    _hashChangeController.add(_hash);
+  }
+}
+
+/// [PushHistory] is an implementation of `History` that uses push routing
+class PushHistory implements History {
+  final _pathChangeController = StreamController<String>.broadcast();
   StreamSubscription _popStateSub;
   String _path = window.location.pathname;
 
-  History() {
+  PushHistory() {
     _popStateSub = window.onPopState.listen(_onPopState);
   }
 
+  @override
   Stream<String> get onPathChange => _pathChangeController.stream;
+
+  @override
   void goForward() => window.history.go(1);
+
+  @override
   void goBack() => window.history.go(-1);
+
+  @override
   void go(int n) => window.history.go(n);
+
+  @override
   void push(String path) {
     _path = path.startsWith('/') ? path : '/$path';
     window.history.pushState({'path': _path}, '', _path);
     _pathChangeController.add(_path);
   }
 
+  @override
   void replace(String path) {
     _path = path.startsWith('/') ? path : '/$path';
-    window.location.replace(_path);
+    window.location.hash = '#$_path';
     _pathChangeController.add(_path);
   }
 
+  @override
   String get path => _path;
 
+  @override
   void dispose() {
     _popStateSub.cancel();
   }
@@ -140,13 +214,13 @@ class Router extends Component<Iterable<Route>, _CurrentRoute> {
       for (var i = 0; i < pathParts.length; i++)
         if (routeParts[i].startsWith(':'))
           params[routeParts[i].replaceFirst(':', '')] = pathParts[i];
-      return new _CurrentRoute(route, _paramsForRoute(pathParts, routeParts));
+      return _CurrentRoute(route, _paramsForRoute(pathParts, routeParts));
     }
 
     // we didn't find a matching route. use the default route.
     final defaultRoute = props.firstWhere(_routeIsDefault, orElse: () => null);
 
-    return defaultRoute != null ? new _CurrentRoute(defaultRoute, {}) : null;
+    return defaultRoute != null ? _CurrentRoute(defaultRoute, {}) : null;
   }
 
   Map<String, String> _paramsForRoute(
@@ -161,7 +235,7 @@ class Router extends Component<Iterable<Route>, _CurrentRoute> {
 
   bool _routeIsDefault(Route route) => route.useAsDefault;
 
-  VNode _routeNotFound() => new Vdiv();
+  VNode _routeNotFound() => Vdiv();
 }
 
 /// [RouteVNodeFactory] is a factory that returns a given component
