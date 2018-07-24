@@ -12,6 +12,10 @@ typedef void PutAfter(int before, int after);
 
 class ContainerProps {
   Iterable<Todo> todos;
+  ContainerActions actions;
+}
+
+class ContainerActions {
   AddTodo addTodo;
   UpdateTodo updateTodo;
   PutAfter putAfter;
@@ -20,10 +24,16 @@ class ContainerProps {
 ContainerProps stateMapper(
   Null _,
   Iterable<Todo> state,
+  ContainerActions setState,
+) =>
+    ContainerProps()
+      ..todos = state
+      ..actions = setState;
+
+ContainerActions stateSetterFactory(
   SetState<Null, Iterable<Todo>> setState,
 ) =>
-    new ContainerProps()
-      ..todos = state
+    ContainerActions()
       ..addTodo = ((todo) {
         setState((_, prev) => prev.toList()..add(todo));
       })
@@ -46,8 +56,12 @@ ContainerProps stateMapper(
       });
 
 FunctionalComponent<Null> container =
-    withState<Null, Iterable<Todo>, ContainerProps>(
-        [], UpdateKind.syncronous, stateMapper)(_container);
+    withState<Null, Iterable<Todo>, ContainerActions, ContainerProps>(
+  defaultState: [],
+  mapper: stateMapper,
+  stateSetterFactory: stateSetterFactory,
+  updateKind: UpdateKind.syncronous,
+)(_container);
 
 VNode _container(ContainerProps props) => new VDivElement()
   ..children = [
@@ -55,7 +69,7 @@ VNode _container(ContainerProps props) => new VDivElement()
       ..remaining = props.todos.where((t) => !t.isComplete).length),
     content(new ContentProps()
       ..todos = props.todos
-      ..addTodo = props.addTodo
-      ..updateTodo = props.updateTodo
-      ..putAfter = props.putAfter),
+      ..addTodo = props.actions.addTodo
+      ..updateTodo = props.actions.updateTodo
+      ..putAfter = props.actions.putAfter),
   ];

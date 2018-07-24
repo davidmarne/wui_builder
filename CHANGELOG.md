@@ -1,4 +1,15 @@
 
+## 0.7.0
+
+components.dart:
+* **Breaking changes**
+* History is now an interface and is implemented by PushHistory and HashHistory. HashHistory plays nice with the webdev pub package and github pages.
+
+functional.dart:
+
+* **Breaking changes**:
+  * withState now takes named parameters
+
 ## 0.6.0
 repo:
 * use build_runner test in travis
