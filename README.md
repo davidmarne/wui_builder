@@ -43,11 +43,12 @@ Note, requestIdleCallback is not currently supported by all browsers and wui_bui
 
 ```dart
 class HelloWorldProps {
-    String text;
+    final String text;
+    HelloWorldProps(this.text);
 }
 
 class HelloWorld extends PComponent<HelloWorldProps> {
-    HelloWorld(props) : super(props);
+    HelloWorld(String text) : super(HelloWorldProps(text));
 
     @override
     VNode render() => VDivElement()
@@ -55,10 +56,7 @@ class HelloWorld extends PComponent<HelloWorldProps> {
 }
 
 // instantiate the component, pass it an instance of HelloWorldProps
-final component = HelloWorld(
-    HelloWorldProps()
-        ..text = 'Hello world',
-    );
+final component = HelloWorld('Hello world');
 
 // render the virtual element into a container
 render(component, querySelector('#container'));
